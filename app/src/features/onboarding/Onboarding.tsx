@@ -8,39 +8,84 @@ import {
   Clock,
   Check,
   ArrowRight,
+  Target,
+  BookOpen,
+  Zap,
+  Brain,
+  Heart,
 } from 'lucide-react';
 import { useUserStore, useOnboardingProgress } from '@/store/userStore';
 import { OnboardingLayout } from '@/components/templates';
+import { GlassCard } from '@/components/molecules';
+import { Button } from '@/components/atoms';
 
 const goals = [
-  { id: 'habits', label: 'Build Better Habits', desc: 'Create lasting positive routines' },
-  { id: 'focus', label: 'Improve Focus', desc: 'Deep work and concentration' },
-  { id: 'purpose', label: 'Find My Purpose', desc: 'Meaning and direction in life' },
-  { id: 'productivity', label: 'Be More Productive', desc: 'Get more done, stress less' },
-  { id: 'growth', label: 'Personal Growth', desc: 'Become my best self' },
+  { id: 'habits', label: 'Build Better Habits', desc: 'Create lasting positive routines', icon: Target, color: 'sunrise' },
+  { id: 'focus', label: 'Improve Focus', desc: 'Deep work and concentration', icon: Brain, color: 'lavender' },
+  { id: 'purpose', label: 'Find My Purpose', desc: 'Meaning and direction in life', icon: Heart, color: 'coral' },
+  { id: 'productivity', label: 'Be More Productive', desc: 'Get more done, stress less', icon: Zap, color: 'golden' },
+  { id: 'growth', label: 'Personal Growth', desc: 'Become my best self', icon: Sparkles, color: 'sage' },
 ];
 
 const learningStyles = [
-  { id: 'reader', label: 'Deep Reader', desc: 'I like to read and reflect deeply' },
-  { id: 'doer', label: 'Learn by Doing', desc: 'I prefer hands-on exercises' },
-  { id: 'visual', label: 'Visual Learner', desc: 'I learn best with visuals' },
-  { id: 'quick', label: 'Quick Bites', desc: 'Short lessons, frequent review' },
+  { id: 'reader', label: 'Deep Reader', desc: 'I like to read and reflect deeply', color: 'lavender' },
+  { id: 'doer', label: 'Learn by Doing', desc: 'I prefer hands-on exercises', color: 'sunrise' },
+  { id: 'visual', label: 'Visual Learner', desc: 'I learn best with visuals', color: 'sage' },
+  { id: 'quick', label: 'Quick Bites', desc: 'Short lessons, frequent review', color: 'golden' },
 ];
 
 const timeCommitments = [
-  { id: 5, label: '5 min/day', desc: 'Micro-learning' },
-  { id: 15, label: '15 min/day', desc: 'Quick sessions' },
-  { id: 30, label: '30 min/day', desc: 'Solid practice' },
-  { id: 60, label: '60+ min/day', desc: 'Deep immersion' },
+  { id: 5, label: '5 min/day', desc: 'Micro-learning', color: 'sage' },
+  { id: 15, label: '15 min/day', desc: 'Quick sessions', color: 'sunrise' },
+  { id: 30, label: '30 min/day', desc: 'Solid practice', color: 'lavender' },
+  { id: 60, label: '60+ min/day', desc: 'Deep immersion', color: 'golden' },
 ];
 
 const focusAreas = [
-  { id: 'atomic', label: 'Atomic Habits', book: 'James Clear' },
-  { id: 'deepwork', label: 'Deep Work', book: 'Cal Newport' },
-  { id: 'futureself', label: 'Future Self', book: 'Benjamin Hardy' },
-  { id: 'meaning', label: 'Meaning & Purpose', book: 'Viktor Frankl' },
-  { id: 'values', label: 'Values & Priorities', book: 'Mark Manson' },
+  { id: 'atomic', label: 'Atomic Habits', book: 'James Clear', color: 'sunrise' },
+  { id: 'deepwork', label: 'Deep Work', book: 'Cal Newport', color: 'lavender' },
+  { id: 'futureself', label: 'Future Self', book: 'Benjamin Hardy', color: 'sage' },
+  { id: 'meaning', label: 'Meaning & Purpose', book: 'Viktor Frankl', color: 'coral' },
+  { id: 'values', label: 'Values & Priorities', book: 'Mark Manson', color: 'golden' },
 ];
+
+const colorStyles = {
+  sunrise: {
+    bg: 'bg-sunrise/10',
+    border: 'border-sunrise/30',
+    text: 'text-sunrise',
+    activeBg: 'bg-sunrise/20',
+    activeBorder: 'border-sunrise/50',
+  },
+  golden: {
+    bg: 'bg-golden/10',
+    border: 'border-golden/30',
+    text: 'text-golden',
+    activeBg: 'bg-golden/20',
+    activeBorder: 'border-golden/50',
+  },
+  coral: {
+    bg: 'bg-coral/10',
+    border: 'border-coral/30',
+    text: 'text-coral',
+    activeBg: 'bg-coral/20',
+    activeBorder: 'border-coral/50',
+  },
+  sage: {
+    bg: 'bg-sage/10',
+    border: 'border-sage/30',
+    text: 'text-sage',
+    activeBg: 'bg-sage/20',
+    activeBorder: 'border-sage/50',
+  },
+  lavender: {
+    bg: 'bg-lavender/10',
+    border: 'border-lavender/30',
+    text: 'text-lavender',
+    activeBg: 'bg-lavender/20',
+    activeBorder: 'border-lavender/50',
+  },
+};
 
 interface UserData {
   name: string;
@@ -128,19 +173,24 @@ export function Onboarding() {
           {step === 0 && (
             <div className="space-y-8">
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-accent to-amber-500 flex items-center justify-center">
-                  <Sparkles className="w-8 h-8 text-white" />
-                </div>
-                <h1 className="text-3xl font-semibold text-primary tracking-tight">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 300, delay: 0.2 }}
+                  className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-sunrise to-golden flex items-center justify-center shadow-sunrise"
+                >
+                  <Sparkles className="w-10 h-10 text-base" />
+                </motion.div>
+                <h1 className="text-3xl font-display font-bold text-text-primary tracking-tight">
                   Welcome to Gyanmarg
                 </h1>
-                <p className="text-secondary mt-2">
+                <p className="text-text-secondary mt-2">
                   Your path to personal mastery begins here
                 </p>
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm text-secondary">
+                <label className="block text-sm text-text-secondary font-medium">
                   What should we call you?
                 </label>
                 <input
@@ -149,64 +199,78 @@ export function Onboarding() {
                   onChange={(e) =>
                     setUserData({ ...userData, name: e.target.value })
                   }
-                  className="w-full bg-secondary border border-border rounded-xl px-5 py-4 text-primary text-lg placeholder-muted focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all"
+                  className="w-full glass border border-white/10 rounded-xl px-5 py-4 text-text-primary text-lg placeholder-text-muted focus:border-sunrise/50 focus:ring-2 focus:ring-sunrise/20 transition-all bg-transparent"
                   placeholder="Enter your name"
                   autoFocus
                 />
               </div>
 
-              <div className="bg-accent/10 border border-accent/20 rounded-xl p-5">
-                <p className="text-accent text-sm leading-relaxed">
-                  You're about to learn from 5 transformational books,
-                  synthesized into an interactive learning experience.
-                </p>
-              </div>
+              <GlassCard className="border-sunrise/20">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-sunrise/10 border border-sunrise/20 flex items-center justify-center shrink-0">
+                    <BookOpen className="w-5 h-5 text-sunrise" />
+                  </div>
+                  <p className="text-sunrise text-sm leading-relaxed">
+                    You're about to learn from 5 transformational books,
+                    synthesized into an interactive learning experience.
+                  </p>
+                </div>
+              </GlassCard>
             </div>
           )}
 
           {step === 1 && (
             <div className="space-y-6">
               <div className="text-center">
-                <h1 className="text-2xl font-semibold text-primary tracking-tight">
+                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
                   What's your primary goal?
                 </h1>
-                <p className="text-secondary mt-2">
+                <p className="text-text-secondary mt-2">
                   This helps us personalize your learning path
                 </p>
               </div>
 
               <div className="space-y-3">
-                {goals.map((goal) => (
-                  <button
-                    key={goal.id}
-                    onClick={() =>
-                      setUserData({ ...userData, primaryGoal: goal.id })
-                    }
-                    className={`w-full p-5 rounded-xl flex items-center justify-between transition-all border ${
-                      userData.primaryGoal === goal.id
-                        ? 'bg-accent/10 border-accent/50'
-                        : 'bg-secondary border-border hover:border-muted'
-                    }`}
-                  >
-                    <div className="text-left">
-                      <p
-                        className={`font-medium ${
-                          userData.primaryGoal === goal.id
-                            ? 'text-accent'
-                            : 'text-primary'
-                        }`}
-                      >
-                        {goal.label}
-                      </p>
-                      <p className="text-sm text-muted mt-0.5">{goal.desc}</p>
-                    </div>
-                    {userData.primaryGoal === goal.id && (
-                      <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center shrink-0">
-                        <Check className="w-4 h-4 text-white" />
+                {goals.map((goal) => {
+                  const Icon = goal.icon;
+                  const colors = colorStyles[goal.color as keyof typeof colorStyles];
+                  const isSelected = userData.primaryGoal === goal.id;
+
+                  return (
+                    <motion.button
+                      key={goal.id}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() =>
+                        setUserData({ ...userData, primaryGoal: goal.id })
+                      }
+                      className={`w-full p-4 rounded-xl flex items-center gap-4 transition-all border backdrop-blur-sm ${
+                        isSelected
+                          ? `${colors.activeBg} ${colors.activeBorder}`
+                          : `glass-light border-white/10 hover:border-white/20`
+                      }`}
+                    >
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${colors.bg} border ${colors.border}`}>
+                        <Icon className={`w-6 h-6 ${colors.text}`} />
                       </div>
-                    )}
-                  </button>
-                ))}
+                      <div className="text-left flex-1">
+                        <p className={`font-medium ${isSelected ? colors.text : 'text-text-primary'}`}>
+                          {goal.label}
+                        </p>
+                        <p className="text-sm text-text-muted mt-0.5">{goal.desc}</p>
+                      </div>
+                      {isSelected && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className={`w-6 h-6 rounded-full ${colors.bg} border ${colors.border} flex items-center justify-center`}
+                        >
+                          <Check className={`w-4 h-4 ${colors.text}`} />
+                        </motion.div>
+                      )}
+                    </motion.button>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -214,39 +278,49 @@ export function Onboarding() {
           {step === 2 && (
             <div className="space-y-6">
               <div className="text-center">
-                <h1 className="text-2xl font-semibold text-primary tracking-tight">
+                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
                   How do you learn best?
                 </h1>
-                <p className="text-secondary mt-2">
+                <p className="text-text-secondary mt-2">
                   We'll adapt the content to your style
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                {learningStyles.map((style) => (
-                  <button
-                    key={style.id}
-                    onClick={() =>
-                      setUserData({ ...userData, learningStyle: style.id })
-                    }
-                    className={`p-5 rounded-xl text-left transition-all border ${
-                      userData.learningStyle === style.id
-                        ? 'bg-purple-500/10 border-purple-500/50'
-                        : 'bg-secondary border-border hover:border-muted'
-                    }`}
-                  >
-                    <p
-                      className={`font-medium ${
-                        userData.learningStyle === style.id
-                          ? 'text-purple-400'
-                          : 'text-primary'
+                {learningStyles.map((style) => {
+                  const colors = colorStyles[style.color as keyof typeof colorStyles];
+                  const isSelected = userData.learningStyle === style.id;
+
+                  return (
+                    <motion.button
+                      key={style.id}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() =>
+                        setUserData({ ...userData, learningStyle: style.id })
+                      }
+                      className={`p-5 rounded-xl text-left transition-all border backdrop-blur-sm ${
+                        isSelected
+                          ? `${colors.activeBg} ${colors.activeBorder}`
+                          : `glass-light border-white/10 hover:border-white/20`
                       }`}
                     >
-                      {style.label}
-                    </p>
-                    <p className="text-xs text-muted mt-1">{style.desc}</p>
-                  </button>
-                ))}
+                      <p className={`font-medium ${isSelected ? colors.text : 'text-text-primary'}`}>
+                        {style.label}
+                      </p>
+                      <p className="text-xs text-text-muted mt-1">{style.desc}</p>
+                      {isSelected && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className={`mt-3 w-5 h-5 rounded-full ${colors.bg} border ${colors.border} flex items-center justify-center`}
+                        >
+                          <Check className={`w-3 h-3 ${colors.text}`} />
+                        </motion.div>
+                      )}
+                    </motion.button>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -254,118 +328,135 @@ export function Onboarding() {
           {step === 3 && (
             <div className="space-y-6">
               <div className="text-center">
-                <h1 className="text-2xl font-semibold text-primary tracking-tight">
+                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
                   How much time can you commit?
                 </h1>
-                <p className="text-secondary mt-2">Consistency beats intensity</p>
+                <p className="text-text-secondary mt-2">Consistency beats intensity</p>
               </div>
 
               <div className="space-y-3">
-                {timeCommitments.map((time) => (
-                  <button
-                    key={time.id}
-                    onClick={() =>
-                      setUserData({ ...userData, dailyTime: time.id })
-                    }
-                    className={`w-full p-5 rounded-xl flex items-center justify-between transition-all border ${
-                      userData.dailyTime === time.id
-                        ? 'bg-accent/10 border-accent/50'
-                        : 'bg-secondary border-border hover:border-muted'
-                    }`}
-                  >
-                    <div className="flex items-center gap-4">
-                      <Clock
-                        className={`w-5 h-5 ${
-                          userData.dailyTime === time.id
-                            ? 'text-accent'
-                            : 'text-muted'
-                        }`}
-                      />
-                      <div className="text-left">
-                        <p
-                          className={`font-medium ${
-                            userData.dailyTime === time.id
-                              ? 'text-accent'
-                              : 'text-primary'
-                          }`}
+                {timeCommitments.map((time) => {
+                  const colors = colorStyles[time.color as keyof typeof colorStyles];
+                  const isSelected = userData.dailyTime === time.id;
+
+                  return (
+                    <motion.button
+                      key={time.id}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() =>
+                        setUserData({ ...userData, dailyTime: time.id })
+                      }
+                      className={`w-full p-4 rounded-xl flex items-center justify-between transition-all border backdrop-blur-sm ${
+                        isSelected
+                          ? `${colors.activeBg} ${colors.activeBorder}`
+                          : `glass-light border-white/10 hover:border-white/20`
+                      }`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${colors.bg} border ${colors.border}`}>
+                          <Clock className={`w-5 h-5 ${colors.text}`} />
+                        </div>
+                        <div className="text-left">
+                          <p className={`font-medium ${isSelected ? colors.text : 'text-text-primary'}`}>
+                            {time.label}
+                          </p>
+                          <p className="text-sm text-text-muted">{time.desc}</p>
+                        </div>
+                      </div>
+                      {isSelected && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className={`w-6 h-6 rounded-full ${colors.bg} border ${colors.border} flex items-center justify-center`}
                         >
-                          {time.label}
-                        </p>
-                        <p className="text-sm text-muted">{time.desc}</p>
-                      </div>
-                    </div>
-                    {userData.dailyTime === time.id && (
-                      <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center shrink-0">
-                        <Check className="w-4 h-4 text-white" />
-                      </div>
-                    )}
-                  </button>
-                ))}
+                          <Check className={`w-4 h-4 ${colors.text}`} />
+                        </motion.div>
+                      )}
+                    </motion.button>
+                  );
+                })}
               </div>
 
-              <div className="bg-success/10 border border-success/20 rounded-xl p-4">
-                <p className="text-success text-sm">
-                  From Atomic Habits: "The 2-minute rule - make it so easy you
-                  can't say no."
-                </p>
-              </div>
+              <GlassCard className="border-sage/20">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-sage/10 border border-sage/20 flex items-center justify-center shrink-0">
+                    <Zap className="w-5 h-5 text-sage" />
+                  </div>
+                  <p className="text-sage text-sm leading-relaxed">
+                    From Atomic Habits: "The 2-minute rule - make it so easy you
+                    can't say no."
+                  </p>
+                </div>
+              </GlassCard>
             </div>
           )}
 
           {step === 4 && (
             <div className="space-y-6">
               <div className="text-center">
-                <h1 className="text-2xl font-semibold text-primary tracking-tight">
+                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
                   What interests you most?
                 </h1>
-                <p className="text-secondary mt-2">
+                <p className="text-text-secondary mt-2">
                   Select all that apply - you can explore everything
                 </p>
               </div>
 
               <div className="space-y-3">
-                {focusAreas.map((area) => (
-                  <button
-                    key={area.id}
-                    onClick={() => toggleFocusArea(area.id)}
-                    className={`w-full p-5 rounded-xl flex items-center justify-between transition-all border ${
-                      userData.focusAreas.includes(area.id)
-                        ? 'bg-success/10 border-success/50'
-                        : 'bg-secondary border-border hover:border-muted'
-                    }`}
-                  >
-                    <div className="text-left">
-                      <p
-                        className={`font-medium ${
-                          userData.focusAreas.includes(area.id)
-                            ? 'text-success'
-                            : 'text-primary'
-                        }`}
-                      >
-                        {area.label}
-                      </p>
-                      <p className="text-sm text-muted">{area.book}</p>
-                    </div>
-                    <div
-                      className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${
-                        userData.focusAreas.includes(area.id)
-                          ? 'bg-success border-success'
-                          : 'border-muted'
+                {focusAreas.map((area) => {
+                  const colors = colorStyles[area.color as keyof typeof colorStyles];
+                  const isSelected = userData.focusAreas.includes(area.id);
+
+                  return (
+                    <motion.button
+                      key={area.id}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => toggleFocusArea(area.id)}
+                      className={`w-full p-4 rounded-xl flex items-center justify-between transition-all border backdrop-blur-sm ${
+                        isSelected
+                          ? `${colors.activeBg} ${colors.activeBorder}`
+                          : `glass-light border-white/10 hover:border-white/20`
                       }`}
                     >
-                      {userData.focusAreas.includes(area.id) && (
-                        <Check className="w-4 h-4 text-white" />
-                      )}
-                    </div>
-                  </button>
-                ))}
+                      <div className="text-left">
+                        <p className={`font-medium ${isSelected ? colors.text : 'text-text-primary'}`}>
+                          {area.label}
+                        </p>
+                        <p className="text-sm text-text-muted">{area.book}</p>
+                      </div>
+                      <div
+                        className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${
+                          isSelected
+                            ? `${colors.bg} ${colors.activeBorder}`
+                            : 'border-text-muted'
+                        }`}
+                      >
+                        {isSelected && (
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                          >
+                            <Check className={`w-4 h-4 ${colors.text}`} />
+                          </motion.div>
+                        )}
+                      </div>
+                    </motion.button>
+                  );
+                })}
               </div>
 
-              <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-4">
-                <p className="text-purple-400 text-sm">
-                  All 5 books work together - concepts reinforce each other.
-                </p>
-              </div>
+              <GlassCard className="border-lavender/20">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-lavender/10 border border-lavender/20 flex items-center justify-center shrink-0">
+                    <Brain className="w-5 h-5 text-lavender" />
+                  </div>
+                  <p className="text-lavender text-sm leading-relaxed">
+                    All 5 books work together - concepts reinforce each other.
+                  </p>
+                </div>
+              </GlassCard>
             </div>
           )}
         </motion.div>
@@ -380,35 +471,34 @@ export function Onboarding() {
       footer={
         <div className="flex gap-3">
           {step > 0 && (
-            <button
+            <Button
+              variant="glass"
               onClick={handleBack}
-              className="px-6 py-4 bg-secondary text-secondary rounded-xl hover:bg-elevated transition-colors flex items-center gap-2 font-medium"
+              className="px-6"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-5 h-5 mr-1" />
               Back
-            </button>
+            </Button>
           )}
-          <button
+          <Button
+            variant="primary"
             onClick={handleNext}
             disabled={!canProceed()}
-            className={`flex-1 py-4 rounded-xl font-medium flex items-center justify-center gap-2 transition-all ${
-              canProceed()
-                ? 'bg-accent text-white hover:bg-accent/90'
-                : 'bg-secondary text-muted cursor-not-allowed'
-            }`}
+            className="flex-1"
+            glow={canProceed()}
           >
             {step === totalSteps - 1 ? (
               <>
                 Start Learning
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 ml-2" />
               </>
             ) : (
               <>
                 Continue
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-5 h-5 ml-1" />
               </>
             )}
-          </button>
+          </Button>
         </div>
       }
     >

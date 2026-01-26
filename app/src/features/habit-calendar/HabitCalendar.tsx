@@ -1,21 +1,29 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Flame } from 'lucide-react';
+import { Plus, Flame, Calendar, Sparkles, Target } from 'lucide-react';
 import { useHabitStore } from '@/store/habitStore';
 import { useProgressStore } from '@/store/progressStore';
 import { ModuleLayout } from '@/components/templates';
-import { Card } from '@/components/molecules';
+import { GlassCard } from '@/components/molecules';
 import { HabitItem, HabitCategoryLabel } from '@/components/molecules/HabitItem';
 import { Modal } from '@/components/organisms';
-import { Button, Input } from '@/components/atoms';
+import { Button, Input, ProgressBar } from '@/components/atoms';
 import type { HabitCategory } from '@/types';
 
-const categories: { id: HabitCategory; label: string }[] = [
-  { id: 'morning', label: 'Morning' },
-  { id: 'work', label: 'Work' },
-  { id: 'evening', label: 'Evening' },
-  { id: 'anytime', label: 'Anytime' },
+const categories: { id: HabitCategory; label: string; color: string }[] = [
+  { id: 'morning', label: 'Morning', color: 'sunrise' },
+  { id: 'work', label: 'Work', color: 'lavender' },
+  { id: 'evening', label: 'Evening', color: 'coral' },
+  { id: 'anytime', label: 'Anytime', color: 'sage' },
 ];
+
+const colorStyles: Record<string, { bg: string; border: string; text: string }> = {
+  sunrise: { bg: 'bg-sunrise/10', border: 'border-sunrise/30', text: 'text-sunrise' },
+  lavender: { bg: 'bg-lavender/10', border: 'border-lavender/30', text: 'text-lavender' },
+  coral: { bg: 'bg-coral/10', border: 'border-coral/30', text: 'text-coral' },
+  sage: { bg: 'bg-sage/10', border: 'border-sage/30', text: 'text-sage' },
+  golden: { bg: 'bg-golden/10', border: 'border-golden/30', text: 'text-golden' },
+};
 
 export function HabitCalendar() {
   const { habits, addHabit, toggleHabitComplete, deleteHabit, getTodayCompletedCount } =
@@ -63,48 +71,58 @@ export function HabitCalendar() {
   const completedCount = getTodayCompletedCount();
   const totalCount = habits.length;
   const completionRate = totalCount > 0 ? (completedCount / totalCount) * 100 : 0;
+  const maxStreak = habits.reduce((max, h) => Math.max(max, h.streak), 0);
 
   return (
     <ModuleLayout
       title="Habit Builder"
       subtitle="Build identity through small wins"
+      icon={<Calendar className="w-5 h-5" />}
+      headerGradient="forest"
       rightContent={
         <Button
-          icon={<Plus className="w-4 h-4" />}
+          variant="primary"
+          size="sm"
           onClick={() => setShowAddModal(true)}
+          glow
         >
+          <Plus className="w-4 h-4 mr-1" />
           Add Habit
         </Button>
       }
     >
       {/* Progress Card */}
-      <Card className="mb-6">
+      <GlassCard className="mb-6">
         <div className="flex items-center justify-between mb-4">
-          <div>
-            <h3 className="text-lg font-semibold text-primary">Today's Progress</h3>
-            <p className="text-sm text-muted">
-              {completedCount} of {totalCount} habits completed
-            </p>
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sage to-sage-light flex items-center justify-center shadow-sage">
+              <Target className="w-6 h-6 text-base" />
+            </div>
+            <div>
+              <h3 className="font-display font-semibold text-text-primary">Today's Progress</h3>
+              <p className="text-sm text-text-muted">
+                {completedCount} of {totalCount} habits completed
+              </p>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Flame className={`w-6 h-6 ${completedCount > 0 ? 'text-warning' : 'text-muted'}`} />
-            <span className="text-2xl font-semibold text-warning">
-              {habits.reduce((max, h) => Math.max(max, h.streak), 0)}
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-coral/10 border border-coral/20">
+            <Flame className={`w-5 h-5 ${completedCount > 0 ? 'text-coral' : 'text-text-muted'}`} />
+            <span className="text-xl font-display font-bold text-coral">
+              {maxStreak}
             </span>
           </div>
         </div>
 
         {/* Progress Bar */}
-        <div className="bg-border rounded-full h-3 mb-2">
-          <motion.div
-            className="h-full bg-gradient-to-r from-success to-emerald-400 rounded-full"
-            initial={{ width: 0 }}
-            animate={{ width: `${completionRate}%` }}
-            transition={{ duration: 0.5 }}
-          />
-        </div>
-        <p className="text-xs text-muted text-right">{Math.round(completionRate)}%</p>
-      </Card>
+        <ProgressBar
+          value={completionRate}
+          variant="success"
+          size="md"
+          animated
+          glow={completionRate >= 50}
+        />
+        <p className="text-xs text-text-muted text-right mt-2">{Math.round(completionRate)}% complete</p>
+      </GlassCard>
 
       {/* Empty State */}
       {habits.length === 0 && (
@@ -113,17 +131,20 @@ export function HabitCalendar() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center py-12"
         >
-          <div className="w-16 h-16 mx-auto mb-4 bg-accent/10 rounded-2xl flex items-center justify-center">
-            <Plus className="w-8 h-8 text-accent" />
+          <div className="w-20 h-20 mx-auto mb-4 bg-sunrise/10 border border-sunrise/20 rounded-2xl flex items-center justify-center">
+            <Sparkles className="w-10 h-10 text-sunrise" />
           </div>
-          <h3 className="text-lg font-semibold text-primary mb-2">
+          <h3 className="text-xl font-display font-semibold text-text-primary mb-2">
             No habits yet
           </h3>
-          <p className="text-secondary mb-6 max-w-sm mx-auto">
+          <p className="text-text-secondary mb-6 max-w-sm mx-auto">
             Start building your identity by creating your first habit using the
             Atomic Habits framework.
           </p>
-          <Button onClick={() => setShowAddModal(true)}>Create First Habit</Button>
+          <Button variant="primary" onClick={() => setShowAddModal(true)} glow>
+            <Plus className="w-4 h-4 mr-2" />
+            Create First Habit
+          </Button>
         </motion.div>
       )}
 
@@ -169,22 +190,31 @@ export function HabitCalendar() {
             placeholder="e.g., Morning journaling"
             value={newHabit.name}
             onChange={(e) => setNewHabit({ ...newHabit, name: e.target.value })}
+            variant="glass"
           />
 
-          <div className="bg-accent/5 border border-accent/20 rounded-xl p-4 mb-4">
-            <p className="text-sm text-accent font-medium mb-2">
-              Atomic Habits Framework
-            </p>
-            <p className="text-xs text-secondary">
-              Design your habit using the 4 Laws: Cue, Craving, Response, Reward
-            </p>
-          </div>
+          <GlassCard className="border-sunrise/20">
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-xl bg-sunrise/10 border border-sunrise/20 flex items-center justify-center shrink-0">
+                <Sparkles className="w-5 h-5 text-sunrise" />
+              </div>
+              <div>
+                <p className="text-sm text-sunrise font-medium mb-1">
+                  Atomic Habits Framework
+                </p>
+                <p className="text-xs text-text-secondary">
+                  Design your habit using the 4 Laws: Cue, Craving, Response, Reward
+                </p>
+              </div>
+            </div>
+          </GlassCard>
 
           <Input
             label="Cue (What triggers this habit?)"
             placeholder="e.g., After I pour my morning coffee"
             value={newHabit.cue}
             onChange={(e) => setNewHabit({ ...newHabit, cue: e.target.value })}
+            variant="glass"
           />
 
           <Input
@@ -192,6 +222,7 @@ export function HabitCalendar() {
             placeholder="e.g., Clarity and calm start to my day"
             value={newHabit.craving}
             onChange={(e) => setNewHabit({ ...newHabit, craving: e.target.value })}
+            variant="glass"
           />
 
           <Input
@@ -199,6 +230,7 @@ export function HabitCalendar() {
             placeholder="e.g., Write one sentence about how I feel"
             value={newHabit.response}
             onChange={(e) => setNewHabit({ ...newHabit, response: e.target.value })}
+            variant="glass"
           />
 
           <Input
@@ -206,41 +238,51 @@ export function HabitCalendar() {
             placeholder="e.g., Enjoy my coffee while reading"
             value={newHabit.reward}
             onChange={(e) => setNewHabit({ ...newHabit, reward: e.target.value })}
+            variant="glass"
           />
 
           <div>
-            <label className="block text-sm font-medium text-secondary mb-2">
+            <label className="block text-sm font-medium text-text-secondary mb-3">
               Category
             </label>
             <div className="flex flex-wrap gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setNewHabit({ ...newHabit, category: cat.id })}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    newHabit.category === cat.id
-                      ? 'bg-accent text-white'
-                      : 'bg-secondary text-secondary hover:bg-elevated'
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              ))}
+              {categories.map((cat) => {
+                const colors = colorStyles[cat.color];
+                const isSelected = newHabit.category === cat.id;
+
+                return (
+                  <motion.button
+                    key={cat.id}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setNewHabit({ ...newHabit, category: cat.id })}
+                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-all border ${
+                      isSelected
+                        ? `${colors.bg} ${colors.border} ${colors.text}`
+                        : 'glass-light border-white/10 text-text-secondary hover:border-white/20'
+                    }`}
+                  >
+                    {cat.label}
+                  </motion.button>
+                );
+              })}
             </div>
           </div>
 
           <div className="flex gap-3 pt-4">
             <Button
-              variant="secondary"
+              variant="glass"
               fullWidth
               onClick={() => setShowAddModal(false)}
             >
               Cancel
             </Button>
             <Button
+              variant="primary"
               fullWidth
               onClick={handleAddHabit}
               disabled={!newHabit.name.trim()}
+              glow={!!newHabit.name.trim()}
             >
               Create Habit
             </Button>

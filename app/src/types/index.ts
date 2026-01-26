@@ -51,17 +51,15 @@ export interface HabitCompletion {
   completed: boolean;
 }
 
-// Lesson & Pathway Types
-export interface PathwayLesson {
-  id: string;
-  title: string;
-  type: LessonType;
-  duration: number;
-  xpReward: number;
-  content: LessonContent;
-}
-
+// Lesson & Pathway Types - Define base types first
 export type LessonType = 'intro' | 'concept' | 'exercise' | 'quiz' | 'reflection' | 'challenge';
+
+export interface QuizQuestion {
+  question: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+}
 
 export interface LessonContent {
   overview: string;
@@ -71,11 +69,14 @@ export interface LessonContent {
   quiz?: QuizQuestion;
 }
 
-export interface QuizQuestion {
-  question: string;
-  options: string[];
-  correct: number;
-  explanation: string;
+// Now define PathwayLesson after its dependencies
+export interface PathwayLesson {
+  id: string;
+  title: string;
+  type: LessonType;
+  duration: number;
+  xpReward: number;
+  content: LessonContent;
 }
 
 // Extended Lesson type for module-specific lessons

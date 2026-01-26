@@ -61,7 +61,7 @@ export function StatCard({
     >
       <div className={`${colors.text} mb-3`}>{icon}</div>
       <motion.p
-        className="text-2xl font-semibold text-primary"
+        className="text-2xl font-semibold text-text-primary"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}

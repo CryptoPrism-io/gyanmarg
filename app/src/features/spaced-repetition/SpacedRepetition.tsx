@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, RotateCcw, Check, Star, Calendar, TrendingUp } from 'lucide-react';
+import { Brain, RotateCcw, Check, Star, Calendar, TrendingUp, Sparkles } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 import { useSoundEffects } from '@/hooks';
 import { ModuleLayout } from '@/components/templates';
-import { Card } from '@/components/molecules';
+import { GlassCard } from '@/components/molecules';
 import { FlashCard, RatingButtons } from '@/components/molecules/FlashCard';
 import { Button, Badge, ProgressBar } from '@/components/atoms';
 import type { ReviewRating } from '@/types';
@@ -106,41 +106,42 @@ export function SpacedRepetition() {
         title="Spaced Repetition"
         subtitle="Strengthen your memory"
         icon={<Brain className="w-5 h-5" />}
+        headerGradient="aurora"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center py-12"
         >
-          <div className="w-20 h-20 mx-auto mb-6 bg-success/10 rounded-full flex items-center justify-center">
-            <Check className="w-10 h-10 text-success" />
+          <div className="w-20 h-20 mx-auto mb-6 bg-sage/10 border border-sage/20 rounded-2xl flex items-center justify-center">
+            <Check className="w-10 h-10 text-sage" />
           </div>
-          <h2 className="text-2xl font-semibold text-primary mb-2">
+          <h2 className="text-2xl font-display font-bold text-text-primary mb-2">
             All caught up!
           </h2>
-          <p className="text-secondary mb-6">
+          <p className="text-text-secondary mb-6">
             No cards are due for review right now. Great job staying on top of your learning!
           </p>
 
           {/* Stats Card */}
-          <Card className="max-w-sm mx-auto mb-6">
+          <GlassCard className="max-w-sm mx-auto mb-6">
             <div className="grid grid-cols-3 gap-4 text-center">
               <div>
-                <p className="text-2xl font-semibold text-primary">{cardStats.total}</p>
-                <p className="text-xs text-muted">Total Cards</p>
+                <p className="text-2xl font-display font-bold text-text-primary">{cardStats.total}</p>
+                <p className="text-xs text-text-muted">Total Cards</p>
               </div>
               <div>
-                <p className="text-2xl font-semibold text-success">{cardStats.mastered}</p>
-                <p className="text-xs text-muted">Mastered</p>
+                <p className="text-2xl font-display font-bold text-sage">{cardStats.mastered}</p>
+                <p className="text-xs text-text-muted">Mastered</p>
               </div>
               <div>
-                <p className="text-2xl font-semibold text-purple-400">{cardStats.learning}</p>
-                <p className="text-xs text-muted">Learning</p>
+                <p className="text-2xl font-display font-bold text-lavender">{cardStats.learning}</p>
+                <p className="text-xs text-text-muted">Learning</p>
               </div>
             </div>
-          </Card>
+          </GlassCard>
 
-          <p className="text-sm text-muted flex items-center justify-center gap-2">
+          <p className="text-sm text-text-muted flex items-center justify-center gap-2">
             <Calendar className="w-4 h-4" />
             Come back tomorrow for more reviews
           </p>
@@ -156,49 +157,53 @@ export function SpacedRepetition() {
       <ModuleLayout
         title="Review Complete!"
         icon={<Brain className="w-5 h-5" />}
+        headerGradient="aurora"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center py-12"
         >
-          <div className="w-20 h-20 mx-auto mb-6 bg-success/10 rounded-full flex items-center justify-center">
-            <Check className="w-10 h-10 text-success" />
+          <div className="w-20 h-20 mx-auto mb-6 bg-sage/10 border border-sage/20 rounded-2xl flex items-center justify-center">
+            <Sparkles className="w-10 h-10 text-sage" />
           </div>
-          <h2 className="text-2xl font-semibold text-primary mb-2">
+          <h2 className="text-2xl font-display font-bold text-text-primary mb-2">
             Session Complete!
           </h2>
-          <p className="text-secondary mb-6">
+          <p className="text-text-secondary mb-6">
             You reviewed {reviewed.length} cards and strengthened your memory.
           </p>
 
-          <div className="bg-secondary rounded-xl p-6 max-w-sm mx-auto mb-6">
+          <GlassCard className="max-w-sm mx-auto mb-6">
             <div className="flex items-center justify-center gap-3 mb-2">
-              <Star className="w-6 h-6 text-amber-500" />
-              <span className="text-3xl font-semibold text-amber-500">
+              <div className="w-12 h-12 rounded-xl bg-golden/10 border border-golden/20 flex items-center justify-center">
+                <Star className="w-6 h-6 text-golden" />
+              </div>
+              <span className="text-3xl font-display font-bold text-golden">
                 +{sessionXP}
               </span>
             </div>
-            <p className="text-sm text-muted">XP Earned</p>
-          </div>
+            <p className="text-sm text-text-muted">XP Earned</p>
+          </GlassCard>
 
           {/* Progress Stats */}
-          <Card className="max-w-sm mx-auto mb-6">
+          <GlassCard className="max-w-sm mx-auto mb-6">
             <div className="flex items-center justify-between text-sm">
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-success" />
-                <span className="text-secondary">Cards Mastered</span>
+                <TrendingUp className="w-4 h-4 text-sage" />
+                <span className="text-text-secondary">Cards Mastered</span>
               </div>
-              <span className="text-primary font-medium">{cardStats.mastered} / {cardStats.total}</span>
+              <span className="text-text-primary font-medium">{cardStats.mastered} / {cardStats.total}</span>
             </div>
-          </Card>
+          </GlassCard>
 
           {remainingDue > 0 ? (
-            <Button icon={<RotateCcw className="w-4 h-4" />} onClick={resetSession}>
+            <Button variant="primary" onClick={resetSession} glow>
+              <RotateCcw className="w-4 h-4 mr-2" />
               Review {remainingDue} More Cards
             </Button>
           ) : (
-            <p className="text-sm text-muted flex items-center justify-center gap-2">
+            <p className="text-sm text-text-muted flex items-center justify-center gap-2">
               <Calendar className="w-4 h-4" />
               All caught up! Come back tomorrow.
             </p>
@@ -213,34 +218,35 @@ export function SpacedRepetition() {
       title="Spaced Repetition"
       subtitle="Strengthen your memory"
       icon={<Brain className="w-5 h-5" />}
+      headerGradient="aurora"
       rightContent={
-        <Badge variant="primary">
+        <Badge variant="primary" size="md">
           {reviewed.length + 1} / {sessionCards.length}
         </Badge>
       }
     >
       {/* Progress */}
-      <Card className="mb-6" padding="sm">
-        <div className="flex items-center justify-between text-sm mb-2">
-          <span className="text-secondary">Session Progress</span>
-          <span className="text-muted">{Math.round(progress)}%</span>
+      <GlassCard className="mb-6">
+        <div className="flex items-center justify-between text-sm mb-3">
+          <span className="text-text-secondary font-medium">Session Progress</span>
+          <span className="text-lavender font-semibold">{Math.round(progress)}%</span>
         </div>
-        <ProgressBar value={progress} variant="gradient" size="sm" />
-      </Card>
+        <ProgressBar value={progress} variant="gradient" size="md" animated />
+      </GlassCard>
 
       {/* Stats Row */}
       <div className="grid grid-cols-3 gap-3 mb-6">
-        <div className="bg-secondary rounded-xl p-3 text-center">
-          <p className="text-lg font-semibold text-warning">{dueCards.length}</p>
-          <p className="text-xs text-muted">Due Today</p>
+        <div className="glass rounded-xl p-3 text-center border border-white/10">
+          <p className="text-lg font-display font-bold text-coral">{dueCards.length}</p>
+          <p className="text-xs text-text-muted">Due Today</p>
         </div>
-        <div className="bg-secondary rounded-xl p-3 text-center">
-          <p className="text-lg font-semibold text-success">{cardStats.mastered}</p>
-          <p className="text-xs text-muted">Mastered</p>
+        <div className="glass rounded-xl p-3 text-center border border-white/10">
+          <p className="text-lg font-display font-bold text-sage">{cardStats.mastered}</p>
+          <p className="text-xs text-text-muted">Mastered</p>
         </div>
-        <div className="bg-secondary rounded-xl p-3 text-center">
-          <p className="text-lg font-semibold text-purple-400">{cardStats.learning}</p>
-          <p className="text-xs text-muted">Learning</p>
+        <div className="glass rounded-xl p-3 text-center border border-white/10">
+          <p className="text-lg font-display font-bold text-lavender">{cardStats.learning}</p>
+          <p className="text-xs text-text-muted">Learning</p>
         </div>
       </div>
 
@@ -267,14 +273,14 @@ export function SpacedRepetition() {
             )}
 
             {!isFlipped && (
-              <p className="text-center text-sm text-muted mt-4">
+              <p className="text-center text-sm text-text-muted mt-4">
                 Tap the card to reveal the answer
               </p>
             )}
 
             {/* Next Review Info */}
             {currentCard.interval > 0 && (
-              <p className="text-center text-xs text-muted mt-2">
+              <p className="text-center text-xs text-text-muted mt-2">
                 Last interval: {currentCard.interval} day{currentCard.interval > 1 ? 's' : ''}
               </p>
             )}
@@ -287,13 +293,25 @@ export function SpacedRepetition() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="mt-8 bg-purple-500/10 border border-purple-500/20 rounded-xl p-4"
+        className="mt-8 relative overflow-hidden rounded-2xl"
       >
-        <h4 className="font-medium text-purple-400 mb-2">About Spaced Repetition</h4>
-        <p className="text-sm text-secondary">
-          Using the SM-2 algorithm, cards you find difficult will appear more frequently.
-          As you master cards, review intervals will increase from days to weeks.
-        </p>
+        <div className="absolute inset-0 bg-gradient-to-br from-lavender/10 to-lavender/5" />
+        <div className="absolute inset-0 border border-lavender/20 rounded-2xl" />
+
+        <div className="relative p-5">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-lavender/10 border border-lavender/20 flex items-center justify-center shrink-0">
+              <Brain className="w-5 h-5 text-lavender" />
+            </div>
+            <div>
+              <h4 className="font-medium text-lavender mb-1">About Spaced Repetition</h4>
+              <p className="text-sm text-text-secondary">
+                Using the SM-2 algorithm, cards you find difficult will appear more frequently.
+                As you master cards, review intervals will increase from days to weeks.
+              </p>
+            </div>
+          </div>
+        </div>
       </motion.div>
     </ModuleLayout>
   );

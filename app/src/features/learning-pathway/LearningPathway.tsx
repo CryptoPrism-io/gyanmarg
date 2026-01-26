@@ -8,16 +8,36 @@ import {
   Trophy,
   ArrowLeft,
   BookOpen,
+  Sparkles,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
-import { ModuleLayout } from '@/components/templates';
-import { Card, SwipeableLesson } from '@/components/molecules';
+import { ModuleLayout, AnimatedBackground } from '@/components/templates';
+import { GlassCard, SwipeableLesson } from '@/components/molecules';
 import { LessonCard } from '@/components/molecules/LessonCard';
-import { ProgressBar, Badge } from '@/components/atoms';
+import { ProgressBar, Badge, XPBadge } from '@/components/atoms';
 import type { PathwayLevel, PathwayLesson } from '@/types';
 
 // Import all modules with their pathways
 import { modules } from '@/data/modules';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 300, damping: 24 },
+  },
+};
 
 export function LearningPathway() {
   const { completeLesson, isLessonCompleted, pathwayProgress } = useProgressStore();
@@ -34,9 +54,6 @@ export function LearningPathway() {
     [selectedModuleId]
   );
   const pathwayLevels: PathwayLevel[] = selectedModule?.pathway || [];
-
-  // Auto-expand first level when module changes
-  const firstLevelId = pathwayLevels[0]?.id || null;
 
   const isLevelUnlocked = (level: PathwayLevel, levelIndex: number): boolean => {
     if (levelIndex === 0) return true;
@@ -83,40 +100,37 @@ export function LearningPathway() {
     const isComplete = isLessonCompleted(activeLesson.id);
 
     return (
-      <div className="min-h-screen bg-primary">
-        {/* Header */}
-        <div className="glass border-b border-border px-4 py-4">
-          <div className="max-w-2xl mx-auto flex items-center justify-between">
+      <div className="h-screen bg-base flex flex-col overflow-hidden">
+        {/* Animated gradient background */}
+        <AnimatedBackground />
+
+        {/* Header - Compact on mobile */}
+        <div className="relative z-10 glass-nav border-b border-white/[0.06] px-2 py-1.5 md:px-4 md:py-2 flex-shrink-0">
+          <div className="max-w-5xl mx-auto flex items-center justify-between gap-2">
             <button
               onClick={() => {
                 setActiveLesson(null);
                 setQuizAnswer(null);
                 setShowQuizResult(false);
               }}
-              className="flex items-center gap-2 text-secondary hover:text-primary transition-colors"
+              className="flex items-center gap-1 text-text-secondary hover:text-text-primary transition-colors text-sm flex-shrink-0"
             >
-              <ArrowLeft className="w-5 h-5" />
-              Back
+              <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
+              <span className="hidden sm:inline">Back</span>
             </button>
-            <div className="text-center flex-1">
-              <Badge variant="primary" className="mb-1">
-                {activeLesson.type}
-              </Badge>
-              <h1 className="text-lg font-semibold text-primary truncate px-4">
+            <div className="text-center flex-1 min-w-0">
+              <h1 className="text-xs md:text-base font-display font-semibold text-text-primary truncate px-1 md:px-4">
                 {activeLesson.title}
               </h1>
             </div>
-            <div className="flex items-center gap-2 text-sm">
-              <span className="flex items-center gap-1 text-amber-500">
-                <Star className="w-4 h-4" />
-                +{activeLesson.xpReward}
-              </span>
+            <div className="flex items-center gap-1 flex-shrink-0">
+              <XPBadge xp={activeLesson.xpReward} size="sm" />
             </div>
           </div>
         </div>
 
-        {/* Swipeable Content */}
-        <div className="max-w-2xl mx-auto px-4 py-6 h-[calc(100vh-120px)]">
+        {/* Swipeable Content - Fill remaining height */}
+        <div className="relative z-10 flex-1 max-w-5xl mx-auto w-full px-2 py-2 md:px-4 md:py-3 overflow-hidden">
           <SwipeableLesson
             lesson={activeLesson}
             onComplete={handleCompleteLesson}
@@ -137,47 +151,57 @@ export function LearningPathway() {
       title="Learning Pathway"
       subtitle={`Module ${selectedModule.number}: ${selectedModule.title}`}
       icon={<BookOpen className="w-5 h-5" />}
+      headerGradient="aurora"
       rightContent={
-        <div className="text-right">
-          <div className="flex items-center gap-2">
-            <Trophy className="w-5 h-5 text-amber-500" />
-            <span className="text-amber-500 font-semibold">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-golden/10 border border-golden/20">
+            <Trophy className="w-4 h-4 text-golden" />
+            <span className="text-golden font-semibold text-sm">
               {pathwayProgress.totalXP} XP
             </span>
           </div>
-          <p className="text-xs text-muted">{completedLessons} lessons done</p>
         </div>
       }
     >
       {/* Module Selector */}
       <div className="mb-6">
-        <p className="text-xs text-muted mb-2">Select Module</p>
+        <p className="text-xs text-text-muted mb-3 font-medium">Select Module</p>
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
           {modules.map((mod) => (
-            <button
+            <motion.button
               key={mod.id}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => {
                 setSelectedModuleId(mod.id);
                 setExpandedLevel(null);
                 setActiveLesson(null);
               }}
-              className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              className={`flex-shrink-0 px-4 py-2.5 rounded-xl text-sm font-medium transition-all border ${
                 selectedModuleId === mod.id
-                  ? 'bg-accent text-white'
-                  : 'bg-secondary text-secondary hover:bg-elevated'
+                  ? 'bg-gradient-to-r from-sunrise to-golden text-base border-transparent shadow-sunrise'
+                  : 'glass-light border-white/10 text-text-secondary hover:text-text-primary hover:border-white/20'
               }`}
             >
               {mod.number}. {mod.title.split(' ')[0]}
-            </button>
+            </motion.button>
           ))}
         </div>
       </div>
 
       {/* Overall Progress */}
-      <Card className="mb-6" padding="sm">
-        <div className="flex justify-between text-sm mb-2">
-          <span className="text-secondary">Overall Progress</span>
-          <span className="text-muted">
+      <GlassCard className="mb-6">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-lavender/10 border border-lavender/20 flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-lavender" />
+            </div>
+            <div>
+              <p className="font-medium text-text-primary">Overall Progress</p>
+              <p className="text-sm text-text-muted">{completedLessons} of {totalLessons} lessons</p>
+            </div>
+          </div>
+          <span className="text-2xl font-display font-bold text-lavender">
             {totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0}%
           </span>
         </div>
@@ -185,11 +209,18 @@ export function LearningPathway() {
           value={totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0}
           variant="gradient"
           size="md"
+          animated
         />
-      </Card>
+      </GlassCard>
 
       {/* Levels */}
-      <div className="space-y-4" key={selectedModuleId}>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="space-y-4"
+        key={selectedModuleId}
+      >
         {pathwayLevels.map((level, levelIndex) => {
           const unlocked = isLevelUnlocked(level, levelIndex);
           const levelProgress = getLevelProgress(level);
@@ -198,35 +229,39 @@ export function LearningPathway() {
           return (
             <motion.div
               key={`${selectedModuleId}-${level.id}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: levelIndex * 0.1 }}
-              className={`rounded-xl overflow-hidden border ${
-                unlocked ? 'bg-secondary border-border' : 'bg-secondary/50 border-border/50'
+              variants={itemVariants}
+              className={`rounded-2xl overflow-hidden border transition-all ${
+                unlocked
+                  ? 'glass border-white/10'
+                  : 'bg-surface/30 border-white/5 opacity-60'
               }`}
             >
               {/* Level Header */}
               <button
                 onClick={() => unlocked && setExpandedLevel(isExpanded ? null : level.id)}
                 disabled={!unlocked}
-                className={`w-full p-4 flex items-center justify-between ${
-                  unlocked ? 'hover:bg-elevated' : 'cursor-not-allowed'
+                className={`w-full p-4 flex items-center justify-between transition-colors ${
+                  unlocked ? 'hover:bg-white/[0.02]' : 'cursor-not-allowed'
                 }`}
               >
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{level.icon}</span>
+                <div className="flex items-center gap-4">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl ${
+                    unlocked ? 'bg-surface/50' : 'bg-surface/30'
+                  }`}>
+                    {level.icon}
+                  </div>
                   <div className="text-left">
-                    <h2 className={`font-semibold ${unlocked ? 'text-primary' : 'text-muted'}`}>
+                    <h2 className={`font-display font-semibold ${unlocked ? 'text-text-primary' : 'text-text-muted'}`}>
                       {level.title}
                     </h2>
-                    <p className={`text-sm ${unlocked ? 'text-secondary' : 'text-muted'}`}>
+                    <p className={`text-sm ${unlocked ? 'text-text-secondary' : 'text-text-muted'}`}>
                       {level.description}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   {!unlocked && (
-                    <div className="flex items-center gap-1 text-muted">
+                    <div className="flex items-center gap-2 text-text-muted">
                       <Lock className="w-4 h-4" />
                       <span className="text-xs">
                         Complete {level.unlockRequirement} lessons
@@ -236,21 +271,27 @@ export function LearningPathway() {
                   {unlocked && (
                     <>
                       <div className="text-right">
-                        <div className="w-16 bg-border rounded-full h-1.5">
-                          <div
-                            className="h-full rounded-full bg-success"
-                            style={{ width: `${levelProgress}%` }}
+                        <div className="w-20 h-2 bg-surface rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${levelProgress}%` }}
+                            className="h-full rounded-full bg-gradient-to-r from-sage to-sage-light"
                           />
                         </div>
-                        <span className="text-xs text-muted">
+                        <span className="text-xs text-text-muted mt-1">
                           {Math.round(levelProgress)}%
                         </span>
                       </div>
-                      {isExpanded ? (
-                        <ChevronDown className="w-5 h-5 text-muted" />
-                      ) : (
-                        <ChevronRight className="w-5 h-5 text-muted" />
-                      )}
+                      <motion.div
+                        animate={{ rotate: isExpanded ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {isExpanded ? (
+                          <ChevronDown className="w-5 h-5 text-text-muted" />
+                        ) : (
+                          <ChevronRight className="w-5 h-5 text-text-muted" />
+                        )}
+                      </motion.div>
                     </>
                   )}
                 </div>
@@ -263,7 +304,8 @@ export function LearningPathway() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="border-t border-border"
+                    transition={{ duration: 0.3 }}
+                    className="border-t border-white/[0.06]"
                   >
                     <div className="p-4 space-y-2">
                       {level.lessons.map((lesson, lessonIndex) => {
@@ -296,7 +338,7 @@ export function LearningPathway() {
             </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </ModuleLayout>
   );
 }

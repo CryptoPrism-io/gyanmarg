@@ -1,9 +1,21 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Network, ChevronRight, Lightbulb } from 'lucide-react';
+import { Network, ChevronRight, Lightbulb, Sparkles, Link2 } from 'lucide-react';
 import { ModuleLayout } from '@/components/templates';
-import { Card } from '@/components/molecules';
+import { GlassCard } from '@/components/molecules';
 import { Modal } from '@/components/organisms';
+import { Button } from '@/components/atoms';
+
+const colorMap: Record<string, { bg: string; border: string; text: string; bar: string }> = {
+  orange: { bg: 'bg-sunrise/10', border: 'border-sunrise/30', text: 'text-sunrise', bar: 'bg-sunrise' },
+  blue: { bg: 'bg-sky/10', border: 'border-sky/30', text: 'text-sky', bar: 'bg-sky' },
+  emerald: { bg: 'bg-sage/10', border: 'border-sage/30', text: 'text-sage', bar: 'bg-sage' },
+  purple: { bg: 'bg-lavender/10', border: 'border-lavender/30', text: 'text-lavender', bar: 'bg-lavender' },
+  amber: { bg: 'bg-golden/10', border: 'border-golden/30', text: 'text-golden', bar: 'bg-golden' },
+  cyan: { bg: 'bg-sky/10', border: 'border-sky/30', text: 'text-sky', bar: 'bg-sky' },
+  rose: { bg: 'bg-coral/10', border: 'border-coral/30', text: 'text-coral', bar: 'bg-coral' },
+  fuchsia: { bg: 'bg-blush/10', border: 'border-blush/30', text: 'text-blush', bar: 'bg-blush' },
+};
 
 const connections = [
   {
@@ -72,6 +84,25 @@ const connections = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: 'spring', stiffness: 300, damping: 24 },
+  },
+};
+
 export function KnowledgeMap() {
   const [selectedConnection, setSelectedConnection] = useState<typeof connections[0] | null>(null);
 
@@ -80,76 +111,82 @@ export function KnowledgeMap() {
       title="Knowledge Connections"
       subtitle="See how ideas link across books"
       icon={<Network className="w-5 h-5" />}
+      headerGradient="aurora"
     >
       {/* Intro Card */}
-      <Card className="mb-6">
+      <GlassCard className="mb-6">
         <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-            <Lightbulb className="w-5 h-5 text-accent" />
+          <div className="w-12 h-12 rounded-xl bg-lavender/10 border border-lavender/20 flex items-center justify-center shrink-0">
+            <Lightbulb className="w-6 h-6 text-lavender" />
           </div>
           <div>
-            <h3 className="font-semibold text-primary mb-1">Why Connections Matter</h3>
-            <p className="text-sm text-secondary">
+            <h3 className="font-display font-semibold text-text-primary mb-1">Why Connections Matter</h3>
+            <p className="text-sm text-text-secondary">
               The 5 books in this module aren't separate ideas—they reinforce each other.
               Understanding these connections creates deeper insight and retention.
             </p>
           </div>
         </div>
-      </Card>
+      </GlassCard>
 
       {/* Connections Grid */}
-      <div className="space-y-3">
-        {connections.map((connection, i) => (
-          <motion.div
-            key={connection.id}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.05 }}
-          >
-            <button
-              onClick={() => setSelectedConnection(connection)}
-              className="w-full bg-secondary rounded-xl p-4 border border-border hover:border-muted hover:bg-elevated transition-all text-left group"
-            >
-              <div className="flex items-center justify-between">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="space-y-3"
+      >
+        {connections.map((connection) => {
+          const colors = colorMap[connection.color] || colorMap.orange;
+
+          return (
+            <motion.div key={connection.id} variants={itemVariants}>
+              <button
+                onClick={() => setSelectedConnection(connection)}
+                className="w-full glass rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all text-left group"
+              >
                 <div className="flex items-center gap-4">
-                  <div
-                    className={`w-3 h-12 rounded-full bg-${connection.color}-500`}
-                  />
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-medium text-primary">
+                  <div className={`w-1.5 h-14 rounded-full ${colors.bar}`} />
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`font-medium ${colors.text}`}>
                         {connection.concept1}
                       </span>
-                      <span className="text-muted">↔</span>
-                      <span className="font-medium text-primary">
+                      <Link2 className={`w-4 h-4 ${colors.text} opacity-50`} />
+                      <span className={`font-medium ${colors.text}`}>
                         {connection.concept2}
                       </span>
                     </div>
-                    <p className="text-sm text-secondary line-clamp-2">
+                    <p className="text-sm text-text-secondary line-clamp-2">
                       {connection.relationship}
                     </p>
                   </div>
+                  <ChevronRight className="w-5 h-5 text-text-muted group-hover:text-text-secondary group-hover:translate-x-1 transition-all shrink-0" />
                 </div>
-                <ChevronRight className="w-5 h-5 text-muted group-hover:text-secondary transition-colors shrink-0" />
-              </div>
-            </button>
-          </motion.div>
-        ))}
-      </div>
+              </button>
+            </motion.div>
+          );
+        })}
+      </motion.div>
 
       {/* Visual Map Placeholder */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="mt-8 bg-gradient-to-br from-accent/5 to-purple-500/5 rounded-2xl p-8 border border-accent/20"
+        className="mt-8 relative overflow-hidden rounded-2xl"
       >
-        <div className="text-center">
-          <Network className="w-12 h-12 text-accent mx-auto mb-4 opacity-50" />
-          <h3 className="text-lg font-semibold text-primary mb-2">
+        <div className="absolute inset-0 bg-gradient-to-br from-sunrise/10 via-lavender/5 to-golden/10" />
+        <div className="absolute inset-0 border border-sunrise/20 rounded-2xl" />
+
+        <div className="relative p-8 text-center">
+          <div className="w-16 h-16 mx-auto mb-4 bg-sunrise/10 border border-sunrise/20 rounded-2xl flex items-center justify-center">
+            <Network className="w-8 h-8 text-sunrise" />
+          </div>
+          <h3 className="text-lg font-display font-semibold text-text-primary mb-2">
             Interactive Knowledge Graph
           </h3>
-          <p className="text-secondary text-sm max-w-md mx-auto">
+          <p className="text-text-secondary text-sm max-w-md mx-auto">
             A visual network diagram showing how all concepts connect will be
             available in a future update.
           </p>
@@ -167,14 +204,16 @@ export function KnowledgeMap() {
           <div className="space-y-6">
             {/* Concepts */}
             <div className="flex items-center justify-center gap-4">
-              <div className="flex-1 p-4 bg-secondary rounded-xl text-center">
-                <p className="font-semibold text-primary">
+              <div className="flex-1 glass p-4 rounded-xl text-center border border-white/10">
+                <p className="font-display font-semibold text-text-primary">
                   {selectedConnection.concept1}
                 </p>
               </div>
-              <div className="text-2xl text-muted">↔</div>
-              <div className="flex-1 p-4 bg-secondary rounded-xl text-center">
-                <p className="font-semibold text-primary">
+              <div className="w-10 h-10 rounded-full bg-lavender/10 border border-lavender/20 flex items-center justify-center">
+                <Link2 className="w-5 h-5 text-lavender" />
+              </div>
+              <div className="flex-1 glass p-4 rounded-xl text-center border border-white/10">
+                <p className="font-display font-semibold text-text-primary">
                   {selectedConnection.concept2}
                 </p>
               </div>
@@ -182,29 +221,39 @@ export function KnowledgeMap() {
 
             {/* Relationship */}
             <div>
-              <h4 className="text-sm font-medium text-muted mb-2">
+              <h4 className="text-sm font-medium text-text-muted mb-2">
                 The Connection
               </h4>
-              <p className="text-secondary">{selectedConnection.relationship}</p>
+              <p className="text-text-secondary">{selectedConnection.relationship}</p>
             </div>
 
             {/* Insight */}
-            <div className="bg-accent/10 border border-accent/20 rounded-xl p-4">
-              <h4 className="text-sm font-medium text-accent mb-2">
-                Key Insight
-              </h4>
-              <p className="text-secondary">{selectedConnection.insight}</p>
-            </div>
+            <GlassCard className="border-sunrise/20">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-xl bg-sunrise/10 border border-sunrise/20 flex items-center justify-center shrink-0">
+                  <Sparkles className="w-5 h-5 text-sunrise" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-medium text-sunrise mb-1">
+                    Key Insight
+                  </h4>
+                  <p className="text-text-secondary">{selectedConnection.insight}</p>
+                </div>
+              </div>
+            </GlassCard>
 
             {/* Application prompt */}
-            <div className="pt-4 border-t border-border">
-              <h4 className="text-sm font-medium text-muted mb-2">
+            <div className="pt-4 border-t border-white/[0.06]">
+              <h4 className="text-sm font-medium text-text-muted mb-2">
                 Apply This Connection
               </h4>
-              <p className="text-sm text-secondary">
+              <p className="text-sm text-text-secondary mb-4">
                 How can you use both of these concepts together in your own life?
                 Consider writing a reflection in your journal.
               </p>
+              <Button variant="glass" onClick={() => setSelectedConnection(null)}>
+                Close
+              </Button>
             </div>
           </div>
         )}

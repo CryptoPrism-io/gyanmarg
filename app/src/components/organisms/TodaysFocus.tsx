@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Brain, BookOpen, Zap, CheckCircle, ChevronRight, Target, Flame } from 'lucide-react';
-import { Card } from '@/components/molecules';
+import { Brain, BookOpen, Zap, CheckCircle, ChevronRight, Target, Flame, Sparkles } from 'lucide-react';
+import { GlassCard } from '@/components/molecules';
+import { ProgressBar } from '@/components/atoms';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 import { useProgressStore } from '@/store/progressStore';
 import { useHabitStore } from '@/store/habitStore';
@@ -13,41 +14,43 @@ interface FocusItemProps {
   title: string;
   subtitle?: string;
   action: () => void;
-  color: 'purple' | 'accent' | 'warning' | 'success' | 'error';
+  color: 'lavender' | 'sunrise' | 'golden' | 'sage' | 'coral';
   badge?: string | number;
 }
 
-const colorClasses = {
-  purple: 'bg-purple-500/10 text-purple-400',
-  accent: 'bg-accent/10 text-accent',
-  warning: 'bg-warning/10 text-warning',
-  success: 'bg-success/10 text-success',
-  error: 'bg-error/10 text-error',
+const colorStyles = {
+  lavender: { bg: 'bg-lavender/10', border: 'border-lavender/20', text: 'text-lavender' },
+  sunrise: { bg: 'bg-sunrise/10', border: 'border-sunrise/20', text: 'text-sunrise' },
+  golden: { bg: 'bg-golden/10', border: 'border-golden/20', text: 'text-golden' },
+  sage: { bg: 'bg-sage/10', border: 'border-sage/20', text: 'text-sage' },
+  coral: { bg: 'bg-coral/10', border: 'border-coral/20', text: 'text-coral' },
 };
 
 function FocusItem({ icon, title, subtitle, action, color, badge }: FocusItemProps) {
+  const colors = colorStyles[color];
+
   return (
     <motion.button
       onClick={action}
       whileHover={{ scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
-      className="w-full flex items-center gap-4 p-4 bg-secondary rounded-xl border border-border hover:border-muted transition-all group"
+      className="w-full flex items-center gap-2 sm:gap-4 p-2 sm:p-4 glass-light rounded-lg sm:rounded-xl border border-white/10 hover:border-white/20 transition-all group"
     >
-      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${colorClasses[color]}`}>
+      <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center ${colors.bg} border ${colors.border}`}>
         {icon}
       </div>
       <div className="flex-1 text-left">
-        <div className="flex items-center gap-2">
-          <span className="font-medium text-primary">{title}</span>
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <span className="font-medium text-text-primary text-xs sm:text-base">{title}</span>
           {badge !== undefined && (
-            <span className={`text-xs px-2 py-0.5 rounded-full ${colorClasses[color]}`}>
+            <span className={`text-[9px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full ${colors.bg} ${colors.text} border ${colors.border}`}>
               {badge}
             </span>
           )}
         </div>
-        {subtitle && <p className="text-sm text-muted">{subtitle}</p>}
+        {subtitle && <p className="text-[10px] sm:text-sm text-text-muted">{subtitle}</p>}
       </div>
-      <ChevronRight className="w-5 h-5 text-muted group-hover:text-secondary transition-colors" />
+      <ChevronRight className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-text-muted group-hover:text-text-secondary group-hover:translate-x-1 transition-all" />
     </motion.button>
   );
 }
@@ -82,36 +85,36 @@ export function TodaysFocus({ className }: TodaysFocusProps) {
     habits.length > 0;
 
   return (
-    <Card className={className}>
+    <GlassCard className={`${className} !p-2.5 sm:!p-4`}>
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
-            <Target className="w-5 h-5 text-accent" />
+      <div className="flex items-center justify-between mb-2 sm:mb-5">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-gradient-to-br from-sunrise to-golden flex items-center justify-center shadow-sunrise">
+            <Target className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-base" />
           </div>
           <div>
-            <h3 className="font-semibold text-primary">Today&apos;s Focus</h3>
-            <p className="text-xs text-muted">Your personalized learning plan</p>
+            <h3 className="font-display font-semibold text-text-primary text-xs sm:text-base">Today&apos;s Focus</h3>
+            <p className="text-[9px] sm:text-xs text-text-muted">Your personalized learning plan</p>
           </div>
         </div>
         {currentStreak > 0 && (
-          <div className="flex items-center gap-1 text-amber-500">
-            <Flame className="w-5 h-5" />
-            <span className="font-semibold">{currentStreak}</span>
+          <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl bg-coral/10 border border-coral/20">
+            <Flame className="w-3 h-3 sm:w-4 sm:h-4 text-coral" />
+            <span className="font-display font-semibold text-coral text-xs sm:text-base">{currentStreak}</span>
           </div>
         )}
       </div>
 
       {/* Focus Items */}
-      <div className="space-y-3">
+      <div className="space-y-1.5 sm:space-y-3">
         {/* Priority 1: Due flashcards */}
         {dueCards.length > 0 && (
           <FocusItem
-            icon={<Brain className="w-5 h-5" />}
+            icon={<Brain className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-lavender" />}
             title="Review flashcards"
             subtitle={`${dueCards.length} cards ready for review`}
             action={() => navigate('/review')}
-            color="purple"
+            color="lavender"
             badge={dueCards.length}
           />
         )}
@@ -119,22 +122,22 @@ export function TodaysFocus({ className }: TodaysFocusProps) {
         {/* Priority 2: Resume lesson */}
         {lastViewedLesson && !lastViewedLesson.completed && (
           <FocusItem
-            icon={<BookOpen className="w-5 h-5" />}
+            icon={<BookOpen className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-sunrise" />}
             title="Continue learning"
             subtitle="Resume where you left off"
             action={() => navigate('/pathway')}
-            color="accent"
+            color="sunrise"
           />
         )}
 
         {/* Priority 3: Daily challenges */}
         {challengeCount > 0 && (
           <FocusItem
-            icon={<Zap className="w-5 h-5" />}
+            icon={<Zap className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-golden" />}
             title="Daily challenges"
             subtitle="Apply what you've learned"
             action={() => navigate('/challenges')}
-            color="warning"
+            color="golden"
             badge={challengeCount}
           />
         )}
@@ -142,23 +145,23 @@ export function TodaysFocus({ className }: TodaysFocusProps) {
         {/* Priority 4: Incomplete habits */}
         {habits.length > 0 && (
           <FocusItem
-            icon={<CheckCircle className="w-5 h-5" />}
+            icon={<CheckCircle className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-sage" />}
             title="Track habits"
             subtitle={`${habits.length} habits remaining today`}
             action={() => navigate('/habits')}
-            color="success"
+            color="sage"
             badge={habits.length}
           />
         )}
 
         {/* If nothing to focus on */}
         {!hasFocusItems && (
-          <div className="text-center py-6">
-            <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-success/10 flex items-center justify-center">
-              <CheckCircle className="w-6 h-6 text-success" />
+          <div className="text-center py-8">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-sage/10 border border-sage/20 flex items-center justify-center">
+              <Sparkles className="w-8 h-8 text-sage" />
             </div>
-            <p className="font-medium text-primary mb-1">All caught up!</p>
-            <p className="text-sm text-muted">
+            <p className="font-display font-semibold text-text-primary mb-1">All caught up!</p>
+            <p className="text-sm text-text-muted">
               You&apos;ve completed today&apos;s tasks. Great work!
             </p>
           </div>
@@ -167,29 +170,25 @@ export function TodaysFocus({ className }: TodaysFocusProps) {
 
       {/* Weekly Challenge Progress (if active) */}
       {weeklyChallenge && !weeklyChallenge.completed && (
-        <div className="mt-4 pt-4 border-t border-border">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-secondary">{weeklyChallenge.title}</span>
-            <span className="text-sm font-medium text-accent">
+        <div className="mt-5 pt-5 border-t border-white/[0.06]">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm text-text-secondary">{weeklyChallenge.title}</span>
+            <span className="text-sm font-semibold text-lavender">
               {weeklyChallenge.current}/{weeklyChallenge.target}
             </span>
           </div>
-          <div className="h-2 bg-elevated rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-accent to-indigo-500 rounded-full"
-              initial={{ width: 0 }}
-              animate={{
-                width: `${Math.min((weeklyChallenge.current / weeklyChallenge.target) * 100, 100)}%`,
-              }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-          <p className="text-xs text-muted mt-1">
+          <ProgressBar
+            value={(weeklyChallenge.current / weeklyChallenge.target) * 100}
+            variant="gradient"
+            size="sm"
+            animated
+          />
+          <p className="text-xs text-text-muted mt-2">
             Complete to earn +{weeklyChallenge.xpReward} XP
           </p>
         </div>
       )}
-    </Card>
+    </GlassCard>
   );
 }
 

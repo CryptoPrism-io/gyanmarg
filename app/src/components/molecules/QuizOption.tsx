@@ -28,7 +28,7 @@ export function QuizOption({
     if (!showResult) {
       return selected
         ? 'bg-accent/10 border-accent/50 text-accent'
-        : 'bg-secondary border-border text-secondary hover:border-muted hover:bg-elevated';
+        : 'bg-elevated border-border text-text-secondary hover:border-muted hover:bg-surface';
     }
 
     if (selected) {
@@ -41,7 +41,7 @@ export function QuizOption({
       return 'bg-success/5 border-success/30 text-success';
     }
 
-    return 'bg-secondary border-border text-muted';
+    return 'bg-elevated border-border text-muted';
   };
 
   return (
@@ -106,7 +106,7 @@ export function QuizFeedback({ correct, explanation }: QuizFeedbackProps) {
       <p className={`font-medium mb-2 ${correct ? 'text-success' : 'text-warning'}`}>
         {correct ? 'Correct!' : 'Not quite!'}
       </p>
-      <p className="text-sm text-secondary">{explanation}</p>
+      <p className="text-sm text-text-secondary">{explanation}</p>
     </motion.div>
   );
 }

@@ -1,5 +1,6 @@
 import type { PathwayLevel } from '@/types';
 import { aiMlExpandedLessons } from './ai-ml-expanded';
+import { aiAdvanced2026Lessons } from './ai-advanced-2026';
 
 /**
  * AI & Machine Learning Pathway
@@ -260,6 +261,15 @@ For each task, assess:
     color: 'purple',
     unlockRequirement: 500,
     lessons: aiMlExpandedLessons,
+  },
+  {
+    id: 'ai-level4',
+    title: 'Level 4: Cutting Edge AI 2025-2026',
+    description: 'Agentic AI, multi-modal models, reasoning breakthroughs, and AI strategy',
+    icon: '⚡',
+    color: 'orange',
+    unlockRequirement: 2000,
+    lessons: aiAdvanced2026Lessons,
   },
 ];
 

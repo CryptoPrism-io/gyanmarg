@@ -13,7 +13,14 @@ export function Skeleton({
   height,
   lines = 1,
 }: SkeletonProps) {
-  const baseClasses = 'animate-pulse bg-border/50 rounded';
+  const baseClasses = 'relative overflow-hidden bg-white/[0.03] rounded';
+
+  // Shimmer animation overlay
+  const shimmerClasses = `
+    after:absolute after:inset-0
+    after:bg-gradient-to-r after:from-transparent after:via-white/[0.05] after:to-transparent
+    after:animate-shimmer
+  `;
 
   const variantClasses = {
     text: 'h-4 rounded',
@@ -32,7 +39,7 @@ export function Skeleton({
         {Array.from({ length: lines }).map((_, i) => (
           <div
             key={i}
-            className={`${baseClasses} ${variantClasses[variant]}`}
+            className={`${baseClasses} ${shimmerClasses} ${variantClasses[variant]}`}
             style={{
               ...style,
               width: i === lines - 1 ? '75%' : style.width || '100%',
@@ -45,7 +52,7 @@ export function Skeleton({
 
   return (
     <div
-      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      className={`${baseClasses} ${shimmerClasses} ${variantClasses[variant]} ${className}`}
       style={style}
     />
   );
@@ -54,7 +61,7 @@ export function Skeleton({
 // Preset skeleton components
 export function SkeletonCard({ className = '' }: { className?: string }) {
   return (
-    <div className={`bg-card rounded-2xl p-6 border border-border ${className}`}>
+    <div className={`glass rounded-2xl p-6 border border-white/10 ${className}`}>
       <div className="flex items-center gap-4 mb-4">
         <Skeleton variant="circular" width={48} height={48} />
         <div className="flex-1">
@@ -77,12 +84,27 @@ export function SkeletonList({
   return (
     <div className={`space-y-3 ${className}`}>
       {Array.from({ length: count }).map((_, i) => (
-        <div key={i} className="flex items-center gap-4">
+        <div key={i} className="flex items-center gap-4 glass-light p-3 rounded-xl border border-white/10">
           <Skeleton variant="circular" width={40} height={40} />
           <div className="flex-1">
             <Skeleton className="mb-1" width="70%" />
             <Skeleton width="50%" />
           </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Stats skeleton for dashboard-like layouts
+export function SkeletonStats({ className = '' }: { className?: string }) {
+  return (
+    <div className={`grid grid-cols-2 gap-4 ${className}`}>
+      {Array.from({ length: 4 }).map((_, i) => (
+        <div key={i} className="glass-light rounded-xl p-4 border border-white/10">
+          <Skeleton width={40} height={40} variant="rectangular" className="mb-3" />
+          <Skeleton width="60%" height={24} className="mb-2" />
+          <Skeleton width="40%" height={14} />
         </div>
       ))}
     </div>

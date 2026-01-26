@@ -67,7 +67,7 @@ export function AchievementUnlock({ achievement, isOpen, onClose }: AchievementU
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-0 right-0 p-2 text-muted hover:text-secondary transition-colors"
+              className="absolute top-0 right-0 p-2 text-muted hover:text-text-secondary transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -87,7 +87,7 @@ export function AchievementUnlock({ achievement, isOpen, onClose }: AchievementU
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-2xl font-bold text-primary mb-2"
+              className="text-2xl font-bold text-text-primary mb-2"
             >
               Achievement Unlocked!
             </motion.h2>
@@ -108,7 +108,7 @@ export function AchievementUnlock({ achievement, isOpen, onClose }: AchievementU
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="text-secondary mb-6 px-4"
+                className="text-text-secondary mb-6 px-4"
               >
                 {achievement.description}
               </motion.p>

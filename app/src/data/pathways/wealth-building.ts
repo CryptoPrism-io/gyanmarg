@@ -7,6 +7,7 @@ import { realEstateLessons } from './wealth-realestate';
 import { taxStrategyLessons } from './wealth-tax';
 import { wealthPsychologyLessons } from './wealth-psychology';
 import { fireLessons } from './wealth-fire';
+import { billionaireStrategyLessons } from './wealth-billionaire';
 
 /**
  * Wealth Building Academy Pathway
@@ -2477,6 +2478,15 @@ Create wealth that serves future generations without corrupting them. Teach them
     color: 'amber',
     unlockRequirement: 4000,
     lessons: fireLessons,
+  },
+  {
+    id: 'wealth-level11',
+    title: 'Level 11: Billionaire Strategies',
+    description: 'Learn from Ray Dalio, Warren Buffett, Charlie Munger, and legendary investors',
+    icon: '👑',
+    color: 'gold',
+    unlockRequirement: 4500,
+    lessons: billionaireStrategyLessons,
   },
 ];
 

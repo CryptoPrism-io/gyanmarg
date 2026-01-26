@@ -1,5 +1,6 @@
 import type { PathwayLevel } from '@/types';
 import { blockchainExpandedLessons } from './blockchain-expanded';
+import { blockchainAdvanced2026Lessons } from './blockchain-advanced-2026';
 
 /**
  * Blockchain & Web3 Pathway
@@ -202,6 +203,15 @@ We're seeing new organizational forms emerge that weren't possible before.`,
     color: 'blue',
     unlockRequirement: 500,
     lessons: blockchainExpandedLessons,
+  },
+  {
+    id: 'blockchain-level3',
+    title: 'Level 3: Cutting Edge 2025-2026',
+    description: 'Latest developments: RWAs, Layer 2s, Account Abstraction, AI × Blockchain, and institutional adoption',
+    icon: '🚀',
+    color: 'purple',
+    unlockRequirement: 2000,
+    lessons: blockchainAdvanced2026Lessons,
   },
 ];
 

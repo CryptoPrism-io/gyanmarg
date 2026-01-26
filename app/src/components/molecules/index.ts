@@ -1,9 +1,19 @@
 // Molecule Components - Combinations of atoms
-export { Card, CardHeader, GlassCard } from './Card';
+
+// Card & Variants
+export { Card, CardHeader, GlassCard, AccentCard, FeatureCard, StatCard as CardStat } from './Card';
+
+// Stats
 export { StatCard, CompactStat } from './StatCard';
+
+// Navigation
 export { NavItem, MobileNavItem } from './NavItem';
+
+// Learning Components
 export { FlashCard, RatingButtons } from './FlashCard';
 export { QuizOption, QuizFeedback } from './QuizOption';
 export { LessonCard } from './LessonCard';
-export { HabitItem, HabitCategoryLabel } from './HabitItem';
 export { SwipeableLesson } from './SwipeableLesson';
+
+// Habit Tracking
+export { HabitItem, HabitCategoryLabel } from './HabitItem';

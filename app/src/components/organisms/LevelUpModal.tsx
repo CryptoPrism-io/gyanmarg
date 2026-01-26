@@ -81,7 +81,7 @@ export function LevelUpModal({ newLevel, isOpen, onClose }: LevelUpModalProps) {
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-0 right-0 p-2 text-muted hover:text-secondary transition-colors z-10"
+              className="absolute top-0 right-0 p-2 text-muted hover:text-text-secondary transition-colors z-10"
             >
               <X className="w-5 h-5" />
             </button>
@@ -124,7 +124,7 @@ export function LevelUpModal({ newLevel, isOpen, onClose }: LevelUpModalProps) {
             >
               <div className="flex items-center justify-center gap-2 mb-2">
                 <ArrowUp className="w-6 h-6 text-success" />
-                <h2 className="text-3xl font-bold text-primary">Level Up!</h2>
+                <h2 className="text-3xl font-bold text-text-primary">Level Up!</h2>
                 <ArrowUp className="w-6 h-6 text-success" />
               </div>
             </motion.div>
@@ -146,7 +146,7 @@ export function LevelUpModal({ newLevel, isOpen, onClose }: LevelUpModalProps) {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.7 }}
-              className="text-secondary mb-2 relative z-10"
+              className="text-text-secondary mb-2 relative z-10"
             >
               You&apos;ve reached a new milestone!
             </motion.p>

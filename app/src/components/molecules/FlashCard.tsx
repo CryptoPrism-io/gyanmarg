@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw, Sparkles } from 'lucide-react';
 
 interface FlashCardProps {
   front: string;
@@ -37,30 +37,35 @@ export function FlashCard({
       >
         {/* Front */}
         <div className="absolute inset-0 backface-hidden">
-          <div className="h-full bg-card rounded-2xl border border-border p-6 flex flex-col">
+          <div className="h-full glass rounded-2xl border border-white/10 p-6 flex flex-col shadow-glass">
             {category && (
-              <span className="text-xs font-medium text-accent bg-accent/10 px-2 py-1 rounded-full self-start mb-4">
+              <span className="text-xs font-medium text-lavender bg-lavender/10 border border-lavender/20 px-3 py-1 rounded-full self-start mb-4">
                 {category}
               </span>
             )}
             <div className="flex-1 flex items-center justify-center">
-              <p className="text-lg text-primary text-center font-medium">{front}</p>
+              <p className="text-lg text-text-primary text-center font-display font-semibold leading-relaxed">
+                {front}
+              </p>
             </div>
-            <div className="flex items-center justify-center gap-2 text-muted text-sm">
+            <div className="flex items-center justify-center gap-2 text-text-muted text-sm">
               <RotateCcw className="w-4 h-4" />
-              <span>Tap to flip</span>
+              <span>Tap to reveal</span>
             </div>
           </div>
         </div>
 
         {/* Back */}
         <div className="absolute inset-0 backface-hidden rotate-y-180">
-          <div className="h-full bg-accent/5 rounded-2xl border border-accent/20 p-6 flex flex-col">
-            <span className="text-xs font-medium text-accent self-start mb-4">Answer</span>
-            <div className="flex-1 flex items-center justify-center">
-              <p className="text-base text-secondary text-center leading-relaxed">{back}</p>
+          <div className="h-full rounded-2xl p-6 flex flex-col bg-gradient-to-br from-lavender/10 via-surface to-sunrise/5 border border-lavender/20 shadow-lavender">
+            <div className="flex items-center gap-2 mb-4">
+              <Sparkles className="w-4 h-4 text-lavender" />
+              <span className="text-xs font-medium text-lavender">Answer</span>
             </div>
-            <div className="flex items-center justify-center gap-2 text-muted text-sm">
+            <div className="flex-1 flex items-center justify-center">
+              <p className="text-base text-text-secondary text-center leading-relaxed">{back}</p>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-text-muted text-sm">
               <RotateCcw className="w-4 h-4" />
               <span>Tap to flip back</span>
             </div>
@@ -86,27 +91,33 @@ export function RatingButtons({ onRate, disabled = false }: RatingButtonsProps) 
         exit={{ opacity: 0, y: -20 }}
         className="flex gap-3 mt-4"
       >
-        <button
+        <motion.button
           onClick={() => onRate('hard')}
           disabled={disabled}
-          className="flex-1 py-3 px-4 bg-error/10 text-error rounded-xl font-medium hover:bg-error/20 transition-colors disabled:opacity-50"
+          whileHover={{ scale: disabled ? 1 : 1.02 }}
+          whileTap={{ scale: disabled ? 1 : 0.98 }}
+          className="flex-1 py-3 px-4 bg-coral/10 text-coral rounded-xl font-display font-semibold border border-coral/20 hover:bg-coral/20 hover:border-coral/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Hard
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           onClick={() => onRate('good')}
           disabled={disabled}
-          className="flex-1 py-3 px-4 bg-warning/10 text-warning rounded-xl font-medium hover:bg-warning/20 transition-colors disabled:opacity-50"
+          whileHover={{ scale: disabled ? 1 : 1.02 }}
+          whileTap={{ scale: disabled ? 1 : 0.98 }}
+          className="flex-1 py-3 px-4 bg-golden/10 text-golden rounded-xl font-display font-semibold border border-golden/20 hover:bg-golden/20 hover:border-golden/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Good
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           onClick={() => onRate('easy')}
           disabled={disabled}
-          className="flex-1 py-3 px-4 bg-success/10 text-success rounded-xl font-medium hover:bg-success/20 transition-colors disabled:opacity-50"
+          whileHover={{ scale: disabled ? 1 : 1.02 }}
+          whileTap={{ scale: disabled ? 1 : 0.98 }}
+          className="flex-1 py-3 px-4 bg-sage/10 text-sage rounded-xl font-display font-semibold border border-sage/20 hover:bg-sage/20 hover:border-sage/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Easy
-        </button>
+        </motion.button>
       </motion.div>
     </AnimatePresence>
   );

@@ -179,28 +179,28 @@ export function SwipeableLesson({
   const renderCardContent = (card: ContentCard) => {
     if (card.type === 'quiz' && lesson.content.quiz) {
       return (
-        <div className="space-y-3">
-          <p className="text-base text-primary font-medium text-center mb-4">{lesson.content.quiz.question}</p>
-          <div className="space-y-2">
+        <div className="space-y-2 md:space-y-3">
+          <p className="text-sm md:text-base text-text-primary font-medium text-center mb-2 md:mb-4">{lesson.content.quiz.question}</p>
+          <div className="space-y-1.5 md:space-y-2">
             {lesson.content.quiz.options.map((option, idx) => (
               <button
                 key={idx}
                 onClick={() => !showQuizResult && setQuizAnswer(idx)}
                 disabled={showQuizResult}
-                className={`w-full p-3 rounded-xl text-left transition-all text-sm ${
+                className={`w-full p-2 md:p-3 rounded-lg md:rounded-xl text-left transition-all text-xs md:text-sm ${
                   showQuizResult
                     ? idx === lesson.content.quiz!.correct
                       ? 'bg-success/20 border-2 border-success'
                       : idx === quizAnswer
                         ? 'bg-error/20 border-2 border-error'
-                        : 'bg-primary/30 border border-border/50'
+                        : 'bg-base/30 border border-border/50'
                     : quizAnswer === idx
                       ? 'bg-accent/20 border-2 border-accent'
-                      : 'bg-primary/30 border border-border/50 hover:bg-primary/50'
+                      : 'bg-base/30 border border-border/50 hover:bg-base/50'
                 }`}
               >
-                <span className="font-medium mr-2 text-muted">{String.fromCharCode(65 + idx)}.</span>
-                <span className="text-primary">{option}</span>
+                <span className="font-medium mr-1 md:mr-2 text-muted">{String.fromCharCode(65 + idx)}.</span>
+                <span className="text-text-primary">{option}</span>
               </button>
             ))}
           </div>
@@ -213,22 +213,22 @@ export function SwipeableLesson({
 
           {showQuizResult && (
             <div
-              className={`p-3 rounded-xl text-center ${
+              className={`p-2 md:p-3 rounded-lg md:rounded-xl text-center ${
                 quizAnswer === lesson.content.quiz.correct ? 'bg-success/20' : 'bg-error/20'
               }`}
             >
-              <p className="font-semibold mb-1 flex items-center justify-center gap-2">
+              <p className="text-sm md:text-base font-semibold mb-1 flex items-center justify-center gap-1 md:gap-2">
                 {quizAnswer === lesson.content.quiz.correct ? (
                   <>
-                    <CheckCircle className="w-5 h-5 text-success" /> Correct!
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-success" /> Correct!
                   </>
                 ) : (
                   <>
-                    <X className="w-5 h-5 text-error" /> Not quite
+                    <X className="w-4 h-4 md:w-5 md:h-5 text-error" /> Not quite
                   </>
                 )}
               </p>
-              <p className="text-xs text-secondary">{lesson.content.quiz.explanation}</p>
+              <p className="text-[10px] md:text-xs text-text-secondary">{lesson.content.quiz.explanation}</p>
             </div>
           )}
         </div>
@@ -238,7 +238,7 @@ export function SwipeableLesson({
     // For overview, takeaway, action cards - centered quote style
     if (card.type === 'overview' || card.type === 'takeaway' || card.type === 'action') {
       return (
-        <p className="text-lg text-center text-secondary leading-relaxed italic">
+        <p className="text-sm md:text-lg text-center text-text-secondary leading-relaxed italic">
           "{card.content}"
         </p>
       );
@@ -247,11 +247,11 @@ export function SwipeableLesson({
     // For content cards - clean readable text
     return (
       <div
-        className="text-center text-secondary leading-loose text-base"
+        className="text-center text-text-secondary leading-relaxed md:leading-loose text-xs md:text-base"
         dangerouslySetInnerHTML={{
           __html: card.content
-            .replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary font-semibold block mt-4 mb-2 text-lg not-italic">$1</strong>')
-            .replace(/\n\n/g, '</p><p class="mt-3">')
+            .replace(/\*\*(.*?)\*\*/g, '<strong class="text-text-primary font-semibold block mt-2 md:mt-4 mb-1 md:mb-2 text-sm md:text-lg not-italic">$1</strong>')
+            .replace(/\n\n/g, '</p><p class="mt-2 md:mt-3">')
             .replace(/\n/g, '<br />'),
         }}
       />
@@ -259,34 +259,34 @@ export function SwipeableLesson({
   };
 
   return (
-    <div className="flex flex-col h-full">
-      {/* Progress Dots */}
-      <div className="flex justify-center gap-1.5 mb-4">
-        {cards.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => {
-              setDirection(idx > currentIndex ? 1 : -1);
-              setCurrentIndex(idx);
-            }}
-            className={`h-1.5 rounded-full transition-all ${
-              idx === currentIndex
-                ? 'w-6 bg-accent'
-                : idx < currentIndex
-                  ? 'w-1.5 bg-success'
-                  : 'w-1.5 bg-border'
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* Card Counter */}
-      <div className="text-center text-sm text-muted mb-4">
-        {currentIndex + 1} / {cards.length}
+    <div className="flex flex-col h-full overflow-hidden">
+      {/* Progress Dots & Counter - Combined row */}
+      <div className="flex items-center justify-center gap-2 mb-1 md:mb-2 flex-shrink-0">
+        <div className="flex gap-1">
+          {cards.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                setDirection(idx > currentIndex ? 1 : -1);
+                setCurrentIndex(idx);
+              }}
+              className={`h-1 md:h-1.5 rounded-full transition-all ${
+                idx === currentIndex
+                  ? 'w-4 md:w-6 bg-accent'
+                  : idx < currentIndex
+                    ? 'w-1 md:w-1.5 bg-success'
+                    : 'w-1 md:w-1.5 bg-border'
+              }`}
+            />
+          ))}
+        </div>
+        <span className="text-[10px] md:text-xs text-muted">
+          {currentIndex + 1}/{cards.length}
+        </span>
       </div>
 
       {/* Swipeable Card */}
-      <div className="flex-1 relative overflow-hidden min-h-[450px]">
+      <div className="flex-1 relative overflow-hidden">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentIndex}
@@ -300,39 +300,39 @@ export function SwipeableLesson({
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
             onDragEnd={handleDragEnd}
-            className={`absolute inset-0 rounded-3xl border-2 bg-gradient-to-b cursor-grab active:cursor-grabbing flex flex-col ${
+            className={`absolute inset-0 rounded-2xl md:rounded-3xl border md:border-2 bg-gradient-to-b cursor-grab active:cursor-grabbing flex flex-col ${
               colorClasses[currentCard?.color || 'default']
             }`}
           >
             {/* Accent Bar at Top */}
-            <div className={`h-1 rounded-t-3xl ${accentBarColors[currentCard?.color || 'default']}`} />
+            <div className={`h-0.5 md:h-1 rounded-t-2xl md:rounded-t-3xl ${accentBarColors[currentCard?.color || 'default']}`} />
 
-            {/* Card Content - Centered with lots of whitespace */}
-            <div className="flex-1 flex flex-col justify-center px-8 py-12">
+            {/* Card Content - Full height with responsive spacing */}
+            <div className="flex-1 flex flex-col px-3 py-3 md:px-6 md:py-5 overflow-hidden">
               {/* Card Header */}
               {currentCard?.title && (
-                <div className="text-center mb-8">
+                <div className="text-center mb-2 md:mb-4 flex-shrink-0">
                   {currentCard.icon && (
-                    <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/50 mb-4 ${iconColorClasses[currentCard.color || 'default']}`}>
+                    <div className={`inline-flex items-center justify-center w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-base/50 mb-1 md:mb-2 ${iconColorClasses[currentCard.color || 'default']}`}>
                       {currentCard.icon}
                     </div>
                   )}
-                  <h3 className="text-2xl font-bold text-primary">{currentCard.title}</h3>
+                  <h3 className="text-base md:text-xl font-bold text-text-primary">{currentCard.title}</h3>
                 </div>
               )}
 
-              {/* Card Body - Constrained width for readability */}
-              <div className="max-w-md mx-auto w-full">
-                <div className="overflow-y-auto max-h-[200px] scrollbar-hide">
+              {/* Card Body - Full width with scrollable content */}
+              <div className="w-full flex-1 overflow-hidden">
+                <div className="overflow-y-auto h-full px-1 md:px-2 scrollbar-hide">
                   {renderCardContent(currentCard)}
                 </div>
               </div>
             </div>
 
-            {/* Bottom indicator */}
-            <div className="pb-6 text-center">
-              <span className="text-xs text-muted/50 uppercase tracking-widest">
-                {currentCard?.type === 'quiz' ? 'Quiz Time' : currentCard?.type}
+            {/* Bottom indicator - minimal */}
+            <div className="pb-1 md:pb-2 text-center flex-shrink-0">
+              <span className="text-[8px] md:text-[10px] text-muted/40 uppercase tracking-wider">
+                {currentCard?.type === 'quiz' ? 'Quiz' : currentCard?.type}
               </span>
             </div>
           </motion.div>
@@ -342,49 +342,51 @@ export function SwipeableLesson({
         {currentIndex > 0 && (
           <button
             onClick={goPrev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary/80 backdrop-blur border border-border flex items-center justify-center text-secondary hover:text-primary hover:bg-elevated transition-all z-10"
+            className="absolute left-1 md:left-2 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-base/80 backdrop-blur border border-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-elevated transition-all z-10"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         )}
         {currentIndex < cards.length - 1 && (
           <button
             onClick={goNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-primary/80 backdrop-blur border border-border flex items-center justify-center text-secondary hover:text-primary hover:bg-elevated transition-all z-10"
+            className="absolute right-1 md:right-2 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-base/80 backdrop-blur border border-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-elevated transition-all z-10"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         )}
       </div>
 
-      {/* Swipe Hint */}
-      <p className="text-center text-xs text-muted mt-4">
-        Swipe or use arrows to navigate
-      </p>
+      {/* Bottom section - compact */}
+      <div className="flex-shrink-0 mt-1 md:mt-2">
+        {/* Swipe Hint */}
+        <p className="text-center text-[9px] md:text-xs text-muted/70 mb-1 md:mb-2">
+          Swipe or tap arrows
+        </p>
 
-      {/* Complete Button (only on last card) */}
-      {isLastCard && !isComplete && (
-        <div className="mt-4">
+        {/* Complete Button (only on last card) */}
+        {isLastCard && !isComplete && (
           <Button
             fullWidth
             variant="success"
             onClick={onComplete}
             disabled={!canComplete}
+            className="!py-2 md:!py-3 text-xs md:text-sm"
           >
             {isQuizCard && !showQuizResult
-              ? 'Complete the quiz first'
-              : `Complete Lesson (+${lesson.xpReward} XP)`}
+              ? 'Complete quiz first'
+              : `Complete (+${lesson.xpReward} XP)`}
           </Button>
-        </div>
-      )}
+        )}
 
-      {isLastCard && isComplete && (
-        <div className="mt-4 text-center py-4">
-          <Badge variant="success" className="text-base px-4 py-2">
-            Lesson Completed!
-          </Badge>
-        </div>
-      )}
+        {isLastCard && isComplete && (
+          <div className="text-center py-1 md:py-2">
+            <Badge variant="success" className="text-xs md:text-sm px-2 md:px-3 py-1 md:py-1.5">
+              Completed!
+            </Badge>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

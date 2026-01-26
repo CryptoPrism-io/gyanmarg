@@ -1,5 +1,6 @@
 import type { PathwayLevel } from '@/types';
 import { negotiationExpandedLessons } from './negotiation-expanded';
+import { fbiFAdvancedNegotiationLessons } from './negotiation-fbi-advanced';
 
 /**
  * Negotiation & Influence Pathway
@@ -253,6 +254,15 @@ Frank Luntz tested thousands of word choices. Small changes = big differences.
     color: 'indigo',
     unlockRequirement: 500,
     lessons: negotiationExpandedLessons,
+  },
+  {
+    id: 'neg-level4',
+    title: 'Level 4: FBI Advanced Tactics',
+    description: 'Master Chris Voss\'s advanced techniques: Accusation Audits, Ackerman Model, Black Swans, and more',
+    icon: '🔥',
+    color: 'red',
+    unlockRequirement: 2000,
+    lessons: fbiFAdvancedNegotiationLessons,
   },
 ];
 

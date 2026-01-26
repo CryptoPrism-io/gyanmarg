@@ -20,7 +20,7 @@ export function NavItem({ to, icon, label, badge }: NavItemProps) {
         transition-all duration-200
         ${isActive
           ? 'bg-accent/10 text-accent'
-          : 'text-secondary hover:text-primary hover:bg-secondary'
+          : 'text-text-secondary hover:text-text-primary hover:bg-elevated'
         }
       `}
     >
@@ -46,7 +46,7 @@ export function MobileNavItem({ to, icon, label }: NavItemProps) {
       className={`
         flex flex-col items-center justify-center py-2 px-3 rounded-xl
         transition-all duration-200 min-w-[56px]
-        ${isActive ? 'text-accent' : 'text-muted hover:text-secondary'}
+        ${isActive ? 'text-accent' : 'text-muted hover:text-text-secondary'}
       `}
     >
       <span className={`w-5 h-5 ${isActive ? 'scale-110' : ''} transition-transform`}>

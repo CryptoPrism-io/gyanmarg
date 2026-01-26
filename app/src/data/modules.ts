@@ -1,4 +1,4 @@
-// All 10 Learning Modules Configuration
+// All 16 Learning Modules Configuration
 import type { PathwayLevel } from '@/types';
 import { personalDevelopmentPathway } from './pathways/personal-development';
 import { aiMlPathway } from './pathways/ai-ml';
@@ -10,6 +10,14 @@ import { psychologyPathway } from './pathways/psychology';
 import { pythonDataPathway } from './pathways/python-data';
 import { lifeDesignPathway } from './pathways/life-design';
 import { masterSynthesisPathway } from './pathways/master-synthesis';
+
+// New modules
+import { brainPathway } from './pathways/brain';
+import { bodyPathway } from './pathways/body';
+import { spiritualityPathway } from './pathways/spirituality';
+import { shivaPathway } from './pathways/shiva';
+import { templePathway } from './pathways/temple';
+import { polymathPathway } from './pathways/polymath';
 
 export interface ModuleConfig {
   id: string;
@@ -177,6 +185,96 @@ export const modules: ModuleConfig[] = [
     route: '/modules/master-synthesis',
     isAvailable: true,
     pathway: masterSynthesisPathway,
+  },
+  {
+    id: 'brain-neuroscience',
+    number: 11,
+    title: 'Brain & Neuroscience',
+    subtitle: 'Cognitive Mastery',
+    description: 'Optimize your brain with neuroscience: neuroplasticity, memory enhancement, focus states, and cognitive performance.',
+    icon: 'brain',
+    color: 'purple',
+    books: ['Huberman Lab', 'Stanford Neuroscience', 'NIH BRAIN Initiative Research'],
+    skills: ['Neuroplasticity', 'Memory Enhancement', 'Focus States', 'Brain Chemistry', 'Cognitive Optimization'],
+    features: ['Brain Tracker', 'Focus Protocol', 'Memory Palace Builder', 'Neuro Assessment', 'Brain Hacking Lab'],
+    route: '/modules/brain-neuroscience',
+    isAvailable: true,
+    pathway: brainPathway,
+  },
+  {
+    id: 'body-longevity',
+    number: 12,
+    title: 'Body & Longevity',
+    subtitle: 'Physical Optimization',
+    description: 'Master your body with longevity science: Peter Attia protocols, Bryan Johnson methods, and biohacking.',
+    icon: 'heart-pulse',
+    color: 'green',
+    books: ['Outlive by Peter Attia', 'Blueprint by Bryan Johnson', 'Longevity Research'],
+    skills: ['Healthspan Optimization', 'Exercise Science', 'Nutrition Protocols', 'Sleep Science', 'Biohacking'],
+    features: ['Longevity Tracker', 'Workout Builder', 'Nutrition Log', 'Sleep Analyzer', 'Biomarker Dashboard'],
+    route: '/modules/body-longevity',
+    isAvailable: true,
+    pathway: bodyPathway,
+  },
+  {
+    id: 'spirituality-sadhana',
+    number: 13,
+    title: 'Spirituality & Sadhana',
+    subtitle: 'Daily Practice',
+    description: 'Build a transformative daily practice: meditation, breathwork, yoga, and ancient wisdom meets modern neuroscience.',
+    icon: 'sun',
+    color: 'amber',
+    books: ['Yoga Sutras', 'Meditation Research', 'Breathwork Science'],
+    skills: ['Meditation', 'Breathwork', 'Yoga', 'Mindfulness', 'Contemplative Practice'],
+    features: ['Sadhana Tracker', 'Meditation Timer', 'Breath Guide', 'Morning Ritual Builder', 'Progress Journal'],
+    route: '/modules/spirituality-sadhana',
+    isAvailable: true,
+    pathway: spiritualityPathway,
+  },
+  {
+    id: 'shiva-shakti',
+    number: 14,
+    title: 'Shiva-Shakti Philosophy',
+    subtitle: 'Kashmir Shaivism',
+    description: 'Explore non-dual philosophy: consciousness, energy, the 36 tattvas, and the recognition philosophy of Kashmir Shaivism.',
+    icon: 'sparkles',
+    color: 'violet',
+    books: ['Shiva Sutras', 'Pratyabhijna Philosophy', 'Tantra Texts'],
+    skills: ['Non-dual Philosophy', 'Consciousness Studies', 'Tantric Practice', 'Meditation', 'Self-Recognition'],
+    features: ['Tattva Explorer', 'Philosophy Map', 'Practice Guide', 'Concept Cards', 'Integration Journal'],
+    route: '/modules/shiva-shakti',
+    isAvailable: true,
+    pathway: shivaPathway,
+  },
+  {
+    id: 'temple-science',
+    number: 15,
+    title: 'Temple Science',
+    subtitle: 'Sacred Geometry',
+    description: 'Decode temple architecture: Vastu Shastra, sacred geometry, acoustic engineering, and energy systems.',
+    icon: 'landmark',
+    color: 'orange',
+    books: ['Vastu Shastra Texts', 'Temple Architecture', 'Sacred Geometry'],
+    skills: ['Vastu Principles', 'Sacred Geometry', 'Temple Architecture', 'Energy Systems', 'Acoustic Science'],
+    features: ['Temple Explorer', 'Vastu Calculator', 'Geometry Visualizer', 'Virtual Tours', 'Architecture Quiz'],
+    route: '/modules/temple-science',
+    isAvailable: true,
+    pathway: templePathway,
+  },
+  {
+    id: 'polymath-mastery',
+    number: 16,
+    title: 'Polymath Mastery',
+    subtitle: 'Renaissance Learning',
+    description: 'Become a modern polymath: meta-learning, mental models, cross-domain synthesis, and expert-generalist strategies.',
+    icon: 'graduation-cap',
+    color: 'indigo',
+    books: ['Range by David Epstein', 'Leonardo da Vinci', 'Learning How to Learn'],
+    skills: ['Meta-Learning', 'Mental Models', 'Cross-Domain Synthesis', 'Knowledge Management', 'Creative Integration'],
+    features: ['Learning Dashboard', 'Mental Model Library', 'Zettelkasten Builder', 'Skill Tree', 'Portfolio Planner'],
+    route: '/modules/polymath-mastery',
+    isAvailable: true,
+    pathway: polymathPathway,
   },
 ];
 

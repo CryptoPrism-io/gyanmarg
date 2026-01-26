@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Star, Flame, Crown, Medal, Award } from 'lucide-react';
-import { Card } from '@/components/molecules';
+import { GlassCard } from '@/components/molecules';
 import { useProgressStore } from '@/store/progressStore';
 import { useUserStore } from '@/store/userStore';
 import type { LeaderboardEntry } from '@/types';
@@ -21,13 +21,13 @@ const aiCompetitors: Omit<LeaderboardEntry, 'isCurrentUser'>[] = [
 function getRankDisplay(rank: number) {
   switch (rank) {
     case 1:
-      return <Crown className="w-5 h-5 text-amber-400" />;
+      return <Crown className="w-5 h-5 text-golden" />;
     case 2:
-      return <Medal className="w-5 h-5 text-slate-300" />;
+      return <Medal className="w-5 h-5 text-text-muted" />;
     case 3:
-      return <Award className="w-5 h-5 text-amber-700" />;
+      return <Award className="w-5 h-5 text-coral" />;
     default:
-      return <span className="w-5 text-center text-muted font-medium">{rank}</span>;
+      return <span className="w-5 text-center text-text-muted font-medium">{rank}</span>;
   }
 }
 
@@ -45,8 +45,8 @@ function LeaderboardRow({ rank, entry, highlight }: LeaderboardRowProps) {
       transition={{ delay: rank * 0.05 }}
       className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${
         highlight
-          ? 'bg-accent/10 border border-accent/30'
-          : 'bg-secondary hover:bg-elevated'
+          ? 'bg-sunrise/10 border border-sunrise/30'
+          : 'glass-light border border-white/10 hover:border-white/20'
       }`}
     >
       {/* Rank */}
@@ -54,8 +54,8 @@ function LeaderboardRow({ rank, entry, highlight }: LeaderboardRowProps) {
 
       {/* Avatar placeholder */}
       <div
-        className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold ${
-          highlight ? 'bg-accent text-white' : 'bg-elevated text-secondary'
+        className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg font-display font-bold ${
+          highlight ? 'bg-gradient-to-br from-sunrise to-golden text-base' : 'bg-surface text-text-secondary'
         }`}
       >
         {entry.name.charAt(0)}
@@ -64,23 +64,23 @@ function LeaderboardRow({ rank, entry, highlight }: LeaderboardRowProps) {
       {/* Name and stats */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <span className={`font-medium truncate ${highlight ? 'text-accent' : 'text-primary'}`}>
+          <span className={`font-medium truncate ${highlight ? 'text-sunrise' : 'text-text-primary'}`}>
             {entry.name}
           </span>
           {highlight && (
-            <span className="text-xs bg-accent/20 text-accent px-2 py-0.5 rounded-full">
+            <span className="text-xs bg-sunrise/20 text-sunrise px-2 py-0.5 rounded-full border border-sunrise/30">
               You
             </span>
           )}
         </div>
-        <div className="flex items-center gap-3 text-xs text-muted">
+        <div className="flex items-center gap-3 text-xs text-text-muted">
           <span className="flex items-center gap-1">
-            <Star className="w-3 h-3" />
+            <Star className="w-3 h-3 text-golden" />
             Lvl {entry.level}
           </span>
           {entry.streak > 0 && (
             <span className="flex items-center gap-1">
-              <Flame className="w-3 h-3 text-amber-500" />
+              <Flame className="w-3 h-3 text-coral" />
               {entry.streak}
             </span>
           )}
@@ -89,10 +89,10 @@ function LeaderboardRow({ rank, entry, highlight }: LeaderboardRowProps) {
 
       {/* XP */}
       <div className="text-right">
-        <span className={`font-semibold ${highlight ? 'text-accent' : 'text-primary'}`}>
+        <span className={`font-display font-semibold ${highlight ? 'text-sunrise' : 'text-text-primary'}`}>
           {entry.xp.toLocaleString()}
         </span>
-        <span className="text-xs text-muted ml-1">XP</span>
+        <span className="text-xs text-text-muted ml-1">XP</span>
       </div>
     </motion.div>
   );
@@ -145,22 +145,22 @@ export function LocalLeaderboard({ className, maxEntries = 5 }: LocalLeaderboard
   const userRank = entries.findIndex((e) => e.isCurrentUser) + 1;
 
   return (
-    <Card className={className}>
+    <GlassCard className={className}>
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
-            <Trophy className="w-5 h-5 text-amber-500" />
+          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-golden to-sunrise flex items-center justify-center shadow-golden">
+            <Trophy className="w-5 h-5 text-base" />
           </div>
           <div>
-            <h3 className="font-semibold text-primary">Leaderboard</h3>
-            <p className="text-xs text-muted">Compete with fellow learners</p>
+            <h3 className="font-display font-semibold text-text-primary">Leaderboard</h3>
+            <p className="text-xs text-text-muted">Compete with fellow learners</p>
           </div>
         </div>
         {userRank > 0 && (
           <div className="text-right">
-            <span className="text-xs text-muted">Your rank</span>
-            <p className="font-semibold text-accent">#{userRank}</p>
+            <span className="text-xs text-text-muted">Your rank</span>
+            <p className="font-display font-semibold text-sunrise">#{userRank}</p>
           </div>
         )}
       </div>
@@ -179,30 +179,30 @@ export function LocalLeaderboard({ className, maxEntries = 5 }: LocalLeaderboard
 
       {/* Show more indicator */}
       {entries.length > maxEntries && (
-        <p className="text-center text-xs text-muted mt-3">
+        <p className="text-center text-xs text-text-muted mt-4">
           +{entries.length - maxEntries} more learners
         </p>
       )}
 
       {/* Motivational message based on rank */}
       {userRank > 0 && (
-        <div className="mt-4 pt-4 border-t border-border text-center">
+        <div className="mt-5 pt-5 border-t border-white/[0.06] text-center">
           {userRank === 1 ? (
-            <p className="text-sm text-amber-500 font-medium">
-              🏆 You&apos;re leading the pack!
+            <p className="text-sm text-golden font-medium">
+              You&apos;re leading the pack!
             </p>
           ) : userRank <= 3 ? (
-            <p className="text-sm text-success">
+            <p className="text-sm text-sage font-medium">
               Almost at the top! Keep pushing!
             </p>
           ) : (
-            <p className="text-sm text-muted">
+            <p className="text-sm text-text-muted">
               {entries[userRank - 2]?.xp - userProgress.xp || 0} XP to rank up
             </p>
           )}
         </div>
       )}
-    </Card>
+    </GlassCard>
   );
 }
 

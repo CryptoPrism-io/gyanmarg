@@ -1,7 +1,17 @@
 // Atomic Components - Building blocks of the UI
+
+// Button
 export { Button } from './Button';
-export { Badge } from './Badge';
-export { Input } from './Input';
-export { ProgressBar } from './ProgressBar';
-export { Skeleton, SkeletonCard, SkeletonList } from './Skeleton';
-export { Spinner, LoadingOverlay } from './Spinner';
+
+// Badge & Variants
+export { Badge, XPBadge, LevelBadge, StreakBadge, StatusBadge } from './Badge';
+
+// Input & Variants
+export { Input, SearchInput, Textarea } from './Input';
+
+// Progress & Variants
+export { ProgressBar, XPProgressBar } from './ProgressBar';
+
+// Loading States
+export { Skeleton, SkeletonCard, SkeletonList, SkeletonStats } from './Skeleton';
+export { Spinner, LoadingOverlay, DotsLoader, ButtonLoader } from './Spinner';

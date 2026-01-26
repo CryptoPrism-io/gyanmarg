@@ -1,2 +1,9 @@
 // Template Components - Page layouts
-export { PageLayout, ModuleLayout, OnboardingLayout } from './PageLayout';
+export {
+  PageLayout,
+  ModuleLayout,
+  OnboardingLayout,
+  HeroSection,
+  Section,
+  AnimatedBackground,
+} from './PageLayout';
