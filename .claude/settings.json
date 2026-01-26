@@ -1,0 +1,46 @@
+{
+  "project": {
+    "name": "Gyanmarg",
+    "description": "Gamified learning platform for ebook collection",
+    "type": "react-typescript"
+  },
+  "subagents": {
+    "content-builder": {
+      "description": "Extract and structure content from ebooks into lessons and pathways",
+      "capabilities": ["PDF parsing", "content extraction", "lesson structuring"],
+      "use_when": "User wants to add content from a book or create lessons"
+    },
+    "component-builder": {
+      "description": "Build React components following atomic design patterns",
+      "capabilities": ["React", "TypeScript", "TailwindCSS", "Framer Motion"],
+      "use_when": "User wants to create new UI components"
+    },
+    "quiz-designer": {
+      "description": "Create quizzes, assessments, and flashcards based on content",
+      "capabilities": ["Quiz generation", "spaced repetition", "assessment design"],
+      "use_when": "User wants to create quizzes or flashcards"
+    },
+    "feature-architect": {
+      "description": "Design and implement new features for the learning platform",
+      "capabilities": ["Feature design", "routing", "state management"],
+      "use_when": "User wants to add a new major feature"
+    },
+    "pathway-designer": {
+      "description": "Design complete learning pathways with proper progression",
+      "capabilities": ["Curriculum design", "lesson sequencing", "learning science"],
+      "use_when": "User wants to create a full module pathway"
+    },
+    "code-reviewer": {
+      "description": "Review code for TypeScript best practices and project conventions",
+      "capabilities": ["Code review", "TypeScript", "React patterns"],
+      "use_when": "User wants to review code quality"
+    }
+  },
+  "conventions": {
+    "components": "atomic-design",
+    "styling": "tailwindcss",
+    "state": "zustand",
+    "imports": "path-aliases",
+    "typescript": "strict"
+  }
+}
