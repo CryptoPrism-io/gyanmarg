@@ -6,3 +6,4 @@ export { AchievementUnlock } from './AchievementUnlock';
 export { LevelUpModal } from './LevelUpModal';
 export { TodaysFocus } from './TodaysFocus';
 export { LocalLeaderboard } from './LocalLeaderboard';
+export { LessonViewer } from './LessonViewer';

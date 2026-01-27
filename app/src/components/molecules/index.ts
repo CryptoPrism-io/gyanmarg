@@ -14,6 +14,7 @@ export { FlashCard, RatingButtons } from './FlashCard';
 export { QuizOption, QuizFeedback } from './QuizOption';
 export { LessonCard } from './LessonCard';
 export { SwipeableLesson } from './SwipeableLesson';
+export { RichMarkdown } from './RichMarkdown';
 
 // Habit Tracking
 export { HabitItem, HabitCategoryLabel } from './HabitItem';

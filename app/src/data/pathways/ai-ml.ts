@@ -23,29 +23,88 @@ export const aiMlPathway: PathwayLevel[] = [
         xpReward: 50,
         content: {
           overview: 'Explore the fundamental question: What makes something intelligent?',
-          mainContent: `**The Five Breakthroughs That Made Our Brains**
+          mainContent: `## The Five Breakthroughs That Made Our Brains
 
-From "A Brief History of Intelligence" by Max Bennett, we learn that intelligence evolved through 5 key breakthroughs:
+From *"A Brief History of Intelligence"* by Max Bennett, we learn that intelligence evolved through **5 key breakthroughs** over millions of years.
 
-**Breakthrough 1: Steering (600M years ago)**
-The first nervous systems allowed simple organisms to move toward food and away from danger.
+> **Key Insight:** Understanding how intelligence evolved naturally helps us understand how to build it artificially.
 
-**Breakthrough 2: Reinforcement Learning (500M years ago)**
-Animals learned from rewards and punishments - the basis of all learning.
+---
 
-**Breakthrough 3: Simulation (300M years ago)**
-Mammals developed the ability to imagine outcomes before acting.
+### Breakthrough 1: Steering (600M years ago)
 
-**Breakthrough 4: Mentalizing (70M years ago)**
-Primates evolved to understand that others have minds too.
+The first nervous systems allowed simple organisms to move **toward food** and **away from danger**. This seems trivial, but it's the foundation of all intelligent behavior.
 
-**Breakthrough 5: Language (100K years ago)**
-Humans alone developed symbolic language for abstract thought.
+- Jellyfish can sense light and gravity
+- Worms can detect chemical gradients
+- Simple, but revolutionary for survival
 
-**Why This Matters for AI:**
-Every AI system mimics one or more of these breakthroughs. Understanding evolution helps us understand where AI is headed.`,
+> **Think:** Even your thermostat uses this principle - move toward the target temperature!
+
+---
+
+### Breakthrough 2: Reinforcement Learning (500M years ago)
+
+Animals learned from **rewards and punishments** - the basis of all learning. This is where things get interesting.
+
+\`\`\`
+If action → good outcome: Do more of this
+If action → bad outcome: Avoid this
+\`\`\`
+
+🔑 This is exactly how modern AI systems like ChatGPT are trained using RLHF (Reinforcement Learning from Human Feedback).
+
+---
+
+### Breakthrough 3: Simulation (300M years ago)
+
+Mammals developed the ability to **imagine outcomes before acting**. Instead of trial-and-error in the real world, they could simulate scenarios mentally.
+
+> **Pro Tip:** When you imagine "what if I said this?" in a conversation, you're using this 300-million-year-old capability.
+
+This is why mammals dominate complex environments - we can plan.
+
+---
+
+### Breakthrough 4: Mentalizing (70M years ago)
+
+Primates evolved to understand that **others have minds too** - with different knowledge, beliefs, and intentions.
+
+- "I know that you know"
+- "I believe that she thinks..."
+- Social intelligence exploded
+
+> **Warning:** Current AI systems struggle with this. They don't truly understand that you have a mind with your own perspective.
+
+---
+
+### Breakthrough 5: Language (100K years ago)
+
+Humans alone developed **symbolic language** for abstract thought. This unlocked:
+
+- Teaching without demonstration
+- Accumulating knowledge across generations
+- Thinking about things that don't exist
+
+🔑 Language is what separates us from all other species - and it's what makes LLMs so powerful.
+
+---
+
+## Why This Matters for AI
+
+Every AI system mimics one or more of these breakthroughs:
+
+| AI System | Breakthrough Used |
+|-----------|-------------------|
+| Basic sensors | Steering |
+| Game AI | Reinforcement Learning |
+| Planning systems | Simulation |
+| Social AI | Mentalizing (attempted) |
+| LLMs | Language |
+
+> **Action:** Understanding evolution helps us understand where AI is headed - and what's still missing.`,
           keyTakeaway: 'Intelligence is not magic - it evolved through specific capabilities that we can understand and replicate.',
-          actionItem: 'Think about which of the 5 breakthroughs your smartphone uses.',
+          actionItem: 'Think about which of the 5 breakthroughs your smartphone uses. You might be surprised how many!',
         },
       },
       {
@@ -56,37 +115,91 @@ Every AI system mimics one or more of these breakthroughs. Understanding evoluti
         xpReward: 100,
         content: {
           overview: 'Demystify neural networks - they\'re simpler than you think!',
-          mainContent: `**Neural Networks: The Simple Truth**
+          mainContent: `## Neural Networks: The Simple Truth
 
-A neural network is just a fancy function that:
+A neural network is just a ==fancy function== that does three things:
+
 1. Takes numbers in
 2. Does math
 3. Outputs numbers
 
-**The Building Block: A Single Neuron**
-\`output = activation(weights × inputs + bias)\`
+That's it. No magic, no consciousness, just math.
 
-That's it! A neuron multiplies inputs by weights, adds a bias, and applies an activation function.
+> **Did You Know:** The human brain has ~86 billion neurons. GPT-4 has ~1.7 trillion parameters. Size isn't everything - our brains are far more efficient!
 
-**Layers Make It Powerful**
-- **Input Layer:** Raw data goes in (pixels, words, numbers)
-- **Hidden Layers:** Learn patterns and features
-- **Output Layer:** Final prediction
+---
 
-**Training = Adjusting Weights**
-1. Make a prediction
-2. Compare to correct answer (loss)
-3. Adjust weights to reduce loss (backpropagation)
-4. Repeat millions of times
+### The Building Block: A Single Neuron
 
-**Types of Neural Networks:**
-- **CNN (Convolutional):** For images
-- **RNN/LSTM:** For sequences (text, time)
-- **Transformer:** For language (GPT, BERT)
-- **GAN:** For generation
+Every neuron does exactly one thing:
 
-**The Secret:** It's all just matrix multiplication + trial and error!`,
-          keyTakeaway: 'Neural networks are not magic brains - they\'re math functions that learn by adjusting numbers.',
+\`\`\`python
+output = activation(weights × inputs + bias)
+\`\`\`
+
+Let's break this down:
+
+- **Inputs:** Numbers coming in (could be pixels, words, anything)
+- **Weights:** How much each input matters (learned during training)
+- **Bias:** A baseline adjustment (also learned)
+- **Activation:** Makes things non-linear (usually ReLU or sigmoid)
+
+> **Pro Tip:** Think of weights like volume knobs. Training is just finding the right settings for each knob.
+
+---
+
+### Layers Make It Powerful
+
+Neural networks stack neurons into layers:
+
+- **Input Layer** → Raw data goes in (pixels, words, numbers)
+- **Hidden Layers** → Learn patterns and features
+- **Output Layer** → Final prediction
+
+🔑 More layers = ability to learn more complex patterns. This is why "deep" learning is called deep - lots of layers.
+
+---
+
+### Training = Adjusting Weights
+
+Here's the entire training process:
+
+\`\`\`
+1. Forward pass: Make a prediction
+2. Loss: Compare prediction to correct answer
+3. Backward pass: Calculate how to improve (backpropagation)
+4. Update: Adjust weights slightly
+5. Repeat: Do this millions of times
+\`\`\`
+
+> **Warning:** Training can go wrong in many ways - overfitting, underfitting, vanishing gradients. It's as much art as science.
+
+---
+
+### Types of Neural Networks
+
+Different architectures for different problems:
+
+| Type | Best For | Examples |
+|------|----------|----------|
+| **CNN** | Images | Face recognition, medical scans |
+| **RNN/LSTM** | Sequences | Time series, older chatbots |
+| **Transformer** | Language | GPT, BERT, Claude |
+| **GAN** | Generation | Deepfakes, art generation |
+| **Diffusion** | Images | DALL-E, Midjourney, Stable Diffusion |
+
+> **Brain:** The Transformer architecture (2017) revolutionized AI. It's why we have ChatGPT, Claude, and all modern LLMs.
+
+---
+
+### The Secret
+
+🔑 **It's all just matrix multiplication + trial and error!**
+
+There's no understanding, no consciousness, no intention. Just billions of numbers being adjusted until the outputs match the training data.
+
+This doesn't make AI less impressive - it makes it MORE impressive that such simple operations can produce such complex behavior.`,
+          keyTakeaway: 'Neural networks are not magic brains - they\'re math functions that learn by adjusting numbers through millions of iterations.',
           quiz: {
             question: 'What does "training" a neural network actually mean?',
             options: [
@@ -96,7 +209,7 @@ That's it! A neuron multiplies inputs by weights, adds a bias, and applies an ac
               'Making it run faster',
             ],
             correct: 1,
-            explanation: 'Training means iteratively adjusting the weights to minimize prediction errors (loss).',
+            explanation: 'Training means iteratively adjusting the weights to minimize prediction errors (loss). It\'s a process of trial and error at massive scale.',
           },
         },
       },
