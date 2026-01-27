@@ -56,17 +56,17 @@ Retrieval is the process of accessing stored information. Here's the counterintu
 Understanding this process reveals why passive reading is ineffective. You're optimizing encoding but neglecting retrieval - which is where the real memory strengthening happens.`,
       keyTakeaway: 'Memory has three stages: encoding (input), storage (maintenance), and retrieval (output). Retrieval practice strengthens memory more than repeated encoding.',
       actionItem: 'Take something you learned today and explain it aloud from memory. Notice the effort - that effort is building stronger neural pathways.',
-    },
-    quiz: {
-      question: 'Which stage of memory is MOST important for strengthening long-term retention?',
-      options: [
-        'Encoding - getting information into the brain',
-        'Storage - maintaining information over time',
-        'Retrieval - actively recalling information',
-        'All stages are equally important',
-      ],
-      correct: 2,
-      explanation: 'Research shows that the act of retrieval (actively recalling information) strengthens memory traces more than additional encoding or passive review. This is known as the testing effect.',
+      quiz: {
+        question: 'Which stage of memory is MOST important for strengthening long-term retention?',
+        options: [
+          'Encoding - getting information into the brain',
+          'Storage - maintaining information over time',
+          'Retrieval - actively recalling information',
+          'All stages are equally important',
+        ],
+        correct: 2,
+        explanation: 'Research shows that the act of retrieval (actively recalling information) strengthens memory traces more than additional encoding or passive review. This is known as the testing effect.',
+      },
     },
   },
   {
@@ -129,17 +129,17 @@ Research consistently shows spaced learners retain 200-400% more over time.
 Review at the moment just before you would forget. This creates "desirable difficulty" - the retrieval is challenging enough to strengthen the memory but not so delayed that the memory is lost entirely.`,
       keyTakeaway: 'We forget 75% of what we learn within a week. Spaced repetition - reviewing at increasing intervals - can make memories permanent.',
       actionItem: 'Set up a spaced repetition system (Anki, flashcards, or calendar reminders) for something you want to remember long-term.',
-    },
-    quiz: {
-      question: 'According to the forgetting curve, approximately how much do we forget within ONE WEEK of learning?',
-      options: [
-        '25%',
-        '50%',
-        '75%',
-        '90%',
-      ],
-      correct: 2,
-      explanation: 'Ebbinghaus found that without review, we forget approximately 75% of learned material within one week. This makes spaced repetition essential for long-term retention.',
+      quiz: {
+        question: 'According to the forgetting curve, approximately how much do we forget within ONE WEEK of learning?',
+        options: [
+          '25%',
+          '50%',
+          '75%',
+          '90%',
+        ],
+        correct: 2,
+        explanation: 'Ebbinghaus found that without review, we forget approximately 75% of learned material within one week. This makes spaced repetition essential for long-term retention.',
+      },
     },
   },
   {
@@ -208,17 +208,17 @@ The barrier is psychological. Active recall is harder and less pleasant. You fee
 *Rule of thumb:* If studying feels comfortable, you're probably wasting time. Productive learning should feel like a workout - difficult but achievable.`,
       keyTakeaway: 'Passive review (re-reading, highlighting) creates an illusion of learning. Active recall (self-testing, explaining from memory) produces 50%+ better retention.',
       actionItem: 'Replace your next re-reading session with active recall: close the book and write down everything you remember, then check what you missed.',
-    },
-    quiz: {
-      question: 'Why do passive study methods (re-reading, highlighting) feel effective even when they are not?',
-      options: [
-        'They actually ARE effective for most people',
-        'They create familiarity that we mistake for true knowledge',
-        'They require too much mental effort',
-        'They work well for short-term but not long-term memory',
-      ],
-      correct: 1,
-      explanation: 'Passive methods create an "illusion of competence" - increased familiarity and fluency that we mistake for actual learning. We recognize the material but cannot reproduce it from memory.',
+      quiz: {
+        question: 'Why do passive study methods (re-reading, highlighting) feel effective even when they are not?',
+        options: [
+          'They actually ARE effective for most people',
+          'They create familiarity that we mistake for true knowledge',
+          'They require too much mental effort',
+          'They work well for short-term but not long-term memory',
+        ],
+        correct: 1,
+        explanation: 'Passive methods create an "illusion of competence" - increased familiarity and fluency that we mistake for actual learning. We recognize the material but cannot reproduce it from memory.',
+      },
     },
   },
   {
@@ -283,17 +283,17 @@ You will feel slower, make more errors, and feel less competent during interleav
 Trust the process, not your feelings.`,
       keyTakeaway: 'Mixing different topics during practice (interleaving) feels harder but produces 43% better long-term retention than practicing one topic at a time (blocking).',
       actionItem: 'In your next study session, deliberately mix topics instead of finishing one before starting another. Notice how it feels harder - that difficulty is the learning.',
-    },
-    quiz: {
-      question: 'During practice, interleaved learning typically:',
-      options: [
-        'Feels easier and produces better results',
-        'Feels harder and produces worse results',
-        'Feels harder but produces better long-term results',
-        'Feels easier but produces worse long-term results',
-      ],
-      correct: 2,
-      explanation: 'Interleaved practice creates a "desirable difficulty" - it feels harder and performance during practice is lower, but long-term retention and transfer are significantly better.',
+      quiz: {
+        question: 'During practice, interleaved learning typically:',
+        options: [
+          'Feels easier and produces better results',
+          'Feels harder and produces worse results',
+          'Feels harder but produces better long-term results',
+          'Feels easier but produces worse long-term results',
+        ],
+        correct: 2,
+        explanation: 'Interleaved practice creates a "desirable difficulty" - it feels harder and performance during practice is lower, but long-term retention and transfer are significantly better.',
+      },
     },
   },
   {
@@ -362,17 +362,17 @@ Your brain learns more from struggling to explain than from being told the answe
 The goal is to make "why?" and "how?" your default response to new information. This transforms every learning experience into active engagement rather than passive reception.`,
       keyTakeaway: 'Asking "why" and "how" about facts you learn forces deep processing and creates 30-100% better retention than passive reading.',
       actionItem: 'Read an article today and stop after every key claim to ask "Why is this true?" Generate your own explanation before continuing.',
-    },
-    quiz: {
-      question: 'What makes elaborative interrogation effective for learning?',
-      options: [
-        'It helps you read faster',
-        'It forces deep processing by connecting new facts to existing knowledge',
-        'It reduces the amount of material you need to learn',
-        'It replaces the need for practice',
-      ],
-      correct: 1,
-      explanation: 'Elaborative interrogation works by forcing deep processing - asking "why" activates your existing knowledge and creates meaningful connections, making the new information much more memorable.',
+      quiz: {
+        question: 'What makes elaborative interrogation effective for learning?',
+        options: [
+          'It helps you read faster',
+          'It forces deep processing by connecting new facts to existing knowledge',
+          'It reduces the amount of material you need to learn',
+          'It replaces the need for practice',
+        ],
+        correct: 1,
+        explanation: 'Elaborative interrogation works by forcing deep processing - asking "why" activates your existing knowledge and creates meaningful connections, making the new information much more memorable.',
+      },
     },
   },
   {
@@ -448,17 +448,17 @@ Many avoid self-testing because it's uncomfortable to fail. Reframe this:
 If you have limited time, testing yourself is more valuable than additional studying. This runs counter to intuition but is one of the most robust findings in learning science.`,
       keyTakeaway: 'Testing yourself retrieves and strengthens memories far more than restudying. Testing can double retention compared to equivalent study time.',
       actionItem: 'Before your next study session, quiz yourself on the previous material first. Track how much more you remember after adding retrieval practice to your routine.',
-    },
-    quiz: {
-      question: 'In the Roediger & Karpicke study, students who spent 75% of their time testing (vs. studying) remembered how much more after one week?',
-      options: [
-        '10% more',
-        '25% more',
-        '50% more (doubled)',
-        '100% more (doubled)',
-      ],
-      correct: 3,
-      explanation: 'Students who spent most of their time on retrieval practice (testing) remembered approximately twice as much (80% vs 40%) after one week, despite spending the same total amount of time.',
+      quiz: {
+        question: 'In the Roediger & Karpicke study, students who spent 75% of their time testing (vs. studying) remembered how much more after one week?',
+        options: [
+          '10% more',
+          '25% more',
+          '50% more (doubled)',
+          '100% more (doubled)',
+        ],
+        correct: 3,
+        explanation: 'Students who spent most of their time on retrieval practice (testing) remembered approximately twice as much (80% vs 40%) after one week, despite spending the same total amount of time.',
+      },
     },
   },
   {
@@ -535,17 +535,17 @@ Reframe your relationship with difficulty:
 - Easy practice is often wasted practice`,
       keyTakeaway: 'Difficulty during learning is often a feature, not a bug. Spacing, interleaving, testing, and generation feel harder but produce stronger, more durable learning.',
       actionItem: 'Identify one way you currently make learning "easier" for yourself (e.g., studying in the same place, grouping similar problems). Deliberately add difficulty and observe the results.',
-    },
-    quiz: {
-      question: 'What makes a difficulty "desirable" for learning?',
-      options: [
-        'It should be as hard as possible to maximize learning',
-        'It should be easy enough to always succeed',
-        'It should be achievable with effort and trigger deeper processing',
-        'It should create frustration to build mental toughness',
-      ],
-      correct: 2,
-      explanation: 'A desirable difficulty is one that can be overcome with effort and that triggers deeper cognitive processing. It must be appropriately challenging - neither too easy nor impossibly hard.',
+      quiz: {
+        question: 'What makes a difficulty "desirable" for learning?',
+        options: [
+          'It should be as hard as possible to maximize learning',
+          'It should be easy enough to always succeed',
+          'It should be achievable with effort and trigger deeper processing',
+          'It should create frustration to build mental toughness',
+        ],
+        correct: 2,
+        explanation: 'A desirable difficulty is one that can be overcome with effort and that triggers deeper cognitive processing. It must be appropriately challenging - neither too easy nor impossibly hard.',
+      },
     },
   },
   {
@@ -617,17 +617,17 @@ The first night of sleep after learning is especially important. Miss it, and so
 Sleep is not optional for learners - it's a non-negotiable phase of the learning process. Cutting sleep to study more is like skipping practice to save time - it guarantees worse outcomes.`,
       keyTakeaway: 'Sleep is when memories are consolidated and made permanent. Sleep deprivation reduces learning by 40% - sleeping is not wasted study time.',
       actionItem: 'For the next week, prioritize 7-8 hours of sleep and review important material in the hour before bed. Notice the difference in retention.',
-    },
-    quiz: {
-      question: 'During which phase of sleep does memory consolidation primarily occur?',
-      options: [
-        'Only during REM sleep (dreaming)',
-        'Only during light sleep (Stage 1-2)',
-        'Primarily during slow-wave deep sleep (Stage 3-4), with different processing in REM',
-        'Consolidation does not occur during sleep',
-      ],
-      correct: 2,
-      explanation: 'Memory consolidation primarily occurs during slow-wave (deep) sleep, where the hippocampus replays and transfers memories to the neocortex. REM sleep also contributes, especially for procedural and emotional memories.',
+      quiz: {
+        question: 'During which phase of sleep does memory consolidation primarily occur?',
+        options: [
+          'Only during REM sleep (dreaming)',
+          'Only during light sleep (Stage 1-2)',
+          'Primarily during slow-wave deep sleep (Stage 3-4), with different processing in REM',
+          'Consolidation does not occur during sleep',
+        ],
+        correct: 2,
+        explanation: 'Memory consolidation primarily occurs during slow-wave (deep) sleep, where the hippocampus replays and transfers memories to the neocortex. REM sleep also contributes, especially for procedural and emotional memories.',
+      },
     },
   },
   {
@@ -703,17 +703,17 @@ Research shows that simply preparing to teach (even without actually teaching) i
 The Feynman technique works because it treats understanding as an active construction project rather than passive absorption. You haven't learned something until you can build it from scratch with simple materials.`,
       keyTakeaway: 'The Feynman Technique: explain concepts simply as if teaching a child. Where you struggle to simplify reveals what you don\'t truly understand.',
       actionItem: 'Choose one concept you think you understand well. Explain it in writing as if teaching a 12-year-old. Note where you stumble and return to learn those gaps.',
-    },
-    quiz: {
-      question: 'According to the Feynman Technique, if you cannot explain a concept simply, what does that indicate?',
-      options: [
-        'The concept is too advanced for simple explanation',
-        'You need more technical vocabulary',
-        'You do not truly understand the concept',
-        'Simple explanations are less accurate',
-      ],
-      correct: 2,
-      explanation: 'Feynman believed that inability to explain something simply reveals gaps in understanding. True comprehension allows you to express ideas in accessible terms.',
+      quiz: {
+        question: 'According to the Feynman Technique, if you cannot explain a concept simply, what does that indicate?',
+        options: [
+          'The concept is too advanced for simple explanation',
+          'You need more technical vocabulary',
+          'You do not truly understand the concept',
+          'Simple explanations are less accurate',
+        ],
+        correct: 2,
+        explanation: 'Feynman believed that inability to explain something simply reveals gaps in understanding. True comprehension allows you to express ideas in accessible terms.',
+      },
     },
   },
   {
@@ -798,17 +798,17 @@ When faced with complex material:
 5. Build higher-order chunks that combine lower-level ones`,
       keyTakeaway: 'Working memory holds only 4-5 items, but chunking - combining information into meaningful units - dramatically extends this capacity and forms the basis of expertise.',
       actionItem: 'Take something complex you are learning and consciously break it into chunks. Name each chunk and practice until they become automatic before combining them.',
-    },
-    quiz: {
-      question: 'How do chess masters remember board positions better than novices?',
-      options: [
-        'They have naturally better memory',
-        'They have organized pieces into meaningful chunks through expertise',
-        'They use memory palace techniques',
-        'They study more hours per day',
-      ],
-      correct: 1,
-      explanation: 'Chess masters see meaningful patterns (chunks) where novices see individual pieces. This chunking, developed through practice, allows them to hold more information in working memory.',
+      quiz: {
+        question: 'How do chess masters remember board positions better than novices?',
+        options: [
+          'They have naturally better memory',
+          'They have organized pieces into meaningful chunks through expertise',
+          'They use memory palace techniques',
+          'They study more hours per day',
+        ],
+        correct: 1,
+        explanation: 'Chess masters see meaningful patterns (chunks) where novices see individual pieces. This chunking, developed through practice, allows them to hold more information in working memory.',
+      },
     },
   },
   {
@@ -894,17 +894,17 @@ True learning is not remembering what you learned in the context where you learn
 This requires effort and intention - transfer doesn't happen automatically.`,
       keyTakeaway: 'Transfer - applying knowledge to new situations - is the true goal of learning but often fails. Enable it by learning principles, using varied examples, and actively seeking connections.',
       actionItem: 'Take a concept you learned in one domain and deliberately identify three situations in completely different areas where the same principle applies.',
-    },
-    quiz: {
-      question: 'What is the most effective way to enable far transfer of learning?',
-      options: [
-        'Practice the same type of problem repeatedly until mastery',
-        'Learn the underlying principle through multiple varied examples',
-        'Focus on memorizing specific procedures',
-        'Study in the same context where you will be tested',
-      ],
-      correct: 1,
-      explanation: 'Far transfer is enabled by learning underlying principles (not just procedures) through multiple varied examples. This helps the brain extract what is transferable from what is context-specific.',
+      quiz: {
+        question: 'What is the most effective way to enable far transfer of learning?',
+        options: [
+          'Practice the same type of problem repeatedly until mastery',
+          'Learn the underlying principle through multiple varied examples',
+          'Focus on memorizing specific procedures',
+          'Study in the same context where you will be tested',
+        ],
+        correct: 1,
+        explanation: 'Far transfer is enabled by learning underlying principles (not just procedures) through multiple varied examples. This helps the brain extract what is transferable from what is context-specific.',
+      },
     },
   },
   {
@@ -1007,17 +1007,17 @@ Like any skill, metacognition improves with practice:
 Metacognition is the skill that improves all other skills. It is learning how to learn - the master key that unlocks your full potential.`,
       keyTakeaway: 'Metacognition - thinking about thinking - is the master skill of learning. It enables you to choose effective strategies, monitor progress, and accurately assess what you know.',
       actionItem: 'Before your next learning session, write down your goal, your strategy, and your prediction for how well you will do. After, evaluate how accurate you were and what you would change.',
-    },
-    quiz: {
-      question: 'What is "calibration" in the context of metacognition?',
-      options: [
-        'Setting appropriate learning goals',
-        'The match between your confidence and your actual knowledge',
-        'Choosing the right learning strategy',
-        'Scheduling study sessions appropriately',
-      ],
-      correct: 1,
-      explanation: 'Calibration is how well your confidence matches your actual knowledge. Most people are overconfident. Good calibration - accurate self-assessment - is a key metacognitive skill.',
+      quiz: {
+        question: 'What is "calibration" in the context of metacognition?',
+        options: [
+          'Setting appropriate learning goals',
+          'The match between your confidence and your actual knowledge',
+          'Choosing the right learning strategy',
+          'Scheduling study sessions appropriately',
+        ],
+        correct: 1,
+        explanation: 'Calibration is how well your confidence matches your actual knowledge. Most people are overconfident. Good calibration - accurate self-assessment - is a key metacognitive skill.',
+      },
     },
   },
 ];

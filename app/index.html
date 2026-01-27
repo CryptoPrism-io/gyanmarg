@@ -2,10 +2,72 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0F0D0B" />
-    <title>Gyanmarg - The Path of Knowledge</title>
+
+    <!-- PWA Install Prompt Capture - MUST be first script to catch the event -->
+    <script>
+      window.deferredInstallPrompt = null;
+      window.addEventListener('beforeinstallprompt', function(e) {
+        e.preventDefault();
+        window.deferredInstallPrompt = e;
+        console.log('[PWA] Install prompt captured and stored!');
+        // Dispatch custom event so React components can react
+        window.dispatchEvent(new CustomEvent('pwainstallready'));
+      });
+      window.addEventListener('appinstalled', function() {
+        console.log('[PWA] App was installed!');
+        window.deferredInstallPrompt = null;
+        window.dispatchEvent(new CustomEvent('pwainstalled'));
+      });
+      // Helper function to trigger install
+      window.triggerPWAInstall = async function() {
+        console.log('[PWA] triggerPWAInstall called, prompt:', !!window.deferredInstallPrompt);
+        if (!window.deferredInstallPrompt) {
+          console.log('[PWA] No install prompt available');
+          return { success: false, reason: 'no-prompt' };
+        }
+        try {
+          window.deferredInstallPrompt.prompt();
+          const result = await window.deferredInstallPrompt.userChoice;
+          console.log('[PWA] User choice:', result.outcome);
+          if (result.outcome === 'accepted') {
+            window.deferredInstallPrompt = null;
+          }
+          return { success: result.outcome === 'accepted', reason: result.outcome };
+        } catch (err) {
+          console.error('[PWA] Install error:', err);
+          return { success: false, reason: 'error' };
+        }
+      };
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#F59E0B" />
+    <meta name="background-color" content="#0A0A0B" />
+    <meta name="description" content="Transform ancient wisdom into modern mastery through gamified learning. 45+ ebooks transformed into interactive experiences." />
+
+    <!-- iOS PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Gyanmarg" />
+
+    <!-- Microsoft Tile -->
+    <meta name="msapplication-TileColor" content="#0A0A0B" />
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
+
+    <title>Gyanmarg - Path of Knowledge</title>
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-167x167.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- Preconnect for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +75,12 @@
 
     <!-- Premium fonts: Outfit for display, Inter for body -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Splash screens for iOS -->
+    <link rel="apple-touch-startup-image" href="/splash/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" />
+    <link rel="apple-touch-startup-image" href="/splash/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
+    <link rel="apple-touch-startup-image" href="/splash/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" />
+    <link rel="apple-touch-startup-image" href="/splash/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
   </head>
   <body>
     <div id="root"></div>

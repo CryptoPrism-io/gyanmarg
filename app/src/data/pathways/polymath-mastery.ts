@@ -123,7 +123,7 @@ This module will teach you:
       quiz: {
         question: 'What is the key advantage polymaths have in an age of AI?',
         options: ['They can code faster than AI', 'They innovate at the intersections of fields', 'They have more certifications', 'They work longer hours'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Polymaths excel at connecting ideas across domains, creating novel combinations and innovations that emerge from intersections - something AI struggles to replicate.'
       }
     }
@@ -257,7 +257,7 @@ Example: Practice "clear communication" through writing, speaking, teaching, vis
       quiz: {
         question: 'What is "transfer learning" in the context of polymathy?',
         options: ['Transferring credits between universities', 'Applying knowledge from one domain to another', 'Moving physically between study locations', 'Downloading knowledge directly to the brain'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Transfer learning is the ability to apply knowledge and skills learned in one domain to a different domain - the core mechanism that gives polymaths their learning advantage.'
       }
     }
@@ -398,7 +398,7 @@ Leonardo practiced this constantly:
       quiz: {
         question: 'What does "sfumato" mean as a learning mindset, beyond the painting technique?',
         options: ['Work as fast as possible', 'Always find definitive answers', 'Embrace ambiguity and mystery', 'Focus on one thing only'],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'Sfumato as a mindset means embracing mystery and ambiguity - being comfortable not having immediate answers and allowing understanding to emerge gradually.'
       }
     }
@@ -544,7 +544,7 @@ Adjust time allocation based on:
       quiz: {
         question: 'Why is being top 20% in 4 domains potentially more valuable than being top 1% in 1 domain?',
         options: ['It\'s easier to achieve', 'It creates unique positioning (top 0.16% in the combination)', 'It requires less total time', 'It\'s more prestigious'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Being top 20% in 4 domains creates a unique combination that puts you in the top 0.16% of people with that specific skill stack - positioning that\'s nearly impossible to replicate.'
       }
     }
@@ -692,7 +692,7 @@ Antidote:
       quiz: {
         question: 'What does "the map is not the territory" mean as a mental model?',
         options: ['GPS is unreliable', 'Mental models are simplifications of reality, not reality itself', 'You should always use physical maps', 'Reality is an illusion'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'This model reminds us that our mental frameworks and models are simplifications of reality - useful but incomplete - and we should not mistake our understanding for reality itself.'
       }
     }
@@ -823,7 +823,7 @@ Keep a dedicated notebook:
       quiz: {
         question: 'What is the primary benefit of the Feynman Technique according to this lesson?',
         options: ['It makes you sound smarter', 'It exposes knowledge gaps by forcing you to explain simply', 'It\'s faster than reading', 'It requires no effort'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The Feynman Technique\'s primary benefit is exposing the illusion of understanding - you discover what you actually know versus what you only think you know.'
       }
     }
@@ -976,7 +976,7 @@ Regular revisitation:
       quiz: {
         question: 'According to research, what\'s the realistic maximum reading speed with good comprehension?',
         options: ['200-300 words per minute', '400-500 words per minute', '1000+ words per minute', '2000+ words per minute'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Research shows that while average reading is 200-300 wpm, the realistic maximum with comprehension is 400-500 wpm - beyond that, comprehension drops significantly.'
       }
     }
@@ -1116,7 +1116,7 @@ When you see a familiar pattern forming:
       quiz: {
         question: 'What is the S-curve pattern, and where does it appear?',
         options: ['A constant linear growth, only in business', 'Slow start, rapid growth, then plateau - appears in technology adoption, learning, business, biology', 'A continuous decline pattern in markets', 'A pattern only found in mathematics'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The S-curve describes growth that starts slow, accelerates rapidly, then plateaus - a universal pattern appearing in technology adoption, learning curves, business growth, and biological populations.'
       }
     }
@@ -1260,7 +1260,7 @@ Random browsing reveals:
       quiz: {
         question: 'What is the key principle that makes Zettelkasten different from traditional note-taking?',
         options: ['Taking more notes', 'Using folders to organize', 'Atomic notes with rich bidirectional links', 'Color-coding notes'],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'The Zettelkasten\'s power comes from atomic (one idea) notes heavily linked to each other, creating a network where unexpected connections emerge rather than hierarchical folder organization.'
       }
     }
@@ -1423,7 +1423,7 @@ Skill growth plateaus when:
       quiz: {
         question: 'According to Josh Kaufman\'s research, how many hours of deliberate practice are needed for functional competence in a new skill?',
         options: ['100 hours', '1,000 hours', '20 hours', '10,000 hours'],
-        correctAnswer: 2,
+        correct: 2,
         explanation: '20 hours of deliberate practice can achieve functional competence - enough to be useful - far less than the popular "10,000 hours to mastery" figure often cited.'
       }
     }
@@ -1582,7 +1582,7 @@ Constantly ask:
       quiz: {
         question: 'Which type of analogy involves similar underlying principles (not just appearance or function)?',
         options: ['Surface analogy', 'Structural analogy', 'Functional analogy', 'Deep analogy'],
-        correctAnswer: 3,
+        correct: 3,
         explanation: 'Deep analogies identify similar underlying principles - like how both evolution and machine learning share principles of variation, selection, and inheritance - the most powerful but hardest to see.'
       }
     }
@@ -1724,7 +1724,7 @@ To: "What are the side effects of achieving this goal?"`,
       quiz: {
         question: 'What is emergence in systems thinking?',
         options: ['When new team members join', 'When wholes have properties their parts don\'t have', 'When systems break down', 'When feedback loops stop'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Emergence is when wholes exhibit properties that don\'t exist in their parts - like wetness emerging from hydrogen and oxygen, or consciousness from neurons.'
       }
     }
@@ -1879,7 +1879,7 @@ Each month:
       quiz: {
         question: 'What is the "Medici Effect" in the context of innovation?',
         options: ['Making money through patronage', 'Innovation happening at the intersection of different fields', 'Italian Renaissance art techniques', 'Banking and finance methods'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The Medici Effect refers to the explosion of innovation that happens when ideas from different fields intersect - named after how the Medici family brought together diverse thinkers in Renaissance Florence.'
       }
     }
@@ -2026,7 +2026,7 @@ The ultimate brand: "They help me think differently"
       quiz: {
         question: 'What is "niching diagonally" for polymaths?',
         options: ['Focusing on one very specific topic', 'Staying broad with no focus', 'Finding your unique position at the intersection of multiple domains', 'Copying what competitors do'],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'Niching diagonally means finding your unique position at the intersection of multiple domains - not too broad (generic) and not too narrow (limited), but uniquely positioned where your domains overlap.'
       }
     }
@@ -2183,7 +2183,7 @@ Expert-generalists excel when:
       quiz: {
         question: 'In the Expert-Generalist model, what distinguishes "core competencies" from "peripheral competencies"?',
         options: ['Core is what you enjoy, peripheral is what you must do', 'Core is top 5% expertise (5,000+ hours), peripheral is functional top 20% (500-2,000 hours)', 'Core is technical, peripheral is soft skills', 'There is no real distinction'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Core competencies are areas of deep expertise (top 5%, 5,000-10,000 hours) where you can create original contributions, while peripheral competencies are areas of functional understanding (top 20%, 500-2,000 hours) where you can apply insights.'
       }
     }
@@ -2344,7 +2344,7 @@ Take extended break to:
       quiz: {
         question: 'What is the primary advantage of a "Creator-Consultant" portfolio structure?',
         options: ['It requires the least work', 'Content attracts consulting clients; client work generates content material', 'It has the highest income potential', 'It\'s the easiest to start'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The Creator-Consultant model is synergistic: creating content (blogs, videos, courses) attracts consulting clients, while consulting work provides real-world material and credibility for content creation.'
       }
     }
@@ -2511,7 +2511,7 @@ Major life/career pivots deserve more time.`,
       quiz: {
         question: 'According to the Reversibility Test, how should you approach most learning decisions?',
         options: ['Always deliberate for months', 'Avoid any new learning', 'Bias toward action since most learning decisions are reversible', 'Only learn things you\'re certain about'],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'Most learning decisions (trying a new skill, starting a blog, taking a course) are reversible - the cost to change course is low. Therefore, bias toward experimentation and trying things rather than endless deliberation.'
       }
     }
@@ -2667,7 +2667,7 @@ Help specialists understand each other:
       quiz: {
         question: 'What is the "Protégé Effect" in teaching?',
         options: ['The tendency to favor certain students', 'Learning more deeply when you teach others', 'The bias toward simple explanations', 'The challenge of teaching experts'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The Protégé Effect refers to the phenomenon where teaching others leads to deeper processing, better organization, improved retention, and stronger motivation to master the material.'
       }
     }
@@ -2843,7 +2843,7 @@ Each phase has different energy needs and motivation sources.`,
       quiz: {
         question: 'Why is intrinsic motivation more durable than extrinsic motivation for lifelong learning?',
         options: ['It\'s easier to achieve', 'It doesn\'t require effort', 'It builds on itself and isn\'t subject to hedonic adaptation', 'It\'s more prestigious'],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'Intrinsic motivation (curiosity, mastery, autonomy, purpose) is more durable because it builds on itself, isn\'t subject to hedonic adaptation (diminishing satisfaction from external rewards), and connects to personal meaning.'
       }
     }
@@ -2986,7 +2986,7 @@ You now have the tools. The path is yours to walk.
       quiz: {
         question: 'What is the primary purpose of a Polymath Manifesto?',
         options: ['To impress others with your knowledge', 'To create a public declaration of principles guiding your learning journey', 'To track all the things you\'ve learned', 'To apply for polymath certification'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'A Polymath Manifesto serves as a personal declaration of intentions and principles - a north star that guides decisions and reminds you of your why, what, and how on the polymathic journey.'
       }
     }

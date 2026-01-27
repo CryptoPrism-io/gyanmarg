@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ChevronDown, ChevronUp, Lock, CheckCircle, Play, BookOpen, HelpCircle, Lightbulb, Star, Sparkles } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, Lock, CheckCircle, Play, BookOpen, HelpCircle, Lightbulb, Star, Sparkles, Dumbbell, Target } from 'lucide-react';
 import { getModuleById } from '@/data/modules';
 import { useProgressStore } from '@/store/progressStore';
 import { GlassCard } from '@/components/molecules';
-import { Button, Badge, ProgressBar } from '@/components/atoms';
+import { Button, Badge } from '@/components/atoms';
 import type { PathwayLesson, PathwayLevel } from '@/types';
 
-const lessonTypeIcons = {
+const lessonTypeIcons: Record<string, typeof BookOpen> = {
   intro: BookOpen,
   concept: Lightbulb,
   reflection: HelpCircle,
   quiz: HelpCircle,
+  exercise: Dumbbell,
+  challenge: Target,
 };
 
 const colorMap: Record<string, { gradient: string; bg: string; border: string; text: string }> = {

@@ -20,7 +20,7 @@ import { useHabitStore } from '@/store/habitStore';
 import { ModuleLayout, Section } from '@/components/templates';
 import { Card, GlassCard, CardHeader } from '@/components/molecules';
 import { TodaysFocus, LocalLeaderboard } from '@/components/organisms';
-import { ProgressBar, Badge, XPBadge, StreakBadge } from '@/components/atoms';
+import { ProgressBar, Badge, XPBadge } from '@/components/atoms';
 import { bookContent } from '@/data/books';
 
 // Stagger animation for cards

@@ -88,7 +88,7 @@ Dalio views organizations as machines:
       quiz: {
         question: 'What does "believability-weighted decision making" mean in Dalio\'s framework?',
         options: ['Trusting only yourself', 'Weighting opinions by track record and expertise', 'Following the majority view', 'Ignoring expert opinions'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Believability-weighted decisions give more weight to opinions from people with proven track records in the specific area being discussed.'
       }
     }
@@ -166,7 +166,7 @@ Buffett looks for durable competitive advantages:
       quiz: {
         question: 'What is an "economic moat" in Buffett\'s terminology?',
         options: ['Physical security around factories', 'A sustainable competitive advantage that protects profits', 'Government subsidies', 'High marketing budgets'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'An economic moat is a durable competitive advantage that protects a company\'s profits from competitors, like brand power, network effects, or cost advantages.'
       }
     }
@@ -256,7 +256,7 @@ Use his mood swings; don't let them use you.
       quiz: {
         question: 'What is "inversion" as a mental model?',
         options: ['Turning businesses upside down', 'Instead of asking how to succeed, ask how to fail and avoid those things', 'Reversing stock positions', 'Opposing market trends'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Inversion means approaching problems backwards - instead of asking "how do I succeed?", ask "how would I fail?" and then avoid those failure modes.'
       }
     }
@@ -344,7 +344,7 @@ If not, you don't understand it well enough.
       quiz: {
         question: 'What does a PEG ratio below 1 potentially indicate?',
         options: ['The company is overvalued', 'The company is potentially undervalued relative to its growth', 'The company has no growth', 'The company will go bankrupt'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'PEG (P/E divided by Growth Rate) below 1 suggests the stock may be undervalued relative to its growth rate - paying less than 1x the growth rate.'
       }
     }
@@ -437,7 +437,7 @@ Risk is not volatility. Risk is the probability of permanent capital loss.
       quiz: {
         question: 'According to Howard Marks, what is the definition of risk?',
         options: ['Volatility', 'Probability of permanent capital loss', 'Daily price movements', 'Leverage ratio'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Marks defines risk as the probability of permanent capital loss, not volatility. A stock can be volatile but not risky if fundamental value is secure.'
       }
     }
@@ -536,7 +536,7 @@ Use low-cost index funds/ETFs:
       quiz: {
         question: 'Why does the All-Weather portfolio have a 55% bond allocation?',
         options: ['Bonds always outperform stocks', 'To balance risk contribution (stocks are 3x more volatile)', 'It\'s a mistake', 'Bonds pay higher dividends'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Stocks are roughly 3x more volatile than bonds, so by dollar weighting, a 60/40 portfolio is actually 90/10 by risk. The All-Weather uses higher bond allocation to balance risk contributions.'
       }
     }
@@ -629,7 +629,7 @@ Take business risks under your own name:
       quiz: {
         question: 'According to Naval, what is the newest and most powerful form of leverage?',
         options: ['Labor (people working for you)', 'Capital (money working for you)', 'Products with no marginal cost (code and media)', 'Real estate'],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'Code and media can be replicated infinitely at zero marginal cost, require no permission to create, and can earn while you sleep - making them the most powerful modern leverage.'
       }
     }
@@ -728,7 +728,7 @@ For non-perishable things, life expectancy increases with age:
       quiz: {
         question: 'What is the "barbell strategy" in Taleb\'s framework?',
         options: ['Balanced moderate-risk investments', 'Combining extremely safe assets with highly speculative bets, nothing in the middle', 'Only investing in blue-chip stocks', 'Avoiding all risk'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The barbell strategy combines ultra-safe assets (85-90%) with highly speculative bets (10-15%), avoiding the deceptively "moderate" middle ground that often carries hidden risks.'
       }
     }
@@ -828,7 +828,7 @@ Identifying what CANNOT continue indefinitely.`,
       quiz: {
         question: 'What is "reflexivity" in Soros\'s theory?',
         options: ['Markets always reflect true value', 'Participants\' perceptions and actions change the fundamentals, creating feedback loops', 'Markets cannot be predicted', 'All market participants think alike'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Reflexivity describes how market participants aren\'t passive observers - their biased perceptions lead to actions that actually change the fundamentals, creating self-reinforcing feedback loops.'
       }
     }
@@ -938,7 +938,7 @@ These principles matter more than specific tactics.`,
       quiz: {
         question: 'What do all the billionaire investors studied in this module have in common?',
         options: ['They all use the same strategy', 'They all got lucky', 'Long-term orientation, systematic thinking, emotional discipline, and continuous learning', 'They all invest only in stocks'],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'Despite different specific strategies, billionaire investors share: long-term thinking, systematic approaches, emotional discipline, continuous learning, independent thinking, and comfort with uncertainty.'
       }
     }

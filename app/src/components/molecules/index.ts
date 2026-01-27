@@ -17,3 +17,6 @@ export { SwipeableLesson } from './SwipeableLesson';
 
 // Habit Tracking
 export { HabitItem, HabitCategoryLabel } from './HabitItem';
+
+// PWA
+export { PWAInstallPrompt } from './PWAInstallPrompt';

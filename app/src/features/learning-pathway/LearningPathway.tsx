@@ -4,7 +4,6 @@ import {
   Lock,
   ChevronRight,
   ChevronDown,
-  Star,
   Trophy,
   ArrowLeft,
   BookOpen,
@@ -14,7 +13,7 @@ import { useProgressStore } from '@/store/progressStore';
 import { ModuleLayout, AnimatedBackground } from '@/components/templates';
 import { GlassCard, SwipeableLesson } from '@/components/molecules';
 import { LessonCard } from '@/components/molecules/LessonCard';
-import { ProgressBar, Badge, XPBadge } from '@/components/atoms';
+import { ProgressBar, XPBadge } from '@/components/atoms';
 import type { PathwayLevel, PathwayLesson } from '@/types';
 
 // Import all modules with their pathways

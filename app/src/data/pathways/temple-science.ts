@@ -63,7 +63,7 @@ These texts contain over 32 prescriptive criteria that must be satisfied before 
       quiz: {
         question: 'According to temple symbolism, which part of the temple represents the heart?',
         options: ['The entrance gate (Gopuram)', 'The inner sanctum (Garbhagriha)', 'The outer hall (Mandapa)', 'The tower (Shikhara)'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The Garbhagriha (womb chamber/sanctum) is considered the heart (Hridaya) of the temple, where the main deity resides and from which spiritual energy emanates.'
       }
     }
@@ -145,7 +145,7 @@ Temples take Vastu to extreme precision:
       quiz: {
         question: 'According to Vastu Shastra, which corner is associated with the fire element and is ideal for the kitchen?',
         options: ['Northeast (Ishana)', 'Southeast (Agni)', 'Southwest (Nirrti)', 'Northwest (Vayu)'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The Southeast corner is governed by Agni (fire) and is the ideal location for kitchens, as it aligns the cooking fire with its corresponding elemental direction.'
       }
     }
@@ -258,7 +258,7 @@ Hindu temples demonstrate fractal geometry - self-similar patterns at different 
       quiz: {
         question: 'What mathematical constant is represented by the ratio approximately equal to 1.618?',
         options: ['Pi (π)', 'Euler\'s number (e)', 'The Golden Ratio (Phi/φ)', 'Square root of 2'],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'The Golden Ratio (Phi/φ ≈ 1.618) is found throughout nature and temple architecture. It creates proportions perceived as harmonious and beautiful.'
       }
     }
@@ -372,7 +372,7 @@ Movement through a temple follows deliberate sequence:
       quiz: {
         question: 'What is the primary purpose of the Pradakshina Patha in temple architecture?',
         options: ['To display sculptures', 'For clockwise circumambulation around the sanctum', 'To store ritual items', 'For priests to rest'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The Pradakshina Patha is designed for devotees to walk clockwise around the sanctum, creating a meditative vortex and mimicking planetary orbits around the cosmic center.'
       }
     }
@@ -475,7 +475,7 @@ Modern research suggests:
       quiz: {
         question: 'What is the ceremony called when water is poured over the temple tower during major consecration?',
         options: ['Prana Pratishtha', 'Kumbhabhishekam', 'Netra Unmilana', 'Shilanyas'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Kumbhabhishekam (pot ceremony) is the grand consecration where sacred water from 108 pots is poured over the shikhara to activate the temple\'s energy channels.'
       }
     }
@@ -583,7 +583,7 @@ Cymatics shows sound creates geometric patterns:
       quiz: {
         question: 'What makes the musical pillars of Vijaya Vittala Temple in Hampi remarkable?',
         options: ['They are made of gold', 'Each produces a different musical note when struck', 'They are hollow inside', 'They were built in the 20th century'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The 56 granite pillars at Vijaya Vittala Temple each produce different musical notes when struck, creating a full scale - a feat of acoustic engineering from single-stone carvings.'
       }
     }
@@ -686,7 +686,7 @@ Key practices for absorption:
       quiz: {
         question: 'What property of granite makes it significant for temple construction\'s energy aspects?',
         options: ['Its red color', 'Its piezoelectric properties from quartz content', 'Its light weight', 'Its flexibility'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Granite contains quartz crystals which exhibit piezoelectric properties - generating electrical charge under pressure - potentially contributing to the temple\'s energy dynamics.'
       }
     }
@@ -807,7 +807,7 @@ Each chakra has corresponding yantra:
       quiz: {
         question: 'How many interlocking triangles compose the Sri Yantra?',
         options: ['7 triangles', '9 triangles', '12 triangles', '16 triangles'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The Sri Yantra consists of 9 interlocking triangles - 4 pointing upward (representing Shiva/masculine) and 5 pointing downward (representing Shakti/feminine).'
       }
     }
@@ -915,7 +915,7 @@ Despite differences, both styles share:
       quiz: {
         question: 'What is the most distinctive external feature of Dravida (South Indian) temple architecture?',
         options: ['Curvilinear shikhara', 'Massive gopurams (gateway towers)', 'Beehive-shaped domes', 'Amalaka disc finials'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Dravida temples are known for their massive gopurams - elaborately carved gateway towers that are often taller than the main shrine and covered with colorful sculptures.'
       }
     }
@@ -1029,7 +1029,7 @@ When temples are painted (especially South Indian):
       quiz: {
         question: 'What does the Abhaya Mudra (hand raised, palm facing outward) symbolize?',
         options: ['Boon-giving and grace', 'Protection and "fear not"', 'Teaching and instruction', 'Meditation and absorption'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The Abhaya Mudra with raised hand and outward-facing palm is a universal gesture of protection, conveying the message "fear not" - the divine protection of the deity.'
       }
     }
@@ -1150,7 +1150,7 @@ Beneath Nayak-period paintings, original Chola murals:
       quiz: {
         question: 'What is the approximate weight of the single granite capstone atop the Brihadeeswarar Temple\'s 216-foot tower?',
         options: ['25 tons', '40 tons', '80 tons', '150 tons'],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'The capstone weighs approximately 80 tons - a single granite block placed atop a 216-foot tower in 1010 CE using methods that remain debated by engineers today.'
       }
     }
@@ -1280,7 +1280,7 @@ Equal shrines for Shiva and Shakti:
       quiz: {
         question: 'What makes Meenakshi Temple unique among major Hindu temples in terms of its deities?',
         options: ['It has the largest idol in India', 'It has two equally important main deities (Meenakshi and Sundareswarar)', 'It is the oldest temple in India', 'It is the only temple with musical pillars'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Meenakshi Temple is unique in having two equally important main deities - Meenakshi (Parvati) and Sundareswarar (Shiva) - with their nightly ritual "marriage" as a central feature.'
       }
     }
@@ -1409,7 +1409,7 @@ Temples served as:
       quiz: {
         question: 'What astronomical phenomenon do the 12 pairs of wheels at Konark Sun Temple represent?',
         options: ['12 zodiac signs', '12 months of the year', '12 hours of daylight', '12 main deities'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The 12 pairs of wheels at Konark Sun Temple represent the 12 months of the year, with each wheel functioning as a sundial with 8 spokes representing the 8 prahars (3-hour periods).'
       }
     }
@@ -1553,7 +1553,7 @@ Research shows temple-like elements aid healing:
       quiz: {
         question: 'What is the Brahmasthana and how should it be treated in both temples and homes?',
         options: ['It\'s the entrance and should be elaborate', 'It\'s the center and should remain open and uncluttered', 'It\'s the corner and should contain storage', 'It\'s the roof and should be heavy'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The Brahmasthana is the sacred center of any space (temple or home) and should remain open and uncluttered to allow energy to circulate freely and create psychological spaciousness.'
       }
     }
@@ -1671,7 +1671,7 @@ As a student of temple science:
       quiz: {
         question: 'According to temple science, what is the ultimate purpose of studying external temple architecture?',
         options: ['To become an architect', 'To recognize the temple within yourself', 'To judge which temples are best', 'To collect historical knowledge'],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The ultimate purpose of temple science is to help us recognize that the physical temple mirrors our internal reality - our body and consciousness are the true temple, and external sacred spaces help us recognize this.'
       }
     }

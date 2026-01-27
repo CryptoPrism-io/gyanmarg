@@ -13,7 +13,6 @@ import {
   Network,
   Lock,
   ChevronRight,
-  Trophy,
   BookOpen,
   Sparkles,
   Heart,

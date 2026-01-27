@@ -1181,7 +1181,7 @@ Knowing the coalitions before decisions are made gives strategic advantage.`,
   {
     id: 'dp-body-015',
     title: 'Practical Body Language Assessment',
-    type: 'practice',
+    type: 'exercise',
     duration: 20,
     xpReward: 200,
     content: {

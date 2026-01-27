@@ -16,10 +16,14 @@ import { useHabitStore } from '@/store/habitStore';
 // Celebration Components
 import { AchievementUnlock, LevelUpModal } from '@/components/organisms';
 
+// PWA Install Prompt
+import { PWAInstallPrompt } from '@/components/molecules';
+
 // Templates
 import { PageLayout } from '@/components/templates';
 
 // Features
+import { LandingPage } from '@/features/landing/LandingPage';
 import { Onboarding } from '@/features/onboarding/Onboarding';
 import { Dashboard } from '@/features/dashboard/Dashboard';
 import { LearningPathway } from '@/features/learning-pathway/LearningPathway';
@@ -40,6 +44,7 @@ function CelebrationModals() {
   const [showAchievement, setShowAchievement] = useState(false);
   const [showLevelUp, setShowLevelUp] = useState(false);
   const [currentAchievement, setCurrentAchievement] = useState<{
+    id: string;
     name: string;
     xpReward: number;
   } | null>(null);
@@ -49,6 +54,7 @@ function CelebrationModals() {
   useEffect(() => {
     if (pendingAchievement) {
       setCurrentAchievement({
+        id: pendingAchievement.id,
         name: pendingAchievement.name,
         xpReward: pendingAchievement.xpReward,
       });
@@ -79,8 +85,7 @@ function CelebrationModals() {
       <AchievementUnlock
         isOpen={showAchievement}
         onClose={handleAchievementClose}
-        achievementName={currentAchievement?.name || ''}
-        xpReward={currentAchievement?.xpReward || 0}
+        achievement={currentAchievement}
       />
       <LevelUpModal
         isOpen={showLevelUp}
@@ -254,11 +259,13 @@ function AppRoutes() {
         }
       />
 
-      {/* Redirects */}
+      {/* Landing Page */}
       <Route
         path="/"
         element={
-          <Navigate to={isOnboarded ? '/dashboard' : '/onboarding'} replace />
+          <PageTransition>
+            <LandingPage />
+          </PageTransition>
         }
       />
 
@@ -266,7 +273,7 @@ function AppRoutes() {
       <Route
         path="*"
         element={
-          <Navigate to={isOnboarded ? '/dashboard' : '/onboarding'} replace />
+          <Navigate to="/" replace />
         }
       />
     </Routes>
@@ -279,6 +286,7 @@ function App() {
     <BrowserRouter>
       <AppRoutes />
       <CelebrationModals />
+      <PWAInstallPrompt />
     </BrowserRouter>
   );
 }

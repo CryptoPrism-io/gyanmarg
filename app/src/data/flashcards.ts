@@ -1689,7 +1689,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['system1', 'kahneman', 'cognition']
   },
   {
@@ -1699,7 +1699,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['system2', 'kahneman', 'cognition']
   },
   {
@@ -1709,7 +1709,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['cognitive-ease', 'system1', 'judgment']
   },
   {
@@ -1719,7 +1719,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['cognitive-strain', 'system2', 'analysis']
   },
   {
@@ -1729,7 +1729,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['wysiati', 'system1', 'overconfidence']
   },
   {
@@ -1739,7 +1739,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['system2', 'depletion', 'bias']
   },
   {
@@ -1749,7 +1749,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['ego-depletion', 'willpower', 'decision-fatigue']
   },
   {
@@ -1759,7 +1759,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['system1', 'intuition', 'reasoning']
   },
   {
@@ -1769,7 +1769,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['association', 'priming', 'system1']
   },
   {
@@ -1779,7 +1779,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['priming', 'unconscious', 'behavior']
   },
   {
@@ -1789,7 +1789,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['halo-effect', 'first-impression', 'bias']
   },
   {
@@ -1799,7 +1799,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['substitution', 'system1', 'heuristic']
   },
   {
@@ -1809,7 +1809,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['mood', 'creativity', 'analysis']
   },
   {
@@ -1819,7 +1819,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['affect-heuristic', 'emotion', 'judgment']
   },
   {
@@ -1829,7 +1829,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['statistics', 'system1', 'system2']
   },
   {
@@ -1839,7 +1839,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['focusing-illusion', 'attention', 'happiness']
   },
   {
@@ -1849,7 +1849,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['memory', 'peak-end', 'experience']
   },
   {
@@ -1859,7 +1859,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['duration', 'memory', 'experience']
   },
   {
@@ -1869,7 +1869,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['self', 'memory', 'experience']
   },
   {
@@ -1879,7 +1879,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['confidence', 'coherence', 'wysiati']
   },
   {
@@ -1889,7 +1889,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['activation', 'system2', 'attention']
   },
   {
@@ -1899,7 +1899,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['deliberate', 'practice', 'decision-making']
   },
   {
@@ -1909,7 +1909,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['expertise', 'algorithms', 'prediction']
   },
   {
@@ -1919,7 +1919,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['expertise', 'intuition', 'validity']
   },
   {
@@ -1929,7 +1929,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'system-thinking',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['system1', 'leverage', 'design']
   },
 
@@ -1941,7 +1941,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['anchoring', 'negotiation', 'judgment']
   },
   {
@@ -1951,7 +1951,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['anchoring', 'defense', 'negotiation']
   },
   {
@@ -1961,7 +1961,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['confirmation', 'belief', 'evidence']
   },
   {
@@ -1971,7 +1971,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['confirmation', 'defense', 'critical-thinking']
   },
   {
@@ -1981,7 +1981,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['availability', 'probability', 'memory']
   },
   {
@@ -1991,7 +1991,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['loss-aversion', 'risk', 'decision']
   },
   {
@@ -2001,7 +2001,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['endowment', 'ownership', 'value']
   },
   {
@@ -2011,7 +2011,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['sunk-cost', 'investment', 'decision']
   },
   {
@@ -2021,7 +2021,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['status-quo', 'default', 'change']
   },
   {
@@ -2031,7 +2031,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['dunning-kruger', 'confidence', 'competence']
   },
   {
@@ -2041,7 +2041,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['hindsight', 'memory', 'prediction']
   },
   {
@@ -2051,7 +2051,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['planning', 'optimism', 'estimation']
   },
   {
@@ -2061,7 +2061,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['base-rate', 'probability', 'statistics']
   },
   {
@@ -2071,7 +2071,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['representativeness', 'stereotype', 'probability']
   },
   {
@@ -2081,7 +2081,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['conjunction', 'probability', 'logic']
   },
   {
@@ -2091,7 +2091,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['overconfidence', 'calibration', 'prediction']
   },
   {
@@ -2101,7 +2101,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['attribution', 'judgment', 'personality']
   },
   {
@@ -2111,7 +2111,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['self-serving', 'attribution', 'ego']
   },
   {
@@ -2121,7 +2121,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['optimism', 'risk', 'prediction']
   },
   {
@@ -2131,7 +2131,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['negativity', 'attention', 'evolution']
   },
   {
@@ -2141,7 +2141,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['bandwagon', 'social-proof', 'conformity']
   },
   {
@@ -2151,7 +2151,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['groupthink', 'conformity', 'decision']
   },
   {
@@ -2161,7 +2161,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['authority', 'obedience', 'milgram']
   },
   {
@@ -2171,7 +2171,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['in-group', 'tribalism', 'bias']
   },
   {
@@ -2181,7 +2181,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['exposure', 'familiarity', 'preference']
   },
   {
@@ -2191,7 +2191,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['framing', 'presentation', 'manipulation']
   },
   {
@@ -2201,7 +2201,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['spotlight', 'self-consciousness', 'perception']
   },
   {
@@ -2211,7 +2211,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['knowledge', 'communication', 'expertise']
   },
   {
@@ -2221,7 +2221,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['control', 'randomness', 'gambling']
   },
   {
@@ -2231,7 +2231,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['gambler', 'probability', 'randomness']
   },
   {
@@ -2241,7 +2241,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['survivorship', 'selection', 'success']
   },
   {
@@ -2251,7 +2251,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['narrative', 'story', 'randomness']
   },
   {
@@ -2261,7 +2261,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['outcome', 'decision', 'process']
   },
   {
@@ -2271,7 +2271,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['hot-hand', 'streak', 'randomness']
   },
   {
@@ -2281,7 +2281,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['peak-end', 'memory', 'experience']
   },
   {
@@ -2291,7 +2291,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['recency', 'memory', 'judgment']
   },
   {
@@ -2301,7 +2301,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['primacy', 'first-impression', 'order']
   },
   {
@@ -2311,7 +2311,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['choice', 'paradox', 'decision']
   },
   {
@@ -2321,7 +2321,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['decoy', 'pricing', 'comparison']
   },
   {
@@ -2331,7 +2331,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['ikea', 'effort', 'value']
   },
   {
@@ -2341,7 +2341,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['zero-risk', 'emotion', 'decision']
   },
   {
@@ -2351,7 +2351,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['distinction', 'comparison', 'evaluation']
   },
   {
@@ -2361,7 +2361,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['action', 'inaction', 'decision']
   },
   {
@@ -2371,7 +2371,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['omission', 'action', 'responsibility']
   },
   {
@@ -2381,7 +2381,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['normalcy', 'disaster', 'preparation']
   },
   {
@@ -2391,7 +2391,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['backfire', 'persuasion', 'belief']
   },
   {
@@ -2401,7 +2401,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['franklin', 'favor', 'liking']
   },
   {
@@ -2411,7 +2411,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['bystander', 'responsibility', 'diffusion']
   },
   {
@@ -2421,7 +2421,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['consensus', 'projection', 'belief']
   },
   {
@@ -2431,7 +2431,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['transparency', 'communication', 'perception']
   },
 
@@ -2443,7 +2443,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['cialdini', 'persuasion', 'influence']
   },
   {
@@ -2453,7 +2453,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['reciprocity', 'manipulation', 'defense']
   },
   {
@@ -2463,7 +2463,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['foot-in-door', 'commitment', 'escalation']
   },
   {
@@ -2473,7 +2473,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['door-in-face', 'concession', 'negotiation']
   },
   {
@@ -2483,7 +2483,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['love-bombing', 'abuse', 'manipulation']
   },
   {
@@ -2493,7 +2493,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['gaslighting', 'abuse', 'reality']
   },
   {
@@ -2503,7 +2503,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['dark-triad', 'personality', 'narcissism']
   },
   {
@@ -2513,7 +2513,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['narcissism', 'cycle', 'manipulation']
   },
   {
@@ -2523,7 +2523,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['triangulation', 'jealousy', 'manipulation']
   },
   {
@@ -2533,7 +2533,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['darvo', 'abuse', 'deflection']
   },
   {
@@ -2543,7 +2543,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['contrast', 'perception', 'sales']
   },
   {
@@ -2553,7 +2553,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['cult', 'control', 'recruitment']
   },
   {
@@ -2563,7 +2563,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['negging', 'manipulation', 'dating']
   },
   {
@@ -2573,7 +2573,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['intermittent', 'addiction', 'dopamine']
   },
   {
@@ -2583,7 +2583,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['deception', 'body-language', 'detection']
   },
   {
@@ -2593,7 +2593,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['scarcity', 'urgency', 'sales']
   },
   {
@@ -2603,7 +2603,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['social-proof', 'crowd', 'manipulation']
   },
   {
@@ -2613,7 +2613,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['false-dichotomy', 'logic', 'pressure']
   },
   {
@@ -2623,7 +2623,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['emotion', 'fallacy', 'logic']
   },
   {
@@ -2633,7 +2633,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['goalposts', 'manipulation', 'control']
   },
   {
@@ -2643,7 +2643,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['future-faking', 'promises', 'manipulation']
   },
   {
@@ -2653,7 +2653,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['coercive-control', 'abuse', 'signs']
   },
   {
@@ -2663,7 +2663,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['silent-treatment', 'punishment', 'control']
   },
   {
@@ -2673,7 +2673,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['victim', 'guilt', 'deflection']
   },
   {
@@ -2683,7 +2683,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['word-salad', 'confusion', 'avoidance']
   },
   {
@@ -2693,7 +2693,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['projection', 'defense', 'accusation']
   },
   {
@@ -2703,7 +2703,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['recognition', 'defense', 'intuition']
   },
   {
@@ -2713,7 +2713,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['hoovering', 'abuse', 'cycle']
   },
   {
@@ -2723,7 +2723,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['splitting', 'thinking', 'personality']
   },
   {
@@ -2733,7 +2733,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['flying-monkeys', 'triangulation', 'abuse']
   },
 
@@ -2745,7 +2745,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['prospect-theory', 'kahneman', 'economics']
   },
   {
@@ -2755,7 +2755,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['pre-mortem', 'planning', 'risk']
   },
   {
@@ -2765,7 +2765,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['10-10-10', 'time', 'framework']
   },
   {
@@ -2775,7 +2775,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['satisficing', 'maximizing', 'choice']
   },
   {
@@ -2785,7 +2785,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['outside-view', 'base-rate', 'planning']
   },
   {
@@ -2795,7 +2795,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['reference-class', 'forecasting', 'planning']
   },
   {
@@ -2805,7 +2805,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['regret', 'bezos', 'framework']
   },
   {
@@ -2815,7 +2815,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['reversible', 'speed', 'framework']
   },
   {
@@ -2825,7 +2825,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['eisenhower', 'priorities', 'time']
   },
   {
@@ -2835,7 +2835,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['inversion', 'mental-model', 'failure']
   },
   {
@@ -2845,7 +2845,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['second-order', 'consequences', 'thinking']
   },
   {
@@ -2855,7 +2855,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['expected-value', 'probability', 'risk']
   },
   {
@@ -2865,7 +2865,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['calibration', 'prediction', 'accuracy']
   },
   {
@@ -2875,7 +2875,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['disagree-commit', 'team', 'decision']
   },
   {
@@ -2885,7 +2885,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['steel-man', 'argument', 'debate']
   },
   {
@@ -2895,7 +2895,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['5-whys', 'root-cause', 'analysis']
   },
   {
@@ -2905,7 +2905,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['competence', 'knowledge', 'limits']
   },
   {
@@ -2915,7 +2915,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['probability', 'uncertainty', 'thinking']
   },
   {
@@ -2925,7 +2925,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['optionality', 'flexibility', 'strategy']
   },
   {
@@ -2935,7 +2935,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['via-negativa', 'subtraction', 'simplify']
   },
   {
@@ -2945,7 +2945,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['skin-in-game', 'incentives', 'risk']
   },
   {
@@ -2955,7 +2955,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['lindy', 'time', 'durability']
   },
   {
@@ -2965,7 +2965,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['stoic', 'visualization', 'preparation']
   },
   {
@@ -2975,7 +2975,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['journal', 'tracking', 'improvement']
   },
   {
@@ -2985,7 +2985,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['asymmetry', 'risk', 'outcomes']
   },
   {
@@ -2995,7 +2995,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['body-language', 'clustering', 'reading']
   },
   {
@@ -3005,7 +3005,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['body-language', 'arms', 'defense']
   },
   {
@@ -3015,7 +3015,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['micro-expressions', 'face', 'emotion']
   },
   {
@@ -3025,7 +3025,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['eyes', 'nlp', 'thinking']
   },
   {
@@ -3035,7 +3035,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['mirroring', 'rapport', 'body-language']
   },
   {
@@ -3045,7 +3045,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['smile', 'authenticity', 'face']
   },
   {
@@ -3055,7 +3055,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['baseline', 'reading', 'observation']
   },
   {
@@ -3065,7 +3065,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['feet', 'direction', 'interest']
   },
   {
@@ -3075,7 +3075,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['pacifying', 'stress', 'self-soothing']
   },
   {
@@ -3085,7 +3085,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['confidence', 'power', 'posture']
   },
   {
@@ -3095,7 +3095,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'hard',
+    difficulty: 'advanced',
     tags: ['cognitive-load', 'deception', 'interview']
   },
   {
@@ -3105,7 +3105,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['verbal', 'deception', 'language']
   },
   {
@@ -3115,7 +3115,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['eq', 'emotions', 'intelligence']
   },
   {
@@ -3125,7 +3125,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['eq', 'development', 'practice']
   },
   {
@@ -3135,7 +3135,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['cold-reading', 'technique', 'psychology']
   },
   {
@@ -3145,7 +3145,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'cognitive-bias',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['barnum', 'forer', 'personality']
   },
   {
@@ -3155,7 +3155,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'easy',
+    difficulty: 'beginner',
     tags: ['protection', 'boundaries', 'defense']
   },
   {
@@ -3165,7 +3165,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'dark-psychology',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['gray-rock', 'defense', 'narcissism']
   },
   {
@@ -3175,7 +3175,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Dark Psychology',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['acceptance', 'reality', 'mindset']
   },
   {
@@ -3185,7 +3185,7 @@ export const flashcards: SpacedRepetitionCard[] = [
     category: 'decision-making',
     source: 'Thinking Fast and Slow',
     pathwayId: 'psychology',
-    difficulty: 'medium',
+    difficulty: 'intermediate',
     tags: ['defense', 'systems', 'improvement']
   },
 

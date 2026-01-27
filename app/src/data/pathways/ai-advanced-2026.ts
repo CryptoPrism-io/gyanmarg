@@ -152,7 +152,7 @@ Autonomy Levels:
           'Agents use larger language models',
           'Agents work offline'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'AI agents combine planning, tool use, reflection, and memory to autonomously complete multi-step tasks, unlike chatbots which respond to single queries reactively.'
       }
     }
@@ -338,7 +338,7 @@ Vector database (Pinecone, Chroma)
           'Frontend, Backend, Database, API',
           'Input, Processing, Output, Feedback'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'AI agents require an orchestrator (LLM) for decision-making, tools for actions, memory for context, and planning modules for multi-step task execution.'
       }
     }
@@ -525,7 +525,7 @@ Solutions: Locking, turn-taking, merge strategies
           'It requires fewer agents',
           'It doesn\'t need coordination'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The debate pattern has agents argue different perspectives, which helps surface flaws, consider alternatives, and arrive at more accurate or robust conclusions.'
       }
     }
@@ -677,7 +677,7 @@ Moving from digital to physical world:
           'The gap between simulation speed and real-time requirements',
           'The difference between simulated and real data storage'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The sim-to-real gap refers to the challenge of transferring AI trained in simulated environments to the real physical world, where conditions differ in subtle but important ways.'
       }
     }
@@ -833,7 +833,7 @@ User uploads receipt image
           'They are cheaper to run',
           'They don\'t require training'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Native multi-modal models understand all modalities together without converting between them, avoiding information loss that occurs when passing through separate specialized models.'
       }
     }
@@ -998,7 +998,7 @@ Models that learn better reasoning strategies from their successes and failures.
           'They use special hardware',
           'They are trained on more data'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Reasoning models allocate more compute time to work through problems step-by-step before producing an answer, dramatically improving accuracy on complex reasoning tasks.'
       }
     }
@@ -1173,7 +1173,7 @@ Best of both worlds
           'It works with any model size',
           'It doesn\'t require any training data'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'LoRA trains small adapter layers (~0.1% of parameters) while keeping the base model frozen, making it much cheaper and preserving the original model\'s general capabilities.'
       }
     }
@@ -1355,7 +1355,7 @@ Route based on complexity.
           'Encrypting the model weights',
           'Splitting the model across multiple computers'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Quantization reduces model size by representing weights with lower precision (e.g., 4-bit instead of 16-bit), allowing larger models to run on consumer hardware with some quality trade-off.'
       }
     }
@@ -1553,7 +1553,7 @@ Customer support AI:
           'Always buy for faster implementation',
           'Build only if you have AI PhDs'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Build when the AI capability represents core competitive advantage with unique data; buy when it\'s standard functionality where speed to market and proven solutions matter more.'
       }
     }
@@ -1727,7 +1727,7 @@ Technical Implementation
           'Aligning AI with computer hardware',
           'Making multiple AI systems work together'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'The alignment problem refers to the challenge of making AI systems that actually do what humans want - including handling specification gaming, goal misgeneralization, and reward hacking.'
       }
     }
@@ -1907,7 +1907,7 @@ The AI field offers diverse career opportunities across technical and non-techni
           'Get a PhD in machine learning',
           'Apply directly for ML engineer roles'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Those without CS background should start by using AI tools and prompting to understand capabilities, then learn Python basics before gradually going deeper into technical ML concepts.'
       }
     }
@@ -2079,7 +2079,7 @@ Stay curious. Stay adaptable. Stay engaged.`,
           'Develop AI fluency plus human skills like complex problem framing, relationship building, and ethical judgment',
           'Wait until AI stabilizes'
         ],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'The recommended strategy combines AI fluency (working effectively with AI) with uniquely human skills that AI struggles with: complex problem framing, cross-domain synthesis, relationship building, and ethical judgment.'
       }
     }

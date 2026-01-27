@@ -1,0 +1,1736 @@
+{
+  "version": "2.6",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "vCTjT",
+      "x": 0,
+      "y": 0,
+      "name": "Gyanmarg - Landing Page",
+      "width": 1440,
+      "fill": "#0A0A0B",
+      "placeholder": true,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Roo88",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 80,
+          "fill": "#0A0A0B",
+          "padding": [
+            0,
+            120
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "yrkpA",
+              "name": "logoSection",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "n1DDk",
+                  "name": "logoText",
+                  "fill": "#FFFFFF",
+                  "content": "GYANMARG",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 22,
+                  "fontWeight": "semibold",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "ellipse",
+                  "id": "6DwV7",
+                  "name": "logoDot",
+                  "fill": "#F59E0B",
+                  "width": 8,
+                  "height": 8
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OQ2mY",
+              "name": "navSection",
+              "gap": 40,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "4Lzlf",
+                  "name": "nav1",
+                  "fill": "#ADADB0",
+                  "content": "Features",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "5Tek3",
+                  "name": "nav2",
+                  "fill": "#ADADB0",
+                  "content": "Pricing",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "bgMqR",
+                  "name": "nav3",
+                  "fill": "#ADADB0",
+                  "content": "About",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "xa1Ag",
+                  "name": "nav4",
+                  "fill": "#ADADB0",
+                  "content": "Blog",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "medium"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WLMgn",
+              "name": "ctaSection",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "WgMph",
+                  "name": "loginBtn",
+                  "fill": "#FFFFFF",
+                  "content": "Log in",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "frame",
+                  "id": "qDQnE",
+                  "name": "getStartedBtn",
+                  "cornerRadius": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XCIbt",
+                      "name": "getStartedText",
+                      "fill": "#FFFFFF",
+                      "content": "Get Started",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "semibold"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NBbvU",
+          "name": "Hero Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            100,
+            120
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ouZJM",
+              "name": "badge",
+              "fill": "#F59E0B18",
+              "cornerRadius": 100,
+              "gap": 8,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "N48qX",
+                  "name": "badgeDot",
+                  "fill": "#F59E0B",
+                  "width": 6,
+                  "height": 6
+                },
+                {
+                  "type": "text",
+                  "id": "vB2bw",
+                  "name": "badgeText",
+                  "fill": "#F59E0B",
+                  "content": "Transform Ebooks into Wisdom",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "medium"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "WLFub",
+              "name": "headline",
+              "fill": "#FFFFFF",
+              "content": "ज्ञानमार्ग\nThe Path of Knowledge",
+              "lineHeight": 1.1,
+              "textAlign": "center",
+              "fontFamily": "Instrument Serif",
+              "fontSize": 64,
+              "fontWeight": "normal",
+              "letterSpacing": -2
+            },
+            {
+              "type": "text",
+              "id": "deO94",
+              "name": "subheadline",
+              "fill": "#8B8B90",
+              "content": "Transform 45+ ebooks into gamified, interactive learning experiences.\nMaster personal development, AI, wealth building & more through evidence-based learning science.",
+              "lineHeight": 1.6,
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "rJXzP",
+              "name": "ctaRow",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HFrZM",
+                  "name": "primaryCta",
+                  "cornerRadius": 12,
+                  "gap": 10,
+                  "padding": [
+                    18,
+                    36
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Tro2B",
+                      "name": "primaryCtaText",
+                      "fill": "#FFFFFF",
+                      "content": "Start Your Journey",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "semibold"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "po7vK",
+                      "name": "primaryCtaIcon",
+                      "width": 0,
+                      "height": 0,
+                      "iconFontFamily": "Lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "aEJ4B",
+                  "name": "secondaryCta",
+                  "cornerRadius": 12,
+                  "gap": 10,
+                  "padding": [
+                    18,
+                    36
+                  ],
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "oK04e",
+                      "name": "secondaryCtaIcon",
+                      "width": 0,
+                      "height": 0,
+                      "iconFontFamily": "Lucide",
+                      "fill": "#ADADB0"
+                    },
+                    {
+                      "type": "text",
+                      "id": "gW1Gh",
+                      "name": "secondaryCtaText",
+                      "fill": "#FFFFFF",
+                      "content": "See How It Works",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wFtgi",
+              "name": "Hero Visual",
+              "width": 1100,
+              "height": 600,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/generated-1769520241350.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 16,
+              "justifyContent": "center",
+              "alignItems": "center"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uyOiC",
+          "name": "Trust Logos",
+          "width": "fill_container",
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            60,
+            120
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "9Nabu",
+              "name": "trustLabel",
+              "fill": "#6B6B70",
+              "content": "TRUSTED BY LEARNERS WORLDWIDE",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "semibold",
+              "letterSpacing": 2
+            },
+            {
+              "type": "frame",
+              "id": "BSKEx",
+              "name": "trustLogos",
+              "gap": 80,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "4mUQ0",
+                  "name": "logo1",
+                  "fill": "#4A4A4E",
+                  "content": "STANFORD",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 18,
+                  "fontWeight": "medium",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "046ff",
+                  "name": "logo2",
+                  "fill": "#4A4A4E",
+                  "content": "MIT",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 18,
+                  "fontWeight": "medium",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "q1zrU",
+                  "name": "logo3",
+                  "fill": "#4A4A4E",
+                  "content": "HARVARD",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 18,
+                  "fontWeight": "medium",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "1l1oz",
+                  "name": "logo4",
+                  "fill": "#4A4A4E",
+                  "content": "OXFORD",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 18,
+                  "fontWeight": "medium",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "hMgb3",
+                  "name": "logo5",
+                  "fill": "#4A4A4E",
+                  "content": "IIT",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 18,
+                  "fontWeight": "medium",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "ksRK1",
+                  "name": "logo6",
+                  "fill": "#4A4A4E",
+                  "content": "CAMBRIDGE",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 18,
+                  "fontWeight": "medium",
+                  "letterSpacing": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "eoThz",
+          "name": "Stats Section",
+          "width": "fill_container",
+          "fill": "#111113",
+          "padding": [
+            80,
+            120
+          ],
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ozHb5",
+              "name": "stat1",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HnK34",
+                  "name": "stat1Value",
+                  "fill": "#FFFFFF",
+                  "content": "45+",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 56,
+                  "fontWeight": "medium",
+                  "letterSpacing": -2
+                },
+                {
+                  "type": "text",
+                  "id": "1IbVI",
+                  "name": "stat1Label",
+                  "fill": "#6B6B70",
+                  "content": "Curated Ebooks",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JZN05",
+              "name": "divider1",
+              "width": 1,
+              "height": 80,
+              "fill": "#2A2A2E"
+            },
+            {
+              "type": "frame",
+              "id": "hwvCY",
+              "name": "stat2",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "QN3SW",
+                  "name": "stat2Value",
+                  "fill": "#FFFFFF",
+                  "content": "10",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 56,
+                  "fontWeight": "medium",
+                  "letterSpacing": -2
+                },
+                {
+                  "type": "text",
+                  "id": "AL6S2",
+                  "name": "stat2Label",
+                  "fill": "#6B6B70",
+                  "content": "Learning Modules",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LHaFA",
+              "name": "divider2",
+              "width": 1,
+              "height": 80,
+              "fill": "#2A2A2E"
+            },
+            {
+              "type": "frame",
+              "id": "OpKDO",
+              "name": "stat3",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "a3a9q",
+                  "name": "stat3Value",
+                  "fill": "#F59E0B",
+                  "content": "500+",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 56,
+                  "fontWeight": "medium",
+                  "letterSpacing": -2
+                },
+                {
+                  "type": "text",
+                  "id": "9NAUZ",
+                  "name": "stat3Label",
+                  "fill": "#6B6B70",
+                  "content": "Concepts to Master",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Kuq31",
+              "name": "divider3",
+              "width": 1,
+              "height": 80,
+              "fill": "#2A2A2E"
+            },
+            {
+              "type": "frame",
+              "id": "e2Jfp",
+              "name": "stat4",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "m1RCj",
+                  "name": "stat4Value",
+                  "fill": "#FFFFFF",
+                  "content": "∞",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 56,
+                  "fontWeight": "medium",
+                  "letterSpacing": -2
+                },
+                {
+                  "type": "text",
+                  "id": "fl3Zl",
+                  "name": "stat4Label",
+                  "fill": "#6B6B70",
+                  "content": "Knowledge Unlocked",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "8ldnl",
+          "name": "Features Section",
+          "width": "fill_container",
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 80,
+          "padding": 120,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "2j0FR",
+              "name": "featuresHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "QijKF",
+                  "name": "featuresBadge",
+                  "fill": "#1A1A1D",
+                  "cornerRadius": 100,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gwxBo",
+                      "name": "featuresBadgeText",
+                      "fill": "#F59E0B",
+                      "content": "LEARNING SCIENCE",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "semibold",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "cDgBE",
+                  "name": "featuresTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Learn Smarter.\nRemember Forever.",
+                  "lineHeight": 1.15,
+                  "textAlign": "center",
+                  "fontFamily": "Instrument Serif",
+                  "fontSize": 56,
+                  "fontWeight": "normal",
+                  "letterSpacing": -1
+                },
+                {
+                  "type": "text",
+                  "id": "wUvx3",
+                  "name": "featuresSubtitle",
+                  "fill": "#6B6B70",
+                  "content": "Evidence-based techniques that actually work.",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WhGRg",
+              "name": "featureCards",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EqALU",
+                  "name": "card1",
+                  "width": "fill_container",
+                  "fill": "#111113",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 40,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "NAitO",
+                      "name": "card1IconBg",
+                      "width": 56,
+                      "height": 56,
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "AAOVg",
+                          "name": "card1Icon",
+                          "width": 0,
+                          "height": 0,
+                          "iconFontFamily": "Lucide",
+                          "fill": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "oa2tv",
+                      "name": "card1Title",
+                      "fill": "#FFFFFF",
+                      "content": "Spaced Repetition",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "semibold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "5VqAI",
+                      "name": "card1Desc",
+                      "fill": "#8B8B90",
+                      "content": "SM-2 algorithm flashcards that optimize your review schedule. Learn once, remember forever with scientifically-proven intervals.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "9Fbjx",
+                  "name": "card2",
+                  "width": "fill_container",
+                  "fill": "#111113",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 40,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "z7bd3",
+                      "name": "card2IconBg",
+                      "width": 56,
+                      "height": 56,
+                      "fill": "#1A1A1D",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "pwwJ8",
+                          "name": "card2Icon",
+                          "width": 0,
+                          "height": 0,
+                          "iconFontFamily": "Lucide",
+                          "fill": "#F59E0B"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "7q84g",
+                      "name": "card2Title",
+                      "fill": "#FFFFFF",
+                      "content": "Active Recall",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "semibold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "edTZV",
+                      "name": "card2Desc",
+                      "fill": "#8B8B90",
+                      "content": "Quizzes and challenges that force retrieval from memory. The struggle to remember is what makes knowledge stick.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ga1vC",
+                  "name": "card3",
+                  "width": "fill_container",
+                  "fill": "#111113",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 40,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "FDhrM",
+                      "name": "card3IconBg",
+                      "width": 56,
+                      "height": 56,
+                      "fill": "#1A1A1D",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "T4mUe",
+                          "name": "card3Icon",
+                          "width": 0,
+                          "height": 0,
+                          "iconFontFamily": "Lucide",
+                          "fill": "#8B5CF6"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "E54Vb",
+                      "name": "card3Title",
+                      "fill": "#FFFFFF",
+                      "content": "Gamification",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "semibold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "soFbL",
+                      "name": "card3Desc",
+                      "fill": "#8B8B90",
+                      "content": "XP, levels, achievements, and streaks that make learning addictive. Turn knowledge acquisition into your favorite game.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "yZOVx",
+          "name": "Modules Section",
+          "width": "fill_container",
+          "fill": "#111113",
+          "layout": "vertical",
+          "gap": 60,
+          "padding": [
+            100,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "rf7SD",
+              "name": "modulesHeader",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "qaNvy",
+                  "name": "modulesBadge",
+                  "fill": "#1A1A1D",
+                  "cornerRadius": 100,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "iycZT",
+                      "name": "modulesBadgeText",
+                      "fill": "#F59E0B",
+                      "content": "10 MODULES",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "semibold",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "bDbuL",
+                  "name": "modulesTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Your Learning Journey",
+                  "textAlign": "center",
+                  "fontFamily": "Instrument Serif",
+                  "fontSize": 48,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "4HX3c",
+                  "name": "modulesSubtitle",
+                  "fill": "#6B6B70",
+                  "content": "From personal mastery to technical expertise — curated paths for every dimension of growth.",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "p4Vdi",
+              "name": "modulesGrid",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "eSseK",
+                  "name": "Row 1",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "2c3cg",
+                      "name": "mod1",
+                      "width": 280,
+                      "height": 180,
+                      "fill": "#1A1A1D",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "bMm1G",
+                          "name": "mod1Icon",
+                          "content": "🧠",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "6TCyh",
+                          "name": "mod1Title",
+                          "fill": "#FFFFFF",
+                          "content": "Personal Development",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CklRG",
+                          "name": "mod1Desc",
+                          "fill": "#6B6B70",
+                          "content": "Atomic Habits, Deep Work, Man's Search for Meaning",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "lOHTR",
+                      "name": "mod2",
+                      "width": 280,
+                      "height": 180,
+                      "fill": "#1A1A1D",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "mcuJY",
+                          "name": "mod2Icon",
+                          "content": "🤖",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "gCK5W",
+                          "name": "mod2Title",
+                          "fill": "#FFFFFF",
+                          "content": "AI & Machine Learning",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Xt9iF",
+                          "name": "mod2Desc",
+                          "fill": "#6B6B70",
+                          "content": "Neural networks, deep learning, practical AI applications",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ObQhA",
+                      "name": "mod3",
+                      "width": 280,
+                      "height": 180,
+                      "fill": "#1A1A1D",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "e2cjh",
+                          "name": "mod3Icon",
+                          "content": "💰",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "yoN5f",
+                          "name": "mod3Title",
+                          "fill": "#FFFFFF",
+                          "content": "Wealth Building",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "arzb0",
+                          "name": "mod3Desc",
+                          "fill": "#6B6B70",
+                          "content": "Financial intelligence, investing, passive income strategies",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Hu86k",
+                      "name": "mod4",
+                      "width": 280,
+                      "height": 180,
+                      "fill": "#1A1A1D",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "hSN8N",
+                          "name": "mod4Icon",
+                          "content": "🥋",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "TreSN",
+                          "name": "mod4Title",
+                          "fill": "#FFFFFF",
+                          "content": "Bruce Lee Philosophy",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ZFQcj",
+                          "name": "mod4Desc",
+                          "fill": "#6B6B70",
+                          "content": "Martial arts wisdom, self-expression, peak performance",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "50Bh4",
+                  "name": "Row 2",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "VJcwB",
+                      "name": "mod5",
+                      "width": 280,
+                      "height": 180,
+                      "fill": "#1A1A1D",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "MwixI",
+                          "name": "mod5Icon",
+                          "content": "🔗",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "1OIUS",
+                          "name": "mod5Title",
+                          "fill": "#FFFFFF",
+                          "content": "Blockchain & Web3",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "r48Wv",
+                          "name": "mod5Desc",
+                          "fill": "#6B6B70",
+                          "content": "Decentralized systems, smart contracts, crypto fundamentals",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "IU7M3",
+                      "name": "mod6",
+                      "width": 280,
+                      "height": 180,
+                      "fill": "#1A1A1D",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "2jvZF",
+                          "name": "mod6Icon",
+                          "content": "🧬",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "qR1F5",
+                          "name": "mod6Title",
+                          "fill": "#FFFFFF",
+                          "content": "Psychology & Decisions",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "0pYO4",
+                          "name": "mod6Desc",
+                          "fill": "#6B6B70",
+                          "content": "Behavioral science, cognitive biases, better decisions",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "O4ab1",
+                      "name": "mod7",
+                      "width": 280,
+                      "height": 180,
+                      "fill": "#1A1A1D",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "slM5I",
+                          "name": "mod7Icon",
+                          "content": "🐍",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "08J6w",
+                          "name": "mod7Title",
+                          "fill": "#FFFFFF",
+                          "content": "Python & Data Science",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "pBVQj",
+                          "name": "mod7Desc",
+                          "fill": "#6B6B70",
+                          "content": "Programming, data analysis, machine learning with Python",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XN6ti",
+                      "name": "mod8",
+                      "width": 280,
+                      "height": 180,
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "bkXeH",
+                          "name": "mod8Icon",
+                          "content": "🕉️",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "DHmYt",
+                          "name": "mod8Title",
+                          "fill": "#F59E0B",
+                          "content": "Master Synthesis",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "FzYam",
+                          "name": "mod8Desc",
+                          "fill": "#ADADB0",
+                          "content": "Cross-domain connections, unified wisdom, the complete path",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LtQD5",
+          "name": "Quote Section",
+          "width": "fill_container",
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            100,
+            200
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "7LjgD",
+              "name": "quoteText",
+              "fill": "#F59E0B",
+              "content": "\"विद्या ददाति विनयम्\"",
+              "textAlign": "center",
+              "fontFamily": "Instrument Serif",
+              "fontSize": 48,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "TuZ2D",
+              "name": "quoteTranslation",
+              "fill": "#6B6B70",
+              "content": "\"Knowledge gives humility\"",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "B939o",
+              "name": "quoteSource",
+              "fill": "#4A4A4E",
+              "content": "— Sanskrit Proverb",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "yTjVh",
+          "name": "Final CTA",
+          "width": "fill_container",
+          "fill": "#111113",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": 120,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "GQWpB",
+              "name": "ctaTitle",
+              "fill": "#FFFFFF",
+              "content": "Begin Your Path Today",
+              "textAlign": "center",
+              "fontFamily": "Instrument Serif",
+              "fontSize": 56,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "FFtDY",
+              "name": "ctaSubtitle",
+              "fill": "#8B8B90",
+              "content": "1% better every day = 37x better in a year.\nJoin thousands of learners transforming knowledge into wisdom.",
+              "lineHeight": 1.6,
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "mRtYG",
+              "name": "ctaButtons",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "93gJl",
+                  "name": "ctaPrimary",
+                  "cornerRadius": 12,
+                  "gap": 12,
+                  "padding": [
+                    20,
+                    48
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "adm33",
+                      "name": "ctaPrimaryText",
+                      "fill": "#0A0A0B",
+                      "content": "Start Free — No Credit Card",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "semibold"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "WWnki",
+                      "name": "ctaPrimaryIcon",
+                      "width": 0,
+                      "height": 0,
+                      "iconFontFamily": "Lucide",
+                      "fill": "#0A0A0B"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "D2you",
+                  "name": "ctaSecondary",
+                  "cornerRadius": 12,
+                  "gap": 10,
+                  "padding": [
+                    20,
+                    32
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Jj5X9",
+                      "name": "ctaSecondaryText",
+                      "fill": "#FFFFFF",
+                      "content": "View Demo",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "3jVAF",
+              "name": "ctaTrust",
+              "fill": "#6B6B70",
+              "content": "✨ Join 10,000+ learners on the path of knowledge",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sDk9g",
+          "name": "Footer",
+          "width": "fill_container",
+          "fill": "#0A0A0B",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            60,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "X3dRr",
+              "name": "footerTop",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "aFqyt",
+                  "name": "footerBrand",
+                  "width": 300,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "J6FPE",
+                      "name": "footerLogo",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "WYZdZ",
+                          "name": "footerLogoText",
+                          "fill": "#FFFFFF",
+                          "content": "GYANMARG",
+                          "fontFamily": "DM Mono",
+                          "fontSize": 18,
+                          "fontWeight": "semibold",
+                          "letterSpacing": 3
+                        },
+                        {
+                          "type": "ellipse",
+                          "id": "2hiOi",
+                          "name": "footerLogoDot",
+                          "fill": "#F59E0B",
+                          "width": 6,
+                          "height": 6
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "yGsjO",
+                      "name": "footerTagline",
+                      "fill": "#6B6B70",
+                      "content": "The Path of Knowledge.\nTransforming ebooks into wisdom.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "GWbx1",
+                  "name": "footerLinks",
+                  "gap": 80,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "oLNUP",
+                      "name": "footerCol1",
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gG6B4",
+                          "name": "footerCol1Title",
+                          "fill": "#FFFFFF",
+                          "content": "Product",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "YqguA",
+                          "name": "footerCol1Link1",
+                          "fill": "#6B6B70",
+                          "content": "Features",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "hirgZ",
+                          "name": "footerCol1Link2",
+                          "fill": "#6B6B70",
+                          "content": "Modules",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "62h6r",
+                          "name": "footerCol1Link3",
+                          "fill": "#6B6B70",
+                          "content": "Pricing",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sbD13",
+                      "name": "footerCol2",
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "mY6z4",
+                          "name": "footerCol2Title",
+                          "fill": "#FFFFFF",
+                          "content": "Company",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "fXCUz",
+                          "name": "footerCol2Link1",
+                          "fill": "#6B6B70",
+                          "content": "About",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "EwS2t",
+                          "name": "footerCol2Link2",
+                          "fill": "#6B6B70",
+                          "content": "Blog",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ZcpJB",
+                          "name": "footerCol2Link3",
+                          "fill": "#6B6B70",
+                          "content": "Careers",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "RwGPv",
+                      "name": "footerCol3",
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vVmf6",
+                          "name": "footerCol3Title",
+                          "fill": "#FFFFFF",
+                          "content": "Legal",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "semibold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "0g7U7",
+                          "name": "footerCol3Link1",
+                          "fill": "#6B6B70",
+                          "content": "Privacy",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "dX7JO",
+                          "name": "footerCol3Link2",
+                          "fill": "#6B6B70",
+                          "content": "Terms",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "TvxHA",
+              "name": "footerDivider",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#1F1F23"
+            },
+            {
+              "type": "frame",
+              "id": "k6rF2",
+              "name": "footerBottom",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FJeER",
+                  "name": "footerCopyright",
+                  "fill": "#4A4A4E",
+                  "content": "© 2025 Gyanmarg. Made with ❤️ for lifelong learners.",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "gQE7p",
+                  "name": "footerSocials",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "vLDP4",
+                      "name": "socialTwitter",
+                      "width": 0,
+                      "height": 0,
+                      "iconFontFamily": "Lucide",
+                      "fill": "#6B6B70"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "F5Z36",
+                      "name": "socialGithub",
+                      "width": 0,
+                      "height": 0,
+                      "iconFontFamily": "Lucide",
+                      "fill": "#6B6B70"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "ZV5gz",
+                      "name": "socialLinkedin",
+                      "width": 0,
+                      "height": 0,
+                      "iconFontFamily": "Lucide",
+                      "fill": "#6B6B70"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

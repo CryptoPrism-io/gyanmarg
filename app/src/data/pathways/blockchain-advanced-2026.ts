@@ -107,7 +107,7 @@ Potential future products:
           'Reducing Bitcoin\'s price volatility',
           'Allowing anonymous purchases'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Spot Bitcoin ETFs allowed institutional investors to gain Bitcoin exposure through existing brokerage accounts, avoiding the complexity of crypto exchanges and meeting regulatory mandates.'
       }
     }
@@ -229,7 +229,7 @@ Token standard specifically for RWAs:
           'They require no legal framework',
           'They are completely anonymous'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'US Treasuries became the first major RWA success because they have clear regulatory status, low risk profiles, simple structures, and institutional familiarity - making them an ideal "first step" for tokenization.'
       }
     }
@@ -354,7 +354,7 @@ Multiple regulators, unclear jurisdiction:
           'A type of stablecoin',
           'A US regulatory agency'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'MiCA (Markets in Crypto-Assets) is the European Union\'s comprehensive regulatory framework for crypto-assets, establishing clear rules for licensing, stablecoins, and consumer protection.'
       }
     }
@@ -487,7 +487,7 @@ Growing: Fastest-growing category
           'A stablecoin only used for yield farming',
           'An unstable cryptocurrency'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Yield-bearing stablecoins like sDAI and USDY are backed by yield-generating assets (like Treasuries or lending protocols), automatically accruing interest for holders.'
       }
     }
@@ -627,7 +627,7 @@ L2 for L2s:
           'ZK rollups cannot run smart contracts',
           'Optimistic rollups are more expensive'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Optimistic rollups assume transactions are valid unless challenged (fraud proofs, ~7 day window). ZK rollups generate cryptographic proofs that mathematically verify all transactions are valid.'
       }
     }
@@ -768,7 +768,7 @@ UserOp    UserOps      executes ops     logic          (optional)
           'The person who created ERC-4337',
           'A type of cryptocurrency'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'A Paymaster is a smart contract that can pay for users\' transaction fees, enabling gasless experiences where apps pay gas or users pay in any token.'
       }
     }
@@ -918,7 +918,7 @@ User just clicks "buy"
           'They are too decentralized',
           'They don\'t use smart contracts'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Bridges are attractive targets because they hold concentrated value as the "meeting point" between chains, and their complex validation logic has historically contained exploitable bugs.'
       }
     }
@@ -1077,7 +1077,7 @@ Sovereign Rollup:
           'Generating zero-knowledge proofs',
           'Validating cross-chain messages'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Data Availability layers specialize in storing rollup transaction data cheaply and reliably, enabling rollups to reduce their costs by 10-100x compared to posting data to Ethereum directly.'
       }
     }
@@ -1226,7 +1226,7 @@ GMX, dYdX:
           'Yield paid in stablecoins',
           'Yield from staking only'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'Real Yield refers to returns generated from actual economic activity (trading fees, lending interest, liquidations) rather than from printing and distributing new protocol tokens.'
       }
     }
@@ -1364,7 +1364,7 @@ Prove attributes without revealing data:
           'Private, public, and verified',
           'Encrypted, decrypted, and hashed'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'A ZK proof must be: Complete (true statements can be proven), Sound (false statements cannot be proven), and Zero-Knowledge (verifier learns nothing except that the statement is true).'
       }
     }
@@ -1535,7 +1535,7 @@ How do you know an AI gave the right answer?
           'Machine learning for privacy coins',
           'A cryptocurrency focused on AI'
         ],
-        correctAnswer: 1,
+        correct: 1,
         explanation: 'zkML uses zero-knowledge proofs to verify that an AI model\'s inference (output) was computed correctly without revealing the model\'s weights or parameters.'
       }
     }
@@ -1711,7 +1711,7 @@ Whether you want to build dApps or understand the technology deeply, here's your
           'Foundry',
           'Web3.js'
         ],
-        correctAnswer: 2,
+        correct: 2,
         explanation: 'Foundry has become the modern standard for Solidity development, offering fast compilation, powerful testing with Forge, and a Rust-based toolchain that\'s become the industry preference.'
       }
     }
