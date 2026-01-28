@@ -33,6 +33,8 @@ import { DailyChallenges } from '@/features/daily-challenges/DailyChallenges';
 import { KnowledgeMap } from '@/features/knowledge-map/KnowledgeMap';
 import { ModuleHub } from '@/features/module-hub/ModuleHub';
 import ModulePage from '@/features/module-page/ModulePage';
+import { Settings } from '@/features/settings/Settings';
+import { VisualLab } from '@/features/visual-lab/VisualLab';
 
 // Global Celebration Modals
 function CelebrationModals() {
@@ -225,6 +227,34 @@ function AppRoutes() {
             <PageLayout>
               <PageTransition>
                 <KnowledgeMap />
+              </PageTransition>
+            </PageLayout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Settings */}
+      <Route
+        path="/settings"
+        element={
+          <ProtectedRoute>
+            <PageLayout>
+              <PageTransition>
+                <Settings />
+              </PageTransition>
+            </PageLayout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Visual Lab */}
+      <Route
+        path="/lab"
+        element={
+          <ProtectedRoute>
+            <PageLayout>
+              <PageTransition>
+                <VisualLab />
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>

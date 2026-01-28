@@ -537,7 +537,7 @@ MASTERY: (Unlock after Level 3)
 | **No Data Persistence** | Progress lost on refresh | ✅ FIXED |
 | **No Learning Pathway** | Users don't know what to learn next | ✅ FIXED |
 | **No Lesson Content** | Only quizzes, no actual teaching | ✅ FIXED |
-| **No User Authentication** | Can't save across devices | 🟡 MEDIUM |
+| **No User Authentication** | Can't save across devices | ✅ FIXED (Export/Import JSON) |
 | **No Onboarding** | Users dropped into app cold | ✅ FIXED |
 | **No Goal Setting** | No personalization | ✅ FIXED (in onboarding) |
 
@@ -547,7 +547,7 @@ MASTERY: (Unlock after Level 3)
 |---------|--------------|--------|
 | Lessons | Quiz-only | Full content with read → reflect → quiz |
 | Progress | XP/Level only | Pathway map, milestones, certificates |
-| Content | Static text | Rich media, excerpts from books |
+| Content | Static text | ✅ Visual Lab with interactive diagrams |
 | Review | Basic flashcards | Integrated spaced repetition in pathway |
 | Assessment | Simple quizzes | Projects, teach-backs, scenario challenges |
 

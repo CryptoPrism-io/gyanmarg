@@ -7,6 +7,7 @@ import {
   Zap,
   Flame,
   Sparkles,
+  Settings,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 
@@ -15,6 +16,7 @@ const navItems = [
   { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
   { id: 'review', path: '/review', label: 'Review', icon: Brain },
   { id: 'challenges', path: '/challenges', label: 'Challenges', icon: Zap },
+  { id: 'settings', path: '/settings', label: 'Settings', icon: Settings },
 ];
 
 export function Navbar() {
@@ -119,6 +121,7 @@ const mobileNavItems = [
   { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
   { id: 'review', path: '/review', label: 'Review', icon: Brain },
   { id: 'challenges', path: '/challenges', label: 'Goals', icon: Zap },
+  { id: 'settings', path: '/settings', label: 'Settings', icon: Settings },
 ];
 
 export function MobileNav() {

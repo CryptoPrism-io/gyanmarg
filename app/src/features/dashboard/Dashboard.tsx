@@ -131,6 +131,13 @@ export function Dashboard() {
       desc: 'Earn bonus XP',
       color: 'golden' as const,
     },
+    {
+      to: '/lab',
+      icon: <Sparkles className="w-4 h-4 sm:w-6 sm:h-6" />,
+      label: 'Visual Lab',
+      desc: 'Interactive diagrams',
+      color: 'lavender' as const,
+    },
   ];
 
   const colorStyles = {
