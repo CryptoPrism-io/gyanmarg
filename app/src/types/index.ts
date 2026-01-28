@@ -254,6 +254,14 @@ export interface EnhancedDailyChallenge extends DailyChallenge {
   minStreak?: number;      // Minimum streak to unlock
 }
 
+// Challenge Completion with user action response
+export interface ChallengeCompletion {
+  challengeId: string;
+  response: string;        // User's action taken (min 10 words)
+  completedAt: string;     // ISO date string
+  xpEarned: number;
+}
+
 export interface WeeklyChallenge {
   id: string;
   title: string;

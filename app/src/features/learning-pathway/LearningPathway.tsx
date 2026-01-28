@@ -5,19 +5,56 @@ import {
   ChevronRight,
   ChevronDown,
   Trophy,
-  ArrowLeft,
   BookOpen,
   Sparkles,
+  Brain,
+  Cpu,
+  TrendingUp,
+  MessageSquare,
+  Zap,
+  Link,
+  Lightbulb,
+  Code,
+  Home,
+  Network,
+  HeartPulse,
+  Sun,
+  Landmark,
+  GraduationCap,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { ModuleLayout, AnimatedBackground } from '@/components/templates';
-import { GlassCard, SwipeableLesson } from '@/components/molecules';
+import { GlassCard } from '@/components/molecules';
 import { LessonCard } from '@/components/molecules/LessonCard';
-import { ProgressBar, XPBadge } from '@/components/atoms';
+import { ReviewGateBanner, ReviewWarningBanner } from '@/components/molecules/ReviewGateBanner';
+import { ProgressBar } from '@/components/atoms';
+import { LessonViewer } from '@/components/organisms/LessonViewer';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { Progress } from '@/components/ui/progress';
+import { useReviewGate } from '@/hooks';
 import type { PathwayLevel, PathwayLesson } from '@/types';
-
-// Import all modules with their pathways
 import { modules } from '@/data/modules';
+import type { LucideIcon } from 'lucide-react';
+
+// Module icon mapping
+const moduleIcons: Record<string, LucideIcon> = {
+  brain: Brain,
+  cpu: Cpu,
+  'trending-up': TrendingUp,
+  'message-square': MessageSquare,
+  zap: Zap,
+  link: Link,
+  lightbulb: Lightbulb,
+  code: Code,
+  home: Home,
+  network: Network,
+  'heart-pulse': HeartPulse,
+  sun: Sun,
+  sparkles: Sparkles,
+  landmark: Landmark,
+  'graduation-cap': GraduationCap,
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -38,14 +75,37 @@ const itemVariants = {
   },
 };
 
+// Module tab content component
+function ModuleTabContent({
+  module,
+  progress,
+  isActive
+}: {
+  module: typeof modules[0];
+  progress: number;
+  isActive: boolean;
+}) {
+  const IconComponent = moduleIcons[module.icon] || Brain;
+
+  return (
+    <div className="flex flex-col items-center gap-1.5 px-2 py-1.5 min-w-[70px]">
+      <span className="text-[10px] font-medium whitespace-nowrap">
+        {module.number}. {module.title.split(' ')[0]}
+      </span>
+      <IconComponent className={`w-4 h-4 ${isActive ? 'text-base' : 'text-text-muted'}`} />
+      <Progress value={progress} className="h-1 w-10" />
+    </div>
+  );
+}
+
 export function LearningPathway() {
   const { completeLesson, isLessonCompleted, pathwayProgress } = useProgressStore();
+  const reviewGate = useReviewGate();
 
   const [selectedModuleId, setSelectedModuleId] = useState<string>('personal-development');
   const [expandedLevel, setExpandedLevel] = useState<string | null>(null);
   const [activeLesson, setActiveLesson] = useState<PathwayLesson | null>(null);
-  const [quizAnswer, setQuizAnswer] = useState<number | null>(null);
-  const [showQuizResult, setShowQuizResult] = useState(false);
+  const [activeLessonIndex, setActiveLessonIndex] = useState<number>(0);
 
   // Get the selected module and its pathway
   const selectedModule = useMemo(
@@ -72,7 +132,11 @@ export function LearningPathway() {
     if (!isLevelUnlocked(level, levelIndex)) return false;
     if (lessonIndex === 0) return true;
     const previousLesson = level.lessons[lessonIndex - 1];
-    return isLessonCompleted(previousLesson.id);
+    if (!isLessonCompleted(previousLesson.id)) return false;
+
+    // Review gate: block if too many due reviews (>10)
+    // This only blocks NEW lessons, not the first lesson of a level
+    return !reviewGate.isBlocked;
   };
 
   const getLevelProgress = (level: PathwayLevel): number => {
@@ -80,71 +144,69 @@ export function LearningPathway() {
     return (completed / level.lessons.length) * 100;
   };
 
+  // Calculate module progress for tabs
+  const getModuleProgress = (moduleId: string): number => {
+    const mod = modules.find(m => m.id === moduleId);
+    if (!mod?.pathway) return 0;
+    const totalLessons = mod.pathway.reduce((acc, l) => acc + l.lessons.length, 0);
+    const completedLessons = mod.pathway.flatMap(l => l.lessons)
+      .filter(lesson => isLessonCompleted(lesson.id)).length;
+    return totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0;
+  };
+
   const handleCompleteLesson = () => {
     if (!activeLesson) return;
-    if (activeLesson.content.quiz && !showQuizResult) return;
     completeLesson(activeLesson.id, activeLesson.xpReward);
+    setActiveLesson(null);
   };
 
   // Calculate lessons for the selected module only
   const totalLessons = pathwayLevels.reduce((acc, l) => acc + l.lessons.length, 0);
+  const totalModuleLessons = totalLessons;
   const moduleCompletedLessons = useMemo(() => {
     const moduleLessonIds = pathwayLevels.flatMap((l) => l.lessons.map((lesson) => lesson.id));
     return pathwayProgress.completedLessons.filter((id) => moduleLessonIds.includes(id)).length;
   }, [pathwayLevels, pathwayProgress.completedLessons]);
   const completedLessons = moduleCompletedLessons;
 
-  // Lesson View - Swipeable Cards
-  if (activeLesson) {
-    const isComplete = isLessonCompleted(activeLesson.id);
+  // Handle opening a lesson with index tracking
+  const handleOpenLesson = (lesson: PathwayLesson, globalIndex: number) => {
+    setActiveLesson(lesson);
+    setActiveLessonIndex(globalIndex);
+  };
 
+  // Calculate global lesson index
+  const calculateGlobalIndex = (levelIndex: number, lessonIndex: number): number => {
+    let index = 0;
+    for (let i = 0; i < levelIndex; i++) {
+      index += pathwayLevels[i].lessons.length;
+    }
+    return index + lessonIndex;
+  };
+
+  // LessonViewer - Immersive lesson experience
+  if (activeLesson) {
     return (
       <div className="h-screen bg-base flex flex-col overflow-hidden">
-        {/* Animated gradient background */}
         <AnimatedBackground />
-
-        {/* Header - Compact on mobile */}
-        <div className="relative z-10 glass-nav border-b border-white/[0.06] px-2 py-1.5 md:px-4 md:py-2 flex-shrink-0">
-          <div className="max-w-5xl mx-auto flex items-center justify-between gap-2">
-            <button
-              onClick={() => {
-                setActiveLesson(null);
-                setQuizAnswer(null);
-                setShowQuizResult(false);
-              }}
-              className="flex items-center gap-1 text-text-secondary hover:text-text-primary transition-colors text-sm flex-shrink-0"
-            >
-              <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
-              <span className="hidden sm:inline">Back</span>
-            </button>
-            <div className="text-center flex-1 min-w-0">
-              <h1 className="text-xs md:text-base font-display font-semibold text-text-primary truncate px-1 md:px-4">
-                {activeLesson.title}
-              </h1>
-            </div>
-            <div className="flex items-center gap-1 flex-shrink-0">
-              <XPBadge xp={activeLesson.xpReward} size="sm" />
-            </div>
-          </div>
-        </div>
-
-        {/* Swipeable Content - Fill remaining height */}
-        <div className="relative z-10 flex-1 max-w-5xl mx-auto w-full px-2 py-2 md:px-4 md:py-3 overflow-hidden">
-          <SwipeableLesson
+        <div className="relative z-10 flex-1 overflow-hidden">
+          <LessonViewer
             lesson={activeLesson}
             onComplete={handleCompleteLesson}
-            isComplete={isComplete}
-            quizAnswer={quizAnswer}
-            setQuizAnswer={setQuizAnswer}
-            showQuizResult={showQuizResult}
-            setShowQuizResult={setShowQuizResult}
+            onClose={() => setActiveLesson(null)}
+            isComplete={isLessonCompleted(activeLesson.id)}
+            moduleColor={selectedModule.color}
+            lessonNumber={activeLessonIndex + 1}
+            totalLessons={totalModuleLessons}
+            currentStreak={pathwayProgress.streakDays || 0}
+            showSectionTabs={true}
           />
         </div>
       </div>
     );
   }
 
-  // Pathway Overview
+  // Pathway Overview with Module Tabs
   return (
     <ModuleLayout
       title="Learning Pathway"
@@ -162,33 +224,46 @@ export function LearningPathway() {
         </div>
       }
     >
-      {/* Module Selector */}
+      {/* Module Tabs with ScrollArea */}
       <div className="mb-6">
         <p className="text-xs text-text-muted mb-3 font-medium">Select Module</p>
-        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-          {modules.map((mod) => (
-            <motion.button
-              key={mod.id}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => {
-                setSelectedModuleId(mod.id);
-                setExpandedLevel(null);
-                setActiveLesson(null);
-              }}
-              className={`flex-shrink-0 px-4 py-2.5 rounded-xl text-sm font-medium transition-all border ${
-                selectedModuleId === mod.id
-                  ? 'bg-gradient-to-r from-sunrise to-golden text-base border-transparent shadow-sunrise'
-                  : 'glass-light border-white/10 text-text-secondary hover:text-text-primary hover:border-white/20'
-              }`}
-            >
-              {mod.number}. {mod.title.split(' ')[0]}
-            </motion.button>
-          ))}
-        </div>
+        <ScrollArea className="w-full whitespace-nowrap rounded-lg">
+          <Tabs
+            value={selectedModuleId}
+            onValueChange={(value) => {
+              setSelectedModuleId(value);
+              setExpandedLevel(null);
+              setActiveLesson(null);
+            }}
+          >
+            <TabsList className="inline-flex h-auto gap-1 p-1.5 bg-surface/30 border border-white/10 rounded-xl">
+              {modules.map((mod) => {
+                const progress = getModuleProgress(mod.id);
+                const isActive = selectedModuleId === mod.id;
+
+                return (
+                  <TabsTrigger
+                    key={mod.id}
+                    value={mod.id}
+                    className={`
+                      rounded-lg p-0 transition-all border
+                      ${isActive
+                        ? 'bg-gradient-to-r from-sunrise to-golden border-transparent shadow-sunrise text-base'
+                        : 'bg-transparent border-transparent hover:bg-white/5 text-text-secondary hover:text-text-primary'
+                      }
+                    `}
+                  >
+                    <ModuleTabContent module={mod} progress={progress} isActive={isActive} />
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
+          </Tabs>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </div>
 
-      {/* Overall Progress */}
+      {/* Overall Progress Card */}
       <GlassCard className="mb-6">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
@@ -211,6 +286,18 @@ export function LearningPathway() {
           animated
         />
       </GlassCard>
+
+      {/* Review Gate Banners */}
+      {reviewGate.isBlocked && (
+        <ReviewGateBanner
+          dueCount={reviewGate.dueCount}
+          reviewsNeeded={reviewGate.reviewsNeeded}
+        />
+      )}
+
+      {reviewGate.warningLevel === 'warning' && (
+        <ReviewWarningBanner dueCount={reviewGate.dueCount} />
+      )}
 
       {/* Levels */}
       <motion.div
@@ -315,6 +402,7 @@ export function LearningPathway() {
                           levelIndex
                         );
                         const lessonCompleted = isLessonCompleted(lesson.id);
+                        const globalIndex = calculateGlobalIndex(levelIndex, lessonIndex);
 
                         return (
                           <LessonCard
@@ -326,7 +414,7 @@ export function LearningPathway() {
                             completed={lessonCompleted}
                             locked={!lessonUnlocked}
                             index={lessonIndex}
-                            onClick={() => lessonUnlocked && setActiveLesson(lesson)}
+                            onClick={() => lessonUnlocked && handleOpenLesson(lesson, globalIndex)}
                           />
                         );
                       })}

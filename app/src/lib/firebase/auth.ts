@@ -4,7 +4,7 @@ import {
   GoogleAuthProvider,
   signOut as firebaseSignOut,
   onAuthStateChanged,
-  User,
+  type User,
 } from 'firebase/auth';
 import { getFirebaseAuth, isFirebaseConfigured } from './config';
 import type { FirebaseAuthUser } from './types';
