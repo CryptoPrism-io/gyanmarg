@@ -11,9 +11,14 @@ import {
   Shield,
   HardDrive,
   RefreshCw,
+  Cloud,
+  CloudOff,
+  LogOut,
 } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useProgressStore } from '@/store/progressStore';
+import { useAuth } from '@/hooks';
+import { GoogleSignInButton } from '@/components/molecules';
 
 // Storage keys for all stores
 const STORAGE_KEYS = {
@@ -47,6 +52,22 @@ export function Settings() {
   const userProgress = useProgressStore((s) => s.userProgress);
   const resetUser = useUserStore((s) => s.resetUser);
   const resetProgress = useProgressStore((s) => s.resetProgress);
+
+  // Auth state
+  const { user, signOut, isSyncing, syncNow, lastSyncAt, syncError, isConfigured } = useAuth();
+
+  // Format last sync time
+  const formatLastSync = () => {
+    if (!lastSyncAt) return 'Never synced';
+    const now = new Date();
+    const diff = now.getTime() - lastSyncAt.getTime();
+    const minutes = Math.floor(diff / 60000);
+    if (minutes < 1) return 'Just now';
+    if (minutes < 60) return `${minutes} minutes ago`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours} hours ago`;
+    return lastSyncAt.toLocaleDateString();
+  };
 
   // Calculate storage usage
   const calculateStorageSize = () => {
@@ -187,11 +208,20 @@ export function Settings() {
       {/* Profile Card */}
       <div className="bg-[#111113] border border-gray-800 rounded-xl p-6">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
-            <User className="w-6 h-6 text-amber-500" />
-          </div>
+          {user?.photoURL ? (
+            <img
+              src={user.photoURL}
+              alt={user.displayName || 'User'}
+              className="w-12 h-12 rounded-full border-2 border-amber-500/30"
+              referrerPolicy="no-referrer"
+            />
+          ) : (
+            <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
+              <User className="w-6 h-6 text-amber-500" />
+            </div>
+          )}
           <div>
-            <h2 className="text-lg font-semibold text-white">{profile?.name || 'Learner'}</h2>
+            <h2 className="text-lg font-semibold text-white">{profile?.name || user?.displayName || 'Learner'}</h2>
             <p className="text-sm text-gray-400">
               Level {userProgress.level} • {userProgress.xp.toLocaleString()} XP
             </p>
@@ -208,6 +238,98 @@ export function Settings() {
           </div>
         </div>
       </div>
+
+      {/* Account & Cloud Sync */}
+      {isConfigured && (
+        <div className="bg-[#111113] border border-gray-800 rounded-xl p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <Cloud className="w-5 h-5 text-blue-400" />
+            <h2 className="text-lg font-semibold text-white">Account & Cloud Sync</h2>
+          </div>
+
+          {user ? (
+            <>
+              {/* Signed In State */}
+              <div className="bg-[#0A0A0B] rounded-lg p-4 mb-4">
+                <div className="flex items-center gap-3 mb-3">
+                  {user.photoURL ? (
+                    <img
+                      src={user.photoURL}
+                      alt=""
+                      className="w-10 h-10 rounded-full"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center">
+                      <User className="w-5 h-5 text-amber-500" />
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-sm font-medium text-white">{user.displayName || 'User'}</p>
+                    <p className="text-xs text-gray-400">{user.email}</p>
+                  </div>
+                </div>
+
+                {/* Sync Status */}
+                <div className="flex items-center justify-between py-2 border-t border-gray-800">
+                  <div className="flex items-center gap-2">
+                    {isSyncing ? (
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                      >
+                        <RefreshCw className="w-4 h-4 text-amber-500" />
+                      </motion.div>
+                    ) : syncError ? (
+                      <CloudOff className="w-4 h-4 text-red-400" />
+                    ) : (
+                      <Cloud className="w-4 h-4 text-green-400" />
+                    )}
+                    <span className="text-xs text-gray-400">
+                      {isSyncing ? 'Syncing...' : `Last sync: ${formatLastSync()}`}
+                    </span>
+                  </div>
+                  <button
+                    onClick={syncNow}
+                    disabled={isSyncing}
+                    className="text-xs text-amber-500 hover:text-amber-400 disabled:opacity-50"
+                  >
+                    Sync now
+                  </button>
+                </div>
+                {syncError && (
+                  <p className="text-xs text-red-400 mt-2">{syncError}</p>
+                )}
+              </div>
+
+              <p className="text-sm text-gray-500 mb-4">
+                Your progress is automatically synced to the cloud. Sign in on any device to access your data.
+              </p>
+
+              <button
+                onClick={signOut}
+                className="flex items-center gap-2 px-4 py-2.5 bg-gray-700 hover:bg-gray-600
+                         text-white rounded-lg transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              {/* Signed Out State */}
+              <p className="text-sm text-gray-500 mb-4">
+                Sign in with Google to sync your progress across devices. Your local data will be preserved.
+              </p>
+              <GoogleSignInButton
+                variant="primary"
+                size="md"
+                label="Sign in with Google"
+              />
+            </>
+          )}
+        </div>
+      )}
 
       {/* Data Management */}
       <div className="bg-[#111113] border border-gray-800 rounded-xl p-6">

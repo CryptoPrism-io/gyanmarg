@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Habit, HabitCompletion, HabitCategory } from '@/types';
+import { triggerSync } from '@/store/firebaseSync';
 
 interface HabitState {
   habits: Habit[];
@@ -23,7 +24,7 @@ export const useHabitStore = create<HabitState>()(
       habits: [],
       completions: [],
 
-      addHabit: (habitData) =>
+      addHabit: (habitData) => {
         set((state) => ({
           habits: [
             ...state.habits,
@@ -35,20 +36,26 @@ export const useHabitStore = create<HabitState>()(
               createdAt: new Date().toISOString(),
             },
           ],
-        })),
+        }));
+        triggerSync();
+      },
 
-      updateHabit: (id, updates) =>
+      updateHabit: (id, updates) => {
         set((state) => ({
           habits: state.habits.map((h) => (h.id === id ? { ...h, ...updates } : h)),
-        })),
+        }));
+        triggerSync();
+      },
 
-      deleteHabit: (id) =>
+      deleteHabit: (id) => {
         set((state) => ({
           habits: state.habits.filter((h) => h.id !== id),
           completions: state.completions.filter((c) => c.habitId !== id),
-        })),
+        }));
+        triggerSync();
+      },
 
-      toggleHabitComplete: (id) =>
+      toggleHabitComplete: (id) => {
         set((state) => {
           const today = new Date().toISOString().split('T')[0];
           return {
@@ -74,7 +81,9 @@ export const useHabitStore = create<HabitState>()(
               },
             ],
           };
-        }),
+        });
+        triggerSync();
+      },
 
       resetDailyHabits: () =>
         set((state) => {

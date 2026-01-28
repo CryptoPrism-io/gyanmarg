@@ -19,5 +19,12 @@ export { RichMarkdown } from './RichMarkdown';
 // Habit Tracking
 export { HabitItem, HabitCategoryLabel } from './HabitItem';
 
+// Review Gate
+export { ReviewGateBanner, ReviewWarningBanner } from './ReviewGateBanner';
+
 // PWA
 export { PWAInstallPrompt } from './PWAInstallPrompt';
+
+// Auth
+export { GoogleSignInButton } from './GoogleSignInButton';
+export { UserAvatar } from './UserAvatar';

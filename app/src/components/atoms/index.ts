@@ -15,3 +15,6 @@ export { ProgressBar, XPProgressBar } from './ProgressBar';
 // Loading States
 export { Skeleton, SkeletonCard, SkeletonList, SkeletonStats } from './Skeleton';
 export { Spinner, LoadingOverlay, DotsLoader, ButtonLoader } from './Spinner';
+
+// Animations
+export { FloatingXP } from './FloatingXP';

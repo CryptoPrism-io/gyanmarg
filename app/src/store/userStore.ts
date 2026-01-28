@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { UserProfile, OnboardingData, UserSettings, OnboardingProgress } from '@/types';
+import { triggerSync } from '@/store/firebaseSync';
 
 interface UserState {
   // Profile
@@ -66,7 +67,7 @@ export const useUserStore = create<UserState>()(
           profile: state.profile ? { ...state.profile, ...updates } : null,
         })),
 
-      completeOnboarding: (data) =>
+      completeOnboarding: (data) => {
         set({
           profile: {
             name: data.name,
@@ -78,12 +79,17 @@ export const useUserStore = create<UserState>()(
           },
           isOnboarded: true,
           onboardingProgress: null, // Clear progress after completion
-        }),
+        });
+        // Trigger Firebase sync after onboarding
+        triggerSync();
+      },
 
-      updateSettings: (updates) =>
+      updateSettings: (updates) => {
         set((state) => ({
           settings: { ...state.settings, ...updates },
-        })),
+        }));
+        triggerSync();
+      },
 
       resetUser: () =>
         set({

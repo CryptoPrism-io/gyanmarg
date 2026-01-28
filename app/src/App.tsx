@@ -13,6 +13,9 @@ import { useUserStore, usePendingAchievement } from '@/store/userStore';
 import { useProgressStore, usePendingLevelUp } from '@/store/progressStore';
 import { useHabitStore } from '@/store/habitStore';
 
+// Auth
+import { AuthProvider } from '@/contexts/AuthContext';
+
 // Celebration Components
 import { AchievementUnlock, LevelUpModal } from '@/components/organisms';
 
@@ -314,9 +317,11 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter>
-      <AppRoutes />
-      <CelebrationModals />
-      <PWAInstallPrompt />
+      <AuthProvider>
+        <AppRoutes />
+        <CelebrationModals />
+        <PWAInstallPrompt />
+      </AuthProvider>
     </BrowserRouter>
   );
 }

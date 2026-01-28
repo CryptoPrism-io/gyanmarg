@@ -1,8 +1,9 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { UserProgress, PathwayProgress, Achievement, LessonBookmark, WeeklyChallenge } from '@/types';
+import type { UserProgress, PathwayProgress, Achievement, LessonBookmark, WeeklyChallenge, ChallengeCompletion } from '@/types';
 import { getAchievementById } from '@/data/achievements';
 import { useUserStore } from '@/store/userStore';
+import { triggerSync } from '@/store/firebaseSync';
 
 // Weekly challenge templates
 const weeklyTemplates: Omit<WeeklyChallenge, 'id' | 'startDate' | 'endDate' | 'current' | 'completed' | 'claimed'>[] = [
@@ -26,6 +27,9 @@ interface ProgressState {
   // Weekly Challenge
   weeklyChallenge: WeeklyChallenge | null;
 
+  // Challenge Completions (reward-based progressive system)
+  challengeCompletions: ChallengeCompletion[];
+
   // Enhanced Streak
   longestStreak: number;
   streakFreezes: number;
@@ -37,6 +41,7 @@ interface ProgressState {
 
   // XP & Level Actions
   addXP: (amount: number) => void;
+  addMicroXP: (amount: number) => void; // For small XP gains (card swipes) - no level up check
   getXPForNextLevel: () => number;
   getCurrentLevelXP: () => number;
   getLevelProgress: () => number;
@@ -75,6 +80,12 @@ interface ProgressState {
 
   // Flashcard review tracking
   incrementReviewCount: () => void;
+
+  // Challenge Actions (reward-based progressive system)
+  completeChallenge: (challengeId: string, response: string, xpReward: number) => void;
+  isChallengeCompleted: (challengeId: string) => boolean;
+  getChallengeCompletions: () => ChallengeCompletion[];
+  getChallengeResponse: (challengeId: string) => string | null;
 
   // Reset
   resetProgress: () => void;
@@ -121,6 +132,7 @@ export const useProgressStore = create<ProgressState>()(
       bookmarks: [],
       lastViewedLesson: null,
       weeklyChallenge: null,
+      challengeCompletions: [],
       longestStreak: 0,
       streakFreezes: 1,
       lastFreezeUsed: null,
@@ -145,6 +157,9 @@ export const useProgressStore = create<ProgressState>()(
               completed: updatedWeekly.current + amount >= updatedWeekly.target,
             };
           }
+
+          // Trigger Firebase sync
+          triggerSync();
 
           return {
             userProgress: {
@@ -175,6 +190,33 @@ export const useProgressStore = create<ProgressState>()(
 
       clearPendingLevelUp: () => set({ pendingLevelUp: null }),
 
+      // Add micro XP for small gains (card swipes) - accumulates but doesn't trigger level up modal
+      addMicroXP: (amount) =>
+        set((state) => {
+          const newXP = state.userProgress.xp + amount;
+          const newLevel = Math.floor(newXP / 500) + 1;
+
+          // Update weekly challenge if tracking XP
+          let updatedWeekly = state.weeklyChallenge;
+          if (updatedWeekly && updatedWeekly.metric === 'xp' && !updatedWeekly.completed) {
+            updatedWeekly = {
+              ...updatedWeekly,
+              current: Math.min(updatedWeekly.current + amount, updatedWeekly.target),
+              completed: updatedWeekly.current + amount >= updatedWeekly.target,
+            };
+          }
+
+          return {
+            userProgress: {
+              ...state.userProgress,
+              xp: newXP,
+              level: newLevel,
+            },
+            weeklyChallenge: updatedWeekly,
+            // Note: We don't set pendingLevelUp here to avoid interrupting card flow
+          };
+        }),
+
       completeLesson: (lessonId, xpReward) =>
         set((state) => {
           if (state.userProgress.lessonsCompleted.includes(lessonId)) {
@@ -194,6 +236,9 @@ export const useProgressStore = create<ProgressState>()(
               completed: updatedWeekly.current + 1 >= updatedWeekly.target,
             };
           }
+
+          // Trigger Firebase sync
+          triggerSync();
 
           return {
             userProgress: {
@@ -279,6 +324,9 @@ export const useProgressStore = create<ProgressState>()(
           const oldLevel = state.userProgress.level;
           const newLevel = Math.floor(newXP / 500) + 1;
           const leveledUp = newLevel > oldLevel;
+
+          // Trigger Firebase sync
+          triggerSync();
 
           return {
             userProgress: {
@@ -489,6 +537,55 @@ export const useProgressStore = create<ProgressState>()(
           };
         }),
 
+      // Challenge completion with user action response
+      completeChallenge: (challengeId: string, response: string, xpReward: number) => {
+        const state = get();
+        // Check if already completed
+        if (state.challengeCompletions.some(c => c.challengeId === challengeId)) {
+          return;
+        }
+
+        const completion: ChallengeCompletion = {
+          challengeId,
+          response,
+          completedAt: new Date().toISOString(),
+          xpEarned: xpReward,
+        };
+
+        set((state) => {
+          const newXP = state.userProgress.xp + xpReward;
+          const oldLevel = state.userProgress.level;
+          const newLevel = Math.floor(newXP / 500) + 1;
+          const leveledUp = newLevel > oldLevel;
+
+          // Trigger Firebase sync
+          triggerSync();
+
+          return {
+            challengeCompletions: [...state.challengeCompletions, completion],
+            userProgress: {
+              ...state.userProgress,
+              xp: newXP,
+              level: newLevel,
+            },
+            pendingLevelUp: leveledUp ? newLevel : state.pendingLevelUp,
+          };
+        });
+      },
+
+      isChallengeCompleted: (challengeId: string) => {
+        return get().challengeCompletions.some(c => c.challengeId === challengeId);
+      },
+
+      getChallengeCompletions: () => {
+        return get().challengeCompletions;
+      },
+
+      getChallengeResponse: (challengeId: string) => {
+        const completion = get().challengeCompletions.find(c => c.challengeId === challengeId);
+        return completion?.response ?? null;
+      },
+
       resetProgress: () =>
         set({
           userProgress: defaultUserProgress,
@@ -497,6 +594,7 @@ export const useProgressStore = create<ProgressState>()(
           bookmarks: [],
           lastViewedLesson: null,
           weeklyChallenge: null,
+          challengeCompletions: [],
           longestStreak: 0,
           streakFreezes: 1,
           lastFreezeUsed: null,

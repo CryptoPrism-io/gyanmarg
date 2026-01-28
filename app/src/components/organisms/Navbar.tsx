@@ -10,6 +10,8 @@ import {
   Settings,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
+import { useAuth } from '@/hooks';
+import { UserAvatar, GoogleSignInButton } from '@/components/molecules';
 
 const navItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
@@ -22,6 +24,7 @@ const navItems = [
 export function Navbar() {
   const location = useLocation();
   const userProgress = useProgressStore((state) => state.userProgress);
+  const { user, isConfigured } = useAuth();
 
   return (
     <nav className="glass-nav sticky top-0 z-50">
@@ -108,6 +111,20 @@ export function Navbar() {
               </span>
               <span className="text-[10px] sm:text-xs text-golden/70 font-medium">XP</span>
             </motion.div>
+
+            {/* User Avatar or Sign In Button */}
+            {isConfigured && (
+              user ? (
+                <UserAvatar size="sm" />
+              ) : (
+                <GoogleSignInButton
+                  variant="outline"
+                  size="sm"
+                  iconOnly
+                  className="hidden sm:flex"
+                />
+              )
+            )}
           </div>
         </div>
       </div>

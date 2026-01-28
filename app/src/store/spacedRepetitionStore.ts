@@ -1,41 +1,45 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { FlashcardWithScheduling, ReviewRating, ReviewHistoryEntry, SpacedRepetitionCard } from '@/types';
-import { allFlashcards as flashcards } from '@/data/flashcards-index';
+import { allFlashcards } from '@/data/flashcards-index';
+import { reviewCategories, getCategoryForPathwayId } from '@/data/review-categories';
+import { isFlashcardUnlockedByLesson } from '@/data/lesson-flashcard-map';
+import { triggerSync } from '@/store/firebaseSync';
+
+interface CategoryStats {
+  categoryId: string;
+  total: number;
+  due: number;
+  mastered: number;
+  learning: number;
+  isUnlocked: boolean;
+}
 
 interface SpacedRepetitionState {
-  cards: FlashcardWithScheduling[];
+  // Only stores cards that have been UNLOCKED (from completed lessons)
+  unlockedCards: FlashcardWithScheduling[];
   reviewHistory: ReviewHistoryEntry[];
-  initialized: boolean;
   lastReviewDate: string | null;
   totalReviews: number;
 
   // Actions
-  initializeCards: () => void;
+  syncUnlockedCards: (completedLessonIds: string[]) => void;
   reviewCard: (cardId: string, rating: ReviewRating) => void;
-  getDueCards: () => FlashcardWithScheduling[];
-  getCardsByCategory: (category: string) => FlashcardWithScheduling[];
+  getDueCards: (categoryId?: string) => FlashcardWithScheduling[];
+  getCardsByCategory: (categoryId: string) => FlashcardWithScheduling[];
   resetCard: (cardId: string) => void;
-  addCustomCard: (card: SpacedRepetitionCard) => void;
 
   // Stats
-  getTodaysDueCount: () => number;
+  getTodaysDueCount: (categoryId?: string) => number;
   getMasteredCount: () => number;
   getReviewStreak: () => number;
-  getCardStats: () => { total: number; due: number; mastered: number; learning: number };
+  getCardStats: () => { total: number; due: number; mastered: number; learning: number; locked: number };
+  getCategoryStats: (completedLessonIds: string[]) => CategoryStats[];
+  getTotalAvailableCards: () => number;
 }
 
 /**
  * SM-2 Algorithm Implementation
- * Based on SuperMemo 2 algorithm by Piotr Wozniak
- *
- * Rating scale:
- * 0 - Complete blackout, no recall
- * 1 - Incorrect, but remembered upon seeing answer
- * 2 - Incorrect, but answer seemed easy to recall (Hard)
- * 3 - Correct, but with serious difficulty
- * 4 - Correct, after hesitation (Good)
- * 5 - Perfect recall (Easy)
  */
 function calculateSM2(
   card: FlashcardWithScheduling,
@@ -44,12 +48,10 @@ function calculateSM2(
   let { easeFactor, interval, repetitions, lapses } = card;
 
   if (rating < 3) {
-    // Failed review - reset progress
     repetitions = 0;
     interval = 1;
     lapses += 1;
   } else {
-    // Successful review
     if (repetitions === 0) {
       interval = 1;
     } else if (repetitions === 1) {
@@ -60,20 +62,13 @@ function calculateSM2(
     repetitions += 1;
   }
 
-  // Update ease factor using SM-2 formula
-  // EF' = EF + (0.1 - (5-q) * (0.08 + (5-q) * 0.02))
   const q = rating;
   easeFactor = easeFactor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
-
-  // Ensure ease factor doesn't go below 1.3
   easeFactor = Math.max(1.3, easeFactor);
 
   return { easeFactor, interval, repetitions, lapses };
 }
 
-/**
- * Convert base flashcard to scheduled flashcard
- */
 function initializeCard(card: SpacedRepetitionCard): FlashcardWithScheduling {
   const today = new Date().toISOString().split('T')[0];
   return {
@@ -81,78 +76,98 @@ function initializeCard(card: SpacedRepetitionCard): FlashcardWithScheduling {
     easeFactor: 2.5,
     interval: 0,
     repetitions: 0,
-    nextReviewDate: today, // Due immediately
+    nextReviewDate: today,
     lapses: 0,
   };
 }
 
-/**
- * Calculate next review date from interval
- */
 function getNextReviewDate(interval: number): string {
   const date = new Date();
   date.setDate(date.getDate() + interval);
   return date.toISOString().split('T')[0];
 }
 
+/**
+ * Check if a flashcard belongs to a category
+ */
+function cardBelongsToCategory(card: FlashcardWithScheduling, categoryId: string): boolean {
+  const category = reviewCategories.find(c => c.id === categoryId);
+  if (!category) return false;
+
+  // Check if card's pathwayId matches any of the category's pathwayIds
+  const cardPathway = card.pathwayId?.toLowerCase() || '';
+  const cardCategory = card.category?.toLowerCase() || '';
+
+  return category.pathwayIds.some(p => {
+    const pLower = p.toLowerCase();
+    return cardPathway.includes(pLower) ||
+           pLower.includes(cardPathway) ||
+           cardCategory.includes(pLower) ||
+           pLower.includes(cardCategory);
+  });
+}
+
+/**
+ * Get category ID for a flashcard
+ */
+function getCardCategoryId(card: SpacedRepetitionCard): string | null {
+  const category = getCategoryForPathwayId(card.pathwayId || '');
+  return category?.id || null;
+}
+
 export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
   persist(
     (set, get) => ({
-      cards: [],
+      unlockedCards: [],
       reviewHistory: [],
-      initialized: false,
       lastReviewDate: null,
       totalReviews: 0,
 
       /**
-       * Initialize cards from flashcard data
-       * Only runs once or when new cards are added
+       * Sync unlocked cards based on completed lessons
+       * GRANULAR: Each lesson only unlocks its specific flashcards (5-15 cards per lesson)
+       * Uses tag-based matching from lesson-flashcard-map.ts
        */
-      initializeCards: () => {
+      syncUnlockedCards: (completedLessonIds: string[]) => {
+        if (completedLessonIds.length === 0) return;
+
         const state = get();
+        const existingCardIds = new Set(state.unlockedCards.map(c => c.id));
 
-        if (state.initialized && state.cards.length > 0) {
-          // Check for new flashcards to add
-          const existingIds = new Set(state.cards.map(c => c.id));
-          const newCards = flashcards
-            .filter(fc => !existingIds.has(fc.id))
-            .map(initializeCard);
+        // Find flashcards that match ANY completed lesson's tags
+        // Each lesson only unlocks ~5-15 related cards, not the whole category
+        const newCardsToUnlock = allFlashcards.filter(card => {
+          if (existingCardIds.has(card.id)) return false;
 
-          if (newCards.length > 0) {
-            set(state => ({
-              cards: [...state.cards, ...newCards],
-            }));
-          }
-          return;
-        }
-
-        // First time initialization
-        const initializedCards = flashcards.map(initializeCard);
-        set({
-          cards: initializedCards,
-          initialized: true,
+          // Check if any completed lesson unlocks this specific card
+          return completedLessonIds.some(lessonId =>
+            isFlashcardUnlockedByLesson(card, lessonId)
+          );
         });
+
+        if (newCardsToUnlock.length > 0) {
+          const initializedNewCards = newCardsToUnlock.map(initializeCard);
+          set(state => ({
+            unlockedCards: [...state.unlockedCards, ...initializedNewCards],
+          }));
+          triggerSync();
+        }
       },
 
-      /**
-       * Review a card and update its scheduling
-       */
       reviewCard: (cardId: string, rating: ReviewRating) => {
         const today = new Date().toISOString().split('T')[0];
 
         set(state => {
-          const cardIndex = state.cards.findIndex(c => c.id === cardId);
+          const cardIndex = state.unlockedCards.findIndex(c => c.id === cardId);
           if (cardIndex === -1) return state;
 
-          const card = state.cards[cardIndex];
+          const card = state.unlockedCards[cardIndex];
           const previousInterval = card.interval;
 
-          // Calculate new scheduling using SM-2
           const updates = calculateSM2(card, rating);
           const newInterval = updates.interval;
           const nextReviewDate = getNextReviewDate(newInterval);
 
-          // Create updated card
           const updatedCard: FlashcardWithScheduling = {
             ...card,
             ...updates,
@@ -160,11 +175,9 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
             lastReviewDate: today,
           };
 
-          // Update cards array
-          const newCards = [...state.cards];
+          const newCards = [...state.unlockedCards];
           newCards[cardIndex] = updatedCard;
 
-          // Add to review history
           const historyEntry: ReviewHistoryEntry = {
             cardId,
             rating,
@@ -174,50 +187,48 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
           };
 
           return {
-            cards: newCards,
+            unlockedCards: newCards,
             reviewHistory: [...state.reviewHistory, historyEntry],
             lastReviewDate: today,
             totalReviews: state.totalReviews + 1,
           };
         });
+
+        // Trigger Firebase sync
+        triggerSync();
       },
 
       /**
-       * Get cards that are due for review (nextReviewDate <= today)
+       * Get due cards, optionally filtered by category
        */
-      getDueCards: () => {
+      getDueCards: (categoryId?: string) => {
         const state = get();
         const today = new Date().toISOString().split('T')[0];
 
-        return state.cards
-          .filter(card => card.nextReviewDate <= today)
-          .sort((a, b) => {
-            // Prioritize cards with more lapses
-            if (a.lapses !== b.lapses) return b.lapses - a.lapses;
-            // Then by due date
-            return a.nextReviewDate.localeCompare(b.nextReviewDate);
-          });
+        let cards = state.unlockedCards.filter(card => card.nextReviewDate <= today);
+
+        if (categoryId) {
+          cards = cards.filter(card => cardBelongsToCategory(card, categoryId));
+        }
+
+        return cards.sort((a, b) => {
+          if (a.lapses !== b.lapses) return b.lapses - a.lapses;
+          return a.nextReviewDate.localeCompare(b.nextReviewDate);
+        });
       },
 
-      /**
-       * Get cards filtered by category
-       */
-      getCardsByCategory: (category: string) => {
-        const state = get();
-        return state.cards.filter(card => card.category === category);
+      getCardsByCategory: (categoryId: string) => {
+        return get().unlockedCards.filter(card => cardBelongsToCategory(card, categoryId));
       },
 
-      /**
-       * Reset a card's progress (start over)
-       */
       resetCard: (cardId: string) => {
         const today = new Date().toISOString().split('T')[0];
 
         set(state => {
-          const cardIndex = state.cards.findIndex(c => c.id === cardId);
+          const cardIndex = state.unlockedCards.findIndex(c => c.id === cardId);
           if (cardIndex === -1) return state;
 
-          const newCards = [...state.cards];
+          const newCards = [...state.unlockedCards];
           newCards[cardIndex] = {
             ...newCards[cardIndex],
             easeFactor: 2.5,
@@ -227,38 +238,18 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
             lapses: 0,
           };
 
-          return { cards: newCards };
+          return { unlockedCards: newCards };
         });
       },
 
-      /**
-       * Add a custom flashcard
-       */
-      addCustomCard: (card: SpacedRepetitionCard) => {
-        const scheduledCard = initializeCard(card);
-        set(state => ({
-          cards: [...state.cards, scheduledCard],
-        }));
+      getTodaysDueCount: (categoryId?: string) => {
+        return get().getDueCards(categoryId).length;
       },
 
-      /**
-       * Get count of cards due today
-       */
-      getTodaysDueCount: () => {
-        return get().getDueCards().length;
-      },
-
-      /**
-       * Get count of mastered cards (interval > 21 days)
-       */
       getMasteredCount: () => {
-        const state = get();
-        return state.cards.filter(card => card.interval > 21).length;
+        return get().unlockedCards.filter(card => card.interval > 21).length;
       },
 
-      /**
-       * Get review streak (consecutive days with reviews)
-       */
       getReviewStreak: () => {
         const state = get();
         if (!state.lastReviewDate) return 0;
@@ -267,9 +258,7 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
         const lastReview = new Date(state.lastReviewDate);
         const diffDays = Math.floor((today.getTime() - lastReview.getTime()) / (1000 * 60 * 60 * 24));
 
-        // If last review was today or yesterday, count the streak
         if (diffDays <= 1) {
-          // Count consecutive days from review history
           const reviewDates = [...new Set(
             state.reviewHistory.map(r => r.timestamp.split('T')[0])
           )].sort().reverse();
@@ -295,31 +284,62 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
         return 0;
       },
 
-      /**
-       * Get comprehensive card statistics
-       */
       getCardStats: () => {
         const state = get();
         const today = new Date().toISOString().split('T')[0];
 
-        const due = state.cards.filter(c => c.nextReviewDate <= today).length;
-        const mastered = state.cards.filter(c => c.interval > 21).length;
-        const learning = state.cards.filter(c => c.repetitions > 0 && c.interval <= 21).length;
+        const unlocked = state.unlockedCards.length;
+        const due = state.unlockedCards.filter(c => c.nextReviewDate <= today).length;
+        const mastered = state.unlockedCards.filter(c => c.interval > 21).length;
+        const learning = state.unlockedCards.filter(c => c.repetitions > 0 && c.interval <= 21).length;
+        const locked = allFlashcards.length - unlocked;
 
-        return {
-          total: state.cards.length,
-          due,
-          mastered,
-          learning,
-        };
+        return { total: unlocked, due, mastered, learning, locked };
+      },
+
+      /**
+       * Get stats for each category
+       * A category is "unlocked" if it has ANY cards unlocked (not all)
+       */
+      getCategoryStats: (_completedLessonIds: string[]): CategoryStats[] => {
+        const state = get();
+        const today = new Date().toISOString().split('T')[0];
+
+        return reviewCategories.map(category => {
+          const categoryCards = state.unlockedCards.filter(card =>
+            cardBelongsToCategory(card, category.id)
+          );
+
+          // Count potential cards (all flashcards in this category)
+          const potentialCards = allFlashcards.filter(card => {
+            const cardCategoryId = getCardCategoryId(card);
+            return cardCategoryId === category.id;
+          });
+
+          // Category is "unlocked" if ANY cards from it are unlocked
+          const isUnlocked = categoryCards.length > 0;
+
+          return {
+            categoryId: category.id,
+            total: categoryCards.length,
+            due: categoryCards.filter(c => c.nextReviewDate <= today).length,
+            mastered: categoryCards.filter(c => c.interval > 21).length,
+            learning: categoryCards.filter(c => c.repetitions > 0 && c.interval <= 21).length,
+            isUnlocked,
+            potentialTotal: potentialCards.length,
+          };
+        });
+      },
+
+      getTotalAvailableCards: () => {
+        return allFlashcards.length;
       },
     }),
     {
-      name: 'gyanmarg-spaced-repetition',
+      name: 'gyanmarg-spaced-repetition-v3', // New key for category-based system
       partialize: (state) => ({
-        cards: state.cards,
-        reviewHistory: state.reviewHistory.slice(-1000), // Keep last 1000 reviews
-        initialized: state.initialized,
+        unlockedCards: state.unlockedCards,
+        reviewHistory: state.reviewHistory.slice(-1000),
         lastReviewDate: state.lastReviewDate,
         totalReviews: state.totalReviews,
       }),
@@ -327,7 +347,6 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
   )
 );
 
-// Selector hooks for common operations
 export const useDueCards = () => useSpacedRepetitionStore(state => state.getDueCards());
 export const useTodaysDueCount = () => useSpacedRepetitionStore(state => state.getTodaysDueCount());
 export const useCardStats = () => useSpacedRepetitionStore(state => state.getCardStats());

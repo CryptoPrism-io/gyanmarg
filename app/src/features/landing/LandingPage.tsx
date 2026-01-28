@@ -14,6 +14,8 @@ import {
   Smartphone
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { GoogleSignInButton } from '@/components/molecules';
+import { useAuth } from '@/hooks';
 
 // Extend window for PWA functions
 declare global {
@@ -171,6 +173,7 @@ export function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showIOSModal, setShowIOSModal] = useState(false);
   const { canInstall, isInstalled, isIOS, install } = useInstallPrompt();
+  const { isConfigured } = useAuth();
 
   const handleInstallClick = async () => {
     if (isIOS) {
@@ -217,9 +220,13 @@ export function LandingPage() {
                 Install App
               </button>
             )}
-            <Link to="/onboarding" className="text-sm text-white hover:text-amber-500 transition">
-              Log in
-            </Link>
+            {isConfigured && (
+              <GoogleSignInButton
+                variant="outline"
+                size="md"
+                label="Sign in"
+              />
+            )}
             <Link
               to="/onboarding"
               className="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-amber-400 text-black text-sm font-semibold rounded-lg hover:opacity-90 transition"
@@ -256,6 +263,14 @@ export function LandingPage() {
                   <Download size={18} />
                   Install App
                 </button>
+              )}
+              {isConfigured && (
+                <GoogleSignInButton
+                  variant="outline"
+                  size="lg"
+                  fullWidth
+                  label="Sign in with Google"
+                />
               )}
               <Link
                 to="/onboarding"
