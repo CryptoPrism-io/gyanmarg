@@ -26,13 +26,11 @@ import { useProgressStore } from '@/store/progressStore';
 import { ModuleLayout, AnimatedBackground } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { LessonCard } from '@/components/molecules/LessonCard';
-import { ReviewGateBanner, ReviewWarningBanner } from '@/components/molecules/ReviewGateBanner';
 import { ProgressBar } from '@/components/atoms';
 import { LessonViewer } from '@/components/organisms/LessonViewer';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Progress } from '@/components/ui/progress';
-import { useReviewGate } from '@/hooks';
 import type { PathwayLevel, PathwayLesson } from '@/types';
 import { modules } from '@/data/modules';
 import type { LucideIcon } from 'lucide-react';
@@ -100,7 +98,6 @@ function ModuleTabContent({
 
 export function LearningPathway() {
   const { completeLesson, isLessonCompleted, pathwayProgress } = useProgressStore();
-  const reviewGate = useReviewGate();
 
   const [selectedModuleId, setSelectedModuleId] = useState<string>('personal-development');
   const [expandedLevel, setExpandedLevel] = useState<string | null>(null);
@@ -132,11 +129,7 @@ export function LearningPathway() {
     if (!isLevelUnlocked(level, levelIndex)) return false;
     if (lessonIndex === 0) return true;
     const previousLesson = level.lessons[lessonIndex - 1];
-    if (!isLessonCompleted(previousLesson.id)) return false;
-
-    // Review gate: block if too many due reviews (>10)
-    // This only blocks NEW lessons, not the first lesson of a level
-    return !reviewGate.isBlocked;
+    return isLessonCompleted(previousLesson.id);
   };
 
   const getLevelProgress = (level: PathwayLevel): number => {
@@ -286,18 +279,6 @@ export function LearningPathway() {
           animated
         />
       </GlassCard>
-
-      {/* Review Gate Banners */}
-      {reviewGate.isBlocked && (
-        <ReviewGateBanner
-          dueCount={reviewGate.dueCount}
-          reviewsNeeded={reviewGate.reviewsNeeded}
-        />
-      )}
-
-      {reviewGate.warningLevel === 'warning' && (
-        <ReviewWarningBanner dueCount={reviewGate.dueCount} />
-      )}
 
       {/* Levels */}
       <motion.div
