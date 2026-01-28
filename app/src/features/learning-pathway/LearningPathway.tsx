@@ -230,7 +230,7 @@ export function LearningPathway() {
         <ScrollArea className="w-full whitespace-nowrap rounded-lg">
           <Tabs
             value={selectedModuleId}
-            onValueChange={(value) => {
+            onValueChange={(value: string) => {
               setSelectedModuleId(value);
               setExpandedLevel(null);
               setActiveLesson(null);
