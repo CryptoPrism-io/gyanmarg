@@ -13,9 +13,9 @@ import { AnimatePresence } from 'framer-motion';
 import { useUserStore } from '@/store/userStore';
 import { useProgressStore } from '@/store/progressStore';
 import { ModuleLayout, Section } from '@/components/templates';
-import { Card, GlassCard, CardHeader } from '@/components/molecules';
+import { Card, GlassCard } from '@/components/molecules';
 import { TodaysFocus, LocalLeaderboard, VisualOfTheDay } from '@/components/organisms';
-import { ProgressBar, Badge, XPBadge } from '@/components/atoms';
+import { ProgressBar, XPBadge } from '@/components/atoms';
 import { getDailyQuote, getPastQuotes, formatQuoteDate } from '@/data/quotes';
 
 // Stagger animation for cards

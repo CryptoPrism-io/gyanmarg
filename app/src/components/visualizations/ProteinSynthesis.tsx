@@ -35,7 +35,7 @@ export function ProteinSynthesis() {
     const points: { hour: number; mps: number }[] = [];
     for (let h = 0; h <= 24; h++) {
       let mps = 0;
-      mealTimings.forEach((meal, i) => {
+      mealTimings.forEach((meal) => {
         const mealHour = parseInt(meal.time);
         const hoursAfter = h - mealHour;
         if (hoursAfter >= 0 && hoursAfter <= 5) {
@@ -47,8 +47,6 @@ export function ProteinSynthesis() {
     }
     return points;
   }, [mealTimings]);
-
-  const maxMps = Math.max(...mpsData.map(d => d.mps));
 
   return (
     <div className="flex flex-col items-center gap-5">
@@ -134,7 +132,7 @@ export function ProteinSynthesis() {
           <svg viewBox="0 0 280 80" className="w-full h-full">
             {/* MPS curve */}
             <path
-              d={`M 0 80 ${mpsData.map((d, i) => {
+              d={`M 0 80 ${mpsData.map((d) => {
                 const x = (d.hour / 24) * 280;
                 const y = 80 - (d.mps / 100) * 70;
                 return `L ${x} ${y}`;
@@ -142,7 +140,7 @@ export function ProteinSynthesis() {
               fill="url(#mpsGradient)"
             />
             <path
-              d={`M ${mpsData.map((d, i) => {
+              d={`M ${mpsData.map((d) => {
                 const x = (d.hour / 24) * 280;
                 const y = 80 - (d.mps / 100) * 70;
                 return i === 0 ? `${x} ${y}` : `L ${x} ${y}`;

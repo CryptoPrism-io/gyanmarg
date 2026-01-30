@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 // Never Eat Alone - Network compounds exponentially
 export function NetworkEffect() {
   const [connections, setConnections] = useState(5);
-  const [showValue, setShowValue] = useState(false);
+  const [showValue] = useState(false);
 
   // Metcalfe's law: network value = n(n-1)/2
   const networkValue = (connections * (connections - 1)) / 2;

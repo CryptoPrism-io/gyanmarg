@@ -5,7 +5,6 @@ import {
   Route,
   Navigate,
   useLocation,
-  useNavigate,
 } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -15,10 +14,9 @@ import { useProgressStore, usePendingLevelUp } from '@/store/progressStore';
 
 // Auth
 import { AuthProvider } from '@/contexts/AuthContext';
-import { useAuth } from '@/hooks';
 
 // Celebration Components
-import { AchievementUnlock, LevelUpModal, SignInGate } from '@/components/organisms';
+import { AchievementUnlock, LevelUpModal } from '@/components/organisms';
 
 // PWA Install Prompt
 import { PWAInstallPrompt } from '@/components/molecules';

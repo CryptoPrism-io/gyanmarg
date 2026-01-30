@@ -10,8 +10,8 @@ import imgVisualLearning from '@/assets/ai-images/landing/feature-visual-learnin
 import imgGamification from '@/assets/ai-images/landing/feature-gamification.png';
 import imgHeroMain from '@/assets/ai-images/landing/hero-main.png';
 
-// Forgetting curve data points
-const forgettingCurveData = [
+// Forgetting curve data points (available for future use)
+const _forgettingCurveData = [
   { day: 0, withoutReview: 100, withReview: 100 },
   { day: 1, withoutReview: 40, withReview: 90 },
   { day: 3, withoutReview: 25, withReview: 85 },
@@ -19,6 +19,7 @@ const forgettingCurveData = [
   { day: 14, withoutReview: 10, withReview: 78 },
   { day: 30, withoutReview: 5, withReview: 75 },
 ];
+void _forgettingCurveData;
 
 // Map technique images
 const techniqueImages: Record<string, string> = {

@@ -13,11 +13,8 @@ import {
   Zap,
   Brain,
   Heart,
-  TrendingDown,
   TrendingUp,
-  Lightbulb,
   Network,
-  Trophy,
 } from 'lucide-react';
 import { useUserStore, useOnboardingProgress } from '@/store/userStore';
 import { OnboardingLayout } from '@/components/templates';

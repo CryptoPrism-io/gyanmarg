@@ -99,7 +99,7 @@ export function BlackSwan() {
             cy="145"
             r="12"
             fill={event.type === 'positive' ? '#22C55E' : '#EF4444'}
-            animate={{ scale: [1, 1.2, 1], delay: 0.5 }}
+            animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
           />
 

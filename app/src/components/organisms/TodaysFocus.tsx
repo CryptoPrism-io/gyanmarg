@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Brain, BookOpen, Zap, ChevronRight, Target, Flame, Sparkles } from 'lucide-react';
+import { Brain, BookOpen, Zap, ChevronRight, Target, Flame } from 'lucide-react';
 import { GlassCard } from '@/components/molecules';
 import { ProgressBar } from '@/components/atoms';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
@@ -73,9 +73,6 @@ export function TodaysFocus({ className }: TodaysFocusProps) {
   // Get today's challenges
   const todaysChallenges = useMemo(() => getTodaysChallenges(3), []);
   const challengeCount = todaysChallenges.length;
-
-  // Check if there's anything to focus on (always true now since we always show "Complete a lesson")
-  const hasFocusItems = true;
 
   return (
     <GlassCard className={`${className} !p-2.5 sm:!p-4`}>

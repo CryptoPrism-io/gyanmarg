@@ -34,7 +34,7 @@ const buckets = [
 
 export function TaxBuckets() {
   const [activeBucket, setActiveBucket] = useState<number | null>(null);
-  const [income, setIncome] = useState(100000);
+  const [income] = useState(100000);
 
   const colorMap: Record<string, { bg: string; border: string; text: string }> = {
     red: { bg: 'bg-red-500/10', border: 'border-red-500/30', text: 'text-red-400' },
@@ -42,10 +42,11 @@ export function TaxBuckets() {
     green: { bg: 'bg-green-500/10', border: 'border-green-500/30', text: 'text-green-400' },
   };
 
-  // Simplified tax calculation
-  const taxedNowAfter = income * 0.70; // ~30% tax
-  const taxedLaterAfter = income * 0.75; // ~25% effective
-  const neverTaxedAfter = income; // 0% tax
+  // Tax calculations available for display
+  const _taxedNowAfter = income * 0.70; // ~30% tax
+  const _taxedLaterAfter = income * 0.75; // ~25% effective
+  const _neverTaxedAfter = income; // 0% tax
+  void _taxedNowAfter; void _taxedLaterAfter; void _neverTaxedAfter;
 
   return (
     <div className="flex flex-col items-center gap-4">

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Search, BookOpen, Filter, ChevronDown, Sparkles, Brain, Users } from 'lucide-react';
+import { ArrowLeft, Search, BookOpen, ChevronDown, Sparkles, Brain } from 'lucide-react';
 
 // AI Images
 import imgHeroBooksTransform from '@/assets/ai-images/landing/hero-books-transform.png';

@@ -204,7 +204,7 @@ export interface OnboardingData {
   primaryGoal: string;
   learningStyle: string;
   dailyTime: number;
-  focusAreas: string[];
+  selectedDomains: string[];
   completed: boolean;
   completedAt: string | null;
 }

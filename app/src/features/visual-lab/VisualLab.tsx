@@ -213,8 +213,8 @@ const books: Book[] = [
   { id: 'other', name: 'Other Sources', shortName: 'Other', color: '#6B7280' },
 ];
 
-// Helper to normalize book names
-const getBookId = (source: string): string => {
+// Helper to normalize book names (available for future use)
+const _getBookId = (source: string): string => {
   const s = source.toLowerCase();
   if (s.includes('atomic habits')) return 'atomic-habits';
   if (s.includes('thinking') && (s.includes('fast') || s.includes('kahneman'))) return 'thinking-fast-slow';
@@ -260,6 +260,7 @@ const getBookId = (source: string): string => {
   if (s.includes('crush') || s.includes('gary vaynerchuk') || s.includes('gary vee')) return 'crush-it';
   return 'other';
 };
+void _getBookId; // Suppress unused warning
 
 const visualizations: VisualizationCard[] = [
   // Habits & Productivity

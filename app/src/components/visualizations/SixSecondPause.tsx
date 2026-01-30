@@ -9,7 +9,7 @@ export function SixSecondPause() {
   const [response, setResponse] = useState<'reactive' | 'thoughtful' | null>(null);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     if (isPausing && countdown > 0) {
       interval = setInterval(() => {
         setCountdown((prev) => prev - 1);

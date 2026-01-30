@@ -303,7 +303,7 @@ export function CompoundInterest() {
             })}
 
             {/* Interactive hover points */}
-            {data.filter((_, i) => i % 5 === 0 || i === years).map((d, idx) => {
+            {data.filter((_, i) => i % 5 === 0 || i === years).map((_, idx) => {
               const i = idx * 5 > years ? years : idx * 5;
               const point = data[i];
               if (!point) return null;

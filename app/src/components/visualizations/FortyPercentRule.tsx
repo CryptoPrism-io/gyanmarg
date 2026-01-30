@@ -8,7 +8,7 @@ export function FortyPercentRule() {
   const [phase, setPhase] = useState<'start' | 'quit' | 'push' | 'reserve'>('start');
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     if (isRunning && perceivedLimit < 100) {
       interval = setInterval(() => {
         setPerceivedLimit((prev) => {

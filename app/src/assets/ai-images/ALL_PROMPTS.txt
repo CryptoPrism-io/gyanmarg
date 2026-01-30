@@ -1,0 +1,144 @@
+================================================================================
+POLYMIND AI IMAGE PROMPTS
+================================================================================
+Style: "Cosmic Neural Minimalism"
+Colors: Dark background (#0A0A0B), Amber gold (#F59E0B), Purple (#8B5CF6)
+================================================================================
+
+
+================================================================================
+ONBOARDING SLIDES (800x600)
+================================================================================
+
+--- onboarding-01-forgetting.png ---
+A human head silhouette dissolving into scattered particles and dust, memories and knowledge fragments floating away into a dark void, the fragments glow faintly with dying amber (#F59E0B) light, cosmic neural minimalism style, dark background (#0A0A0B), sense of loss and fading, ethereal and melancholic, subtle purple (#8B5CF6) mist in the background, cinematic dramatic lighting, 8k, ultra detailed
+
+
+--- onboarding-02-breakthrough.png ---
+Neural pathways reconnecting with streams of golden light, a central glowing core radiating amber (#F59E0B) energy outward, broken connections being restored by flowing light particles, cosmic neural minimalism, dark background (#0A0A0B), sense of hope and discovery, sacred geometry patterns emerging, subtle electric blue (#3B82F6) and purple (#8B5CF6) secondary glows, ethereal and powerful, 8k, cinematic lighting
+
+
+--- onboarding-03-polymind.png ---
+A radiant human silhouette filled with a galaxy of interconnected knowledge nodes and constellations, golden amber (#F59E0B) neural pathways forming a cosmic web inside the mind, energy radiating outward in all directions, the figure standing powerful and enlightened, cosmic neural minimalism style, dark void background (#0A0A0B), secondary glows of purple (#8B5CF6), blue (#3B82F6), and green (#22C55E) representing different knowledge domains, transcendent and empowering mood, 8k, ultra detailed, artstation
+
+
+================================================================================
+DOMAIN CARDS (400x300)
+================================================================================
+
+--- domain-psychology.png ---
+Abstract human brain made of flowing lavender (#8B5CF6) light streams, neural patterns and synapses pulsing with amber (#F59E0B) energy, mirrors and reflections suggesting self-awareness, cosmic neural minimalism, dark void background (#0A0A0B), ethereal and introspective mood, 8k
+
+
+--- domain-ai.png ---
+Abstract geometric neural network, circuit patterns merging with organic flowing forms, electric blue (#3B82F6) data streams, amber (#F59E0B) core processing nodes, futuristic yet ethereal, cosmic neural minimalism, dark background (#0A0A0B), sense of intelligent evolution, 8k
+
+
+--- domain-wealth.png ---
+Golden fractals expanding infinitely outward, abstract compound growth visualization, amber (#F59E0B) and gold (#F7C948) energy streams multiplying and branching, sacred geometry patterns, cosmic neural minimalism, dark void (#0A0A0B), sense of abundance and expansion, 8k
+
+
+--- domain-productivity.png ---
+Abstract laser-focused beam of amber (#F59E0B) light cutting through chaos, organized geometric patterns emerging from disorder, green (#22C55E) energy representing growth and completion, cosmic neural minimalism, dark background (#0A0A0B), sense of clarity and momentum, 8k
+
+
+--- domain-health.png ---
+Abstract human form radiating vital energy, cellular structures glowing with coral (#FF6B6B) and amber (#F59E0B) light, DNA helix subtly visible, flowing life force particles, cosmic neural minimalism, dark background (#0A0A0B), sense of vitality and regeneration, 8k
+
+
+--- domain-leadership.png ---
+Abstract figure emanating rings of influence and connection, network of people represented as light nodes connected to central amber (#F59E0B) source, royal purple (#7C3AED) energy waves, cosmic neural minimalism, dark background (#0A0A0B), sense of impact and guidance, 8k
+
+
+--- domain-philosophy.png ---
+Abstract infinite symbol merging with cosmic void, ancient wisdom meeting modern understanding, teal (#14B8A6) and amber (#F59E0B) energy flowing in eternal patterns, subtle mandala geometry, cosmic neural minimalism, dark background (#0A0A0B), sense of depth and timelessness, 8k
+
+
+--- domain-writing.png ---
+Abstract flowing script transforming into light particles, words becoming energy waves radiating outward, orange (#F97316) and amber (#F59E0B) ink-like streams, cosmic neural minimalism, dark background (#0A0A0B), sense of expression and connection, 8k
+
+
+--- domain-science.png ---
+Abstract atomic and molecular structures floating in space, particles orbiting glowing amber (#F59E0B) cores, cyan (#06B6D4) energy representing discovery and understanding, cosmic neural minimalism, dark background (#0A0A0B), sense of wonder and exploration, 8k
+
+
+--- domain-creativity.png ---
+Abstract explosion of creative energy, colors and forms emerging from a central spark, magenta (#EC4899) and amber (#F59E0B) swirling together, paint-like light splashes, cosmic neural minimalism, dark background (#0A0A0B), sense of inspiration and possibility, 8k
+
+
+================================================================================
+ACHIEVEMENTS (300x300 square)
+================================================================================
+
+--- achievement-first-lesson.png ---
+A single glowing amber (#F59E0B) door opening in complete darkness, brilliant light pouring through the crack, particles of knowledge streaming out, the first step into infinite possibility, cosmic neural minimalism, dark void (#0A0A0B), sense of beginning and wonder, radiant and hopeful, 8k
+
+
+--- achievement-streak-7.png ---
+Seven ascending flames merging into one powerful golden fire, each flame connected by amber (#F59E0B) energy streams, momentum building upward, sparks and embers floating, cosmic neural minimalism, dark background (#0A0A0B), sense of dedication and building power, 8k
+
+
+--- achievement-streak-30.png ---
+A blazing phoenix made of amber (#F59E0B) and gold light, rising from cosmic flames, wings spread wide, trail of 30 glowing embers behind it, cosmic neural minimalism, dark void (#0A0A0B), triumphant and powerful, legendary feeling, 8k
+
+
+--- achievement-xp-1000.png ---
+Abstract mind reaching critical mass, explosion of golden light radiating outward, neural pathways fully illuminated with amber (#F59E0B), cosmic neural minimalism, dark background (#0A0A0B), sense of breakthrough and achievement, 8k
+
+
+--- achievement-xp-5000.png ---
+Spiral galaxy of knowledge forming inside a mind silhouette, thousands of connected nodes glowing amber (#F59E0B), ascending energy spiral reaching upward, cosmic neural minimalism, dark void (#0A0A0B), sense of mastery and elevation, 8k
+
+
+--- achievement-level-up.png ---
+Radiant burst of amber (#F59E0B) energy in starburst pattern, abstract figure ascending through a portal of light, sacred geometry rings expanding outward, cosmic neural minimalism, dark background (#0A0A0B), maximum celebration and triumph, epic and glorious, 8k
+
+
+--- achievement-first-review.png ---
+Two neural pathways reconnecting with a golden bridge of light, synapses firing in synchronization, amber (#F59E0B) pulses, sense of reinforcement and strengthening, cosmic neural minimalism, dark background (#0A0A0B), subtle and meaningful, 8k
+
+
+--- achievement-all-domains.png ---
+Ten different colored energy streams converging into a central amber (#F59E0B) core, forming a complete mandala, rainbow of knowledge unified, cosmic neural minimalism, dark background (#0A0A0B), sense of completeness and mastery, 8k
+
+
+================================================================================
+LANDING PAGE (various sizes)
+================================================================================
+
+--- hero-main.png (1920x1080) ---
+Vast cosmic neural landscape, infinite network of glowing amber (#F59E0B) knowledge nodes connected by golden light streams, extending into a dark void horizon, subtle depth and dimension, particles floating like stars, cosmic neural minimalism, dark background (#0A0A0B), sense of infinite possibility, breathtaking and expansive, 8k ultra HD, cinematic
+
+
+--- hero-books-transform.png (800x600) ---
+Stack of abstract books dissolving and transforming into a network of glowing neural connections, pages becoming light particles, knowledge literally coming alive, amber (#F59E0B) energy flow, cosmic neural minimalism, dark background (#0A0A0B), magical transformation moment, 8k
+
+
+--- hero-mind-unlock.png (600x600) ---
+Abstract padlock made of neural patterns, being unlocked by a golden key of light, knowledge particles streaming out, amber (#F59E0B) glow, sense of access and liberation, cosmic neural minimalism, dark void (#0A0A0B), empowering and revelatory, 8k
+
+
+--- feature-spaced-repetition.png (400x300) ---
+Abstract timeline with memory strength waves, peaks getting stronger over time, amber (#F59E0B) curves building upward, neural reinforcement visualized, cosmic neural minimalism, dark background (#0A0A0B), scientific yet beautiful, 8k
+
+
+--- feature-visual-learning.png (400x300) ---
+Abstract eye merged with neural network, seeing and understanding as one process, amber (#F59E0B) iris radiating knowledge, visual cortex illuminated, cosmic neural minimalism, dark background (#0A0A0B), perception and wisdom united, 8k
+
+
+--- feature-gamification.png (400x300) ---
+Abstract ascending stairway made of light, each step glowing brighter than the last, amber (#F59E0B) progress trail, XP particles floating upward, cosmic neural minimalism, dark background (#0A0A0B), sense of growth and reward, 8k
+
+
+--- cta-section-bg.png (1920x400) ---
+Horizontal flowing energy stream, amber (#F59E0B) light moving from left to right, sense of momentum and action, subtle neural patterns, cosmic neural minimalism, dark background (#0A0A0B), dynamic and inviting, 8k
+
+
+================================================================================
+TOTAL: 28 IMAGES
+================================================================================
+- Onboarding: 3
+- Domains: 10
+- Achievements: 8
+- Landing: 7
+================================================================================

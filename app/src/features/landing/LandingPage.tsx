@@ -14,7 +14,6 @@ import {
   Smartphone,
   CheckCircle2,
   XCircle,
-  Zap,
   Clock,
   BookOpen,
   Sparkles,
@@ -28,7 +27,6 @@ import { useAuth } from '@/hooks';
 // Import AI-generated images
 import heroMain from '@/assets/ai-images/landing/hero-main.png';
 import heroBooksTransform from '@/assets/ai-images/landing/hero-books-transform.png';
-import heroMindUnlock from '@/assets/ai-images/landing/hero-mind-unlock.png';
 import featureSpacedRepetition from '@/assets/ai-images/landing/feature-spaced-repetition.png';
 import featureVisualLearning from '@/assets/ai-images/landing/feature-visual-learning.png';
 import featureGamification from '@/assets/ai-images/landing/feature-gamification.png';

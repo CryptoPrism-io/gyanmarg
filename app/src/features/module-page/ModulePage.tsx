@@ -40,7 +40,7 @@ export default function ModulePage() {
   const navigate = useNavigate();
   const { pathwayProgress, completeLesson } = useProgressStore();
   const completedLessons = pathwayProgress?.completedLessons ?? [];
-  const { isAuthenticated, requireAuth, AuthGateModal } = useAuthGate();
+  const { isAuthenticated } = useAuthGate();
 
   const module = getModuleById(moduleId || '');
   const [expandedLevel, setExpandedLevel] = useState<string | null>(null);
