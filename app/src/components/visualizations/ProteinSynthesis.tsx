@@ -140,10 +140,10 @@ export function ProteinSynthesis() {
               fill="url(#mpsGradient)"
             />
             <path
-              d={`M ${mpsData.map((d) => {
+              d={`M ${mpsData.map((d, idx) => {
                 const x = (d.hour / 24) * 280;
                 const y = 80 - (d.mps / 100) * 70;
-                return i === 0 ? `${x} ${y}` : `L ${x} ${y}`;
+                return idx === 0 ? `${x} ${y}` : `L ${x} ${y}`;
               }).join(' ')}`}
               fill="none"
               stroke="#22C55E"

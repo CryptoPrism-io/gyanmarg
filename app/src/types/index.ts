@@ -6,7 +6,7 @@ export interface UserProfile {
   primaryGoal: string;
   learningStyle: string;
   dailyTime: number;
-  focusAreas: string[];
+  selectedDomains: string[];
   createdAt: string;
 }
 

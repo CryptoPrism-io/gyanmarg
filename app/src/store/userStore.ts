@@ -74,7 +74,7 @@ export const useUserStore = create<UserState>()(
             primaryGoal: data.primaryGoal,
             learningStyle: data.learningStyle,
             dailyTime: data.dailyTime,
-            focusAreas: data.focusAreas,
+            selectedDomains: data.selectedDomains,
             createdAt: new Date().toISOString(),
           },
           isOnboarded: true,
