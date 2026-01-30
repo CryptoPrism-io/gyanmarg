@@ -1387,8 +1387,7 @@ export const bookContent: Record<string, BookContent> = {
         }
       }
     ]
-  }
-};
+  },
 
   // ============================================
   // POWER & INFLUENCE BOOKS
