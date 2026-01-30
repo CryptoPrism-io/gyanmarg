@@ -71,13 +71,16 @@ export function GoogleSignInButton({
       const result = await signIn();
 
       if (result.success) {
-        onSignIn?.();
-
-        // Navigate based on result
-        if (result.needsOnboarding) {
-          navigate('/onboarding');
+        // If onSignIn callback provided, let parent handle navigation
+        if (onSignIn) {
+          onSignIn();
         } else {
-          navigate('/dashboard');
+          // Default navigation behavior
+          if (result.needsOnboarding) {
+            navigate('/onboarding');
+          } else {
+            navigate('/dashboard');
+          }
         }
       }
     } catch (error) {

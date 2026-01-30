@@ -8,6 +8,7 @@ import {
   Flame,
   Sparkles,
   Settings,
+  Eye,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
@@ -16,15 +17,22 @@ import { UserAvatar, GoogleSignInButton } from '@/components/molecules';
 const navItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
   { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
+  { id: 'visual-lab', path: '/lab', label: 'Visuals', icon: Eye },
   { id: 'review', path: '/review', label: 'Review', icon: Brain },
   { id: 'challenges', path: '/challenges', label: 'Challenges', icon: Zap },
-  { id: 'settings', path: '/settings', label: 'Settings', icon: Settings },
+  { id: 'settings', path: '/settings', label: '', icon: Settings, iconOnly: true },
 ];
 
 export function Navbar() {
   const location = useLocation();
   const userProgress = useProgressStore((state) => state.userProgress);
   const { user, isConfigured } = useAuth();
+
+  // Filter nav items - hide Review for non-authenticated users
+  const isAuthenticated = Boolean(user) || !isConfigured;
+  const filteredNavItems = navItems.filter(item =>
+    item.id !== 'review' || isAuthenticated
+  );
 
   return (
     <nav className="glass-nav sticky top-0 z-50">
@@ -40,29 +48,30 @@ export function Navbar() {
               <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-base" />
             </motion.div>
             <span className="font-display font-semibold text-text-primary hidden sm:block text-lg">
-              Gyanmarg
+              Polymind
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => {
+            {filteredNavItems.map((item) => {
               const Icon = item.icon;
               const isActive =
                 location.pathname === item.path ||
                 location.pathname.startsWith(`${item.path}/`);
+              const isIconOnly = 'iconOnly' in item && item.iconOnly;
               return (
                 <Link
                   key={item.id}
                   to={item.path}
-                  title={item.label}
+                  title={item.label || item.id}
                   className="relative"
                 >
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`
-                      flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium
+                      flex items-center gap-2 ${isIconOnly ? 'px-2.5' : 'px-4'} py-2 rounded-xl text-sm font-medium
                       transition-all duration-200
                       ${isActive
                         ? 'bg-sunrise/10 text-sunrise'
@@ -71,7 +80,7 @@ export function Navbar() {
                     `}
                   >
                     <Icon className="w-4 h-4" />
-                    <span className="hidden lg:inline">{item.label}</span>
+                    {!isIconOnly && <span className="hidden lg:inline">{item.label}</span>}
                   </motion.div>
                   {isActive && (
                     <motion.div
@@ -136,13 +145,20 @@ export function Navbar() {
 const mobileNavItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
   { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
+  { id: 'visual-lab', path: '/lab', label: 'Visuals', icon: Eye },
   { id: 'review', path: '/review', label: 'Review', icon: Brain },
-  { id: 'challenges', path: '/challenges', label: 'Goals', icon: Zap },
-  { id: 'settings', path: '/settings', label: 'Settings', icon: Settings },
+  { id: 'settings', path: '/settings', label: '', icon: Settings },
 ];
 
 export function MobileNav() {
   const location = useLocation();
+  const { user, isConfigured } = useAuth();
+
+  // Filter nav items - hide Review for non-authenticated users
+  const isAuthenticated = Boolean(user) || !isConfigured;
+  const filteredMobileNavItems = mobileNavItems.filter(item =>
+    item.id !== 'review' || isAuthenticated
+  );
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 safe-area-bottom">
@@ -151,7 +167,7 @@ export function MobileNav() {
 
       {/* Nav content */}
       <div className="relative flex justify-around items-center h-16 px-2">
-        {mobileNavItems.map((item) => {
+        {filteredMobileNavItems.map((item) => {
           const Icon = item.icon;
           const isActive =
             location.pathname === item.path ||
@@ -181,14 +197,16 @@ export function MobileNav() {
                     />
                   )}
                 </div>
-                <span
-                  className={`
-                    text-[10px] font-medium
-                    ${isActive ? 'text-sunrise' : 'text-text-muted opacity-70'}
-                  `}
-                >
-                  {item.label}
-                </span>
+                {item.label && (
+                  <span
+                    className={`
+                      text-[10px] font-medium
+                      ${isActive ? 'text-sunrise' : 'text-text-muted opacity-70'}
+                    `}
+                  >
+                    {item.label}
+                  </span>
+                )}
               </motion.div>
 
               {/* Active indicator */}

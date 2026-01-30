@@ -10,7 +10,6 @@ const weeklyTemplates: Omit<WeeklyChallenge, 'id' | 'startDate' | 'endDate' | 'c
   { title: 'Knowledge Seeker', description: 'Complete 7 lessons this week', target: 7, metric: 'lessons', xpReward: 500 },
   { title: 'XP Hunter', description: 'Earn 1000 XP this week', target: 1000, metric: 'xp', xpReward: 300 },
   { title: 'Deep Focus', description: 'Complete 300 minutes of deep work', target: 300, metric: 'deepWork', xpReward: 400 },
-  { title: 'Habit Master', description: 'Complete 35 habit check-ins', target: 35, metric: 'habits', xpReward: 350 },
   { title: 'Memory Palace', description: 'Review 50 flashcards', target: 50, metric: 'reviews', xpReward: 400 },
 ];
 
@@ -87,6 +86,12 @@ interface ProgressState {
   getChallengeCompletions: () => ChallengeCompletion[];
   getChallengeResponse: (challengeId: string) => string | null;
 
+  // Visualization Unlocking
+  unlockedVisualizations: string[];
+  unlockVisualization: (vizId: string) => boolean;
+  isVisualizationUnlocked: (vizId: string) => boolean;
+  getUnlockedVisualizationsCount: () => number;
+
   // Reset
   resetProgress: () => void;
 }
@@ -133,6 +138,7 @@ export const useProgressStore = create<ProgressState>()(
       lastViewedLesson: null,
       weeklyChallenge: null,
       challengeCompletions: [],
+      unlockedVisualizations: [], // Users start with no unlocked visualizations
       longestStreak: 0,
       streakFreezes: 1,
       lastFreezeUsed: null,
@@ -586,6 +592,50 @@ export const useProgressStore = create<ProgressState>()(
         return completion?.response ?? null;
       },
 
+      // Visualization unlocking - costs 500 XP per visualization
+      unlockVisualization: (vizId: string) => {
+        const state = get();
+        const UNLOCK_COST = 500;
+
+        // Already unlocked
+        if (state.unlockedVisualizations.includes(vizId)) {
+          return true;
+        }
+
+        // Check if user has enough XP
+        if (state.userProgress.xp < UNLOCK_COST) {
+          return false;
+        }
+
+        // Deduct XP and unlock
+        set((state) => {
+          const newXP = state.userProgress.xp - UNLOCK_COST;
+          const newLevel = Math.floor(newXP / 500) + 1;
+
+          // Trigger Firebase sync
+          triggerSync();
+
+          return {
+            userProgress: {
+              ...state.userProgress,
+              xp: newXP,
+              level: newLevel,
+            },
+            unlockedVisualizations: [...state.unlockedVisualizations, vizId],
+          };
+        });
+
+        return true;
+      },
+
+      isVisualizationUnlocked: (vizId: string) => {
+        return get().unlockedVisualizations.includes(vizId);
+      },
+
+      getUnlockedVisualizationsCount: () => {
+        return get().unlockedVisualizations.length;
+      },
+
       resetProgress: () =>
         set({
           userProgress: defaultUserProgress,
@@ -595,6 +645,7 @@ export const useProgressStore = create<ProgressState>()(
           lastViewedLesson: null,
           weeklyChallenge: null,
           challengeCompletions: [],
+          unlockedVisualizations: [],
           longestStreak: 0,
           streakFreezes: 1,
           lastFreezeUsed: null,

@@ -1,12 +1,11 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Brain, BookOpen, Zap, CheckCircle, ChevronRight, Target, Flame, Sparkles } from 'lucide-react';
+import { Brain, BookOpen, Zap, ChevronRight, Target, Flame, Sparkles } from 'lucide-react';
 import { GlassCard } from '@/components/molecules';
 import { ProgressBar } from '@/components/atoms';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 import { useProgressStore } from '@/store/progressStore';
-import { useHabitStore } from '@/store/habitStore';
 import { getTodaysChallenges } from '@/data/challengePool';
 
 interface FocusItemProps {
@@ -67,22 +66,16 @@ export function TodaysFocus({ className }: TodaysFocusProps) {
   const lastViewedLesson = useProgressStore((s) => s.lastViewedLesson);
   const weeklyChallenge = useProgressStore((s) => s.weeklyChallenge);
   const currentStreak = useProgressStore((s) => s.userProgress.currentStreak);
-  const allHabits = useHabitStore((s) => s.habits);
 
   // Memoize computed values to avoid infinite loops
   const dueCards = useMemo(() => getDueCards(), [getDueCards]);
-  const habits = useMemo(() => allHabits.filter((h) => !h.completedToday), [allHabits]);
 
   // Get today's challenges
   const todaysChallenges = useMemo(() => getTodaysChallenges(3), []);
   const challengeCount = todaysChallenges.length;
 
-  // Check if there's anything to focus on
-  const hasFocusItems =
-    dueCards.length > 0 ||
-    (lastViewedLesson && !lastViewedLesson.completed) ||
-    challengeCount > 0 ||
-    habits.length > 0;
+  // Check if there's anything to focus on (always true now since we always show "Complete a lesson")
+  const hasFocusItems = true;
 
   return (
     <GlassCard className={`${className} !p-2.5 sm:!p-4`}>
@@ -130,7 +123,17 @@ export function TodaysFocus({ className }: TodaysFocusProps) {
           />
         )}
 
-        {/* Priority 3: Daily challenges */}
+        {/* Priority 3: Complete a lesson */}
+        <FocusItem
+          icon={<BookOpen className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-sage" />}
+          title="Complete a lesson"
+          subtitle="Earn 500 XP"
+          action={() => navigate('/pathway')}
+          color="sage"
+          badge="+500 XP"
+        />
+
+        {/* Priority 4: Daily challenges */}
         {challengeCount > 0 && (
           <FocusItem
             icon={<Zap className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-golden" />}
@@ -140,31 +143,6 @@ export function TodaysFocus({ className }: TodaysFocusProps) {
             color="golden"
             badge={challengeCount}
           />
-        )}
-
-        {/* Priority 4: Incomplete habits */}
-        {habits.length > 0 && (
-          <FocusItem
-            icon={<CheckCircle className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-sage" />}
-            title="Track habits"
-            subtitle={`${habits.length} habits remaining today`}
-            action={() => navigate('/habits')}
-            color="sage"
-            badge={habits.length}
-          />
-        )}
-
-        {/* If nothing to focus on */}
-        {!hasFocusItems && (
-          <div className="text-center py-8">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-sage/10 border border-sage/20 flex items-center justify-center">
-              <Sparkles className="w-8 h-8 text-sage" />
-            </div>
-            <p className="font-display font-semibold text-text-primary mb-1">All caught up!</p>
-            <p className="text-sm text-text-muted">
-              You&apos;ve completed today&apos;s tasks. Great work!
-            </p>
-          </div>
         )}
       </div>
 

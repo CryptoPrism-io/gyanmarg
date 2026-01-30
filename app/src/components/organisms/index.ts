@@ -7,3 +7,5 @@ export { LevelUpModal } from './LevelUpModal';
 export { TodaysFocus } from './TodaysFocus';
 export { LocalLeaderboard } from './LocalLeaderboard';
 export { LessonViewer } from './LessonViewer';
+export { VisualOfTheDay } from './VisualOfTheDay';
+export { SignInGate } from './SignInGate';

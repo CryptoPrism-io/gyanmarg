@@ -18,3 +18,6 @@ export { Spinner, LoadingOverlay, DotsLoader, ButtonLoader } from './Spinner';
 
 // Animations
 export { FloatingXP } from './FloatingXP';
+
+// Placeholders
+export { ImagePlaceholder } from './ImagePlaceholder';

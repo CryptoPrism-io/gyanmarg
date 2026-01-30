@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import {
   X,
@@ -11,6 +12,11 @@ import { TinderCardStack } from '@/components/organisms/TinderCardStack';
 import { useProgressStore } from '@/store/progressStore';
 import type { PathwayLesson } from '@/types';
 
+interface NextLessonInfo {
+  lesson: PathwayLesson;
+  levelTitle: string;
+}
+
 interface LessonViewerProps {
   lesson: PathwayLesson;
   onComplete: () => void;
@@ -22,6 +28,10 @@ interface LessonViewerProps {
   currentStreak?: number;
   showSectionTabs?: boolean;
   initialSection?: 'overview' | 'content' | 'quiz' | 'takeaways';
+  moduleName?: string;
+  levelName?: string;
+  nextLesson?: NextLessonInfo | null;
+  onNextLesson?: (lesson: PathwayLesson) => void;
 }
 
 const colorGradients: Record<string, string> = {
@@ -48,6 +58,10 @@ export function LessonViewer({
   lessonNumber = 1,
   totalLessons = 10,
   currentStreak = 0,
+  moduleName,
+  levelName,
+  nextLesson,
+  onNextLesson,
 }: LessonViewerProps) {
   const [sessionXP, setSessionXP] = useState(0);
   const [timeSpent, setTimeSpent] = useState(0);
@@ -55,13 +69,19 @@ export function LessonViewer({
 
   const gradient = colorGradients[moduleColor] || colorGradients.orange;
 
+  // Reset state when lesson changes
+  useEffect(() => {
+    setSessionXP(0);
+    setTimeSpent(0);
+  }, [lesson.id]);
+
   // Track reading time
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeSpent(prev => prev + 1);
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [lesson.id]);
 
   // Format time spent
   const formatTime = (seconds: number) => {
@@ -76,12 +96,12 @@ export function LessonViewer({
     addMicroXP(amount);
   };
 
-  return (
+  const content = (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-base/95 backdrop-blur-xl z-50 flex flex-col"
+      className="fixed inset-0 bg-base z-[9999] flex flex-col"
     >
       {/* Header */}
       <div className="flex-shrink-0 border-b border-white/10">
@@ -102,6 +122,11 @@ export function LessonViewer({
                   {lesson.type}
                 </Badge>
               </div>
+              {moduleName && levelName && (
+                <p className="text-xs text-text-muted mb-0.5">
+                  {moduleName} → {levelName}
+                </p>
+              )}
               <h1 className="text-lg font-display font-bold text-text-primary line-clamp-1">
                 {lesson.title}
               </h1>
@@ -143,11 +168,14 @@ export function LessonViewer({
       <div className="flex-1 overflow-y-auto">
         <div className="max-w-4xl mx-auto px-4">
           <TinderCardStack
+            key={lesson.id}
             lesson={lesson}
             onComplete={onComplete}
             isComplete={isComplete}
             moduleColor={moduleColor}
             onXPEarned={handleXPEarned}
+            nextLesson={nextLesson}
+            onNextLesson={onNextLesson}
           />
         </div>
       </div>
@@ -175,6 +203,8 @@ export function LessonViewer({
       </div>
     </motion.div>
   );
+
+  return createPortal(content, document.body);
 }
 
 export default LessonViewer;

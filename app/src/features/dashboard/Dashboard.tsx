@@ -1,27 +1,22 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import {
   Trophy,
   Flame,
   Target,
   Star,
-  BookOpen,
-  Brain,
-  Calendar,
-  Zap,
-  ChevronRight,
-  Grid3X3,
   Sparkles,
+  History,
+  ChevronDown,
 } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 import { useUserStore } from '@/store/userStore';
 import { useProgressStore } from '@/store/progressStore';
-import { useHabitStore } from '@/store/habitStore';
 import { ModuleLayout, Section } from '@/components/templates';
 import { Card, GlassCard, CardHeader } from '@/components/molecules';
-import { TodaysFocus, LocalLeaderboard } from '@/components/organisms';
+import { TodaysFocus, LocalLeaderboard, VisualOfTheDay } from '@/components/organisms';
 import { ProgressBar, Badge, XPBadge } from '@/components/atoms';
-import { bookContent } from '@/data/books';
+import { getDailyQuote, getPastQuotes, formatQuoteDate } from '@/data/quotes';
 
 // Stagger animation for cards
 const containerVariants = {
@@ -44,6 +39,94 @@ const itemVariants = {
   },
 };
 
+// Daily Quote Section with backlog
+function DailyQuoteSection() {
+  const [showBacklog, setShowBacklog] = useState(false);
+  const dailyQuote = getDailyQuote();
+  const pastQuotes = getPastQuotes(30);
+
+  return (
+    <div className="space-y-3">
+      {/* Today's Quote */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="relative overflow-hidden rounded-2xl"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-sunrise/10 via-lavender/5 to-golden/10" />
+        <div className="absolute inset-0 border border-sunrise/20 rounded-2xl" />
+
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-sunrise/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-lavender/10 rounded-full blur-2xl" />
+
+        <div className="relative p-6 md:p-8">
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-xl bg-sunrise/10 border border-sunrise/20 flex items-center justify-center shrink-0">
+              <Sparkles className="w-5 h-5 text-sunrise" />
+            </div>
+            <div className="flex-1">
+              <p className="text-lg md:text-xl text-text-primary font-medium italic leading-relaxed">
+                "{dailyQuote.text}"
+              </p>
+              <p className="text-sm text-sunrise mt-3 font-medium">
+                — {dailyQuote.author}{dailyQuote.source ? `, ${dailyQuote.source}` : ''}
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Backlog Toggle */}
+      <button
+        onClick={() => setShowBacklog(!showBacklog)}
+        className="flex items-center gap-2 text-xs text-text-muted hover:text-text-secondary transition-colors mx-auto"
+      >
+        <History className="w-3.5 h-3.5" />
+        <span>Past 30 days</span>
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showBacklog ? 'rotate-180' : ''}`} />
+      </button>
+
+      {/* Backlog List */}
+      <AnimatePresence>
+        {showBacklog && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="bg-surface border border-white/10 rounded-xl p-4 max-h-[400px] overflow-y-auto space-y-3">
+              {pastQuotes.slice(1).map(({ date, quote }, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.02 }}
+                  className="flex gap-3 pb-3 border-b border-white/5 last:border-0 last:pb-0"
+                >
+                  <div className="text-[10px] text-text-muted w-16 shrink-0 pt-0.5">
+                    {formatQuoteDate(date)}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs text-text-secondary italic leading-relaxed">
+                      "{quote.text}"
+                    </p>
+                    <p className="text-[10px] text-sunrise mt-1">
+                      — {quote.author}{quote.source ? `, ${quote.source}` : ''}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export function Dashboard() {
   const profile = useUserStore((state) => state.profile);
   const userProgress = useProgressStore((state) => state.userProgress);
@@ -51,12 +134,6 @@ export function Dashboard() {
   const generateWeeklyChallenge = useProgressStore((state) => state.generateWeeklyChallenge);
   const updateStreak = useProgressStore((state) => state.updateStreak);
   const refreshStreakFreeze = useProgressStore((state) => state.refreshStreakFreeze);
-  const habits = useHabitStore((state) => state.habits);
-
-  const habitsCompletedToday = useMemo(
-    () => habits.filter((h) => h.completedToday).length,
-    [habits]
-  );
 
   useEffect(() => {
     generateWeeklyChallenge();
@@ -95,51 +172,6 @@ export function Dashboard() {
     },
   ];
 
-  const quickActions = [
-    {
-      to: '/modules',
-      icon: <Grid3X3 className="w-4 h-4 sm:w-6 sm:h-6" />,
-      label: 'Explore Modules',
-      desc: '16 learning domains',
-      color: 'lavender' as const,
-    },
-    {
-      to: '/pathway',
-      icon: <BookOpen className="w-4 h-4 sm:w-6 sm:h-6" />,
-      label: 'Continue Learning',
-      desc: 'Pick up where you left off',
-      color: 'sunrise' as const,
-    },
-    {
-      to: '/review',
-      icon: <Brain className="w-4 h-4 sm:w-6 sm:h-6" />,
-      label: 'Review Cards',
-      desc: 'Strengthen your memory',
-      color: 'lavender' as const,
-    },
-    {
-      to: '/habits',
-      icon: <Calendar className="w-4 h-4 sm:w-6 sm:h-6" />,
-      label: 'Track Habits',
-      desc: `${habitsCompletedToday}/${habits.length} done today`,
-      color: 'sage' as const,
-    },
-    {
-      to: '/challenges',
-      icon: <Zap className="w-4 h-4 sm:w-6 sm:h-6" />,
-      label: 'Daily Challenge',
-      desc: 'Earn bonus XP',
-      color: 'golden' as const,
-    },
-    {
-      to: '/lab',
-      icon: <Sparkles className="w-4 h-4 sm:w-6 sm:h-6" />,
-      label: 'Visual Lab',
-      desc: 'Interactive diagrams',
-      color: 'lavender' as const,
-    },
-  ];
-
   const colorStyles = {
     golden: {
       bg: 'bg-golden/10',
@@ -175,6 +207,16 @@ export function Dashboard() {
       icon={<Sparkles className="w-5 h-5" />}
       headerGradient="sunrise"
     >
+      {/* Daily Quote - Top of page */}
+      <div className="mb-3 sm:mb-6">
+        <DailyQuoteSection />
+      </div>
+
+      {/* Visual Learning of the Day */}
+      <Section title="Visual Learning of the Day" subtitle="Interactive concept to master">
+        <VisualOfTheDay />
+      </Section>
+
       {/* Today's Focus - Priority Card */}
       <TodaysFocus className="mb-3 sm:mb-6" />
 
@@ -244,125 +286,10 @@ export function Dashboard() {
         </motion.div>
       </Section>
 
-      {/* Quick Actions */}
-      <Section title="Quick Actions" subtitle="Jump right in">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid sm:grid-cols-2 gap-1.5 sm:gap-3"
-        >
-          {quickActions.map((action) => (
-            <motion.div key={action.label} variants={itemVariants}>
-              <Link to={action.to}>
-                <Card
-                  variant="glass"
-                  hover
-                  className="group !p-2 sm:!p-4"
-                >
-                  <div className="flex items-center gap-2 sm:gap-4">
-                    <div
-                      className={`
-                        w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl border shrink-0
-                        flex items-center justify-center
-                        transition-all duration-300
-                        group-hover:scale-110
-                        ${colorStyles[action.color].bg}
-                        ${colorStyles[action.color].text}
-                        ${colorStyles[action.color].border}
-                      `}
-                    >
-                      {action.icon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-text-primary text-xs sm:text-base">{action.label}</p>
-                      <p className="text-[10px] sm:text-sm text-text-muted truncate">{action.desc}</p>
-                    </div>
-                    <ChevronRight
-                      className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-text-muted group-hover:text-sunrise group-hover:translate-x-1 transition-all"
-                    />
-                  </div>
-                </Card>
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
-      </Section>
-
-      {/* Book Library */}
-      <Section title="Book Library" subtitle="Explore your collection">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-        >
-          {Object.entries(bookContent).slice(0, 6).map(([key, book]) => (
-            <motion.div key={key} variants={itemVariants}>
-              <Card variant="glass" hover className="h-full group">
-                <CardHeader
-                  title={book.title}
-                  subtitle={book.author}
-                  icon={<BookOpen className="w-5 h-5" />}
-                  iconColor="sunrise"
-                />
-                <div className="mt-4 flex items-center justify-between">
-                  <Badge variant="primary" size="sm">
-                    {book.coreConcepts.length} concepts
-                  </Badge>
-                  <ChevronRight
-                    className="w-4 h-4 text-text-muted group-hover:text-sunrise group-hover:translate-x-1 transition-all"
-                  />
-                </div>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <Link
-          to="/modules"
-          className="mt-4 inline-flex items-center gap-2 text-sm text-sunrise hover:text-sunrise-light transition-colors"
-        >
-          View all books
-          <ChevronRight className="w-4 h-4" />
-        </Link>
-      </Section>
-
       {/* Leaderboard */}
       <Section title="Compete & Learn">
         <LocalLeaderboard maxEntries={5} />
       </Section>
-
-      {/* Daily Quote */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-        className="relative overflow-hidden rounded-2xl"
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-sunrise/10 via-lavender/5 to-golden/10" />
-        <div className="absolute inset-0 border border-sunrise/20 rounded-2xl" />
-
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-sunrise/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-lavender/10 rounded-full blur-2xl" />
-
-        <div className="relative p-6 md:p-8">
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-sunrise/10 border border-sunrise/20 flex items-center justify-center shrink-0">
-              <Sparkles className="w-5 h-5 text-sunrise" />
-            </div>
-            <div>
-              <p className="text-lg md:text-xl text-text-primary font-medium italic leading-relaxed">
-                "Habits are the compound interest of self-improvement."
-              </p>
-              <p className="text-sm text-sunrise mt-3 font-medium">
-                - James Clear, Atomic Habits
-              </p>
-            </div>
-          </div>
-        </div>
-      </motion.div>
     </ModuleLayout>
   );
 }

@@ -239,12 +239,17 @@ export function TinderCard({
           opacity: 0,
           transition: { duration: 0.3 },
         }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 30,
+          filter: { type: 'tween', duration: 0.3 }  // Tween for blur to avoid negative values
+        }}
         className={`
-          relative w-full max-w-md mx-4 rounded-2xl border border-white/10
+          relative w-full max-w-md mx-4 h-[420px] rounded-2xl border border-white/10
           bg-gradient-to-br ${cardGradient}
           backdrop-blur-sm shadow-xl cursor-grab active:cursor-grabbing
-          touch-none select-none
+          touch-none select-none flex flex-col
         `}
       >
         {/* Card Header */}
@@ -268,7 +273,7 @@ export function TinderCard({
         </div>
 
         {/* Card Content */}
-        <div className="p-5 max-h-[50vh] overflow-y-auto">
+        <div className="p-5 flex-1 overflow-y-auto">
           {card.type === 'quiz' && card.quiz ? (
             <QuizCardContent quiz={card.quiz} onAnswer={handleQuizAnswer} />
           ) : (

@@ -16,9 +16,6 @@ export { LessonCard } from './LessonCard';
 export { SwipeableLesson } from './SwipeableLesson';
 export { RichMarkdown } from './RichMarkdown';
 
-// Habit Tracking
-export { HabitItem, HabitCategoryLabel } from './HabitItem';
-
 // Review Gate
 export { ReviewGateBanner, ReviewWarningBanner } from './ReviewGateBanner';
 

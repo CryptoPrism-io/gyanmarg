@@ -118,7 +118,7 @@ export function PWAInstallPrompt() {
                     <span className="text-2xl font-bold text-black">ज्ञ</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white">Install Gyanmarg</h3>
+                    <h3 className="text-xl font-semibold text-white">Install Polymind</h3>
                     <p className="text-white/60 text-sm">Add to your home screen</p>
                   </div>
                 </div>
@@ -229,7 +229,7 @@ export function PWAInstallPrompt() {
                   <div>
                     <p className="text-white font-medium">Tap "Add"</p>
                     <p className="text-white/60 text-sm mt-1">
-                      Gyanmarg will appear on your home screen
+                      Polymind will appear on your home screen
                     </p>
                   </div>
                 </div>

@@ -5,19 +5,20 @@ import {
   Route,
   Navigate,
   useLocation,
+  useNavigate,
 } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 // Store
 import { useUserStore, usePendingAchievement } from '@/store/userStore';
 import { useProgressStore, usePendingLevelUp } from '@/store/progressStore';
-import { useHabitStore } from '@/store/habitStore';
 
 // Auth
 import { AuthProvider } from '@/contexts/AuthContext';
+import { useAuth } from '@/hooks';
 
 // Celebration Components
-import { AchievementUnlock, LevelUpModal } from '@/components/organisms';
+import { AchievementUnlock, LevelUpModal, SignInGate } from '@/components/organisms';
 
 // PWA Install Prompt
 import { PWAInstallPrompt } from '@/components/molecules';
@@ -31,13 +32,16 @@ import { Onboarding } from '@/features/onboarding/Onboarding';
 import { Dashboard } from '@/features/dashboard/Dashboard';
 import { LearningPathway } from '@/features/learning-pathway/LearningPathway';
 import { SpacedRepetition } from '@/features/spaced-repetition/SpacedRepetition';
-import { HabitCalendar } from '@/features/habit-calendar/HabitCalendar';
 import { DailyChallenges } from '@/features/daily-challenges/DailyChallenges';
 import { KnowledgeMap } from '@/features/knowledge-map/KnowledgeMap';
 import { ModuleHub } from '@/features/module-hub/ModuleHub';
 import ModulePage from '@/features/module-page/ModulePage';
 import { Settings } from '@/features/settings/Settings';
 import { VisualLab } from '@/features/visual-lab/VisualLab';
+import { LearningSciencePage } from '@/features/science/LearningSciencePage';
+import { BookListPage } from '@/features/books/BookListPage';
+import { BlogPage } from '@/features/blog/BlogPage';
+import { BlogArticlePage } from '@/features/blog/BlogArticlePage';
 
 // Global Celebration Modals
 function CelebrationModals() {
@@ -120,7 +124,7 @@ function PageTransition({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Protected route wrapper
+// Protected route wrapper - requires onboarding only (auth checked at action level)
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const isOnboarded = useUserStore((state) => state.isOnboarded);
 
@@ -134,16 +138,10 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 // App Routes
 function AppRoutes() {
   const isOnboarded = useUserStore((state) => state.isOnboarded);
-  const resetDailyHabits = useHabitStore((state) => state.resetDailyHabits);
-
-  // Reset daily habits at midnight
-  useEffect(() => {
-    resetDailyHabits();
-  }, [resetDailyHabits]);
 
   return (
     <Routes>
-      {/* Onboarding */}
+      {/* Onboarding - no auth required */}
       <Route
         path="/onboarding"
         element={
@@ -197,18 +195,6 @@ function AppRoutes() {
         }
       />
 
-      <Route
-        path="/habits"
-        element={
-          <ProtectedRoute>
-            <PageLayout>
-              <PageTransition>
-                <HabitCalendar />
-              </PageTransition>
-            </PageLayout>
-          </ProtectedRoute>
-        }
-      />
 
       <Route
         path="/challenges"
@@ -298,6 +284,40 @@ function AppRoutes() {
         element={
           <PageTransition>
             <LandingPage />
+          </PageTransition>
+        }
+      />
+
+      {/* Public Pages */}
+      <Route
+        path="/science"
+        element={
+          <PageTransition>
+            <LearningSciencePage />
+          </PageTransition>
+        }
+      />
+      <Route
+        path="/books"
+        element={
+          <PageTransition>
+            <BookListPage />
+          </PageTransition>
+        }
+      />
+      <Route
+        path="/blog"
+        element={
+          <PageTransition>
+            <BlogPage />
+          </PageTransition>
+        }
+      />
+      <Route
+        path="/blog/:articleId"
+        element={
+          <PageTransition>
+            <BlogArticlePage />
           </PageTransition>
         }
       />

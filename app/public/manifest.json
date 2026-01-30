@@ -1,7 +1,7 @@
 {
-  "name": "Gyanmarg - Path of Knowledge",
-  "short_name": "Gyanmarg",
-  "description": "Transform ancient wisdom into modern mastery through gamified learning",
+  "name": "Polymind - Your Mind, Unlimited",
+  "short_name": "Polymind",
+  "description": "Finally retain everything you learn. 1000+ authors. The world's most powerful ideas.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0A0A0B",
@@ -66,14 +66,14 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Gyanmarg Dashboard"
+      "label": "Polymind Dashboard"
     },
     {
       "src": "/screenshots/mobile.png",
       "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Gyanmarg Mobile"
+      "label": "Polymind Mobile"
     }
   ],
   "shortcuts": [

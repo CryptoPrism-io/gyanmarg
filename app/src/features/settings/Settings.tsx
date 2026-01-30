@@ -6,7 +6,6 @@ import {
   AlertTriangle,
   CheckCircle,
   User,
-  Database,
   Trash2,
   Shield,
   HardDrive,
@@ -14,11 +13,16 @@ import {
   Cloud,
   CloudOff,
   LogOut,
+  Settings as SettingsIcon,
+  Info,
 } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useProgressStore } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
 import { GoogleSignInButton } from '@/components/molecules';
+import { ModuleLayout, Section } from '@/components/templates';
+import { GlassCard } from '@/components/molecules';
+import { Button } from '@/components/atoms';
 
 // Storage keys for all stores
 const STORAGE_KEYS = {
@@ -38,6 +42,19 @@ interface ExportData {
     spacedRepetition: unknown;
   };
 }
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } },
+};
 
 export function Settings() {
   const [exportStatus, setExportStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -78,7 +95,7 @@ export function Settings() {
         totalSize += new Blob([data]).size;
       }
     });
-    return (totalSize / 1024).toFixed(2); // KB
+    return (totalSize / 1024).toFixed(2);
   };
 
   // Export all data
@@ -123,12 +140,9 @@ export function Settings() {
     reader.onload = (e) => {
       try {
         const data = JSON.parse(e.target?.result as string) as ExportData;
-
-        // Validate structure
         if (!data.version || !data.stores) {
           throw new Error('Invalid backup file format');
         }
-
         setPendingImportData(data);
         setImportStatus('confirm');
         setImportError(null);
@@ -138,19 +152,13 @@ export function Settings() {
       }
     };
     reader.readAsText(file);
-
-    // Reset input
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   // Confirm import
   const confirmImport = () => {
     if (!pendingImportData) return;
-
     try {
-      // Restore each store
       if (pendingImportData.stores.user) {
         localStorage.setItem(STORAGE_KEYS.user, JSON.stringify(pendingImportData.stores.user));
       }
@@ -163,14 +171,9 @@ export function Settings() {
       if (pendingImportData.stores.spacedRepetition) {
         localStorage.setItem(STORAGE_KEYS.spacedRepetition, JSON.stringify(pendingImportData.stores.spacedRepetition));
       }
-
       setImportStatus('success');
       setPendingImportData(null);
-
-      // Reload to apply changes
-      setTimeout(() => {
-        window.location.reload();
-      }, 1500);
+      setTimeout(() => window.location.reload(), 1500);
     } catch (error) {
       console.error('Import failed:', error);
       setImportError('Failed to restore data');
@@ -178,7 +181,6 @@ export function Settings() {
     }
   };
 
-  // Cancel import
   const cancelImport = () => {
     setPendingImportData(null);
     setImportStatus('idle');
@@ -189,355 +191,278 @@ export function Settings() {
   const handleReset = () => {
     resetUser();
     resetProgress();
-    Object.values(STORAGE_KEYS).forEach((key) => {
-      localStorage.removeItem(key);
-    });
+    Object.values(STORAGE_KEYS).forEach((key) => localStorage.removeItem(key));
     localStorage.removeItem('gyanmarg-last-reset-date');
     setShowResetConfirm(false);
     window.location.reload();
   };
 
   return (
-    <div className="space-y-6 pb-8">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-white">Settings</h1>
-        <p className="text-gray-400 mt-1">Manage your account and data</p>
-      </div>
-
-      {/* Profile Card */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-6">
-        <div className="flex items-center gap-4 mb-4">
-          {user?.photoURL ? (
-            <img
-              src={user.photoURL}
-              alt={user.displayName || 'User'}
-              className="w-12 h-12 rounded-full border-2 border-amber-500/30"
-              referrerPolicy="no-referrer"
-            />
-          ) : (
-            <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
-              <User className="w-6 h-6 text-amber-500" />
+    <ModuleLayout
+      title="Settings"
+      subtitle="Manage your account and data"
+      icon={<SettingsIcon className="w-5 h-5" />}
+      headerGradient="sunset"
+    >
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="space-y-6"
+      >
+        {/* Profile Card */}
+        <motion.div variants={itemVariants}>
+          <GlassCard>
+            <div className="flex items-center gap-4 mb-4">
+              {user?.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt={user.displayName || 'User'}
+                  className="w-14 h-14 rounded-xl border-2 border-golden/30 shadow-golden"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-golden/20 to-sunrise/20 border border-golden/30 flex items-center justify-center">
+                  <User className="w-7 h-7 text-golden" />
+                </div>
+              )}
+              <div className="flex-1">
+                <h2 className="text-lg font-display font-semibold text-text-primary">
+                  {profile?.name || user?.displayName || 'Learner'}
+                </h2>
+                <p className="text-sm text-text-secondary">
+                  Level {userProgress.level} • {userProgress.xp.toLocaleString()} XP
+                </p>
+              </div>
             </div>
-          )}
-          <div>
-            <h2 className="text-lg font-semibold text-white">{profile?.name || user?.displayName || 'Learner'}</h2>
-            <p className="text-sm text-gray-400">
-              Level {userProgress.level} • {userProgress.xp.toLocaleString()} XP
-            </p>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-4 mt-4">
-          <div className="bg-[#0A0A0B] rounded-lg p-3">
-            <p className="text-xs text-gray-500 uppercase">Lessons Completed</p>
-            <p className="text-xl font-bold text-white">{userProgress.lessonsCompleted.length}</p>
-          </div>
-          <div className="bg-[#0A0A0B] rounded-lg p-3">
-            <p className="text-xs text-gray-500 uppercase">Current Streak</p>
-            <p className="text-xl font-bold text-amber-500">{userProgress.currentStreak} days</p>
-          </div>
-        </div>
-      </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="glass-light rounded-xl p-3 border border-white/10">
+                <p className="text-[10px] text-text-muted uppercase tracking-wide">Lessons</p>
+                <p className="text-xl font-display font-bold text-sage">{userProgress.lessonsCompleted.length}</p>
+              </div>
+              <div className="glass-light rounded-xl p-3 border border-white/10">
+                <p className="text-[10px] text-text-muted uppercase tracking-wide">Streak</p>
+                <p className="text-xl font-display font-bold text-coral">{userProgress.currentStreak} days</p>
+              </div>
+            </div>
+          </GlassCard>
+        </motion.div>
 
-      {/* Account & Cloud Sync */}
-      {isConfigured && (
-        <div className="bg-[#111113] border border-gray-800 rounded-xl p-6">
-          <div className="flex items-center gap-3 mb-4">
-            <Cloud className="w-5 h-5 text-blue-400" />
-            <h2 className="text-lg font-semibold text-white">Account & Cloud Sync</h2>
-          </div>
-
-          {user ? (
-            <>
-              {/* Signed In State */}
-              <div className="bg-[#0A0A0B] rounded-lg p-4 mb-4">
-                <div className="flex items-center gap-3 mb-3">
-                  {user.photoURL ? (
-                    <img
-                      src={user.photoURL}
-                      alt=""
-                      className="w-10 h-10 rounded-full"
-                      referrerPolicy="no-referrer"
-                    />
-                  ) : (
-                    <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center">
-                      <User className="w-5 h-5 text-amber-500" />
+        {/* Cloud Sync Section */}
+        {isConfigured && (
+          <Section title="Cloud Sync" subtitle="Sync across devices">
+            <motion.div variants={itemVariants}>
+              <GlassCard>
+                {user ? (
+                  <>
+                    <div className="flex items-center gap-3 mb-4">
+                      {user.photoURL ? (
+                        <img src={user.photoURL} alt="" className="w-10 h-10 rounded-lg" referrerPolicy="no-referrer" />
+                      ) : (
+                        <div className="w-10 h-10 rounded-lg bg-golden/20 flex items-center justify-center">
+                          <User className="w-5 h-5 text-golden" />
+                        </div>
+                      )}
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-text-primary">{user.displayName || 'User'}</p>
+                        <p className="text-xs text-text-muted">{user.email}</p>
+                      </div>
                     </div>
-                  )}
-                  <div>
-                    <p className="text-sm font-medium text-white">{user.displayName || 'User'}</p>
-                    <p className="text-xs text-gray-400">{user.email}</p>
-                  </div>
-                </div>
-
-                {/* Sync Status */}
-                <div className="flex items-center justify-between py-2 border-t border-gray-800">
-                  <div className="flex items-center gap-2">
-                    {isSyncing ? (
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                      >
-                        <RefreshCw className="w-4 h-4 text-amber-500" />
-                      </motion.div>
-                    ) : syncError ? (
-                      <CloudOff className="w-4 h-4 text-red-400" />
-                    ) : (
-                      <Cloud className="w-4 h-4 text-green-400" />
-                    )}
-                    <span className="text-xs text-gray-400">
-                      {isSyncing ? 'Syncing...' : `Last sync: ${formatLastSync()}`}
-                    </span>
-                  </div>
-                  <button
-                    onClick={syncNow}
-                    disabled={isSyncing}
-                    className="text-xs text-amber-500 hover:text-amber-400 disabled:opacity-50"
-                  >
-                    Sync now
-                  </button>
-                </div>
-                {syncError && (
-                  <p className="text-xs text-red-400 mt-2">{syncError}</p>
+                    <div className="flex items-center justify-between py-3 px-3 glass-light rounded-lg border border-white/10 mb-4">
+                      <div className="flex items-center gap-2">
+                        {isSyncing ? (
+                          <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}>
+                            <RefreshCw className="w-4 h-4 text-golden" />
+                          </motion.div>
+                        ) : syncError ? (
+                          <CloudOff className="w-4 h-4 text-coral" />
+                        ) : (
+                          <Cloud className="w-4 h-4 text-sage" />
+                        )}
+                        <span className="text-xs text-text-secondary">
+                          {isSyncing ? 'Syncing...' : `Last sync: ${formatLastSync()}`}
+                        </span>
+                      </div>
+                      <button onClick={syncNow} disabled={isSyncing} className="text-xs text-golden hover:text-golden/80 disabled:opacity-50">
+                        Sync now
+                      </button>
+                    </div>
+                    {syncError && <p className="text-xs text-coral mb-4">{syncError}</p>}
+                    <Button variant="glass" onClick={signOut} className="gap-2">
+                      <LogOut className="w-4 h-4" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-sm text-text-secondary mb-4">
+                      Sign in with Google to sync your progress across devices.
+                    </p>
+                    <GoogleSignInButton variant="primary" size="md" label="Sign in with Google" />
+                  </>
                 )}
+              </GlassCard>
+            </motion.div>
+          </Section>
+        )}
+
+        {/* Data Management */}
+        <Section title="Data Management" subtitle="Backup and restore">
+          <motion.div variants={itemVariants}>
+            <GlassCard>
+              {/* Storage Info */}
+              <div className="flex items-center justify-between py-3 px-3 glass-light rounded-lg border border-white/10 mb-6">
+                <div className="flex items-center gap-2">
+                  <HardDrive className="w-4 h-4 text-lavender" />
+                  <span className="text-sm text-text-secondary">Local Storage</span>
+                </div>
+                <span className="text-sm font-medium text-text-primary">{calculateStorageSize()} KB</span>
               </div>
 
-              <p className="text-sm text-gray-500 mb-4">
-                Your progress is automatically synced to the cloud. Sign in on any device to access your data.
-              </p>
-
-              <button
-                onClick={signOut}
-                className="flex items-center gap-2 px-4 py-2.5 bg-gray-700 hover:bg-gray-600
-                         text-white rounded-lg transition-colors"
-              >
-                <LogOut className="w-4 h-4" />
-                Sign Out
-              </button>
-            </>
-          ) : (
-            <>
-              {/* Signed Out State */}
-              <p className="text-sm text-gray-500 mb-4">
-                Sign in with Google to sync your progress across devices. Your local data will be preserved.
-              </p>
-              <GoogleSignInButton
-                variant="primary"
-                size="md"
-                label="Sign in with Google"
-              />
-            </>
-          )}
-        </div>
-      )}
-
-      {/* Data Management */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <Database className="w-5 h-5 text-blue-400" />
-          <h2 className="text-lg font-semibold text-white">Data Management</h2>
-        </div>
-
-        {/* Storage Info */}
-        <div className="bg-[#0A0A0B] rounded-lg p-4 mb-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <HardDrive className="w-4 h-4 text-gray-500" />
-              <span className="text-sm text-gray-400">Local Storage Used</span>
-            </div>
-            <span className="text-sm font-medium text-white">{calculateStorageSize()} KB</span>
-          </div>
-        </div>
-
-        {/* Export Section */}
-        <div className="mb-6">
-          <h3 className="text-sm font-medium text-white mb-2 flex items-center gap-2">
-            <Shield className="w-4 h-4 text-green-400" />
-            Backup Your Progress
-          </h3>
-          <p className="text-sm text-gray-500 mb-3">
-            Download all your data including progress, habits, and flashcard stats.
-            Use this to restore on another device or keep a backup.
-          </p>
-          <button
-            onClick={handleExport}
-            disabled={exportStatus !== 'idle'}
-            className="flex items-center gap-2 px-4 py-2.5 bg-green-600 hover:bg-green-700
-                     text-white rounded-lg transition-colors disabled:opacity-50"
-          >
-            {exportStatus === 'success' ? (
-              <>
-                <CheckCircle className="w-4 h-4" />
-                Downloaded!
-              </>
-            ) : exportStatus === 'error' ? (
-              <>
-                <AlertTriangle className="w-4 h-4" />
-                Export Failed
-              </>
-            ) : (
-              <>
-                <Download className="w-4 h-4" />
-                Export Data
-              </>
-            )}
-          </button>
-        </div>
-
-        {/* Import Section */}
-        <div className="mb-6">
-          <h3 className="text-sm font-medium text-white mb-2 flex items-center gap-2">
-            <RefreshCw className="w-4 h-4 text-blue-400" />
-            Restore From Backup
-          </h3>
-          <p className="text-sm text-gray-500 mb-3">
-            Import a previously exported backup file. This will replace all current data.
-          </p>
-
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileSelect}
-            accept=".json"
-            className="hidden"
-          />
-
-          <AnimatePresence mode="wait">
-            {importStatus === 'confirm' && pendingImportData ? (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mb-3"
-              >
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5" />
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-amber-500">Confirm Import</p>
-                    <p className="text-xs text-gray-400 mt-1">
-                      Backup from: {new Date(pendingImportData.exportDate).toLocaleString()}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-2">
-                      This will replace all your current progress. This action cannot be undone.
-                    </p>
-                    <div className="flex gap-2 mt-3">
-                      <button
-                        onClick={confirmImport}
-                        className="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white text-sm rounded-lg transition-colors"
-                      >
-                        Confirm Import
-                      </button>
-                      <button
-                        onClick={cancelImport}
-                        className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white text-sm rounded-lg transition-colors"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
+              {/* Export */}
+              <div className="mb-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <Shield className="w-4 h-4 text-sage" />
+                  <h3 className="text-sm font-medium text-text-primary">Backup Progress</h3>
                 </div>
-              </motion.div>
-            ) : importStatus === 'success' ? (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="bg-green-500/10 border border-green-500/30 rounded-lg p-4 mb-3"
-              >
-                <div className="flex items-center gap-2 text-green-500">
-                  <CheckCircle className="w-5 h-5" />
-                  <span className="text-sm font-medium">Data restored! Reloading...</span>
-                </div>
-              </motion.div>
-            ) : importStatus === 'error' ? (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-3"
-              >
-                <div className="flex items-center gap-2 text-red-500">
-                  <AlertTriangle className="w-5 h-5" />
-                  <span className="text-sm font-medium">{importError || 'Import failed'}</span>
-                </div>
-              </motion.div>
-            ) : null}
-          </AnimatePresence>
-
-          <button
-            onClick={() => fileInputRef.current?.click()}
-            disabled={importStatus === 'confirm' || importStatus === 'success'}
-            className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700
-                     text-white rounded-lg transition-colors disabled:opacity-50"
-          >
-            <Upload className="w-4 h-4" />
-            Import Data
-          </button>
-        </div>
-
-        {/* Danger Zone */}
-        <div className="border-t border-gray-800 pt-6">
-          <h3 className="text-sm font-medium text-red-400 mb-2 flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4" />
-            Danger Zone
-          </h3>
-          <p className="text-sm text-gray-500 mb-3">
-            Permanently delete all your data. This cannot be undone.
-          </p>
-
-          <AnimatePresence>
-            {showResetConfirm ? (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-3"
-              >
-                <p className="text-sm text-red-400 mb-3">
-                  Are you sure? All your progress, habits, and review history will be permanently deleted.
+                <p className="text-xs text-text-muted mb-3">
+                  Download all your data to restore on another device.
                 </p>
-                <div className="flex gap-2">
-                  <button
-                    onClick={handleReset}
-                    className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-sm rounded-lg transition-colors"
-                  >
-                    Yes, Delete Everything
-                  </button>
-                  <button
-                    onClick={() => setShowResetConfirm(false)}
-                    className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white text-sm rounded-lg transition-colors"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </motion.div>
-            ) : (
-              <button
-                onClick={() => setShowResetConfirm(true)}
-                className="flex items-center gap-2 px-4 py-2.5 bg-red-600/20 hover:bg-red-600/30
-                         text-red-400 border border-red-600/30 rounded-lg transition-colors"
-              >
-                <Trash2 className="w-4 h-4" />
-                Reset All Data
-              </button>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
+                <Button
+                  variant={exportStatus === 'success' ? 'primary' : 'glass'}
+                  onClick={handleExport}
+                  disabled={exportStatus !== 'idle'}
+                  className="gap-2"
+                >
+                  {exportStatus === 'success' ? <CheckCircle className="w-4 h-4" /> : <Download className="w-4 h-4" />}
+                  {exportStatus === 'success' ? 'Downloaded!' : 'Export Data'}
+                </Button>
+              </div>
 
-      {/* About */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-6">
-        <h2 className="text-lg font-semibold text-white mb-2">About Gyanmarg</h2>
-        <p className="text-sm text-gray-400 mb-4">
-          ज्ञानमार्ग - "Path of Knowledge"
-        </p>
-        <p className="text-xs text-gray-500">
-          A gamified learning platform using spaced repetition, active recall, and interleaving
-          to help you master knowledge from 45+ ebooks.
-        </p>
-        <div className="mt-4 pt-4 border-t border-gray-800">
-          <p className="text-xs text-gray-600">Version 1.0.0</p>
-        </div>
-      </div>
-    </div>
+              {/* Import */}
+              <div className="mb-6 pt-6 border-t border-white/[0.06]">
+                <div className="flex items-center gap-2 mb-2">
+                  <RefreshCw className="w-4 h-4 text-sky" />
+                  <h3 className="text-sm font-medium text-text-primary">Restore Backup</h3>
+                </div>
+                <p className="text-xs text-text-muted mb-3">
+                  Import a previously exported backup file.
+                </p>
+                <input type="file" ref={fileInputRef} onChange={handleFileSelect} accept=".json" className="hidden" />
+
+                <AnimatePresence mode="wait">
+                  {importStatus === 'confirm' && pendingImportData ? (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="bg-golden/10 border border-golden/30 rounded-xl p-4 mb-3"
+                    >
+                      <div className="flex items-start gap-3">
+                        <AlertTriangle className="w-5 h-5 text-golden mt-0.5" />
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-golden">Confirm Import</p>
+                          <p className="text-xs text-text-muted mt-1">
+                            Backup from: {new Date(pendingImportData.exportDate).toLocaleString()}
+                          </p>
+                          <div className="flex gap-2 mt-3">
+                            <Button variant="primary" size="sm" onClick={confirmImport}>Confirm</Button>
+                            <Button variant="glass" size="sm" onClick={cancelImport}>Cancel</Button>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ) : importStatus === 'success' ? (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-sage/10 border border-sage/30 rounded-xl p-4 mb-3">
+                      <div className="flex items-center gap-2 text-sage">
+                        <CheckCircle className="w-5 h-5" />
+                        <span className="text-sm font-medium">Data restored! Reloading...</span>
+                      </div>
+                    </motion.div>
+                  ) : importStatus === 'error' ? (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-coral/10 border border-coral/30 rounded-xl p-4 mb-3">
+                      <div className="flex items-center gap-2 text-coral">
+                        <AlertTriangle className="w-5 h-5" />
+                        <span className="text-sm font-medium">{importError || 'Import failed'}</span>
+                      </div>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+
+                <Button
+                  variant="glass"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={importStatus === 'confirm' || importStatus === 'success'}
+                  className="gap-2"
+                >
+                  <Upload className="w-4 h-4" />
+                  Import Data
+                </Button>
+              </div>
+
+              {/* Danger Zone */}
+              <div className="pt-6 border-t border-white/[0.06]">
+                <div className="flex items-center gap-2 mb-2">
+                  <AlertTriangle className="w-4 h-4 text-coral" />
+                  <h3 className="text-sm font-medium text-coral">Danger Zone</h3>
+                </div>
+                <p className="text-xs text-text-muted mb-3">
+                  Permanently delete all your data. This cannot be undone.
+                </p>
+
+                <AnimatePresence>
+                  {showResetConfirm ? (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="bg-coral/10 border border-coral/30 rounded-xl p-4 mb-3"
+                    >
+                      <p className="text-sm text-coral mb-3">
+                        Are you sure? All progress will be permanently deleted.
+                      </p>
+                      <div className="flex gap-2">
+                        <Button variant="primary" size="sm" onClick={handleReset} className="bg-coral hover:bg-coral/80">
+                          Delete Everything
+                        </Button>
+                        <Button variant="glass" size="sm" onClick={() => setShowResetConfirm(false)}>Cancel</Button>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <Button variant="glass" onClick={() => setShowResetConfirm(true)} className="gap-2 text-coral border-coral/30 hover:bg-coral/10">
+                      <Trash2 className="w-4 h-4" />
+                      Reset All Data
+                    </Button>
+                  )}
+                </AnimatePresence>
+              </div>
+            </GlassCard>
+          </motion.div>
+        </Section>
+
+        {/* About */}
+        <Section title="About">
+          <motion.div variants={itemVariants}>
+            <GlassCard>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sunrise to-golden flex items-center justify-center">
+                  <Info className="w-5 h-5 text-base" />
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold text-text-primary">Polymind</h3>
+                  <p className="text-xs text-text-muted">Your mind, unlimited.</p>
+                </div>
+              </div>
+              <p className="text-sm text-text-secondary mb-3">
+                Build your Polymind using spaced repetition, active recall, and cross-domain connections
+                to retain knowledge from 1000+ bestselling authors.
+              </p>
+              <p className="text-xs text-text-muted">Version 1.0.0</p>
+            </GlassCard>
+          </motion.div>
+        </Section>
+      </motion.div>
+    </ModuleLayout>
   );
 }
 

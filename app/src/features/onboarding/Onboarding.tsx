@@ -13,18 +13,29 @@ import {
   Zap,
   Brain,
   Heart,
+  TrendingDown,
+  TrendingUp,
+  Lightbulb,
+  Network,
+  Trophy,
 } from 'lucide-react';
 import { useUserStore, useOnboardingProgress } from '@/store/userStore';
 import { OnboardingLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { Button } from '@/components/atoms';
 
+// Import AI-generated images
+import imgForgetting from '@/assets/ai-images/onboarding/onboarding-01-forgetting.png';
+import imgBreakthrough from '@/assets/ai-images/onboarding/onboarding-02-breakthrough.png';
+import imgPolymind from '@/assets/ai-images/onboarding/onboarding-03-polymind.png';
+
+// Why are you building your Polymind?
 const goals = [
-  { id: 'habits', label: 'Build Better Habits', desc: 'Create lasting positive routines', icon: Target, color: 'sunrise' },
-  { id: 'focus', label: 'Improve Focus', desc: 'Deep work and concentration', icon: Brain, color: 'lavender' },
-  { id: 'purpose', label: 'Find My Purpose', desc: 'Meaning and direction in life', icon: Heart, color: 'coral' },
-  { id: 'productivity', label: 'Be More Productive', desc: 'Get more done, stress less', icon: Zap, color: 'golden' },
-  { id: 'growth', label: 'Personal Growth', desc: 'Become my best self', icon: Sparkles, color: 'sage' },
+  { id: 'career', label: 'Advance My Career', desc: 'Get promoted, lead better, earn more', icon: Target, color: 'sunrise' },
+  { id: 'curiosity', label: 'Intellectual Curiosity', desc: 'I love learning across many fields', icon: Brain, color: 'lavender' },
+  { id: 'mastery', label: 'Personal Mastery', desc: 'Optimize mind, body, and habits', icon: Sparkles, color: 'sage' },
+  { id: 'skills', label: 'Build Specific Skills', desc: 'AI, coding, investing, writing', icon: Zap, color: 'golden' },
+  { id: 'wisdom', label: 'Seek Deeper Wisdom', desc: 'Philosophy, psychology, meaning', icon: Heart, color: 'coral' },
 ];
 
 const learningStyles = [
@@ -41,12 +52,18 @@ const timeCommitments = [
   { id: 60, label: '60+ min/day', desc: 'Deep immersion', color: 'golden' },
 ];
 
-const focusAreas = [
-  { id: 'atomic', label: 'Atomic Habits', book: 'James Clear', color: 'sunrise' },
-  { id: 'deepwork', label: 'Deep Work', book: 'Cal Newport', color: 'lavender' },
-  { id: 'futureself', label: 'Future Self', book: 'Benjamin Hardy', color: 'sage' },
-  { id: 'meaning', label: 'Meaning & Purpose', book: 'Viktor Frankl', color: 'coral' },
-  { id: 'values', label: 'Values & Priorities', book: 'Mark Manson', color: 'golden' },
+// Knowledge Domains - pick 3-5 to start building your Polymind
+const knowledgeDomains = [
+  { id: 'psychology', label: '🧠 Psychology', desc: 'Kahneman, Cialdini, Ariely', color: 'lavender' },
+  { id: 'ai', label: '🤖 AI & Technology', desc: 'Machine learning, future of tech', color: 'sunrise' },
+  { id: 'wealth', label: '💰 Wealth & Investing', desc: 'Buffett, Dalio, Graham', color: 'golden' },
+  { id: 'productivity', label: '⚡ Productivity', desc: 'Deep work, habits, focus', color: 'sage' },
+  { id: 'health', label: '💪 Health & Longevity', desc: 'Attia, Huberman, biohacking', color: 'coral' },
+  { id: 'leadership', label: '👥 Leadership', desc: 'Management, influence, teams', color: 'sunrise' },
+  { id: 'philosophy', label: '🧘 Philosophy', desc: 'Stoicism, meaning, wisdom', color: 'lavender' },
+  { id: 'writing', label: '✍️ Writing & Communication', desc: 'Storytelling, persuasion', color: 'golden' },
+  { id: 'science', label: '🔬 Science', desc: 'Physics, biology, neuroscience', color: 'sage' },
+  { id: 'creativity', label: '🎨 Creativity', desc: 'Innovation, design thinking', color: 'coral' },
 ];
 
 const colorStyles = {
@@ -92,7 +109,7 @@ interface UserData {
   primaryGoal: string;
   learningStyle: string;
   dailyTime: number;
-  focusAreas: string[];
+  selectedDomains: string[];
 }
 
 export function Onboarding() {
@@ -107,10 +124,10 @@ export function Onboarding() {
     primaryGoal: savedProgress?.data?.primaryGoal ?? '',
     learningStyle: savedProgress?.data?.learningStyle ?? '',
     dailyTime: savedProgress?.data?.dailyTime ?? 15,
-    focusAreas: savedProgress?.data?.focusAreas ?? [],
+    selectedDomains: savedProgress?.data?.selectedDomains ?? [],
   });
 
-  const totalSteps = 5;
+  const totalSteps = 8; // Added 3 educational story slides
 
   // Persist progress on step/data change
   useEffect(() => {
@@ -138,25 +155,29 @@ export function Onboarding() {
     switch (step) {
       case 0:
         return userData.name.trim().length > 0;
-      case 1:
-        return userData.primaryGoal !== '';
-      case 2:
-        return userData.learningStyle !== '';
-      case 3:
-        return userData.dailyTime > 0;
+      case 1: // Story: The Problem
+      case 2: // Story: The Science
+      case 3: // Story: The Polymind Way
+        return true; // Educational slides always proceed
       case 4:
-        return userData.focusAreas.length > 0;
+        return userData.primaryGoal !== '';
+      case 5:
+        return userData.learningStyle !== '';
+      case 6:
+        return userData.dailyTime > 0;
+      case 7:
+        return userData.selectedDomains.length >= 3; // Must pick at least 3 domains
       default:
         return true;
     }
   };
 
-  const toggleFocusArea = (id: string) => {
+  const toggleDomain = (id: string) => {
     setUserData((prev) => ({
       ...prev,
-      focusAreas: prev.focusAreas.includes(id)
-        ? prev.focusAreas.filter((f) => f !== id)
-        : [...prev.focusAreas, id],
+      selectedDomains: prev.selectedDomains.includes(id)
+        ? prev.selectedDomains.filter((d) => d !== id)
+        : [...prev.selectedDomains, id],
     }));
   };
 
@@ -182,7 +203,7 @@ export function Onboarding() {
                   <Sparkles className="w-10 h-10 text-base" />
                 </motion.div>
                 <h1 className="text-3xl font-display font-bold text-text-primary tracking-tight">
-                  Welcome to Gyanmarg
+                  Welcome to Polymind
                 </h1>
                 <p className="text-text-secondary mt-2">
                   Your path to personal mastery begins here
@@ -211,22 +232,190 @@ export function Onboarding() {
                     <BookOpen className="w-5 h-5 text-sunrise" />
                   </div>
                   <p className="text-sunrise text-sm leading-relaxed">
-                    You're about to learn from 5 transformational books,
-                    synthesized into an interactive learning experience.
+                    1000+ bestselling authors across 50+ domains —
+                    all retained forever using proven learning science.
                   </p>
                 </div>
               </GlassCard>
             </div>
           )}
 
+          {/* ===== STORY SLIDE 1: The Problem ===== */}
           {step === 1 && (
+            <div className="space-y-6">
+              {/* AI Generated Image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="w-full aspect-video rounded-2xl overflow-hidden border border-coral/20"
+              >
+                <img
+                  src={imgForgetting}
+                  alt="Memory fading visualization"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+
+              <div className="text-center">
+                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
+                  Here's the hard truth...
+                </h1>
+              </div>
+
+              <div className="space-y-3">
+                <GlassCard className="border-coral/30 p-4">
+                  <p className="text-base text-text-primary leading-relaxed">
+                    You've probably read <span className="text-coral font-semibold">dozens of books</span>.
+                    Maybe even hundreds.
+                  </p>
+                </GlassCard>
+
+                <GlassCard className="border-white/10 p-4">
+                  <div className="flex items-center gap-4">
+                    <div className="text-4xl font-bold text-coral">90%</div>
+                    <p className="text-text-secondary text-sm">
+                      of what we read is <span className="text-coral">forgotten within 7 days</span> —
+                      unless we do something different.
+                    </p>
+                  </div>
+                </GlassCard>
+              </div>
+
+              <p className="text-center text-text-muted text-sm">
+                This isn't your fault. It's how human memory works.
+              </p>
+            </div>
+          )}
+
+          {/* ===== STORY SLIDE 2: The Science ===== */}
+          {step === 2 && (
+            <div className="space-y-6">
+              {/* AI Generated Image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="w-full aspect-video rounded-2xl overflow-hidden border border-lavender/20"
+              >
+                <img
+                  src={imgBreakthrough}
+                  alt="Neural breakthrough visualization"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+
+              <div className="text-center">
+                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
+                  But there's a breakthrough...
+                </h1>
+              </div>
+
+              <div className="space-y-3">
+                <GlassCard className="border-lavender/30 p-4">
+                  <p className="text-base text-text-primary leading-relaxed">
+                    In 1885, psychologist Hermann Ebbinghaus discovered the
+                    <span className="text-lavender font-semibold"> "Forgetting Curve"</span> —
+                    memory decays predictably over time.
+                  </p>
+                </GlassCard>
+
+                <GlassCard className="border-sage/30 p-4">
+                  <p className="text-base text-text-primary leading-relaxed">
+                    But here's the key: <span className="text-sage font-semibold">review at the right moment</span>,
+                    and the curve flattens. Each review makes the memory stronger.
+                  </p>
+                </GlassCard>
+
+                <GlassCard className="border-sunrise/30 p-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-sunrise/20 flex items-center justify-center shrink-0">
+                      <Brain className="w-5 h-5 text-sunrise" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sunrise text-sm">Spaced Repetition</p>
+                      <p className="text-text-secondary text-xs mt-0.5">
+                        Used by medical students & memory champions.
+                      </p>
+                    </div>
+                  </div>
+                </GlassCard>
+              </div>
+            </div>
+          )}
+
+          {/* ===== STORY SLIDE 3: The Polymind Way ===== */}
+          {step === 3 && (
+            <div className="space-y-6">
+              {/* AI Generated Image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="w-full aspect-video rounded-2xl overflow-hidden border border-sunrise/20"
+              >
+                <img
+                  src={imgPolymind}
+                  alt="Polymind transformation visualization"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+
+              <div className="text-center">
+                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
+                  This is the Polymind way
+                </h1>
+                <p className="text-text-secondary mt-1 text-sm">
+                  Four forces that make knowledge permanent
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                <GlassCard className="border-lavender/30 p-3">
+                  <Brain className="w-6 h-6 text-lavender mb-1" />
+                  <p className="font-semibold text-text-primary text-xs">Spaced Repetition</p>
+                  <p className="text-[10px] text-text-muted mt-0.5">Review at the perfect moment</p>
+                </GlassCard>
+
+                <GlassCard className="border-sunrise/30 p-3">
+                  <Target className="w-6 h-6 text-sunrise mb-1" />
+                  <p className="font-semibold text-text-primary text-xs">Active Recall</p>
+                  <p className="text-[10px] text-text-muted mt-0.5">Quiz yourself, don't just re-read</p>
+                </GlassCard>
+
+                <GlassCard className="border-sage/30 p-3">
+                  <Network className="w-6 h-6 text-sage mb-1" />
+                  <p className="font-semibold text-text-primary text-xs">Cross-Domain Links</p>
+                  <p className="text-[10px] text-text-muted mt-0.5">Connect ideas across fields</p>
+                </GlassCard>
+
+                <GlassCard className="border-golden/30 p-3">
+                  <Zap className="w-6 h-6 text-golden mb-1" />
+                  <p className="font-semibold text-text-primary text-xs">Gamification</p>
+                  <p className="text-[10px] text-text-muted mt-0.5">XP, streaks & achievements</p>
+                </GlassCard>
+              </div>
+
+              <GlassCard className="border-sunrise/30 p-3">
+                <div className="flex items-center gap-3">
+                  <TrendingUp className="w-8 h-8 text-sunrise shrink-0" />
+                  <p className="text-text-primary text-sm">
+                    Retain <span className="text-sunrise font-bold">92%</span> of what you learn — vs 10% from passive reading.
+                  </p>
+                </div>
+              </GlassCard>
+            </div>
+          )}
+
+          {/* ===== STEP 4: Primary Goal ===== */}
+          {step === 4 && (
             <div className="space-y-6">
               <div className="text-center">
                 <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  What's your primary goal?
+                  Why are you building your Polymind?
                 </h1>
                 <p className="text-text-secondary mt-2">
-                  This helps us personalize your learning path
+                  This shapes your personalized learning journey
                 </p>
               </div>
 
@@ -275,7 +464,7 @@ export function Onboarding() {
             </div>
           )}
 
-          {step === 2 && (
+          {step === 5 && (
             <div className="space-y-6">
               <div className="text-center">
                 <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
@@ -325,7 +514,7 @@ export function Onboarding() {
             </div>
           )}
 
-          {step === 3 && (
+          {step === 6 && (
             <div className="space-y-6">
               <div className="text-center">
                 <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
@@ -384,64 +573,55 @@ export function Onboarding() {
                     <Zap className="w-5 h-5 text-sage" />
                   </div>
                   <p className="text-sage text-sm leading-relaxed">
-                    From Atomic Habits: "The 2-minute rule - make it so easy you
-                    can't say no."
+                    Consistency beats intensity. Even 5 minutes daily builds
+                    a powerful Polymind over time.
                   </p>
                 </div>
               </GlassCard>
             </div>
           )}
 
-          {step === 4 && (
+          {step === 7 && (
             <div className="space-y-6">
               <div className="text-center">
                 <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  What interests you most?
+                  Pick your starting domains
                 </h1>
                 <p className="text-text-secondary mt-2">
-                  Select all that apply - you can explore everything
+                  Choose at least 3 — we'll build your Polymind from here
                 </p>
               </div>
 
-              <div className="space-y-3">
-                {focusAreas.map((area) => {
-                  const colors = colorStyles[area.color as keyof typeof colorStyles];
-                  const isSelected = userData.focusAreas.includes(area.id);
+              <div className="grid grid-cols-2 gap-3">
+                {knowledgeDomains.map((domain) => {
+                  const colors = colorStyles[domain.color as keyof typeof colorStyles];
+                  const isSelected = userData.selectedDomains.includes(domain.id);
 
                   return (
                     <motion.button
-                      key={area.id}
+                      key={domain.id}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      onClick={() => toggleFocusArea(area.id)}
-                      className={`w-full p-4 rounded-xl flex items-center justify-between transition-all border backdrop-blur-sm ${
+                      onClick={() => toggleDomain(domain.id)}
+                      className={`p-4 rounded-xl text-left transition-all border backdrop-blur-sm ${
                         isSelected
                           ? `${colors.activeBg} ${colors.activeBorder}`
                           : `glass-light border-white/10 hover:border-white/20`
                       }`}
                     >
-                      <div className="text-left">
-                        <p className={`font-medium ${isSelected ? colors.text : 'text-text-primary'}`}>
-                          {area.label}
-                        </p>
-                        <p className="text-sm text-text-muted">{area.book}</p>
-                      </div>
-                      <div
-                        className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${
-                          isSelected
-                            ? `${colors.bg} ${colors.activeBorder}`
-                            : 'border-text-muted'
-                        }`}
-                      >
-                        {isSelected && (
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                          >
-                            <Check className={`w-4 h-4 ${colors.text}`} />
-                          </motion.div>
-                        )}
-                      </div>
+                      <p className={`font-medium text-base ${isSelected ? colors.text : 'text-text-primary'}`}>
+                        {domain.label}
+                      </p>
+                      <p className="text-xs text-text-muted mt-1">{domain.desc}</p>
+                      {isSelected && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className={`mt-2 w-5 h-5 rounded-full ${colors.bg} border ${colors.border} flex items-center justify-center`}
+                        >
+                          <Check className={`w-3 h-3 ${colors.text}`} />
+                        </motion.div>
+                      )}
                     </motion.button>
                   );
                 })}
@@ -453,7 +633,8 @@ export function Onboarding() {
                     <Brain className="w-5 h-5 text-lavender" />
                   </div>
                   <p className="text-lavender text-sm leading-relaxed">
-                    All 5 books work together - concepts reinforce each other.
+                    Your Polymind connects knowledge across domains —
+                    that's where the real insights emerge.
                   </p>
                 </div>
               </GlassCard>
@@ -489,7 +670,7 @@ export function Onboarding() {
           >
             {step === totalSteps - 1 ? (
               <>
-                Start Learning
+                Build My Polymind
                 <ArrowRight className="w-5 h-5 ml-2" />
               </>
             ) : (

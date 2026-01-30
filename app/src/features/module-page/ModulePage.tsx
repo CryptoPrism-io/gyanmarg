@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ChevronDown, ChevronUp, Lock, CheckCircle, Play, BookOpen, HelpCircle, Lightbulb, Dumbbell, Target } from 'lucide-react';
 import { getModuleById } from '@/data/modules';
 import { useProgressStore } from '@/store/progressStore';
-import { LessonViewer } from '@/components/organisms';
+import { useAuthGate } from '@/hooks';
+import { LessonViewer, SignInGate } from '@/components/organisms';
 import { Button } from '@/components/atoms';
 import type { PathwayLesson, PathwayLevel } from '@/types';
 
@@ -39,10 +40,35 @@ export default function ModulePage() {
   const navigate = useNavigate();
   const { pathwayProgress, completeLesson } = useProgressStore();
   const completedLessons = pathwayProgress?.completedLessons ?? [];
+  const { isAuthenticated, requireAuth, AuthGateModal } = useAuthGate();
 
   const module = getModuleById(moduleId || '');
   const [expandedLevel, setExpandedLevel] = useState<string | null>(null);
   const [activeLesson, setActiveLesson] = useState<PathwayLesson | null>(null);
+  const [showAuthAfterTeaser, setShowAuthAfterTeaser] = useState(false);
+
+  // Show auth gate after 1 second teaser when lesson opens
+  useEffect(() => {
+    if (activeLesson && !isAuthenticated) {
+      const timer = setTimeout(() => {
+        setShowAuthAfterTeaser(true);
+      }, 1000); // 1 second teaser
+      return () => clearTimeout(timer);
+    } else {
+      setShowAuthAfterTeaser(false);
+    }
+  }, [activeLesson, isAuthenticated]);
+
+  // Handle auth gate close - close lesson too
+  const handleAuthGateClose = () => {
+    setShowAuthAfterTeaser(false);
+    setActiveLesson(null);
+  };
+
+  // Handle successful sign in - keep lesson open
+  const handleAuthSuccess = () => {
+    setShowAuthAfterTeaser(false);
+  };
 
   if (!module || !module.pathway) {
     return (
@@ -64,10 +90,19 @@ export default function ModulePage() {
   const colors = colorMap[module.color] || colorMap.orange;
 
   const isLevelUnlocked = (level: PathwayLevel): boolean => {
-    const completedCount = completedLessons.filter(id =>
-      pathway.some(l => l.lessons.some(lesson => lesson.id === id))
-    ).length;
-    return completedCount >= level.unlockRequirement;
+    // Find this level's index in the pathway
+    const levelIndex = pathway.findIndex(l => l.id === level.id);
+
+    // First level is always unlocked
+    if (levelIndex === 0) return true;
+
+    // For other levels: all lessons in previous level must be complete
+    const previousLevel = pathway[levelIndex - 1];
+    const allPreviousLessonsComplete = previousLevel.lessons.every(
+      lesson => completedLessons.includes(lesson.id)
+    );
+
+    return allPreviousLessonsComplete;
   };
 
   const isLessonCompleted = (lessonId: string): boolean => {
@@ -269,6 +304,15 @@ export default function ModulePage() {
           />
         )}
       </AnimatePresence>
+
+      {/* Auth gate modal - shows after 1 second teaser */}
+      {showAuthAfterTeaser && (
+        <SignInGate
+          isOpen={true}
+          onClose={handleAuthGateClose}
+          onSignIn={handleAuthSuccess}
+        />
+      )}
     </div>
   );
 }

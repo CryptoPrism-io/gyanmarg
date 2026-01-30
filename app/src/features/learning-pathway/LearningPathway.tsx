@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Lock,
@@ -23,11 +23,13 @@ import {
   GraduationCap,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
-import { ModuleLayout, AnimatedBackground } from '@/components/templates';
+import { useAuthGate } from '@/hooks';
+import { ModuleLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { LessonCard } from '@/components/molecules/LessonCard';
 import { ProgressBar } from '@/components/atoms';
 import { LessonViewer } from '@/components/organisms/LessonViewer';
+import { SignInGate } from '@/components/organisms';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Progress } from '@/components/ui/progress';
@@ -98,11 +100,37 @@ function ModuleTabContent({
 
 export function LearningPathway() {
   const { completeLesson, isLessonCompleted, pathwayProgress } = useProgressStore();
+  const { isAuthenticated } = useAuthGate();
 
   const [selectedModuleId, setSelectedModuleId] = useState<string>('personal-development');
   const [expandedLevel, setExpandedLevel] = useState<string | null>(null);
   const [activeLesson, setActiveLesson] = useState<PathwayLesson | null>(null);
   const [activeLessonIndex, setActiveLessonIndex] = useState<number>(0);
+  const [activeLevelIndex, setActiveLevelIndex] = useState<number>(0);
+  const [showAuthAfterTeaser, setShowAuthAfterTeaser] = useState(false);
+
+  // Show auth gate after 1 second teaser when lesson opens
+  useEffect(() => {
+    if (activeLesson && !isAuthenticated) {
+      const timer = setTimeout(() => {
+        setShowAuthAfterTeaser(true);
+      }, 1000); // 1 second teaser
+      return () => clearTimeout(timer);
+    } else {
+      setShowAuthAfterTeaser(false);
+    }
+  }, [activeLesson, isAuthenticated]);
+
+  // Handle auth gate close - close lesson too
+  const handleAuthGateClose = () => {
+    setShowAuthAfterTeaser(false);
+    setActiveLesson(null);
+  };
+
+  // Handle successful sign in - keep lesson open
+  const handleAuthSuccess = () => {
+    setShowAuthAfterTeaser(false);
+  };
 
   // Get the selected module and its pathway
   const selectedModule = useMemo(
@@ -111,13 +139,13 @@ export function LearningPathway() {
   );
   const pathwayLevels: PathwayLevel[] = selectedModule?.pathway || [];
 
-  const isLevelUnlocked = (level: PathwayLevel, levelIndex: number): boolean => {
+  const isLevelUnlocked = (_level: PathwayLevel, levelIndex: number): boolean => {
+    // First level is always unlocked
     if (levelIndex === 0) return true;
+
+    // For other levels: all lessons in previous level must be complete
     const previousLevel = pathwayLevels[levelIndex - 1];
-    const completedInPrevious = previousLevel.lessons.filter((l) =>
-      isLessonCompleted(l.id)
-    ).length;
-    return completedInPrevious >= level.unlockRequirement;
+    return previousLevel.lessons.every((l) => isLessonCompleted(l.id));
   };
 
   const isLessonUnlocked = (
@@ -150,7 +178,7 @@ export function LearningPathway() {
   const handleCompleteLesson = () => {
     if (!activeLesson) return;
     completeLesson(activeLesson.id, activeLesson.xpReward);
-    setActiveLesson(null);
+    // Don't close - let TinderCardStack handle the completion card and auto-advance
   };
 
   // Calculate lessons for the selected module only
@@ -163,10 +191,55 @@ export function LearningPathway() {
   const completedLessons = moduleCompletedLessons;
 
   // Handle opening a lesson with index tracking
-  const handleOpenLesson = (lesson: PathwayLesson, globalIndex: number) => {
+  const handleOpenLesson = (lesson: PathwayLesson, globalIndex: number, levelIdx: number) => {
     setActiveLesson(lesson);
     setActiveLessonIndex(globalIndex);
+    setActiveLevelIndex(levelIdx);
   };
+
+  // Find the next lesson in the pathway
+  const getNextLesson = useMemo(() => {
+    if (!activeLesson) return null;
+
+    // Find current position
+    let foundCurrent = false;
+    for (let lvlIdx = 0; lvlIdx < pathwayLevels.length; lvlIdx++) {
+      const level = pathwayLevels[lvlIdx];
+      for (let lessonIdx = 0; lessonIdx < level.lessons.length; lessonIdx++) {
+        if (foundCurrent) {
+          // This is the next lesson
+          return {
+            lesson: level.lessons[lessonIdx],
+            levelTitle: level.title,
+            levelIndex: lvlIdx,
+            lessonIndex: lessonIdx,
+          };
+        }
+        if (level.lessons[lessonIdx].id === activeLesson.id) {
+          foundCurrent = true;
+        }
+      }
+    }
+    return null;
+  }, [activeLesson, pathwayLevels]);
+
+  // Handle auto-advance to next lesson
+  const handleNextLesson = (lesson: PathwayLesson) => {
+    if (getNextLesson) {
+      const globalIdx = calculateGlobalIndex(getNextLesson.levelIndex, getNextLesson.lessonIndex);
+      setActiveLesson(lesson);
+      setActiveLessonIndex(globalIdx);
+      setActiveLevelIndex(getNextLesson.levelIndex);
+    }
+  };
+
+  // Get current level title
+  const currentLevelTitle = useMemo(() => {
+    if (activeLevelIndex >= 0 && activeLevelIndex < pathwayLevels.length) {
+      return pathwayLevels[activeLevelIndex].title;
+    }
+    return '';
+  }, [activeLevelIndex, pathwayLevels]);
 
   // Calculate global lesson index
   const calculateGlobalIndex = (levelIndex: number, lessonIndex: number): number => {
@@ -177,30 +250,32 @@ export function LearningPathway() {
     return index + lessonIndex;
   };
 
-  // LessonViewer - Immersive lesson experience
+  // LessonViewer - Immersive lesson experience (rendered via portal)
   if (activeLesson) {
     return (
-      <div className="h-screen bg-base flex flex-col overflow-hidden">
-        <AnimatedBackground />
-        <div className="relative z-10 flex-1 overflow-hidden">
-          <LessonViewer
-            lesson={activeLesson}
-            onComplete={handleCompleteLesson}
-            onClose={() => setActiveLesson(null)}
-            isComplete={isLessonCompleted(activeLesson.id)}
-            moduleColor={selectedModule.color}
-            lessonNumber={activeLessonIndex + 1}
-            totalLessons={totalModuleLessons}
-            currentStreak={pathwayProgress.streakDays || 0}
-            showSectionTabs={true}
-          />
-        </div>
-      </div>
+      <>
+        <LessonViewer
+          lesson={activeLesson}
+          onComplete={handleCompleteLesson}
+          onClose={() => setActiveLesson(null)}
+          isComplete={isLessonCompleted(activeLesson.id)}
+          moduleColor={selectedModule.color}
+          lessonNumber={activeLessonIndex + 1}
+          totalLessons={totalModuleLessons}
+          currentStreak={pathwayProgress.streakDays || 0}
+          showSectionTabs={true}
+          moduleName={selectedModule.title}
+          levelName={currentLevelTitle}
+          nextLesson={getNextLesson ? { lesson: getNextLesson.lesson, levelTitle: getNextLesson.levelTitle } : null}
+          onNextLesson={handleNextLesson}
+        />
+      </>
     );
   }
 
   // Pathway Overview with Module Tabs
   return (
+    <>
     <ModuleLayout
       title="Learning Pathway"
       subtitle={`Module ${selectedModule.number}: ${selectedModule.title}`}
@@ -331,7 +406,7 @@ export function LearningPathway() {
                     <div className="flex items-center gap-2 text-text-muted">
                       <Lock className="w-4 h-4" />
                       <span className="text-xs">
-                        Complete {level.unlockRequirement} lessons
+                        Complete previous level
                       </span>
                     </div>
                   )}
@@ -395,7 +470,7 @@ export function LearningPathway() {
                             completed={lessonCompleted}
                             locked={!lessonUnlocked}
                             index={lessonIndex}
-                            onClick={() => lessonUnlocked && handleOpenLesson(lesson, globalIndex)}
+                            onClick={() => lessonUnlocked && handleOpenLesson(lesson, globalIndex, levelIndex)}
                           />
                         );
                       })}
@@ -408,6 +483,16 @@ export function LearningPathway() {
         })}
       </motion.div>
     </ModuleLayout>
+
+    {/* Auth gate modal - shows after 1 second teaser */}
+    {showAuthAfterTeaser && (
+      <SignInGate
+        isOpen={true}
+        onClose={handleAuthGateClose}
+        onSignIn={handleAuthSuccess}
+      />
+    )}
+    </>
   );
 }
 

@@ -16,9 +16,10 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useProgressStore } from '@/store/progressStore';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
-import { useSoundEffects } from '@/hooks';
+import { useSoundEffects, useAuthGate } from '@/hooks';
 import { ModuleLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
+import { SignInGate } from '@/components/organisms';
 import { FlashCard, RatingButtons } from '@/components/molecules/FlashCard';
 import { Button, Badge, ProgressBar } from '@/components/atoms';
 import { getCategoryById } from '@/data/review-categories';
@@ -50,10 +51,30 @@ export function SpacedRepetition() {
   const getCategoryStats = useSpacedRepetitionStore((s) => s.getCategoryStats);
   const unlockedCards = useSpacedRepetitionStore((s) => s.unlockedCards);
   const { playCardFlip, playCorrect, playXpGain } = useSoundEffects();
+  const { isAuthenticated } = useAuthGate();
 
   // View state: 'hub' or category ID
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [showAuthGate, setShowAuthGate] = useState(!isAuthenticated);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Show auth gate immediately if not authenticated
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setShowAuthGate(true);
+    }
+  }, [isAuthenticated]);
+
+  // Handle auth gate close - navigate away
+  const handleAuthGateClose = () => {
+    setShowAuthGate(false);
+    navigate('/pathway'); // Redirect to pathway instead
+  };
+
+  // Handle successful sign in
+  const handleAuthSuccess = () => {
+    setShowAuthGate(false);
+  };
   const [isFlipped, setIsFlipped] = useState(false);
   const [showRating, setShowRating] = useState(false);
   const [reviewed, setReviewed] = useState<string[]>([]);
@@ -426,6 +447,7 @@ export function SpacedRepetition() {
 
   // Active review
   return (
+    <>
     <ModuleLayout
       title={categoryConfig?.name || 'Review'}
       subtitle={`+${xpPerCard} XP per card`}
@@ -490,6 +512,16 @@ export function SpacedRepetition() {
         </div>
       </div>
     </ModuleLayout>
+
+    {/* Auth gate modal - shows immediately if not authenticated */}
+    {showAuthGate && (
+      <SignInGate
+        isOpen={true}
+        onClose={handleAuthGateClose}
+        onSignIn={handleAuthSuccess}
+      />
+    )}
+    </>
   );
 }
 

@@ -6,3 +6,4 @@ export type { CardContent, CardType } from './useCardStack';
 export { useReviewGate } from './useReviewGate';
 export type { ReviewGateStatus, WarningLevel } from './useReviewGate';
 export { useAuth } from './useAuth';
+export { useAuthGate } from './useAuthGate';
