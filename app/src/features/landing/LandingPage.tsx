@@ -254,25 +254,10 @@ export function LandingPage() {
       {/* ===== HEADER ===== */}
       <header className="fixed top-0 left-0 right-0 z-50 glass-nav">
         <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
-          <div className="relative">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="font-mono text-lg md:text-xl font-semibold tracking-wider">POLYMIND</span>
-              <span className="w-2 h-2 rounded-full bg-amber-500" />
-            </Link>
-            {/* Multilingual "Path of Knowledge" - rotated -90deg under logo */}
-            <div className="hidden lg:flex absolute top-full left-0 mt-4 -ml-4 flex-row gap-3 text-[8px] font-light opacity-30 hover:opacity-60 transition-opacity duration-500 -rotate-90 origin-top-left whitespace-nowrap">
-              <span className="text-amber-400">ज्ञानमार्ग</span>
-              <span className="text-amber-500">知識の道</span>
-              <span className="text-pink-400">知識之路</span>
-              <span className="text-purple-400">지식의 길</span>
-              <span className="text-blue-400">طريق المعرفة</span>
-              <span className="text-cyan-400">דרך הידע</span>
-              <span className="text-green-400">Οδός Γνώσης</span>
-              <span className="text-amber-300">Via Scientiae</span>
-              <span className="text-rose-400">அறிவின் பாதை</span>
-              <span className="text-orange-400">ज्ञान का मार्ग</span>
-            </div>
-          </div>
+          <Link to="/" className="flex items-center gap-2">
+            <span className="font-mono text-lg md:text-xl font-semibold tracking-wider">POLYMIND</span>
+            <span className="w-2 h-2 rounded-full bg-amber-500" />
+          </Link>
 
           <nav className="hidden md:flex items-center gap-8">
             <a href="#problem" className="text-sm text-gray-400 hover:text-white transition">The Problem</a>
@@ -338,6 +323,51 @@ export function LandingPage() {
           </motion.div>
         )}
       </header>
+
+      {/* ===== INFINITE SCROLLING MULTILINGUAL TEXT - Left Side ===== */}
+      <div className="hidden lg:block fixed left-6 top-0 bottom-0 z-40 w-8 overflow-hidden pointer-events-none">
+        <style>{`
+          @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+          }
+        `}</style>
+        <div
+          className="flex flex-col gap-6 text-[9px] font-light opacity-25 hover:opacity-50 transition-opacity duration-500 writing-vertical-rl pointer-events-auto"
+          style={{
+            writingMode: 'vertical-rl',
+            textOrientation: 'mixed',
+            animation: 'scrollUp 30s linear infinite',
+          }}
+        >
+          {/* First set */}
+          <span className="text-amber-400">ज्ञानमार्ग</span>
+          <span className="text-amber-500">知識の道</span>
+          <span className="text-pink-400">知識之路</span>
+          <span className="text-purple-400">지식의 길</span>
+          <span className="text-blue-400">طريق المعرفة</span>
+          <span className="text-cyan-400">דרך הידע</span>
+          <span className="text-green-400">Οδός Γνώσης</span>
+          <span className="text-amber-300">Via Scientiae</span>
+          <span className="text-rose-400">அறிவின் பாதை</span>
+          <span className="text-orange-400">ज्ञान का मार्ग</span>
+          <span className="text-emerald-400">Путь знаний</span>
+          <span className="text-indigo-400">Chemin du Savoir</span>
+          {/* Duplicate for seamless loop */}
+          <span className="text-amber-400">ज्ञानमार्ग</span>
+          <span className="text-amber-500">知識の道</span>
+          <span className="text-pink-400">知識之路</span>
+          <span className="text-purple-400">지식의 길</span>
+          <span className="text-blue-400">طريق المعرفة</span>
+          <span className="text-cyan-400">דרך הידע</span>
+          <span className="text-green-400">Οδός Γνώσης</span>
+          <span className="text-amber-300">Via Scientiae</span>
+          <span className="text-rose-400">அறிவின் பாதை</span>
+          <span className="text-orange-400">ज्ञान का मार्ग</span>
+          <span className="text-emerald-400">Путь знаний</span>
+          <span className="text-indigo-400">Chemin du Savoir</span>
+        </div>
+      </div>
 
       {/* ===== HERO: Character's Desire + Direct CTA ===== */}
       <section className="pt-32 md:pt-40 pb-16 px-6 relative overflow-hidden z-10">
