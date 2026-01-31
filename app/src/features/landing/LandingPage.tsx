@@ -254,10 +254,25 @@ export function LandingPage() {
       {/* ===== HEADER ===== */}
       <header className="fixed top-0 left-0 right-0 z-50 glass-nav">
         <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-mono text-lg md:text-xl font-semibold tracking-wider">POLYMIND</span>
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
-          </Link>
+          <div className="relative">
+            <Link to="/" className="flex items-center gap-2">
+              <span className="font-mono text-lg md:text-xl font-semibold tracking-wider">POLYMIND</span>
+              <span className="w-2 h-2 rounded-full bg-amber-500" />
+            </Link>
+            {/* Multilingual "Path of Knowledge" - rotated -90deg under logo */}
+            <div className="hidden lg:flex absolute top-full left-0 mt-4 -ml-4 flex-row gap-3 text-[8px] font-light opacity-30 hover:opacity-60 transition-opacity duration-500 -rotate-90 origin-top-left whitespace-nowrap">
+              <span className="text-amber-400">ज्ञानमार्ग</span>
+              <span className="text-amber-500">知識の道</span>
+              <span className="text-pink-400">知識之路</span>
+              <span className="text-purple-400">지식의 길</span>
+              <span className="text-blue-400">طريق المعرفة</span>
+              <span className="text-cyan-400">דרך הידע</span>
+              <span className="text-green-400">Οδός Γνώσης</span>
+              <span className="text-amber-300">Via Scientiae</span>
+              <span className="text-rose-400">அறிவின் பாதை</span>
+              <span className="text-orange-400">ज्ञान का मार्ग</span>
+            </div>
+          </div>
 
           <nav className="hidden md:flex items-center gap-8">
             <a href="#problem" className="text-sm text-gray-400 hover:text-white transition">The Problem</a>
@@ -353,20 +368,6 @@ export function LandingPage() {
             transition={{ delay: 0.1 }}
             className="relative mb-8"
           >
-            {/* Vertical multilingual "Path of Knowledge" - rotated -90deg */}
-            <div className="hidden md:flex absolute -left-44 top-1/2 -translate-y-1/2 flex-row gap-4 text-[10px] font-light opacity-40 hover:opacity-70 transition-opacity duration-500 -rotate-90 origin-center whitespace-nowrap">
-              <span className="text-amber-400" title="Sanskrit: Wisdom-Path">ज्ञानमार्ग</span>
-              <span className="text-amber-500" title="Japanese: Knowledge's Way">知識の道</span>
-              <span className="text-pink-400" title="Chinese: Road of Knowledge">知識之路</span>
-              <span className="text-purple-400" title="Korean: Knowledge's Road">지식의 길</span>
-              <span className="text-blue-400" title="Arabic: Way of Knowing">طريق المعرفة</span>
-              <span className="text-cyan-400" title="Hebrew: Path of the Known">דרך הידע</span>
-              <span className="text-green-400" title="Greek: Road of Gnosis">Οδός Γνώσης</span>
-              <span className="text-amber-300" title="Latin: Way of Science">Via Scientiae</span>
-              <span className="text-rose-400" title="Tamil: Wisdom's Trail">அறிவின் பாதை</span>
-              <span className="text-orange-400" title="Hindi: Knowledge's Path">ज्ञान का मार्ग</span>
-            </div>
-
             <span className="block text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] text-white/90 tracking-tight">
               Finally{' '}
               <span className="relative inline-block">
