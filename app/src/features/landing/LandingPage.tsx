@@ -334,7 +334,7 @@ export function LandingPage() {
         `}</style>
         {/* Rotated container - text reads bottom to top */}
         <div
-          className="absolute top-1/2 left-8 origin-top-left -rotate-90 pointer-events-auto"
+          className="absolute bottom-0 left-6 origin-bottom-left -rotate-90 pointer-events-auto"
           style={{ width: '100vh' }}
         >
           <div
