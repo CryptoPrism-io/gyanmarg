@@ -353,8 +353,8 @@ export function LandingPage() {
             transition={{ delay: 0.1 }}
             className="relative mb-8"
           >
-            {/* Vertical multilingual "Path of Knowledge" */}
-            <div className="hidden md:flex absolute -left-20 top-0 flex-col gap-3 text-[10px] font-light opacity-40 hover:opacity-70 transition-opacity duration-500">
+            {/* Vertical multilingual "Path of Knowledge" - rotated -90deg */}
+            <div className="hidden md:flex absolute -left-44 top-1/2 -translate-y-1/2 flex-row gap-4 text-[10px] font-light opacity-40 hover:opacity-70 transition-opacity duration-500 -rotate-90 origin-center whitespace-nowrap">
               <span className="text-amber-400" title="Sanskrit: Wisdom-Path">ज्ञानमार्ग</span>
               <span className="text-amber-500" title="Japanese: Knowledge's Way">知識の道</span>
               <span className="text-pink-400" title="Chinese: Road of Knowledge">知識之路</span>
