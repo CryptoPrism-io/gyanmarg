@@ -324,14 +324,20 @@ export function LandingPage() {
         )}
       </header>
 
-      {/* ===== INFINITE SCROLLING MULTILINGUAL TEXT - Left Side ===== */}
+      {/* ===== INFINITE SCROLLING MULTILINGUAL TEXT - Both Sides ===== */}
+      <style>{`
+        @keyframes marqueeScrollLeft {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marqueeScrollRight {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
+
+      {/* Left Side */}
       <div className="hidden lg:block fixed left-0 top-0 bottom-0 z-40 pointer-events-none">
-        <style>{`
-          @keyframes marqueeScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-        `}</style>
         {/* Rotated container - text reads bottom to top */}
         <div
           className="absolute bottom-0 left-6 origin-bottom-left -rotate-90 overflow-hidden pointer-events-auto"
@@ -340,7 +346,49 @@ export function LandingPage() {
           <div
             className="inline-flex items-center text-[15px] font-medium tracking-wider opacity-50 whitespace-nowrap"
             style={{
-              animation: 'marqueeScroll 40s linear infinite',
+              animation: 'marqueeScrollLeft 40s linear infinite',
+            }}
+          >
+            {/* First set - orange hues only */}
+            <span className="text-orange-300 px-5">ज्ञानमार्ग</span>
+            <span className="text-amber-400 px-5">知識の道</span>
+            <span className="text-orange-400 px-5">知識之路</span>
+            <span className="text-amber-500 px-5">지식의 길</span>
+            <span className="text-orange-500 px-5">طريق المعرفة</span>
+            <span className="text-amber-300 px-5">דרך הידע</span>
+            <span className="text-orange-300 px-5">Οδός Γνώσης</span>
+            <span className="text-amber-400 px-5">Via Scientiae</span>
+            <span className="text-orange-400 px-5">அறிவின் பாதை</span>
+            <span className="text-amber-500 px-5">ज्ञान का मार्ग</span>
+            <span className="text-orange-500 px-5">Путь знаний</span>
+            <span className="text-amber-300 px-5">Chemin du Savoir</span>
+            {/* Duplicate for seamless loop */}
+            <span className="text-orange-300 px-5">ज्ञानमार्ग</span>
+            <span className="text-amber-400 px-5">知識の道</span>
+            <span className="text-orange-400 px-5">知識之路</span>
+            <span className="text-amber-500 px-5">지식의 길</span>
+            <span className="text-orange-500 px-5">طريق المعرفة</span>
+            <span className="text-amber-300 px-5">דרך הידע</span>
+            <span className="text-orange-300 px-5">Οδός Γνώσης</span>
+            <span className="text-amber-400 px-5">Via Scientiae</span>
+            <span className="text-orange-400 px-5">அறிவின் பாதை</span>
+            <span className="text-amber-500 px-5">ज्ञान का मार्ग</span>
+            <span className="text-orange-500 px-5">Путь знаний</span>
+            <span className="text-amber-300 px-5">Chemin du Savoir</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side - reverse direction */}
+      <div className="hidden lg:block fixed right-0 top-0 bottom-0 z-40 pointer-events-none">
+        <div
+          className="absolute bottom-0 right-6 origin-bottom-right rotate-90 overflow-hidden pointer-events-auto"
+          style={{ width: '100vh', height: '28px' }}
+        >
+          <div
+            className="inline-flex items-center text-[15px] font-medium tracking-wider opacity-50 whitespace-nowrap"
+            style={{
+              animation: 'marqueeScrollRight 40s linear infinite',
             }}
           >
             {/* First set - orange hues only */}
