@@ -325,47 +325,45 @@ export function LandingPage() {
       </header>
 
       {/* ===== INFINITE SCROLLING MULTILINGUAL TEXT - Left Side ===== */}
-      <div className="hidden lg:block fixed left-6 top-0 bottom-0 z-40 w-8 overflow-hidden pointer-events-none">
+      <div className="hidden lg:block fixed left-4 top-0 bottom-0 z-40 overflow-hidden pointer-events-none" style={{ width: '24px' }}>
         <style>{`
-          @keyframes scrollUp {
+          @keyframes scrollUpText {
             0% { transform: translateY(0); }
             100% { transform: translateY(-50%); }
           }
         `}</style>
         <div
-          className="flex flex-col gap-6 text-[9px] font-light opacity-25 hover:opacity-50 transition-opacity duration-500 writing-vertical-rl pointer-events-auto"
+          className="flex flex-col items-center gap-8 text-[11px] font-medium tracking-wide opacity-40 hover:opacity-70 transition-opacity duration-500 pointer-events-auto pt-24"
           style={{
-            writingMode: 'vertical-rl',
-            textOrientation: 'mixed',
-            animation: 'scrollUp 30s linear infinite',
+            animation: 'scrollUpText 25s linear infinite',
           }}
         >
-          {/* First set */}
-          <span className="text-amber-400">ज्ञानमार्ग</span>
-          <span className="text-amber-500">知識の道</span>
-          <span className="text-pink-400">知識之路</span>
-          <span className="text-purple-400">지식의 길</span>
-          <span className="text-blue-400">طريق المعرفة</span>
-          <span className="text-cyan-400">דרך הידע</span>
-          <span className="text-green-400">Οδός Γνώσης</span>
-          <span className="text-amber-300">Via Scientiae</span>
-          <span className="text-rose-400">அறிவின் பாதை</span>
-          <span className="text-orange-400">ज्ञान का मार्ग</span>
-          <span className="text-emerald-400">Путь знаний</span>
-          <span className="text-indigo-400">Chemin du Savoir</span>
+          {/* First set - each phrase on its own line, rotated */}
+          <span className="text-amber-400 whitespace-nowrap origin-center -rotate-90">ज्ञानमार्ग</span>
+          <span className="text-amber-500 whitespace-nowrap origin-center -rotate-90">知識の道</span>
+          <span className="text-pink-400 whitespace-nowrap origin-center -rotate-90">知識之路</span>
+          <span className="text-purple-400 whitespace-nowrap origin-center -rotate-90">지식의 길</span>
+          <span className="text-blue-400 whitespace-nowrap origin-center -rotate-90">طريق المعرفة</span>
+          <span className="text-cyan-400 whitespace-nowrap origin-center -rotate-90">דרך הידע</span>
+          <span className="text-green-400 whitespace-nowrap origin-center -rotate-90">Οδός Γνώσης</span>
+          <span className="text-amber-300 whitespace-nowrap origin-center -rotate-90">Via Scientiae</span>
+          <span className="text-rose-400 whitespace-nowrap origin-center -rotate-90">அறிவின் பாதை</span>
+          <span className="text-orange-400 whitespace-nowrap origin-center -rotate-90">ज्ञान का मार्ग</span>
+          <span className="text-emerald-400 whitespace-nowrap origin-center -rotate-90">Путь знаний</span>
+          <span className="text-indigo-400 whitespace-nowrap origin-center -rotate-90">Chemin du Savoir</span>
           {/* Duplicate for seamless loop */}
-          <span className="text-amber-400">ज्ञानमार्ग</span>
-          <span className="text-amber-500">知識の道</span>
-          <span className="text-pink-400">知識之路</span>
-          <span className="text-purple-400">지식의 길</span>
-          <span className="text-blue-400">طريق المعرفة</span>
-          <span className="text-cyan-400">דרך הידע</span>
-          <span className="text-green-400">Οδός Γνώσης</span>
-          <span className="text-amber-300">Via Scientiae</span>
-          <span className="text-rose-400">அறிவின் பாதை</span>
-          <span className="text-orange-400">ज्ञान का मार्ग</span>
-          <span className="text-emerald-400">Путь знаний</span>
-          <span className="text-indigo-400">Chemin du Savoir</span>
+          <span className="text-amber-400 whitespace-nowrap origin-center -rotate-90">ज्ञानमार्ग</span>
+          <span className="text-amber-500 whitespace-nowrap origin-center -rotate-90">知識の道</span>
+          <span className="text-pink-400 whitespace-nowrap origin-center -rotate-90">知識之路</span>
+          <span className="text-purple-400 whitespace-nowrap origin-center -rotate-90">지식의 길</span>
+          <span className="text-blue-400 whitespace-nowrap origin-center -rotate-90">طريق المعرفة</span>
+          <span className="text-cyan-400 whitespace-nowrap origin-center -rotate-90">דרך הידע</span>
+          <span className="text-green-400 whitespace-nowrap origin-center -rotate-90">Οδός Γνώσης</span>
+          <span className="text-amber-300 whitespace-nowrap origin-center -rotate-90">Via Scientiae</span>
+          <span className="text-rose-400 whitespace-nowrap origin-center -rotate-90">அறிவின் பாதை</span>
+          <span className="text-orange-400 whitespace-nowrap origin-center -rotate-90">ज्ञान का मार्ग</span>
+          <span className="text-emerald-400 whitespace-nowrap origin-center -rotate-90">Путь знаний</span>
+          <span className="text-indigo-400 whitespace-nowrap origin-center -rotate-90">Chemin du Savoir</span>
         </div>
       </div>
 
