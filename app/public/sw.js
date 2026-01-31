@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gyanmarg-v2';
+const CACHE_NAME = 'gyanmarg-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
