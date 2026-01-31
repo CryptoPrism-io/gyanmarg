@@ -167,7 +167,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setSyncError(null);
 
     try {
-      await syncToFirestore(user.uid);
+      await syncToFirestore(user.uid, {
+        email: user.email || '',
+        displayName: user.displayName || '',
+        photoURL: user.photoURL,
+      });
       setLastSyncAt(new Date());
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Sync failed';

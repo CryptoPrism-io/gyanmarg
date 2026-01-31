@@ -323,9 +323,12 @@ export async function syncOnLogin(authUser: FirebaseAuthUser): Promise<{
  * Sync current localStorage state to Firestore
  * Call this after any significant state change
  */
-export async function syncToFirestore(uid: string): Promise<void> {
+export async function syncToFirestore(
+  uid: string,
+  userInfo?: { email: string; displayName: string; photoURL: string | null }
+): Promise<void> {
   const data = getLocalStorageData();
-  await syncAllToFirestore(uid, data);
+  await syncAllToFirestore(uid, data, userInfo);
 }
 
 /**

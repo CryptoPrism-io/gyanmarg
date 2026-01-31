@@ -161,10 +161,12 @@ export async function updateUserDocument(
  * Sync all stores to Firestore
  * @param uid User's Firebase UID
  * @param data Complete data from all stores
+ * @param userInfo Optional user info for creating new documents
  */
 export async function syncAllToFirestore(
   uid: string,
-  data: LocalStorageData
+  data: LocalStorageData,
+  userInfo?: { email: string; displayName: string; photoURL: string | null }
 ): Promise<void> {
   const db = getFirestoreDb();
   if (!db) {
@@ -188,9 +190,27 @@ export async function syncAllToFirestore(
           reviewHistory: data.spacedRepetition.reviewHistory.slice(-1000),
         },
       });
+      console.log('[Firestore] User document updated');
     } else {
-      // This shouldn't happen if createUserDocument was called first
-      console.warn('[Firestore] Document does not exist, skipping sync');
+      // Document doesn't exist - create it
+      console.log('[Firestore] Document does not exist, creating...');
+      const now = serverTimestamp();
+      await setDoc(docRef, {
+        uid,
+        email: userInfo?.email || '',
+        displayName: userInfo?.displayName || data.user.profile?.name || 'User',
+        photoURL: userInfo?.photoURL || null,
+        createdAt: now,
+        lastSyncAt: now,
+        user: data.user,
+        progress: data.progress,
+        habits: data.habits,
+        spacedRepetition: {
+          ...data.spacedRepetition,
+          reviewHistory: data.spacedRepetition.reviewHistory.slice(-1000),
+        },
+      });
+      console.log('[Firestore] User document created');
     }
   } catch (error) {
     console.error('[Firestore] Error syncing to Firestore:', error);
