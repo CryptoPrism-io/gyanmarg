@@ -1,4 +1,4 @@
-// Firebase/Firestore types for Gyanmarg
+// Firebase/Firestore types for Polymind
 import type { Timestamp } from 'firebase/firestore';
 import type {
   UserProfile,

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Sparkles, Star, ArrowUp, X } from 'lucide-react';
 import { Modal } from './Modal';
 import { Button } from '@/components/atoms';
@@ -69,22 +69,21 @@ export function LevelUpModal({ newLevel, isOpen, onClose }: LevelUpModalProps) {
   }, [isOpen, settings.soundEnabled]);
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <Modal isOpen={isOpen} onClose={onClose} size="md">
-          <motion.div
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.5, opacity: 0 }}
-            className="text-center py-8 relative overflow-hidden"
-          >
-            {/* Close button */}
-            <button
-              onClick={onClose}
-              className="absolute top-0 right-0 p-2 text-muted hover:text-text-secondary transition-colors z-10"
-            >
-              <X className="w-5 h-5" />
-            </button>
+    <Modal isOpen={isOpen} onClose={onClose} size="md">
+      <motion.div
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="text-center py-8 relative overflow-hidden"
+      >
+        {/* Close button - larger touch target for mobile */}
+        <button
+          onClick={onClose}
+          onTouchEnd={(e) => { e.preventDefault(); e.stopPropagation(); onClose(); }}
+          className="absolute top-0 right-0 p-3 text-muted hover:text-text-secondary active:text-text-primary transition-colors z-10 touch-manipulation"
+          aria-label="Close"
+        >
+          <X className="w-6 h-6" />
+        </button>
 
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-radial from-accent/20 via-transparent to-transparent" />
@@ -161,21 +160,25 @@ export function LevelUpModal({ newLevel, isOpen, onClose }: LevelUpModalProps) {
               Only <span className="text-accent font-semibold">500 XP</span> until Level {newLevel + 1}
             </motion.p>
 
-            {/* Continue button */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.9 }}
-              className="relative z-10"
+          {/* Continue button - wrapped for touch handling */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.9 }}
+            className="relative z-10"
+            onTouchEnd={(e) => { e.stopPropagation(); }}
+          >
+            <Button
+              onClick={onClose}
+              variant="primary"
+              size="lg"
+              className="touch-manipulation"
             >
-              <Button onClick={onClose} variant="primary" size="lg">
-                Keep Going!
-              </Button>
-            </motion.div>
+              Keep Going!
+            </Button>
           </motion.div>
-        </Modal>
-      )}
-    </AnimatePresence>
+        </motion.div>
+    </Modal>
   );
 }
 

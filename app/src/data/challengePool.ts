@@ -973,7 +973,7 @@ export const challengePool: EnhancedDailyChallenge[] = [
   {
     id: 'ch-103',
     title: 'Teach Someone',
-    description: 'Teach one concept from Gyanmarg to someone else today. Teaching deepens your own understanding.',
+    description: 'Teach one concept from Polymind to someone else today. Teaching deepens your own understanding.',
     category: 'general',
     moduleId: 'master-synthesis',
     xpReward: 50,

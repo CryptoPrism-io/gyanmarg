@@ -18,12 +18,14 @@ interface RichMarkdownProps {
 }
 
 interface ParsedBlock {
-  type: 'paragraph' | 'header' | 'code' | 'list' | 'quote' | 'callout' | 'keypoint' | 'divider';
+  type: 'paragraph' | 'header' | 'code' | 'list' | 'quote' | 'callout' | 'keypoint' | 'divider' | 'table';
   content: string;
   level?: number; // for headers
   calloutType?: 'tip' | 'warning' | 'info' | 'success' | 'brain' | 'action';
   listItems?: string[];
   language?: string;
+  tableHeaders?: string[];
+  tableRows?: string[][];
 }
 
 const calloutConfig = {
@@ -273,6 +275,45 @@ function parseContent(content: string): ParsedBlock[] {
       continue;
     }
 
+    // Table: | col1 | col2 | col3 |
+    if (/^\|.+\|$/.test(trimmed)) {
+      const tableLines: string[] = [];
+      while (i < lines.length && /^\|.+\|$/.test(lines[i].trim())) {
+        tableLines.push(lines[i].trim());
+        i++;
+      }
+
+      if (tableLines.length >= 2) {
+        // Parse header row
+        const headerLine = tableLines[0];
+        const headers = headerLine
+          .split('|')
+          .slice(1, -1) // Remove empty strings from start/end
+          .map(cell => cell.trim());
+
+        // Skip separator row (|---|---|---|)
+        const dataStartIndex = tableLines[1].includes('-') ? 2 : 1;
+
+        // Parse data rows
+        const rows: string[][] = [];
+        for (let j = dataStartIndex; j < tableLines.length; j++) {
+          const row = tableLines[j]
+            .split('|')
+            .slice(1, -1)
+            .map(cell => cell.trim());
+          rows.push(row);
+        }
+
+        blocks.push({
+          type: 'table',
+          content: '',
+          tableHeaders: headers,
+          tableRows: rows
+        });
+      }
+      continue;
+    }
+
     // Key point marker: 🔑 or ⭐ at start
     if (/^[🔑⭐💡✨🎯]\s*/.test(trimmed)) {
       blocks.push({
@@ -456,6 +497,51 @@ export function RichMarkdown({ content, className = '' }: RichMarkdownProps) {
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
             <Sparkles className="w-4 h-4 text-golden/50" />
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          </motion.div>
+        );
+
+      case 'table':
+        return (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.02 }}
+            className="my-5 overflow-x-auto rounded-xl border border-white/10"
+          >
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-surface/50 border-b border-white/10">
+                  {block.tableHeaders?.map((header, idx) => (
+                    <th
+                      key={idx}
+                      className="px-4 py-3 text-left font-semibold text-text-primary"
+                    >
+                      {parseInline(header)}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {block.tableRows?.map((row, rowIdx) => (
+                  <tr
+                    key={rowIdx}
+                    className={`border-b border-white/5 ${
+                      rowIdx % 2 === 0 ? 'bg-base/30' : 'bg-surface/20'
+                    }`}
+                  >
+                    {row.map((cell, cellIdx) => (
+                      <td
+                        key={cellIdx}
+                        className="px-4 py-3 text-text-secondary"
+                      >
+                        {parseInline(cell)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </motion.div>
         );
 

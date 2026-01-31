@@ -205,8 +205,16 @@ const domainCards = [
 export function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showIOSModal, setShowIOSModal] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const { canInstall, isInstalled, isIOS, install } = useInstallPrompt();
   const { isConfigured } = useAuth();
+
+  // Track scroll position for parallax effect on multilingual text
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleInstallClick = async () => {
     if (isIOS) {
@@ -340,13 +348,14 @@ export function LandingPage() {
       <div className="hidden lg:block fixed left-0 top-0 bottom-0 z-40 pointer-events-none">
         {/* Rotated container - text reads bottom to top */}
         <div
-          className="absolute bottom-0 left-6 origin-bottom-left -rotate-90 overflow-hidden pointer-events-auto"
+          className="absolute bottom-0 left-12 origin-bottom-left -rotate-90 overflow-hidden pointer-events-auto"
           style={{ width: '100vh', height: '28px' }}
         >
           <div
             className="inline-flex items-center text-[15px] font-medium tracking-wider opacity-50 whitespace-nowrap"
             style={{
-              animation: 'marqueeScrollLeft 40s linear infinite',
+              animation: 'marqueeScrollLeft 33s linear infinite',
+              transform: `translateX(${-scrollY * 0.3}px)`,
             }}
           >
             {/* First set - orange hues only */}
@@ -382,13 +391,14 @@ export function LandingPage() {
       {/* Right Side - same direction (down to up) */}
       <div className="hidden lg:block fixed right-0 top-0 bottom-0 z-40 pointer-events-none">
         <div
-          className="absolute bottom-0 right-6 origin-bottom-right rotate-90 overflow-hidden pointer-events-auto"
+          className="absolute bottom-0 right-12 origin-bottom-right rotate-90 overflow-hidden pointer-events-auto"
           style={{ width: '100vh', height: '28px' }}
         >
           <div
             className="inline-flex items-center text-[15px] font-medium tracking-wider opacity-50 whitespace-nowrap flex-row-reverse"
             style={{
-              animation: 'marqueeScrollRight 40s linear infinite',
+              animation: 'marqueeScrollRight 33s linear infinite',
+              transform: `translateX(${scrollY * 0.3}px)`,
             }}
           >
             {/* First set - orange hues only */}
@@ -751,7 +761,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* ===== DOMAINS: What You'll Learn - Auto-scrolling Carousel ===== */}
+      {/* ===== DOMAINS: What You'll Learn - Bi-directional Infinite Carousel ===== */}
       <section className="py-20 overflow-hidden relative z-10">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -768,29 +778,65 @@ export function LandingPage() {
           </div>
         </div>
 
-        {/* Auto-scrolling carousel */}
+        {/* Row 1: Slow auto-animation + faster scroll-linked movement */}
         <div
-          className="group relative"
-          style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
+          className="relative mb-6"
+          style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}
         >
-          <div className="flex gap-6 animate-scroll group-hover:[animation-play-state:paused]">
-            {/* Double the cards for seamless loop */}
-            {[...domainCards, ...domainCards].map((domain, i) => (
+          <div
+            className="flex gap-6 animate-drift-left"
+            style={{ transform: `translateX(${-scrollY * 0.5}px)` }}
+          >
+            {/* Triple the cards for scroll range */}
+            {[...domainCards, ...domainCards, ...domainCards].map((domain, i) => (
               <div
-                key={i}
-                className="flex-shrink-0 w-72 group/card"
+                key={`row1-${i}`}
+                className="flex-shrink-0 w-64 group/card"
               >
                 <div className="glass border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-amber-500/30 hover:scale-[1.02] hover:shadow-lg hover:shadow-amber-500/10">
-                  <div className="h-40 overflow-hidden">
+                  <div className="h-36 overflow-hidden">
                     <img
                       src={domain.image}
                       alt={domain.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
                     />
                   </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-white mb-1">{domain.title}</h3>
-                    <p className="text-sm text-gray-400">{domain.subtitle}</p>
+                  <div className="p-3">
+                    <h3 className="font-semibold text-white text-sm mb-1">{domain.title}</h3>
+                    <p className="text-xs text-gray-400">{domain.subtitle}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2: Slow auto-animation (opposite) + faster scroll-linked movement */}
+        <div
+          className="relative"
+          style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}
+        >
+          <div
+            className="flex gap-6 animate-drift-right"
+            style={{ transform: `translateX(${scrollY * 0.5 - 400}px)` }}
+          >
+            {/* Triple the cards reversed */}
+            {[...domainCards.slice().reverse(), ...domainCards.slice().reverse(), ...domainCards.slice().reverse()].map((domain, i) => (
+              <div
+                key={`row2-${i}`}
+                className="flex-shrink-0 w-64 group/card"
+              >
+                <div className="glass border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-lavender/30 hover:scale-[1.02] hover:shadow-lg hover:shadow-lavender/10">
+                  <div className="h-36 overflow-hidden">
+                    <img
+                      src={domain.image}
+                      alt={domain.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="font-semibold text-white text-sm mb-1">{domain.title}</h3>
+                    <p className="text-xs text-gray-400">{domain.subtitle}</p>
                   </div>
                 </div>
               </div>
@@ -799,12 +845,19 @@ export function LandingPage() {
         </div>
 
         <style>{`
-          @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+          @keyframes driftLeft {
+            0% { margin-left: 0; }
+            100% { margin-left: -33.333%; }
           }
-          .animate-scroll {
-            animation: scroll 8s linear infinite;
+          @keyframes driftRight {
+            0% { margin-left: -33.333%; }
+            100% { margin-left: 0; }
+          }
+          .animate-drift-left {
+            animation: driftLeft 60s linear infinite;
+          }
+          .animate-drift-right {
+            animation: driftRight 60s linear infinite;
           }
         `}</style>
       </section>

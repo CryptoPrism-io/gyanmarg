@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Trophy, Star, X } from 'lucide-react';
 import { Modal } from './Modal';
 import { Button } from '@/components/atoms';
@@ -54,23 +54,24 @@ export function AchievementUnlock({ achievement, isOpen, onClose }: AchievementU
     }
   }, [isOpen, achievement, settings.soundEnabled]);
 
+  if (!achievement) return null;
+
   return (
-    <AnimatePresence>
-      {isOpen && achievement && (
-        <Modal isOpen={isOpen} onClose={onClose} size="sm">
-          <motion.div
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.5, opacity: 0 }}
-            className="text-center py-6 relative"
-          >
-            {/* Close button */}
-            <button
-              onClick={onClose}
-              className="absolute top-0 right-0 p-2 text-muted hover:text-text-secondary transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
+    <Modal isOpen={isOpen} onClose={onClose} size="sm">
+      <motion.div
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="text-center py-6 relative"
+      >
+        {/* Close button - larger touch target for mobile */}
+        <button
+          onClick={onClose}
+          onTouchEnd={(e) => { e.preventDefault(); e.stopPropagation(); onClose(); }}
+          className="absolute top-0 right-0 p-3 text-muted hover:text-text-secondary active:text-text-primary transition-colors touch-manipulation"
+          aria-label="Close"
+        >
+          <X className="w-6 h-6" />
+        </button>
 
             {/* Achievement badge animation */}
             <motion.div
@@ -125,20 +126,19 @@ export function AchievementUnlock({ achievement, isOpen, onClose }: AchievementU
               <span className="text-xl font-bold">+{achievement.xpReward} XP</span>
             </motion.div>
 
-            {/* Continue button */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.7 }}
-            >
-              <Button onClick={onClose} variant="primary" size="lg">
-                Continue
-              </Button>
-            </motion.div>
+          {/* Continue button - wrapped for touch handling */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            onTouchEnd={(e) => { e.stopPropagation(); }}
+          >
+            <Button onClick={onClose} variant="primary" size="lg" className="touch-manipulation">
+              Continue
+            </Button>
           </motion.div>
-        </Modal>
-      )}
-    </AnimatePresence>
+        </motion.div>
+    </Modal>
   );
 }
 

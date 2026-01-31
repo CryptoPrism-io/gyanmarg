@@ -482,7 +482,7 @@ export function SpacedRepetition() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.3 }}
-            className="max-w-md mx-auto"
+            className="max-w-lg mx-auto"
           >
             <FlashCard
               front={currentCard.front}

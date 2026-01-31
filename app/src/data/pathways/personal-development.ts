@@ -31,7 +31,7 @@ export const personalDevelopmentPathway: PathwayLevel[] = [
         duration: 5,
         xpReward: 50,
         content: {
-          overview: 'Welcome to Gyanmarg - your path to personal mastery through 150+ lessons.',
+          overview: 'Welcome to Polymind - your path to personal mastery through 150+ lessons.',
           mainContent: `**Your Mind Mastery Journey Begins**
 
 You're about to embark on a comprehensive journey through the most powerful concepts in personal development:

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gyanmarg-v3';
+const CACHE_NAME = 'polymind-v1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -99,7 +99,7 @@ self.addEventListener('push', (event) => {
   };
 
   event.waitUntil(
-    self.registration.showNotification('Gyanmarg', options)
+    self.registration.showNotification('Polymind', options)
   );
 });
 

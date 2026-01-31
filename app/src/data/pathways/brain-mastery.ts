@@ -739,7 +739,7 @@ Box 5: Review monthly
 - Use images when possible
       `,
       keyTakeaway: 'Spaced repetition leverages the forgetting curve by reviewing information just before you would forget it, progressively extending intervals until knowledge is permanent.',
-      actionItem: 'Set up a spaced repetition system for something you want to learn long-term. Options: Anki app (free), physical flashcards with Leitner system, or use Gyanmarg\'s built-in spaced repetition feature.'
+      actionItem: 'Set up a spaced repetition system for something you want to learn long-term. Options: Anki app (free), physical flashcards with Leitner system, or use Polymind\'s built-in spaced repetition feature.'
     }
   },
   {

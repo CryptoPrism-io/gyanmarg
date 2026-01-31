@@ -1,4 +1,4 @@
-// Type definitions for Gyanmarg
+// Type definitions for Polymind
 
 // User & Profile Types
 export interface UserProfile {

@@ -4,9 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Gyanmarg** (ज्ञानमार्ग - "Path of Knowledge") is a gamified learning platform that transforms 45+ ebooks into interactive learning experiences using evidence-based learning science (spaced repetition, active recall, interleaving).
+**Polymind** — *Gamified Wisdom for the Modern Polymath*
 
-**Live**: https://gyanmarg-963362833537.us-central1.run.app
+A gamified learning platform that transforms 45+ ebooks into interactive learning experiences using evidence-based learning science (spaced repetition, active recall, interleaving).
+
+**Live**: https://gyanmarg-963362833537.us-central1.run.app (pending domain setup)
 
 ## Development Commands
 
@@ -32,7 +34,7 @@ npm run lint         # Run ESLint
 ## Project Structure
 
 ```
-Gyanmarg/
+Polymind/
 ├── app/                      # Main React application
 │   ├── src/
 │   │   ├── components/       # Atomic design hierarchy
@@ -89,7 +91,7 @@ All routes except `/` and `/onboarding` require onboarding completion (Protected
 
 ## State Management (Zustand)
 
-Four stores with localStorage persistence (prefix `gyanmarg-*`):
+Four stores with localStorage persistence (prefix `gyanmarg-*` for backward compatibility):
 
 | Store | Purpose | Key State |
 |-------|---------|-----------|
@@ -168,13 +170,13 @@ interface Lesson {
 **Manual Docker**:
 ```bash
 cd app
-docker build -t gyanmarg .
-docker run -p 8080:8080 gyanmarg
+docker build -t polymind .
+docker run -p 8080:8080 polymind
 ```
 
 **Manual GCP**:
 ```bash
-gcloud run deploy gyanmarg --source . --region us-central1 --allow-unauthenticated
+gcloud run deploy polymind --source . --region us-central1 --allow-unauthenticated
 ```
 
 ## Design System

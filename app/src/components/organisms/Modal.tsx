@@ -32,13 +32,13 @@ export function Modal({
 }: ModalProps) {
   // Lock body scroll when modal is open
   useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = '';
+      // Always restore on cleanup, even if modal is still "open" during unmount
+      document.body.style.overflow = originalOverflow || '';
     };
   }, [isOpen]);
 
@@ -65,6 +65,7 @@ export function Modal({
             transition={{ duration: 0.2 }}
             className="absolute inset-0 bg-base/80 backdrop-blur-xl"
             onClick={closeOnOverlay ? onClose : undefined}
+            onTouchEnd={closeOnOverlay ? (e) => { e.preventDefault(); onClose(); } : undefined}
           />
 
           {/* Modal */}
@@ -88,7 +89,9 @@ export function Modal({
                 {showClose && (
                   <button
                     onClick={onClose}
-                    className="p-2 rounded-xl text-text-muted hover:text-text-primary hover:bg-white/[0.05] transition-colors"
+                    onTouchEnd={(e) => { e.preventDefault(); onClose(); }}
+                    className="p-3 -m-1 rounded-xl text-text-muted hover:text-text-primary active:text-text-primary hover:bg-white/[0.05] transition-colors touch-manipulation"
+                    aria-label="Close modal"
                   >
                     <X className="w-5 h-5" />
                   </button>
