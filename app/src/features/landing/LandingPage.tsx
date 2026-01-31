@@ -713,7 +713,7 @@ export function LandingPage() {
             100% { transform: translateX(-50%); }
           }
           .animate-scroll {
-            animation: scroll 40s linear infinite;
+            animation: scroll 8s linear infinite;
           }
         `}</style>
       </section>
