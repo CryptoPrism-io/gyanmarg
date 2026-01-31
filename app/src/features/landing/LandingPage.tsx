@@ -353,11 +353,19 @@ export function LandingPage() {
             transition={{ delay: 0.1 }}
             className="relative mb-8"
           >
-            {/* Vertical Japanese accent */}
-            <span className="hidden md:block absolute -left-16 top-0 text-amber-500/20 text-sm tracking-[0.5em] font-light"
-              style={{ writingMode: 'vertical-rl' }}>
-              知識の道
-            </span>
+            {/* Vertical multilingual "Path of Knowledge" */}
+            <div className="hidden md:flex absolute -left-20 top-0 flex-col gap-3 text-[10px] font-light opacity-40 hover:opacity-70 transition-opacity duration-500">
+              <span className="text-amber-400" title="Sanskrit: Wisdom-Path">ज्ञानमार्ग</span>
+              <span className="text-amber-500" title="Japanese: Knowledge's Way">知識の道</span>
+              <span className="text-pink-400" title="Chinese: Road of Knowledge">知識之路</span>
+              <span className="text-purple-400" title="Korean: Knowledge's Road">지식의 길</span>
+              <span className="text-blue-400" title="Arabic: Way of Knowing">طريق المعرفة</span>
+              <span className="text-cyan-400" title="Hebrew: Path of the Known">דרך הידע</span>
+              <span className="text-green-400" title="Greek: Road of Gnosis">Οδός Γνώσης</span>
+              <span className="text-amber-300" title="Latin: Way of Science">Via Scientiae</span>
+              <span className="text-rose-400" title="Tamil: Wisdom's Trail">அறிவின் பாதை</span>
+              <span className="text-orange-400" title="Hindi: Knowledge's Path">ज्ञान का मार्ग</span>
+            </div>
 
             <span className="block text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] text-white/90 tracking-tight">
               Finally{' '}
