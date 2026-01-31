@@ -335,40 +335,40 @@ export function LandingPage() {
         {/* Rotated container - text reads bottom to top */}
         <div
           className="absolute bottom-0 left-6 origin-bottom-left -rotate-90 overflow-hidden pointer-events-auto"
-          style={{ width: '100vh', height: '20px' }}
+          style={{ width: '100vh', height: '28px' }}
         >
           <div
-            className="inline-flex items-center text-[11px] font-medium tracking-wider opacity-50 hover:opacity-80 transition-opacity duration-500 whitespace-nowrap"
+            className="inline-flex items-center text-[15px] font-medium tracking-wider opacity-50 whitespace-nowrap"
             style={{
               animation: 'marqueeScroll 40s linear infinite',
             }}
           >
-            {/* First set - equal spacing with px-4 on each item */}
-            <span className="text-amber-400 px-4">ज्ञानमार्ग</span>
-            <span className="text-amber-500 px-4">知識の道</span>
-            <span className="text-pink-400 px-4">知識之路</span>
-            <span className="text-purple-400 px-4">지식의 길</span>
-            <span className="text-blue-400 px-4">طريق المعرفة</span>
-            <span className="text-cyan-400 px-4">דרך הידע</span>
-            <span className="text-green-400 px-4">Οδός Γνώσης</span>
-            <span className="text-amber-300 px-4">Via Scientiae</span>
-            <span className="text-rose-400 px-4">அறிவின் பாதை</span>
-            <span className="text-orange-400 px-4">ज्ञान का मार्ग</span>
-            <span className="text-emerald-400 px-4">Путь знаний</span>
-            <span className="text-indigo-400 px-4">Chemin du Savoir</span>
+            {/* First set - orange hues only */}
+            <span className="text-orange-300 px-5">ज्ञानमार्ग</span>
+            <span className="text-amber-400 px-5">知識の道</span>
+            <span className="text-orange-400 px-5">知識之路</span>
+            <span className="text-amber-500 px-5">지식의 길</span>
+            <span className="text-orange-500 px-5">طريق المعرفة</span>
+            <span className="text-amber-300 px-5">דרך הידע</span>
+            <span className="text-orange-300 px-5">Οδός Γνώσης</span>
+            <span className="text-amber-400 px-5">Via Scientiae</span>
+            <span className="text-orange-400 px-5">அறிவின் பாதை</span>
+            <span className="text-amber-500 px-5">ज्ञान का मार्ग</span>
+            <span className="text-orange-500 px-5">Путь знаний</span>
+            <span className="text-amber-300 px-5">Chemin du Savoir</span>
             {/* Duplicate for seamless loop */}
-            <span className="text-amber-400 px-4">ज्ञानमार्ग</span>
-            <span className="text-amber-500 px-4">知識の道</span>
-            <span className="text-pink-400 px-4">知識之路</span>
-            <span className="text-purple-400 px-4">지식의 길</span>
-            <span className="text-blue-400 px-4">طريق المعرفة</span>
-            <span className="text-cyan-400 px-4">דרך הידע</span>
-            <span className="text-green-400 px-4">Οδός Γνώσης</span>
-            <span className="text-amber-300 px-4">Via Scientiae</span>
-            <span className="text-rose-400 px-4">அறிவின் பாதை</span>
-            <span className="text-orange-400 px-4">ज्ञान का मार्ग</span>
-            <span className="text-emerald-400 px-4">Путь знаний</span>
-            <span className="text-indigo-400 px-4">Chemin du Savoir</span>
+            <span className="text-orange-300 px-5">ज्ञानमार्ग</span>
+            <span className="text-amber-400 px-5">知識の道</span>
+            <span className="text-orange-400 px-5">知識之路</span>
+            <span className="text-amber-500 px-5">지식의 길</span>
+            <span className="text-orange-500 px-5">طريق المعرفة</span>
+            <span className="text-amber-300 px-5">דרך הידע</span>
+            <span className="text-orange-300 px-5">Οδός Γνώσης</span>
+            <span className="text-amber-400 px-5">Via Scientiae</span>
+            <span className="text-orange-400 px-5">அறிவின் பாதை</span>
+            <span className="text-amber-500 px-5">ज्ञान का मार्ग</span>
+            <span className="text-orange-500 px-5">Путь знаний</span>
+            <span className="text-amber-300 px-5">Chemin du Savoir</span>
           </div>
         </div>
       </div>
