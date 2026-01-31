@@ -327,72 +327,48 @@ export function LandingPage() {
       {/* ===== INFINITE SCROLLING MULTILINGUAL TEXT - Left Side ===== */}
       <div className="hidden lg:block fixed left-0 top-0 bottom-0 z-40 pointer-events-none">
         <style>{`
-          @keyframes scrollUpText {
+          @keyframes marqueeScroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
           }
         `}</style>
         {/* Rotated container - text reads bottom to top */}
         <div
-          className="absolute bottom-0 left-6 origin-bottom-left -rotate-90 pointer-events-auto"
-          style={{ width: '100vh' }}
+          className="absolute bottom-0 left-6 origin-bottom-left -rotate-90 overflow-hidden pointer-events-auto"
+          style={{ width: '100vh', height: '20px' }}
         >
           <div
-            className="flex items-center gap-6 text-[11px] font-medium tracking-wider opacity-50 hover:opacity-80 transition-opacity duration-500 whitespace-nowrap overflow-hidden"
+            className="inline-flex items-center text-[11px] font-medium tracking-wider opacity-50 hover:opacity-80 transition-opacity duration-500 whitespace-nowrap"
             style={{
-              animation: 'scrollUpText 30s linear infinite',
+              animation: 'marqueeScroll 40s linear infinite',
             }}
           >
-            {/* First set */}
-            <span className="text-amber-400">ज्ञानमार्ग</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-amber-500">知識の道</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-pink-400">知識之路</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-purple-400">지식의 길</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-blue-400">طريق المعرفة</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-cyan-400">דרך הידע</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-green-400">Οδός Γνώσης</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-amber-300">Via Scientiae</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-rose-400">அறிவின் பாதை</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-orange-400">ज्ञान का मार्ग</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-emerald-400">Путь знаний</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-indigo-400">Chemin du Savoir</span>
-            <span className="text-gray-600">•</span>
+            {/* First set - equal spacing with px-4 on each item */}
+            <span className="text-amber-400 px-4">ज्ञानमार्ग</span>
+            <span className="text-amber-500 px-4">知識の道</span>
+            <span className="text-pink-400 px-4">知識之路</span>
+            <span className="text-purple-400 px-4">지식의 길</span>
+            <span className="text-blue-400 px-4">طريق المعرفة</span>
+            <span className="text-cyan-400 px-4">דרך הידע</span>
+            <span className="text-green-400 px-4">Οδός Γνώσης</span>
+            <span className="text-amber-300 px-4">Via Scientiae</span>
+            <span className="text-rose-400 px-4">அறிவின் பாதை</span>
+            <span className="text-orange-400 px-4">ज्ञान का मार्ग</span>
+            <span className="text-emerald-400 px-4">Путь знаний</span>
+            <span className="text-indigo-400 px-4">Chemin du Savoir</span>
             {/* Duplicate for seamless loop */}
-            <span className="text-amber-400">ज्ञानमार्ग</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-amber-500">知識の道</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-pink-400">知識之路</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-purple-400">지식의 길</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-blue-400">طريق المعرفة</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-cyan-400">דרך הידע</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-green-400">Οδός Γνώσης</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-amber-300">Via Scientiae</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-rose-400">அறிவின் பாதை</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-orange-400">ज्ञान का मार्ग</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-emerald-400">Путь знаний</span>
-            <span className="text-gray-600">•</span>
-            <span className="text-indigo-400">Chemin du Savoir</span>
-            <span className="text-gray-600">•</span>
+            <span className="text-amber-400 px-4">ज्ञानमार्ग</span>
+            <span className="text-amber-500 px-4">知識の道</span>
+            <span className="text-pink-400 px-4">知識之路</span>
+            <span className="text-purple-400 px-4">지식의 길</span>
+            <span className="text-blue-400 px-4">طريق المعرفة</span>
+            <span className="text-cyan-400 px-4">דרך הידע</span>
+            <span className="text-green-400 px-4">Οδός Γνώσης</span>
+            <span className="text-amber-300 px-4">Via Scientiae</span>
+            <span className="text-rose-400 px-4">அறிவின் பாதை</span>
+            <span className="text-orange-400 px-4">ज्ञान का मार्ग</span>
+            <span className="text-emerald-400 px-4">Путь знаний</span>
+            <span className="text-indigo-400 px-4">Chemin du Savoir</span>
           </div>
         </div>
       </div>
