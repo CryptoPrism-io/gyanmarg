@@ -379,16 +379,16 @@ export function LandingPage() {
         </div>
       </div>
 
-      {/* Right Side - reverse direction */}
+      {/* Right Side - same direction (down to up) */}
       <div className="hidden lg:block fixed right-0 top-0 bottom-0 z-40 pointer-events-none">
         <div
-          className="absolute bottom-0 right-6 origin-bottom-right rotate-90 overflow-hidden pointer-events-auto"
+          className="absolute top-0 right-6 origin-top-right rotate-90 overflow-hidden pointer-events-auto"
           style={{ width: '100vh', height: '28px' }}
         >
           <div
             className="inline-flex items-center text-[15px] font-medium tracking-wider opacity-50 whitespace-nowrap"
             style={{
-              animation: 'marqueeScrollRight 40s linear infinite',
+              animation: 'marqueeScrollLeft 40s linear infinite',
             }}
           >
             {/* First set - orange hues only */}
