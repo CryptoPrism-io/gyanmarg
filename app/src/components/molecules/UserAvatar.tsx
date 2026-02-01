@@ -6,7 +6,7 @@ import { useAuth } from '@/hooks';
 
 interface UserAvatarProps {
   /** Size of the avatar */
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   /** Show dropdown on click */
   showDropdown?: boolean;
   /** Custom class name */
@@ -38,6 +38,7 @@ export function UserAvatar({
 
   // Size classes
   const sizeClasses = {
+    xs: { avatar: 'w-5 h-5', text: 'text-[10px]', icon: 'w-2.5 h-2.5' },
     sm: { avatar: 'w-7 h-7', text: 'text-xs', icon: 'w-3 h-3' },
     md: { avatar: 'w-8 h-8', text: 'text-sm', icon: 'w-4 h-4' },
     lg: { avatar: 'w-10 h-10', text: 'text-base', icon: 'w-5 h-5' },

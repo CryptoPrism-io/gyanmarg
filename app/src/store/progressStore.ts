@@ -4,6 +4,7 @@ import type { UserProgress, PathwayProgress, Achievement, LessonBookmark, Weekly
 import { getAchievementById } from '@/data/achievements';
 import { useUserStore } from '@/store/userStore';
 import { triggerSync } from '@/store/firebaseSync';
+import { analytics } from '@/lib/analytics';
 
 // Weekly challenge templates
 const weeklyTemplates: Omit<WeeklyChallenge, 'id' | 'startDate' | 'endDate' | 'current' | 'completed' | 'claimed'>[] = [
@@ -154,6 +155,11 @@ export const useProgressStore = create<ProgressState>()(
           // Detect level up
           const leveledUp = newLevel > oldLevel;
 
+          // Track analytics
+          if (leveledUp) {
+            analytics.events.levelUp(newLevel);
+          }
+
           // Update weekly challenge if tracking XP
           let updatedWeekly = state.weeklyChallenge;
           if (updatedWeekly && updatedWeekly.metric === 'xp' && !updatedWeekly.completed) {
@@ -228,6 +234,10 @@ export const useProgressStore = create<ProgressState>()(
           if (state.userProgress.lessonsCompleted.includes(lessonId)) {
             return state;
           }
+
+          // Track lesson completion
+          analytics.track('lesson_completed', { lesson_id: lessonId, xp_reward: xpReward });
+
           const newXP = state.userProgress.xp + xpReward;
           const oldLevel = state.userProgress.level;
           const newLevel = Math.floor(newXP / 500) + 1;
@@ -313,6 +323,9 @@ export const useProgressStore = create<ProgressState>()(
         if (state.userProgress.achievements.includes(achievementId)) {
           return;
         }
+
+        // Track achievement unlock
+        analytics.events.achievementUnlocked(achievementId);
 
         // Get achievement details for notification
         const achievement = getAchievementById(achievementId);

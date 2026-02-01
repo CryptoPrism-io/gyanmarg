@@ -1,84 +1,33 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Clock, User, Tag, Sparkles, Brain, BookOpen, TrendingUp, Zap } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock, User, Tag, Sparkles, Brain, BookOpen, TrendingUp, Zap, Lightbulb, Flame } from 'lucide-react';
 
-// AI Images
-import imgHeroMain from '@/assets/ai-images/landing/hero-main.png';
-import imgPolymind from '@/assets/ai-images/onboarding/onboarding-03-polymind.png';
-import imgSpacedRepetition from '@/assets/ai-images/landing/feature-spaced-repetition.png';
-import imgVisualLearning from '@/assets/ai-images/landing/feature-visual-learning.png';
-import imgGamification from '@/assets/ai-images/landing/feature-gamification.png';
-import imgBooksTransform from '@/assets/ai-images/landing/hero-books-transform.png';
+// Import articles from data file
+import { getFeaturedArticle, getRecentArticles, getAllArticles } from '@/data/blogArticles';
 
-// Blog post data (placeholder - will be replaced with CMS data)
-const featuredPost = {
-  id: 'why-you-forget',
-  title: 'The Science Behind Why You Forget 90% of Books',
-  excerpt: 'You\'ve read dozens of books. Maybe hundreds. But how much do you actually remember? The answer might surprise you — and the solution is simpler than you think.',
-  author: 'Polymind Team',
-  date: 'Jan 28, 2025',
-  readTime: '8 min read',
-  category: 'Learning Science',
-  image: imgPolymind,
+// Get featured and recent articles
+const featuredPost = getFeaturedArticle();
+const recentPosts = getRecentArticles(8);
+
+// Category icons and colors
+const categoryConfig: Record<string, { icon: typeof Brain; color: string }> = {
+  'Learning Science': { icon: Brain, color: 'amber' },
+  'Getting Started': { icon: Zap, color: 'lavender' },
+  'How It Works': { icon: Lightbulb, color: 'sage' },
+  'Research': { icon: TrendingUp, color: 'sage' },
+  'Habits': { icon: Flame, color: 'coral' },
+  'Book Lists': { icon: BookOpen, color: 'coral' },
 };
 
-const recentPosts = [
-  {
-    id: 'spaced-repetition-guide',
-    title: 'Spaced Repetition: The Complete Guide',
-    excerpt: 'The same technique used by medical students to memorize thousands of terms — and how you can use it for any knowledge.',
-    author: 'Polymind Team',
-    date: 'Jan 25, 2025',
-    readTime: '12 min read',
-    category: 'Learning Science',
-    icon: Brain,
-    color: 'amber',
-    image: imgSpacedRepetition,
-  },
-  {
-    id: 'active-recall-vs-passive',
-    title: 'Active Recall vs Passive Reading: The Data',
-    excerpt: 'We analyzed 50+ studies comparing active recall to passive reading. Here\'s what the research actually says.',
-    author: 'Polymind Team',
-    date: 'Jan 22, 2025',
-    readTime: '10 min read',
-    category: 'Research',
-    icon: TrendingUp,
-    color: 'sage',
-    image: imgVisualLearning,
-  },
-  {
-    id: 'building-polymind-guide',
-    title: 'How to Build Your Polymind: A Beginner\'s Guide',
-    excerpt: 'A step-by-step walkthrough for new users. From choosing your first domains to maintaining your streak.',
-    author: 'Polymind Team',
-    date: 'Jan 18, 2025',
-    readTime: '6 min read',
-    category: 'Getting Started',
-    icon: Zap,
-    color: 'lavender',
-    image: imgGamification,
-  },
-  {
-    id: '10-books-change-thinking',
-    title: '10 Books That Will Change How You Think',
-    excerpt: 'Our curated list of books that have the highest impact per concept. Chosen based on user ratings and cross-domain connections.',
-    author: 'Polymind Team',
-    date: 'Jan 15, 2025',
-    readTime: '7 min read',
-    category: 'Book Lists',
-    icon: BookOpen,
-    color: 'coral',
-    image: imgBooksTransform,
-  },
-];
-
+// Get unique categories with counts
 const categories = [
-  { name: 'All Posts', count: 12 },
-  { name: 'Learning Science', count: 5 },
-  { name: 'Book Lists', count: 3 },
-  { name: 'User Stories', count: 2 },
-  { name: 'Product Updates', count: 2 },
+  { name: 'All Posts', count: getAllArticles().length },
+  ...Object.entries(
+    getAllArticles().reduce((acc, article) => {
+      acc[article.category] = (acc[article.category] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>)
+  ).map(([name, count]) => ({ name, count })),
 ];
 
 const colorClasses: Record<string, { bg: string; border: string; text: string }> = {
@@ -130,17 +79,17 @@ export function BlogPage() {
             <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
             <span className="w-2 h-2 rounded-full bg-amber-500" />
           </Link>
-          <div className="w-16" />
+          <Link
+            to="/how-to"
+            className="text-sm text-amber-500 hover:text-amber-400 transition font-medium"
+          >
+            How It Works
+          </Link>
         </div>
       </header>
 
       {/* Hero */}
       <section className="pt-32 pb-12 px-6 relative overflow-hidden z-10">
-        {/* Background Image */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <img src={imgHeroMain} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-transparent to-[#0A0A0B]" />
-        </div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -243,14 +192,15 @@ export function BlogPage() {
             <h2 className="text-2xl font-serif">Recent Articles</h2>
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Tag size={16} />
-              <span>12 articles</span>
+              <span>{getAllArticles().length} articles</span>
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {recentPosts.map((post, i) => {
-              const Icon = post.icon;
-              const colors = colorClasses[post.color];
+              const config = categoryConfig[post.category] || { icon: Brain, color: 'amber' };
+              const Icon = config.icon;
+              const colors = colorClasses[config.color];
 
               return (
                 <Link to={`/blog/${post.id}`} key={post.id}>
@@ -376,6 +326,7 @@ export function BlogPage() {
                 <h4 className="font-medium text-sm mb-3 text-gray-300">Product</h4>
                 <ul className="space-y-2 text-sm text-gray-500">
                   <li><Link to="/" className="hover:text-white transition">Home</Link></li>
+                  <li><Link to="/how-to" className="hover:text-white transition">How It Works</Link></li>
                   <li><Link to="/onboarding" className="hover:text-white transition">Get Started</Link></li>
                 </ul>
               </div>

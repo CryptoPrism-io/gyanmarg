@@ -25,3 +25,9 @@ export { PWAInstallPrompt } from './PWAInstallPrompt';
 // Auth
 export { GoogleSignInButton } from './GoogleSignInButton';
 export { UserAvatar } from './UserAvatar';
+
+// Demo Components (for blog embeds and How-To page)
+export { DemoFlashCard } from './DemoFlashCard';
+export { DemoTinderStack } from './DemoTinderStack';
+export { BlogEmbed } from './BlogEmbed';
+export type { EmbedType } from './BlogEmbed';

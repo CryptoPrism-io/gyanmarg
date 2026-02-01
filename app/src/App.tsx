@@ -8,6 +8,9 @@ import {
 } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
+// Analytics
+import { analytics } from '@/lib/analytics';
+
 // Store
 import { useUserStore, usePendingAchievement } from '@/store/userStore';
 import { useProgressStore, usePendingLevelUp } from '@/store/progressStore';
@@ -40,6 +43,7 @@ import { LearningSciencePage } from '@/features/science/LearningSciencePage';
 import { BookListPage } from '@/features/books/BookListPage';
 import { BlogPage } from '@/features/blog/BlogPage';
 import { BlogArticlePage } from '@/features/blog/BlogArticlePage';
+import { HowToPage } from '@/features/how-to/HowToPage';
 
 // Global Celebration Modals
 function CelebrationModals() {
@@ -103,9 +107,14 @@ function CelebrationModals() {
   );
 }
 
-// Page transition wrapper
+// Page transition wrapper with analytics
 function PageTransition({ children }: { children: React.ReactNode }) {
   const location = useLocation();
+
+  // Track page views on route change
+  useEffect(() => {
+    analytics.pageView(location.pathname, document.title);
+  }, [location.pathname]);
 
   return (
     <AnimatePresence mode="wait">
@@ -316,6 +325,14 @@ function AppRoutes() {
         element={
           <PageTransition>
             <BlogArticlePage />
+          </PageTransition>
+        }
+      />
+      <Route
+        path="/how-to"
+        element={
+          <PageTransition>
+            <HowToPage />
           </PageTransition>
         }
       />

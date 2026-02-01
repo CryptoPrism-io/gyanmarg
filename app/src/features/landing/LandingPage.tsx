@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView, useSpring, useTransform } from 'framer-motion';
 import {
   ArrowRight,
   Play,
@@ -8,7 +8,6 @@ import {
   Trophy,
   Menu,
   X,
-  Download,
   Share,
   Plus,
   Smartphone,
@@ -20,9 +19,27 @@ import {
   TrendingUp,
   Users,
 } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import { GoogleSignInButton } from '@/components/molecules';
+import { useState, useEffect, useRef } from 'react';
+import { UserAvatar } from '@/components/molecules';
 import { useAuth } from '@/hooks';
+
+// Animated Counter Component
+function AnimatedCounter({ value, suffix = '' }: { value: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const spring = useSpring(0, { mass: 0.8, stiffness: 75, damping: 15 });
+  const display = useTransform(spring, (current) =>
+    Math.round(current).toLocaleString() + suffix
+  );
+
+  useEffect(() => {
+    if (isInView) {
+      spring.set(value);
+    }
+  }, [isInView, spring, value]);
+
+  return <motion.span ref={ref}>{display}</motion.span>;
+}
 
 // Import AI-generated images
 import heroMain from '@/assets/ai-images/landing/hero-main.png';
@@ -136,10 +153,10 @@ const thePlan = [
 
 // Guide Authority Stats
 const authorityStats = [
-  { value: '1000+', label: 'Authors' },
-  { value: '10K+', label: 'Polyminds' },
-  { value: '50+', label: 'Domains' },
-  { value: '92%', label: 'Retention' },
+  { value: 1000, suffix: '+', label: 'Authors' },
+  { value: 10, suffix: 'K+', label: 'Polyminds' },
+  { value: 50, suffix: '+', label: 'Domains' },
+  { value: 92, suffix: '%', label: 'Retention' },
 ];
 
 // Success Transformations (Testimonials with transformation focus)
@@ -207,7 +224,7 @@ export function LandingPage() {
   const [showIOSModal, setShowIOSModal] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const { canInstall, isInstalled, isIOS, install } = useInstallPrompt();
-  const { isConfigured } = useAuth();
+  const { isConfigured, user } = useAuth();
 
   // Track scroll position for parallax effect on multilingual text
   useEffect(() => {
@@ -259,74 +276,101 @@ export function LandingPage() {
         </div>
       </div>
 
-      {/* ===== HEADER ===== */}
+      {/* ===== HEADER - Sleek Minimal Design ===== */}
       <header className="fixed top-0 left-0 right-0 z-50 glass-nav">
-        <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-mono text-lg md:text-xl font-semibold tracking-wider">POLYMIND</span>
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
+            <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#problem" className="text-sm text-gray-400 hover:text-white transition">The Problem</a>
-            <a href="#solution" className="text-sm text-gray-400 hover:text-white transition">How It Works</a>
-            <a href="#results" className="text-sm text-gray-400 hover:text-white transition">Results</a>
+          {/* Center Nav - Desktop */}
+          <nav className="hidden md:flex items-center gap-4">
+            <a href="#problem" className="text-sm text-gray-400 hover:text-white transition">Why</a>
+            <span className="text-gray-600">|</span>
+            <a href="#solution" className="text-sm text-gray-400 hover:text-white transition">What</a>
+            <span className="text-gray-600">|</span>
+            <a href="#results" className="text-sm text-gray-400 hover:text-white transition">How</a>
+
+            {/* Resources Dropdown - Compact */}
+            <div className="relative group">
+              <button className="text-sm text-gray-400 hover:text-white transition flex items-center gap-1">
+                Resources
+                <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="bg-[#111113]/95 border border-white/10 rounded-lg py-1 min-w-[140px] shadow-xl backdrop-blur-xl">
+                  <a href="/blog" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-gray-300 hover:text-amber-500 hover:bg-white/5 transition">Blog</a>
+                  <a href="/science" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-gray-300 hover:text-amber-500 hover:bg-white/5 transition">Research</a>
+                  <a href="/how-to" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-gray-300 hover:text-amber-500 hover:bg-white/5 transition">How-To Guide</a>
+                </div>
+              </div>
+            </div>
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
-            {!isInstalled && (
-              <button
-                onClick={handleInstallClick}
-                className="flex items-center gap-2 px-4 py-2 text-sm text-amber-500 border border-amber-500/30 rounded-lg hover:bg-amber-500/10 transition"
+          {/* Right Side - Desktop */}
+          <div className="hidden md:flex items-center gap-3">
+            {user ? (
+              <Link to="/dashboard" className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-black text-sm font-medium rounded-lg hover:bg-amber-400 transition">
+                <UserAvatar size="xs" />
+                <span>Dashboard</span>
+              </Link>
+            ) : (
+              <Link
+                to="/onboarding"
+                className="px-4 py-2 bg-amber-500 text-black text-sm font-medium rounded-lg hover:bg-amber-400 transition"
               >
-                <Download size={16} />
-                Install App
-              </button>
+                Get Started
+              </Link>
             )}
-            {isConfigured && (
-              <GoogleSignInButton variant="outline" size="md" label="Sign in" />
-            )}
-            <Link
-              to="/onboarding"
-              className="px-5 py-2.5 bg-gradient-to-r from-amber-500 to-amber-400 text-black text-sm font-semibold rounded-lg hover:opacity-90 transition"
-            >
-              Build Your Polymind
-            </Link>
           </div>
 
-          <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {/* Mobile Menu Button */}
+          <button className="md:hidden p-2 -mr-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
+        {/* Mobile Menu - Compact */}
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="md:hidden bg-[#111113] border-t border-white/5 px-6 py-4"
+            className="md:hidden bg-[#111113]/95 backdrop-blur-xl border-t border-white/5 px-6 py-4"
           >
-            <nav className="flex flex-col gap-4">
-              <a href="#problem" className="text-gray-400 hover:text-white">The Problem</a>
-              <a href="#solution" className="text-gray-400 hover:text-white">How It Works</a>
-              <a href="#results" className="text-gray-400 hover:text-white">Results</a>
-              {!isInstalled && (
-                <button
-                  onClick={handleInstallClick}
-                  className="flex items-center justify-center gap-2 px-5 py-3 text-amber-500 border border-amber-500/30 rounded-lg"
-                >
-                  <Download size={18} />
-                  Install App
-                </button>
-              )}
-              {isConfigured && (
-                <GoogleSignInButton variant="outline" size="lg" fullWidth label="Sign in with Google" />
-              )}
-              <Link
-                to="/onboarding"
-                className="mt-2 px-5 py-3 bg-gradient-to-r from-amber-500 to-amber-400 text-black text-center font-semibold rounded-lg"
-              >
-                Build Your Polymind
-              </Link>
+            <nav className="flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <a href="#problem" className="text-sm text-gray-400 hover:text-white">Why</a>
+                <span className="text-gray-600">|</span>
+                <a href="#solution" className="text-sm text-gray-400 hover:text-white">What</a>
+                <span className="text-gray-600">|</span>
+                <a href="#results" className="text-sm text-gray-400 hover:text-white">How</a>
+              </div>
+              <a href="/blog" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white py-1">Blog</a>
+              <a href="/science" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white py-1">Research</a>
+              <a href="/how-to" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white py-1">How-To Guide</a>
+
+              <div className="pt-3 mt-1 border-t border-white/10">
+                {user ? (
+                  <Link
+                    to="/dashboard"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-amber-500 text-black text-sm font-medium rounded-lg"
+                  >
+                    <UserAvatar size="xs" />
+                    <span>Dashboard</span>
+                  </Link>
+                ) : (
+                  <Link
+                    to="/onboarding"
+                    className="block w-full px-4 py-2.5 bg-amber-500 text-black text-center text-sm font-medium rounded-lg"
+                  >
+                    Get Started
+                  </Link>
+                )}
+              </div>
             </nav>
           </motion.div>
         )}
@@ -636,7 +680,7 @@ export function LandingPage() {
                 className="text-center p-6 glass-light rounded-xl"
               >
                 <div className="font-mono text-3xl md:text-4xl font-bold text-amber-500 mb-2">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
                 <div className="text-sm text-gray-400">{stat.label}</div>
               </motion.div>
@@ -761,105 +805,51 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* ===== DOMAINS: What You'll Learn - Bi-directional Infinite Carousel ===== */}
-      <section className="py-20 overflow-hidden relative z-10">
-        <div className="max-w-5xl mx-auto px-6">
+      {/* ===== DOMAINS: Knowledge Domains - Clean Grid ===== */}
+      <section className="py-20 relative z-10">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-2 bg-lavender/10 border border-lavender/20 rounded-full text-xs text-lavender font-medium tracking-wider mb-6">
               50+ KNOWLEDGE DOMAINS
             </span>
-            <h2 className="text-3xl md:text-4xl font-serif mb-4">
-              <span className="block font-light text-white/80">Master Knowledge From</span>
-              <span className="block mt-1">
-                <span className="text-5xl md:text-6xl font-bold text-lavender/30">1000+</span>
-                <span className="text-lavender ml-3">World-Class Authors</span>
-              </span>
+            <h2 className="text-3xl md:text-4xl font-serif">
+              <span className="text-white/80">Learn from </span>
+              <span className="text-lavender">1000+ Authors</span>
             </h2>
+            <p className="text-gray-400 mt-3 max-w-xl mx-auto">
+              Curated wisdom from the world's best thinkers, distilled into bite-sized lessons
+            </p>
           </div>
-        </div>
 
-        {/* Row 1: Slow auto-animation + faster scroll-linked movement */}
-        <div
-          className="relative mb-6"
-          style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}
-        >
-          <div
-            className="flex gap-6 animate-drift-left"
-            style={{ transform: `translateX(${-scrollY * 0.5}px)` }}
-          >
-            {/* Triple the cards for scroll range */}
-            {[...domainCards, ...domainCards, ...domainCards].map((domain, i) => (
-              <div
-                key={`row1-${i}`}
-                className="flex-shrink-0 w-64 group/card"
+          {/* Clean responsive grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {domainCards.map((domain, i) => (
+              <motion.div
+                key={domain.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="group"
               >
-                <div className="glass border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-amber-500/30 hover:scale-[1.02] hover:shadow-lg hover:shadow-amber-500/10">
-                  <div className="h-36 overflow-hidden">
+                <div className="bg-[#111113] border border-white/5 rounded-xl overflow-hidden transition-all duration-300 hover:border-amber-500/30 hover:shadow-lg hover:shadow-amber-500/5">
+                  <div className="aspect-[4/3] overflow-hidden bg-[#0a0a0b]">
                     <img
                       src={domain.image}
                       alt={domain.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                      className="w-full h-full object-cover scale-110 transition-transform duration-500 group-hover:scale-125"
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-3">
-                    <h3 className="font-semibold text-white text-sm mb-1">{domain.title}</h3>
-                    <p className="text-xs text-gray-400">{domain.subtitle}</p>
+                    <h3 className="font-medium text-white text-sm">{domain.title}</h3>
+                    <p className="text-xs text-gray-500 mt-0.5">{domain.subtitle}</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-
-        {/* Row 2: Slow auto-animation (opposite) + faster scroll-linked movement */}
-        <div
-          className="relative"
-          style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}
-        >
-          <div
-            className="flex gap-6 animate-drift-right"
-            style={{ transform: `translateX(${scrollY * 0.5 - 400}px)` }}
-          >
-            {/* Triple the cards reversed */}
-            {[...domainCards.slice().reverse(), ...domainCards.slice().reverse(), ...domainCards.slice().reverse()].map((domain, i) => (
-              <div
-                key={`row2-${i}`}
-                className="flex-shrink-0 w-64 group/card"
-              >
-                <div className="glass border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-lavender/30 hover:scale-[1.02] hover:shadow-lg hover:shadow-lavender/10">
-                  <div className="h-36 overflow-hidden">
-                    <img
-                      src={domain.image}
-                      alt={domain.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <h3 className="font-semibold text-white text-sm mb-1">{domain.title}</h3>
-                    <p className="text-xs text-gray-400">{domain.subtitle}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <style>{`
-          @keyframes driftLeft {
-            0% { margin-left: 0; }
-            100% { margin-left: -33.333%; }
-          }
-          @keyframes driftRight {
-            0% { margin-left: -33.333%; }
-            100% { margin-left: 0; }
-          }
-          .animate-drift-left {
-            animation: driftLeft 60s linear infinite;
-          }
-          .animate-drift-right {
-            animation: driftRight 60s linear infinite;
-          }
-        `}</style>
       </section>
 
       {/* ===== SUCCESS: Transformation Testimonials ===== */}
