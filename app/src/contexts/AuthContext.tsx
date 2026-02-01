@@ -128,8 +128,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setLastSyncAt(new Date());
       }
 
-      // If merged, reload to apply hydrated data
-      if (syncResult.merged) {
+      // If merged or hydrated from cloud, reload to apply data to Zustand stores
+      if (syncResult.merged || syncResult.hydrated) {
         window.location.reload();
       }
 

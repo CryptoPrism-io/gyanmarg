@@ -255,6 +255,7 @@ function mergeHabitCompletions(
 export async function syncOnLogin(authUser: FirebaseAuthUser): Promise<{
   needsOnboarding: boolean;
   merged: boolean;
+  hydrated: boolean;
   error: string | null;
 }> {
   try {
@@ -276,11 +277,11 @@ export async function syncOnLogin(authUser: FirebaseAuthUser): Promise<{
           authUser.photoURL,
           localData
         );
-        return { needsOnboarding: false, merged: false, error: null };
+        return { needsOnboarding: false, merged: false, hydrated: false, error: null };
       } else {
         // No localStorage data - user needs onboarding
         console.log('[Sync] User needs onboarding');
-        return { needsOnboarding: true, merged: false, error: null };
+        return { needsOnboarding: true, merged: false, hydrated: false, error: null };
       }
     } else {
       // Returning user - Firestore document exists
@@ -301,12 +302,12 @@ export async function syncOnLogin(authUser: FirebaseAuthUser): Promise<{
         });
 
         await syncAllToFirestore(authUser.uid, mergedData);
-        return { needsOnboarding: false, merged: true, error: null };
+        return { needsOnboarding: false, merged: true, hydrated: false, error: null };
       } else {
         // No localStorage data - hydrate from Firestore
         console.log('[Sync] Hydrating localStorage from Firestore');
         hydrateFromFirestore(firestoreData);
-        return { needsOnboarding: !firestoreData.user.isOnboarded, merged: false, error: null };
+        return { needsOnboarding: !firestoreData.user.isOnboarded, merged: false, hydrated: true, error: null };
       }
     }
   } catch (error) {
@@ -314,6 +315,7 @@ export async function syncOnLogin(authUser: FirebaseAuthUser): Promise<{
     return {
       needsOnboarding: !hasLocalStorageData(),
       merged: false,
+      hydrated: false,
       error: error instanceof Error ? error.message : 'Sync failed',
     };
   }
