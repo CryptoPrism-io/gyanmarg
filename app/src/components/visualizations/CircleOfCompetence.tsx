@@ -96,15 +96,18 @@ export function CircleOfCompetence() {
           <span className="text-lg">🎯</span>
         </motion.div>
 
-        {/* Labels on circles */}
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 text-[9px] text-gray-500 whitespace-nowrap pointer-events-none">
+        {/* Labels on circles - positioned at each ring's top edge */}
+        <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[8px] text-gray-500 whitespace-nowrap pointer-events-none opacity-70">
           Unknown Unknowns
         </div>
-        <div className="absolute top-[18%] left-1/2 -translate-x-1/2 text-[9px] text-gray-400 whitespace-nowrap pointer-events-none">
+        <div className="absolute top-[13%] left-1/2 -translate-x-1/2 text-[8px] text-gray-400 whitespace-nowrap pointer-events-none">
           Known Unknowns
         </div>
-        <div className="absolute top-[32%] left-1/2 -translate-x-1/2 text-[10px] text-green-400 font-medium whitespace-nowrap pointer-events-none">
+        <div className="absolute top-[28%] left-1/2 -translate-x-1/2 text-[9px] text-green-400 font-medium whitespace-nowrap pointer-events-none">
           Circle of Competence
+        </div>
+        <div className="absolute top-[41%] left-1/2 -translate-x-1/2 text-[8px] text-amber-400 font-medium whitespace-nowrap pointer-events-none">
+          Core Mastery
         </div>
       </div>
 
