@@ -16,9 +16,13 @@ import {
   syncOnLogin,
   syncToFirestore,
   createDebouncedSync,
+  hasLocalStorageData,
   type FirebaseAuthUser,
 } from '@/lib/firebase';
 import { initializeSync, clearSync } from '@/store/firebaseSync';
+
+// Sync interval for periodic backup (30 seconds)
+const PERIODIC_SYNC_INTERVAL = 30000;
 
 interface AuthContextValue {
   // Auth state
@@ -57,6 +61,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
   // Debounced sync function ref
   const debouncedSyncRef = useRef<(() => void) | null>(null);
 
+  // Track if we've already synced on this session (to avoid duplicate syncs)
+  const hasAutoSyncedRef = useRef(false);
+
+  // Periodic sync interval ref
+  const periodicSyncRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Immediate sync function (no debounce) for critical moments
+  const immediateSync = useCallback(async (uid: string) => {
+    try {
+      await syncToFirestore(uid);
+      console.log('[Sync] Immediate sync completed');
+    } catch (error) {
+      console.error('[Sync] Immediate sync failed:', error);
+    }
+  }, []);
+
   // Listen to auth state changes
   useEffect(() => {
     if (!isConfigured) {
@@ -73,15 +93,89 @@ export function AuthProvider({ children }: AuthProviderProps) {
         debouncedSyncRef.current = createDebouncedSync(authUser.uid);
         // Initialize global sync for stores
         initializeSync();
+
+        // AUTO-SYNC FOR RETURNING USERS ON NEW DEVICES
+        // If user is already authenticated but localStorage is empty/stale,
+        // automatically pull data from Firestore
+        if (!hasAutoSyncedRef.current && !hasLocalStorageData()) {
+          console.log('[Sync] Detected returning user on new device, auto-syncing...');
+          hasAutoSyncedRef.current = true;
+          setIsSyncing(true);
+
+          try {
+            const syncResult = await syncOnLogin(authUser);
+            if (syncResult.error) {
+              setSyncError(syncResult.error);
+            } else {
+              setLastSyncAt(new Date());
+            }
+
+            // Reload to apply hydrated data to Zustand stores
+            if (syncResult.hydrated || syncResult.merged) {
+              window.location.reload();
+            }
+          } catch (error) {
+            console.error('[Sync] Auto-sync failed:', error);
+          } finally {
+            setIsSyncing(false);
+          }
+        }
       } else {
         debouncedSyncRef.current = null;
         // Clear global sync
         clearSync();
+        hasAutoSyncedRef.current = false;
       }
     });
 
     return unsubscribe;
   }, [isConfigured]);
+
+  // ROBUST SYNC: visibilitychange, beforeunload, and periodic sync
+  useEffect(() => {
+    if (!user) return;
+
+    const uid = user.uid;
+
+    // Sync when user switches tabs or minimizes (visibilitychange)
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        console.log('[Sync] Page hidden, syncing...');
+        immediateSync(uid);
+      }
+    };
+
+    // Sync before page unload (closing tab, navigating away)
+    const handleBeforeUnload = () => {
+      console.log('[Sync] Page unloading, syncing...');
+      // Use sendBeacon for more reliable sync on page close
+      // Fall back to immediate sync
+      immediateSync(uid);
+    };
+
+    // Periodic sync every 30 seconds as safety net for crashes
+    periodicSyncRef.current = setInterval(() => {
+      if (document.visibilityState === 'visible') {
+        console.log('[Sync] Periodic sync...');
+        immediateSync(uid);
+      }
+    }, PERIODIC_SYNC_INTERVAL);
+
+    window.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener('pagehide', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener('pagehide', handleBeforeUnload);
+
+      if (periodicSyncRef.current) {
+        clearInterval(periodicSyncRef.current);
+        periodicSyncRef.current = null;
+      }
+    };
+  }, [user, immediateSync]);
 
   // Listen to localStorage changes to trigger sync
   useEffect(() => {
