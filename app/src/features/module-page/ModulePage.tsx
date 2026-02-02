@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ChevronDown, ChevronUp, Lock, CheckCircle, Play, BookOpen, HelpCircle, Lightbulb, Dumbbell, Target } from 'lucide-react';
@@ -45,6 +45,7 @@ export default function ModulePage() {
   const module = getModuleById(moduleId || '');
   const [expandedLevel, setExpandedLevel] = useState<string | null>(null);
   const [activeLesson, setActiveLesson] = useState<PathwayLesson | null>(null);
+  const [activeLevelIndex, setActiveLevelIndex] = useState<number>(0);
   const [showAuthAfterTeaser, setShowAuthAfterTeaser] = useState(false);
 
   // Show auth gate after 1 second teaser when lesson opens
@@ -114,10 +115,48 @@ export default function ModulePage() {
     return Math.round((completed / level.lessons.length) * 100);
   };
 
+  // Find the next lesson in the pathway
+  const getNextLesson = useMemo(() => {
+    if (!activeLesson || !pathway) return null;
+
+    // Find current position
+    let foundCurrent = false;
+    for (let lvlIdx = 0; lvlIdx < pathway.length; lvlIdx++) {
+      const level = pathway[lvlIdx];
+      for (let lessonIdx = 0; lessonIdx < level.lessons.length; lessonIdx++) {
+        if (foundCurrent) {
+          // This is the next lesson
+          return {
+            lesson: level.lessons[lessonIdx],
+            levelTitle: level.title,
+            levelIndex: lvlIdx,
+          };
+        }
+        if (level.lessons[lessonIdx].id === activeLesson.id) {
+          foundCurrent = true;
+        }
+      }
+    }
+    return null;
+  }, [activeLesson, pathway]);
+
   const handleCompleteLesson = () => {
-    if (activeLesson) {
-      completeLesson(activeLesson.id, activeLesson.xpReward);
-      setActiveLesson(null);
+    if (!activeLesson) return;
+    completeLesson(activeLesson.id, activeLesson.xpReward);
+    // Don't close - let TinderCardStack handle the completion card and auto-advance
+  };
+
+  // Handle opening a lesson with level tracking
+  const handleOpenLesson = (lesson: PathwayLesson, levelIdx: number) => {
+    setActiveLesson(lesson);
+    setActiveLevelIndex(levelIdx);
+  };
+
+  // Handle auto-advance to next lesson
+  const handleNextLesson = (lesson: PathwayLesson) => {
+    if (getNextLesson) {
+      setActiveLesson(lesson);
+      setActiveLevelIndex(getNextLesson.levelIndex);
     }
   };
 
@@ -253,7 +292,7 @@ export default function ModulePage() {
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: idx * 0.05 }}
-                              onClick={() => setActiveLesson(lesson)}
+                              onClick={() => handleOpenLesson(lesson, index)}
                               className={`w-full p-3 rounded-xl flex items-center justify-between transition-all ${
                                 completed
                                   ? 'bg-sage/10 border border-sage/30'
@@ -301,6 +340,10 @@ export default function ModulePage() {
             lessonNumber={pathway.flatMap(l => l.lessons).findIndex(l => l.id === activeLesson.id) + 1}
             totalLessons={pathway.flatMap(l => l.lessons).length}
             currentStreak={pathwayProgress?.streakDays || 0}
+            moduleName={module.title}
+            levelName={pathway[activeLevelIndex]?.title || ''}
+            nextLesson={getNextLesson ? { lesson: getNextLesson.lesson, levelTitle: getNextLesson.levelTitle } : null}
+            onNextLesson={handleNextLesson}
           />
         )}
       </AnimatePresence>
