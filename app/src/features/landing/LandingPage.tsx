@@ -279,91 +279,123 @@ export function LandingPage() {
         </div>
       </div>
 
-      {/* ===== HEADER - Sleek Minimal Design ===== */}
-      <header className="fixed top-0 left-0 right-0 z-50 glass-nav">
-        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5">
-            <PolymindLogo size="xs" variant="simple" />
-            <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
-          </Link>
+      {/* ===== HEADER - Floating Glass Navbar ===== */}
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
+        <div className="bg-[#0A0A0B]/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]">
+          <div className="px-4 sm:px-6 h-14 flex items-center justify-between">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-2">
+              <PolymindLogo size="xs" variant="simple" />
+              <span className="polymind-brand-text font-display text-base font-bold tracking-wider hidden sm:inline">POLYMIND</span>
+              <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
+            </Link>
 
-          {/* Center Nav - Desktop */}
-          <nav className="hidden md:flex items-center gap-4">
-            <a href="#problem" className="text-sm text-gray-400 hover:text-white transition">Why</a>
-            <span className="text-gray-600">|</span>
-            <a href="#what" className="text-sm text-gray-400 hover:text-white transition">What</a>
-            <span className="text-gray-600">|</span>
-            <a href="#solution" className="text-sm text-gray-400 hover:text-white transition">How</a>
-            <span className="text-gray-600">|</span>
-            <a href="#results" className="text-sm text-gray-400 hover:text-white transition">Results</a>
+            {/* Center Nav - Desktop */}
+            <nav className="hidden md:flex items-center">
+              {/* Page sections */}
+              <div className="flex items-center bg-white/[0.03] rounded-xl px-1 py-1">
+                <a href="#problem" className="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition-all">Why</a>
+                <a href="#what" className="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition-all">What</a>
+                <a href="#solution" className="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition-all">How</a>
+                <a href="#results" className="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition-all">Results</a>
+              </div>
 
-            {/* Resources Dropdown - Compact */}
-            <div className="relative group">
-              <button className="text-sm text-gray-400 hover:text-white transition flex items-center gap-1">
-                Resources
-                <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="bg-[#111113]/95 border border-white/10 rounded-lg py-1 min-w-[140px] shadow-xl backdrop-blur-xl">
-                  <a href="/blog" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-gray-300 hover:text-amber-500 hover:bg-white/5 transition">Blog</a>
-                  <a href="/science" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-gray-300 hover:text-amber-500 hover:bg-white/5 transition">Research</a>
-                  <a href="/how-to" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-gray-300 hover:text-amber-500 hover:bg-white/5 transition">How-To Guide</a>
+              {/* Divider */}
+              <div className="w-px h-5 bg-white/10 mx-4" />
+
+              {/* Resources Dropdown */}
+              <div className="relative group">
+                <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-white transition rounded-lg hover:bg-white/5">
+                  Resources
+                  <svg className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="bg-[#111113]/95 border border-white/10 rounded-xl py-2 min-w-[160px] shadow-2xl backdrop-blur-xl">
+                    <a href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 text-xs text-gray-300 hover:text-amber-400 hover:bg-amber-500/5 transition">
+                      <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                      Blog
+                    </a>
+                    <a href="/science" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 text-xs text-gray-300 hover:text-amber-400 hover:bg-amber-500/5 transition">
+                      <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                      Research
+                    </a>
+                    <a href="/how-to" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 text-xs text-gray-300 hover:text-amber-400 hover:bg-amber-500/5 transition">
+                      <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                      How-To Guide
+                    </a>
+                  </div>
                 </div>
               </div>
+            </nav>
+
+            {/* Right Side - Desktop */}
+            <div className="hidden md:flex items-center gap-2">
+              {user ? (
+                <Link to="/dashboard" className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 text-black text-xs font-semibold rounded-xl hover:from-amber-400 hover:to-amber-500 transition-all shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+                  <UserAvatar size="xs" />
+                  <span>Dashboard</span>
+                </Link>
+              ) : (
+                <Link
+                  to="/onboarding"
+                  className="px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 text-black text-xs font-semibold rounded-xl hover:from-amber-400 hover:to-amber-500 transition-all shadow-[0_0_20px_rgba(245,158,11,0.3)]"
+                >
+                  Get Started
+                </Link>
+              )}
             </div>
-          </nav>
 
-          {/* Right Side - Desktop */}
-          <div className="hidden md:flex items-center gap-3">
-            {user ? (
-              <Link to="/dashboard" className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-black text-sm font-medium rounded-lg hover:bg-amber-400 transition">
-                <UserAvatar size="xs" />
-                <span>Dashboard</span>
-              </Link>
-            ) : (
-              <Link
-                to="/onboarding"
-                className="px-4 py-2 bg-amber-500 text-black text-sm font-medium rounded-lg hover:bg-amber-400 transition"
-              >
-                Get Started
-              </Link>
-            )}
+            {/* Mobile Menu Button */}
+            <button className="md:hidden p-2 -mr-2 text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 -mr-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
         </div>
 
-        {/* Mobile Menu - Compact */}
+        {/* Mobile Menu - Slide Down */}
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="md:hidden bg-[#111113]/95 backdrop-blur-xl border-t border-white/5 px-6 py-4"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            className="md:hidden bg-[#0A0A0B]/95 backdrop-blur-xl border-t border-white/5 rounded-b-2xl overflow-hidden"
           >
-            <nav className="flex flex-col gap-3">
-              <div className="flex items-center gap-3">
-                <a href="#problem" className="text-sm text-gray-400 hover:text-white">Why</a>
-                <span className="text-gray-600">|</span>
-                <a href="#solution" className="text-sm text-gray-400 hover:text-white">What</a>
-                <span className="text-gray-600">|</span>
-                <a href="#results" className="text-sm text-gray-400 hover:text-white">How</a>
+            <nav className="flex flex-col p-4 gap-1">
+              {/* Page sections */}
+              <div className="grid grid-cols-4 gap-1 mb-3">
+                <a href="#problem" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">Why</a>
+                <a href="#what" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">What</a>
+                <a href="#solution" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">How</a>
+                <a href="#results" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">Results</a>
               </div>
-              <a href="/blog" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white py-1">Blog</a>
-              <a href="/science" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white py-1">Research</a>
-              <a href="/how-to" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white py-1">How-To Guide</a>
 
-              <div className="pt-3 mt-1 border-t border-white/10">
+              {/* Divider */}
+              <div className="h-px bg-white/5 my-2" />
+
+              {/* Resources */}
+              <div className="space-y-1">
+                <p className="text-[10px] text-gray-500 uppercase tracking-wider px-2 mb-2">Resources</p>
+                <a href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">
+                  <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                  Blog
+                </a>
+                <a href="/science" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">
+                  <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                  Research
+                </a>
+                <a href="/how-to" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">
+                  <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                  How-To Guide
+                </a>
+              </div>
+
+              {/* CTA */}
+              <div className="pt-3 mt-2">
                 {user ? (
                   <Link
                     to="/dashboard"
-                    className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-amber-500 text-black text-sm font-medium rounded-lg"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 text-black text-xs font-semibold rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)]"
                   >
                     <UserAvatar size="xs" />
                     <span>Dashboard</span>
@@ -371,7 +403,7 @@ export function LandingPage() {
                 ) : (
                   <Link
                     to="/onboarding"
-                    className="block w-full px-4 py-2.5 bg-amber-500 text-black text-center text-sm font-medium rounded-lg"
+                    className="block w-full px-4 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 text-black text-center text-xs font-semibold rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)]"
                   >
                     Get Started
                   </Link>
