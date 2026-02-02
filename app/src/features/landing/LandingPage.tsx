@@ -293,6 +293,8 @@ export function LandingPage() {
           <nav className="hidden md:flex items-center gap-4">
             <a href="#problem" className="text-sm text-gray-400 hover:text-white transition">Why</a>
             <span className="text-gray-600">|</span>
+            <a href="#what" className="text-sm text-gray-400 hover:text-white transition">What</a>
+            <span className="text-gray-600">|</span>
             <a href="#solution" className="text-sm text-gray-400 hover:text-white transition">How</a>
             <span className="text-gray-600">|</span>
             <a href="#results" className="text-sm text-gray-400 hover:text-white transition">Results</a>
@@ -653,7 +655,7 @@ export function LandingPage() {
       </section>
 
       {/* ===== THE GUIDE: Authority + Empathy ===== */}
-      <section className="py-20 px-6 relative z-10">
+      <section id="what" className="py-20 px-6 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-xs text-amber-500 font-medium tracking-wider mb-6">
