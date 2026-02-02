@@ -46,6 +46,7 @@ const BookListPage = lazy(() => import('@/features/books/BookListPage').then(m =
 const BlogPage = lazy(() => import('@/features/blog/BlogPage').then(m => ({ default: m.BlogPage })));
 const BlogArticlePage = lazy(() => import('@/features/blog/BlogArticlePage').then(m => ({ default: m.BlogArticlePage })));
 const HowToPage = lazy(() => import('@/features/how-to/HowToPage').then(m => ({ default: m.HowToPage })));
+const BrandKitPage = lazy(() => import('@/features/brand-kit/BrandKitPage').then(m => ({ default: m.BrandKitPage })));
 
 // Loading fallback for lazy components
 function PageLoader() {
@@ -374,6 +375,16 @@ function AppRoutes() {
           <PageTransition>
             <Suspense fallback={<PageLoader />}>
               <HowToPage />
+            </Suspense>
+          </PageTransition>
+        }
+      />
+      <Route
+        path="/brand-kit"
+        element={
+          <PageTransition>
+            <Suspense fallback={<PageLoader />}>
+              <BrandKitPage />
             </Suspense>
           </PageTransition>
         }
