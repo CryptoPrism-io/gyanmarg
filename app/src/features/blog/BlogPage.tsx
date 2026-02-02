@@ -1,13 +1,14 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Clock, User, Tag, Sparkles, Brain, BookOpen, TrendingUp, Zap, Lightbulb, Flame } from 'lucide-react';
+import { PolymindLogo } from '@/components/brand';
 
 // Import articles from data file
-import { getFeaturedArticle, getRecentArticles, getAllArticles } from '@/data/blogArticles';
+import { getFeaturedArticle, getAllArticles } from '@/data/blogArticles';
 
-// Get featured and recent articles
+// Get featured article
 const featuredPost = getFeaturedArticle();
-const recentPosts = getRecentArticles(8);
 
 // Category icons and colors
 const categoryConfig: Record<string, { icon: typeof Brain; color: string }> = {
@@ -38,6 +39,14 @@ const colorClasses: Record<string, { bg: string; border: string; text: string }>
 };
 
 export function BlogPage() {
+  const [selectedCategory, setSelectedCategory] = useState<string>('All Posts');
+
+  // Filter posts based on selected category
+  const allPosts = getAllArticles();
+  const filteredPosts = selectedCategory === 'All Posts'
+    ? allPosts
+    : allPosts.filter(post => post.category === selectedCategory);
+
   return (
     <div className="min-h-screen bg-[#0A0A0B] text-white relative">
       {/* ===== ANIMATED GRADIENT BACKGROUND ===== */}
@@ -75,9 +84,10 @@ export function BlogPage() {
             <ArrowLeft size={20} />
             <span className="text-sm">Back</span>
           </Link>
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
+          <Link to="/" className="flex items-center gap-2.5">
+            <PolymindLogo size="xs" variant="simple" />
+            <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
           </Link>
           <Link
             to="/how-to"
@@ -189,15 +199,17 @@ export function BlogPage() {
       <section className="py-12 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-serif">Recent Articles</h2>
+            <h2 className="text-2xl font-serif">
+              {selectedCategory === 'All Posts' ? 'Recent Articles' : selectedCategory}
+            </h2>
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Tag size={16} />
-              <span>{getAllArticles().length} articles</span>
+              <span>{filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''}</span>
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {recentPosts.map((post, i) => {
+            {filteredPosts.map((post, i) => {
               const config = categoryConfig[post.category] || { icon: Brain, color: 'amber' };
               const Icon = config.icon;
               const colors = colorClasses[config.color];
@@ -264,10 +276,17 @@ export function BlogPage() {
             {categories.map((category) => (
               <button
                 key={category.name}
-                className="px-4 py-2 glass-light border border-white/10 rounded-lg text-sm text-gray-300 hover:border-amber-500/30 hover:text-amber-500 transition flex items-center gap-2"
+                onClick={() => setSelectedCategory(category.name)}
+                className={`px-4 py-2 glass-light border rounded-lg text-sm transition flex items-center gap-2 ${
+                  selectedCategory === category.name
+                    ? 'border-amber-500/50 text-amber-500 bg-amber-500/10'
+                    : 'border-white/10 text-gray-300 hover:border-amber-500/30 hover:text-amber-500'
+                }`}
               >
                 {category.name}
-                <span className="text-xs text-gray-500">({category.count})</span>
+                <span className={`text-xs ${selectedCategory === category.name ? 'text-amber-500/70' : 'text-gray-500'}`}>
+                  ({category.count})
+                </span>
               </button>
             ))}
           </div>
@@ -315,9 +334,10 @@ export function BlogPage() {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
             <div>
-              <Link to="/" className="flex items-center gap-2 mb-3">
-                <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
-                <span className="w-2 h-2 rounded-full bg-amber-500" />
+              <Link to="/" className="flex items-center gap-2.5 mb-3">
+                <PolymindLogo size="sm" variant="simple" />
+                <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
               </Link>
               <p className="text-sm text-gray-500">Your mind, unlimited.</p>
             </div>

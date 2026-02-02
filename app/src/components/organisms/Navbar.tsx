@@ -6,13 +6,13 @@ import {
   Brain,
   Zap,
   Flame,
-  Sparkles,
   Settings,
   Eye,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
 import { UserAvatar, GoogleSignInButton } from '@/components/molecules';
+import { PolymindLogo } from '@/components/brand';
 
 const navItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
@@ -43,13 +43,15 @@ export function Navbar() {
             <motion.div
               whileHover={{ scale: 1.05, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
-              className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-sunrise to-golden flex items-center justify-center shadow-sunrise"
             >
-              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-base" />
+              <PolymindLogo size="sm" variant="simple" />
             </motion.div>
-            <span className="font-display font-semibold text-text-primary hidden sm:block text-lg">
-              Polymind
-            </span>
+            <div className="hidden sm:flex items-center gap-2">
+              <span className="polymind-brand-text font-display font-bold tracking-wider text-lg">
+                POLYMIND
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

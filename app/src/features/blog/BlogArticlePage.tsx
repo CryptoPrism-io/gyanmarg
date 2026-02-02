@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, User, Calendar, Share2, BookmarkPlus, ArrowRight } from 'lucide-react';
 import { getArticleById, type BlogArticle, type BlogEmbed as BlogEmbedType } from '@/data/blogArticles';
 import { BlogEmbed } from '@/components/molecules';
+import { PolymindLogo } from '@/components/brand';
 
 export function BlogArticlePage() {
   const { articleId } = useParams<{ articleId: string }>();
@@ -37,9 +38,10 @@ export function BlogArticlePage() {
             <ArrowLeft size={20} />
             <span className="text-sm">Back to Blog</span>
           </Link>
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
+          <Link to="/" className="flex items-center gap-2.5">
+            <PolymindLogo size="xs" variant="simple" />
+            <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
           </Link>
           <div className="flex items-center gap-2">
             <button className="p-2 text-gray-400 hover:text-white transition">
@@ -149,9 +151,10 @@ export function BlogArticlePage() {
       {/* Footer */}
       <footer className="py-12 px-6 border-t border-white/5 relative z-10">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
+          <Link to="/" className="flex items-center gap-2.5">
+            <PolymindLogo size="xs" variant="simple" />
+            <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
           </Link>
           <div className="flex gap-6 text-sm text-gray-500">
             <Link to="/blog" className="hover:text-white transition">Blog</Link>

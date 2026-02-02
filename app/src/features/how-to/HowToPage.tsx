@@ -15,6 +15,7 @@ import {
   Keyboard,
   Smartphone,
 } from 'lucide-react';
+import { PolymindLogo } from '@/components/brand';
 
 // Demo Components
 import { DemoFlashCard, DemoTinderStack, BlogEmbed } from '@/components/molecules';
@@ -36,9 +37,10 @@ export function HowToPage() {
             <ArrowLeft size={20} />
             <span className="text-sm">Back</span>
           </Link>
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
+          <Link to="/" className="flex items-center gap-2.5">
+            <PolymindLogo size="xs" variant="simple" />
+            <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
           </Link>
           <Link
             to="/onboarding"
@@ -383,9 +385,10 @@ export function HowToPage() {
       {/* Footer */}
       <footer className="py-12 px-6 border-t border-white/5 relative z-10">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
+          <Link to="/" className="flex items-center gap-2.5">
+            <PolymindLogo size="xs" variant="simple" />
+            <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
           </Link>
           <div className="flex gap-6 text-sm text-gray-500">
             <Link to="/blog" className="hover:text-white transition">Blog</Link>

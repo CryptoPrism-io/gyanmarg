@@ -22,6 +22,7 @@ import {
 import { useState, useEffect, useRef } from 'react';
 import { UserAvatar } from '@/components/molecules';
 import { useAuth } from '@/hooks';
+import { PolymindLogo } from '@/components/brand';
 
 // Animated Counter Component
 function AnimatedCounter({ value, suffix = '' }: { value: number; suffix?: string }) {
@@ -282,18 +283,19 @@ export function LandingPage() {
       <header className="fixed top-0 left-0 right-0 z-50 glass-nav">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+          <Link to="/" className="flex items-center gap-2.5">
+            <PolymindLogo size="xs" variant="simple" />
+            <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
           </Link>
 
           {/* Center Nav - Desktop */}
           <nav className="hidden md:flex items-center gap-4">
             <a href="#problem" className="text-sm text-gray-400 hover:text-white transition">Why</a>
             <span className="text-gray-600">|</span>
-            <a href="#solution" className="text-sm text-gray-400 hover:text-white transition">What</a>
+            <a href="#solution" className="text-sm text-gray-400 hover:text-white transition">How</a>
             <span className="text-gray-600">|</span>
-            <a href="#results" className="text-sm text-gray-400 hover:text-white transition">How</a>
+            <a href="#results" className="text-sm text-gray-400 hover:text-white transition">Results</a>
 
             {/* Resources Dropdown - Compact */}
             <div className="relative group">
@@ -1014,9 +1016,10 @@ export function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {/* Brand */}
             <div className="col-span-2 md:col-span-1">
-              <Link to="/" className="flex items-center gap-2 mb-4">
-                <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+              <Link to="/" className="flex items-center gap-2.5 mb-4">
+                <PolymindLogo size="sm" variant="simple" />
+                <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
               </Link>
               <p className="text-sm text-gray-400 leading-relaxed">
                 Your mind, unlimited.<br />

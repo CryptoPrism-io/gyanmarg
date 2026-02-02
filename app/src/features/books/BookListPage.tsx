@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Search, BookOpen, ChevronDown, Sparkles, Brain } from 'lucide-react';
+import { PolymindLogo } from '@/components/brand';
 
 // AI Images (WebP for better performance)
 import imgHeroBooksTransform from '@/assets/ai-images/landing/hero-books-transform.webp';
@@ -171,9 +172,10 @@ export function BookListPage() {
             <ArrowLeft size={20} />
             <span className="text-sm">Back</span>
           </Link>
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
+          <Link to="/" className="flex items-center gap-2.5">
+            <PolymindLogo size="xs" variant="simple" />
+            <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
           </Link>
           <div className="w-16" />
         </div>
@@ -387,9 +389,10 @@ export function BookListPage() {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
             <div>
-              <Link to="/" className="flex items-center gap-2 mb-3">
-                <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
-                <span className="w-2 h-2 rounded-full bg-amber-500" />
+              <Link to="/" className="flex items-center gap-2.5 mb-3">
+                <PolymindLogo size="sm" variant="simple" />
+                <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
               </Link>
               <p className="text-sm text-gray-500">Your mind, unlimited.</p>
             </div>

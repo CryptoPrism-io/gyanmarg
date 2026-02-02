@@ -25,24 +25,34 @@
     </filter>
   </defs>
 
-  <!-- Orbital rings -->
+  <!-- Orbital rings - atom/knowledge orbits -->
   <g fill="none" stroke-width="3" stroke-linecap="round">
+    <!-- Horizontal orbit -->
     <ellipse cx="256" cy="256" rx="180" ry="60" stroke="url(#gold)" transform="rotate(-20 256 256)" opacity="0.8" filter="url(#glow)"/>
+
+    <!-- Diagonal orbit 1 -->
     <ellipse cx="256" cy="256" rx="180" ry="60" stroke="url(#gold2)" transform="rotate(40 256 256)" opacity="0.8" filter="url(#glow)"/>
+
+    <!-- Diagonal orbit 2 -->
     <ellipse cx="256" cy="256" rx="180" ry="60" stroke="url(#gold)" transform="rotate(100 256 256)" opacity="0.8" filter="url(#glow)"/>
   </g>
 
-  <!-- Core -->
+  <!-- Core - the mind/central knowledge -->
   <circle cx="256" cy="256" r="50" fill="#0A0A0B" stroke="url(#gold)" stroke-width="4" filter="url(#coreGlow)"/>
   <circle cx="256" cy="256" r="30" fill="url(#gold)" opacity="0.3"/>
   <circle cx="256" cy="256" r="16" fill="#FDE68A" filter="url(#coreGlow)"/>
 
-  <!-- Electrons -->
+  <!-- Electrons/knowledge particles on orbits -->
   <g filter="url(#glow)">
+    <!-- Orbit 1 particles -->
     <circle cx="436" cy="256" r="10" fill="#FCD34D" transform="rotate(-20 256 256)"/>
     <circle cx="76" cy="256" r="8" fill="#F59E0B" transform="rotate(-20 256 256)"/>
+
+    <!-- Orbit 2 particles -->
     <circle cx="436" cy="256" r="10" fill="#F59E0B" transform="rotate(40 256 256)"/>
     <circle cx="76" cy="256" r="8" fill="#FCD34D" transform="rotate(40 256 256)"/>
+
+    <!-- Orbit 3 particles -->
     <circle cx="436" cy="256" r="10" fill="#FCD34D" transform="rotate(100 256 256)"/>
     <circle cx="76" cy="256" r="8" fill="#D97706" transform="rotate(100 256 256)"/>
   </g>
