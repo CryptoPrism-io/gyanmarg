@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ChevronDown, ChevronUp, Lock, CheckCircle, Play, BookOpen, HelpCircle, Lightbulb, Dumbbell, Target } from 'lucide-react';
 import { getModuleById } from '@/data/modules';
 import { useProgressStore } from '@/store/progressStore';
-import { useAuthGate } from '@/hooks';
+import { useAuthGate } from '@/hooks/useAuthGate';
 import { LessonViewer, SignInGate } from '@/components/organisms';
 import { Button } from '@/components/atoms';
 import type { PathwayLesson, PathwayLevel } from '@/types';

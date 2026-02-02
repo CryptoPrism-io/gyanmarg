@@ -16,7 +16,8 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useProgressStore } from '@/store/progressStore';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
-import { useSoundEffects, useAuthGate } from '@/hooks';
+import { useSoundEffects } from '@/hooks';
+import { useAuthGate } from '@/hooks/useAuthGate';
 import { ModuleLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { SignInGate } from '@/components/organisms';

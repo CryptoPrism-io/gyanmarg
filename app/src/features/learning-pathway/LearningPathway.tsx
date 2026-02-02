@@ -23,7 +23,7 @@ import {
   GraduationCap,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
-import { useAuthGate } from '@/hooks';
+import { useAuthGate } from '@/hooks/useAuthGate';
 import { ModuleLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { LessonCard } from '@/components/molecules/LessonCard';
