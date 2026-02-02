@@ -171,8 +171,10 @@ export async function syncAllToFirestore(
   const db = getFirestoreDb();
   if (!db) {
     console.error('[Firestore] Database not initialized');
-    return;
+    throw new Error('Firestore database not initialized. Check Firebase configuration.');
   }
+
+  console.log('[Firestore] Starting sync for user:', uid);
 
   try {
     const docRef = doc(db, USERS_COLLECTION, uid);
@@ -214,7 +216,8 @@ export async function syncAllToFirestore(
     }
   } catch (error) {
     console.error('[Firestore] Error syncing to Firestore:', error);
-    // Don't throw - sync failures shouldn't break the app
+    // Throw so the UI can show the error
+    throw error;
   }
 }
 
