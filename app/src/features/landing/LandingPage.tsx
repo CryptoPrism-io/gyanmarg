@@ -41,25 +41,25 @@ function AnimatedCounter({ value, suffix = '' }: { value: number; suffix?: strin
   return <motion.span ref={ref}>{display}</motion.span>;
 }
 
-// Import AI-generated images
-import heroMain from '@/assets/ai-images/landing/hero-main.png';
-import heroBooksTransform from '@/assets/ai-images/landing/hero-books-transform.png';
-import featureSpacedRepetition from '@/assets/ai-images/landing/feature-spaced-repetition.png';
-import featureVisualLearning from '@/assets/ai-images/landing/feature-visual-learning.png';
-import featureGamification from '@/assets/ai-images/landing/feature-gamification.png';
-import ctaSectionBg from '@/assets/ai-images/landing/cta-section-bg.png';
+// Import AI-generated images (WebP for better performance)
+import heroMain from '@/assets/ai-images/landing/hero-main.webp';
+import heroBooksTransform from '@/assets/ai-images/landing/hero-books-transform.webp';
+import featureSpacedRepetition from '@/assets/ai-images/landing/feature-spaced-repetition.webp';
+import featureVisualLearning from '@/assets/ai-images/landing/feature-visual-learning.webp';
+import featureGamification from '@/assets/ai-images/landing/feature-gamification.webp';
+import ctaSectionBg from '@/assets/ai-images/landing/cta-section-bg.webp';
 
 // Domain images
-import domainPsychology from '@/assets/ai-images/domains/domain-psychology.png';
-import domainAI from '@/assets/ai-images/domains/domain-ai.png';
-import domainWealth from '@/assets/ai-images/domains/domain-wealth.png';
-import domainProductivity from '@/assets/ai-images/domains/domain-productivity.png';
-import domainHealth from '@/assets/ai-images/domains/domain-health.png';
-import domainLeadership from '@/assets/ai-images/domains/domain-leadership.png';
-import domainPhilosophy from '@/assets/ai-images/domains/domain-philosophy.png';
-import domainWriting from '@/assets/ai-images/domains/domain-writing.png';
-import domainScience from '@/assets/ai-images/domains/domain-science.png';
-import domainCreativity from '@/assets/ai-images/domains/domain-creativity.png';
+import domainPsychology from '@/assets/ai-images/domains/domain-psychology.webp';
+import domainAI from '@/assets/ai-images/domains/domain-ai.webp';
+import domainWealth from '@/assets/ai-images/domains/domain-wealth.webp';
+import domainProductivity from '@/assets/ai-images/domains/domain-productivity.webp';
+import domainHealth from '@/assets/ai-images/domains/domain-health.webp';
+import domainLeadership from '@/assets/ai-images/domains/domain-leadership.webp';
+import domainPhilosophy from '@/assets/ai-images/domains/domain-philosophy.webp';
+import domainWriting from '@/assets/ai-images/domains/domain-writing.webp';
+import domainScience from '@/assets/ai-images/domains/domain-science.webp';
+import domainCreativity from '@/assets/ai-images/domains/domain-creativity.webp';
 
 // Extend window for PWA functions
 declare global {

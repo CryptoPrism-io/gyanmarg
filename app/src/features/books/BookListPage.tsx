@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Search, BookOpen, ChevronDown, Sparkles, Brain } from 'lucide-react';
 
-// AI Images
-import imgHeroBooksTransform from '@/assets/ai-images/landing/hero-books-transform.png';
-import imgDomainPsychology from '@/assets/ai-images/domains/domain-psychology.png';
-import imgDomainProductivity from '@/assets/ai-images/domains/domain-productivity.png';
-import imgDomainAI from '@/assets/ai-images/domains/domain-ai.png';
-import imgDomainWealth from '@/assets/ai-images/domains/domain-wealth.png';
-import imgDomainPhilosophy from '@/assets/ai-images/domains/domain-philosophy.png';
-import imgDomainLeadership from '@/assets/ai-images/domains/domain-leadership.png';
+// AI Images (WebP for better performance)
+import imgHeroBooksTransform from '@/assets/ai-images/landing/hero-books-transform.webp';
+import imgDomainPsychology from '@/assets/ai-images/domains/domain-psychology.webp';
+import imgDomainProductivity from '@/assets/ai-images/domains/domain-productivity.webp';
+import imgDomainAI from '@/assets/ai-images/domains/domain-ai.webp';
+import imgDomainWealth from '@/assets/ai-images/domains/domain-wealth.webp';
+import imgDomainPhilosophy from '@/assets/ai-images/domains/domain-philosophy.webp';
+import imgDomainLeadership from '@/assets/ai-images/domains/domain-leadership.webp';
 
 // Domain images map
 const domainImages: Record<string, string> = {

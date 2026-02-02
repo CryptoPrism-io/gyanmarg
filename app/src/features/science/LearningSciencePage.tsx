@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Brain, Target, Shuffle, Trophy, TrendingDown, TrendingUp, Zap } from 'lucide-react';
 
-// AI Images
-import imgForgetting from '@/assets/ai-images/onboarding/onboarding-01-forgetting.png';
-import imgBreakthrough from '@/assets/ai-images/onboarding/onboarding-02-breakthrough.png';
-import imgSpacedRepetition from '@/assets/ai-images/landing/feature-spaced-repetition.png';
-import imgVisualLearning from '@/assets/ai-images/landing/feature-visual-learning.png';
-import imgGamification from '@/assets/ai-images/landing/feature-gamification.png';
-import imgHeroMain from '@/assets/ai-images/landing/hero-main.png';
+// AI Images (WebP for better performance)
+import imgForgetting from '@/assets/ai-images/onboarding/onboarding-01-forgetting.webp';
+import imgBreakthrough from '@/assets/ai-images/onboarding/onboarding-02-breakthrough.webp';
+import imgSpacedRepetition from '@/assets/ai-images/landing/feature-spaced-repetition.webp';
+import imgVisualLearning from '@/assets/ai-images/landing/feature-visual-learning.webp';
+import imgGamification from '@/assets/ai-images/landing/feature-gamification.webp';
+import imgHeroMain from '@/assets/ai-images/landing/hero-main.webp';
 
 // Forgetting curve data points (available for future use)
 const _forgettingCurveData = [

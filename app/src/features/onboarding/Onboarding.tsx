@@ -21,10 +21,10 @@ import { OnboardingLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { Button } from '@/components/atoms';
 
-// Import AI-generated images
-import imgForgetting from '@/assets/ai-images/onboarding/onboarding-01-forgetting.png';
-import imgBreakthrough from '@/assets/ai-images/onboarding/onboarding-02-breakthrough.png';
-import imgPolymind from '@/assets/ai-images/onboarding/onboarding-03-polymind.png';
+// Import AI-generated images (WebP for better performance)
+import imgForgetting from '@/assets/ai-images/onboarding/onboarding-01-forgetting.webp';
+import imgBreakthrough from '@/assets/ai-images/onboarding/onboarding-02-breakthrough.webp';
+import imgPolymind from '@/assets/ai-images/onboarding/onboarding-03-polymind.webp';
 
 // Why are you building your Polymind?
 const goals = [

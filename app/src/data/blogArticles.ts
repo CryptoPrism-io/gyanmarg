@@ -1,12 +1,12 @@
 import type { EmbedType } from '@/components/molecules';
 
-// AI Images
-import imgPolymind from '@/assets/ai-images/onboarding/onboarding-03-polymind.png';
-import imgSpacedRepetition from '@/assets/ai-images/landing/feature-spaced-repetition.png';
-import imgVisualLearning from '@/assets/ai-images/landing/feature-visual-learning.png';
-import imgGamification from '@/assets/ai-images/landing/feature-gamification.png';
-import imgBooksTransform from '@/assets/ai-images/landing/hero-books-transform.png';
-import imgHeroMain from '@/assets/ai-images/landing/hero-main.png';
+// AI Images (WebP for better performance)
+import imgPolymind from '@/assets/ai-images/onboarding/onboarding-03-polymind.webp';
+import imgSpacedRepetition from '@/assets/ai-images/landing/feature-spaced-repetition.webp';
+import imgVisualLearning from '@/assets/ai-images/landing/feature-visual-learning.webp';
+import imgGamification from '@/assets/ai-images/landing/feature-gamification.webp';
+import imgBooksTransform from '@/assets/ai-images/landing/hero-books-transform.webp';
+import imgHeroMain from '@/assets/ai-images/landing/hero-main.webp';
 
 export interface BlogEmbed {
   id: string;
