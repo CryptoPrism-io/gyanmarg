@@ -134,19 +134,19 @@ const thePlan = [
   {
     step: 1,
     title: 'Choose Your Domains',
-    description: 'Psychology, AI, Wealth, Philosophy, Health — pick any of 50+ knowledge domains.',
+    description: "Psychology, AI, Wealth, Philosophy, Health — pick any of 50+ knowledge domains. We've already built the decks for you.",
     icon: Target,
   },
   {
     step: 2,
-    title: 'Learn in Swipeable Cards',
-    description: 'Bite-sized concepts from 1000+ authors. Quiz yourself as you go.',
+    title: 'Swipe to Learn',
+    description: "Read a concept. Quiz yourself instantly. Know it? You won't see it for a month. Struggle? You'll see it tomorrow.",
     icon: BookOpen,
   },
   {
     step: 3,
-    title: 'Retain Forever',
-    description: 'Smart reviews at perfect intervals. Your Polymind never forgets.',
+    title: 'Build Unshakeable Expertise',
+    description: 'The system adapts to your brain. Concepts you struggle with appear more often. Your Polymind becomes permanent.',
     icon: Brain,
   },
 ];
@@ -202,7 +202,7 @@ const failureStakes = [
 const successBenefits = [
   { icon: CheckCircle2, text: 'Recall insights from 1000+ authors on demand' },
   { icon: Sparkles, text: 'Build unshakeable expertise across 50+ domains' },
-  { icon: Trophy, text: 'Join 10,000+ Polyminds who never forget what they learn' },
+  { icon: Trophy, text: 'Never create flashcards again — we build every deck for you' },
 ];
 
 // Knowledge Domains with AI images
@@ -223,8 +223,8 @@ export function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showIOSModal, setShowIOSModal] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const { canInstall, isInstalled, isIOS, install } = useInstallPrompt();
-  const { isConfigured, user } = useAuth();
+  const { canInstall, isIOS, install } = useInstallPrompt();
+  const { user } = useAuth();
 
   // Track scroll position for parallax effect on multilingual text
   useEffect(() => {
@@ -245,6 +245,8 @@ export function LandingPage() {
       setShowIOSModal(true);
     }
   };
+  // Keep handleInstallClick available for future PWA install button
+  void handleInstallClick;
 
   return (
     <div className="min-h-screen bg-[#0A0A0B] text-white overflow-x-hidden relative">
@@ -494,7 +496,7 @@ export function LandingPage() {
             className="inline-flex items-center gap-2 px-4 py-2 bg-coral/10 border border-coral/20 rounded-full mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-coral animate-pulse" />
-            <span className="text-xs md:text-sm text-coral font-medium">Tired of forgetting what you read?</span>
+            <span className="text-xs md:text-sm text-coral font-medium">Stop reading into the void</span>
           </motion.div>
 
           {/* Hero Headline: Dramatic Zen Typography */}
@@ -524,8 +526,8 @@ export function LandingPage() {
               </span>
             </span>
             <span className="block text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] text-white/90 tracking-tight mt-2">
-              Everything You{' '}
-              <span className="font-light italic text-white/70">Learn</span>
+              the Ideas That{' '}
+              <span className="font-light italic text-white/70">Matter</span>
             </span>
           </motion.h1>
 
@@ -542,7 +544,7 @@ export function LandingPage() {
               <span className="inline-block">The world's most powerful ideas.</span>
             </p>
             <p className="text-lg md:text-xl text-white mt-3 font-light">
-              One system to make them <span className="font-medium text-amber-500">unforgettable</span>.
+              One system to <span className="font-medium text-amber-500">install them permanently</span>.
             </p>
           </motion.div>
 
@@ -664,7 +666,7 @@ export function LandingPage() {
               </span>
             </h2>
             <p className="text-gray-400 text-lg max-w-xl mx-auto">
-              Your Polymind uses evidence-based techniques that top universities and researchers have proven work.
+              We distill the world's best books into active-recall decks — so you get the learning without the tedious card-making.
             </p>
           </div>
 
@@ -702,9 +704,9 @@ export function LandingPage() {
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-400 flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-[#111113]">
                   <Brain size={20} className="text-black" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Spaced Repetition</h3>
+                <h3 className="text-xl font-semibold mb-3">Adaptive Spaced Repetition</h3>
                 <p className="text-gray-400 leading-relaxed text-sm">
-                  The SM-2 algorithm shows you content right before you'd forget it. Proven to boost retention by 200%.
+                  Built on the same algorithms medical students use to memorize anatomy. We applied it to business, philosophy, and life wisdom.
                 </p>
               </div>
             </motion.div>
@@ -817,7 +819,7 @@ export function LandingPage() {
               <span className="text-lavender">1000+ Authors</span>
             </h2>
             <p className="text-gray-400 mt-3 max-w-xl mx-auto">
-              Curated wisdom from the world's best thinkers, distilled into bite-sized lessons
+              Don't just read summaries. <span className="text-amber-500/80">Install them.</span> We turn bestsellers into interactive active-recall decks.
             </p>
           </div>
 
@@ -1006,44 +1008,55 @@ export function LandingPage() {
 
       {/* ===== FOOTER ===== */}
       <footer className="py-16 px-6 border-t border-white/5 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
-            <div className="max-w-xs">
-              <div className="flex items-center gap-2 mb-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {/* Brand */}
+            <div className="col-span-2 md:col-span-1">
+              <Link to="/" className="flex items-center gap-2 mb-4">
                 <span className="font-mono text-lg font-semibold tracking-wider">POLYMIND</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-              </div>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              </Link>
+              <p className="text-sm text-gray-400 leading-relaxed">
                 Your mind, unlimited.<br />
                 1000+ authors. Unforgettable knowledge.
               </p>
             </div>
 
-            <div className="flex gap-16">
-              <div>
-                <h4 className="font-medium text-sm mb-4">Product</h4>
-                <ul className="space-y-3 text-sm text-gray-400">
-                  <li><a href="#problem" className="hover:text-white transition">The Problem</a></li>
-                  <li><a href="#solution" className="hover:text-white transition">How It Works</a></li>
-                  <li><a href="#results" className="hover:text-white transition">Results</a></li>
-                  <li><Link to="/onboarding" className="hover:text-white transition">Get Started</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-medium text-sm mb-4">Resources</h4>
-                <ul className="space-y-3 text-sm text-gray-400">
-                  <li><Link to="/science" className="hover:text-white transition">Learning Science</Link></li>
-                  <li><Link to="/books" className="hover:text-white transition">Book List</Link></li>
-                  <li><Link to="/blog" className="hover:text-white transition">Blog</Link></li>
-                </ul>
-              </div>
+            {/* Product */}
+            <div>
+              <h4 className="font-medium text-sm mb-4 text-white">Product</h4>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li><Link to="/dashboard" className="hover:text-white transition">Dashboard</Link></li>
+                <li><Link to="/modules" className="hover:text-white transition">Modules</Link></li>
+                <li><Link to="/review" className="hover:text-white transition">Flashcards</Link></li>
+                <li><Link to="/onboarding" className="hover:text-white transition">Get Started</Link></li>
+              </ul>
+            </div>
+
+            {/* Resources */}
+            <div>
+              <h4 className="font-medium text-sm mb-4 text-white">Resources</h4>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li><Link to="/blog" className="hover:text-white transition">Blog</Link></li>
+                <li><Link to="/science" className="hover:text-white transition">Research</Link></li>
+                <li><Link to="/how-to" className="hover:text-white transition">How-To Guide</Link></li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="font-medium text-sm mb-4 text-white">Legal</h4>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li><a href="#" className="hover:text-white transition">Privacy</a></li>
+                <li><a href="#" className="hover:text-white transition">Terms</a></li>
+              </ul>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400">© 2025 Polymind. Made with <span className="text-amber-500">❤️</span> for Polyminds everywhere.</p>
+          {/* Bottom */}
+          <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-gray-400">© {new Date().getFullYear()} Polymind. All rights reserved.</p>
             <div className="flex gap-6">
-              {/* TODO: Add real social links - see tasks #4, #5, #6 */}
               <a href="https://twitter.com/polymind" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">Twitter</a>
               <a href="https://github.com/polymind-app" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">GitHub</a>
               <a href="https://linkedin.com/company/polymind" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">LinkedIn</a>
