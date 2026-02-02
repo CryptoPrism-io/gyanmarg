@@ -9,9 +9,11 @@ import {
   Package,
   AlertCircle,
 } from 'lucide-react';
-import html2canvas from 'html2canvas';
-import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
+
+// Lazy load heavy libraries for better initial page load
+const loadHtml2Canvas = () => import('html2canvas').then(m => m.default);
+const loadJSZip = () => import('jszip').then(m => m.default);
+const loadFileSaver = () => import('file-saver').then(m => m.saveAs);
 
 // ============================================
 // POLYMIND BRAND DATA
@@ -188,6 +190,7 @@ function BannerPreview({ banner }: { banner: typeof bannerSizes[0] }) {
     setDownloading(true);
 
     try {
+      const [html2canvas, saveAs] = await Promise.all([loadHtml2Canvas(), loadFileSaver()]);
       const canvas = await html2canvas(bannerRef.current, {
         scale: banner.scale,
         backgroundColor: null,
@@ -274,6 +277,7 @@ function IconPreview({ size, variant }: { size: number; variant: 'light' | 'dark
   const downloadIcon = async () => {
     if (!iconRef.current) return;
 
+    const [html2canvas, saveAs] = await Promise.all([loadHtml2Canvas(), loadFileSaver()]);
     const canvas = await html2canvas(iconRef.current, {
       scale: size / 64, // Scale to actual size
       backgroundColor: null,
@@ -320,6 +324,7 @@ export function BrandKitPage() {
     setDownloadingAll(true);
     setDownloadProgress(0);
 
+    const [JSZip, saveAs] = await Promise.all([loadJSZip(), loadFileSaver()]);
     const zip = new JSZip();
     const totalItems = bannerSizes.length + iconSizes.length * 2 + 6; // banners + icons + profile pics
     let completed = 0;
