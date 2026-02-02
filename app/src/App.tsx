@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import {
   BrowserRouter,
   Routes,
@@ -27,23 +27,37 @@ import { PWAInstallPrompt } from '@/components/molecules';
 // Templates
 import { PageLayout } from '@/components/templates';
 
-// Features
+// Critical path - loaded immediately
 import { LandingPage } from '@/features/landing/LandingPage';
 import { Onboarding } from '@/features/onboarding/Onboarding';
-import { Dashboard } from '@/features/dashboard/Dashboard';
-import { LearningPathway } from '@/features/learning-pathway/LearningPathway';
-import { SpacedRepetition } from '@/features/spaced-repetition/SpacedRepetition';
-import { DailyChallenges } from '@/features/daily-challenges/DailyChallenges';
-import { KnowledgeMap } from '@/features/knowledge-map/KnowledgeMap';
-import { ModuleHub } from '@/features/module-hub/ModuleHub';
-import ModulePage from '@/features/module-page/ModulePage';
-import { Settings } from '@/features/settings/Settings';
-import { VisualLab } from '@/features/visual-lab/VisualLab';
-import { LearningSciencePage } from '@/features/science/LearningSciencePage';
-import { BookListPage } from '@/features/books/BookListPage';
-import { BlogPage } from '@/features/blog/BlogPage';
-import { BlogArticlePage } from '@/features/blog/BlogArticlePage';
-import { HowToPage } from '@/features/how-to/HowToPage';
+
+// Code-split routes - lazy loaded for better performance
+const Dashboard = lazy(() => import('@/features/dashboard/Dashboard').then(m => ({ default: m.Dashboard })));
+const LearningPathway = lazy(() => import('@/features/learning-pathway/LearningPathway').then(m => ({ default: m.LearningPathway })));
+const SpacedRepetition = lazy(() => import('@/features/spaced-repetition/SpacedRepetition').then(m => ({ default: m.SpacedRepetition })));
+const DailyChallenges = lazy(() => import('@/features/daily-challenges/DailyChallenges').then(m => ({ default: m.DailyChallenges })));
+const KnowledgeMap = lazy(() => import('@/features/knowledge-map/KnowledgeMap').then(m => ({ default: m.KnowledgeMap })));
+const ModuleHub = lazy(() => import('@/features/module-hub/ModuleHub').then(m => ({ default: m.ModuleHub })));
+const ModulePage = lazy(() => import('@/features/module-page/ModulePage'));
+const Settings = lazy(() => import('@/features/settings/Settings').then(m => ({ default: m.Settings })));
+const VisualLab = lazy(() => import('@/features/visual-lab/VisualLab').then(m => ({ default: m.VisualLab })));
+const LearningSciencePage = lazy(() => import('@/features/science/LearningSciencePage').then(m => ({ default: m.LearningSciencePage })));
+const BookListPage = lazy(() => import('@/features/books/BookListPage').then(m => ({ default: m.BookListPage })));
+const BlogPage = lazy(() => import('@/features/blog/BlogPage').then(m => ({ default: m.BlogPage })));
+const BlogArticlePage = lazy(() => import('@/features/blog/BlogArticlePage').then(m => ({ default: m.BlogArticlePage })));
+const HowToPage = lazy(() => import('@/features/how-to/HowToPage').then(m => ({ default: m.HowToPage })));
+
+// Loading fallback for lazy components
+function PageLoader() {
+  return (
+    <div className="min-h-screen bg-base flex items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-10 h-10 border-2 border-golden/30 border-t-golden rounded-full animate-spin" />
+        <p className="text-text-muted text-sm">Loading...</p>
+      </div>
+    </div>
+  );
+}
 
 // Global Celebration Modals
 function CelebrationModals() {
@@ -162,14 +176,16 @@ function AppRoutes() {
         }
       />
 
-      {/* Main App Routes */}
+      {/* Main App Routes - Lazy loaded */}
       <Route
         path="/dashboard"
         element={
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
-                <Dashboard />
+                <Suspense fallback={<PageLoader />}>
+                  <Dashboard />
+                </Suspense>
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>
@@ -182,7 +198,9 @@ function AppRoutes() {
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
-                <LearningPathway />
+                <Suspense fallback={<PageLoader />}>
+                  <LearningPathway />
+                </Suspense>
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>
@@ -195,7 +213,9 @@ function AppRoutes() {
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
-                <SpacedRepetition />
+                <Suspense fallback={<PageLoader />}>
+                  <SpacedRepetition />
+                </Suspense>
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>
@@ -209,7 +229,9 @@ function AppRoutes() {
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
-                <DailyChallenges />
+                <Suspense fallback={<PageLoader />}>
+                  <DailyChallenges />
+                </Suspense>
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>
@@ -222,7 +244,9 @@ function AppRoutes() {
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
-                <KnowledgeMap />
+                <Suspense fallback={<PageLoader />}>
+                  <KnowledgeMap />
+                </Suspense>
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>
@@ -236,7 +260,9 @@ function AppRoutes() {
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
-                <Settings />
+                <Suspense fallback={<PageLoader />}>
+                  <Settings />
+                </Suspense>
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>
@@ -250,7 +276,9 @@ function AppRoutes() {
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
-                <VisualLab />
+                <Suspense fallback={<PageLoader />}>
+                  <VisualLab />
+                </Suspense>
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>
@@ -264,7 +292,9 @@ function AppRoutes() {
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
-                <ModuleHub />
+                <Suspense fallback={<PageLoader />}>
+                  <ModuleHub />
+                </Suspense>
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>
@@ -278,7 +308,9 @@ function AppRoutes() {
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
-                <ModulePage />
+                <Suspense fallback={<PageLoader />}>
+                  <ModulePage />
+                </Suspense>
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>
@@ -300,7 +332,9 @@ function AppRoutes() {
         path="/science"
         element={
           <PageTransition>
-            <LearningSciencePage />
+            <Suspense fallback={<PageLoader />}>
+              <LearningSciencePage />
+            </Suspense>
           </PageTransition>
         }
       />
@@ -308,7 +342,9 @@ function AppRoutes() {
         path="/books"
         element={
           <PageTransition>
-            <BookListPage />
+            <Suspense fallback={<PageLoader />}>
+              <BookListPage />
+            </Suspense>
           </PageTransition>
         }
       />
@@ -316,7 +352,9 @@ function AppRoutes() {
         path="/blog"
         element={
           <PageTransition>
-            <BlogPage />
+            <Suspense fallback={<PageLoader />}>
+              <BlogPage />
+            </Suspense>
           </PageTransition>
         }
       />
@@ -324,7 +362,9 @@ function AppRoutes() {
         path="/blog/:articleId"
         element={
           <PageTransition>
-            <BlogArticlePage />
+            <Suspense fallback={<PageLoader />}>
+              <BlogArticlePage />
+            </Suspense>
           </PageTransition>
         }
       />
@@ -332,7 +372,9 @@ function AppRoutes() {
         path="/how-to"
         element={
           <PageTransition>
-            <HowToPage />
+            <Suspense fallback={<PageLoader />}>
+              <HowToPage />
+            </Suspense>
           </PageTransition>
         }
       />

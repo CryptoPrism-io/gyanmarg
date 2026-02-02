@@ -601,6 +601,7 @@ export function LandingPage() {
                 src={heroBooksTransform}
                 alt="Books dissolving into forgotten memories"
                 className="w-full h-full object-cover opacity-80"
+                loading="lazy"
               />
             </motion.div>
 
@@ -698,7 +699,7 @@ export function LandingPage() {
               className="bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl overflow-hidden"
             >
               <div className="h-40 overflow-hidden">
-                <img src={featureSpacedRepetition} alt="Spaced Repetition" className="w-full h-full object-cover" />
+                <img src={featureSpacedRepetition} alt="Spaced Repetition" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-400 flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-[#111113]">
@@ -719,7 +720,7 @@ export function LandingPage() {
               className="glass border border-white/10 rounded-2xl overflow-hidden"
             >
               <div className="h-40 overflow-hidden">
-                <img src={featureVisualLearning} alt="Visual Learning" className="w-full h-full object-cover" />
+                <img src={featureVisualLearning} alt="Visual Learning" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 rounded-xl bg-[#252528] flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-[#1A1A1D] shadow-lg">
@@ -740,7 +741,7 @@ export function LandingPage() {
               className="glass border border-white/10 rounded-2xl overflow-hidden"
             >
               <div className="h-40 overflow-hidden">
-                <img src={featureGamification} alt="Gamification" className="w-full h-full object-cover" />
+                <img src={featureGamification} alt="Gamification" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 rounded-xl bg-[#252528] flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-[#1A1A1D] shadow-lg">
@@ -968,6 +969,7 @@ export function LandingPage() {
             src={ctaSectionBg}
             alt=""
             className="w-full h-full object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-transparent to-[#111113]" />
         </div>
