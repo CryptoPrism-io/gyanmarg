@@ -146,17 +146,19 @@ function ColorSwatch({ color }: { color: { name: string; hex: string; usage: str
 
   return (
     <div className="group">
-      <div
-        className="h-20 rounded-lg mb-3 cursor-pointer transition-transform hover:scale-105 flex items-center justify-center"
+      <button
+        type="button"
+        className="h-20 w-full rounded-lg mb-3 cursor-pointer transition-transform hover:scale-105 flex items-center justify-center border-0"
         style={{ backgroundColor: color.hex }}
         onClick={copyHex}
+        aria-label={`Copy ${color.name} color ${color.hex}`}
       >
         {copied ? (
           <Check className="w-5 h-5 text-white drop-shadow-lg" />
         ) : (
           <Copy className="w-4 h-4 text-white/0 group-hover:text-white/80 drop-shadow-lg transition-colors" />
         )}
-      </div>
+      </button>
       <p className="text-xs font-medium text-white/90">{color.name}</p>
       <p className="text-[10px] font-mono text-white/50">{color.hex}</p>
       <p className="text-[10px] text-white/30 mt-1">{color.usage}</p>
@@ -164,10 +166,11 @@ function ColorSwatch({ color }: { color: { name: string; hex: string; usage: str
   );
 }
 
-function DownloadButton({ onClick, label = 'Download' }: { onClick: () => void; label?: string }) {
+function DownloadButton({ onClick, label = 'Download', ariaLabel }: { onClick: () => void; label?: string; ariaLabel?: string }) {
   return (
     <button
       onClick={onClick}
+      aria-label={ariaLabel || label}
       className="px-4 py-2 border border-golden/50 text-golden text-[10px] uppercase tracking-wider rounded hover:bg-golden/10 hover:border-golden transition-colors flex items-center gap-2"
     >
       <Download className="w-3 h-3" />
@@ -213,7 +216,7 @@ function BannerPreview({ banner }: { banner: typeof bannerSizes[0] }) {
           <p className="text-sm font-medium text-white/90">{banner.name}</p>
           <p className="text-[10px] text-golden">{banner.width} × {banner.height}px</p>
         </div>
-        <DownloadButton onClick={downloadBanner} label={downloading ? 'Saving...' : 'Download'} />
+        <DownloadButton onClick={downloadBanner} label={downloading ? 'Saving...' : 'Download'} ariaLabel={`Download ${banner.name} banner`} />
       </div>
 
       {/* Banner Preview */}
@@ -266,7 +269,7 @@ function BannerPreview({ banner }: { banner: typeof bannerSizes[0] }) {
 }
 
 function IconPreview({ size, variant }: { size: number; variant: 'light' | 'dark' }) {
-  const iconRef = useRef<HTMLDivElement>(null);
+  const iconRef = useRef<HTMLButtonElement>(null);
 
   const downloadIcon = async () => {
     if (!iconRef.current) return;
@@ -291,13 +294,15 @@ function IconPreview({ size, variant }: { size: number; variant: 'light' | 'dark
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div
+      <button
+        type="button"
         ref={iconRef}
-        className={`w-16 h-16 rounded-xl ${bgClass} flex items-center justify-center cursor-pointer hover:scale-105 transition-transform`}
+        className={`w-16 h-16 rounded-xl ${bgClass} flex items-center justify-center cursor-pointer hover:scale-105 transition-transform border-0`}
         onClick={downloadIcon}
+        aria-label={`Download ${size}px ${variant} icon`}
       >
         <span className={`text-2xl font-display font-bold ${textClass}`}>P</span>
-      </div>
+      </button>
       <span className="text-[10px] text-white/40">{size}px</span>
     </div>
   );
@@ -377,6 +382,7 @@ export function BrandKitPage() {
           <button
             onClick={downloadAllAssets}
             disabled={downloadingAll}
+            aria-label="Download all brand kit assets as ZIP"
             className="px-6 py-2.5 bg-gradient-to-r from-golden to-golden/80 text-black font-semibold text-sm rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2"
           >
             <Package className="w-4 h-4" />
@@ -427,7 +433,7 @@ export function BrandKitPage() {
               </div>
             </div>
             <div className="bg-white/[0.02] border border-white/10 rounded-lg p-6">
-              <h4 className="text-[10px] uppercase tracking-wider text-white/40 mb-4">Brand Values</h4>
+              <h3 className="text-[10px] uppercase tracking-wider text-white/40 mb-4">Brand Values</h3>
               <div className="flex flex-wrap gap-2">
                 {brandData.personality.values.map((value) => (
                   <span key={value} className="px-3 py-1.5 bg-golden/10 border border-golden/30 rounded-full text-sm text-golden">
@@ -445,7 +451,7 @@ export function BrandKitPage() {
           <div className="space-y-8">
             {Object.entries(colorPalette).map(([key, group]) => (
               <div key={key} className="bg-white/[0.02] border border-white/10 rounded-lg p-6">
-                <h4 className="text-[10px] uppercase tracking-wider text-white/40 mb-4">{group.name}</h4>
+                <h3 className="text-[10px] uppercase tracking-wider text-white/40 mb-4">{group.name}</h3>
                 <div className="grid grid-cols-4 md:grid-cols-5 gap-4">
                   {group.colors.map((color) => (
                     <ColorSwatch key={color.hex} color={color} />
@@ -464,7 +470,7 @@ export function BrandKitPage() {
               <div key={font.name} className="bg-white/[0.02] border border-white/10 rounded-lg p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h4 className="text-lg font-medium text-white/90">{font.name}</h4>
+                    <h3 className="text-lg font-medium text-white/90">{font.name}</h3>
                     <p className="text-[10px] uppercase tracking-wider text-white/40">{font.usage}</p>
                   </div>
                   <div className="flex gap-2">
@@ -494,7 +500,7 @@ export function BrandKitPage() {
           <SectionHeader number="05" title="App Icons" />
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white/[0.02] border border-white/10 rounded-lg p-6">
-              <h4 className="text-[10px] uppercase tracking-wider text-white/40 mb-6">Light Variant</h4>
+              <h3 className="text-[10px] uppercase tracking-wider text-white/40 mb-6">Light Variant</h3>
               <div className="flex flex-wrap gap-4">
                 {iconSizes.slice(0, 4).map((size) => (
                   <IconPreview key={size} size={size} variant="light" />
@@ -502,7 +508,7 @@ export function BrandKitPage() {
               </div>
             </div>
             <div className="bg-white/[0.02] border border-white/10 rounded-lg p-6">
-              <h4 className="text-[10px] uppercase tracking-wider text-white/40 mb-6">Dark Variant</h4>
+              <h3 className="text-[10px] uppercase tracking-wider text-white/40 mb-6">Dark Variant</h3>
               <div className="flex flex-wrap gap-4">
                 {iconSizes.slice(0, 4).map((size) => (
                   <IconPreview key={size} size={size} variant="dark" />
@@ -530,10 +536,10 @@ export function BrandKitPage() {
           <SectionHeader number="07" title="Usage Guidelines" />
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white/[0.02] border border-white/10 rounded-lg p-6">
-              <h4 className="text-[10px] uppercase tracking-wider text-coral mb-4 flex items-center gap-2">
+              <h3 className="text-[10px] uppercase tracking-wider text-coral mb-4 flex items-center gap-2">
                 <AlertCircle className="w-3 h-3" />
                 Don&apos;ts
-              </h4>
+              </h3>
               <ul className="space-y-2 text-sm text-white/60">
                 <li>• Don&apos;t rotate or skew the logo</li>
                 <li>• Don&apos;t stretch or distort proportions</li>
@@ -544,10 +550,10 @@ export function BrandKitPage() {
               </ul>
             </div>
             <div className="bg-white/[0.02] border border-white/10 rounded-lg p-6">
-              <h4 className="text-[10px] uppercase tracking-wider text-sage mb-4 flex items-center gap-2">
+              <h3 className="text-[10px] uppercase tracking-wider text-sage mb-4 flex items-center gap-2">
                 <Check className="w-3 h-3" />
                 Minimum Sizes
-              </h4>
+              </h3>
               <ul className="space-y-2 text-sm text-white/60">
                 <li>• Digital: 24px minimum width</li>
                 <li>• Print: 0.5 inch / 12mm minimum</li>
@@ -563,6 +569,7 @@ export function BrandKitPage() {
           <button
             onClick={downloadAllAssets}
             disabled={downloadingAll}
+            aria-label="Download complete brand kit with all assets"
             className="px-10 py-4 bg-gradient-to-r from-golden to-sage text-black font-semibold text-lg rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 inline-flex items-center gap-3 shadow-lg shadow-golden/20"
           >
             <Package className="w-5 h-5" />

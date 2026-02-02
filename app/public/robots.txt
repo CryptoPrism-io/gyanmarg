@@ -1,0 +1,6 @@
+# Polymind robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://polymind.app/sitemap.xml
