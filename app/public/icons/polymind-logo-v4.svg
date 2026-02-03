@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="mainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="bigGlow">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Ambient background glow -->
+  <circle cx="256" cy="256" r="140" fill="#F59E0B" opacity="0.1" filter="url(#bigGlow)"/>
+
+  <!-- Infinity loop / endless learning symbol -->
+  <g filter="url(#glow)">
+    <path
+      d="M 256 200
+         C 320 200 360 230 360 280
+         C 360 330 320 360 256 360
+         C 192 360 152 330 152 280
+         C 152 230 192 200 256 200
+
+         M 256 200
+         C 192 200 152 170 152 220
+         C 152 170 192 140 256 140
+         C 320 140 360 170 360 220
+         C 360 170 320 200 256 200"
+      fill="none"
+      stroke="url(#mainGrad)"
+      stroke-width="8"
+      stroke-linecap="round"
+    />
+  </g>
+
+  <!-- Actually let's do a cleaner infinity -->
+  <g filter="url(#glow)" transform="translate(256,256)">
+    <!-- Infinity symbol centered -->
+    <path
+      d="M 0 0
+         C 40 -50 100 -50 100 0
+         C 100 50 40 50 0 0
+         C -40 -50 -100 -50 -100 0
+         C -100 50 -40 50 0 0"
+      fill="none"
+      stroke="url(#mainGrad)"
+      stroke-width="12"
+      stroke-linecap="round"
+    />
+  </g>
+
+  <!-- Center node where paths cross -->
+  <circle cx="256" cy="256" r="16" fill="#FDE68A" filter="url(#glow)"/>
+  <circle cx="256" cy="256" r="6" fill="#FFFFFF"/>
+
+  <!-- End nodes -->
+  <circle cx="156" cy="256" r="12" fill="#F59E0B" filter="url(#glow)"/>
+  <circle cx="356" cy="256" r="12" fill="#F59E0B" filter="url(#glow)"/>
+
+  <!-- Small accent nodes -->
+  <circle cx="206" cy="220" r="6" fill="#FCD34D" opacity="0.8"/>
+  <circle cx="306" cy="220" r="6" fill="#FCD34D" opacity="0.8"/>
+  <circle cx="206" cy="292" r="6" fill="#D97706" opacity="0.8"/>
+  <circle cx="306" cy="292" r="6" fill="#D97706" opacity="0.8"/>
+</svg>

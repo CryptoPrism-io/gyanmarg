@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Abstract brain/mind shape made of flowing lines -->
+  <g filter="url(#glow)">
+    <!-- Left hemisphere curves -->
+    <path
+      d="M 256 100
+         Q 140 120 120 200
+         Q 100 280 140 340
+         Q 180 400 256 412"
+      fill="none"
+      stroke="url(#grad1)"
+      stroke-width="6"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M 256 140
+         Q 170 155 155 220
+         Q 140 285 175 335
+         Q 210 385 256 392"
+      fill="none"
+      stroke="url(#grad1)"
+      stroke-width="4"
+      stroke-linecap="round"
+      opacity="0.7"
+    />
+
+    <!-- Right hemisphere curves -->
+    <path
+      d="M 256 100
+         Q 372 120 392 200
+         Q 412 280 372 340
+         Q 332 400 256 412"
+      fill="none"
+      stroke="url(#grad2)"
+      stroke-width="6"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M 256 140
+         Q 342 155 357 220
+         Q 372 285 337 335
+         Q 302 385 256 392"
+      fill="none"
+      stroke="url(#grad2)"
+      stroke-width="4"
+      stroke-linecap="round"
+      opacity="0.7"
+    />
+
+    <!-- Center vertical connection -->
+    <line x1="256" y1="100" x2="256" y2="412" stroke="#F59E0B" stroke-width="3" opacity="0.4"/>
+
+    <!-- Cross connections (neural bridges) -->
+    <path d="M 175 200 Q 256 180 337 200" fill="none" stroke="#FCD34D" stroke-width="2" opacity="0.5"/>
+    <path d="M 160 260 Q 256 240 352 260" fill="none" stroke="#FCD34D" stroke-width="2" opacity="0.5"/>
+    <path d="M 175 320 Q 256 300 337 320" fill="none" stroke="#FCD34D" stroke-width="2" opacity="0.5"/>
+  </g>
+
+  <!-- Knowledge nodes -->
+  <circle cx="256" cy="100" r="14" fill="#FCD34D" filter="url(#glow)"/>
+  <circle cx="256" cy="412" r="14" fill="#F59E0B" filter="url(#glow)"/>
+
+  <!-- Side nodes -->
+  <circle cx="120" cy="200" r="10" fill="#FCD34D" opacity="0.9"/>
+  <circle cx="140" cy="340" r="10" fill="#F59E0B" opacity="0.9"/>
+  <circle cx="392" cy="200" r="10" fill="#F59E0B" opacity="0.9"/>
+  <circle cx="372" cy="340" r="10" fill="#D97706" opacity="0.9"/>
+
+  <!-- Center focal point -->
+  <circle cx="256" cy="256" r="20" fill="#0A0A0B" stroke="#F59E0B" stroke-width="4"/>
+  <circle cx="256" cy="256" r="8" fill="#FCD34D"/>
+</svg>
