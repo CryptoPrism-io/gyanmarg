@@ -32,6 +32,7 @@ interface LessonViewerProps {
   levelName?: string;
   nextLesson?: NextLessonInfo | null;
   onNextLesson?: (lesson: PathwayLesson) => void;
+  backgroundImage?: string;
 }
 
 const colorGradients: Record<string, string> = {
@@ -62,6 +63,7 @@ export function LessonViewer({
   levelName,
   nextLesson,
   onNextLesson,
+  backgroundImage,
 }: LessonViewerProps) {
   const [sessionXP, setSessionXP] = useState(0);
   const [timeSpent, setTimeSpent] = useState(0);
@@ -103,8 +105,23 @@ export function LessonViewer({
       exit={{ opacity: 0 }}
       className="fixed inset-0 bg-base z-[9999] flex flex-col"
     >
+      {/* Background Image */}
+      {backgroundImage && (
+        <>
+          <div
+            className="absolute inset-0 z-0 opacity-20 blur-sm"
+            style={{
+              backgroundImage: `url(${backgroundImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center top',
+            }}
+          />
+          <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/60 via-background/85 to-background" />
+        </>
+      )}
+
       {/* Header */}
-      <div className="flex-shrink-0 border-b border-white/10">
+      <div className="relative z-10 flex-shrink-0 border-b border-white/10">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button
@@ -165,7 +182,7 @@ export function LessonViewer({
       </div>
 
       {/* Main Content Area - Tinder Card Stack */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="relative z-10 flex-1 overflow-y-auto">
         <div className="max-w-4xl mx-auto px-4">
           <TinderCardStack
             key={lesson.id}
@@ -181,7 +198,7 @@ export function LessonViewer({
       </div>
 
       {/* Mobile Bottom Bar */}
-      <div className="md:hidden flex-shrink-0 border-t border-white/10 p-3 bg-base/80 backdrop-blur-xl">
+      <div className="relative z-10 md:hidden flex-shrink-0 border-t border-white/10 p-3 bg-base/80 backdrop-blur-xl">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 text-sm text-text-muted">
             <span>{formatTime(timeSpent)}</span>

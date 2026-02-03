@@ -31,3 +31,8 @@ export { DemoFlashCard } from './DemoFlashCard';
 export { DemoTinderStack } from './DemoTinderStack';
 export { BlogEmbed } from './BlogEmbed';
 export type { EmbedType } from './BlogEmbed';
+
+// Netflix-style Pathway Components
+export { NetflixModuleCard } from './NetflixModuleCard';
+export { NetflixLevelCard } from './NetflixLevelCard';
+export { GlassLessonRow } from './GlassLessonRow';

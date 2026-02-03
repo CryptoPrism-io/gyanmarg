@@ -1,0 +1,312 @@
+// AI-generated module and level images mapping
+
+// Module images - 16 modules
+import modulePersonalDevelopment from '@/assets/ai-images/modules/module-personal-development.webp';
+import moduleAiMl from '@/assets/ai-images/modules/module-ai-machine-learning.webp';
+import moduleWealthBuilding from '@/assets/ai-images/modules/module-wealth-building.webp';
+import moduleNegotiation from '@/assets/ai-images/modules/module-negotiation-influence.webp';
+import moduleBruceLee from '@/assets/ai-images/modules/module-bruce-lee-philosophy.webp';
+import moduleBlockchain from '@/assets/ai-images/modules/module-blockchain-web3.webp';
+import modulePsychology from '@/assets/ai-images/modules/module-psychology-decisions.webp';
+import modulePythonData from '@/assets/ai-images/modules/module-python-data-science.webp';
+import moduleLifeDesign from '@/assets/ai-images/modules/module-life-design.webp';
+import moduleMasterSynthesis from '@/assets/ai-images/modules/module-master-synthesis.webp';
+import moduleBrain from '@/assets/ai-images/modules/module-brain-neuroscience.webp';
+import moduleBody from '@/assets/ai-images/modules/module-body-longevity.webp';
+import moduleSpirituality from '@/assets/ai-images/modules/module-spirituality-sadhana.webp';
+import moduleShiva from '@/assets/ai-images/modules/module-shiva-shakti.webp';
+import moduleTemple from '@/assets/ai-images/modules/module-temple-science.webp';
+import modulePolymath from '@/assets/ai-images/modules/module-polymath-mastery.webp';
+
+// ============================================
+// Level images - Personal Development (10)
+// ============================================
+import levelPd01 from '@/assets/ai-images/levels/level-pd-01-foundation.webp';
+import levelPd02 from '@/assets/ai-images/levels/level-pd-02-deep-work.webp';
+import levelPd03 from '@/assets/ai-images/levels/level-pd-03-future-self.webp';
+import levelPd04 from '@/assets/ai-images/levels/level-pd-04-purpose.webp';
+import levelPd05 from '@/assets/ai-images/levels/level-pd-05-values.webp';
+import levelPd06 from '@/assets/ai-images/levels/level-pd-06-mental-models.webp';
+import levelPd07 from '@/assets/ai-images/levels/level-pd-07-productivity.webp';
+import levelPd08 from '@/assets/ai-images/levels/level-pd-08-emotional.webp';
+import levelPd09 from '@/assets/ai-images/levels/level-pd-09-learning.webp';
+import levelPd10 from '@/assets/ai-images/levels/level-pd-10-integration.webp';
+
+// ============================================
+// Level images - AI & ML (4)
+// ============================================
+import levelAi01 from '@/assets/ai-images/levels/level-ai-01-intelligence.webp';
+import levelAi02 from '@/assets/ai-images/levels/level-ai-02-future.webp';
+import levelAi03 from '@/assets/ai-images/levels/level-ai-03-mastery.webp';
+import levelAi04 from '@/assets/ai-images/levels/level-ai-04-cutting-edge.webp';
+
+// ============================================
+// Level images - Psychology/Dark Psych (10)
+// ============================================
+import levelDp01 from '@/assets/ai-images/levels/level-dp-01-personality.webp';
+import levelDp02 from '@/assets/ai-images/levels/level-dp-02-manipulation.webp';
+import levelDp03 from '@/assets/ai-images/levels/level-dp-03-persuasion.webp';
+import levelDp04 from '@/assets/ai-images/levels/level-dp-04-biases.webp';
+import levelDp05 from '@/assets/ai-images/levels/level-dp-05-body-language.webp';
+import levelDp06 from '@/assets/ai-images/levels/level-dp-06-deception.webp';
+import levelDp07 from '@/assets/ai-images/levels/level-dp-07-social-engineering.webp';
+import levelDp08 from '@/assets/ai-images/levels/level-dp-08-emotional-manipulation.webp';
+import levelDp09 from '@/assets/ai-images/levels/level-dp-09-power.webp';
+import levelDp10 from '@/assets/ai-images/levels/level-dp-10-ethics.webp';
+
+// ============================================
+// Level images - Python Data Science (7)
+// ============================================
+import levelPython01 from '@/assets/ai-images/levels/level-python-01-fundamentals.webp';
+import levelPython02 from '@/assets/ai-images/levels/level-python-02-analysis.webp';
+import levelPython03 from '@/assets/ai-images/levels/level-python-03-deepdive.webp';
+import levelPython04 from '@/assets/ai-images/levels/level-python-04-pandas.webp';
+import levelPython05 from '@/assets/ai-images/levels/level-python-05-visualization.webp';
+import levelPython06 from '@/assets/ai-images/levels/level-python-06-ml.webp';
+import levelPython07 from '@/assets/ai-images/levels/level-python-07-projects.webp';
+
+// ============================================
+// Level images - Wealth Building (11)
+// ============================================
+import levelWealth01 from '@/assets/ai-images/levels/level-wealth-01-mindset.webp';
+import levelWealth02 from '@/assets/ai-images/levels/level-wealth-02-investing.webp';
+import levelWealth03 from '@/assets/ai-images/levels/level-wealth-03-leads.webp';
+import levelWealth04 from '@/assets/ai-images/levels/level-wealth-04-business.webp';
+import levelWealth05 from '@/assets/ai-images/levels/level-wealth-05-advanced-investing.webp';
+import levelWealth06 from '@/assets/ai-images/levels/level-wealth-06-building.webp';
+import levelWealth07 from '@/assets/ai-images/levels/level-wealth-07-realestate.webp';
+import levelWealth08 from '@/assets/ai-images/levels/level-wealth-08-tax.webp';
+import levelWealth09 from '@/assets/ai-images/levels/level-wealth-09-psychology.webp';
+import levelWealth10 from '@/assets/ai-images/levels/level-wealth-10-fire.webp';
+import levelWealth11 from '@/assets/ai-images/levels/level-wealth-11-billionaire.webp';
+
+// ============================================
+// Level images - Negotiation (4)
+// ============================================
+import levelNeg01 from '@/assets/ai-images/levels/level-neg-01-fbi.webp';
+import levelNeg02 from '@/assets/ai-images/levels/level-neg-02-words.webp';
+import levelNeg03 from '@/assets/ai-images/levels/level-neg-03-mastery.webp';
+import levelNeg04 from '@/assets/ai-images/levels/level-neg-04-advanced.webp';
+
+// ============================================
+// Level images - Bruce Lee (5)
+// ============================================
+import levelBruce01 from '@/assets/ai-images/levels/level-bruce-01-water.webp';
+import levelBruce02 from '@/assets/ai-images/levels/level-bruce-02-noway.webp';
+import levelBruce03 from '@/assets/ai-images/levels/level-bruce-03-mindbody.webp';
+import levelBruce04 from '@/assets/ai-images/levels/level-bruce-04-actualization.webp';
+import levelBruce05 from '@/assets/ai-images/levels/level-bruce-05-legacy.webp';
+
+// ============================================
+// Level images - Blockchain (3)
+// ============================================
+import levelBlockchain01 from '@/assets/ai-images/levels/level-blockchain-01-fundamentals.webp';
+import levelBlockchain02 from '@/assets/ai-images/levels/level-blockchain-02-deepdive.webp';
+import levelBlockchain03 from '@/assets/ai-images/levels/level-blockchain-03-cutting-edge.webp';
+
+// ============================================
+// Level images - Life Design (3)
+// ============================================
+import levelLife01 from '@/assets/ai-images/levels/level-life-01-design.webp';
+import levelLife02 from '@/assets/ai-images/levels/level-life-02-financial.webp';
+import levelLife03 from '@/assets/ai-images/levels/level-life-03-advanced.webp';
+
+// ============================================
+// Level images - Master Synthesis (3)
+// ============================================
+import levelSynthesis01 from '@/assets/ai-images/levels/level-synthesis-01-dots.webp';
+import levelSynthesis02 from '@/assets/ai-images/levels/level-synthesis-02-legacy.webp';
+import levelSynthesis03 from '@/assets/ai-images/levels/level-synthesis-03-advanced.webp';
+
+// ============================================
+// Level images - Brain & Neuroscience (3)
+// ============================================
+import levelBrain01 from '@/assets/ai-images/levels/level-brain-01-foundations.webp';
+import levelBrain02 from '@/assets/ai-images/levels/level-brain-02-optimization.webp';
+import levelBrain03 from '@/assets/ai-images/levels/level-brain-03-advanced.webp';
+
+// ============================================
+// Level images - Body & Longevity (3)
+// ============================================
+import levelBody01 from '@/assets/ai-images/levels/level-body-01-longevity.webp';
+import levelBody02 from '@/assets/ai-images/levels/level-body-02-physical.webp';
+import levelBody03 from '@/assets/ai-images/levels/level-body-03-biohacking.webp';
+
+// ============================================
+// Level images - Spirituality (3)
+// ============================================
+import levelSpirit01 from '@/assets/ai-images/levels/level-spirit-01-sadhana.webp';
+import levelSpirit02 from '@/assets/ai-images/levels/level-spirit-02-meditation.webp';
+import levelSpirit03 from '@/assets/ai-images/levels/level-spirit-03-advanced.webp';
+
+// ============================================
+// Level images - Shiva-Shakti (3)
+// ============================================
+import levelShiva01 from '@/assets/ai-images/levels/level-shiva-01-kashmir.webp';
+import levelShiva02 from '@/assets/ai-images/levels/level-shiva-02-tattvas.webp';
+import levelShiva03 from '@/assets/ai-images/levels/level-shiva-03-nondual.webp';
+
+// ============================================
+// Level images - Temple Science (3)
+// ============================================
+import levelTemple01 from '@/assets/ai-images/levels/level-temple-01-foundations.webp';
+import levelTemple02 from '@/assets/ai-images/levels/level-temple-02-architecture.webp';
+import levelTemple03 from '@/assets/ai-images/levels/level-temple-03-energy.webp';
+
+// ============================================
+// Level images - Polymath Mastery (3)
+// ============================================
+import levelPolymath01 from '@/assets/ai-images/levels/level-polymath-01-foundations.webp';
+import levelPolymath02 from '@/assets/ai-images/levels/level-polymath-02-learning.webp';
+import levelPolymath03 from '@/assets/ai-images/levels/level-polymath-03-mastery.webp';
+
+// Module ID to image mapping
+export const moduleImages: Record<string, string> = {
+  'personal-development': modulePersonalDevelopment,
+  'ai-ml': moduleAiMl,
+  'wealth-building': moduleWealthBuilding,
+  'negotiation': moduleNegotiation,
+  'bruce-lee': moduleBruceLee,
+  'blockchain': moduleBlockchain,
+  'psychology': modulePsychology,
+  'python-data': modulePythonData,
+  'life-design': moduleLifeDesign,
+  'master-synthesis': moduleMasterSynthesis,
+  'brain-neuroscience': moduleBrain,
+  'body-longevity': moduleBody,
+  'spirituality-sadhana': moduleSpirituality,
+  'shiva-shakti': moduleShiva,
+  'temple-science': moduleTemple,
+  'polymath-mastery': modulePolymath,
+};
+
+// Level ID to image mapping - all 75 levels
+export const levelImages: Record<string, string> = {
+  // Personal Development (10)
+  'pd-level1': levelPd01,
+  'pd-level2': levelPd02,
+  'pd-level3': levelPd03,
+  'pd-level4': levelPd04,
+  'pd-level5': levelPd05,
+  'pd-level6': levelPd06,
+  'pd-level7': levelPd07,
+  'pd-level8': levelPd08,
+  'pd-level9': levelPd09,
+  'pd-level10': levelPd10,
+
+  // AI & ML (4)
+  'ai-level1': levelAi01,
+  'ai-level2': levelAi02,
+  'ai-level3': levelAi03,
+  'ai-level4': levelAi04,
+
+  // Psychology/Dark Psych (10)
+  'dp-level1': levelDp01,
+  'dp-level2': levelDp02,
+  'dp-level3': levelDp03,
+  'dp-level4': levelDp04,
+  'dp-level5': levelDp05,
+  'dp-level6': levelDp06,
+  'dp-level7': levelDp07,
+  'dp-level8': levelDp08,
+  'dp-level9': levelDp09,
+  'dp-level10': levelDp10,
+
+  // Python Data Science (7)
+  'python-level1': levelPython01,
+  'python-level2': levelPython02,
+  'python-level3': levelPython03,
+  'python-level4': levelPython04,
+  'python-level5': levelPython05,
+  'python-level6': levelPython06,
+  'python-level7': levelPython07,
+
+  // Wealth Building (11)
+  'wealth-level1': levelWealth01,
+  'wealth-level2': levelWealth02,
+  'wealth-level3': levelWealth03,
+  'wealth-level4': levelWealth04,
+  'wealth-level5': levelWealth05,
+  'wealth-level6': levelWealth06,
+  'wealth-level7': levelWealth07,
+  'wealth-level8': levelWealth08,
+  'wealth-level9': levelWealth09,
+  'wealth-level10': levelWealth10,
+  'wealth-level11': levelWealth11,
+
+  // Negotiation (4)
+  'neg-level1': levelNeg01,
+  'neg-level2': levelNeg02,
+  'neg-level3': levelNeg03,
+  'neg-level4': levelNeg04,
+
+  // Bruce Lee (5)
+  'bruce-level1': levelBruce01,
+  'bruce-level2': levelBruce02,
+  'bruce-level3': levelBruce03,
+  'bruce-level4': levelBruce04,
+  'bruce-level5': levelBruce05,
+
+  // Blockchain (3)
+  'blockchain-level1': levelBlockchain01,
+  'blockchain-level2': levelBlockchain02,
+  'blockchain-level3': levelBlockchain03,
+
+  // Life Design (3)
+  'life-level1': levelLife01,
+  'life-level2': levelLife02,
+  'life-level3': levelLife03,
+
+  // Master Synthesis (3)
+  'synthesis-level1': levelSynthesis01,
+  'synthesis-level2': levelSynthesis02,
+  'synthesis-level3': levelSynthesis03,
+
+  // Brain & Neuroscience (3)
+  'brain-level1': levelBrain01,
+  'brain-level2': levelBrain02,
+  'brain-level3': levelBrain03,
+
+  // Body & Longevity (3)
+  'body-level1': levelBody01,
+  'body-level2': levelBody02,
+  'body-level3': levelBody03,
+
+  // Spirituality (3)
+  'spirit-level1': levelSpirit01,
+  'spirit-level2': levelSpirit02,
+  'spirit-level3': levelSpirit03,
+
+  // Shiva-Shakti (3)
+  'shiva-level1': levelShiva01,
+  'shiva-level2': levelShiva02,
+  'shiva-level3': levelShiva03,
+
+  // Temple Science (3)
+  'temple-level1': levelTemple01,
+  'temple-level2': levelTemple02,
+  'temple-level3': levelTemple03,
+
+  // Polymath Mastery (3)
+  'polymath-level1': levelPolymath01,
+  'polymath-level2': levelPolymath02,
+  'polymath-level3': levelPolymath03,
+};
+
+// Helper to get module image with fallback
+export function getModuleImage(moduleId: string): string {
+  return moduleImages[moduleId] || modulePersonalDevelopment;
+}
+
+// Helper to get level image with module fallback
+export function getLevelImage(levelId: string, moduleId: string): string {
+  // Try exact level ID match first
+  if (levelImages[levelId]) {
+    return levelImages[levelId];
+  }
+
+  // Fallback to module image
+  return getModuleImage(moduleId);
+}
+
+export default moduleImages;
