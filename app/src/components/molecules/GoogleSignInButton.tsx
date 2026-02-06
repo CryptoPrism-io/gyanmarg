@@ -75,12 +75,8 @@ export function GoogleSignInButton({
         if (onSignIn) {
           onSignIn();
         } else {
-          // Default navigation behavior
-          if (result.needsOnboarding) {
-            navigate('/onboarding');
-          } else {
-            navigate('/dashboard');
-          }
+          // Default navigation: go to dashboard
+          navigate('/dashboard');
         }
       }
     } catch (error) {

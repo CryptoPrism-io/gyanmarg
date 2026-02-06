@@ -375,7 +375,7 @@ export function BookListPage() {
             Start building your Polymind and never forget what you read.
           </p>
           <Link
-            to="/onboarding"
+            to="/dashboard"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-400 text-black font-semibold rounded-xl hover:opacity-90 transition"
           >
             Build Your Polymind — Free
@@ -401,7 +401,7 @@ export function BookListPage() {
                 <h4 className="font-medium text-sm mb-3 text-gray-300">Product</h4>
                 <ul className="space-y-2 text-sm text-gray-500">
                   <li><Link to="/" className="hover:text-white transition">Home</Link></li>
-                  <li><Link to="/onboarding" className="hover:text-white transition">Get Started</Link></li>
+                  <li><Link to="/dashboard" className="hover:text-white transition">Get Started</Link></li>
                 </ul>
               </div>
               <div>

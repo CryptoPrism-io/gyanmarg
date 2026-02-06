@@ -18,6 +18,9 @@ export { default as shivaPathway } from './shiva';
 export { default as templePathway } from './temple';
 export { default as polymathPathway } from './polymath';
 
+// Emotional Intelligence module
+export { default as emotionalIntelligencePathway } from './emotional-intelligence';
+
 // FIRE Movement lessons for Wealth Building module
 export { fireLessons } from './wealth-fire';
 

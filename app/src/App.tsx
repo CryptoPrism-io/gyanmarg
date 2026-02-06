@@ -29,7 +29,6 @@ import { PageLayout } from '@/components/templates';
 
 // Critical path - loaded immediately
 import { LandingPage } from '@/features/landing/LandingPage';
-import { Onboarding } from '@/features/onboarding/Onboarding';
 
 // Code-split routes - lazy loaded for better performance
 const Dashboard = lazy(() => import('@/features/dashboard/Dashboard').then(m => ({ default: m.Dashboard })));
@@ -41,6 +40,7 @@ const ModuleHub = lazy(() => import('@/features/module-hub/ModuleHub').then(m =>
 const ModulePage = lazy(() => import('@/features/module-page/ModulePage'));
 const Settings = lazy(() => import('@/features/settings/Settings').then(m => ({ default: m.Settings })));
 const VisualLab = lazy(() => import('@/features/visual-lab/VisualLab').then(m => ({ default: m.VisualLab })));
+
 const LearningSciencePage = lazy(() => import('@/features/science/LearningSciencePage').then(m => ({ default: m.LearningSciencePage })));
 const BookListPage = lazy(() => import('@/features/books/BookListPage').then(m => ({ default: m.BookListPage })));
 const BlogPage = lazy(() => import('@/features/blog/BlogPage').then(m => ({ default: m.BlogPage })));
@@ -146,35 +146,19 @@ function PageTransition({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Protected route wrapper - requires onboarding only (auth checked at action level)
+// Protected route wrapper - auth checked at action level, no onboarding gate
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const isOnboarded = useUserStore((state) => state.isOnboarded);
-
-  if (!isOnboarded) {
-    return <Navigate to="/onboarding" replace />;
-  }
-
   return <>{children}</>;
 }
 
 // App Routes
 function AppRoutes() {
-  const isOnboarded = useUserStore((state) => state.isOnboarded);
-
   return (
     <Routes>
-      {/* Onboarding - no auth required */}
+      {/* Onboarding removed — redirect to dashboard */}
       <Route
         path="/onboarding"
-        element={
-          isOnboarded ? (
-            <Navigate to="/dashboard" replace />
-          ) : (
-            <PageTransition>
-              <Onboarding />
-            </PageTransition>
-          )
-        }
+        element={<Navigate to="/dashboard" replace />}
       />
 
       {/* Main App Routes - Lazy loaded */}
@@ -285,6 +269,7 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
+
 
       {/* Module Hub */}
       <Route

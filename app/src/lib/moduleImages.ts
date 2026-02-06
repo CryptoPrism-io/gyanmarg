@@ -235,6 +235,20 @@ import levelPolymath01 from '@/assets/ai-images/levels/level-polymath-01-foundat
 import levelPolymath02 from '@/assets/ai-images/levels/level-polymath-02-learning.webp';
 import levelPolymath03 from '@/assets/ai-images/levels/level-polymath-03-mastery.webp';
 
+// ============================================
+// Level images - Emotional Intelligence (10)
+// ============================================
+import levelEq01 from '@/assets/ai-images/levels/level-eq-01-foundations.webp';
+import levelEq02 from '@/assets/ai-images/levels/level-eq-02-self-awareness.webp';
+import levelEq03 from '@/assets/ai-images/levels/level-eq-03-regulation.webp';
+import levelEq04 from '@/assets/ai-images/levels/level-eq-04-motivation.webp';
+import levelEq05 from '@/assets/ai-images/levels/level-eq-05-empathy.webp';
+import levelEq06 from '@/assets/ai-images/levels/level-eq-06-social-skills.webp';
+import levelEq07 from '@/assets/ai-images/levels/level-eq-07-relationships.webp';
+import levelEq08 from '@/assets/ai-images/levels/level-eq-08-leadership.webp';
+import levelEq09 from '@/assets/ai-images/levels/level-eq-09-dark-side.webp';
+import levelEq10 from '@/assets/ai-images/levels/level-eq-10-integration.webp';
+
 // Module ID to image mapping
 export const moduleImages: Record<string, string> = {
   // Original 16 modules
@@ -442,6 +456,18 @@ export const levelImages: Record<string, string> = {
   'polymath-level1': levelPolymath01,
   'polymath-level2': levelPolymath02,
   'polymath-level3': levelPolymath03,
+
+  // Emotional Intelligence (10)
+  'eq-level1': levelEq01,
+  'eq-level2': levelEq02,
+  'eq-level3': levelEq03,
+  'eq-level4': levelEq04,
+  'eq-level5': levelEq05,
+  'eq-level6': levelEq06,
+  'eq-level7': levelEq07,
+  'eq-level8': levelEq08,
+  'eq-level9': levelEq09,
+  'eq-level10': levelEq10,
 };
 
 // Helper to get module image with fallback

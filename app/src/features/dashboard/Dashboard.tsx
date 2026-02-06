@@ -10,7 +10,7 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
-import { useUserStore } from '@/store/userStore';
+import { useAuthContext } from '@/contexts/AuthContext';
 import { useProgressStore } from '@/store/progressStore';
 import { ModuleLayout, Section } from '@/components/templates';
 import { Card, GlassCard } from '@/components/molecules';
@@ -128,7 +128,8 @@ function DailyQuoteSection() {
 }
 
 export function Dashboard() {
-  const profile = useUserStore((state) => state.profile);
+  const { user } = useAuthContext();
+  const userName = user?.displayName || null;
   const userProgress = useProgressStore((state) => state.userProgress);
   const getLevelProgress = useProgressStore((state) => state.getLevelProgress);
   const generateWeeklyChallenge = useProgressStore((state) => state.generateWeeklyChallenge);
@@ -202,7 +203,7 @@ export function Dashboard() {
 
   return (
     <ModuleLayout
-      title={`Welcome back${profile?.name ? `, ${profile.name}` : ''}`}
+      title={`Welcome back${userName ? `, ${userName}` : ''}`}
       subtitle="Your personal development journey"
       icon={<Sparkles className="w-5 h-5" />}
       headerGradient="sunrise"

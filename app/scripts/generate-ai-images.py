@@ -408,6 +408,20 @@ PROMPTS = {
         "level-polymath-01-foundations.webp": "Leonardo da Vinci style notebook in sumi-e, amber curiosity light, polymath foundations, purple multi-domain sketches, zen renaissance mind.",
         "level-polymath-02-learning.webp": "Multiple skill trees growing from one root, amber learning systems, knowledge acquisition, purple cross-pollination, zen meta-learning.",
         "level-polymath-03-mastery.webp": "Expert-generalist crowned in amber light, polymath mastery achieved, purple infinite domains, zen ultimate knowledge integration.",
+
+        # ============================================
+        # Emotional Intelligence - 10 Levels
+        # ============================================
+        "level-eq-01-foundations.webp": "Sumi-e heart and brain side by side, amber golden bridge connecting them, emotional intelligence foundations, purple empathy waves radiating, zen self-awareness awakening.",
+        "level-eq-02-self-awareness.webp": "Ink brush figure gazing into amber reflective pool, mirror of the soul, self-awareness mastery, purple emotional patterns revealed beneath surface, zen inner knowing.",
+        "level-eq-03-regulation.webp": "Stormy waves calming into still water in sumi-e style, amber anchor of stability at center, self-regulation mastery, purple turbulence dissolving into peace, zen emotional balance.",
+        "level-eq-04-motivation.webp": "Inner flame rising through figure's core in ink wash, amber fire of intrinsic motivation, grit and drive, purple flow state energy spiraling upward, zen purpose ignited.",
+        "level-eq-05-empathy.webp": "Two silhouette profiles facing each other with amber light flowing between minds, empathy bridge, purple compassion waves connecting hearts, zen deep understanding of others.",
+        "level-eq-06-social-skills.webp": "Network of ink brush figures connected by amber golden threads, social mastery, purple rapport building energy, zen art of communication and human connection.",
+        "level-eq-07-relationships.webp": "Two hands reaching toward each other in sumi-e, amber love light at touching point, relationship mastery, purple attachment bonds glowing, zen emotional intimacy.",
+        "level-eq-08-leadership.webp": "Leader figure radiating amber light to team below in ink wash, resonant leadership, purple psychological safety aura protecting group, zen emotionally intelligent command.",
+        "level-eq-09-dark-side.webp": "Shield deflecting dark ink tendrils in sumi-e style, amber protective awareness glowing, defense against manipulation, purple toxic patterns repelled, zen emotional armor and boundaries.",
+        "level-eq-10-integration.webp": "Lotus flower with ten petals fully bloomed in ink wash, amber EQ mastery light radiating from center, complete integration, purple wisdom of all emotions unified, zen emotional transcendence.",
     },
 }
 

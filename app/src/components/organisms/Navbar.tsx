@@ -147,7 +147,6 @@ export function Navbar() {
 const mobileNavItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
   { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
-  { id: 'visual-lab', path: '/lab', label: 'Visuals', icon: Eye },
   { id: 'review', path: '/review', label: 'Review', icon: Brain },
   { id: 'settings', path: '/settings', label: '', icon: Settings },
 ];

@@ -347,7 +347,7 @@ export function BlogPage() {
                 <ul className="space-y-2 text-sm text-gray-500">
                   <li><Link to="/" className="hover:text-white transition">Home</Link></li>
                   <li><Link to="/how-to" className="hover:text-white transition">How It Works</Link></li>
-                  <li><Link to="/onboarding" className="hover:text-white transition">Get Started</Link></li>
+                  <li><Link to="/dashboard" className="hover:text-white transition">Get Started</Link></li>
                 </ul>
               </div>
               <div>

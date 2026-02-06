@@ -339,7 +339,7 @@ export function LandingPage() {
                 </Link>
               ) : (
                 <Link
-                  to="/onboarding"
+                  to="/dashboard"
                   className="px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 text-black text-xs font-semibold rounded-xl hover:from-amber-400 hover:to-amber-500 transition-all shadow-[0_0_20px_rgba(245,158,11,0.3)]"
                 >
                   Get Started
@@ -402,7 +402,7 @@ export function LandingPage() {
                   </Link>
                 ) : (
                   <Link
-                    to="/onboarding"
+                    to="/dashboard"
                     className="block w-full px-4 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 text-black text-center text-xs font-semibold rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)]"
                   >
                     Get Started
@@ -592,7 +592,7 @@ export function LandingPage() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
-              to="/onboarding"
+              to="/dashboard"
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-400 text-black font-semibold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition shadow-lg shadow-amber-500/20"
               style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 32px rgba(245,158,11,0.3)' }}
             >
@@ -834,7 +834,7 @@ export function LandingPage() {
           {/* CTA after plan */}
           <div className="text-center mt-12">
             <Link
-              to="/onboarding"
+              to="/dashboard"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sage to-sage-light text-black font-semibold rounded-xl hover:opacity-90 transition"
             >
               Start Building — Free
@@ -1023,7 +1023,7 @@ export function LandingPage() {
             Join 10,000+ Polyminds who've transformed how they learn.
           </p>
           <Link
-            to="/onboarding"
+            to="/dashboard"
             className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-amber-500 to-amber-400 text-black font-semibold rounded-xl hover:opacity-90 transition"
             style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 32px rgba(245,158,11,0.3)' }}
           >
@@ -1068,7 +1068,7 @@ export function LandingPage() {
                 <li><Link to="/dashboard" className="hover:text-white transition">Dashboard</Link></li>
                 <li><Link to="/modules" className="hover:text-white transition">Modules</Link></li>
                 <li><Link to="/review" className="hover:text-white transition">Flashcards</Link></li>
-                <li><Link to="/onboarding" className="hover:text-white transition">Get Started</Link></li>
+                <li><Link to="/dashboard" className="hover:text-white transition">Get Started</Link></li>
               </ul>
             </div>
 

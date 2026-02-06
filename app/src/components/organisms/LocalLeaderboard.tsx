@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Trophy, Star, Flame, Crown, Medal, Award } from 'lucide-react';
 import { GlassCard } from '@/components/molecules';
 import { useProgressStore } from '@/store/progressStore';
-import { useUserStore } from '@/store/userStore';
+import { useAuthContext } from '@/contexts/AuthContext';
 import type { LeaderboardEntry } from '@/types';
 
 const LEADERBOARD_KEY = 'gyanmarg-leaderboard';
@@ -106,7 +106,7 @@ interface LocalLeaderboardProps {
 export function LocalLeaderboard({ className, maxEntries = 5 }: LocalLeaderboardProps) {
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const userProgress = useProgressStore((s) => s.userProgress);
-  const profile = useUserStore((s) => s.profile);
+  const { user } = useAuthContext();
 
   useEffect(() => {
     // Load or initialize leaderboard
@@ -118,7 +118,7 @@ export function LocalLeaderboard({ className, maxEntries = 5 }: LocalLeaderboard
     // Create/update current user's entry
     const userEntry: LeaderboardEntry = {
       id: 'current-user',
-      name: profile?.name || 'You',
+      name: user?.displayName || 'You',
       xp: userProgress.xp,
       level: userProgress.level,
       streak: userProgress.currentStreak,
@@ -139,7 +139,7 @@ export function LocalLeaderboard({ className, maxEntries = 5 }: LocalLeaderboard
 
     // Save to localStorage
     localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(topEntries));
-  }, [userProgress, profile]);
+  }, [userProgress, user]);
 
   // Find user's rank
   const userRank = entries.findIndex((e) => e.isCurrentUser) + 1;

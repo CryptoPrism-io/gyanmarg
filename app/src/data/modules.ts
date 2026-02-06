@@ -12,6 +12,7 @@ import { lifeDesignPathway } from './pathways/life-design';
 import { masterSynthesisPathway } from './pathways/master-synthesis';
 
 // New modules
+import { emotionalIntelligencePathway } from './pathways/emotional-intelligence';
 import { brainPathway } from './pathways/brain';
 import { bodyPathway } from './pathways/body';
 import { spiritualityPathway } from './pathways/spirituality';
@@ -533,7 +534,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Self-Awareness', 'Empathy', 'Emotional Regulation', 'Social Skills'],
     features: ['EQ Assessment', 'Emotion Journal', 'Empathy Exercises', 'Trigger Tracker'],
     route: '/modules/emotional-intelligence',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: emotionalIntelligencePathway,
   },
   // Technology & Code
   {

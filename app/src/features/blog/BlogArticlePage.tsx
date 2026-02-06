@@ -137,7 +137,7 @@ export function BlogArticlePage() {
               Stop forgetting what you read. Start building knowledge that lasts.
             </p>
             <Link
-              to="/onboarding"
+              to="/dashboard"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-400 text-black font-medium rounded-xl hover:opacity-90 transition"
               style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 32px rgba(245,158,11,0.3)' }}
             >

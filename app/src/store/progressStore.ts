@@ -87,6 +87,9 @@ interface ProgressState {
   getChallengeCompletions: () => ChallengeCompletion[];
   getChallengeResponse: (challengeId: string) => string | null;
 
+  // Hint XP deduction (for game hints — never levels down)
+  deductXP: (amount: number) => boolean;
+
   // Visualization Unlocking
   unlockedVisualizations: string[];
   unlockVisualization: (vizId: string) => boolean;
@@ -603,6 +606,28 @@ export const useProgressStore = create<ProgressState>()(
       getChallengeResponse: (challengeId: string) => {
         const completion = get().challengeCompletions.find(c => c.challengeId === challengeId);
         return completion?.response ?? null;
+      },
+
+      // Deduct XP for game hints — never levels down
+      deductXP: (amount: number) => {
+        const state = get();
+        if (state.userProgress.xp < amount) return false;
+
+        set((state) => {
+          const newXP = state.userProgress.xp - amount;
+          // Level safeguard: never go below current level
+          const newLevel = Math.max(Math.floor(newXP / 500) + 1, state.userProgress.level);
+
+          return {
+            userProgress: {
+              ...state.userProgress,
+              xp: newXP,
+              level: newLevel,
+            },
+          };
+        });
+
+        return true;
       },
 
       // Visualization unlocking - costs 500 XP per visualization
