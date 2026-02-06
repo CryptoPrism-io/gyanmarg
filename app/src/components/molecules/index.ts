@@ -36,3 +36,9 @@ export type { EmbedType } from './BlogEmbed';
 export { NetflixModuleCard } from './NetflixModuleCard';
 export { NetflixLevelCard } from './NetflixLevelCard';
 export { GlassLessonRow } from './GlassLessonRow';
+export { ComingSoonModuleCard } from './ComingSoonModuleCard';
+export { ComingSoonModuleDetails } from './ComingSoonModuleDetails';
+
+// Category Components
+export { CategoryTabBar } from './CategoryTabBar';
+export { CategorySection } from './CategorySection';

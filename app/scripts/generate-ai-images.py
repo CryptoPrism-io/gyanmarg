@@ -2,13 +2,13 @@
 """
 Polymind AI Image Generator
 ===========================
-Generates AI images for the Polymind app using Google Gemini.
+Generates AI images for the Polymind app using Google Gemini 2.5 Flash Image.
 
 Usage:
   python scripts/generate-ai-images.py [--all | --missing | --category <name>]
 
 Requires:
-  pip install google-generativeai python-dotenv
+  pip install google-genai python-dotenv pillow
 """
 
 import os
@@ -16,13 +16,16 @@ import sys
 import time
 import argparse
 from pathlib import Path
+from io import BytesIO
 
 try:
-    import google.generativeai as genai
+    from google import genai
+    from google.genai import types
     from dotenv import load_dotenv
+    from PIL import Image
 except ImportError:
     print("Missing dependencies. Install with:")
-    print("  pip install google-generativeai python-dotenv")
+    print("  pip install google-genai python-dotenv pillow")
     sys.exit(1)
 
 # ============================================================
@@ -37,7 +40,18 @@ if not GEMINI_API_KEY:
     print("Create .env file with: GEMINI_API_KEY=your_key_here")
     sys.exit(1)
 
-MODEL_NAME = "gemini-2.5-flash-image"
+MODEL_NAME = "gemini-2.5-flash-image"  # Gemini 2.5 Flash Image for image generation
+
+# Aspect ratio for module/level images (16:9)
+ASPECT_RATIO = "16:9"
+
+# Images that need regeneration with correct aspect ratio
+IMAGES_TO_REGENERATE = [
+    "module-western-philosophy.webp",
+    "module-astronomy.webp",
+    "module-temple-science.webp",
+    "module-finance-investing.webp",
+]
 
 SCRIPT_DIR = Path(__file__).parent
 APP_DIR = SCRIPT_DIR.parent
@@ -147,6 +161,110 @@ PROMPTS = {
         # SHELF 9: Integration & Mastery
         "module-master-synthesis.webp": "Multiple ink brush circles overlapping like Venn diagram, amber intersection glowing brightest, purple connections, unified knowledge, zen integration.",
         "module-polymath-mastery.webp": "Graduation cap transforming into wings, amber feathers of wisdom, flying toward stars, purple cosmic trail, renaissance spirit, zen mastery achieved.",
+
+        # ============================================
+        # Coming Soon Modules (17 new)
+        # ============================================
+
+        # Finance & Markets
+        "module-finance-investing.webp": "Sumi-e golden bull charging upward, amber stock chart ascending, financial markets mastery, purple candlestick patterns, zen investor mindset, market wisdom.",
+
+        # Science & Universe
+        "module-astronomy.webp": "Ink brush telescope pointed at amber galaxy spiral, cosmic exploration, purple nebula wisps, stargazer seeking truth, zen universe wonder.",
+        "module-physics-engineering.webp": "Atom structure in sumi-e style, amber electron orbits glowing, first principles thinking, purple quantum energy waves, zen understanding of reality.",
+
+        # Creative Arts
+        "module-writing-storytelling.webp": "Calligraphy brush flowing into amber ink river of words, storytelling magic, purple narrative streams, zen creative expression, writer's flow.",
+        "module-music-sound.webp": "Treble clef as ink brush stroke, amber sound waves emanating, sonic mastery, purple musical notes floating, zen auditory harmony.",
+
+        # Strategy & Systems
+        "module-strategic-thinking.webp": "Chess king piece in sumi-e style, amber strategic light radiating, game theory mastery, purple decision trees branching, zen calculated moves.",
+        "module-systems-complexity.webp": "Interconnected network nodes in ink wash, amber hub connections glowing, complex systems understanding, purple feedback loops flowing, zen emergence patterns.",
+
+        # History & Culture
+        "module-history-civilizations.webp": "Ancient pyramid and colosseum silhouettes in ink brush, amber torch of knowledge, lessons from history, purple timeline flowing, zen civilizations wisdom.",
+        "module-western-philosophy.webp": "Owl of Athena in sumi-e style, amber philosophical light in eyes, great thinkers wisdom, purple thought bubbles rising, zen western enlightenment.",
+
+        # Practical Mastery
+        "module-design-thinking.webp": "Lightbulb with human silhouette inside in ink brush, amber innovation glow, human-centered design, purple empathy waves radiating, zen creative problem solving.",
+        "module-cybersecurity.webp": "Digital shield with lock in sumi-e style, amber security glow protecting, cyber defense mastery, purple encrypted data streams, zen digital protection.",
+        "module-startups-innovation.webp": "Rocket launching from ink brush launchpad, amber entrepreneurial flame, startup journey, purple unicorn silhouette in clouds, zen venture building.",
+
+        # Relationships & Society
+        "module-relationships-social.webp": "Two silhouette profiles facing each other in ink wash, amber heart connection between them, human bonds, purple social threads linking, zen relationship wisdom.",
+        "module-geopolitics.webp": "Globe with chess pieces positioned strategically in sumi-e, amber power centers glowing, global strategy, purple influence lines crossing, zen world understanding.",
+        "module-communication-rhetoric.webp": "Speech bubble transforming into amber wave of influence, rhetorical mastery, purple persuasion spirals, zen art of communication, words as power.",
+
+        # Ancient Wisdom
+        "module-ayurveda.webp": "Lotus flower with three dosha symbols in ink brush, amber healing light, ancient medicine wisdom, purple life force energy, zen holistic health.",
+        "module-mathematics-patterns.webp": "Flower of life sacred geometry in sumi-e style, amber golden ratio spiraling, universal patterns, purple mathematical harmonies, zen numerical wisdom.",
+
+        # ============================================
+        # NEW COMING SOON MODULES (37 new)
+        # ============================================
+
+        # Mind & Performance
+        "module-emotional-intelligence.webp": "Heart and brain balanced on zen scale in sumi-e style, amber emotional awareness glow, EQ mastery, purple empathy waves radiating, zen self-awareness.",
+
+        # Technology & Code
+        "module-web-development.webp": "Code brackets forming a digital doorway in ink brush, amber HTML tags glowing, web creation, purple CSS waves flowing, zen full-stack building.",
+        "module-cloud-devops.webp": "Cloud formation with container ships floating in ink wash, amber deployment light, DevOps flow, purple CI/CD pipelines, zen infrastructure harmony.",
+
+        # Wealth & Power
+        "module-sales-mastery.webp": "Handshake transforming into golden deal in sumi-e, amber persuasion light, sales excellence, purple trust bridge forming, zen closing mastery.",
+        "module-personal-branding.webp": "Personal seal stamp in ink brush style, amber brand essence radiating, identity crafting, purple influence aura, zen authentic presence.",
+        "module-entrepreneurship-101.webp": "Seed sprouting into business tree in sumi-e, amber startup flame, founder journey, purple growth pathways, zen venture beginning.",
+
+        # Finance & Markets
+        "module-technical-analysis.webp": "Candlestick chart as mountain range in ink wash, amber support levels glowing, chart mastery, purple resistance patterns, zen price action.",
+        "module-options-trading.webp": "Greek letters floating around options chain in sumi-e, amber premium glow, derivatives mastery, purple volatility waves, zen strategic positioning.",
+        "module-macro-economics.webp": "Federal Reserve building with economic waves in ink brush, amber interest rate light, macro forces, purple inflation spirals, zen global understanding.",
+        "module-crypto-trading.webp": "Bitcoin symbol as ancient coin in sumi-e style, amber blockchain glow, digital asset mastery, purple on-chain flows, zen crypto cycles.",
+
+        # Spirit & Body
+        "module-yoga-philosophy.webp": "Eight-petaled lotus representing yoga limbs in ink wash, amber spiritual ascent, classical yoga wisdom, purple prana channels, zen mind-body unity.",
+
+        # Synthesis & Mastery
+        "module-mental-models.webp": "Interconnected thinking frameworks as constellation in sumi-e, amber insight nodes glowing, decision frameworks, purple mental lattice, zen clarity of thought.",
+        "module-first-principles.webp": "Tower deconstructed to fundamental blocks in ink brush, amber core truth glowing, reasoning from basics, purple assumption layers stripped, zen fundamental understanding.",
+        "module-meta-learning.webp": "Brain learning about itself in recursive pattern, amber skill acquisition glow, learning mastery, purple knowledge spiraling inward, zen accelerated growth.",
+
+        # Science & Universe
+        "module-biology-evolution.webp": "DNA helix transforming through evolutionary stages in sumi-e, amber life force glow, evolution understanding, purple natural selection waves, zen life science.",
+        "module-quantum-mechanics.webp": "Particle in superposition shown as dual waves in ink wash, amber quantum glow, reality's nature, purple probability clouds, zen uncertainty embraced.",
+        "module-earth-sciences.webp": "Earth cross-section with tectonic plates in sumi-e, amber core energy, planetary systems, purple geological layers, zen understanding our world.",
+
+        # Creative Arts
+        "module-creative-writing.webp": "Quill pen dripping story characters in ink brush, amber narrative flow, fiction mastery, purple imagination streams, zen creative expression.",
+        "module-content-creation.webp": "Multiple screens emanating content waves in sumi-e, amber viral light spreading, audience building, purple engagement ripples, zen digital storytelling.",
+        "module-world-building.webp": "Miniature universe in cupped hands in ink wash, amber creation light, fictional worlds, purple lore threads weaving, zen universe crafting.",
+
+        # Strategy & Systems
+        "module-game-theory.webp": "Chess pieces analyzing each other in sumi-e style, amber strategic insight, Nash equilibrium, purple decision matrices, zen calculated moves.",
+        "module-decision-making.webp": "Crossroads with clear amber path emerging, decision clarity, purple alternative routes fading, zen choice architecture, optimal selection.",
+        "module-risk-management.webp": "Shield deflecting storm in ink brush style, amber protection glow, navigating uncertainty, purple risk waves managed, zen antifragile stance.",
+
+        # History & Culture
+        "module-ancient-empires.webp": "Colosseum and pyramid silhouettes rising in sumi-e, amber historical wisdom light, empire patterns, purple civilizational cycles, zen lessons of time.",
+        "module-modern-history.webp": "Globe with 20th century events swirling in ink wash, amber knowledge of past, modern understanding, purple historical threads connecting, zen recent wisdom.",
+        "module-cultural-anthropology.webp": "Diverse masks representing cultures in sumi-e style, amber human connection, cultural understanding, purple social fabric weaving, zen anthropological insight.",
+
+        # Practical Mastery
+        "module-leadership.webp": "Lone figure on mountaintop with amber guiding light, leadership presence, purple team formation below, zen commanding clarity, inspiring others.",
+        "module-problem-solving.webp": "Tangled knot unraveling with amber solution light, root cause analysis, purple complexity dissolving, zen systematic thinking, clarity emerging.",
+        "module-productivity-systems.webp": "Clockwork gears in perfect harmony in ink brush, amber efficiency flow, personal systems, purple workflow optimization, zen productive mastery.",
+
+        # Relationships & Society
+        "module-dating-attraction.webp": "Two figures drawn together by amber magnetic light, attraction dynamics, purple chemistry sparks, zen social connection, romantic understanding.",
+        "module-networking.webp": "Web of connections with amber relationship nodes in sumi-e, social capital, purple value exchange streams, zen network building, meaningful connections.",
+        "module-parenting.webp": "Parent and child silhouettes with amber nurturing light, raising children wisely, purple developmental stages, zen family wisdom, guiding growth.",
+        "module-social-intelligence.webp": "Eye reading room with amber awareness glow in ink wash, reading people, purple social cues visible, zen situational mastery, charisma building.",
+
+        # Ancient Wisdom
+        "module-stoicism.webp": "Stoic philosopher silhouette with amber inner fire in sumi-e, Marcus Aurelius wisdom, purple virtue emanating, zen practical philosophy, calm in chaos.",
+        "module-eastern-philosophy.webp": "Yin-yang transforming into Tao symbol in ink brush, amber balance light, Eastern wisdom, purple harmony flows, zen Oriental enlightenment.",
+        "module-vedic-wisdom.webp": "Om symbol radiating Upanishadic wisdom in sumi-e, amber dharmic light, Vedic understanding, purple karmic threads, zen sanatan knowledge.",
+        "module-mythology.webp": "Hero ascending with amber archetypal light in ink wash, mythological patterns, purple universal stories spiraling, zen timeless narratives, Campbell's journey.",
     },
     "levels": {
         # ============================================
@@ -301,21 +419,41 @@ def is_missing(path: Path) -> bool:
     return not path.exists() or path.stat().st_size == 0
 
 
-def generate_image(model, prompt: str, output_path: Path, retries: int = 3) -> bool:
+def generate_image(client, prompt: str, output_path: Path, retries: int = 3, aspect_ratio: str = "16:9") -> bool:
     for attempt in range(retries):
         try:
             full_prompt = f"{STYLE}\n\n{prompt}"
-            response = model.generate_content(full_prompt)
 
-            # Try to extract image data
-            if response.candidates:
-                candidate = response.candidates[0]
-                if candidate.content and candidate.content.parts:
-                    for part in candidate.content.parts:
-                        if hasattr(part, 'inline_data') and part.inline_data and part.inline_data.data:
-                            with open(output_path, "wb") as f:
-                                f.write(part.inline_data.data)
-                            return True
+            response = client.models.generate_content(
+                model=MODEL_NAME,
+                contents=[full_prompt],
+                config=types.GenerateContentConfig(
+                    response_modalities=['TEXT', 'IMAGE'],
+                    image_config=types.ImageConfig(
+                        aspect_ratio=aspect_ratio
+                    )
+                )
+            )
+
+            # Try to extract image data from response parts
+            for part in response.parts:
+                if part.inline_data is not None:
+                    # Get raw image bytes and load with PIL
+                    image_bytes = part.inline_data.data
+                    pil_image = Image.open(BytesIO(image_bytes))
+
+                    # Convert to RGB if necessary (for webp compatibility)
+                    if pil_image.mode in ('RGBA', 'P'):
+                        pil_image = pil_image.convert('RGB')
+
+                    # Save as webp format
+                    if str(output_path).endswith('.webp'):
+                        pil_image.save(str(output_path), 'WEBP', quality=85)
+                    elif str(output_path).endswith('.png'):
+                        pil_image.save(str(output_path), 'PNG')
+                    else:
+                        pil_image.save(str(output_path))
+                    return True
 
             if attempt < retries - 1:
                 print(f"retry {attempt + 2}...", end=" ", flush=True)
@@ -324,7 +462,7 @@ def generate_image(model, prompt: str, output_path: Path, retries: int = 3) -> b
                 print(f"No image data")
 
         except Exception as e:
-            if "429" in str(e):
+            if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
                 if attempt < retries - 1:
                     wait = 30 * (attempt + 1)
                     print(f"rate limit, waiting {wait}s...", end=" ", flush=True)
@@ -333,6 +471,8 @@ def generate_image(model, prompt: str, output_path: Path, retries: int = 3) -> b
                     print(f"Rate limited")
             else:
                 print(f"Error: {e}")
+                if attempt < retries - 1:
+                    time.sleep(5)
 
     return False
 
@@ -341,16 +481,71 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--all", action="store_true", help="Regenerate all")
     parser.add_argument("--category", choices=list(PROMPTS.keys()))
+    parser.add_argument("--regenerate", action="store_true", help="Regenerate only the 4 problematic 1:1 images with 16:9 aspect ratio")
+    parser.add_argument("--file", type=str, help="Regenerate a specific file by name")
     args = parser.parse_args()
 
-    only_missing = not args.all
+    only_missing = not args.all and not args.regenerate and not args.file
 
     print("=" * 50)
     print("POLYMIND IMAGE GENERATOR")
+    print(f"Model: {MODEL_NAME}")
     print("=" * 50)
 
-    genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel(MODEL_NAME)
+    # Create Gemini client with API key
+    client = genai.Client(api_key=GEMINI_API_KEY)
+
+    # If --regenerate flag is set, only regenerate the specific 4 images
+    if args.regenerate:
+        print(f"\nRegenerating {len(IMAGES_TO_REGENERATE)} images with 16:9 aspect ratio...")
+        output_dir = OUTPUT_DIRS["modules"]
+
+        for filename in IMAGES_TO_REGENERATE:
+            if filename not in PROMPTS["modules"]:
+                print(f"  SKIP {filename} (not found in prompts)")
+                continue
+
+            path = output_dir / filename
+            prompt = PROMPTS["modules"][filename]
+
+            print(f"  GEN  {filename}...", end=" ", flush=True)
+
+            if generate_image(client, prompt, path, aspect_ratio=ASPECT_RATIO):
+                kb = path.stat().st_size / 1024
+                print(f"OK ({kb:.0f}KB)")
+                time.sleep(3)
+            else:
+                print("FAILED")
+                time.sleep(10)
+
+        print("\nDone!")
+        return
+
+    # If --file flag is set, regenerate a specific file
+    if args.file:
+        found = False
+        for cat, prompts in PROMPTS.items():
+            if args.file in prompts:
+                output_dir = OUTPUT_DIRS[cat]
+                path = output_dir / args.file
+                prompt = prompts[args.file]
+
+                print(f"\n  GEN  {args.file}...", end=" ", flush=True)
+
+                if generate_image(client, prompt, path, aspect_ratio=ASPECT_RATIO):
+                    kb = path.stat().st_size / 1024
+                    print(f"OK ({kb:.0f}KB)")
+                else:
+                    print("FAILED")
+
+                found = True
+                break
+
+        if not found:
+            print(f"File {args.file} not found in any category")
+
+        print("\nDone!")
+        return
 
     categories = [args.category] if args.category else list(PROMPTS.keys())
 
@@ -367,7 +562,7 @@ def main():
 
             print(f"  GEN  {filename}...", end=" ", flush=True)
 
-            if generate_image(model, prompt, path):
+            if generate_image(client, prompt, path, aspect_ratio=ASPECT_RATIO):
                 kb = path.stat().st_size / 1024
                 print(f"OK ({kb:.0f}KB)")
                 time.sleep(3)  # Delay between successful generations

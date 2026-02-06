@@ -25,15 +25,14 @@ export function NetflixModuleCard({
 }: NetflixModuleCardProps) {
   return (
     <motion.div
-      whileHover={{ y: -6, scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
       className={`
-        relative overflow-hidden rounded-2xl border cursor-pointer
+        group relative overflow-hidden rounded-2xl border cursor-pointer
         transition-all duration-300 flex-shrink-0
         ${isActive
-          ? 'border-golden shadow-[0_0_0_2px_rgba(245,158,11,0.3)]'
-          : 'border-white/[0.08] hover:border-white/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)]'
+          ? 'border-golden shadow-[0_0_16px_rgba(245,158,11,0.4)]'
+          : 'border-white/[0.08] hover:border-amber-500/30 hover:shadow-[0_0_12px_rgba(245,158,11,0.25)]'
         }
         w-[140px] md:w-[220px]
       `}
@@ -44,16 +43,16 @@ export function NetflixModuleCard({
           src={image}
           alt={title}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-400 hover:scale-108"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
         />
 
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
 
-        {/* Play overlay on hover */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 hover:opacity-100 transition-opacity z-10">
-          <div className="w-10 h-10 md:w-12 md:h-12 bg-golden/95 rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(245,158,11,0.5)] transform scale-90 hover:scale-100 transition-transform">
-            <Play className="w-4 h-4 md:w-5 md:h-5 text-background ml-0.5" fill="currentColor" />
+        {/* Play icon - top right */}
+        <div className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="w-5 h-5 md:w-6 md:h-6 bg-golden/90 rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
+            <Play className="w-2.5 h-2.5 md:w-3 md:h-3 text-background ml-0.5" fill="currentColor" />
           </div>
         </div>
       </div>

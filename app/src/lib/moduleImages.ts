@@ -1,6 +1,6 @@
 // AI-generated module and level images mapping
 
-// Module images - 16 modules
+// Module images - 16 original modules
 import modulePersonalDevelopment from '@/assets/ai-images/modules/module-personal-development.webp';
 import moduleAiMl from '@/assets/ai-images/modules/module-ai-machine-learning.webp';
 import moduleWealthBuilding from '@/assets/ai-images/modules/module-wealth-building.webp';
@@ -17,6 +17,81 @@ import moduleSpirituality from '@/assets/ai-images/modules/module-spirituality-s
 import moduleShiva from '@/assets/ai-images/modules/module-shiva-shakti.webp';
 import moduleTemple from '@/assets/ai-images/modules/module-temple-science.webp';
 import modulePolymath from '@/assets/ai-images/modules/module-polymath-mastery.webp';
+
+// ============================================
+// Module images - 17 Original Coming Soon modules
+// ============================================
+import moduleFinanceInvesting from '@/assets/ai-images/modules/module-finance-investing.webp';
+import moduleAstronomy from '@/assets/ai-images/modules/module-astronomy.webp';
+import modulePhysicsEngineering from '@/assets/ai-images/modules/module-physics-engineering.webp';
+import moduleWritingStorytelling from '@/assets/ai-images/modules/module-writing-storytelling.webp';
+import moduleMusicSound from '@/assets/ai-images/modules/module-music-sound.webp';
+import moduleStrategicThinking from '@/assets/ai-images/modules/module-strategic-thinking.webp';
+import moduleSystemsComplexity from '@/assets/ai-images/modules/module-systems-complexity.webp';
+import moduleHistoryCivilizations from '@/assets/ai-images/modules/module-history-civilizations.webp';
+import moduleWesternPhilosophy from '@/assets/ai-images/modules/module-western-philosophy.webp';
+import moduleDesignThinking from '@/assets/ai-images/modules/module-design-thinking.webp';
+import moduleCybersecurity from '@/assets/ai-images/modules/module-cybersecurity.webp';
+import moduleStartupsInnovation from '@/assets/ai-images/modules/module-startups-innovation.webp';
+import moduleRelationshipsSocial from '@/assets/ai-images/modules/module-relationships-social.webp';
+import moduleGeopolitics from '@/assets/ai-images/modules/module-geopolitics.webp';
+import moduleCommunicationRhetoric from '@/assets/ai-images/modules/module-communication-rhetoric.webp';
+import moduleAyurveda from '@/assets/ai-images/modules/module-ayurveda.webp';
+import moduleMathematicsPatterns from '@/assets/ai-images/modules/module-mathematics-patterns.webp';
+
+// ============================================
+// Module images - 37 NEW Coming Soon modules
+// ============================================
+// Mind & Performance
+import moduleEmotionalIntelligence from '@/assets/ai-images/modules/module-emotional-intelligence.webp';
+// Technology & Code
+import moduleWebDevelopment from '@/assets/ai-images/modules/module-web-development.webp';
+import moduleCloudDevops from '@/assets/ai-images/modules/module-cloud-devops.webp';
+// Wealth & Power
+import moduleSalesMastery from '@/assets/ai-images/modules/module-sales-mastery.webp';
+import modulePersonalBranding from '@/assets/ai-images/modules/module-personal-branding.webp';
+import moduleEntrepreneurship101 from '@/assets/ai-images/modules/module-entrepreneurship-101.webp';
+// Finance & Markets
+import moduleTechnicalAnalysis from '@/assets/ai-images/modules/module-technical-analysis.webp';
+import moduleOptionsTrading from '@/assets/ai-images/modules/module-options-trading.webp';
+import moduleMacroEconomics from '@/assets/ai-images/modules/module-macro-economics.webp';
+import moduleCryptoTrading from '@/assets/ai-images/modules/module-crypto-trading.webp';
+// Spirit & Body
+import moduleYogaPhilosophy from '@/assets/ai-images/modules/module-yoga-philosophy.webp';
+// Synthesis & Mastery
+import moduleMentalModels from '@/assets/ai-images/modules/module-mental-models.webp';
+import moduleFirstPrinciples from '@/assets/ai-images/modules/module-first-principles.webp';
+import moduleMetaLearning from '@/assets/ai-images/modules/module-meta-learning.webp';
+// Science & Universe
+import moduleBiologyEvolution from '@/assets/ai-images/modules/module-biology-evolution.webp';
+import moduleQuantumMechanics from '@/assets/ai-images/modules/module-quantum-mechanics.webp';
+import moduleEarthSciences from '@/assets/ai-images/modules/module-earth-sciences.webp';
+// Creative Arts
+import moduleCreativeWriting from '@/assets/ai-images/modules/module-creative-writing.webp';
+import moduleContentCreation from '@/assets/ai-images/modules/module-content-creation.webp';
+import moduleWorldBuilding from '@/assets/ai-images/modules/module-world-building.webp';
+// Strategy & Systems
+import moduleGameTheory from '@/assets/ai-images/modules/module-game-theory.webp';
+import moduleDecisionMaking from '@/assets/ai-images/modules/module-decision-making.webp';
+import moduleRiskManagement from '@/assets/ai-images/modules/module-risk-management.webp';
+// History & Culture
+import moduleAncientEmpires from '@/assets/ai-images/modules/module-ancient-empires.webp';
+import moduleModernHistory from '@/assets/ai-images/modules/module-modern-history.webp';
+import moduleCulturalAnthropology from '@/assets/ai-images/modules/module-cultural-anthropology.webp';
+// Practical Mastery
+import moduleLeadership from '@/assets/ai-images/modules/module-leadership.webp';
+import moduleProblemSolving from '@/assets/ai-images/modules/module-problem-solving.webp';
+import moduleProductivitySystems from '@/assets/ai-images/modules/module-productivity-systems.webp';
+// Relationships & Society
+import moduleDatingAttraction from '@/assets/ai-images/modules/module-dating-attraction.webp';
+import moduleNetworking from '@/assets/ai-images/modules/module-networking.webp';
+import moduleParenting from '@/assets/ai-images/modules/module-parenting.webp';
+import moduleSocialIntelligence from '@/assets/ai-images/modules/module-social-intelligence.webp';
+// Ancient Wisdom
+import moduleStoicism from '@/assets/ai-images/modules/module-stoicism.webp';
+import moduleEasternPhilosophy from '@/assets/ai-images/modules/module-eastern-philosophy.webp';
+import moduleVedicWisdom from '@/assets/ai-images/modules/module-vedic-wisdom.webp';
+import moduleMythology from '@/assets/ai-images/modules/module-mythology.webp';
 
 // ============================================
 // Level images - Personal Development (10)
@@ -162,6 +237,7 @@ import levelPolymath03 from '@/assets/ai-images/levels/level-polymath-03-mastery
 
 // Module ID to image mapping
 export const moduleImages: Record<string, string> = {
+  // Original 16 modules
   'personal-development': modulePersonalDevelopment,
   'ai-ml': moduleAiMl,
   'wealth-building': moduleWealthBuilding,
@@ -178,6 +254,81 @@ export const moduleImages: Record<string, string> = {
   'shiva-shakti': moduleShiva,
   'temple-science': moduleTemple,
   'polymath-mastery': modulePolymath,
+
+  // ============================================
+  // Coming Soon modules (17 original) - AI Generated Images
+  // ============================================
+  'finance-investing': moduleFinanceInvesting,
+  'astronomy': moduleAstronomy,
+  'physics-engineering': modulePhysicsEngineering,
+  'writing-storytelling': moduleWritingStorytelling,
+  'music-sound': moduleMusicSound,
+  'strategic-thinking': moduleStrategicThinking,
+  'systems-complexity': moduleSystemsComplexity,
+  'history-civilizations': moduleHistoryCivilizations,
+  'western-philosophy': moduleWesternPhilosophy,
+  'design-thinking': moduleDesignThinking,
+  'cybersecurity': moduleCybersecurity,
+  'startups-innovation': moduleStartupsInnovation,
+  'relationships-social': moduleRelationshipsSocial,
+  'geopolitics': moduleGeopolitics,
+  'communication-rhetoric': moduleCommunicationRhetoric,
+  'ayurveda': moduleAyurveda,
+  'mathematics-patterns': moduleMathematicsPatterns,
+
+  // ============================================
+  // NEW Coming Soon modules (37) - AI Generated Images
+  // ============================================
+  // Mind & Performance
+  'emotional-intelligence': moduleEmotionalIntelligence,
+  // Technology & Code
+  'web-development': moduleWebDevelopment,
+  'cloud-devops': moduleCloudDevops,
+  // Wealth & Power
+  'sales-mastery': moduleSalesMastery,
+  'personal-branding': modulePersonalBranding,
+  'entrepreneurship-101': moduleEntrepreneurship101,
+  // Finance & Markets
+  'technical-analysis': moduleTechnicalAnalysis,
+  'options-trading': moduleOptionsTrading,
+  'macro-economics': moduleMacroEconomics,
+  'crypto-trading': moduleCryptoTrading,
+  // Spirit & Body
+  'yoga-philosophy': moduleYogaPhilosophy,
+  // Synthesis & Mastery
+  'mental-models': moduleMentalModels,
+  'first-principles': moduleFirstPrinciples,
+  'meta-learning': moduleMetaLearning,
+  // Science & Universe
+  'biology-evolution': moduleBiologyEvolution,
+  'quantum-mechanics': moduleQuantumMechanics,
+  'earth-sciences': moduleEarthSciences,
+  // Creative Arts
+  'creative-writing': moduleCreativeWriting,
+  'content-creation': moduleContentCreation,
+  'world-building': moduleWorldBuilding,
+  // Strategy & Systems
+  'game-theory': moduleGameTheory,
+  'decision-making': moduleDecisionMaking,
+  'risk-management': moduleRiskManagement,
+  // History & Culture
+  'ancient-empires': moduleAncientEmpires,
+  'modern-history': moduleModernHistory,
+  'cultural-anthropology': moduleCulturalAnthropology,
+  // Practical Mastery
+  'leadership': moduleLeadership,
+  'problem-solving': moduleProblemSolving,
+  'productivity-systems': moduleProductivitySystems,
+  // Relationships & Society
+  'dating-attraction': moduleDatingAttraction,
+  'networking': moduleNetworking,
+  'parenting': moduleParenting,
+  'social-intelligence': moduleSocialIntelligence,
+  // Ancient Wisdom
+  'stoicism': moduleStoicism,
+  'eastern-philosophy': moduleEasternPhilosophy,
+  'vedic-wisdom': moduleVedicWisdom,
+  'mythology': moduleMythology,
 };
 
 // Level ID to image mapping - all 75 levels
