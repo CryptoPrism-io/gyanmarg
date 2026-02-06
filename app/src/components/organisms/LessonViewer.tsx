@@ -23,6 +23,7 @@ interface LessonViewerProps {
   onClose: () => void;
   isComplete: boolean;
   moduleColor?: string;
+  moduleId?: string;
   lessonNumber?: number;
   totalLessons?: number;
   currentStreak?: number;
@@ -56,6 +57,7 @@ export function LessonViewer({
   onClose,
   isComplete,
   moduleColor = 'orange',
+  moduleId,
   lessonNumber = 1,
   totalLessons = 10,
   currentStreak = 0,
@@ -190,6 +192,7 @@ export function LessonViewer({
             onComplete={onComplete}
             isComplete={isComplete}
             moduleColor={moduleColor}
+            moduleId={moduleId}
             onXPEarned={handleXPEarned}
             nextLesson={nextLesson}
             onNextLesson={onNextLesson}

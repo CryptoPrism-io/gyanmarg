@@ -7,11 +7,14 @@ import {
   ChevronLeft,
   ArrowRight,
   Zap,
+  Heart,
+  Star,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
+import { useUserStore } from '@/store/userStore';
 import { useAuthGate } from '@/hooks/useAuthGate';
 import { ModuleLayout } from '@/components/templates';
-import { GlassCard, NetflixLevelCard, GlassLessonRow, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
+import { GlassCard, NetflixLevelCard, GlassLessonRow, NetflixModuleCard, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
 import { ProgressBar } from '@/components/atoms';
 import { LessonViewer } from '@/components/organisms/LessonViewer';
 import { SignInGate } from '@/components/organisms';
@@ -23,6 +26,9 @@ import { getModuleImage, getLevelImage } from '@/lib/moduleImages';
 export function LearningPathway() {
   const { completeLesson, isLessonCompleted, pathwayProgress } = useProgressStore();
   const { isAuthenticated } = useAuthGate();
+  const favoriteModules = useUserStore((s) => s.favoriteModules);
+  const toggleFavoriteModule = useUserStore((s) => s.toggleFavoriteModule);
+  const isFavoriteModule = useUserStore((s) => s.isFavoriteModule);
 
   const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null);
   const [selectedComingSoonModuleId, setSelectedComingSoonModuleId] = useState<string | null>(null);
@@ -36,6 +42,20 @@ export function LearningPathway() {
   // Refs for category rows to scroll into view (scroll to category, not details)
   const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+
+  // Favorite modules (ordered by when favorited — newest first)
+  const favoriteModuleConfigs = useMemo(
+    () => favoriteModules
+      .map((id) => modules.find((m) => m.id === id))
+      .filter((m): m is typeof modules[number] => m !== undefined && m.isAvailable),
+    [favoriteModules]
+  );
+
+  // Latest Release module — Emotional Intelligence (#34)
+  const latestReleaseModule = useMemo(
+    () => modules.find((m) => m.id === 'emotional-intelligence'),
+    []
+  );
 
   // Categorized modules for Netflix-style display
   const categorizedModules = useMemo(() => getCategoriesWithModules(modules), []);
@@ -227,6 +247,7 @@ export function LearningPathway() {
           onClose={() => setActiveLesson(null)}
           isComplete={isLessonCompleted(activeLesson.id)}
           moduleColor={selectedModule.color}
+          moduleId={selectedModule.id}
           lessonNumber={activeLessonIndex + 1}
           totalLessons={totalModuleLessons}
           currentStreak={pathwayProgress.streakDays || 0}
@@ -266,8 +287,92 @@ export function LearningPathway() {
           onCategorySelect={setActiveCategory}
         />
 
+        {/* Favorites Section — shown at top when user has favorites */}
+        {favoriteModuleConfigs.length > 0 && !activeCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-4 mb-8 scroll-mt-20 overflow-x-hidden"
+          >
+            <div className="flex items-center gap-3 mb-3 px-1">
+              <Heart className="w-5 h-5 text-coral fill-coral" />
+              <h2 className="text-base font-semibold text-coral">Your Favorites</h2>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-coral/20 text-coral">
+                {favoriteModuleConfigs.length} saved
+              </span>
+            </div>
+            <div className="flex gap-2.5 md:gap-4 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide snap-x snap-mandatory">
+              {favoriteModuleConfigs.map((mod) => (
+                <NetflixModuleCard
+                  key={`fav-${mod.id}`}
+                  id={mod.id}
+                  title={mod.title}
+                  subtitle={mod.subtitle}
+                  image={getModuleImage(mod.id)}
+                  progress={getModuleProgress(mod.id)}
+                  lessonsCount={getModuleLessonsCount(mod.id)}
+                  xpTotal={getModuleTotalXP(mod.id)}
+                  isActive={selectedModuleId === mod.id}
+                  isFavorite={true}
+                  onToggleFavorite={() => toggleFavoriteModule(mod.id)}
+                  onClick={() => {
+                    if (selectedModuleId === mod.id) {
+                      setSelectedModuleId(null);
+                    } else {
+                      setSelectedModuleId(mod.id);
+                      setSelectedComingSoonModuleId(null);
+                      setSelectedLevelId(null);
+                    }
+                  }}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Latest Release Section */}
+        {latestReleaseModule && !activeCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="mb-8 scroll-mt-20 overflow-x-hidden"
+          >
+            <div className="flex items-center gap-3 mb-3 px-1">
+              <Star className="w-5 h-5 text-golden fill-golden" />
+              <h2 className="text-base font-semibold text-golden">Latest Release</h2>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-golden/20 text-golden font-semibold">
+                NEW
+              </span>
+            </div>
+            <div className="flex gap-2.5 md:gap-4 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide snap-x snap-mandatory">
+              <NetflixModuleCard
+                id={latestReleaseModule.id}
+                title={latestReleaseModule.title}
+                subtitle={latestReleaseModule.subtitle}
+                image={getModuleImage(latestReleaseModule.id)}
+                progress={getModuleProgress(latestReleaseModule.id)}
+                lessonsCount={getModuleLessonsCount(latestReleaseModule.id)}
+                xpTotal={getModuleTotalXP(latestReleaseModule.id)}
+                isActive={selectedModuleId === latestReleaseModule.id}
+                isFavorite={isFavoriteModule(latestReleaseModule.id)}
+                onToggleFavorite={() => toggleFavoriteModule(latestReleaseModule.id)}
+                onClick={() => {
+                  if (selectedModuleId === latestReleaseModule.id) {
+                    setSelectedModuleId(null);
+                  } else {
+                    setSelectedModuleId(latestReleaseModule.id);
+                    setSelectedComingSoonModuleId(null);
+                    setSelectedLevelId(null);
+                  }
+                }}
+              />
+            </div>
+          </motion.div>
+        )}
+
         {/* Category Sections - Netflix Style with Inline Module Details */}
-        <div className="mt-4 overflow-x-hidden">
+        <div className={`${!activeCategory ? '' : 'mt-4'} overflow-x-hidden`}>
           {displayedCategories.map(({ category, modules: categoryModules }) => {
             // Check if the selected module belongs to this category
             const selectedModuleInCategory = selectedModuleId && categoryModules.some(m => m.id === selectedModuleId);
@@ -311,6 +416,8 @@ export function LearningPathway() {
                   getModuleProgress={getModuleProgress}
                   getModuleLessonsCount={getModuleLessonsCount}
                   getModuleTotalXP={getModuleTotalXP}
+                  isFavoriteModule={isFavoriteModule}
+                  onToggleFavorite={toggleFavoriteModule}
                 />
 
                 {/* Inline Module Details - Appears right below the category */}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Play, Users, Sparkles } from 'lucide-react';
+import { Play, Users, Sparkles, Heart } from 'lucide-react';
 
 interface NetflixModuleCardProps {
   id: string;
@@ -10,6 +10,8 @@ interface NetflixModuleCardProps {
   lessonsCount: number;
   xpTotal: number;
   isActive?: boolean;
+  isFavorite?: boolean;
+  onToggleFavorite?: (e: React.MouseEvent) => void;
   onClick: () => void;
 }
 
@@ -21,6 +23,8 @@ export function NetflixModuleCard({
   lessonsCount,
   xpTotal,
   isActive = false,
+  isFavorite = false,
+  onToggleFavorite,
   onClick,
 }: NetflixModuleCardProps) {
   return (
@@ -55,6 +59,25 @@ export function NetflixModuleCard({
             <Play className="w-2.5 h-2.5 md:w-3 md:h-3 text-background ml-0.5" fill="currentColor" />
           </div>
         </div>
+
+        {/* Favorite heart - top left */}
+        {onToggleFavorite && (
+          <motion.button
+            onClick={(e) => { e.stopPropagation(); onToggleFavorite(e); }}
+            whileTap={{ scale: 0.8 }}
+            className={`absolute top-1.5 left-1.5 z-10 w-6 h-6 md:w-7 md:h-7 rounded-full flex items-center justify-center transition-all ${
+              isFavorite
+                ? 'bg-coral/30 backdrop-blur-sm'
+                : 'bg-black/30 backdrop-blur-sm opacity-0 group-hover:opacity-100'
+            }`}
+          >
+            <Heart
+              className={`w-3 h-3 md:w-3.5 md:h-3.5 transition-colors ${
+                isFavorite ? 'text-coral fill-coral' : 'text-white/70'
+              }`}
+            />
+          </motion.button>
+        )}
       </div>
 
       {/* Info section - Premium Glassmorphism */}

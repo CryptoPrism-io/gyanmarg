@@ -6,6 +6,17 @@ import { useUserStore } from '@/store/userStore';
 import { triggerSync } from '@/store/firebaseSync';
 import { analytics } from '@/lib/analytics';
 
+// Starred cards — saved from lesson card flow
+export interface StarredCard {
+  cardId: string;        // unique card ID from useCardStack
+  lessonId: string;      // parent lesson
+  moduleId: string;      // parent module
+  cardType: 'overview' | 'content' | 'quiz' | 'takeaway' | 'action';
+  title: string;
+  content: string;       // card text/markdown content
+  starredAt: string;     // ISO timestamp
+}
+
 // Weekly challenge templates
 const weeklyTemplates: Omit<WeeklyChallenge, 'id' | 'startDate' | 'endDate' | 'current' | 'completed' | 'claimed'>[] = [
   { title: 'Knowledge Seeker', description: 'Complete 7 lessons this week', target: 7, metric: 'lessons', xpReward: 500 },
@@ -87,6 +98,13 @@ interface ProgressState {
   getChallengeCompletions: () => ChallengeCompletion[];
   getChallengeResponse: (challengeId: string) => string | null;
 
+  // Starred Cards
+  starredCards: StarredCard[];
+  starCard: (card: Omit<StarredCard, 'starredAt'>) => void;
+  unstarCard: (cardId: string) => void;
+  isCardStarred: (cardId: string) => boolean;
+  getStarredCards: () => StarredCard[];
+
   // Hint XP deduction (for game hints — never levels down)
   deductXP: (amount: number) => boolean;
 
@@ -142,6 +160,7 @@ export const useProgressStore = create<ProgressState>()(
       lastViewedLesson: null,
       weeklyChallenge: null,
       challengeCompletions: [],
+      starredCards: [],
       unlockedVisualizations: [], // Users start with no unlocked visualizations
       longestStreak: 0,
       streakFreezes: 1,
@@ -608,6 +627,24 @@ export const useProgressStore = create<ProgressState>()(
         return completion?.response ?? null;
       },
 
+      // Starred Cards
+      starCard: (card) =>
+        set((state) => {
+          if (state.starredCards.some((c) => c.cardId === card.cardId)) return state;
+          return {
+            starredCards: [...state.starredCards, { ...card, starredAt: new Date().toISOString() }],
+          };
+        }),
+
+      unstarCard: (cardId) =>
+        set((state) => ({
+          starredCards: state.starredCards.filter((c) => c.cardId !== cardId),
+        })),
+
+      isCardStarred: (cardId) => get().starredCards.some((c) => c.cardId === cardId),
+
+      getStarredCards: () => get().starredCards,
+
       // Deduct XP for game hints — never levels down
       deductXP: (amount: number) => {
         const state = get();
@@ -683,6 +720,7 @@ export const useProgressStore = create<ProgressState>()(
           lastViewedLesson: null,
           weeklyChallenge: null,
           challengeCompletions: [],
+          starredCards: [],
           unlockedVisualizations: [],
           longestStreak: 0,
           streakFreezes: 1,

@@ -16,6 +16,8 @@ interface CategorySectionProps {
   getModuleProgress: (moduleId: string) => number;
   getModuleLessonsCount: (moduleId: string) => number;
   getModuleTotalXP: (moduleId: string) => number;
+  isFavoriteModule?: (moduleId: string) => boolean;
+  onToggleFavorite?: (moduleId: string) => void;
 }
 
 // Direct hex color mapping for category headers (avoids Tailwind purging issues)
@@ -46,6 +48,8 @@ export function CategorySection({
   getModuleProgress,
   getModuleLessonsCount,
   getModuleTotalXP,
+  isFavoriteModule,
+  onToggleFavorite,
 }: CategorySectionProps) {
   const colors = colorMap[category.color] || colorMap.purple;
   const availableCount = modules.filter(m => m.isAvailable).length;
@@ -157,6 +161,8 @@ export function CategorySection({
                 lessonsCount={getModuleLessonsCount(mod.id)}
                 xpTotal={getModuleTotalXP(mod.id)}
                 isActive={selectedModuleId === mod.id}
+                isFavorite={isFavoriteModule?.(mod.id)}
+                onToggleFavorite={onToggleFavorite ? () => onToggleFavorite(mod.id) : undefined}
                 onClick={() => onModuleSelect(mod.id)}
               />
             ) : (

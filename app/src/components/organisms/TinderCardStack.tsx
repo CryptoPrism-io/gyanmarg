@@ -19,6 +19,7 @@ interface TinderCardStackProps {
   onComplete: () => void;
   isComplete: boolean;
   moduleColor?: string;
+  moduleId?: string;
   onXPEarned?: (amount: number) => void;
   nextLesson?: NextLessonInfo | null;
   onNextLesson?: (lesson: PathwayLesson) => void;
@@ -79,6 +80,7 @@ export function TinderCardStack({
   onComplete,
   isComplete: lessonComplete,
   moduleColor = 'orange',
+  moduleId,
   onXPEarned,
   nextLesson,
   onNextLesson,
@@ -247,6 +249,8 @@ export function TinderCardStack({
                 gradient={gradient}
                 totalCards={cards.length}
                 currentCardNumber={currentIndex + 1}
+                lessonId={lesson.id}
+                moduleId={moduleId}
               />
             ))}
         </AnimatePresence>

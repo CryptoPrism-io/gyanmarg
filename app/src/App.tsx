@@ -40,6 +40,7 @@ const ModuleHub = lazy(() => import('@/features/module-hub/ModuleHub').then(m =>
 const ModulePage = lazy(() => import('@/features/module-page/ModulePage'));
 const Settings = lazy(() => import('@/features/settings/Settings').then(m => ({ default: m.Settings })));
 const VisualLab = lazy(() => import('@/features/visual-lab/VisualLab').then(m => ({ default: m.VisualLab })));
+const SavedCards = lazy(() => import('@/features/saved-cards/SavedCards').then(m => ({ default: m.SavedCards })));
 
 const LearningSciencePage = lazy(() => import('@/features/science/LearningSciencePage').then(m => ({ default: m.LearningSciencePage })));
 const BookListPage = lazy(() => import('@/features/books/BookListPage').then(m => ({ default: m.BookListPage })));
@@ -270,6 +271,22 @@ function AppRoutes() {
         }
       />
 
+
+      {/* Saved Cards */}
+      <Route
+        path="/saved"
+        element={
+          <ProtectedRoute>
+            <PageLayout>
+              <PageTransition>
+                <Suspense fallback={<PageLoader />}>
+                  <SavedCards />
+                </Suspense>
+              </PageTransition>
+            </PageLayout>
+          </ProtectedRoute>
+        }
+      />
 
       {/* Module Hub */}
       <Route

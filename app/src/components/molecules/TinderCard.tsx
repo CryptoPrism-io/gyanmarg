@@ -11,7 +11,9 @@ import {
   RotateCcw,
   CheckCircle2,
   X,
+  Star,
 } from 'lucide-react';
+import { useProgressStore } from '@/store/progressStore';
 import type { CardContent } from '@/hooks/useCardStack';
 import type { QuizQuestion } from '@/types';
 import { RichMarkdown } from '@/components/molecules/RichMarkdown';
@@ -24,6 +26,8 @@ interface TinderCardProps {
   gradient: string;
   totalCards: number;
   currentCardNumber: number;
+  lessonId?: string;
+  moduleId?: string;
 }
 
 const SWIPE_THRESHOLD = 100;
@@ -165,10 +169,34 @@ export function TinderCard({
   onSwipe,
   totalCards,
   currentCardNumber,
+  lessonId,
+  moduleId,
 }: TinderCardProps) {
   const [quizAnswered, setQuizAnswered] = useState(false);
   const [quizCorrect, setQuizCorrect] = useState(false);
   const constraintsRef = useRef(null);
+
+  // Starred cards
+  const isCardStarred = useProgressStore((s) => s.isCardStarred);
+  const starCard = useProgressStore((s) => s.starCard);
+  const unstarCard = useProgressStore((s) => s.unstarCard);
+  const isStarred = isCardStarred(card.id);
+
+  const handleToggleStar = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (isStarred) {
+      unstarCard(card.id);
+    } else if (lessonId && moduleId) {
+      starCard({
+        cardId: card.id,
+        lessonId,
+        moduleId,
+        cardType: card.type,
+        title: card.title,
+        content: card.content,
+      });
+    }
+  };
 
   // Motion values for drag
   const dragX = useMotionValue(0);
@@ -289,11 +317,30 @@ export function TinderCard({
           )}
         </div>
 
-        {/* XP Badge */}
-        <div className="absolute top-4 right-4 px-2 py-1 rounded-full bg-golden/20 border border-golden/30">
-          <span className="text-xs font-semibold text-golden">
-            +{card.type === 'quiz' ? '1-5' : card.xpReward} XP
-          </span>
+        {/* XP Badge + Star */}
+        <div className="absolute top-4 right-4 flex items-center gap-1.5">
+          {lessonId && moduleId && (
+            <motion.button
+              onClick={handleToggleStar}
+              whileTap={{ scale: 0.85 }}
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+                isStarred
+                  ? 'bg-golden/25 border border-golden/40'
+                  : 'bg-white/5 border border-white/10 hover:bg-white/10'
+              }`}
+            >
+              <Star
+                className={`w-4 h-4 transition-colors ${
+                  isStarred ? 'text-golden fill-golden' : 'text-text-muted'
+                }`}
+              />
+            </motion.button>
+          )}
+          <div className="px-2 py-1 rounded-full bg-golden/20 border border-golden/30">
+            <span className="text-xs font-semibold text-golden">
+              +{card.type === 'quiz' ? '1-5' : card.xpReward} XP
+            </span>
+          </div>
         </div>
 
         {/* Swipe Indicators (only on top card) */}

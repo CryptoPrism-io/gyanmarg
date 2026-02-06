@@ -8,6 +8,7 @@ import {
   Flame,
   Settings,
   Eye,
+  Star,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
@@ -20,6 +21,7 @@ const navItems = [
   { id: 'visual-lab', path: '/lab', label: 'Visuals', icon: Eye },
   { id: 'review', path: '/review', label: 'Review', icon: Brain },
   { id: 'challenges', path: '/challenges', label: 'Challenges', icon: Zap },
+  { id: 'saved', path: '/saved', label: '', icon: Star, iconOnly: true },
   { id: 'settings', path: '/settings', label: '', icon: Settings, iconOnly: true },
 ];
 
@@ -147,6 +149,7 @@ export function Navbar() {
 const mobileNavItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
   { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
+  { id: 'saved', path: '/saved', label: 'Saved', icon: Star },
   { id: 'review', path: '/review', label: 'Review', icon: Brain },
   { id: 'settings', path: '/settings', label: '', icon: Settings },
 ];

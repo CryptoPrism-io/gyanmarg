@@ -21,6 +21,9 @@ interface UserState {
   // Pending achievement notification
   pendingAchievement: { id: string; name: string; xpReward: number } | null;
 
+  // Favorite modules
+  favoriteModules: string[];
+
   // Actions
   setProfile: (profile: UserProfile) => void;
   updateProfile: (updates: Partial<UserProfile>) => void;
@@ -40,6 +43,10 @@ interface UserState {
   // Achievement notification
   setPendingAchievement: (achievement: { id: string; name: string; xpReward: number } | null) => void;
   clearPendingAchievement: () => void;
+
+  // Favorite modules
+  toggleFavoriteModule: (moduleId: string) => void;
+  isFavoriteModule: (moduleId: string) => boolean;
 }
 
 const defaultSettings: UserSettings = {
@@ -59,6 +66,7 @@ export const useUserStore = create<UserState>()(
       notificationPermission: 'default',
       reviewReminder: null,
       pendingAchievement: null,
+      favoriteModules: [],
 
       setProfile: (profile) => set({ profile }),
 
@@ -100,6 +108,7 @@ export const useUserStore = create<UserState>()(
           notificationPermission: 'default',
           reviewReminder: null,
           pendingAchievement: null,
+          favoriteModules: [],
         }),
 
       // Onboarding Progress Actions
@@ -129,6 +138,17 @@ export const useUserStore = create<UserState>()(
 
       clearPendingAchievement: () =>
         set({ pendingAchievement: null }),
+
+      // Favorite modules
+      toggleFavoriteModule: (moduleId) =>
+        set((state) => ({
+          favoriteModules: state.favoriteModules.includes(moduleId)
+            ? state.favoriteModules.filter((id) => id !== moduleId)
+            : [...state.favoriteModules, moduleId],
+        })),
+
+      isFavoriteModule: (moduleId) =>
+        get().favoriteModules.includes(moduleId),
     }),
     {
       name: 'gyanmarg-user',
@@ -141,5 +161,6 @@ export const useIsOnboarded = () => useUserStore(state => state.isOnboarded);
 export const useOnboardingProgress = () => useUserStore(state => state.onboardingProgress);
 export const usePendingAchievement = () => useUserStore(state => state.pendingAchievement);
 export const useSettings = () => useUserStore(state => state.settings);
+export const useFavoriteModules = () => useUserStore(state => state.favoriteModules);
 
 export default useUserStore;
