@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Shield } from 'lucide-react';
 
 interface Principle {
   id: string;
@@ -75,157 +76,181 @@ export function CialdiniPrinciples() {
   const principle = principles[activePrinciple];
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      {/* Hexagonal selector */}
-      <div className="relative w-56 h-56">
-        <svg viewBox="0 0 200 200" className="w-full h-full">
-          {principles.map((p, index) => {
-            const angle = (index * 60 - 90) * (Math.PI / 180);
-            const cx = 100 + 60 * Math.cos(angle);
-            const cy = 100 + 60 * Math.sin(angle);
-            const isActive = activePrinciple === index;
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Glassmorphism layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-pink-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-            return (
-              <g key={p.id} className="cursor-pointer" onClick={() => setActivePrinciple(index)}>
-                <motion.circle
-                  cx={cx}
-                  cy={cy}
-                  r={isActive ? 28 : 24}
-                  fill={isActive ? p.color + '30' : p.color + '15'}
-                  stroke={p.color}
-                  strokeWidth={isActive ? 3 : 1.5}
-                  animate={{ scale: isActive ? 1 : 1 }}
-                  whileHover={{ scale: 1.1 }}
-                />
-                <text
-                  x={cx}
-                  y={cy}
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fontSize="18"
-                >
-                  {p.icon}
-                </text>
-              </g>
-            );
-          })}
-
-          {/* Center */}
-          <circle cx="100" cy="100" r="30" fill="#111113" stroke="#374151" strokeWidth="2" />
-          <text x="100" y="95" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">
-            6 WEAPONS
-          </text>
-          <text x="100" y="108" textAnchor="middle" fill="#666" fontSize="7">
-            of Influence
-          </text>
-
-          {/* Connection lines */}
-          {principles.map((_, index) => {
-            const angle = (index * 60 - 90) * (Math.PI / 180);
-            const x1 = 100 + 30 * Math.cos(angle);
-            const y1 = 100 + 30 * Math.sin(angle);
-            const x2 = 100 + 36 * Math.cos(angle);
-            const y2 = 100 + 36 * Math.sin(angle);
-            return (
-              <line
-                key={`line-${index}`}
-                x1={x1}
-                y1={y1}
-                x2={x2}
-                y2={y2}
-                stroke="#374151"
-                strokeWidth="1"
-              />
-            );
-          })}
-        </svg>
-      </div>
-
-      {/* Principle name pills */}
-      <div className="flex flex-wrap justify-center gap-1.5 max-w-xs">
-        {principles.map((p, index) => (
-          <button
-            key={p.id}
-            onClick={() => setActivePrinciple(index)}
-            className={`text-[9px] px-2 py-0.5 rounded-full transition-all ${
-              activePrinciple === index ? 'border' : 'opacity-50'
-            }`}
-            style={{
-              backgroundColor: activePrinciple === index ? p.color + '20' : 'transparent',
-              borderColor: p.color,
-              color: p.color,
-            }}
-          >
-            {p.name.split(' ')[0]}
-          </button>
-        ))}
-      </div>
-
-      {/* Principle details */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={principle.id}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="w-full max-w-xs"
-        >
-          <div
-            className="p-4 rounded-xl border"
-            style={{
-              backgroundColor: principle.color + '10',
-              borderColor: principle.color + '40',
-            }}
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <span className="text-3xl">{principle.icon}</span>
-              <div>
-                <h3 className="text-sm font-bold" style={{ color: principle.color }}>
-                  {principle.name}
-                </h3>
-                <p className="text-[10px] text-gray-500">Principle #{activePrinciple + 1}</p>
-              </div>
-            </div>
-
-            <p className="text-xs text-gray-300 mb-3">{principle.description}</p>
-
-            <div className="p-2 bg-gray-800/50 rounded-lg mb-3">
-              <p className="text-[10px] text-gray-500 mb-1">Example:</p>
-              <p className="text-xs text-gray-400">{principle.example}</p>
-            </div>
-
-            <button
-              onClick={() => setShowDefense(!showDefense)}
-              className="text-[10px] text-gray-500 hover:text-gray-300"
-            >
-              {showDefense ? '▼ Hide' : '🛡️ Show'} defense
-            </button>
-
-            <AnimatePresence>
-              {showDefense && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="mt-2 p-2 bg-green-500/10 border border-green-500/30 rounded-lg"
-                >
-                  <p className="text-[10px] text-green-400">{principle.defense}</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-5">
+          <div className="p-2 rounded-xl bg-purple-500/20 border border-purple-500/30">
+            <Shield className="w-5 h-5 text-purple-400" />
           </div>
-        </motion.div>
-      </AnimatePresence>
+          <div>
+            <h3 className="text-sm font-semibold text-white/90">6 Weapons of Influence</h3>
+            <p className="text-[10px] text-white/50">Cialdini's persuasion principles</p>
+          </div>
+        </div>
 
-      {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
-        <p className="text-xs text-gray-400 leading-relaxed">
-          <span className="text-purple-400 font-medium">Robert Cialdini:</span> "The same
-          principles that arm the compliance professionals can be used by us to defend ourselves."
-          Know these weapons to use them ethically and defend against manipulation.
-        </p>
+        <div className="flex flex-col items-center gap-5">
+          {/* Hexagonal selector */}
+          <div className="relative w-56 h-56">
+            <svg viewBox="0 0 200 200" className="w-full h-full">
+              {principles.map((p, index) => {
+                const angle = (index * 60 - 90) * (Math.PI / 180);
+                const cx = 100 + 60 * Math.cos(angle);
+                const cy = 100 + 60 * Math.sin(angle);
+                const isActive = activePrinciple === index;
+
+                return (
+                  <g key={p.id} className="cursor-pointer" onClick={() => setActivePrinciple(index)}>
+                    <motion.circle
+                      cx={cx}
+                      cy={cy}
+                      r={isActive ? 28 : 24}
+                      fill={isActive ? p.color + '30' : p.color + '15'}
+                      stroke={p.color}
+                      strokeWidth={isActive ? 3 : 1.5}
+                      animate={{ scale: isActive ? 1 : 1 }}
+                      whileHover={{ scale: 1.1 }}
+                    />
+                    <text
+                      x={cx}
+                      y={cy}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      fontSize="18"
+                    >
+                      {p.icon}
+                    </text>
+                  </g>
+                );
+              })}
+
+              {/* Center */}
+              <circle cx="100" cy="100" r="30" fill="rgba(17,17,19,0.9)" stroke="rgba(255,255,255,0.1)" strokeWidth="2" />
+              <text x="100" y="95" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">
+                6 WEAPONS
+              </text>
+              <text x="100" y="108" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="7">
+                of Influence
+              </text>
+
+              {/* Connection lines */}
+              {principles.map((_, index) => {
+                const angle = (index * 60 - 90) * (Math.PI / 180);
+                const x1 = 100 + 30 * Math.cos(angle);
+                const y1 = 100 + 30 * Math.sin(angle);
+                const x2 = 100 + 36 * Math.cos(angle);
+                const y2 = 100 + 36 * Math.sin(angle);
+                return (
+                  <line
+                    key={`line-${index}`}
+                    x1={x1}
+                    y1={y1}
+                    x2={x2}
+                    y2={y2}
+                    stroke="rgba(255,255,255,0.1)"
+                    strokeWidth="1"
+                  />
+                );
+              })}
+            </svg>
+          </div>
+
+          {/* Principle name pills */}
+          <div className="flex flex-wrap justify-center gap-1.5 max-w-xs">
+            {principles.map((p, index) => (
+              <button
+                key={p.id}
+                onClick={() => setActivePrinciple(index)}
+                className={`text-[9px] px-2 py-0.5 rounded-full transition-all ${
+                  activePrinciple === index ? 'border' : 'opacity-50'
+                }`}
+                style={{
+                  backgroundColor: activePrinciple === index ? p.color + '20' : 'transparent',
+                  borderColor: p.color,
+                  color: p.color,
+                }}
+              >
+                {p.name.split(' ')[0]}
+              </button>
+            ))}
+          </div>
+
+          {/* Principle details */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={principle.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full max-w-xs"
+            >
+              <div
+                className="p-4 rounded-xl border relative overflow-hidden"
+                style={{
+                  backgroundColor: principle.color + '10',
+                  borderColor: principle.color + '40',
+                }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">{principle.icon}</span>
+                  <div>
+                    <h3 className="text-sm font-bold" style={{ color: principle.color }}>
+                      {principle.name}
+                    </h3>
+                    <p className="text-[10px] text-white/50">Principle #{activePrinciple + 1}</p>
+                  </div>
+                </div>
+
+                <p className="text-xs text-white/80 mb-3">{principle.description}</p>
+
+                <div className="p-2 rounded-lg mb-3" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+                  <p className="text-[10px] text-white/50 mb-1">Example:</p>
+                  <p className="text-xs text-white/60">{principle.example}</p>
+                </div>
+
+                <button
+                  onClick={() => setShowDefense(!showDefense)}
+                  className="text-[10px] text-white/50 hover:text-white/80"
+                >
+                  {showDefense ? '▼ Hide' : '🛡️ Show'} defense
+                </button>
+
+                <AnimatePresence>
+                  {showDefense && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="mt-2 p-2 bg-green-500/10 border border-green-500/30 rounded-lg relative overflow-hidden"
+                    >
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                      <p className="text-[10px] text-green-400">{principle.defense}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Key insight */}
+          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <p className="text-xs text-white/60 leading-relaxed">
+              <span className="text-purple-400 font-medium">Robert Cialdini:</span> "The same
+              principles that arm the compliance professionals can be used by us to defend ourselves."
+              Know these weapons to use them ethically and defend against manipulation.
+            </p>
+          </div>
+
+          <p className="text-[10px] text-white/40">From Influence by Robert Cialdini</p>
+        </div>
       </div>
-
-      <p className="text-[10px] text-gray-600">From Influence by Robert Cialdini</p>
     </div>
   );
 }

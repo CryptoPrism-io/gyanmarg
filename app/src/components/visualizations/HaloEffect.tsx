@@ -58,174 +58,196 @@ export function HaloEffect() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      {/* Title */}
-      <div className="text-center">
-        <h3 className="text-sm font-bold text-amber-400">The Halo Effect</h3>
-        <p className="text-[10px] text-gray-500">When one trait colors our entire perception</p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-orange-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Visual representation */}
-      <div className="relative w-48 h-48">
-        <svg viewBox="0 0 200 200" className="w-full h-full">
-          {/* Halo glow */}
-          <motion.circle
-            cx="100"
-            cy="100"
-            r="70"
-            fill="none"
-            stroke="#F59E0B"
-            strokeWidth="3"
-            opacity="0.3"
-            animate={{
-              r: [70, 80, 70],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-          <motion.circle
-            cx="100"
-            cy="100"
-            r="60"
-            fill="#F59E0B10"
-            stroke="#F59E0B"
-            strokeWidth="2"
-            animate={{
-              r: [60, 65, 60],
-            }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-          />
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-5">
+          {/* Title */}
+          <div className="text-center">
+            <h3 className="text-sm font-bold text-amber-400">The Halo Effect</h3>
+            <p className="text-[10px] text-gray-500">When one trait colors our entire perception</p>
+          </div>
 
-          {/* Center trait */}
-          <circle cx="100" cy="100" r="35" fill="#111113" stroke="#F59E0B" strokeWidth="2" />
-          <text x="100" y="95" textAnchor="middle" fontSize="24">
-            {example.icon}
-          </text>
-          <text x="100" y="115" textAnchor="middle" fontSize="8" fill="#F59E0B">
-            One Trait
-          </text>
+          {/* Visual representation */}
+          <div className="relative w-48 h-48">
+            <svg viewBox="0 0 200 200" className="w-full h-full">
+              {/* Halo glow */}
+              <motion.circle
+                cx="100"
+                cy="100"
+                r="70"
+                fill="none"
+                stroke="#F59E0B"
+                strokeWidth="3"
+                opacity="0.3"
+                animate={{
+                  r: [70, 80, 70],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <motion.circle
+                cx="100"
+                cy="100"
+                r="60"
+                fill="#F59E0B10"
+                stroke="#F59E0B"
+                strokeWidth="2"
+                animate={{
+                  r: [60, 65, 60],
+                }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              />
 
-          {/* Radiating assumptions */}
-          {example.biases.map((_, i) => {
-            const angle = (i * 90 - 45) * (Math.PI / 180);
-            const x = 100 + 55 * Math.cos(angle);
-            const y = 100 + 55 * Math.sin(angle);
-            const isRevealed = revealedBiases.includes(i);
+              {/* Center trait */}
+              <circle cx="100" cy="100" r="35" fill="#111113" stroke="#F59E0B" strokeWidth="2" />
+              <text x="100" y="95" textAnchor="middle" fontSize="24">
+                {example.icon}
+              </text>
+              <text x="100" y="115" textAnchor="middle" fontSize="8" fill="#F59E0B">
+                One Trait
+              </text>
 
-            return (
-              <motion.g
+              {/* Radiating assumptions */}
+              {example.biases.map((_, i) => {
+                const angle = (i * 90 - 45) * (Math.PI / 180);
+                const x = 100 + 55 * Math.cos(angle);
+                const y = 100 + 55 * Math.sin(angle);
+                const isRevealed = revealedBiases.includes(i);
+
+                return (
+                  <motion.g
+                    key={i}
+                    className="cursor-pointer"
+                    onClick={() => toggleBias(i)}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <circle
+                      cx={x}
+                      cy={y}
+                      r="15"
+                      fill={isRevealed ? '#EF444420' : '#F59E0B20'}
+                      stroke={isRevealed ? '#EF4444' : '#F59E0B'}
+                      strokeWidth="1"
+                    />
+                    <text x={x} y={y + 4} textAnchor="middle" fontSize="8" fill={isRevealed ? '#EF4444' : '#F59E0B'}>
+                      {isRevealed ? '❌' : '?'}
+                    </text>
+                  </motion.g>
+                );
+              })}
+            </svg>
+          </div>
+
+          {/* Example selector */}
+          <div className="flex gap-2">
+            {examples.map((ex, i) => (
+              <button
                 key={i}
-                className="cursor-pointer"
-                onClick={() => toggleBias(i)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: i * 0.1 }}
+                onClick={() => changeExample(i)}
+                className={`relative overflow-hidden px-3 py-2 rounded-lg text-xs border transition-all ${
+                  selectedExample === i
+                    ? 'bg-amber-500/20 border-amber-500 text-amber-400'
+                    : 'bg-white/[0.02] border-white/[0.08] text-gray-400 hover:border-white/[0.15] hover:bg-white/[0.04]'
+                }`}
               >
-                <circle
-                  cx={x}
-                  cy={y}
-                  r="15"
-                  fill={isRevealed ? '#EF444420' : '#F59E0B20'}
-                  stroke={isRevealed ? '#EF4444' : '#F59E0B'}
-                  strokeWidth="1"
-                />
-                <text x={x} y={y + 4} textAnchor="middle" fontSize="8" fill={isRevealed ? '#EF4444' : '#F59E0B'}>
-                  {isRevealed ? '❌' : '?'}
-                </text>
-              </motion.g>
-            );
-          })}
-        </svg>
-      </div>
+                {ex.icon} {ex.label.split(' ')[0]}
+              </button>
+            ))}
+          </div>
 
-      {/* Example selector */}
-      <div className="flex gap-2">
-        {examples.map((ex, i) => (
-          <button
-            key={i}
-            onClick={() => changeExample(i)}
-            className={`px-3 py-2 rounded-lg text-xs border transition-all ${
-              selectedExample === i
-                ? 'bg-amber-500/20 border-amber-500 text-amber-400'
-                : 'border-gray-700 text-gray-400 hover:border-gray-600'
-            }`}
-          >
-            {ex.icon} {ex.label.split(' ')[0]}
-          </button>
-        ))}
-      </div>
+          {/* Instruction */}
+          <p className="text-[10px] text-gray-500">Click the circles to reveal the false assumptions</p>
 
-      {/* Instruction */}
-      <p className="text-[10px] text-gray-500">Click the circles to reveal the false assumptions</p>
+          {/* Bias list */}
+          <div className="w-full max-w-xs space-y-2">
+            {example.biases.map((bias, i) => (
+              <motion.div
+                key={i}
+                onClick={() => toggleBias(i)}
+                className={`relative overflow-hidden p-3 rounded-xl border cursor-pointer transition-all ${
+                  revealedBiases.includes(i)
+                    ? 'bg-red-500/10 border-red-500/30'
+                    : 'bg-white/[0.02] border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.04]'
+                }`}
+                whileHover={{ scale: 1.01 }}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs text-gray-300">
+                      <span className="text-amber-400">{bias.trait}</span> →{' '}
+                      <span className={revealedBiases.includes(i) ? 'line-through text-gray-500' : ''}>
+                        {bias.assumption}
+                      </span>
+                    </p>
+                    <AnimatePresence>
+                      {revealedBiases.includes(i) && (
+                        <motion.p
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="text-[10px] text-red-400 mt-1"
+                        >
+                          Reality: {bias.reality}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                  <span className="text-lg">{revealedBiases.includes(i) ? '❌' : '❓'}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-      {/* Bias list */}
-      <div className="w-full max-w-xs space-y-2">
-        {example.biases.map((bias, i) => (
-          <motion.div
-            key={i}
-            onClick={() => toggleBias(i)}
-            className={`p-3 rounded-xl border cursor-pointer transition-all ${
-              revealedBiases.includes(i)
-                ? 'bg-red-500/10 border-red-500/30'
-                : 'bg-[#111113] border-gray-800 hover:border-gray-700'
-            }`}
-            whileHover={{ scale: 1.01 }}
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs text-gray-300">
-                  <span className="text-amber-400">{bias.trait}</span> →{' '}
-                  <span className={revealedBiases.includes(i) ? 'line-through text-gray-500' : ''}>
-                    {bias.assumption}
-                  </span>
-                </p>
-                <AnimatePresence>
-                  {revealedBiases.includes(i) && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="text-[10px] text-red-400 mt-1"
-                    >
-                      Reality: {bias.reality}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-              </div>
-              <span className="text-lg">{revealedBiases.includes(i) ? '❌' : '❓'}</span>
+          {/* Defense */}
+          <div className="relative overflow-hidden w-full max-w-xs p-3 rounded-xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.08] via-green-500/[0.04] to-transparent" />
+            <div className="absolute inset-0 border border-green-500/20 rounded-xl" />
+            <div className="relative z-10">
+              <p className="text-[10px] text-green-400 font-medium">🛡️ Defense Strategy:</p>
+              <p className="text-[10px] text-gray-400">
+                Evaluate each trait independently. Ask: "What evidence do I have for THIS specific claim?"
+                Don't let one positive trait create a halo of assumed virtues.
+              </p>
             </div>
-          </motion.div>
-        ))}
-      </div>
+          </div>
 
-      {/* Defense */}
-      <div className="w-full max-w-xs p-3 bg-green-500/10 border border-green-500/30 rounded-xl">
-        <p className="text-[10px] text-green-400 font-medium">🛡️ Defense Strategy:</p>
-        <p className="text-[10px] text-gray-400">
-          Evaluate each trait independently. Ask: "What evidence do I have for THIS specific claim?"
-          Don't let one positive trait create a halo of assumed virtues.
-        </p>
-      </div>
+          {/* Counter-effect */}
+          <div className="relative overflow-hidden w-full max-w-xs p-3 rounded-xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-red-500/[0.08] via-red-500/[0.04] to-transparent" />
+            <div className="absolute inset-0 border border-red-500/20 rounded-xl" />
+            <div className="relative z-10">
+              <p className="text-[10px] text-red-400 font-medium">😈 The Horn Effect (Reverse):</p>
+              <p className="text-[10px] text-gray-400">
+                One negative trait can create a "devil's horns" effect—we assume other negative qualities
+                based on a single flaw.
+              </p>
+            </div>
+          </div>
 
-      {/* Counter-effect */}
-      <div className="w-full max-w-xs p-3 bg-red-500/10 border border-red-500/30 rounded-xl">
-        <p className="text-[10px] text-red-400 font-medium">😈 The Horn Effect (Reverse):</p>
-        <p className="text-[10px] text-gray-400">
-          One negative trait can create a "devil's horns" effect—we assume other negative qualities
-          based on a single flaw.
-        </p>
-      </div>
+          {/* Key insight */}
+          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs">
+            <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="relative z-10">
+              <p className="text-xs text-gray-400 leading-relaxed">
+                <span className="text-amber-400 font-medium">Daniel Kahneman:</span> "The halo effect
+                helps keep our view of the world coherent and simple. But coherence is not accuracy—it
+                leads us to form first impressions that are often wrong."
+              </p>
+            </div>
+          </div>
 
-      {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
-        <p className="text-xs text-gray-400 leading-relaxed">
-          <span className="text-amber-400 font-medium">Daniel Kahneman:</span> "The halo effect
-          helps keep our view of the world coherent and simple. But coherence is not accuracy—it
-          leads us to form first impressions that are often wrong."
-        </p>
+          <p className="text-[10px] text-gray-600">From Thinking, Fast and Slow</p>
+        </div>
       </div>
-
-      <p className="text-[10px] text-gray-600">From Thinking, Fast and Slow</p>
     </div>
   );
 }

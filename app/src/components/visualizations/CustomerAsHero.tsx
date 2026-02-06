@@ -36,98 +36,132 @@ export function CustomerAsHero() {
   const comparison = comparisons[activeComparison];
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Header */}
-      <div className="text-center">
-        <p className="text-xs text-gray-400">
-          In every story, there's a <span className="text-blue-400">hero</span> and a{' '}
-          <span className="text-amber-400">guide</span>.
-        </p>
-        <p className="text-[10px] text-gray-500">Your customer is the hero. You are Yoda, not Luke.</p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-amber-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Visual metaphor */}
-      <div className="w-full max-w-xs grid grid-cols-2 gap-3">
-        <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3 text-center">
-          <p className="text-2xl mb-1">🦸</p>
-          <p className="text-xs text-blue-400 font-medium">The Hero</p>
-          <p className="text-[10px] text-gray-500">Your Customer</p>
-          <p className="text-[8px] text-gray-600 mt-1">Has a problem, needs transformation</p>
-        </div>
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3 text-center">
-          <p className="text-2xl mb-1">🧙</p>
-          <p className="text-xs text-amber-400 font-medium">The Guide</p>
-          <p className="text-[10px] text-gray-500">Your Brand</p>
-          <p className="text-[8px] text-gray-600 mt-1">Has empathy, provides the plan</p>
-        </div>
-      </div>
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Header */}
+          <div className="text-center">
+            <p className="text-xs text-gray-400">
+              In every story, there's a <span className="text-blue-400">hero</span> and a{' '}
+              <span className="text-amber-400">guide</span>.
+            </p>
+            <p className="text-[10px] text-gray-500">Your customer is the hero. You are Yoda, not Luke.</p>
+          </div>
 
-      {/* Comparison selector */}
-      <div className="flex gap-1">
-        {comparisons.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => { setActiveComparison(idx); setShowCorrect(false); }}
-            className={`w-8 h-8 rounded-lg border text-xs ${
-              idx === activeComparison
-                ? 'bg-amber-500/20 border-amber-500/50 text-amber-400'
-                : 'bg-[#111113] border-gray-800 text-gray-500'
-            }`}
-          >
-            {idx + 1}
-          </button>
-        ))}
-      </div>
+          {/* Visual metaphor */}
+          <div className="w-full max-w-xs grid grid-cols-2 gap-3">
+            <div className="relative overflow-hidden rounded-lg">
+              <div className="absolute inset-0 bg-blue-500/10 backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-blue-500/30 rounded-lg" />
+              <div className="relative z-10 p-3 text-center">
+                <p className="text-2xl mb-1">🦸</p>
+                <p className="text-xs text-blue-400 font-medium">The Hero</p>
+                <p className="text-[10px] text-gray-500">Your Customer</p>
+                <p className="text-[8px] text-gray-600 mt-1">Has a problem, needs transformation</p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-lg">
+              <div className="absolute inset-0 bg-amber-500/10 backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-amber-500/30 rounded-lg" />
+              <div className="relative z-10 p-3 text-center">
+                <p className="text-2xl mb-1">🧙</p>
+                <p className="text-xs text-amber-400 font-medium">The Guide</p>
+                <p className="text-[10px] text-gray-500">Your Brand</p>
+                <p className="text-[8px] text-gray-600 mt-1">Has empathy, provides the plan</p>
+              </div>
+            </div>
+          </div>
 
-      {/* Comparison detail */}
-      <div className="w-full max-w-xs space-y-3">
-        <div className="bg-[#111113] border border-gray-800 rounded-lg p-3 text-center">
-          <p className="text-xs text-gray-400">{comparison.aspect}</p>
-        </div>
+          {/* Comparison selector */}
+          <div className="flex gap-1">
+            {comparisons.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => { setActiveComparison(idx); setShowCorrect(false); }}
+                className={`w-8 h-8 rounded-lg text-xs transition-all ${
+                  idx === activeComparison
+                    ? 'bg-amber-500/20 border border-amber-500/50 text-amber-400 backdrop-blur-sm'
+                    : 'bg-white/[0.03] border border-white/[0.08] text-gray-500 hover:border-white/[0.15]'
+                }`}
+              >
+                {idx + 1}
+              </button>
+            ))}
+          </div>
 
-        {/* Wrong way */}
-        <motion.div
-          className={`p-3 rounded-lg border transition-all ${
-            showCorrect ? 'bg-red-500/5 border-red-500/20' : 'bg-red-500/10 border-red-500/30'
-          }`}
-        >
-          <p className="text-[10px] text-red-400 uppercase mb-1">❌ Brand as Hero:</p>
-          <p className="text-xs text-gray-400 italic">{comparison.wrong}</p>
-        </motion.div>
-
-        {/* Reveal button or correct way */}
-        {!showCorrect ? (
-          <motion.button
-            onClick={() => setShowCorrect(true)}
-            className="w-full py-2 bg-green-500/20 border border-green-500/50 rounded-lg text-xs text-green-400"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Show Better Version
-          </motion.button>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-3"
-          >
-            <div className="p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
-              <p className="text-[10px] text-green-400 uppercase mb-1">✓ Customer as Hero:</p>
-              <p className="text-xs text-gray-300 italic">{comparison.right}</p>
+          {/* Comparison detail */}
+          <div className="w-full max-w-xs space-y-3">
+            <div className="relative overflow-hidden rounded-lg">
+              <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+              <div className="relative z-10 p-3 text-center">
+                <p className="text-xs text-gray-400">{comparison.aspect}</p>
+              </div>
             </div>
 
-            <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-2">
-              <p className="text-[10px] text-purple-400">
-                💡 {comparison.principle}
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </div>
+            {/* Wrong way */}
+            <motion.div
+              className={`relative overflow-hidden rounded-lg transition-all ${
+                showCorrect ? 'opacity-60' : 'opacity-100'
+              }`}
+            >
+              <div className={`absolute inset-0 backdrop-blur-sm ${showCorrect ? 'bg-red-500/5' : 'bg-red-500/10'}`} />
+              <div className={`absolute inset-0 border rounded-lg ${showCorrect ? 'border-red-500/20' : 'border-red-500/30'}`} />
+              <div className="relative z-10 p-3">
+                <p className="text-[10px] text-red-400 uppercase mb-1">Brand as Hero:</p>
+                <p className="text-xs text-gray-400 italic">{comparison.wrong}</p>
+              </div>
+            </motion.div>
 
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Building a StoryBrand" by Donald Miller
-      </p>
+            {/* Reveal button or correct way */}
+            {!showCorrect ? (
+              <motion.button
+                onClick={() => setShowCorrect(true)}
+                className="w-full py-2 bg-green-500/20 border border-green-500/50 rounded-lg text-xs text-green-400 backdrop-blur-sm hover:bg-green-500/25 transition-all"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Show Better Version
+              </motion.button>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="space-y-3"
+              >
+                <div className="relative overflow-hidden rounded-lg">
+                  <div className="absolute inset-0 bg-green-500/10 backdrop-blur-sm" />
+                  <div className="absolute inset-0 border border-green-500/30 rounded-lg" />
+                  <div className="relative z-10 p-3">
+                    <p className="text-[10px] text-green-400 uppercase mb-1">Customer as Hero:</p>
+                    <p className="text-xs text-gray-300 italic">{comparison.right}</p>
+                  </div>
+                </div>
+
+                <div className="relative overflow-hidden rounded-lg">
+                  <div className="absolute inset-0 bg-purple-500/10 backdrop-blur-sm" />
+                  <div className="absolute inset-0 border border-purple-500/30 rounded-lg" />
+                  <div className="relative z-10 p-2">
+                    <p className="text-[10px] text-purple-400">
+                      {comparison.principle}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </div>
+
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Building a StoryBrand" by Donald Miller
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

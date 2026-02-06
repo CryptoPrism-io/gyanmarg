@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Target } from 'lucide-react';
 
 interface Item {
   id: string;
@@ -74,317 +75,346 @@ export function CircleOfControl() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      {/* Circle visualization */}
-      <div className="relative w-52 h-52">
-        {/* Concern (outer) */}
-        <motion.div
-          className="absolute inset-0 rounded-full border-2 cursor-pointer transition-all"
-          style={{
-            backgroundColor: selectedZone === 'concern' ? '#6B728030' : '#6B728010',
-            borderColor: selectedZone === 'concern' ? '#6B7280' : '#6B728040',
-          }}
-          onClick={() => setSelectedZone(selectedZone === 'concern' ? null : 'concern')}
-          whileHover={{ scale: 1.02 }}
-        />
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Glassmorphism layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-amber-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        {/* Influence (middle) */}
-        <motion.div
-          className="absolute inset-8 rounded-full border-2 cursor-pointer transition-all"
-          style={{
-            backgroundColor: selectedZone === 'influence' ? '#F59E0B30' : '#F59E0B15',
-            borderColor: selectedZone === 'influence' ? '#F59E0B' : '#F59E0B40',
-          }}
-          onClick={() => setSelectedZone(selectedZone === 'influence' ? null : 'influence')}
-          whileHover={{ scale: 1.02 }}
-        />
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-5">
+          <div className="p-2 rounded-xl bg-green-500/20 border border-green-500/30">
+            <Target className="w-5 h-5 text-green-400" />
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-white/90">Circle of Control</h3>
+            <p className="text-[10px] text-white/50">Stoic focus exercise</p>
+          </div>
+        </div>
 
-        {/* Control (inner) */}
-        <motion.div
-          className="absolute inset-16 rounded-full border-2 cursor-pointer transition-all
-                    flex items-center justify-center"
-          style={{
-            backgroundColor: selectedZone === 'control' ? '#22C55E30' : '#22C55E15',
-            borderColor: selectedZone === 'control' ? '#22C55E' : '#22C55E40',
-          }}
-          onClick={() => setSelectedZone(selectedZone === 'control' ? null : 'control')}
-          whileHover={{ scale: 1.05 }}
-        >
-          <span className="text-[10px] text-green-400 font-semibold">CONTROL</span>
-        </motion.div>
-
-        {/* Labels */}
-        <span className="absolute top-3 left-1/2 -translate-x-1/2 text-[10px] text-gray-500 font-medium">
-          CONCERN
-        </span>
-        <span className="absolute top-11 left-1/2 -translate-x-1/2 text-[10px] text-amber-400 font-medium">
-          INFLUENCE
-        </span>
-
-        {/* Energy indicators (when showing results) */}
-        {showResults && (
-          <>
+        <div className="flex flex-col items-center gap-5">
+          {/* Circle visualization */}
+          <div className="relative w-52 h-52">
+            {/* Concern (outer) */}
             <motion.div
-              className="absolute -right-2 top-1/4 px-2 py-1 rounded-full text-[9px] font-medium"
-              style={{ backgroundColor: '#22C55E', color: '#fff' }}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-            >
-              {getZoneItems('control').length}
-            </motion.div>
+              className="absolute inset-0 rounded-full border-2 cursor-pointer transition-all"
+              style={{
+                backgroundColor: selectedZone === 'concern' ? '#6B728030' : '#6B728010',
+                borderColor: selectedZone === 'concern' ? '#6B7280' : '#6B728040',
+              }}
+              onClick={() => setSelectedZone(selectedZone === 'concern' ? null : 'concern')}
+              whileHover={{ scale: 1.02 }}
+            />
+
+            {/* Influence (middle) */}
             <motion.div
-              className="absolute -right-2 top-1/2 px-2 py-1 rounded-full text-[9px] font-medium"
-              style={{ backgroundColor: '#F59E0B', color: '#fff' }}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1, transition: { delay: 0.1 } }}
-            >
-              {getZoneItems('influence').length}
-            </motion.div>
+              className="absolute inset-8 rounded-full border-2 cursor-pointer transition-all"
+              style={{
+                backgroundColor: selectedZone === 'influence' ? '#F59E0B30' : '#F59E0B15',
+                borderColor: selectedZone === 'influence' ? '#F59E0B' : '#F59E0B40',
+              }}
+              onClick={() => setSelectedZone(selectedZone === 'influence' ? null : 'influence')}
+              whileHover={{ scale: 1.02 }}
+            />
+
+            {/* Control (inner) */}
             <motion.div
-              className="absolute -right-2 top-3/4 px-2 py-1 rounded-full text-[9px] font-medium"
-              style={{ backgroundColor: '#6B7280', color: '#fff' }}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1, transition: { delay: 0.2 } }}
+              className="absolute inset-16 rounded-full border-2 cursor-pointer transition-all
+                        flex items-center justify-center"
+              style={{
+                backgroundColor: selectedZone === 'control' ? '#22C55E30' : '#22C55E15',
+                borderColor: selectedZone === 'control' ? '#22C55E' : '#22C55E40',
+              }}
+              onClick={() => setSelectedZone(selectedZone === 'control' ? null : 'control')}
+              whileHover={{ scale: 1.05 }}
             >
-              {getZoneItems('concern').length}
+              <span className="text-[10px] text-green-400 font-semibold">CONTROL</span>
             </motion.div>
-          </>
-        )}
-      </div>
 
-      {/* Zone info when selected */}
-      <AnimatePresence>
-        {selectedZone && !showResults && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            className="w-full max-w-xs p-3 rounded-xl border"
-            style={{
-              backgroundColor: zones[selectedZone].color + '15',
-              borderColor: zones[selectedZone].color + '40',
-            }}
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-xl">{zones[selectedZone].icon}</span>
-              <span className="text-sm font-medium" style={{ color: zones[selectedZone].color }}>
-                {zones[selectedZone].name}
-              </span>
-            </div>
-            <p className="text-[10px] text-gray-400">{zones[selectedZone].description}</p>
-            <div className="mt-2 pt-2 border-t border-gray-800">
-              <p className="text-[9px] text-gray-500">Examples:</p>
-              <div className="flex flex-wrap gap-1 mt-1">
-                {getZoneItems(selectedZone).slice(0, 3).map(item => (
-                  <span
-                    key={item.id}
-                    className="text-[9px] px-2 py-0.5 rounded-full"
-                    style={{ backgroundColor: zones[selectedZone].color + '20', color: zones[selectedZone].color }}
-                  >
-                    {item.text}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {/* Labels */}
+            <span className="absolute top-3 left-1/2 -translate-x-1/2 text-[10px] text-white/50 font-medium">
+              CONCERN
+            </span>
+            <span className="absolute top-11 left-1/2 -translate-x-1/2 text-[10px] text-amber-400 font-medium">
+              INFLUENCE
+            </span>
 
-      {/* Quiz mode */}
-      {!showResults && (
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className="w-full max-w-xs"
-          >
-            {/* Progress bar */}
-            <div className="h-1 bg-gray-800 rounded-full mb-3 overflow-hidden">
-              <motion.div
-                className="h-full bg-gradient-to-r from-green-500 via-amber-500 to-gray-500"
-                animate={{ width: `${((currentIndex + 1) / items.length) * 100}%` }}
-              />
-            </div>
-
-            <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 text-center mb-3">
-              <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2">
-                Item {currentIndex + 1} of {items.length}
-              </p>
-              <p className="text-sm text-gray-200 font-medium">"{currentItem.text}"</p>
-            </div>
-
-            <p className="text-xs text-gray-500 text-center mb-3">
-              Where does this belong?
-            </p>
-
-            <div className="space-y-2">
-              {(['control', 'influence', 'concern'] as const).map((zone) => (
-                <motion.button
-                  key={zone}
-                  onClick={() => handleAnswer(zone)}
-                  className="w-full p-3 rounded-xl border text-xs font-medium transition-all
-                           hover:scale-[1.02]"
-                  style={{
-                    backgroundColor: zones[zone].color + '10',
-                    borderColor: zones[zone].color + '30',
-                    color: zones[zone].color,
-                  }}
-                  whileTap={{ scale: 0.98 }}
+            {/* Energy indicators (when showing results) */}
+            {showResults && (
+              <>
+                <motion.div
+                  className="absolute -right-2 top-1/4 px-2 py-1 rounded-full text-[9px] font-medium"
+                  style={{ backgroundColor: '#22C55E', color: '#fff' }}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
                 >
-                  <span className="mr-2">{zones[zone].icon}</span>
-                  {zones[zone].name}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      )}
-
-      {/* Results */}
-      {showResults && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="w-full max-w-xs space-y-4"
-        >
-          {/* Score */}
-          <div className="text-center p-4 bg-[#111113] border border-gray-800 rounded-xl">
-            <motion.p
-              className="text-4xl font-bold text-green-400"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-            >
-              {getScore()}/{items.length}
-            </motion.p>
-            <p className="text-xs text-gray-500">correctly placed</p>
+                  {getZoneItems('control').length}
+                </motion.div>
+                <motion.div
+                  className="absolute -right-2 top-1/2 px-2 py-1 rounded-full text-[9px] font-medium"
+                  style={{ backgroundColor: '#F59E0B', color: '#fff' }}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1, transition: { delay: 0.1 } }}
+                >
+                  {getZoneItems('influence').length}
+                </motion.div>
+                <motion.div
+                  className="absolute -right-2 top-3/4 px-2 py-1 rounded-full text-[9px] font-medium"
+                  style={{ backgroundColor: '#6B7280', color: '#fff' }}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1, transition: { delay: 0.2 } }}
+                >
+                  {getZoneItems('concern').length}
+                </motion.div>
+              </>
+            )}
           </div>
 
-          {/* Energy focus analysis */}
-          <div className="p-3 bg-[#111113] border border-gray-800 rounded-xl">
-            <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2">
-              Where you focused energy:
-            </p>
-            <div className="space-y-2">
-              {(['control', 'influence', 'concern'] as const).map((zone) => (
-                <div key={zone} className="flex items-center gap-2">
-                  <span className="text-sm">{zones[zone].icon}</span>
-                  <div className="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full rounded-full"
-                      style={{ backgroundColor: zones[zone].color }}
-                      initial={{ width: 0 }}
-                      animate={{ width: `${(energyFocus[zone] / items.length) * 100}%` }}
-                    />
-                  </div>
-                  <span className="text-[10px]" style={{ color: zones[zone].color }}>
-                    {energyFocus[zone]}
+          {/* Zone info when selected */}
+          <AnimatePresence>
+            {selectedZone && !showResults && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="w-full max-w-xs p-3 rounded-xl border relative overflow-hidden"
+                style={{
+                  backgroundColor: zones[selectedZone].color + '15',
+                  borderColor: zones[selectedZone].color + '40',
+                }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">{zones[selectedZone].icon}</span>
+                  <span className="text-sm font-medium" style={{ color: zones[selectedZone].color }}>
+                    {zones[selectedZone].name}
                   </span>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Results breakdown */}
-          <div className="space-y-2 max-h-40 overflow-y-auto">
-            {items.map(item => {
-              const userAnswer = userAnswers[item.id];
-              const isCorrect = userAnswer === item.zone;
-
-              return (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className={`p-2 rounded-xl border text-xs ${
-                    isCorrect ? 'border-green-500/30 bg-green-500/5' : 'border-red-500/30 bg-red-500/5'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-300 flex-1">{item.text}</span>
-                    <span
-                      className="text-[10px] px-2 py-0.5 rounded-full ml-2"
-                      style={{
-                        backgroundColor: zones[item.zone].color + '20',
-                        color: zones[item.zone].color,
-                      }}
-                    >
-                      {item.zone}
-                    </span>
+                <p className="text-[10px] text-white/60">{zones[selectedZone].description}</p>
+                <div className="mt-2 pt-2 border-t border-white/[0.08]">
+                  <p className="text-[9px] text-white/50">Examples:</p>
+                  <div className="flex flex-wrap gap-1 mt-1">
+                    {getZoneItems(selectedZone).slice(0, 3).map(item => (
+                      <span
+                        key={item.id}
+                        className="text-[9px] px-2 py-0.5 rounded-full"
+                        style={{ backgroundColor: zones[selectedZone].color + '20', color: zones[selectedZone].color }}
+                      >
+                        {item.text}
+                      </span>
+                    ))}
                   </div>
-                  {!isCorrect && (
-                    <p className="text-[9px] text-red-400 mt-1">
-                      You said: {userAnswer}
-                    </p>
-                  )}
-                </motion.div>
-              );
-            })}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Quiz mode */}
+          {!showResults && (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="w-full max-w-xs"
+              >
+                {/* Progress bar */}
+                <div className="h-1 rounded-full mb-3 overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+                  <motion.div
+                    className="h-full bg-gradient-to-r from-green-500 via-amber-500 to-gray-500"
+                    animate={{ width: `${((currentIndex + 1) / items.length) * 100}%` }}
+                  />
+                </div>
+
+                <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 text-center mb-3" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">
+                    Item {currentIndex + 1} of {items.length}
+                  </p>
+                  <p className="text-sm text-white/80 font-medium">"{currentItem.text}"</p>
+                </div>
+
+                <p className="text-xs text-white/50 text-center mb-3">
+                  Where does this belong?
+                </p>
+
+                <div className="space-y-2">
+                  {(['control', 'influence', 'concern'] as const).map((zone) => (
+                    <motion.button
+                      key={zone}
+                      onClick={() => handleAnswer(zone)}
+                      className="w-full p-3 rounded-xl border text-xs font-medium transition-all
+                               hover:scale-[1.02]"
+                      style={{
+                        backgroundColor: zones[zone].color + '10',
+                        borderColor: zones[zone].color + '30',
+                        color: zones[zone].color,
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <span className="mr-2">{zones[zone].icon}</span>
+                      {zones[zone].name}
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          )}
+
+          {/* Results */}
+          {showResults && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="w-full max-w-xs space-y-4"
+            >
+              {/* Score */}
+              <div className="relative overflow-hidden text-center p-4 border border-white/[0.08] rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <motion.p
+                  className="text-4xl font-bold text-green-400"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                >
+                  {getScore()}/{items.length}
+                </motion.p>
+                <p className="text-xs text-white/50">correctly placed</p>
+              </div>
+
+              {/* Energy focus analysis */}
+              <div className="relative overflow-hidden p-3 border border-white/[0.08] rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">
+                  Where you focused energy:
+                </p>
+                <div className="space-y-2">
+                  {(['control', 'influence', 'concern'] as const).map((zone) => (
+                    <div key={zone} className="flex items-center gap-2">
+                      <span className="text-sm">{zones[zone].icon}</span>
+                      <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+                        <motion.div
+                          className="h-full rounded-full"
+                          style={{ backgroundColor: zones[zone].color }}
+                          initial={{ width: 0 }}
+                          animate={{ width: `${(energyFocus[zone] / items.length) * 100}%` }}
+                        />
+                      </div>
+                      <span className="text-[10px]" style={{ color: zones[zone].color }}>
+                        {energyFocus[zone]}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Results breakdown */}
+              <div className="space-y-2 max-h-40 overflow-y-auto">
+                {items.map(item => {
+                  const userAnswer = userAnswers[item.id];
+                  const isCorrect = userAnswer === item.zone;
+
+                  return (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      className={`p-2 rounded-xl border text-xs ${
+                        isCorrect ? 'border-green-500/30 bg-green-500/5' : 'border-red-500/30 bg-red-500/5'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-white/80 flex-1">{item.text}</span>
+                        <span
+                          className="text-[10px] px-2 py-0.5 rounded-full ml-2"
+                          style={{
+                            backgroundColor: zones[item.zone].color + '20',
+                            color: zones[item.zone].color,
+                          }}
+                        >
+                          {item.zone}
+                        </span>
+                      </div>
+                      {!isCorrect && (
+                        <p className="text-[9px] text-red-400 mt-1">
+                          You said: {userAnswer}
+                        </p>
+                      )}
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              <button
+                onClick={reset}
+                className="w-full py-2 text-xs text-white/50 hover:text-white/80 transition-colors"
+              >
+                ↻ Try again
+              </button>
+            </motion.div>
+          )}
+
+          {/* Wisdom toggle */}
+          <button
+            onClick={() => setShowWisdom(!showWisdom)}
+            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+          >
+            {showWisdom ? '▼ Hide' : '▶ Show'} Stoic wisdom
+          </button>
+
+          <AnimatePresence>
+            {showWisdom && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="w-full max-w-xs space-y-2"
+              >
+                <div className="relative overflow-hidden p-3 bg-green-500/10 border border-green-500/30 rounded-xl">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <p className="text-[10px] text-green-400 font-medium mb-1">🎯 Focus on Control</p>
+                  <p className="text-[10px] text-white/60">
+                    Proactive people expand their Circle of Control by taking responsibility
+                    for their choices.
+                  </p>
+                </div>
+                <div className="relative overflow-hidden p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <p className="text-[10px] text-amber-400 font-medium mb-1">🤝 Influence Wisely</p>
+                  <p className="text-[10px] text-white/60">
+                    Work through your Circle of Control to expand your Circle of Influence
+                    over time.
+                  </p>
+                </div>
+                <div className="relative overflow-hidden p-3 bg-gray-500/10 border border-gray-500/30 rounded-xl">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <p className="text-[10px] text-white/60 font-medium mb-1">🌍 Release Concern</p>
+                  <p className="text-[10px] text-white/60">
+                    Worrying about what you can't control wastes energy and shrinks your
+                    effectiveness.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Key insight */}
+          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <p className="text-xs text-white/60 leading-relaxed">
+              <span className="text-green-400 font-medium">Epictetus:</span> "Make the best use of
+              what is in your power, and take the rest as it happens. Some things are up to us
+              and some things are not."
+            </p>
           </div>
 
-          <button
-            onClick={reset}
-            className="w-full py-2 text-xs text-gray-500 hover:text-gray-300 transition-colors"
-          >
-            ↻ Try again
-          </button>
-        </motion.div>
-      )}
-
-      {/* Wisdom toggle */}
-      <button
-        onClick={() => setShowWisdom(!showWisdom)}
-        className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-      >
-        {showWisdom ? '▼ Hide' : '▶ Show'} Stoic wisdom
-      </button>
-
-      <AnimatePresence>
-        {showWisdom && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="w-full max-w-xs space-y-2"
-          >
-            <div className="p-3 bg-green-500/10 border border-green-500/30 rounded-xl">
-              <p className="text-[10px] text-green-400 font-medium mb-1">🎯 Focus on Control</p>
-              <p className="text-[10px] text-gray-400">
-                Proactive people expand their Circle of Control by taking responsibility
-                for their choices.
-              </p>
-            </div>
-            <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl">
-              <p className="text-[10px] text-amber-400 font-medium mb-1">🤝 Influence Wisely</p>
-              <p className="text-[10px] text-gray-400">
-                Work through your Circle of Control to expand your Circle of Influence
-                over time.
-              </p>
-            </div>
-            <div className="p-3 bg-gray-500/10 border border-gray-500/30 rounded-xl">
-              <p className="text-[10px] text-gray-400 font-medium mb-1">🌍 Release Concern</p>
-              <p className="text-[10px] text-gray-400">
-                Worrying about what you can't control wastes energy and shrinks your
-                effectiveness.
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
-        <p className="text-xs text-gray-400 leading-relaxed">
-          <span className="text-green-400 font-medium">Epictetus:</span> "Make the best use of
-          what is in your power, and take the rest as it happens. Some things are up to us
-          and some things are not."
-        </p>
+          <p className="text-[10px] text-white/40">
+            From Stephen Covey & Stoic Philosophy
+          </p>
+        </div>
       </div>
-
-      <p className="text-[10px] text-gray-600">
-        From Stephen Covey & Stoic Philosophy
-      </p>
     </div>
   );
 }

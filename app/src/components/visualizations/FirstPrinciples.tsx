@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Layers } from 'lucide-react';
 
 interface Example {
   id: string;
@@ -69,123 +70,155 @@ export function FirstPrinciples() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Example selector */}
-      <div className="flex gap-2">
-        {examples.map((ex, index) => (
-          <button
-            key={ex.id}
-            onClick={() => {
-              setActiveExample(index);
-              setRevealStep(0);
-            }}
-            className={`text-[10px] px-3 py-1.5 rounded-full transition-all border ${
-              activeExample === index
-                ? 'text-white'
-                : 'text-gray-500 hover:text-gray-300 border-transparent'
-            }`}
-            style={{
-              backgroundColor: activeExample === index ? `${ex.color}20` : undefined,
-              borderColor: activeExample === index ? `${ex.color}50` : 'transparent',
-              color: activeExample === index ? ex.color : undefined,
-            }}
-          >
-            {ex.title}
-          </button>
-        ))}
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-blue-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Visualization */}
-      <div className="w-full max-w-xs space-y-3">
-        {/* Conventional thinking */}
-        <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
-          <p className="text-[10px] text-red-400 uppercase tracking-wide mb-1">
-            ❌ Conventional Thinking
-          </p>
-          <p className="text-xs text-red-300">{example.convention}</p>
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-2.5 mb-5">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 flex items-center justify-center border border-amber-500/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+            <Layers className="w-4 h-4 text-amber-400" />
+          </div>
+          <span className="text-sm font-semibold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+            First Principles Thinking
+          </span>
         </div>
 
-        {/* Arrow down */}
-        <div className="text-center">
-          <button
-            onClick={nextStep}
-            disabled={revealStep > example.firstPrinciples.length}
-            className="text-gray-500 hover:text-white transition-colors disabled:opacity-50"
-          >
-            ↓ Break it down ↓
-          </button>
-        </div>
-
-        {/* First principles breakdown */}
-        <div className="space-y-2">
-          <AnimatePresence>
-            {example.firstPrinciples.slice(0, revealStep).map((principle, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="bg-[#111113] border border-gray-800 rounded-lg p-2 text-xs text-gray-300 flex items-start gap-2"
+        <div className="flex flex-col items-center gap-4">
+          {/* Example selector */}
+          <div className="flex gap-2">
+            {examples.map((ex, index) => (
+              <button
+                key={ex.id}
+                onClick={() => {
+                  setActiveExample(index);
+                  setRevealStep(0);
+                }}
+                className={`text-[10px] px-3 py-1.5 rounded-full transition-all border ${
+                  activeExample === index
+                    ? 'text-white'
+                    : 'text-white/50 hover:text-white/80 border-transparent'
+                }`}
+                style={{
+                  backgroundColor: activeExample === index ? `${ex.color}20` : undefined,
+                  borderColor: activeExample === index ? `${ex.color}50` : 'transparent',
+                  color: activeExample === index ? ex.color : undefined,
+                }}
               >
-                <span className="text-amber-400 font-mono text-[10px]">{idx + 1}.</span>
-                {principle}
-              </motion.div>
+                {ex.title}
+              </button>
             ))}
-          </AnimatePresence>
-        </div>
+          </div>
 
-        {/* Result */}
-        <AnimatePresence>
-          {revealStep > example.firstPrinciples.length && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="rounded-lg p-3 border"
-              style={{
-                backgroundColor: `${example.color}15`,
-                borderColor: `${example.color}40`,
-              }}
-            >
-              <p className="text-[10px] uppercase tracking-wide mb-1" style={{ color: example.color }}>
-                ✓ First Principles Result
+          {/* Visualization */}
+          <div className="w-full max-w-xs space-y-3">
+            {/* Conventional thinking */}
+            <div className="relative overflow-hidden bg-red-500/10 border border-red-500/30 rounded-xl p-3">
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-400/30 to-transparent" />
+              <p className="text-[10px] text-red-400 uppercase tracking-wide mb-1">
+                Conventional Thinking
               </p>
-              <p className="text-xs text-gray-300">{example.result}</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              <p className="text-xs text-red-300">{example.convention}</p>
+            </div>
 
-        {/* Controls */}
-        <div className="flex justify-center gap-2">
-          {revealStep <= example.firstPrinciples.length ? (
-            <button
-              onClick={nextStep}
-              className="text-xs px-4 py-2 bg-amber-500/10 border border-amber-500/30
-                       text-amber-400 rounded-lg hover:bg-amber-500/20 transition-all"
-            >
-              {revealStep === 0 ? 'Start breakdown' : 'Next insight'} →
-            </button>
-          ) : (
-            <button
-              onClick={resetExample}
-              className="text-xs px-4 py-2 border border-gray-700
-                       text-gray-400 rounded-lg hover:border-gray-600 transition-all"
-            >
-              ↻ Try again
-            </button>
-          )}
+            {/* Arrow down */}
+            <div className="text-center">
+              <button
+                onClick={nextStep}
+                disabled={revealStep > example.firstPrinciples.length}
+                className="text-white/50 hover:text-white transition-colors disabled:opacity-50"
+              >
+                &darr; Break it down &darr;
+              </button>
+            </div>
+
+            {/* First principles breakdown */}
+            <div className="space-y-2">
+              <AnimatePresence>
+                {example.firstPrinciples.slice(0, revealStep).map((principle, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="relative overflow-hidden rounded-xl p-2 text-xs text-white/80 flex items-start gap-2 border border-white/[0.08]"
+                    style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+                  >
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <span className="text-amber-400 font-mono text-[10px]">{idx + 1}.</span>
+                    {principle}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {/* Result */}
+            <AnimatePresence>
+              {revealStep > example.firstPrinciples.length && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="relative overflow-hidden rounded-xl p-3 border"
+                  style={{
+                    background: `linear-gradient(135deg, ${example.color}15 0%, ${example.color}05 100%)`,
+                    borderColor: `${example.color}40`,
+                  }}
+                >
+                  <div
+                    className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent to-transparent"
+                    style={{ background: `linear-gradient(to right, transparent, ${example.color}40, transparent)` }}
+                  />
+                  <p className="text-[10px] uppercase tracking-wide mb-1" style={{ color: example.color }}>
+                    First Principles Result
+                  </p>
+                  <p className="text-xs text-white/80">{example.result}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Controls */}
+            <div className="flex justify-center gap-2">
+              {revealStep <= example.firstPrinciples.length ? (
+                <button
+                  onClick={nextStep}
+                  className="text-xs px-4 py-2 bg-amber-500/10 border border-amber-500/30
+                           text-amber-400 rounded-lg hover:bg-amber-500/20 transition-all"
+                >
+                  {revealStep === 0 ? 'Start breakdown' : 'Next insight'} &rarr;
+                </button>
+              ) : (
+                <button
+                  onClick={resetExample}
+                  className="text-xs px-4 py-2 border border-white/[0.08]
+                           text-white/60 rounded-lg hover:border-white/20 transition-all"
+                  style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+                >
+                  Try again
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Framework */}
+          <div
+            className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-white/[0.08]"
+            style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <p className="text-xs text-white/60">
+              <span className="text-amber-400 font-medium">The method:</span> Question every
+              assumption until you reach fundamental truths, then reason up from there.
+            </p>
+          </div>
+
+          <p className="text-[10px] text-white/50 text-center italic">
+            "Boil things down to fundamental truths" - Elon Musk
+          </p>
         </div>
       </div>
-
-      {/* Framework */}
-      <div className="bg-[#111113] border border-gray-800 rounded-lg p-3 max-w-xs text-center">
-        <p className="text-xs text-gray-400">
-          <span className="text-amber-400 font-medium">The method:</span> Question every
-          assumption until you reach fundamental truths, then reason up from there.
-        </p>
-      </div>
-
-      <p className="text-[10px] text-gray-500 text-center">
-        "Boil things down to fundamental truths" — Elon Musk
-      </p>
     </div>
   );
 }

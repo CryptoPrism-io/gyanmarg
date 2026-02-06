@@ -91,14 +91,22 @@ export function HabitLoopDiagram({
   const activeStageData = stages.find((s) => s.id === activeStage);
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Main Diagram */}
-      <div
-        className="relative"
-        style={{ width: config.container, height: config.container }}
-      >
-        {/* Center circle with rotating gradient */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-purple-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Main Diagram */}
+          <div
+            className="relative"
+            style={{ width: config.container, height: config.container }}
+          >
+            {/* Center circle with rotating gradient */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           {/* Outer glow ring */}
           <motion.div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -317,7 +325,7 @@ export function HabitLoopDiagram({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="bg-[#111113] border border-gray-800 rounded-lg p-4 max-w-xs text-center"
+            className="bg-white/[0.03] border border-white/[0.08] rounded-lg p-4 max-w-xs text-center backdrop-blur-sm"
           >
             <div
               className="text-sm font-bold mb-1"
@@ -359,6 +367,8 @@ export function HabitLoopDiagram({
           </>
         )}
       </motion.button>
+        </div>
+      </div>
     </div>
   );
 }

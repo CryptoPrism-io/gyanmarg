@@ -56,97 +56,115 @@ export function TaxStrategyQuadrant() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Header */}
-      <div className="text-center">
-        <p className="text-xs text-gray-400">
-          Where you earn determines how much you keep.
-        </p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-blue-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Quadrant grid */}
-      <div className="w-full max-w-xs grid grid-cols-2 gap-2">
-        {quadrants.map((q, idx) => {
-          const colors = colorMap[q.color];
-          const isActive = activeQuadrant === idx;
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Header */}
+          <div className="text-center">
+            <p className="text-xs text-gray-400">
+              Where you earn determines how much you keep.
+            </p>
+          </div>
 
-          return (
-            <motion.button
-              key={idx}
-              onClick={() => setActiveQuadrant(isActive ? null : idx)}
-              className={`p-4 rounded-lg border transition-all ${
-                isActive ? `${colors.bg} ${colors.border}` : 'bg-[#111113] border-gray-800 hover:border-gray-700'
-              }`}
-              whileTap={{ scale: 0.98 }}
+          {/* Quadrant grid */}
+          <div className="w-full max-w-xs grid grid-cols-2 gap-2">
+            {quadrants.map((q, idx) => {
+              const colors = colorMap[q.color];
+              const isActive = activeQuadrant === idx;
+
+              return (
+                <motion.button
+                  key={idx}
+                  onClick={() => setActiveQuadrant(isActive ? null : idx)}
+                  className={`relative overflow-hidden p-4 rounded-lg transition-all ${
+                    isActive ? `${colors.bg} ${colors.border}` : 'bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15]'
+                  }`}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <p className={`text-2xl font-bold ${colors.text} mb-1`}>{q.label}</p>
+                  <p className={`text-xs ${isActive ? colors.text : 'text-gray-400'}`}>{q.name}</p>
+                  <p className="text-[10px] text-gray-500">{q.taxRate}</p>
+                </motion.button>
+              );
+            })}
+          </div>
+
+          {/* Arrow showing direction */}
+          <div className="flex items-center gap-2 text-[10px] text-gray-500">
+            <span className="text-red-400">E</span>
+            <span>→</span>
+            <span className="text-amber-400">S</span>
+            <span>→</span>
+            <span className="text-blue-400">B</span>
+            <span>→</span>
+            <span className="text-green-400">I</span>
+            <span className="ml-2">= Tax efficiency increases</span>
+          </div>
+
+          {/* Active quadrant detail */}
+          {activeQuadrant !== null && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full max-w-xs relative overflow-hidden rounded-lg"
             >
-              <p className={`text-2xl font-bold ${colors.text} mb-1`}>{q.label}</p>
-              <p className={`text-xs ${isActive ? colors.text : 'text-gray-400'}`}>{q.name}</p>
-              <p className="text-[10px] text-gray-500">{q.taxRate}</p>
-            </motion.button>
-          );
-        })}
-      </div>
+              <div className={`absolute inset-0 ${colorMap[quadrants[activeQuadrant].color].bg} backdrop-blur-sm`} />
+              <div className={`absolute inset-0 border ${colorMap[quadrants[activeQuadrant].color].border} rounded-lg`} />
+              <div className="relative z-10 p-4">
+                <p className={`text-sm font-medium ${colorMap[quadrants[activeQuadrant].color].text} mb-2`}>
+                  {quadrants[activeQuadrant].name}
+                </p>
 
-      {/* Arrow showing direction */}
-      <div className="flex items-center gap-2 text-[10px] text-gray-500">
-        <span className="text-red-400">E</span>
-        <span>→</span>
-        <span className="text-amber-400">S</span>
-        <span>→</span>
-        <span className="text-blue-400">B</span>
-        <span>→</span>
-        <span className="text-green-400">I</span>
-        <span className="ml-2">= Tax efficiency increases</span>
-      </div>
+                <div className="space-y-2 text-[10px]">
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Tax flow:</span>
+                    <span className="text-gray-300">{quadrants[activeQuadrant].description}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Deductions:</span>
+                    <span className="text-gray-300">{quadrants[activeQuadrant].deductions}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Control:</span>
+                    <span className="text-gray-300">{quadrants[activeQuadrant].control}</span>
+                  </div>
+                </div>
 
-      {/* Active quadrant detail */}
-      {activeQuadrant !== null && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={`w-full max-w-xs ${colorMap[quadrants[activeQuadrant].color].bg} border ${colorMap[quadrants[activeQuadrant].color].border} rounded-lg p-4`}
-        >
-          <p className={`text-sm font-medium ${colorMap[quadrants[activeQuadrant].color].text} mb-2`}>
-            {quadrants[activeQuadrant].name}
+                <div className="mt-3 bg-black/30 backdrop-blur-sm rounded p-2">
+                  <p className="text-[10px] text-gray-500 mb-1">Strategies:</p>
+                  <div className="space-y-1">
+                    {quadrants[activeQuadrant].strategies.map((s, i) => (
+                      <p key={i} className="text-[10px] text-gray-400">• {s}</p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Key insight */}
+          <div className="w-full max-w-xs relative overflow-hidden rounded-lg">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.08] to-purple-500/[0.03] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-purple-500/20 rounded-lg" />
+            <div className="relative z-10 p-3">
+              <p className="text-[10px] text-purple-400 text-center">
+                <span className="font-medium">The secret:</span> The wealthy don't work harder—
+                they structure their income in B and I quadrants where tax law favors them.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Tax-Free Wealth" by Tom Wheelwright
           </p>
-
-          <div className="space-y-2 text-[10px]">
-            <div className="flex justify-between">
-              <span className="text-gray-500">Tax flow:</span>
-              <span className="text-gray-300">{quadrants[activeQuadrant].description}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-500">Deductions:</span>
-              <span className="text-gray-300">{quadrants[activeQuadrant].deductions}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-500">Control:</span>
-              <span className="text-gray-300">{quadrants[activeQuadrant].control}</span>
-            </div>
-          </div>
-
-          <div className="mt-3 bg-black/20 rounded p-2">
-            <p className="text-[10px] text-gray-500 mb-1">Strategies:</p>
-            <div className="space-y-1">
-              {quadrants[activeQuadrant].strategies.map((s, i) => (
-                <p key={i} className="text-[10px] text-gray-400">• {s}</p>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      )}
-
-      {/* Key insight */}
-      <div className="w-full max-w-xs bg-purple-500/10 border border-purple-500/30 rounded-lg p-3">
-        <p className="text-[10px] text-purple-400 text-center">
-          <span className="font-medium">The secret:</span> The wealthy don't work harder—
-          they structure their income in B and I quadrants where tax law favors them.
-        </p>
+        </div>
       </div>
-
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Tax-Free Wealth" by Tom Wheelwright
-      </p>
     </div>
   );
 }

@@ -30,99 +30,134 @@ export function JawDroppingMoment() {
   const moment = famousMoments[activeMoment];
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* The concept */}
-      <div className="w-full max-w-xs">
-        <div className="bg-gradient-to-br from-rose-500/10 to-orange-500/10 border border-rose-500/30 rounded-lg p-4 text-center">
-          <p className="text-2xl mb-2">💥</p>
-          <p className="text-xs text-gray-300 font-medium">Jaw-Dropping Moments</p>
-          <p className="text-[10px] text-gray-500 mt-1">
-            Emotionally charged events that audiences remember forever
-          </p>
-        </div>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-rose-500/[0.03] via-transparent to-orange-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Famous examples */}
-      <div className="w-full max-w-xs">
-        <div className="flex gap-2 justify-center mb-3">
-          {famousMoments.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => {
-                setActiveMoment(idx);
-                setShowImpact(false);
-              }}
-              className={`w-3 h-3 rounded-full border transition-all ${
-                idx === activeMoment
-                  ? 'bg-rose-500 border-rose-500'
-                  : 'border-gray-600 hover:border-gray-500'
-              }`}
-            />
-          ))}
-        </div>
-
-        <motion.div
-          key={activeMoment}
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="bg-[#111113] border border-gray-800 rounded-lg overflow-hidden"
-        >
-          <div className="p-4 border-b border-gray-800">
-            <p className="text-[10px] text-rose-400 uppercase tracking-wide">
-              {moment.speaker}
-            </p>
-            <p className="text-sm text-gray-300 mt-1 font-medium">
-              {moment.moment}
-            </p>
-            <p className="text-[10px] text-gray-500 mt-1">
-              Topic: {moment.topic}
-            </p>
-          </div>
-
-          <AnimatePresence>
-            {showImpact ? (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                className="bg-rose-500/10 p-3"
-              >
-                <p className="text-[10px] text-rose-400 uppercase tracking-wide mb-1">
-                  Why It Worked
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* The concept */}
+          <div className="w-full max-w-xs">
+            <div className="relative overflow-hidden rounded-lg p-4 text-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-rose-500/[0.08] via-orange-500/[0.04] to-transparent" />
+              <div className="absolute inset-0 border border-rose-500/20 rounded-lg" />
+              <div className="relative z-10">
+                <p className="text-2xl mb-2">💥</p>
+                <p className="text-xs text-gray-300 font-medium">Jaw-Dropping Moments</p>
+                <p className="text-[10px] text-gray-500 mt-1">
+                  Emotionally charged events that audiences remember forever
                 </p>
-                <p className="text-xs text-gray-300">{moment.impact}</p>
-              </motion.div>
-            ) : (
-              <motion.button
-                onClick={() => setShowImpact(true)}
-                className="w-full p-3 text-[10px] text-gray-500 hover:text-rose-400 transition-colors"
-              >
-                Reveal the impact →
-              </motion.button>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </div>
-
-      {/* Formula */}
-      <div className="w-full max-w-xs">
-        <div className="bg-[#111113] border border-gray-800 rounded-lg p-3">
-          <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2 text-center">
-            The Formula
-          </p>
-          <div className="flex items-center justify-center gap-2 text-xs">
-            <span className="px-2 py-1 bg-blue-500/20 text-blue-400 rounded">Unexpected</span>
-            <span className="text-gray-600">+</span>
-            <span className="px-2 py-1 bg-purple-500/20 text-purple-400 rounded">Emotional</span>
-            <span className="text-gray-600">=</span>
-            <span className="px-2 py-1 bg-rose-500/20 text-rose-400 rounded">Memorable</span>
+              </div>
+            </div>
           </div>
+
+          {/* Famous examples */}
+          <div className="w-full max-w-xs">
+            <div className="flex gap-2 justify-center mb-3">
+              {famousMoments.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setActiveMoment(idx);
+                    setShowImpact(false);
+                  }}
+                  className={`w-3 h-3 rounded-full border transition-all ${
+                    idx === activeMoment
+                      ? 'bg-rose-500 border-rose-500'
+                      : 'border-gray-600 hover:border-gray-500'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <motion.div
+              key={activeMoment}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="relative overflow-hidden rounded-lg"
+            >
+              <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+
+              <div className="relative z-10">
+                <div className="p-4 border-b border-white/[0.08]">
+                  <p className="text-[10px] text-rose-400 uppercase tracking-wide">
+                    {moment.speaker}
+                  </p>
+                  <p className="text-sm text-gray-300 mt-1 font-medium">
+                    {moment.moment}
+                  </p>
+                  <p className="text-[10px] text-gray-500 mt-1">
+                    Topic: {moment.topic}
+                  </p>
+                </div>
+
+                <AnimatePresence>
+                  {showImpact ? (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-rose-500/[0.08] via-rose-500/[0.04] to-transparent" />
+                      <div className="relative z-10 p-3">
+                        <p className="text-[10px] text-rose-400 uppercase tracking-wide mb-1">
+                          Why It Worked
+                        </p>
+                        <p className="text-xs text-gray-300">{moment.impact}</p>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.button
+                      onClick={() => setShowImpact(true)}
+                      className="w-full p-3 text-[10px] text-gray-500 hover:text-rose-400 transition-colors"
+                    >
+                      Reveal the impact →
+                    </motion.button>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Formula */}
+          <div className="w-full max-w-xs">
+            <div className="relative overflow-hidden rounded-lg p-3">
+              <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+              <div className="relative z-10">
+                <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2 text-center">
+                  The Formula
+                </p>
+                <div className="flex items-center justify-center gap-2 text-xs">
+                  <span className="relative overflow-hidden px-2 py-1 rounded text-blue-400">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.15] via-blue-500/[0.08] to-transparent" />
+                    <span className="relative z-10">Unexpected</span>
+                  </span>
+                  <span className="text-gray-600">+</span>
+                  <span className="relative overflow-hidden px-2 py-1 rounded text-purple-400">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.15] via-purple-500/[0.08] to-transparent" />
+                    <span className="relative z-10">Emotional</span>
+                  </span>
+                  <span className="text-gray-600">=</span>
+                  <span className="relative overflow-hidden px-2 py-1 rounded text-rose-400">
+                    <div className="absolute inset-0 bg-gradient-to-br from-rose-500/[0.15] via-rose-500/[0.08] to-transparent" />
+                    <span className="relative z-10">Memorable</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Talk Like TED" by Carmine Gallo
+          </p>
         </div>
       </div>
-
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Talk Like TED" by Carmine Gallo
-      </p>
     </div>
   );
 }

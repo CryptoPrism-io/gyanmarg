@@ -314,3 +314,14 @@ export interface ReviewHistoryEntry {
   previousInterval: number;
   newInterval: number;
 }
+
+// Module Category Types
+export interface ModuleCategory {
+  id: string;
+  name: string;
+  icon: string;          // Emoji
+  description: string;
+  color: string;         // Tailwind color key
+  moduleIds: string[];
+  order: number;
+}

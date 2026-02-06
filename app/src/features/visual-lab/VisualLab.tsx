@@ -2088,7 +2088,7 @@ export function VisualLab() {
                   {/* Interactive component or Locked state */}
                   {isVizUnlocked(activeViz.id) ? (
                     <>
-                      <div className="flex justify-center">
+                      <div className="flex justify-center max-w-lg mx-auto">
                         <ActiveComponent />
                       </div>
 

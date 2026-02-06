@@ -50,108 +50,118 @@ export function StressRecoveryBalance() {
   const colors = colorMap[zone.color];
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Header */}
-      <div className="text-center">
-        <p className="text-xs text-gray-400">
-          Growth = <span className="text-blue-400">Stress</span> +{' '}
-          <span className="text-green-400">Recovery</span>
-        </p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Balance visualization */}
-      <div className="w-full max-w-xs h-32 relative">
-        {/* Fulcrum */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[20px] border-r-[20px] border-b-[20px] border-l-transparent border-r-transparent border-b-gray-700" />
-
-        {/* Balance beam */}
-        <motion.div
-          className="absolute bottom-5 left-0 right-0 h-3 bg-gray-700 rounded-full origin-center"
-          style={{ transform: `rotate(${(stress - 50) * 0.3}deg)` }}
-        >
-          {/* Stress weight */}
-          <div
-            className="absolute left-2 -top-8 w-12 h-12 bg-blue-500/20 border border-blue-500/50 rounded-lg flex items-center justify-center"
-          >
-            <div className="text-center">
-              <p className="text-lg font-bold text-blue-400">{stress}</p>
-              <p className="text-[8px] text-blue-400">Stress</p>
-            </div>
-          </div>
-
-          {/* Recovery weight */}
-          <div
-            className="absolute right-2 -top-8 w-12 h-12 bg-green-500/20 border border-green-500/50 rounded-lg flex items-center justify-center"
-          >
-            <div className="text-center">
-              <p className="text-lg font-bold text-green-400">{recovery}</p>
-              <p className="text-[8px] text-green-400">Rest</p>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Slider */}
-      <div className="w-full max-w-xs space-y-2">
-        <div className="flex justify-between text-[10px]">
-          <span className="text-green-400">More Recovery</span>
-          <span className="text-blue-400">More Stress</span>
-        </div>
-        <input
-          type="range"
-          min="10"
-          max="90"
-          value={stress}
-          onChange={(e) => setStress(Number(e.target.value))}
-          className="w-full accent-amber-500"
-        />
-      </div>
-
-      {/* Zone indicator */}
-      <motion.div
-        key={zone.name}
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className={`w-full max-w-xs ${colors.bg} border ${colors.border} rounded-lg p-4`}
-      >
-        <div className="flex justify-between items-center mb-2">
-          <p className={`text-sm font-medium ${colors.text}`}>{zone.name}</p>
-          <span className={`text-xs px-2 py-0.5 rounded-full ${colors.bg} ${colors.text}`}>
-            {zone.result}
-          </span>
-        </div>
-        <p className="text-xs text-gray-400">{zone.description}</p>
-      </motion.div>
-
-      {/* Zone legend */}
-      <div className="w-full max-w-xs grid grid-cols-3 gap-2">
-        {zones.map((z, idx) => (
-          <div
-            key={idx}
-            className={`p-2 rounded-lg border text-center ${
-              z.name === zone.name
-                ? `${colorMap[z.color].bg} ${colorMap[z.color].border}`
-                : 'bg-[#111113] border-gray-800'
-            }`}
-          >
-            <p className={`text-[10px] ${z.name === zone.name ? colorMap[z.color].text : 'text-gray-500'}`}>
-              {z.name}
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Header */}
+          <div className="text-center">
+            <p className="text-xs text-gray-400">
+              Growth = <span className="text-blue-400">Stress</span> +{' '}
+              <span className="text-green-400">Recovery</span>
             </p>
           </div>
-        ))}
-      </div>
 
-      {/* Key insight */}
-      <div className="w-full max-w-xs bg-[#111113] border border-gray-800 rounded-lg p-3">
-        <p className="text-[10px] text-gray-400 text-center">
-          <span className="text-purple-400">Elite secret:</span> Growth doesn't happen during stress—
-          it happens during recovery. But you need the stress first to trigger adaptation.
-        </p>
-      </div>
+          {/* Balance visualization */}
+          <div className="w-full max-w-xs h-32 relative">
+            {/* Fulcrum */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[20px] border-r-[20px] border-b-[20px] border-l-transparent border-r-transparent border-b-gray-600" />
 
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Peak Performance" by Brad Stulberg
-      </p>
+            {/* Balance beam */}
+            <motion.div
+              className="absolute bottom-5 left-0 right-0 h-3 bg-white/[0.15] rounded-full origin-center"
+              style={{ transform: `rotate(${(stress - 50) * 0.3}deg)` }}
+            >
+              {/* Stress weight */}
+              <div
+                className="absolute left-2 -top-8 w-12 h-12 bg-blue-500/20 backdrop-blur-sm border border-blue-500/50 rounded-lg flex items-center justify-center"
+              >
+                <div className="text-center">
+                  <p className="text-lg font-bold text-blue-400">{stress}</p>
+                  <p className="text-[8px] text-blue-400">Stress</p>
+                </div>
+              </div>
+
+              {/* Recovery weight */}
+              <div
+                className="absolute right-2 -top-8 w-12 h-12 bg-green-500/20 backdrop-blur-sm border border-green-500/50 rounded-lg flex items-center justify-center"
+              >
+                <div className="text-center">
+                  <p className="text-lg font-bold text-green-400">{recovery}</p>
+                  <p className="text-[8px] text-green-400">Rest</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Slider */}
+          <div className="w-full max-w-xs space-y-2">
+            <div className="flex justify-between text-[10px]">
+              <span className="text-green-400">More Recovery</span>
+              <span className="text-blue-400">More Stress</span>
+            </div>
+            <input
+              type="range"
+              min="10"
+              max="90"
+              value={stress}
+              onChange={(e) => setStress(Number(e.target.value))}
+              className="w-full accent-amber-500"
+            />
+          </div>
+
+          {/* Zone indicator */}
+          <motion.div
+            key={zone.name}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className={`w-full max-w-xs backdrop-blur-sm ${colors.bg} border ${colors.border} rounded-lg p-4`}
+          >
+            <div className="flex justify-between items-center mb-2">
+              <p className={`text-sm font-medium ${colors.text}`}>{zone.name}</p>
+              <span className={`text-xs px-2 py-0.5 rounded-full ${colors.bg} ${colors.text}`}>
+                {zone.result}
+              </span>
+            </div>
+            <p className="text-xs text-gray-400">{zone.description}</p>
+          </motion.div>
+
+          {/* Zone legend */}
+          <div className="w-full max-w-xs grid grid-cols-3 gap-2">
+            {zones.map((z, idx) => (
+              <div
+                key={idx}
+                className={`p-2 rounded-lg border text-center backdrop-blur-sm ${
+                  z.name === zone.name
+                    ? `${colorMap[z.color].bg} ${colorMap[z.color].border}`
+                    : 'bg-white/[0.03] border-white/[0.08]'
+                }`}
+              >
+                <p className={`text-[10px] ${z.name === zone.name ? colorMap[z.color].text : 'text-gray-500'}`}>
+                  {z.name}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Key insight */}
+          <div className="w-full max-w-xs bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-lg p-3">
+            <p className="text-[10px] text-gray-400 text-center">
+              <span className="text-purple-400">Elite secret:</span> Growth doesn't happen during stress—
+              it happens during recovery. But you need the stress first to trigger adaptation.
+            </p>
+          </div>
+
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Peak Performance" by Brad Stulberg
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

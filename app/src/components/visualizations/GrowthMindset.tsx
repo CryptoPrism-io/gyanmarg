@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Brain, Sparkles } from 'lucide-react';
 
 interface Challenge {
   id: string;
@@ -65,105 +66,176 @@ export function GrowthMindset() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Challenge scenario */}
-      <div className="w-full max-w-xs">
-        <div className="bg-[#111113] border border-gray-800 rounded-lg p-4 text-center mb-4">
-          <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2">
-            Scenario {activeChallenge + 1}/{challenges.length}
-          </p>
-          <p className="text-sm text-gray-300">{challenge.situation}</p>
-          <p className="text-xs text-gray-500 mt-2">How do you respond?</p>
-        </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] via-transparent to-purple-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        {/* Mindset choices */}
-        <div className="grid grid-cols-2 gap-3">
-          {/* Fixed mindset */}
-          <motion.button
-            onClick={() => handleChoice('fixed')}
-            className={`p-3 rounded-lg border text-left transition-all ${
-              selectedMindset === 'fixed'
-                ? 'bg-red-500/10 border-red-500/50'
-                : selectedMindset === 'growth'
-                ? 'opacity-50 border-gray-800'
-                : 'bg-[#111113] border-gray-800 hover:border-red-500/30'
-            }`}
-            whileTap={{ scale: 0.98 }}
-          >
-            <p className="text-[10px] text-red-400 uppercase tracking-wide mb-1">
-              Fixed Mindset
-            </p>
-            <p className="text-xs text-gray-400">{challenge.fixedResponse}</p>
-          </motion.button>
-
-          {/* Growth mindset */}
-          <motion.button
-            onClick={() => handleChoice('growth')}
-            className={`p-3 rounded-lg border text-left transition-all ${
-              selectedMindset === 'growth'
-                ? 'bg-green-500/10 border-green-500/50'
-                : selectedMindset === 'fixed'
-                ? 'opacity-50 border-gray-800'
-                : 'bg-[#111113] border-gray-800 hover:border-green-500/30'
-            }`}
-            whileTap={{ scale: 0.98 }}
-          >
-            <p className="text-[10px] text-green-400 uppercase tracking-wide mb-1">
-              Growth Mindset
-            </p>
-            <p className="text-xs text-gray-400">{challenge.growthResponse}</p>
-          </motion.button>
-        </div>
-
-        {/* Feedback */}
-        {selectedMindset && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={`mt-4 p-3 rounded-lg border text-center ${
-              selectedMindset === 'growth'
-                ? 'bg-green-500/10 border-green-500/30'
-                : 'bg-amber-500/10 border-amber-500/30'
-            }`}
-          >
-            <p className="text-xs text-gray-300">
-              {selectedMindset === 'growth' ? (
-                <><span className="text-green-400">✓</span> Growth mindset leads to more learning and resilience</>
-              ) : (
-                <><span className="text-amber-400">↻</span> Notice the thought, then reframe it with growth mindset</>
-              )}
-            </p>
-            <button
-              onClick={nextChallenge}
-              className="mt-2 text-[10px] text-gray-500 hover:text-gray-300"
-            >
-              Next scenario →
-            </button>
-          </motion.div>
-        )}
-      </div>
-
-      {/* Comparison chart */}
-      <div className="w-full max-w-xs">
-        <div className="bg-[#111113] border border-gray-800 rounded-lg overflow-hidden">
-          <div className="grid grid-cols-3 text-[10px] border-b border-gray-800">
-            <div className="p-2 text-gray-500"></div>
-            <div className="p-2 text-red-400 text-center border-l border-gray-800">Fixed</div>
-            <div className="p-2 text-green-400 text-center border-l border-gray-800">Growth</div>
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-2.5 mb-5">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 flex items-center justify-center border border-emerald-500/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+            <Brain className="w-4 h-4 text-emerald-400" />
           </div>
-          {comparisons.map((comp, idx) => (
-            <div key={idx} className="grid grid-cols-3 text-[10px] border-b border-gray-800 last:border-0">
-              <div className="p-2 text-gray-400">{comp.aspect}</div>
-              <div className="p-2 text-gray-500 text-center border-l border-gray-800">{comp.fixed}</div>
-              <div className="p-2 text-gray-300 text-center border-l border-gray-800">{comp.growth}</div>
+          <span className="text-sm font-semibold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+            Growth vs Fixed Mindset
+          </span>
+        </div>
+
+        {/* Description */}
+        <p className="text-[11px] text-white/50 mb-5 leading-relaxed">
+          Those with growth mindset see abilities as developable through effort. Fixed mindset sees them as innate and unchangeable.
+        </p>
+
+        {/* Challenge scenario */}
+        <div className="w-full max-w-xs mx-auto">
+          <div className="relative overflow-hidden rounded-xl p-4 text-center mb-4 border border-white/[0.08]"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
+            }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <p className="text-[10px] text-amber-400/80 uppercase tracking-wider mb-2 font-medium">
+              Scenario {activeChallenge + 1}/{challenges.length}
+            </p>
+            <p className="text-sm text-white/90 font-medium">{challenge.situation}</p>
+            <p className="text-[10px] text-white/40 mt-2">How do you respond?</p>
+          </div>
+
+          {/* Mindset choices */}
+          <div className="grid grid-cols-2 gap-3">
+            {/* Fixed mindset */}
+            <motion.button
+              onClick={() => handleChoice('fixed')}
+              className={`relative overflow-hidden p-3 rounded-xl text-left transition-all duration-300 ${
+                selectedMindset === 'fixed'
+                  ? 'border-red-500/50'
+                  : selectedMindset === 'growth'
+                  ? 'opacity-40 border-white/[0.05]'
+                  : 'border-white/[0.08] hover:border-red-500/30'
+              }`}
+              style={{
+                background: selectedMindset === 'fixed'
+                  ? 'linear-gradient(135deg, rgba(239,68,68,0.15) 0%, rgba(239,68,68,0.05) 100%)'
+                  : 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {selectedMindset === 'fixed' && (
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-400/40 to-transparent" />
+              )}
+              <p className="text-[10px] text-red-400 uppercase tracking-wide mb-1.5 font-semibold">
+                Fixed Mindset
+              </p>
+              <p className="text-[11px] text-white/60 leading-relaxed">{challenge.fixedResponse}</p>
+            </motion.button>
+
+            {/* Growth mindset */}
+            <motion.button
+              onClick={() => handleChoice('growth')}
+              className={`relative overflow-hidden p-3 rounded-xl text-left transition-all duration-300 ${
+                selectedMindset === 'growth'
+                  ? 'border-emerald-500/50'
+                  : selectedMindset === 'fixed'
+                  ? 'opacity-40 border-white/[0.05]'
+                  : 'border-white/[0.08] hover:border-emerald-500/30'
+              }`}
+              style={{
+                background: selectedMindset === 'growth'
+                  ? 'linear-gradient(135deg, rgba(34,197,94,0.15) 0%, rgba(34,197,94,0.05) 100%)'
+                  : 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {selectedMindset === 'growth' && (
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/40 to-transparent" />
+              )}
+              <p className="text-[10px] text-emerald-400 uppercase tracking-wide mb-1.5 font-semibold">
+                Growth Mindset
+              </p>
+              <p className="text-[11px] text-white/60 leading-relaxed">{challenge.growthResponse}</p>
+            </motion.button>
+          </div>
+
+          {/* Feedback */}
+          {selectedMindset && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`relative overflow-hidden mt-4 p-3 rounded-xl text-center border ${
+                selectedMindset === 'growth'
+                  ? 'border-emerald-500/30'
+                  : 'border-amber-500/30'
+              }`}
+              style={{
+                background: selectedMindset === 'growth'
+                  ? 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(34,197,94,0.03) 100%)'
+                  : 'linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(245,158,11,0.03) 100%)',
+              }}
+            >
+              <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${
+                selectedMindset === 'growth' ? 'via-emerald-400/30' : 'via-amber-400/30'
+              } to-transparent`} />
+              <p className="text-[11px] text-white/70">
+                {selectedMindset === 'growth' ? (
+                  <><span className="text-emerald-400">✓</span> Growth mindset leads to more learning and resilience</>
+                ) : (
+                  <><span className="text-amber-400">↻</span> Notice the thought, then reframe it with growth mindset</>
+                )}
+              </p>
+              <button
+                onClick={nextChallenge}
+                className="mt-2 text-[10px] text-white/40 hover:text-white/70 transition-colors font-medium"
+              >
+                Next scenario →
+              </button>
+            </motion.div>
+          )}
+        </div>
+
+        {/* Comparison chart */}
+        <div className="w-full max-w-xs mx-auto mt-5">
+          <div className="relative overflow-hidden rounded-xl border border-white/[0.08]"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.1) 100%)',
+            }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+            {/* Header row */}
+            <div className="grid grid-cols-3 text-[10px] border-b border-white/[0.06]">
+              <div className="p-2.5 text-white/30 font-medium"></div>
+              <div className="p-2.5 text-red-400/80 text-center border-l border-white/[0.06] font-semibold">Fixed</div>
+              <div className="p-2.5 text-emerald-400/80 text-center border-l border-white/[0.06] font-semibold">Growth</div>
             </div>
-          ))}
+
+            {/* Data rows */}
+            {comparisons.map((comp, idx) => (
+              <div key={idx} className="grid grid-cols-3 text-[10px] border-b border-white/[0.04] last:border-0">
+                <div className="p-2.5 text-white/60 font-medium">{comp.aspect}</div>
+                <div className="p-2.5 text-white/40 text-center border-l border-white/[0.04]">{comp.fixed}</div>
+                <div className="p-2.5 text-white/70 text-center border-l border-white/[0.04]">{comp.growth}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Source */}
+        <div className="mt-4 pt-4 border-t border-white/[0.06]">
+          <div className="flex items-center justify-center gap-1.5">
+            <Sparkles className="w-3 h-3 text-amber-500/50" />
+            <p className="text-[10px] text-amber-500/60 font-medium">
+              From "Mindset" by Carol Dweck
+            </p>
+          </div>
         </div>
       </div>
-
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Mindset" by Carol Dweck
-      </p>
     </div>
   );
 }

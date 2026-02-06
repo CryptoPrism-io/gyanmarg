@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Anchor } from 'lucide-react';
 
 interface Scenario {
   id: string;
@@ -52,94 +53,142 @@ export function SunkCostFallacy() {
   const scenario = scenarios[activeScenario];
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Scenario selector */}
-      <div className="flex flex-wrap justify-center gap-2">
-        {scenarios.map((s, index) => (
-          <button
-            key={s.id}
-            onClick={() => {
-              setActiveScenario(index);
-              setShowAnswer(false);
-            }}
-            className={`text-[10px] px-3 py-1.5 rounded-full transition-all border ${
-              activeScenario === index
-                ? 'bg-amber-500/20 text-amber-400 border-amber-500/30'
-                : 'text-gray-500 hover:text-gray-300 border-transparent'
-            }`}
-          >
-            {s.title}
-          </button>
-        ))}
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-red-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Sunk cost visualization */}
-      <div className="w-full max-w-xs space-y-3">
-        {/* Investment */}
-        <div className="bg-[#111113] border border-gray-800 rounded-lg p-3">
-          <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-1">Already Invested</p>
-          <p className="text-sm text-gray-300">{scenario.invested}</p>
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-2.5 mb-5">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 flex items-center justify-center border border-amber-500/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+            <Anchor className="w-4 h-4 text-amber-400" />
+          </div>
+          <span className="text-sm font-semibold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+            Sunk Cost Fallacy
+          </span>
         </div>
 
-        {/* Arrow down */}
-        <div className="text-center text-gray-600">↓</div>
+        <div className="flex flex-col items-center gap-4">
+          {/* Scenario selector */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {scenarios.map((s, index) => (
+              <button
+                key={s.id}
+                onClick={() => {
+                  setActiveScenario(index);
+                  setShowAnswer(false);
+                }}
+                className={`text-[10px] px-3 py-1.5 rounded-full transition-all border backdrop-blur-sm ${
+                  activeScenario === index
+                    ? 'bg-amber-500/15 text-amber-400 border-amber-500/30'
+                    : 'text-white/50 hover:text-white/70 border-transparent'
+                }`}
+              >
+                {s.title}
+              </button>
+            ))}
+          </div>
 
-        {/* Reality */}
-        <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
-          <p className="text-[10px] text-red-400 uppercase tracking-wide mb-1">Reality Check</p>
-          <p className="text-sm text-red-300">{scenario.sunkCost}</p>
-        </div>
+          {/* Sunk cost visualization */}
+          <div className="w-full max-w-xs space-y-3">
+            {/* Investment */}
+            <div
+              className="relative overflow-hidden rounded-xl p-3 border border-white/[0.08]"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+              }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="text-[10px] text-white/50 uppercase tracking-wide mb-1">Already Invested</p>
+              <p className="text-sm text-white/80">{scenario.invested}</p>
+            </div>
 
-        {/* Question */}
-        <div className="text-center py-2">
-          <p className="text-sm text-gray-400">What should you do?</p>
-        </div>
+            {/* Arrow down */}
+            <div className="text-center text-white/40">|</div>
 
-        {/* Choices */}
-        <div className="space-y-2">
-          <motion.button
-            onClick={() => setShowAnswer(true)}
-            className={`w-full p-3 rounded-lg text-left text-xs transition-all border ${
-              showAnswer
-                ? 'bg-red-500/10 border-red-500/50 text-red-400'
-                : 'bg-[#111113] border-gray-800 text-gray-400 hover:border-gray-700'
-            }`}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span className="font-medium">❌ Fallacy:</span> {scenario.wrongChoice}
-          </motion.button>
+            {/* Reality */}
+            <div
+              className="relative overflow-hidden rounded-xl p-3 border border-red-500/30"
+              style={{
+                background: 'linear-gradient(135deg, rgba(239,68,68,0.1) 0%, rgba(239,68,68,0.03) 100%)',
+              }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-400/30 to-transparent" />
+              <p className="text-[10px] text-red-400 uppercase tracking-wide mb-1">Reality Check</p>
+              <p className="text-sm text-red-300">{scenario.sunkCost}</p>
+            </div>
 
-          <motion.button
-            onClick={() => setShowAnswer(true)}
-            className={`w-full p-3 rounded-lg text-left text-xs transition-all border ${
-              showAnswer
-                ? 'bg-green-500/10 border-green-500/50 text-green-400'
-                : 'bg-[#111113] border-gray-800 text-gray-400 hover:border-gray-700'
-            }`}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span className="font-medium">✓ Rational:</span> {scenario.rightChoice}
-          </motion.button>
-        </div>
-      </div>
+            {/* Question */}
+            <div className="text-center py-2">
+              <p className="text-sm text-white/60">What should you do?</p>
+            </div>
 
-      {/* Explanation */}
-      {showAnswer && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-[#111113] border border-gray-800 rounded-lg p-4 max-w-xs text-center"
-        >
-          <p className="text-xs text-gray-400">
-            <span className="text-amber-400 font-medium">Key insight:</span> Past costs are gone forever.
-            Only future costs and benefits should influence decisions.
+            {/* Choices */}
+            <div className="space-y-2">
+              <motion.button
+                onClick={() => setShowAnswer(true)}
+                className={`relative overflow-hidden w-full p-3 rounded-xl text-left text-xs transition-all border ${
+                  showAnswer
+                    ? 'border-red-500/50 text-red-400'
+                    : 'border-white/[0.08] text-white/60 hover:border-white/20'
+                }`}
+                style={{
+                  background: showAnswer
+                    ? 'linear-gradient(135deg, rgba(239,68,68,0.1) 0%, rgba(239,68,68,0.03) 100%)'
+                    : 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+                <span className="font-medium">x Fallacy:</span> {scenario.wrongChoice}
+              </motion.button>
+
+              <motion.button
+                onClick={() => setShowAnswer(true)}
+                className={`relative overflow-hidden w-full p-3 rounded-xl text-left text-xs transition-all border ${
+                  showAnswer
+                    ? 'border-green-500/50 text-green-400'
+                    : 'border-white/[0.08] text-white/60 hover:border-white/20'
+                }`}
+                style={{
+                  background: showAnswer
+                    ? 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(34,197,94,0.03) 100%)'
+                    : 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+                <span className="font-medium">+ Rational:</span> {scenario.rightChoice}
+              </motion.button>
+            </div>
+          </div>
+
+          {/* Explanation */}
+          {showAnswer && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-white/[0.08]"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+              }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="text-xs text-white/60">
+                <span className="text-amber-400 font-medium">Key insight:</span> Past costs are gone forever.
+                Only future costs and benefits should influence decisions.
+              </p>
+            </motion.div>
+          )}
+
+          <p className="text-[10px] text-white/50 text-center max-w-xs">
+            The money/time is already spent. Don't let it trap you.
           </p>
-        </motion.div>
-      )}
-
-      <p className="text-[10px] text-gray-500 text-center max-w-xs">
-        The money/time is already spent. Don't let it trap you.
-      </p>
+        </div>
+      </div>
     </div>
   );
 }

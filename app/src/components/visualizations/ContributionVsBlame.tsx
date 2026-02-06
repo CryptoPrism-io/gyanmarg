@@ -22,119 +22,140 @@ export function ContributionVsBlame() {
   ];
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Toggle */}
-      <div className="flex bg-[#111113] rounded-lg p-1 border border-gray-800">
-        <button
-          onClick={() => setPerspective('blame')}
-          className={`px-4 py-2 rounded-lg text-xs transition-all ${
-            perspective === 'blame'
-              ? 'bg-red-500/20 text-red-400'
-              : 'text-gray-500 hover:text-gray-400'
-          }`}
-        >
-          Blame Mode
-        </button>
-        <button
-          onClick={() => setPerspective('contribution')}
-          className={`px-4 py-2 rounded-lg text-xs transition-all ${
-            perspective === 'contribution'
-              ? 'bg-green-500/20 text-green-400'
-              : 'text-gray-500 hover:text-gray-400'
-          }`}
-        >
-          Contribution Mode
-        </button>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Description */}
-      <div className={`w-full max-w-xs p-3 rounded-lg border ${
-        perspective === 'blame'
-          ? 'bg-red-500/10 border-red-500/30'
-          : 'bg-green-500/10 border-green-500/30'
-      }`}>
-        <p className={`text-xs ${perspective === 'blame' ? 'text-red-400' : 'text-green-400'}`}>
-          {perspective === 'blame'
-            ? 'Blame looks backward: "Whose fault is this?"'
-            : 'Contribution looks forward: "How did we both contribute?"'}
-        </p>
-      </div>
-
-      {/* Content based on mode */}
-      {perspective === 'blame' ? (
-        <div className="w-full max-w-xs space-y-2">
-          <p className="text-[10px] text-gray-500 text-center">Common blame thoughts:</p>
-          {blameStatements.map((statement, idx) => (
-            <div
-              key={idx}
-              className="p-3 bg-[#111113] border border-gray-800 rounded-lg"
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Toggle */}
+          <div className="relative overflow-hidden flex rounded-lg p-1">
+            <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <button
+              onClick={() => setPerspective('blame')}
+              className={`relative z-10 px-4 py-2 rounded-lg text-xs transition-all ${
+                perspective === 'blame'
+                  ? 'bg-red-500/20 text-red-400'
+                  : 'text-gray-500 hover:text-gray-400'
+              }`}
             >
-              <p className="text-xs text-gray-400 italic">"{statement}"</p>
-            </div>
-          ))}
-          <motion.div
-            className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center"
-          >
-            <p className="text-[10px] text-red-400">
-              ❌ Blame keeps you stuck and creates defensiveness
-            </p>
-          </motion.div>
-        </div>
-      ) : (
-        <div className="w-full max-w-xs space-y-3">
-          <p className="text-[10px] text-gray-500 text-center">Ask yourself:</p>
-          {contributionQuestions.map((question, idx) => (
-            <div
-              key={idx}
-              className="p-3 bg-[#111113] border border-gray-800 rounded-lg"
+              Blame Mode
+            </button>
+            <button
+              onClick={() => setPerspective('contribution')}
+              className={`relative z-10 px-4 py-2 rounded-lg text-xs transition-all ${
+                perspective === 'contribution'
+                  ? 'bg-green-500/20 text-green-400'
+                  : 'text-gray-500 hover:text-gray-400'
+              }`}
             >
-              <p className="text-xs text-green-400">{question}</p>
-            </div>
-          ))}
-
-          <div className="space-y-2">
-            <p className="text-[10px] text-gray-500">Your contribution (even 10%):</p>
-            <textarea
-              value={myContribution}
-              onChange={(e) => setMyContribution(e.target.value)}
-              placeholder="I contributed by..."
-              className="w-full p-3 bg-[#111113] border border-gray-800 rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-green-500/50 focus:outline-none resize-none h-20"
-            />
+              Contribution Mode
+            </button>
           </div>
 
-          {myContribution.length > 10 && (
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              onClick={() => setShowInsight(true)}
-              className="w-full py-2 bg-green-500/20 border border-green-500/50 rounded-lg text-xs text-green-400"
-            >
-              See the power of this shift
-            </motion.button>
+          {/* Description */}
+          <div className={`relative overflow-hidden w-full max-w-xs p-3 rounded-lg border ${
+            perspective === 'blame'
+              ? 'bg-red-500/10 border-red-500/30'
+              : 'bg-green-500/10 border-green-500/30'
+          }`}>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
+            <p className={`relative z-10 text-xs ${perspective === 'blame' ? 'text-red-400' : 'text-green-400'}`}>
+              {perspective === 'blame'
+                ? 'Blame looks backward: "Whose fault is this?"'
+                : 'Contribution looks forward: "How did we both contribute?"'}
+            </p>
+          </div>
+
+          {/* Content based on mode */}
+          {perspective === 'blame' ? (
+            <div className="w-full max-w-xs space-y-2">
+              <p className="text-[10px] text-gray-500 text-center">Common blame thoughts:</p>
+              {blameStatements.map((statement, idx) => (
+                <div
+                  key={idx}
+                  className="relative overflow-hidden p-3 rounded-lg"
+                >
+                  <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
+                  <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                  <p className="relative z-10 text-xs text-gray-400 italic">"{statement}"</p>
+                </div>
+              ))}
+              <motion.div
+                className="relative overflow-hidden p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.01] to-transparent" />
+                <p className="relative z-10 text-[10px] text-red-400">
+                  ❌ Blame keeps you stuck and creates defensiveness
+                </p>
+              </motion.div>
+            </div>
+          ) : (
+            <div className="w-full max-w-xs space-y-3">
+              <p className="text-[10px] text-gray-500 text-center">Ask yourself:</p>
+              {contributionQuestions.map((question, idx) => (
+                <div
+                  key={idx}
+                  className="relative overflow-hidden p-3 rounded-lg"
+                >
+                  <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
+                  <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                  <p className="relative z-10 text-xs text-green-400">{question}</p>
+                </div>
+              ))}
+
+              <div className="space-y-2">
+                <p className="text-[10px] text-gray-500">Your contribution (even 10%):</p>
+                <textarea
+                  value={myContribution}
+                  onChange={(e) => setMyContribution(e.target.value)}
+                  placeholder="I contributed by..."
+                  className="w-full p-3 bg-white/[0.03] border border-white/[0.08] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-green-500/50 focus:outline-none resize-none h-20 backdrop-blur-sm"
+                />
+              </div>
+
+              {myContribution.length > 10 && (
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  onClick={() => setShowInsight(true)}
+                  className="w-full py-2 bg-green-500/20 border border-green-500/50 rounded-lg text-xs text-green-400 backdrop-blur-sm hover:bg-green-500/30 transition-all"
+                >
+                  See the power of this shift
+                </motion.button>
+              )}
+
+              {showInsight && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="relative overflow-hidden p-3 bg-green-500/10 border border-green-500/30 rounded-lg"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
+                  <div className="relative z-10">
+                    <p className="text-[10px] text-green-400 text-center">
+                      ✓ By acknowledging your contribution, you:
+                    </p>
+                    <ul className="mt-2 space-y-1 text-[10px] text-gray-400">
+                      <li>• Open dialogue instead of triggering defense</li>
+                      <li>• Model accountability that others may follow</li>
+                      <li>• Identify what YOU can change next time</li>
+                    </ul>
+                  </div>
+                </motion.div>
+              )}
+            </div>
           )}
 
-          {showInsight && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="p-3 bg-green-500/10 border border-green-500/30 rounded-lg"
-            >
-              <p className="text-[10px] text-green-400 text-center">
-                ✓ By acknowledging your contribution, you:
-              </p>
-              <ul className="mt-2 space-y-1 text-[10px] text-gray-400">
-                <li>• Open dialogue instead of triggering defense</li>
-                <li>• Model accountability that others may follow</li>
-                <li>• Identify what YOU can change next time</li>
-              </ul>
-            </motion.div>
-          )}
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Difficult Conversations" by Douglas Stone
+          </p>
         </div>
-      )}
-
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Difficult Conversations" by Douglas Stone
-      </p>
+      </div>
     </div>
   );
 }

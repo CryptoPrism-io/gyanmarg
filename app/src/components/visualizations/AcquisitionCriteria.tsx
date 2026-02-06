@@ -69,119 +69,145 @@ export function AcquisitionCriteria() {
   const score = getScore();
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Header */}
-      <div className="text-center">
-        <p className="text-xs text-gray-400">
-          Use this checklist to evaluate acquisition targets.
-        </p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Category tabs */}
-      <div className="flex gap-1 flex-wrap justify-center">
-        {criteria.map((cat, idx) => (
-          <button
-            key={idx}
-            onClick={() => setActiveCategory(idx)}
-            className={`px-3 py-1.5 rounded-lg text-[10px] transition-all ${
-              idx === activeCategory
-                ? 'bg-blue-500/20 border border-blue-500/50 text-blue-400'
-                : 'bg-[#111113] border border-gray-800 text-gray-500'
-            }`}
-          >
-            {cat.category}
-          </button>
-        ))}
-      </div>
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Header */}
+          <div className="text-center">
+            <p className="text-xs text-gray-400">
+              Use this checklist to evaluate acquisition targets.
+            </p>
+          </div>
 
-      {/* Checklist */}
-      <motion.div
-        key={activeCategory}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="w-full max-w-xs space-y-2"
-      >
-        {criteria[activeCategory].items.map((item, idx) => {
-          const isChecked = checkedItems.has(item.name);
-          return (
-            <button
-              key={idx}
-              onClick={() => toggleItem(item.name)}
-              className={`w-full p-3 rounded-lg border text-left transition-all ${
-                isChecked
-                  ? 'bg-green-500/10 border-green-500/50'
-                  : 'bg-[#111113] border-gray-800 hover:border-gray-700'
-              }`}
-            >
-              <div className="flex items-start gap-2">
-                <div className={`w-4 h-4 rounded border flex-shrink-0 flex items-center justify-center ${
-                  isChecked ? 'bg-green-500 border-green-500' : 'border-gray-600'
-                }`}>
-                  {isChecked && <span className="text-white text-[10px]">✓</span>}
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <p className={`text-xs ${isChecked ? 'text-green-400' : 'text-gray-300'}`}>
-                      {item.name}
-                    </p>
-                    {item.critical && (
-                      <span className="text-[8px] px-1.5 py-0.5 bg-red-500/20 text-red-400 rounded">
-                        Critical
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-[10px] text-gray-500 mt-0.5">{item.description}</p>
-                </div>
-              </div>
-            </button>
-          );
-        })}
-      </motion.div>
+          {/* Category tabs */}
+          <div className="flex gap-1 flex-wrap justify-center">
+            {criteria.map((cat, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveCategory(idx)}
+                className={`px-3 py-1.5 rounded-lg text-[10px] transition-all ${
+                  idx === activeCategory
+                    ? 'bg-blue-500/20 border border-blue-500/50 text-blue-400'
+                    : 'bg-white/[0.03] border border-white/[0.08] text-gray-500 hover:border-white/[0.15]'
+                }`}
+              >
+                {cat.category}
+              </button>
+            ))}
+          </div>
 
-      {/* Score */}
-      <div className="w-full max-w-xs bg-[#111113] border border-gray-800 rounded-lg p-4">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-xs text-gray-400">Progress:</span>
-          <span className="text-xs text-gray-300">{checkedCount}/{totalItems}</span>
-        </div>
-        <div className="h-2 bg-gray-800 rounded-full overflow-hidden mb-2">
+          {/* Checklist */}
           <motion.div
-            className="h-full bg-blue-500"
-            style={{ width: `${(checkedCount / totalItems) * 100}%` }}
-          />
-        </div>
-        <div className="flex justify-between text-[10px]">
-          <span className="text-gray-500">Critical items: {criticalChecked}/{criticalItems.length}</span>
+            key={activeCategory}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="w-full max-w-xs space-y-2"
+          >
+            {criteria[activeCategory].items.map((item, idx) => {
+              const isChecked = checkedItems.has(item.name);
+              return (
+                <button
+                  key={idx}
+                  onClick={() => toggleItem(item.name)}
+                  className={`w-full relative overflow-hidden rounded-lg text-left transition-all ${
+                    isChecked
+                      ? 'bg-green-500/10 border border-green-500/30'
+                      : 'bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15]'
+                  }`}
+                >
+                  <div className="relative z-10 p-3">
+                    <div className="flex items-start gap-2">
+                      <div className={`w-4 h-4 rounded border flex-shrink-0 flex items-center justify-center ${
+                        isChecked ? 'bg-green-500 border-green-500' : 'border-gray-600'
+                      }`}>
+                        {isChecked && <span className="text-white text-[10px]">✓</span>}
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <p className={`text-xs ${isChecked ? 'text-green-400' : 'text-gray-300'}`}>
+                            {item.name}
+                          </p>
+                          {item.critical && (
+                            <span className="text-[8px] px-1.5 py-0.5 bg-red-500/20 text-red-400 rounded">
+                              Critical
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[10px] text-gray-500 mt-0.5">{item.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </motion.div>
+
+          {/* Score */}
+          <div className="w-full max-w-xs relative overflow-hidden rounded-lg">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="relative z-10 p-4">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-xs text-gray-400">Progress:</span>
+                <span className="text-xs text-gray-300">{checkedCount}/{totalItems}</span>
+              </div>
+              <div className="h-2 bg-white/[0.05] rounded-full overflow-hidden mb-2">
+                <motion.div
+                  className="h-full bg-blue-500"
+                  style={{ width: `${(checkedCount / totalItems) * 100}%` }}
+                />
+              </div>
+              <div className="flex justify-between text-[10px]">
+                <span className="text-gray-500">Critical items: {criticalChecked}/{criticalItems.length}</span>
+              </div>
+            </div>
+          </div>
+
+          {checkedCount > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="w-full max-w-xs relative overflow-hidden rounded-lg"
+            >
+              <div className={`absolute inset-0 ${
+                score.color === 'green'
+                  ? 'bg-gradient-to-br from-green-500/[0.08] to-green-500/[0.03]'
+                  : score.color === 'amber'
+                  ? 'bg-gradient-to-br from-amber-500/[0.08] to-amber-500/[0.03]'
+                  : 'bg-gradient-to-br from-red-500/[0.08] to-red-500/[0.03]'
+              } backdrop-blur-sm`} />
+              <div className={`absolute inset-0 border ${
+                score.color === 'green'
+                  ? 'border-green-500/20'
+                  : score.color === 'amber'
+                  ? 'border-amber-500/20'
+                  : 'border-red-500/20'
+              } rounded-lg`} />
+              <div className="relative z-10 p-3">
+                <p className={`text-xs text-center ${
+                  score.color === 'green'
+                    ? 'text-green-400'
+                    : score.color === 'amber'
+                    ? 'text-amber-400'
+                    : 'text-red-400'
+                }`}>
+                  {score.text}
+                </p>
+              </div>
+            </motion.div>
+          )}
+
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Buy Then Build" by Walker Deibel
+          </p>
         </div>
       </div>
-
-      {checkedCount > 0 && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className={`w-full max-w-xs p-3 rounded-lg border ${
-            score.color === 'green'
-              ? 'bg-green-500/10 border-green-500/30'
-              : score.color === 'amber'
-              ? 'bg-amber-500/10 border-amber-500/30'
-              : 'bg-red-500/10 border-red-500/30'
-          }`}
-        >
-          <p className={`text-xs text-center ${
-            score.color === 'green'
-              ? 'text-green-400'
-              : score.color === 'amber'
-              ? 'text-amber-400'
-              : 'text-red-400'
-          }`}>
-            {score.text}
-          </p>
-        </motion.div>
-      )}
-
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Buy Then Build" by Walker Deibel
-      </p>
     </div>
   );
 }

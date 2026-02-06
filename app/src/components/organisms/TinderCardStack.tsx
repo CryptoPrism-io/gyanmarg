@@ -1,9 +1,9 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Sparkles, RotateCcw, ChevronRight, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Sparkles, RotateCcw, ChevronRight } from 'lucide-react';
 import { TinderCard } from '@/components/molecules/TinderCard';
 import { FloatingXP } from '@/components/atoms/FloatingXP';
-import { Button } from '@/components/atoms';
+
 import { useCardStack } from '@/hooks/useCardStack';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
 import type { PathwayLesson } from '@/types';
@@ -38,6 +38,8 @@ const colorGradients: Record<string, string> = {
   violet: 'from-lavender to-blush',
 };
 
+const COUNTDOWN_SECONDS = 7;
+
 export function TinderCardStack({
   lesson,
   onComplete,
@@ -50,6 +52,10 @@ export function TinderCardStack({
   const gradient = colorGradients[moduleColor] || colorGradients.orange;
   const { playXpGain, playSuccess, playClick } = useSoundEffects();
   const [showingCompletion, setShowingCompletion] = useState(false);
+  const [countdown, setCountdown] = useState(COUNTDOWN_SECONDS);
+  const autoCompletedRef = useRef(false);
+  const [cardReady, setCardReady] = useState(false);
+  const CARD_COOLDOWN = 1.5; // seconds before next card is allowed
 
   // Floating XP animation state
   const [floatingXP, setFloatingXP] = useState<{ amount: number; show: boolean }>({
@@ -75,6 +81,9 @@ export function TinderCardStack({
 
   const handleSwipe = useCallback(
     (direction: 'left' | 'right', quizCorrect?: boolean) => {
+      // Block swipe during cooldown
+      if (!cardReady) return;
+
       if (direction === 'right') {
         const xpEarned = swipeCard(direction, quizCorrect);
 
@@ -88,7 +97,7 @@ export function TinderCardStack({
         playClick();
       }
     },
-    [swipeCard, playXpGain, playClick]
+    [swipeCard, playXpGain, playClick, cardReady]
   );
 
   const handleFloatingXPComplete = useCallback(() => {
@@ -104,20 +113,44 @@ export function TinderCardStack({
     playSuccess();
     onComplete();
     setShowingCompletion(true);
+    setCountdown(COUNTDOWN_SECONDS);
   }, [onComplete, playSuccess]);
 
-  // Auto-advance to next lesson after showing completion
-  // Use lesson.id in deps to avoid resetting timer on every re-render
-  const nextLessonId = nextLesson?.lesson.id;
+  // Auto-complete when all cards are swiped (Netflix-style: no extra button)
   useEffect(() => {
-    if (showingCompletion && nextLesson && onNextLesson) {
+    if (isComplete && !lessonComplete && !showingCompletion && !autoCompletedRef.current) {
+      autoCompletedRef.current = true;
+      // Small delay so the last card animation finishes
       const timer = setTimeout(() => {
-        onNextLesson(nextLesson.lesson);
-      }, 2000); // Show completion for 2 seconds then auto-advance
+        handleComplete();
+      }, 400);
       return () => clearTimeout(timer);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showingCompletion, nextLessonId]);
+  }, [isComplete, lessonComplete, showingCompletion, handleComplete]);
+
+  // Auto-advance countdown for both "already completed" and "just completed" states
+  const shouldCountdown = isComplete && nextLesson && onNextLesson;
+  useEffect(() => {
+    if (shouldCountdown) {
+      if (countdown <= 0) {
+        onNextLesson(nextLesson.lesson);
+        return;
+      }
+      const timer = setTimeout(() => {
+        setCountdown(prev => prev - 1);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [shouldCountdown, countdown, nextLesson, onNextLesson]);
+
+  // Card cooldown: prevent spam-clicking through cards
+  useEffect(() => {
+    setCardReady(false);
+    const timer = setTimeout(() => {
+      setCardReady(true);
+    }, CARD_COOLDOWN * 1000);
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
 
   // Visible cards (current + next 2)
   const visibleCards = cards.slice(currentIndex, currentIndex + 3);
@@ -178,7 +211,7 @@ export function TinderCardStack({
             className="absolute inset-0 flex items-center justify-center"
           >
             <div className="text-center p-8 max-w-md">
-              {lessonComplete ? (
+              {lessonComplete && !showingCompletion ? (
                 // Already completed lesson - show summary card
                 <div className="glass rounded-2xl p-6 border border-sage/30">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-sage/20 flex items-center justify-center">
@@ -195,7 +228,7 @@ export function TinderCardStack({
                     <span>+{totalXP} XP this session</span>
                   </div>
 
-                  {/* Next lesson button */}
+                  {/* Next lesson with countdown bar */}
                   {nextLesson && onNextLesson && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -203,88 +236,114 @@ export function TinderCardStack({
                       transition={{ delay: 0.3 }}
                       className="mt-6 pt-4 border-t border-white/10"
                     >
-                      <Button
-                        variant="secondary"
+                      <p className="text-xs text-text-muted mb-3 text-center">
+                        Up next in {countdown}s
+                      </p>
+                      <button
                         onClick={() => onNextLesson(nextLesson.lesson)}
-                        className="w-full gap-2"
+                        className="relative w-full text-left p-3 rounded-xl border border-white/10 hover:border-golden/30 bg-white/[0.03] hover:bg-white/[0.06] transition-all group overflow-hidden"
                       >
-                        <span>Next: {nextLesson.lesson.title}</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </Button>
+                        {/* Countdown progress line at bottom */}
+                        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/[0.05]">
+                          <motion.div
+                            className="h-full bg-gradient-to-r from-golden to-sunrise"
+                            initial={{ width: '100%' }}
+                            animate={{ width: '0%' }}
+                            transition={{ duration: COUNTDOWN_SECONDS, ease: 'linear' }}
+                          />
+                        </div>
+                        <div className="relative">
+                          <p className="text-sm font-medium text-text-primary group-hover:text-golden transition-colors">
+                            {nextLesson.lesson.title}
+                          </p>
+                          <p className="text-xs text-text-muted mt-1">
+                            {nextLesson.lesson.duration} min • {nextLesson.lesson.xpReward} XP
+                          </p>
+                        </div>
+                      </button>
                     </motion.div>
                   )}
                 </div>
               ) : showingCompletion ? (
-                // Just completed - show celebration card with next lesson
+                // Netflix-style completion with countdown
                 <div className="glass rounded-2xl p-6 border border-golden/30">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-golden/20 flex items-center justify-center">
+                  {/* Celebration icon */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                    className="w-16 h-16 mx-auto mb-4 rounded-full bg-golden/20 flex items-center justify-center"
+                  >
                     <Sparkles className="w-8 h-8 text-golden" />
-                  </div>
-                  <h2 className="text-xl font-display font-bold text-golden mb-2">
-                    Lesson Complete!
-                  </h2>
-                  <div className="flex items-center justify-center gap-2 text-golden font-semibold mb-2">
-                    <span>+{totalXP} XP earned</span>
-                  </div>
+                  </motion.div>
 
-                  {/* Next lesson preview */}
-                  {nextLesson && (
+                  <motion.h2
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 }}
+                    className="text-xl font-display font-bold text-golden mb-2"
+                  >
+                    Lesson Complete!
+                  </motion.h2>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex items-center justify-center gap-2 text-golden font-semibold mb-2"
+                  >
+                    <span>+{totalXP} XP earned</span>
+                  </motion.div>
+
+                  {/* Netflix-style next lesson countdown */}
+                  {nextLesson && onNextLesson && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
+                      transition={{ delay: 0.5 }}
                       className="mt-6 pt-4 border-t border-white/10"
                     >
-                      <p className="text-xs text-text-muted mb-2">Up next • {nextLesson.levelTitle}</p>
-                      <div className="flex items-center justify-center gap-2 text-text-primary">
-                        <ArrowRight className="w-4 h-4 text-sunrise animate-pulse" />
-                        <span className="font-medium">{nextLesson.lesson.title}</span>
-                      </div>
-                      <motion.div
-                        className="mt-3 h-1 bg-surface rounded-full overflow-hidden"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                      <p className="text-xs text-text-muted mb-3">
+                        Up next in {countdown}s • {nextLesson.levelTitle}
+                      </p>
+
+                      <button
+                        onClick={() => onNextLesson(nextLesson.lesson)}
+                        className="relative w-full text-left p-3 rounded-xl border border-white/10 hover:border-golden/30 bg-white/[0.03] hover:bg-white/[0.06] transition-all group overflow-hidden"
                       >
-                        <motion.div
-                          className="h-full bg-gradient-to-r from-sunrise to-golden"
-                          initial={{ width: '0%' }}
-                          animate={{ width: '100%' }}
-                          transition={{ duration: 2, ease: 'linear' }}
-                        />
-                      </motion.div>
+                        {/* Countdown progress line at bottom */}
+                        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/[0.05]">
+                          <motion.div
+                            className="h-full bg-gradient-to-r from-golden to-sunrise"
+                            initial={{ width: '100%' }}
+                            animate={{ width: '0%' }}
+                            transition={{ duration: COUNTDOWN_SECONDS, ease: 'linear' }}
+                          />
+                        </div>
+                        <div className="relative">
+                          <p className="text-sm font-medium text-text-primary group-hover:text-golden transition-colors">
+                            {nextLesson.lesson.title}
+                          </p>
+                          <p className="text-xs text-text-muted mt-1">
+                            {nextLesson.lesson.duration} min • {nextLesson.lesson.xpReward} XP
+                          </p>
+                        </div>
+                      </button>
                     </motion.div>
                   )}
 
                   {!nextLesson && (
-                    <p className="text-sm text-text-muted mt-4">
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                      className="text-sm text-text-muted mt-4"
+                    >
                       Great job! You've completed this section.
-                    </p>
+                    </motion.p>
                   )}
                 </div>
-              ) : (
-                // All cards done, confirm completion
-                <>
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-golden/20 flex items-center justify-center">
-                    <Sparkles className="w-10 h-10 text-golden" />
-                  </div>
-                  <h2 className="text-2xl font-display font-bold text-text-primary mb-2">
-                    All Cards Complete!
-                  </h2>
-                  <p className="text-text-secondary mb-4">
-                    You've gone through all {cards.length} cards and earned{' '}
-                    <span className="text-golden font-semibold">+{totalXP} XP</span>
-                  </p>
-                  <Button
-                    variant="primary"
-                    onClick={handleComplete}
-                    glow
-                    className="gap-2"
-                  >
-                    Complete Lesson
-                    <Sparkles className="w-4 h-4" />
-                  </Button>
-                </>
-              )}
+              ) : null}
             </div>
           </motion.div>
         )}
@@ -306,12 +365,26 @@ export function TinderCardStack({
             <RotateCcw className="w-5 h-5" />
           </button>
 
-          {/* Quick swipe buttons for accessibility */}
+          {/* Next card button with cooldown indicator */}
           <button
             onClick={() => handleSwipe('right')}
-            className="w-14 h-14 rounded-full bg-gradient-to-r from-sage/20 to-sage/30 border border-sage/50 flex items-center justify-center hover:scale-105 transition-transform"
+            disabled={!cardReady}
+            className={`relative w-14 h-14 rounded-full border flex items-center justify-center transition-all overflow-hidden ${
+              cardReady
+                ? 'bg-gradient-to-r from-sage/20 to-sage/30 border-sage/50 hover:scale-105 cursor-pointer'
+                : 'bg-surface/30 border-white/10 cursor-not-allowed'
+            }`}
           >
-            <ChevronRight className="w-7 h-7 text-sage" />
+            {/* Cooldown progress line - circular bottom sweep */}
+            {!cardReady && (
+              <motion.div
+                className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-golden to-sunrise"
+                initial={{ width: '0%' }}
+                animate={{ width: '100%' }}
+                transition={{ duration: CARD_COOLDOWN, ease: 'linear' }}
+              />
+            )}
+            <ChevronRight className={`w-7 h-7 ${cardReady ? 'text-sage' : 'text-white/20'}`} />
           </button>
         </div>
       )}

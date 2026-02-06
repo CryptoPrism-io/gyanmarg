@@ -42,3 +42,6 @@ export { ComingSoonModuleDetails } from './ComingSoonModuleDetails';
 // Category Components
 export { CategoryTabBar } from './CategoryTabBar';
 export { CategorySection } from './CategorySection';
+
+// Visualization Wrapper
+export { GlassVisualization } from './GlassVisualization';

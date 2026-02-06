@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Clock } from 'lucide-react';
 
 interface Item {
   id: string;
@@ -38,143 +39,178 @@ export function LindyEffect() {
   const selected = items.filter(i => selectedItems.includes(i.id));
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Timeline visualization */}
-      <div className="w-full max-w-xs">
-        <div className="relative h-32 bg-[#111113] border border-gray-800 rounded-lg p-4">
-          {/* Center line (now) */}
-          <div className="absolute left-1/2 top-4 bottom-4 w-0.5 bg-amber-500/50" />
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 text-[10px] text-amber-400">
-            NOW
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Glass layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-4">
+          <div
+            className="w-8 h-8 rounded-lg flex items-center justify-center"
+            style={{ background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%)' }}
+          >
+            <Clock className="w-4 h-4 text-amber-400" />
           </div>
-
-          {/* Past label */}
-          <div className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] text-gray-500 [writing-mode:vertical-lr] rotate-180">
-            PAST
-          </div>
-
-          {/* Future label */}
-          <div className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-gray-500 [writing-mode:vertical-lr]">
-            FUTURE
-          </div>
-
-          {/* Selected items */}
-          {selected.map((item, idx) => {
-            const pastWidth = Math.min(45, (item.age / maxAge) * 45);
-            const futureWidth = pastWidth; // Lindy: expected future = past survived
-
-            return (
-              <motion.div
-                key={item.id}
-                className="absolute flex items-center"
-                style={{ top: `${25 + idx * 30}%` }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                {/* Past bar */}
-                <motion.div
-                  className="h-4 rounded-l"
-                  style={{
-                    backgroundColor: '#3B82F6',
-                    position: 'absolute',
-                    right: '50%',
-                  }}
-                  animate={{ width: `${pastWidth}%` }}
-                />
-
-                {/* Future bar */}
-                <motion.div
-                  className="h-4 rounded-r"
-                  style={{
-                    backgroundColor: '#22C55E',
-                    position: 'absolute',
-                    left: '50%',
-                  }}
-                  animate={{ width: `${futureWidth}%` }}
-                />
-
-                {/* Label */}
-                <div
-                  className="absolute text-[10px] font-medium text-white whitespace-nowrap"
-                  style={{ left: '50%', transform: 'translateX(-50%)' }}
-                >
-                  {item.name}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <div className="flex justify-center gap-4 mt-2 text-[10px]">
-          <div className="flex items-center gap-1">
-            <div className="w-3 h-3 rounded bg-blue-500" />
-            <span className="text-gray-500">Age (survived)</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <div className="w-3 h-3 rounded bg-green-500" />
-            <span className="text-gray-500">Expected future</span>
+          <div>
+            <h3 className="text-sm font-medium text-white/90">Lindy Effect</h3>
+            <p className="text-[10px] text-white/50">From Nassim Taleb's Antifragile</p>
           </div>
         </div>
-      </div>
 
-      {/* Item selector */}
-      <div className="w-full max-w-xs">
-        <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2">
-          Select up to 3 to compare:
-        </p>
-        <div className="grid grid-cols-2 gap-2">
-          {items.map((item) => (
-            <motion.button
-              key={item.id}
-              onClick={() => toggleItem(item.id)}
-              className={`p-2 rounded-lg border text-left text-xs transition-all ${
-                selectedItems.includes(item.id)
-                  ? 'bg-amber-500/10 border-amber-500/30'
-                  : 'bg-[#111113] border-gray-800 hover:border-gray-700'
-              }`}
-              whileTap={{ scale: 0.98 }}
+        <div className="flex flex-col items-center gap-4">
+          {/* Timeline visualization */}
+          <div className="w-full max-w-xs">
+            <div
+              className="relative h-32 border border-white/[0.08] rounded-lg p-4 overflow-hidden"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
-              <div className="flex justify-between items-center">
-                <span className={selectedItems.includes(item.id) ? 'text-amber-400' : 'text-gray-300'}>
-                  {item.name}
-                </span>
-                <span className="text-[10px] text-gray-500">
-                  {item.age > 100 ? `${(item.age / 1000).toFixed(1)}k` : item.age}y
-                </span>
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+              {/* Center line (now) */}
+              <div className="absolute left-1/2 top-4 bottom-4 w-0.5 bg-amber-500/50" />
+              <div className="absolute left-1/2 top-0 -translate-x-1/2 text-[10px] text-amber-400">
+                NOW
               </div>
-              <p className="text-[10px] text-gray-600">{item.category}</p>
-            </motion.button>
-          ))}
-        </div>
-      </div>
 
-      {/* Comparison */}
-      {selected.length > 1 && (
-        <div className="w-full max-w-xs bg-[#111113] border border-gray-800 rounded-lg p-3">
-          <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2">
-            Expected additional lifespan:
-          </p>
-          {selected.map(item => (
-            <div key={item.id} className="flex justify-between text-xs mb-1">
-              <span className="text-gray-400">{item.name}</span>
-              <span className="text-green-400">+{item.expectedLife.toLocaleString()} years</span>
+              {/* Past label */}
+              <div className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] text-white/50 [writing-mode:vertical-lr] rotate-180">
+                PAST
+              </div>
+
+              {/* Future label */}
+              <div className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-white/50 [writing-mode:vertical-lr]">
+                FUTURE
+              </div>
+
+              {/* Selected items */}
+              {selected.map((item, idx) => {
+                const pastWidth = Math.min(45, (item.age / maxAge) * 45);
+                const futureWidth = pastWidth; // Lindy: expected future = past survived
+
+                return (
+                  <motion.div
+                    key={item.id}
+                    className="absolute flex items-center"
+                    style={{ top: `${25 + idx * 30}%` }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    {/* Past bar */}
+                    <motion.div
+                      className="h-4 rounded-l"
+                      style={{
+                        backgroundColor: '#3B82F6',
+                        position: 'absolute',
+                        right: '50%',
+                      }}
+                      animate={{ width: `${pastWidth}%` }}
+                    />
+
+                    {/* Future bar */}
+                    <motion.div
+                      className="h-4 rounded-r"
+                      style={{
+                        backgroundColor: '#22C55E',
+                        position: 'absolute',
+                        left: '50%',
+                      }}
+                      animate={{ width: `${futureWidth}%` }}
+                    />
+
+                    {/* Label */}
+                    <div
+                      className="absolute text-[10px] font-medium text-white whitespace-nowrap"
+                      style={{ left: '50%', transform: 'translateX(-50%)' }}
+                    >
+                      {item.name}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
-          ))}
+
+            <div className="flex justify-center gap-4 mt-2 text-[10px]">
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 rounded bg-blue-500" />
+                <span className="text-white/50">Age (survived)</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 rounded bg-green-500" />
+                <span className="text-white/50">Expected future</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Item selector */}
+          <div className="w-full max-w-xs">
+            <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">
+              Select up to 3 to compare:
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {items.map((item) => (
+                <motion.button
+                  key={item.id}
+                  onClick={() => toggleItem(item.id)}
+                  className={`relative p-2 rounded-lg border text-left text-xs transition-all overflow-hidden ${
+                    selectedItems.includes(item.id)
+                      ? 'bg-amber-500/10 border-amber-500/30'
+                      : 'border-white/[0.08] hover:border-white/[0.15]'
+                  }`}
+                  style={!selectedItems.includes(item.id) ? { background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' } : undefined}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <div className="flex justify-between items-center">
+                    <span className={selectedItems.includes(item.id) ? 'text-amber-400' : 'text-white/80'}>
+                      {item.name}
+                    </span>
+                    <span className="text-[10px] text-white/50">
+                      {item.age > 100 ? `${(item.age / 1000).toFixed(1)}k` : item.age}y
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-white/40">{item.category}</p>
+                </motion.button>
+              ))}
+            </div>
+          </div>
+
+          {/* Comparison */}
+          {selected.length > 1 && (
+            <div
+              className="relative w-full max-w-xs border border-white/[0.08] rounded-lg p-3 overflow-hidden"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">
+                Expected additional lifespan:
+              </p>
+              {selected.map(item => (
+                <div key={item.id} className="flex justify-between text-xs mb-1">
+                  <span className="text-white/60">{item.name}</span>
+                  <span className="text-green-400">+{item.expectedLife.toLocaleString()} years</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Key insight */}
+          <div
+            className="relative border border-white/[0.08] rounded-lg p-3 max-w-xs text-center overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <p className="text-xs text-white/60">
+              <span className="text-amber-400 font-medium">Lindy Effect:</span> For non-perishable
+              things, every day of survival increases expected future lifespan. Old books that
+              survived will likely outlast new bestsellers.
+            </p>
+          </div>
         </div>
-      )}
-
-      {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-lg p-3 max-w-xs text-center">
-        <p className="text-xs text-gray-400">
-          <span className="text-amber-400 font-medium">Lindy Effect:</span> For non-perishable
-          things, every day of survival increases expected future lifespan. Old books that
-          survived will likely outlast new bestsellers.
-        </p>
       </div>
-
-      <p className="text-[10px] text-gray-500">
-        From Nassim Taleb's Antifragile
-      </p>
     </div>
   );
 }

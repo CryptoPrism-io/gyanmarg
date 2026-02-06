@@ -337,6 +337,7 @@ function parseContent(content: string): ParsedBlock[] {
           nextLine.startsWith('*') ||
           /^\d+\.\s+/.test(nextLine) ||
           /^[-*]{3,}$/.test(nextLine) ||
+          /^\|.+\|$/.test(nextLine) ||
           (nextLine.startsWith('**') && nextLine.endsWith('**'))) {
         break;
       }

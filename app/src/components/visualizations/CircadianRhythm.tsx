@@ -32,12 +32,20 @@ export function CircadianRhythm() {
   }, [selectedHour]);
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      {/* Title */}
-      <div className="text-center">
-        <h3 className="text-sm font-bold text-purple-400">Your 24-Hour Body Clock</h3>
-        <p className="text-[10px] text-gray-500">Circadian rhythm optimization</p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-amber-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-5">
+          {/* Title */}
+          <div className="text-center">
+            <h3 className="text-sm font-bold text-purple-400">Your 24-Hour Body Clock</h3>
+            <p className="text-[10px] text-gray-500">Circadian rhythm optimization</p>
+          </div>
 
       {/* Clock visualization */}
       <div className="relative w-64 h-64">
@@ -188,7 +196,7 @@ export function CircadianRhythm() {
       </div>
 
       {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
+      <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 max-w-xs backdrop-blur-sm">
         <p className="text-xs text-gray-400 leading-relaxed">
           <span className="text-purple-400 font-medium">Andrew Huberman:</span> "Your circadian
           rhythm is the master controller of nearly every biological process. Align your activities
@@ -197,6 +205,8 @@ export function CircadianRhythm() {
       </div>
 
       <p className="text-[10px] text-gray-600">From Huberman Lab Podcast</p>
+        </div>
+      </div>
     </div>
   );
 }

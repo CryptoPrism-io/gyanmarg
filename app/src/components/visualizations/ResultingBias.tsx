@@ -54,109 +54,131 @@ export function ResultingBias() {
   const isCorrect = userGuess === (scenario.wasGoodDecision ? 'good' : 'bad');
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Header */}
-      <div className="text-center">
-        <p className="text-xs text-gray-400">
-          <span className="text-red-400">Resulting:</span> Judging decision quality by outcome alone
-        </p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-blue-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Scenario */}
-      <div className="w-full max-w-xs bg-[#111113] border border-gray-800 rounded-lg p-4">
-        <p className="text-[10px] text-gray-500 uppercase mb-2">
-          Scenario {currentScenario + 1}/{scenarios.length}
-        </p>
-        <p className="text-sm text-gray-300 mb-3">{scenario.decision}</p>
-
-        <div className={`p-2 rounded-lg ${
-          scenario.outcome === 'good'
-            ? 'bg-green-500/10 border border-green-500/30'
-            : 'bg-red-500/10 border border-red-500/30'
-        }`}>
-          <p className={`text-xs ${
-            scenario.outcome === 'good' ? 'text-green-400' : 'text-red-400'
-          }`}>
-            Outcome: {scenario.resultText}
-          </p>
-        </div>
-      </div>
-
-      {/* Question */}
-      {!showExplanation ? (
-        <div className="w-full max-w-xs space-y-3">
-          <p className="text-xs text-gray-400 text-center">
-            Was this a <span className="text-amber-400">good decision</span>?
-          </p>
-          <div className="grid grid-cols-2 gap-2">
-            <motion.button
-              onClick={() => handleGuess('good')}
-              className="py-3 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400 text-sm hover:bg-green-500/20"
-              whileTap={{ scale: 0.98 }}
-            >
-              Good Decision
-            </motion.button>
-            <motion.button
-              onClick={() => handleGuess('bad')}
-              className="py-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm hover:bg-red-500/20"
-              whileTap={{ scale: 0.98 }}
-            >
-              Bad Decision
-            </motion.button>
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Header */}
+          <div className="text-center">
+            <p className="text-xs text-gray-400">
+              <span className="text-red-400">Resulting:</span> Judging decision quality by outcome alone
+            </p>
           </div>
+
+          {/* Scenario */}
+          <div className="w-full max-w-xs relative overflow-hidden rounded-lg">
+            <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="relative z-10 p-4">
+              <p className="text-[10px] text-gray-500 uppercase mb-2">
+                Scenario {currentScenario + 1}/{scenarios.length}
+              </p>
+              <p className="text-sm text-gray-300 mb-3">{scenario.decision}</p>
+
+              <div className={`p-2 rounded-lg backdrop-blur-sm ${
+                scenario.outcome === 'good'
+                  ? 'bg-green-500/[0.08] border border-green-500/30'
+                  : 'bg-red-500/[0.08] border border-red-500/30'
+              }`}>
+                <p className={`text-xs ${
+                  scenario.outcome === 'good' ? 'text-green-400' : 'text-red-400'
+                }`}>
+                  Outcome: {scenario.resultText}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Question */}
+          {!showExplanation ? (
+            <div className="w-full max-w-xs space-y-3">
+              <p className="text-xs text-gray-400 text-center">
+                Was this a <span className="text-amber-400">good decision</span>?
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                <motion.button
+                  onClick={() => handleGuess('good')}
+                  className="py-3 bg-green-500/[0.08] border border-green-500/30 rounded-lg text-green-400 text-sm hover:bg-green-500/[0.15] backdrop-blur-sm"
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Good Decision
+                </motion.button>
+                <motion.button
+                  onClick={() => handleGuess('bad')}
+                  className="py-3 bg-red-500/[0.08] border border-red-500/30 rounded-lg text-red-400 text-sm hover:bg-red-500/[0.15] backdrop-blur-sm"
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Bad Decision
+                </motion.button>
+              </div>
+            </div>
+          ) : (
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full max-w-xs space-y-3"
+              >
+                {/* Result */}
+                <div className={`p-3 rounded-lg border backdrop-blur-sm ${
+                  isCorrect
+                    ? 'bg-green-500/[0.08] border-green-500/30'
+                    : 'bg-amber-500/[0.08] border-amber-500/30'
+                }`}>
+                  <p className={`text-sm font-medium ${isCorrect ? 'text-green-400' : 'text-amber-400'}`}>
+                    {isCorrect ? 'Correct!' : 'Not quite!'}
+                  </p>
+                  <p className="text-xs text-gray-400 mt-1">
+                    This was a <span className={scenario.wasGoodDecision ? 'text-green-400' : 'text-red-400'}>
+                      {scenario.wasGoodDecision ? 'good' : 'bad'} decision
+                    </span> with a{' '}
+                    <span className={scenario.outcome === 'good' ? 'text-green-400' : 'text-red-400'}>
+                      {scenario.outcome} outcome
+                    </span>.
+                  </p>
+                </div>
+
+                {/* Explanation */}
+                <div className="relative overflow-hidden rounded-lg">
+                  <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
+                  <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                  <div className="relative z-10 p-3">
+                    <p className="text-xs text-gray-300">{scenario.explanation}</p>
+                  </div>
+                </div>
+
+                {/* The lesson */}
+                <div className="relative overflow-hidden rounded-lg">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.12] to-purple-500/[0.05] backdrop-blur-sm" />
+                  <div className="absolute inset-0 border border-purple-500/30 rounded-lg" />
+                  <div className="relative z-10 p-3">
+                    <p className="text-[10px] text-purple-400">
+                      Key insight: Good decisions can have bad outcomes. Bad decisions can have good outcomes.
+                      Judge the <span className="font-medium">process</span>, not the result.
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={nextScenario}
+                  className="w-full py-2 bg-blue-500/20 border border-blue-500/50 rounded-lg text-xs text-blue-400 backdrop-blur-sm"
+                >
+                  Next Scenario
+                </button>
+              </motion.div>
+            </AnimatePresence>
+          )}
+
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Thinking in Bets" by Annie Duke
+          </p>
         </div>
-      ) : (
-        <AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-xs space-y-3"
-          >
-            {/* Result */}
-            <div className={`p-3 rounded-lg border ${
-              isCorrect
-                ? 'bg-green-500/10 border-green-500/30'
-                : 'bg-amber-500/10 border-amber-500/30'
-            }`}>
-              <p className={`text-sm font-medium ${isCorrect ? 'text-green-400' : 'text-amber-400'}`}>
-                {isCorrect ? 'Correct!' : 'Not quite!'}
-              </p>
-              <p className="text-xs text-gray-400 mt-1">
-                This was a <span className={scenario.wasGoodDecision ? 'text-green-400' : 'text-red-400'}>
-                  {scenario.wasGoodDecision ? 'good' : 'bad'} decision
-                </span> with a{' '}
-                <span className={scenario.outcome === 'good' ? 'text-green-400' : 'text-red-400'}>
-                  {scenario.outcome} outcome
-                </span>.
-              </p>
-            </div>
-
-            {/* Explanation */}
-            <div className="bg-[#111113] border border-gray-800 rounded-lg p-3">
-              <p className="text-xs text-gray-300">{scenario.explanation}</p>
-            </div>
-
-            {/* The lesson */}
-            <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-3">
-              <p className="text-[10px] text-purple-400">
-                Key insight: Good decisions can have bad outcomes. Bad decisions can have good outcomes.
-                Judge the <span className="font-medium">process</span>, not the result.
-              </p>
-            </div>
-
-            <button
-              onClick={nextScenario}
-              className="w-full py-2 bg-blue-500/20 border border-blue-500/50 rounded-lg text-xs text-blue-400"
-            >
-              Next Scenario
-            </button>
-          </motion.div>
-        </AnimatePresence>
-      )}
-
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Thinking in Bets" by Annie Duke
-      </p>
+      </div>
     </div>
   );
 }

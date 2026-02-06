@@ -24,12 +24,20 @@ export function AckermanModel() {
   const finalOffer = Math.round(targetPrice * 0.9973); // Looks like $49,865 for 50k
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      {/* Title */}
-      <div className="text-center">
-        <h3 className="text-sm font-bold text-amber-400">The Ackerman Model</h3>
-        <p className="text-[10px] text-gray-500">A systematic approach to price negotiation</p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-5">
+          {/* Title */}
+          <div className="text-center">
+            <h3 className="text-sm font-bold text-amber-400">The Ackerman Model</h3>
+            <p className="text-[10px] text-gray-500">A systematic approach to price negotiation</p>
+          </div>
 
       {/* Target price input */}
       <div className="w-full max-w-xs">
@@ -174,7 +182,7 @@ export function AckermanModel() {
       </div>
 
       {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
+      <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 max-w-xs backdrop-blur-sm">
         <p className="text-xs text-gray-400 leading-relaxed">
           <span className="text-green-400 font-medium">Chris Voss:</span> "By using this system,
           you create the illusion of reasoned concession while secretly using psychology to
@@ -183,6 +191,8 @@ export function AckermanModel() {
       </div>
 
       <p className="text-[10px] text-gray-600">From Never Split the Difference</p>
+        </div>
+      </div>
     </div>
   );
 }

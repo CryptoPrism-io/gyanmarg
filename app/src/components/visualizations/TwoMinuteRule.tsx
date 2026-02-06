@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Zap } from 'lucide-react';
 
 interface Task {
   id: string;
@@ -38,97 +39,133 @@ export function TwoMinuteRule() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Stats */}
-      <div className="flex gap-4">
-        <div className="text-center">
-          <p className="text-2xl font-bold text-amber-400">{pendingTasks.length}</p>
-          <p className="text-[10px] text-gray-500">Pending</p>
-        </div>
-        <div className="text-center">
-          <p className="text-2xl font-bold text-green-400">{completedTasks.length}</p>
-          <p className="text-[10px] text-gray-500">Done</p>
-        </div>
-        <div className="text-center">
-          <p className="text-2xl font-bold text-blue-400">{totalTimeSaved}m</p>
-          <p className="text-[10px] text-gray-500">Mental overhead saved</p>
-        </div>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Glassmorphism layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Rule explanation */}
-      <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg px-4 py-2 text-center">
-        <p className="text-xs text-amber-400">
-          If it takes <span className="font-bold">less than 2 minutes</span>, do it NOW
-        </p>
-      </div>
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center">
+            <Zap className="w-4 h-4 text-amber-400" />
+          </div>
+          <h3 className="text-sm font-medium text-white/90">Two-Minute Rule</h3>
+        </div>
 
-      {/* Task list */}
-      <div className="w-full max-w-xs space-y-2">
-        <AnimatePresence>
-          {pendingTasks.slice(0, 5).map((task, index) => (
-            <motion.button
-              key={task.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20, height: 0 }}
-              transition={{ delay: index * 0.05 }}
-              onClick={() => completeTask(task)}
-              className="w-full p-3 bg-[#111113] border border-gray-800 rounded-lg
-                       hover:border-green-500/50 hover:bg-green-500/5 transition-all
-                       flex items-center justify-between group"
-            >
-              <div className="text-left">
-                <p className="text-xs text-gray-300 group-hover:text-green-400 transition-colors">
-                  {task.task}
+        <div className="flex flex-col items-center gap-4">
+          {/* Stats */}
+          <div className="flex gap-4">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-amber-400">{pendingTasks.length}</p>
+              <p className="text-[10px] text-white/50">Pending</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-green-400">{completedTasks.length}</p>
+              <p className="text-[10px] text-white/50">Done</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-blue-400">{totalTimeSaved}m</p>
+              <p className="text-[10px] text-white/50">Mental overhead saved</p>
+            </div>
+          </div>
+
+          {/* Rule explanation */}
+          <div className="relative overflow-hidden rounded-lg">
+            <div className="absolute inset-0 bg-amber-500/10" />
+            <div className="absolute inset-0 border border-amber-500/30 rounded-lg" />
+            <div className="relative px-4 py-2 text-center">
+              <p className="text-xs text-amber-400">
+                If it takes <span className="font-bold">less than 2 minutes</span>, do it NOW
+              </p>
+            </div>
+          </div>
+
+          {/* Task list */}
+          <div className="w-full max-w-xs space-y-2">
+            <AnimatePresence>
+              {pendingTasks.slice(0, 5).map((task, index) => (
+                <motion.button
+                  key={task.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20, height: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  onClick={() => completeTask(task)}
+                  className="w-full relative overflow-hidden rounded-lg group"
+                >
+                  <div
+                    className="absolute inset-0 transition-colors"
+                    style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+                  />
+                  <div className="absolute inset-0 border border-white/[0.08] rounded-lg group-hover:border-green-500/50 transition-colors" />
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <div className="relative p-3 flex items-center justify-between">
+                    <div className="text-left">
+                      <p className="text-xs text-white/80 group-hover:text-green-400 transition-colors">
+                        {task.task}
+                      </p>
+                      <p className="text-[10px] text-white/40">{task.category}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] text-white/50">{task.time}</span>
+                      <span className="text-green-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                        ✓
+                      </span>
+                    </div>
+                  </div>
+                </motion.button>
+              ))}
+            </AnimatePresence>
+
+            {pendingTasks.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-8"
+              >
+                <div className="text-4xl mb-2">🎉</div>
+                <p className="text-sm text-green-400 font-medium">All clear!</p>
+                <p className="text-xs text-white/50 mt-1">
+                  You saved ~{totalTimeSaved} minutes of mental overhead
                 </p>
-                <p className="text-[10px] text-gray-600">{task.category}</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] text-gray-500">{task.time}</span>
-                <span className="text-green-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                  ✓
-                </span>
-              </div>
-            </motion.button>
-          ))}
-        </AnimatePresence>
+              </motion.div>
+            )}
+          </div>
 
-        {pendingTasks.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-8"
-          >
-            <div className="text-4xl mb-2">🎉</div>
-            <p className="text-sm text-green-400 font-medium">All clear!</p>
-            <p className="text-xs text-gray-500 mt-1">
-              You saved ~{totalTimeSaved} minutes of mental overhead
-            </p>
-          </motion.div>
-        )}
+          {/* Reset button */}
+          {(completedTasks.length > 0 || pendingTasks.length < tasks.length) && (
+            <button
+              onClick={resetDemo}
+              className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            >
+              ↻ Reset demo
+            </button>
+          )}
+
+          {/* Insight */}
+          <div className="relative overflow-hidden rounded-lg max-w-xs">
+            <div
+              className="absolute inset-0"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            />
+            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="relative p-3 text-center">
+              <p className="text-xs text-white/60">
+                Small undone tasks create <span className="text-amber-400">mental overhead</span> far exceeding their actual time.
+                Just do them.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-[10px] text-white/50 text-center">
+            Click tasks to complete them • From Getting Things Done by David Allen
+          </p>
+        </div>
       </div>
-
-      {/* Reset button */}
-      {(completedTasks.length > 0 || pendingTasks.length < tasks.length) && (
-        <button
-          onClick={resetDemo}
-          className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-        >
-          ↻ Reset demo
-        </button>
-      )}
-
-      {/* Insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-lg p-3 max-w-xs text-center">
-        <p className="text-xs text-gray-400">
-          Small undone tasks create <span className="text-amber-400">mental overhead</span> far exceeding their actual time.
-          Just do them.
-        </p>
-      </div>
-
-      <p className="text-[10px] text-gray-500 text-center">
-        Click tasks to complete them • From Getting Things Done by David Allen
-      </p>
     </div>
   );
 }

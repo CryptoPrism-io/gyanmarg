@@ -266,54 +266,70 @@ export function TacticalEmpathy() {
   // Intro phase - technique overview
   if (phase === 'intro') {
     return (
-      <div className="flex flex-col items-center gap-4">
-        <div className="text-center mb-2">
-          <h3 className="text-sm font-bold text-blue-400">Tactical Empathy Training</h3>
-          <p className="text-[10px] text-gray-500">Master the 5 techniques from Never Split the Difference</p>
-        </div>
+      <div className="relative overflow-hidden rounded-2xl">
+        {/* Dark Glassmorphism background - 88% transparent */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
+        <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        {/* Technique cards */}
-        <div className="w-full max-w-sm space-y-2">
-          {Object.entries(techniques).map(([key, tech], index) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="flex items-center gap-3 p-3 rounded-xl border"
-              style={{
-                backgroundColor: tech.color + '10',
-                borderColor: tech.color + '30',
-              }}
+        <div className="relative z-10 p-5">
+          <div className="flex flex-col items-center gap-4">
+            <div className="text-center mb-2">
+              <h3 className="text-sm font-bold text-blue-400">Tactical Empathy Training</h3>
+              <p className="text-[10px] text-gray-500">Master the 5 techniques from Never Split the Difference</p>
+            </div>
+
+            {/* Technique cards */}
+            <div className="w-full max-w-sm space-y-2">
+              {Object.entries(techniques).map(([key, tech], index) => (
+                <motion.div
+                  key={key}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative overflow-hidden rounded-xl"
+                >
+                  <div
+                    className="absolute inset-0 backdrop-blur-sm"
+                    style={{ backgroundColor: tech.color + '10' }}
+                  />
+                  <div
+                    className="absolute inset-0 border rounded-xl"
+                    style={{ borderColor: tech.color + '30' }}
+                  />
+                  <div className="relative z-10 flex items-center gap-3 p-3">
+                    <span className="text-2xl">{tech.icon}</span>
+                    <div className="flex-1">
+                      <p className="text-xs font-medium" style={{ color: tech.color }}>
+                        {tech.name}
+                      </p>
+                      <p className="text-[10px] text-gray-400">{tech.tip}</p>
+                    </div>
+                    <div
+                      className="w-2 h-2 rounded-full"
+                      style={{ backgroundColor: tech.color }}
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Start button */}
+            <motion.button
+              onClick={() => setPhase('scenario')}
+              className="mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white text-sm font-medium"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span className="text-2xl">{tech.icon}</span>
-              <div className="flex-1">
-                <p className="text-xs font-medium" style={{ color: tech.color }}>
-                  {tech.name}
-                </p>
-                <p className="text-[10px] text-gray-400">{tech.tip}</p>
-              </div>
-              <div
-                className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: tech.color }}
-              />
-            </motion.div>
-          ))}
+              Start Practice Scenarios
+            </motion.button>
+
+            <p className="text-[10px] text-gray-600 text-center max-w-xs">
+              Practice real negotiation scenarios and learn when to use each technique
+            </p>
+          </div>
         </div>
-
-        {/* Start button */}
-        <motion.button
-          onClick={() => setPhase('scenario')}
-          className="mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white text-sm font-medium"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          🎮 Start Practice Scenarios
-        </motion.button>
-
-        <p className="text-[10px] text-gray-600 text-center max-w-xs">
-          Practice real negotiation scenarios and learn when to use each technique
-        </p>
       </div>
     );
   }
@@ -324,306 +340,359 @@ export function TacticalEmpathy() {
     const techniquesLearned = techniqueUsed.length;
 
     return (
-      <div className="flex flex-col items-center gap-5">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          className="text-center"
-        >
-          <div className="text-6xl mb-4">
-            {score >= 80 ? '🏆' : score >= 60 ? '🎯' : '💪'}
-          </div>
-          <h3 className="text-lg font-bold text-white mb-1">Training Complete!</h3>
-          <p className="text-xs text-gray-400">
-            {score >= 80 ? 'FBI Negotiator Level!' : score >= 60 ? 'Solid Foundation!' : 'Keep Practicing!'}
-          </p>
-        </motion.div>
+      <div className="relative overflow-hidden rounded-2xl">
+        {/* Dark Glassmorphism background - 88% transparent */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
+        <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        {/* Stats */}
-        <div className="w-full max-w-xs grid grid-cols-2 gap-3">
-          <div className="p-3 bg-[#111113] border border-gray-800 rounded-xl text-center">
-            <p className="text-2xl font-bold text-blue-400">{score}%</p>
-            <p className="text-[10px] text-gray-500">Rapport Score</p>
-          </div>
-          <div className="p-3 bg-[#111113] border border-gray-800 rounded-xl text-center">
-            <p className="text-2xl font-bold text-purple-400">{techniquesLearned}/5</p>
-            <p className="text-[10px] text-gray-500">Techniques Used</p>
+        <div className="relative z-10 p-5">
+          <div className="flex flex-col items-center gap-5">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="text-center"
+            >
+              <div className="text-6xl mb-4">
+                {score >= 80 ? '🏆' : score >= 60 ? '🎯' : '💪'}
+              </div>
+              <h3 className="text-lg font-bold text-white mb-1">Training Complete!</h3>
+              <p className="text-xs text-gray-400">
+                {score >= 80 ? 'FBI Negotiator Level!' : score >= 60 ? 'Solid Foundation!' : 'Keep Practicing!'}
+              </p>
+            </motion.div>
+
+            {/* Stats */}
+            <div className="w-full max-w-xs grid grid-cols-2 gap-3">
+              <div className="relative overflow-hidden rounded-xl">
+                <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
+                <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+                <div className="relative z-10 p-3 text-center">
+                  <p className="text-2xl font-bold text-blue-400">{score}%</p>
+                  <p className="text-[10px] text-gray-500">Rapport Score</p>
+                </div>
+              </div>
+              <div className="relative overflow-hidden rounded-xl">
+                <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
+                <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+                <div className="relative z-10 p-3 text-center">
+                  <p className="text-2xl font-bold text-purple-400">{techniquesLearned}/5</p>
+                  <p className="text-[10px] text-gray-500">Techniques Used</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Techniques mastered */}
+            <div className="w-full max-w-xs">
+              <p className="text-xs text-gray-500 mb-2">Techniques practiced:</p>
+              <div className="flex flex-wrap gap-2">
+                {techniqueUsed.map((t) => (
+                  <span
+                    key={t}
+                    className="px-2 py-1 rounded-lg text-[10px] backdrop-blur-sm"
+                    style={{
+                      backgroundColor: techniques[t].color + '20',
+                      color: techniques[t].color,
+                    }}
+                  >
+                    {techniques[t].icon} {techniques[t].name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Key insight */}
+            <div className="relative overflow-hidden rounded-xl max-w-xs">
+              <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+              <div className="relative z-10 p-4">
+                <p className="text-xs text-gray-400 leading-relaxed">
+                  <span className="text-blue-400 font-medium">Chris Voss:</span> "Tactical empathy
+                  is understanding the feelings and mindset of another in the moment—and hearing what's
+                  behind those feelings. It's emotional intelligence on steroids."
+                </p>
+              </div>
+            </div>
+
+            <motion.button
+              onClick={resetPractice}
+              className="px-4 py-2 bg-blue-500/20 border border-blue-500/50 rounded-xl text-blue-400 text-xs backdrop-blur-sm hover:bg-blue-500/25 transition-all"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Practice Again
+            </motion.button>
           </div>
         </div>
-
-        {/* Techniques mastered */}
-        <div className="w-full max-w-xs">
-          <p className="text-xs text-gray-500 mb-2">Techniques practiced:</p>
-          <div className="flex flex-wrap gap-2">
-            {techniqueUsed.map((t) => (
-              <span
-                key={t}
-                className="px-2 py-1 rounded-lg text-[10px]"
-                style={{
-                  backgroundColor: techniques[t].color + '20',
-                  color: techniques[t].color,
-                }}
-              >
-                {techniques[t].icon} {techniques[t].name}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Key insight */}
-        <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
-          <p className="text-xs text-gray-400 leading-relaxed">
-            <span className="text-blue-400 font-medium">Chris Voss:</span> "Tactical empathy
-            is understanding the feelings and mindset of another in the moment—and hearing what's
-            behind those feelings. It's emotional intelligence on steroids."
-          </p>
-        </div>
-
-        <motion.button
-          onClick={resetPractice}
-          className="px-4 py-2 bg-blue-500/20 border border-blue-500/50 rounded-xl text-blue-400 text-xs"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          🔄 Practice Again
-        </motion.button>
       </div>
     );
   }
 
   // Scenario/Practice phase
   return (
-    <div className="flex flex-col items-center gap-4 w-full max-w-sm">
-      {/* Header with rapport meter */}
-      <div className="w-full flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-lg">{scenario.icon}</span>
-          <div>
-            <p className="text-xs font-medium text-white">{scenario.title}</p>
-            <p className="text-[9px] text-gray-500">{scenario.context}</p>
-          </div>
-        </div>
-        <div className="text-right">
-          <p className="text-[9px] text-gray-500">Rapport</p>
-          <div className="w-16 h-2 bg-gray-800 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full rounded-full"
-              style={{
-                backgroundColor: rapport > 60 ? '#22C55E' : rapport > 30 ? '#F59E0B' : '#EF4444',
-              }}
-              animate={{ width: `${rapport}%` }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-        </div>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Progress dots */}
-      <div className="flex gap-1">
-        {scenarios.map((_, i) => (
-          <div
-            key={i}
-            className={`w-2 h-2 rounded-full transition-all ${
-              completedScenarios.includes(i)
-                ? 'bg-green-500'
-                : i === scenarioIndex
-                ? 'bg-blue-500'
-                : 'bg-gray-700'
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* Chat conversation */}
-      <div className="w-full bg-[#111113] border border-gray-800 rounded-xl p-3 min-h-[160px]">
-        <div className="space-y-2">
-          {scenario.messages.map((msg, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.2 }}
-              className={`flex ${
-                msg.sender === 'you'
-                  ? 'justify-end'
-                  : msg.sender === 'narrator'
-                  ? 'justify-center'
-                  : 'justify-start'
-              }`}
-            >
-              {msg.sender === 'narrator' ? (
-                <p className="text-[10px] text-gray-500 italic">{msg.text}</p>
-              ) : (
-                <div
-                  className={`max-w-[80%] px-3 py-2 rounded-xl text-xs ${
-                    msg.sender === 'you'
-                      ? 'bg-blue-500/20 border border-blue-500/30 text-blue-100'
-                      : 'bg-gray-800 text-gray-300'
-                  }`}
-                >
-                  {msg.text}
-                </div>
-              )}
-            </motion.div>
-          ))}
-
-          {/* Selected response */}
-          {selectedChoice !== null && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex justify-end"
-            >
-              <div className="max-w-[80%] px-3 py-2 rounded-xl text-xs bg-blue-500/20 border border-blue-500/30 text-blue-100">
-                {scenario.choices[selectedChoice].text}
-              </div>
-            </motion.div>
-          )}
-
-          {/* Typing indicator */}
-          {isTyping && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex justify-start"
-            >
-              <div className="px-3 py-2 bg-gray-800 rounded-xl">
-                <div className="flex gap-1">
-                  {[0, 1, 2].map((i) => (
-                    <motion.div
-                      key={i}
-                      className="w-1.5 h-1.5 bg-gray-500 rounded-full"
-                      animate={{ y: [0, -4, 0] }}
-                      transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.15 }}
-                    />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Their response to your choice */}
-          {showOutcome && selectedChoice !== null && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex justify-start"
-            >
-              <div className="max-w-[80%] px-3 py-2 rounded-xl text-xs bg-gray-800 text-gray-300">
-                {scenario.choices[selectedChoice].isCorrect
-                  ? scenario.goodOutcome
-                  : scenario.badOutcome}
-              </div>
-            </motion.div>
-          )}
-        </div>
-      </div>
-
-      {/* Response choices or feedback */}
-      <AnimatePresence mode="wait">
-        {selectedChoice === null ? (
-          <motion.div
-            key="choices"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="w-full space-y-2"
-          >
-            <p className="text-[10px] text-gray-500 text-center">Choose your response:</p>
-            {scenario.choices.map((choice, i) => (
-              <motion.button
-                key={i}
-                onClick={() => handleChoiceSelect(i)}
-                className="w-full p-3 rounded-xl border border-gray-700 bg-[#111113] hover:border-gray-500 text-left transition-all"
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-              >
-                <p className="text-xs text-gray-300">{choice.text}</p>
-                <div className="flex items-center gap-1 mt-1">
-                  <span className="text-sm">{techniques[choice.technique].icon}</span>
-                  <span
-                    className="text-[9px]"
-                    style={{ color: techniques[choice.technique].color }}
-                  >
-                    {techniques[choice.technique].name}
-                  </span>
-                </div>
-              </motion.button>
-            ))}
-          </motion.div>
-        ) : showOutcome ? (
-          <motion.div
-            key="feedback"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="w-full space-y-3"
-          >
-            {/* Feedback card */}
-            <div
-              className={`p-3 rounded-xl border ${
-                scenario.choices[selectedChoice].isCorrect
-                  ? 'bg-green-500/10 border-green-500/30'
-                  : 'bg-amber-500/10 border-amber-500/30'
-              }`}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg">
-                  {scenario.choices[selectedChoice].isCorrect ? '✅' : '💡'}
-                </span>
-                <span
-                  className={`text-xs font-medium ${
-                    scenario.choices[selectedChoice].isCorrect
-                      ? 'text-green-400'
-                      : 'text-amber-400'
-                  }`}
-                >
-                  {scenario.choices[selectedChoice].isCorrect
-                    ? 'Great choice!'
-                    : 'Learning moment'}
-                </span>
-              </div>
-              <p className="text-[11px] text-gray-300">
-                {scenario.choices[selectedChoice].explanation}
-              </p>
-            </div>
-
-            {/* Technique highlight */}
-            <div
-              className="p-2 rounded-lg flex items-center gap-2"
-              style={{
-                backgroundColor: techniques[scenario.choices[selectedChoice].technique].color + '15',
-              }}
-            >
-              <span className="text-xl">
-                {techniques[scenario.choices[selectedChoice].technique].icon}
-              </span>
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4 w-full max-w-sm mx-auto">
+          {/* Header with rapport meter */}
+          <div className="w-full flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="text-lg">{scenario.icon}</span>
               <div>
-                <p
-                  className="text-[10px] font-medium"
-                  style={{ color: techniques[scenario.choices[selectedChoice].technique].color }}
-                >
-                  {techniques[scenario.choices[selectedChoice].technique].name}
-                </p>
-                <p className="text-[9px] text-gray-500">
-                  {techniques[scenario.choices[selectedChoice].technique].tip}
-                </p>
+                <p className="text-xs font-medium text-white">{scenario.title}</p>
+                <p className="text-[9px] text-gray-500">{scenario.context}</p>
               </div>
             </div>
+            <div className="text-right">
+              <p className="text-[9px] text-gray-500">Rapport</p>
+              <div className="w-16 h-2 bg-black/30 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full rounded-full"
+                  style={{
+                    backgroundColor: rapport > 60 ? '#22C55E' : rapport > 30 ? '#F59E0B' : '#EF4444',
+                  }}
+                  animate={{ width: `${rapport}%` }}
+                  transition={{ duration: 0.5 }}
+                />
+              </div>
+            </div>
+          </div>
 
-            {/* Next button */}
-            <motion.button
-              onClick={nextScenario}
-              className="w-full py-2 bg-blue-500/20 border border-blue-500/50 rounded-xl text-blue-400 text-xs font-medium"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {scenarioIndex < scenarios.length - 1 ? 'Next Scenario →' : 'See Results →'}
-            </motion.button>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+          {/* Progress dots */}
+          <div className="flex gap-1">
+            {scenarios.map((_, i) => (
+              <div
+                key={i}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  completedScenarios.includes(i)
+                    ? 'bg-green-500'
+                    : i === scenarioIndex
+                    ? 'bg-blue-500'
+                    : 'bg-white/10'
+                }`}
+              />
+            ))}
+          </div>
 
-      <p className="text-[10px] text-gray-600">From Never Split the Difference</p>
+          {/* Chat conversation */}
+          <div className="w-full relative overflow-hidden rounded-xl min-h-[160px]">
+            <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="relative z-10 p-3">
+              <div className="space-y-2">
+                {scenario.messages.map((msg, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.2 }}
+                    className={`flex ${
+                      msg.sender === 'you'
+                        ? 'justify-end'
+                        : msg.sender === 'narrator'
+                        ? 'justify-center'
+                        : 'justify-start'
+                    }`}
+                  >
+                    {msg.sender === 'narrator' ? (
+                      <p className="text-[10px] text-gray-500 italic">{msg.text}</p>
+                    ) : (
+                      <div
+                        className={`max-w-[80%] px-3 py-2 rounded-xl text-xs ${
+                          msg.sender === 'you'
+                            ? 'bg-blue-500/20 border border-blue-500/30 text-blue-100'
+                            : 'bg-black/30 text-gray-300'
+                        }`}
+                      >
+                        {msg.text}
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
+
+                {/* Selected response */}
+                {selectedChoice !== null && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex justify-end"
+                  >
+                    <div className="max-w-[80%] px-3 py-2 rounded-xl text-xs bg-blue-500/20 border border-blue-500/30 text-blue-100">
+                      {scenario.choices[selectedChoice].text}
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Typing indicator */}
+                {isTyping && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="flex justify-start"
+                  >
+                    <div className="px-3 py-2 bg-black/30 rounded-xl">
+                      <div className="flex gap-1">
+                        {[0, 1, 2].map((i) => (
+                          <motion.div
+                            key={i}
+                            className="w-1.5 h-1.5 bg-gray-500 rounded-full"
+                            animate={{ y: [0, -4, 0] }}
+                            transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.15 }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Their response to your choice */}
+                {showOutcome && selectedChoice !== null && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex justify-start"
+                  >
+                    <div className="max-w-[80%] px-3 py-2 rounded-xl text-xs bg-black/30 text-gray-300">
+                      {scenario.choices[selectedChoice].isCorrect
+                        ? scenario.goodOutcome
+                        : scenario.badOutcome}
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Response choices or feedback */}
+          <AnimatePresence mode="wait">
+            {selectedChoice === null ? (
+              <motion.div
+                key="choices"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="w-full space-y-2"
+              >
+                <p className="text-[10px] text-gray-500 text-center">Choose your response:</p>
+                {scenario.choices.map((choice, i) => (
+                  <motion.button
+                    key={i}
+                    onClick={() => handleChoiceSelect(i)}
+                    className="relative w-full overflow-hidden rounded-xl text-left transition-all"
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                  >
+                    <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.05] transition-all" />
+                    <div className="absolute inset-0 border border-white/[0.1] rounded-xl hover:border-white/[0.2] transition-all" />
+                    <div className="relative z-10 p-3">
+                      <p className="text-xs text-gray-300">{choice.text}</p>
+                      <div className="flex items-center gap-1 mt-1">
+                        <span className="text-sm">{techniques[choice.technique].icon}</span>
+                        <span
+                          className="text-[9px]"
+                          style={{ color: techniques[choice.technique].color }}
+                        >
+                          {techniques[choice.technique].name}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.button>
+                ))}
+              </motion.div>
+            ) : showOutcome ? (
+              <motion.div
+                key="feedback"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full space-y-3"
+              >
+                {/* Feedback card */}
+                <div className="relative overflow-hidden rounded-xl">
+                  <div
+                    className={`absolute inset-0 backdrop-blur-sm ${
+                      scenario.choices[selectedChoice].isCorrect
+                        ? 'bg-green-500/10'
+                        : 'bg-amber-500/10'
+                    }`}
+                  />
+                  <div
+                    className={`absolute inset-0 border rounded-xl ${
+                      scenario.choices[selectedChoice].isCorrect
+                        ? 'border-green-500/30'
+                        : 'border-amber-500/30'
+                    }`}
+                  />
+                  <div className="relative z-10 p-3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-lg">
+                        {scenario.choices[selectedChoice].isCorrect ? '✅' : '💡'}
+                      </span>
+                      <span
+                        className={`text-xs font-medium ${
+                          scenario.choices[selectedChoice].isCorrect
+                            ? 'text-green-400'
+                            : 'text-amber-400'
+                        }`}
+                      >
+                        {scenario.choices[selectedChoice].isCorrect
+                          ? 'Great choice!'
+                          : 'Learning moment'}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-gray-300">
+                      {scenario.choices[selectedChoice].explanation}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Technique highlight */}
+                <div className="relative overflow-hidden rounded-lg">
+                  <div
+                    className="absolute inset-0 backdrop-blur-sm"
+                    style={{
+                      backgroundColor: techniques[scenario.choices[selectedChoice].technique].color + '15',
+                    }}
+                  />
+                  <div className="relative z-10 p-2 flex items-center gap-2">
+                    <span className="text-xl">
+                      {techniques[scenario.choices[selectedChoice].technique].icon}
+                    </span>
+                    <div>
+                      <p
+                        className="text-[10px] font-medium"
+                        style={{ color: techniques[scenario.choices[selectedChoice].technique].color }}
+                      >
+                        {techniques[scenario.choices[selectedChoice].technique].name}
+                      </p>
+                      <p className="text-[9px] text-gray-500">
+                        {techniques[scenario.choices[selectedChoice].technique].tip}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Next button */}
+                <motion.button
+                  onClick={nextScenario}
+                  className="w-full py-2 bg-blue-500/20 border border-blue-500/50 rounded-xl text-blue-400 text-xs font-medium backdrop-blur-sm hover:bg-blue-500/25 transition-all"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {scenarioIndex < scenarios.length - 1 ? 'Next Scenario' : 'See Results'}
+                </motion.button>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+
+          <p className="text-[10px] text-gray-600">From Never Split the Difference</p>
+        </div>
+      </div>
     </div>
   );
 }

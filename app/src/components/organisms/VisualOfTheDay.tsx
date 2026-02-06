@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Sparkles, ChevronRight, Lightbulb } from 'lucide-react';
 import { GlassCard } from '@/components/molecules';
@@ -374,14 +373,9 @@ export function VisualOfTheDay() {
       </div>
 
       {/* Visualization */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="bg-base/50 rounded-xl p-4 border border-white/5"
-      >
+      <div className="flex justify-center">
         <DailyComponent />
-      </motion.div>
+      </div>
 
       {/* Source */}
       <div className="mt-4 flex items-center justify-center gap-2 text-[10px] text-text-muted">

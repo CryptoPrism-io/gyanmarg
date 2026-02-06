@@ -60,73 +60,89 @@ export function STATEPath() {
   const colors = colorMap[step.color];
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* STATE letters */}
-      <div className="flex gap-1">
-        {stateSteps.map((s, idx) => {
-          const c = colorMap[s.color];
-          const isActive = idx === activeStep;
-          return (
-            <motion.button
-              key={idx}
-              onClick={() => setActiveStep(idx)}
-              className={`w-10 h-12 rounded-lg border-2 flex items-center justify-center transition-all ${
-                isActive ? `${c.bg} ${c.border}` : 'border-gray-700 bg-[#111113]'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* STATE letters */}
+          <div className="flex gap-1">
+            {stateSteps.map((s, idx) => {
+              const c = colorMap[s.color];
+              const isActive = idx === activeStep;
+              return (
+                <motion.button
+                  key={idx}
+                  onClick={() => setActiveStep(idx)}
+                  className={`w-10 h-12 rounded-lg border-2 flex items-center justify-center transition-all backdrop-blur-sm ${
+                    isActive ? `${c.bg} ${c.border}` : 'border-white/[0.1] bg-white/[0.03]'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className={`text-xl font-bold ${isActive ? c.text : 'text-gray-500'}`}>
+                    {s.letter}
+                  </span>
+                </motion.button>
+              );
+            })}
+          </div>
+
+          {/* Step detail */}
+          <motion.div
+            key={activeStep}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`relative overflow-hidden w-full max-w-xs ${colors.bg} border ${colors.border} rounded-lg p-4`}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
+            <div className="relative z-10">
+              <p className={`text-sm font-medium ${colors.text}`}>
+                {step.letter} - {step.name}
+              </p>
+              <p className="text-xs text-gray-400 mt-1 mb-3">{step.description}</p>
+
+              <div className="relative overflow-hidden rounded-lg p-3 mb-3">
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
+                <div className="relative z-10">
+                  <p className="text-[10px] text-gray-500 uppercase mb-1">Example</p>
+                  <p className="text-xs text-gray-300 italic">"{step.example}"</p>
+                </div>
+              </div>
+
+              <div className={`text-[10px] ${colors.text}`}>
+                💡 {step.tip}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Navigation */}
+          <div className="flex gap-2">
+            <button
+              onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
+              disabled={activeStep === 0}
+              className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.1] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-white/[0.05] transition-all"
             >
-              <span className={`text-xl font-bold ${isActive ? c.text : 'text-gray-500'}`}>
-                {s.letter}
-              </span>
-            </motion.button>
-          );
-        })}
-      </div>
+              ← Previous
+            </button>
+            <button
+              onClick={() => setActiveStep((prev) => Math.min(stateSteps.length - 1, prev + 1))}
+              disabled={activeStep === stateSteps.length - 1}
+              className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.1] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-white/[0.05] transition-all"
+            >
+              Next →
+            </button>
+          </div>
 
-      {/* Step detail */}
-      <motion.div
-        key={activeStep}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className={`w-full max-w-xs ${colors.bg} border ${colors.border} rounded-lg p-4`}
-      >
-        <p className={`text-sm font-medium ${colors.text}`}>
-          {step.letter} - {step.name}
-        </p>
-        <p className="text-xs text-gray-400 mt-1 mb-3">{step.description}</p>
-
-        <div className="bg-black/20 rounded-lg p-3 mb-3">
-          <p className="text-[10px] text-gray-500 uppercase mb-1">Example</p>
-          <p className="text-xs text-gray-300 italic">"{step.example}"</p>
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Crucial Conversations" by Kerry Patterson
+          </p>
         </div>
-
-        <div className={`text-[10px] ${colors.text}`}>
-          💡 {step.tip}
-        </div>
-      </motion.div>
-
-      {/* Navigation */}
-      <div className="flex gap-2">
-        <button
-          onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
-          disabled={activeStep === 0}
-          className="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-lg text-xs text-gray-400 disabled:opacity-50"
-        >
-          ← Previous
-        </button>
-        <button
-          onClick={() => setActiveStep((prev) => Math.min(stateSteps.length - 1, prev + 1))}
-          disabled={activeStep === stateSteps.length - 1}
-          className="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-lg text-xs text-gray-400 disabled:opacity-50"
-        >
-          Next →
-        </button>
       </div>
-
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Crucial Conversations" by Kerry Patterson
-      </p>
     </div>
   );
 }

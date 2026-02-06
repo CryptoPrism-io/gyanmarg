@@ -52,85 +52,101 @@ export function CashflowQuadrant() {
   const [activeQuadrant, setActiveQuadrant] = useState<string | null>(null);
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Quadrant grid */}
-      <div className="grid grid-cols-2 gap-1 w-48">
-        {quadrants.map((q) => {
-          const colors = colorMap[q.color];
-          const isActive = activeQuadrant === q.id;
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-          return (
-            <motion.button
-              key={q.id}
-              onClick={() => setActiveQuadrant(isActive ? null : q.id)}
-              className={`p-4 rounded-lg border transition-all ${
-                isActive ? colors.bg : 'bg-[#111113]'
-              } ${isActive ? colors.border : 'border-gray-800'}`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Quadrant grid */}
+          <div className="grid grid-cols-2 gap-1 w-48">
+            {quadrants.map((q) => {
+              const colors = colorMap[q.color];
+              const isActive = activeQuadrant === q.id;
+
+              return (
+                <motion.button
+                  key={q.id}
+                  onClick={() => setActiveQuadrant(isActive ? null : q.id)}
+                  className={`relative overflow-hidden p-4 rounded-lg transition-all ${
+                    isActive ? colors.bg : 'bg-white/[0.03]'
+                  } ${isActive ? colors.border : 'border border-white/[0.08]'}`}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className={`text-2xl font-bold ${isActive ? colors.text : 'text-gray-500'}`}>
+                    {q.id}
+                  </span>
+                  <p className={`text-[10px] mt-1 ${isActive ? colors.text : 'text-gray-600'}`}>
+                    {q.title}
+                  </p>
+                </motion.button>
+              );
+            })}
+          </div>
+
+          {/* Labels */}
+          <div className="flex gap-8 text-[10px] text-gray-500">
+            <div>
+              <p className="text-center">← Left Side</p>
+              <p className="text-center">Trade time for $</p>
+            </div>
+            <div>
+              <p className="text-center">Right Side →</p>
+              <p className="text-center">Systems/$ work for you</p>
+            </div>
+          </div>
+
+          {/* Detail panel */}
+          {activeQuadrant && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full max-w-xs relative overflow-hidden rounded-lg"
             >
-              <span className={`text-2xl font-bold ${isActive ? colors.text : 'text-gray-500'}`}>
-                {q.id}
-              </span>
-              <p className={`text-[10px] mt-1 ${isActive ? colors.text : 'text-gray-600'}`}>
-                {q.title}
+              {(() => {
+                const q = quadrants.find((q) => q.id === activeQuadrant)!;
+                const colors = colorMap[q.color];
+                return (
+                  <>
+                    <div className={`absolute inset-0 ${colors.bg} backdrop-blur-sm`} />
+                    <div className={`absolute inset-0 border ${colors.border} rounded-lg`} />
+                    <div className="relative z-10 p-4">
+                      <p className={`text-sm font-medium ${colors.text} mb-2`}>
+                        {q.id} - {q.title}
+                      </p>
+                      <p className="text-xs text-gray-300 mb-3">{q.description}</p>
+                      <div className="space-y-1 text-[10px]">
+                        <p><span className="text-gray-500">Taxes:</span> <span className="text-gray-300">{q.taxes}</span></p>
+                        <p><span className="text-gray-500">Time:</span> <span className="text-gray-300">{q.time}</span></p>
+                        <p><span className="text-gray-500">Security:</span> <span className="text-gray-300">{q.security}</span></p>
+                      </div>
+                    </div>
+                  </>
+                );
+              })()}
+            </motion.div>
+          )}
+
+          {/* Goal */}
+          <div className="w-full max-w-xs relative overflow-hidden rounded-lg">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.08] to-green-500/[0.03] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-green-500/20 rounded-lg" />
+            <div className="relative z-10 p-3">
+              <p className="text-[10px] text-green-400 text-center">
+                Goal: Move from left side (E/S) to right side (B/I) where money works for you
               </p>
-            </motion.button>
-          );
-        })}
-      </div>
+            </div>
+          </div>
 
-      {/* Labels */}
-      <div className="flex gap-8 text-[10px] text-gray-500">
-        <div>
-          <p className="text-center">← Left Side</p>
-          <p className="text-center">Trade time for $</p>
-        </div>
-        <div>
-          <p className="text-center">Right Side →</p>
-          <p className="text-center">Systems/$ work for you</p>
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Rich Dad Poor Dad" by Robert Kiyosaki
+          </p>
         </div>
       </div>
-
-      {/* Detail panel */}
-      {activeQuadrant && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={`w-full max-w-xs p-4 rounded-lg border ${
-            colorMap[quadrants.find((q) => q.id === activeQuadrant)!.color].bg
-          } ${colorMap[quadrants.find((q) => q.id === activeQuadrant)!.color].border}`}
-        >
-          {(() => {
-            const q = quadrants.find((q) => q.id === activeQuadrant)!;
-            const colors = colorMap[q.color];
-            return (
-              <>
-                <p className={`text-sm font-medium ${colors.text} mb-2`}>
-                  {q.id} - {q.title}
-                </p>
-                <p className="text-xs text-gray-300 mb-3">{q.description}</p>
-                <div className="space-y-1 text-[10px]">
-                  <p><span className="text-gray-500">Taxes:</span> <span className="text-gray-300">{q.taxes}</span></p>
-                  <p><span className="text-gray-500">Time:</span> <span className="text-gray-300">{q.time}</span></p>
-                  <p><span className="text-gray-500">Security:</span> <span className="text-gray-300">{q.security}</span></p>
-                </div>
-              </>
-            );
-          })()}
-        </motion.div>
-      )}
-
-      {/* Goal */}
-      <div className="w-full max-w-xs bg-green-500/10 border border-green-500/30 rounded-lg p-3">
-        <p className="text-[10px] text-green-400 text-center">
-          🎯 Goal: Move from left side (E/S) to right side (B/I) where money works for you
-        </p>
-      </div>
-
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Rich Dad Poor Dad" by Robert Kiyosaki
-      </p>
     </div>
   );
 }

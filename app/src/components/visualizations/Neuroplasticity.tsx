@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { Brain } from 'lucide-react';
 
 interface Neuron {
   id: string;
@@ -132,218 +133,266 @@ export function Neuroplasticity() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      {/* Neural network visualization */}
-      <div className="relative w-72 h-56 bg-gradient-to-br from-[#0A0A0B] to-[#111113] border border-gray-800 rounded-2xl overflow-hidden">
-        {/* Background glow */}
-        <div className="absolute inset-0 bg-gradient-radial from-purple-500/5 to-transparent" />
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-pink-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        <svg className="absolute inset-0 w-full h-full">
-          {/* Connections */}
-          {connections.map((conn) => {
-            const fromNeuron = neurons.find(n => n.id === conn.from)!;
-            const toNeuron = neurons.find(n => n.id === conn.to)!;
-            const isActive = activeSignal.includes(conn.from) && activeSignal.includes(conn.to);
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-2.5 mb-5">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-600/10 flex items-center justify-center border border-purple-500/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+            <Brain className="w-4 h-4 text-purple-400" />
+          </div>
+          <span className="text-sm font-semibold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+            Neuroplasticity
+          </span>
+        </div>
 
-            return (
-              <motion.line
-                key={`${conn.from}-${conn.to}`}
-                x1={`${fromNeuron.x}%`}
-                y1={`${fromNeuron.y}%`}
-                x2={`${toNeuron.x}%`}
-                y2={`${toNeuron.y}%`}
-                stroke={isActive ? '#A855F7' : getStrengthColor(conn.strength)}
-                strokeWidth={conn.strength * 1.2}
-                strokeLinecap="round"
-                opacity={isActive ? 1 : 0.6}
-                initial={{ pathLength: 0 }}
-                animate={{
-                  pathLength: 1,
-                  strokeWidth: isActive ? conn.strength * 2 : conn.strength * 1.2,
-                }}
-                transition={{ duration: 0.5 }}
-              />
-            );
-          })}
-        </svg>
+        <div className="flex flex-col items-center gap-5">
+          {/* Neural network visualization */}
+          <div className="relative w-72 h-56 rounded-2xl overflow-hidden border border-white/[0.08]"
+            style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%)' }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            {/* Background glow */}
+            <div className="absolute inset-0 bg-gradient-radial from-purple-500/5 to-transparent" />
 
-        {/* Neurons */}
-        {neurons.map((neuron) => {
-          const hasConnection = connections.some(
-            c => c.from === neuron.id || c.to === neuron.id
-          );
-          const isActive = activeSignal.includes(neuron.id);
-          const isEndpoint = neuron.label !== '';
+            <svg className="absolute inset-0 w-full h-full">
+              {/* Connections */}
+              {connections.map((conn) => {
+                const fromNeuron = neurons.find(n => n.id === conn.from)!;
+                const toNeuron = neurons.find(n => n.id === conn.to)!;
+                const isActive = activeSignal.includes(conn.from) && activeSignal.includes(conn.to);
 
-          return (
-            <motion.div
-              key={neuron.id}
-              className="absolute flex items-center justify-center"
-              style={{
-                left: `${neuron.x}%`,
-                top: `${neuron.y}%`,
-                transform: 'translate(-50%, -50%)',
-              }}
-            >
-              {/* Glow effect when active */}
-              {isActive && (
+                return (
+                  <motion.line
+                    key={`${conn.from}-${conn.to}`}
+                    x1={`${fromNeuron.x}%`}
+                    y1={`${fromNeuron.y}%`}
+                    x2={`${toNeuron.x}%`}
+                    y2={`${toNeuron.y}%`}
+                    stroke={isActive ? '#A855F7' : getStrengthColor(conn.strength)}
+                    strokeWidth={conn.strength * 1.2}
+                    strokeLinecap="round"
+                    opacity={isActive ? 1 : 0.6}
+                    initial={{ pathLength: 0 }}
+                    animate={{
+                      pathLength: 1,
+                      strokeWidth: isActive ? conn.strength * 2 : conn.strength * 1.2,
+                    }}
+                    transition={{ duration: 0.5 }}
+                  />
+                );
+              })}
+            </svg>
+
+            {/* Neurons */}
+            {neurons.map((neuron) => {
+              const hasConnection = connections.some(
+                c => c.from === neuron.id || c.to === neuron.id
+              );
+              const isActive = activeSignal.includes(neuron.id);
+              const isEndpoint = neuron.label !== '';
+
+              return (
                 <motion.div
-                  className="absolute w-8 h-8 rounded-full bg-purple-500 blur-md"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 0.5, scale: 1.5 }}
-                  exit={{ opacity: 0 }}
-                />
-              )}
+                  key={neuron.id}
+                  className="absolute flex items-center justify-center"
+                  style={{
+                    left: `${neuron.x}%`,
+                    top: `${neuron.y}%`,
+                    transform: 'translate(-50%, -50%)',
+                  }}
+                >
+                  {/* Glow effect when active */}
+                  {isActive && (
+                    <motion.div
+                      className="absolute w-8 h-8 rounded-full bg-purple-500 blur-md"
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      animate={{ opacity: 0.5, scale: 1.5 }}
+                      exit={{ opacity: 0 }}
+                    />
+                  )}
 
-              {/* Neuron body */}
-              <motion.div
-                className={`rounded-full border-2 flex items-center justify-center ${
-                  isEndpoint ? 'w-8 h-8' : 'w-5 h-5'
-                }`}
-                style={{
-                  backgroundColor: isActive ? '#A855F7' :
-                                   hasConnection ? '#8B5CF620' : '#1F2937',
-                  borderColor: isActive ? '#A855F7' :
-                               hasConnection ? '#8B5CF6' : '#374151',
-                }}
-                animate={isActive ? {
-                  scale: [1, 1.3, 1],
-                  boxShadow: ['0 0 0 0 rgba(168, 85, 247, 0)', '0 0 0 10px rgba(168, 85, 247, 0.3)', '0 0 0 0 rgba(168, 85, 247, 0)'],
-                } : {}}
-                transition={{ duration: 0.3 }}
+                  {/* Neuron body */}
+                  <motion.div
+                    className={`rounded-full border-2 flex items-center justify-center ${
+                      isEndpoint ? 'w-8 h-8' : 'w-5 h-5'
+                    }`}
+                    style={{
+                      backgroundColor: isActive ? '#A855F7' :
+                                       hasConnection ? '#8B5CF620' : 'rgba(255,255,255,0.1)',
+                      borderColor: isActive ? '#A855F7' :
+                                   hasConnection ? '#8B5CF6' : 'rgba(255,255,255,0.2)',
+                    }}
+                    animate={isActive ? {
+                      scale: [1, 1.3, 1],
+                      boxShadow: ['0 0 0 0 rgba(168, 85, 247, 0)', '0 0 0 10px rgba(168, 85, 247, 0.3)', '0 0 0 0 rgba(168, 85, 247, 0)'],
+                    } : {}}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {isEndpoint && (
+                      <span className="text-[8px] text-white font-medium">
+                        {neuron.label.charAt(0)}
+                      </span>
+                    )}
+                  </motion.div>
+
+                  {/* Label */}
+                  {isEndpoint && (
+                    <span className="absolute -bottom-4 text-[8px] text-white/50 whitespace-nowrap">
+                      {neuron.label}
+                    </span>
+                  )}
+                </motion.div>
+              );
+            })}
+
+            {/* Legend */}
+            <div className="absolute bottom-2 left-2 text-[8px] text-white/40">
+              {'Signal: Cue → Action → Result'}
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div className="flex gap-3">
+            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-white/[0.08]"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="text-xl font-bold text-purple-400">{practiceCount}</p>
+              <p className="text-[10px] text-white/50">Practice sessions</p>
+            </div>
+            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-white/[0.08]"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="text-xl font-bold text-amber-400">{connections.length}</p>
+              <p className="text-[10px] text-white/50">Connections</p>
+            </div>
+            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-white/[0.08]"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="text-xl font-bold" style={{ color: getStrengthColor(avgStrength) }}>
+                {avgStrength.toFixed(1)}x
+              </p>
+              <p className="text-[10px] text-white/50">Avg strength</p>
+            </div>
+          </div>
+
+          {/* Connection strength legend */}
+          <div className="flex gap-4 text-[10px]">
+            <div className="flex items-center gap-1">
+              <div className="w-6 h-1 rounded bg-gray-500" />
+              <span className="text-white/50">Weak</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="w-6 h-1.5 rounded bg-amber-500" />
+              <span className="text-white/50">Medium</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="w-6 h-2 rounded bg-green-500" />
+              <span className="text-white/50">Strong</span>
+            </div>
+          </div>
+
+          {/* Practice button */}
+          <motion.button
+            onClick={practice}
+            disabled={isAnimating}
+            className="px-8 py-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20
+                     border border-purple-500/50 rounded-2xl text-sm font-semibold
+                     text-purple-400 hover:border-purple-400 disabled:opacity-50 transition-all
+                     shadow-[0_0_20px_rgba(168,85,247,0.2)]"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {isAnimating ? 'Firing...' : 'Practice (Fire the pathway)'}
+          </motion.button>
+
+          {/* Progress insight */}
+          {practiceCount > 0 && (
+            <div className="relative overflow-hidden w-full max-w-xs p-3 rounded-xl border border-purple-500/20"
+              style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.1) 0%, rgba(168,85,247,0.02) 100%)' }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent" />
+              <p className="text-xs text-white/60">
+                {practiceCount < 5 && 'New pathways forming...'}
+                {practiceCount >= 5 && practiceCount < 15 && 'Connections strengthening with repetition'}
+                {practiceCount >= 15 && practiceCount < 30 && 'Pathways becoming more efficient'}
+                {practiceCount >= 30 && 'Neural highways established! Skill becoming automatic.'}
+              </p>
+            </div>
+          )}
+
+          {/* Science toggle */}
+          <button
+            onClick={() => setShowScience(!showScience)}
+            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+          >
+            {showScience ? 'Hide' : 'Show'} the science
+          </button>
+
+          {showScience && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              className="w-full max-w-xs space-y-2"
+            >
+              <div className="relative overflow-hidden p-3 rounded-lg border border-white/[0.08]"
+                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
-                {isEndpoint && (
-                  <span className="text-[8px] text-white font-medium">
-                    {neuron.label.charAt(0)}
-                  </span>
-                )}
-              </motion.div>
-
-              {/* Label */}
-              {isEndpoint && (
-                <span className="absolute -bottom-4 text-[8px] text-gray-500 whitespace-nowrap">
-                  {neuron.label}
-                </span>
-              )}
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <p className="text-[10px] text-purple-400 font-medium mb-1">Hebbian Learning</p>
+                <p className="text-[10px] text-white/50">"Neurons that fire together, wire together"</p>
+              </div>
+              <div className="relative overflow-hidden p-3 rounded-lg border border-white/[0.08]"
+                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <p className="text-[10px] text-purple-400 font-medium mb-1">Long-Term Potentiation</p>
+                <p className="text-[10px] text-white/50">Repeated activation strengthens synaptic connections</p>
+              </div>
+              <div className="relative overflow-hidden p-3 rounded-lg border border-white/[0.08]"
+                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <p className="text-[10px] text-purple-400 font-medium mb-1">Myelination</p>
+                <p className="text-[10px] text-white/50">Practice wraps pathways in myelin, making signals 100x faster</p>
+              </div>
             </motion.div>
-          );
-        })}
+          )}
 
-        {/* Legend */}
-        <div className="absolute bottom-2 left-2 text-[8px] text-gray-600">
-          Signal: Cue → Action → Result
-        </div>
-      </div>
+          {practiceCount > 0 && (
+            <button
+              onClick={reset}
+              className="text-xs text-white/40 hover:text-white/60 transition-colors"
+            >
+              Reset network
+            </button>
+          )}
 
-      {/* Stats */}
-      <div className="flex gap-3">
-        <div className="text-center px-4 py-2 bg-[#111113] border border-gray-800 rounded-xl">
-          <p className="text-xl font-bold text-purple-400">{practiceCount}</p>
-          <p className="text-[10px] text-gray-500">Practice sessions</p>
-        </div>
-        <div className="text-center px-4 py-2 bg-[#111113] border border-gray-800 rounded-xl">
-          <p className="text-xl font-bold text-amber-400">{connections.length}</p>
-          <p className="text-[10px] text-gray-500">Connections</p>
-        </div>
-        <div className="text-center px-4 py-2 bg-[#111113] border border-gray-800 rounded-xl">
-          <p className="text-xl font-bold" style={{ color: getStrengthColor(avgStrength) }}>
-            {avgStrength.toFixed(1)}x
-          </p>
-          <p className="text-[10px] text-gray-500">Avg strength</p>
-        </div>
-      </div>
+          {/* Key insight */}
+          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-white/[0.08]"
+            style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <p className="text-xs text-white/60 leading-relaxed">
+              <span className="text-purple-400 font-medium">The truth about talent:</span> What looks
+              like natural ability is usually thousands of hours of practice that built neural highways.
+              Your brain physically changes with deliberate repetition.
+            </p>
+          </div>
 
-      {/* Connection strength legend */}
-      <div className="flex gap-4 text-[10px]">
-        <div className="flex items-center gap-1">
-          <div className="w-6 h-1 rounded bg-gray-500" />
-          <span className="text-gray-500">Weak</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <div className="w-6 h-1.5 rounded bg-amber-500" />
-          <span className="text-gray-500">Medium</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <div className="w-6 h-2 rounded bg-green-500" />
-          <span className="text-gray-500">Strong</span>
-        </div>
-      </div>
-
-      {/* Practice button */}
-      <motion.button
-        onClick={practice}
-        disabled={isAnimating}
-        className="px-8 py-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20
-                 border border-purple-500/50 rounded-2xl text-sm font-semibold
-                 text-purple-400 hover:border-purple-400 disabled:opacity-50 transition-all"
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        {isAnimating ? '🧠 Firing...' : '⚡ Practice (Fire the pathway)'}
-      </motion.button>
-
-      {/* Progress insight */}
-      {practiceCount > 0 && (
-        <div className="w-full max-w-xs p-3 rounded-xl border bg-purple-500/5 border-purple-500/20">
-          <p className="text-xs text-gray-400">
-            {practiceCount < 5 && '🌱 New pathways forming...'}
-            {practiceCount >= 5 && practiceCount < 15 && '🔗 Connections strengthening with repetition'}
-            {practiceCount >= 15 && practiceCount < 30 && '⚡ Pathways becoming more efficient'}
-            {practiceCount >= 30 && '🧠 Neural highways established! Skill becoming automatic.'}
+          <p className="text-[10px] text-white/40">
+            Based on neuroscience research on skill acquisition
           </p>
         </div>
-      )}
-
-      {/* Science toggle */}
-      <button
-        onClick={() => setShowScience(!showScience)}
-        className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-      >
-        {showScience ? '▼ Hide' : '▶ Show'} the science
-      </button>
-
-      {showScience && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          className="w-full max-w-xs space-y-2"
-        >
-          <div className="p-3 bg-[#111113] border border-gray-800 rounded-lg">
-            <p className="text-[10px] text-purple-400 font-medium mb-1">Hebbian Learning</p>
-            <p className="text-[10px] text-gray-500">"Neurons that fire together, wire together"</p>
-          </div>
-          <div className="p-3 bg-[#111113] border border-gray-800 rounded-lg">
-            <p className="text-[10px] text-purple-400 font-medium mb-1">Long-Term Potentiation</p>
-            <p className="text-[10px] text-gray-500">Repeated activation strengthens synaptic connections</p>
-          </div>
-          <div className="p-3 bg-[#111113] border border-gray-800 rounded-lg">
-            <p className="text-[10px] text-purple-400 font-medium mb-1">Myelination</p>
-            <p className="text-[10px] text-gray-500">Practice wraps pathways in myelin, making signals 100x faster</p>
-          </div>
-        </motion.div>
-      )}
-
-      {practiceCount > 0 && (
-        <button
-          onClick={reset}
-          className="text-xs text-gray-600 hover:text-gray-400 transition-colors"
-        >
-          ↻ Reset network
-        </button>
-      )}
-
-      {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
-        <p className="text-xs text-gray-400 leading-relaxed">
-          <span className="text-purple-400 font-medium">The truth about talent:</span> What looks
-          like natural ability is usually thousands of hours of practice that built neural highways.
-          Your brain physically changes with deliberate repetition.
-        </p>
       </div>
-
-      <p className="text-[10px] text-gray-600">
-        Based on neuroscience research on skill acquisition
-      </p>
     </div>
   );
 }

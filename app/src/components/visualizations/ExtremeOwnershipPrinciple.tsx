@@ -37,89 +37,99 @@ export function ExtremeOwnershipPrinciple() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Header */}
-      <div className="w-full max-w-xs bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-lg p-4 text-center">
-        <p className="text-xs text-slate-400 uppercase tracking-wide">Extreme Ownership</p>
-        <p className="text-sm text-gray-200 font-medium mt-2">
-          "There are no bad teams, only bad leaders"
-        </p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Scenario */}
-      <div className="w-full max-w-xs">
-        <div className="bg-[#111113] border border-gray-800 rounded-lg p-4 mb-3">
-          <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2">
-            Scenario {activeScenario + 1}/{scenarios.length}
-          </p>
-          <p className="text-sm text-gray-300">{scenario.situation}</p>
-        </div>
-
-        {/* Two response options */}
-        <div className="grid grid-cols-2 gap-3">
-          {/* Victim response */}
-          <motion.div
-            className={`p-3 rounded-lg border transition-all ${
-              showOwnership
-                ? 'bg-red-500/5 border-red-500/20 opacity-50'
-                : 'bg-red-500/10 border-red-500/30'
-            }`}
-          >
-            <p className="text-[10px] text-red-400 uppercase tracking-wide mb-2">
-              ❌ Victim Mindset
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Header */}
+          <div className="w-full max-w-xs bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-4 text-center">
+            <p className="text-xs text-slate-400 uppercase tracking-wide">Extreme Ownership</p>
+            <p className="text-sm text-gray-200 font-medium mt-2">
+              "There are no bad teams, only bad leaders"
             </p>
-            <p className="text-[10px] text-gray-400">{scenario.victim}</p>
-          </motion.div>
+          </div>
 
-          {/* Owner response */}
-          <motion.button
-            onClick={() => setShowOwnership(true)}
-            className={`p-3 rounded-lg border text-left transition-all ${
-              showOwnership
-                ? 'bg-green-500/20 border-green-500/50'
-                : 'bg-[#111113] border-gray-800 hover:border-green-500/30'
-            }`}
-          >
-            <p className="text-[10px] text-green-400 uppercase tracking-wide mb-2">
-              ✓ Extreme Ownership
-            </p>
-            {showOwnership ? (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-[10px] text-gray-300"
+          {/* Scenario */}
+          <div className="w-full max-w-xs">
+            <div className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-lg p-4 mb-3">
+              <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2">
+                Scenario {activeScenario + 1}/{scenarios.length}
+              </p>
+              <p className="text-sm text-gray-300">{scenario.situation}</p>
+            </div>
+
+            {/* Two response options */}
+            <div className="grid grid-cols-2 gap-3">
+              {/* Victim response */}
+              <motion.div
+                className={`p-3 rounded-lg border backdrop-blur-sm transition-all ${
+                  showOwnership
+                    ? 'bg-red-500/5 border-red-500/20 opacity-50'
+                    : 'bg-red-500/10 border-red-500/30'
+                }`}
               >
-                {scenario.owner}
-              </motion.p>
-            ) : (
-              <p className="text-[10px] text-gray-600">Click to reveal</p>
-            )}
-          </motion.button>
+                <p className="text-[10px] text-red-400 uppercase tracking-wide mb-2">
+                  Victim Mindset
+                </p>
+                <p className="text-[10px] text-gray-400">{scenario.victim}</p>
+              </motion.div>
+
+              {/* Owner response */}
+              <motion.button
+                onClick={() => setShowOwnership(true)}
+                className={`p-3 rounded-lg border backdrop-blur-sm text-left transition-all ${
+                  showOwnership
+                    ? 'bg-green-500/20 border-green-500/50'
+                    : 'bg-white/[0.03] border-white/[0.08] hover:border-green-500/30'
+                }`}
+              >
+                <p className="text-[10px] text-green-400 uppercase tracking-wide mb-2">
+                  Extreme Ownership
+                </p>
+                {showOwnership ? (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-[10px] text-gray-300"
+                  >
+                    {scenario.owner}
+                  </motion.p>
+                ) : (
+                  <p className="text-[10px] text-gray-600">Click to reveal</p>
+                )}
+              </motion.button>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          {showOwnership && (
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              onClick={nextScenario}
+              className="px-4 py-2 bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] rounded-lg text-xs text-gray-400 hover:text-gray-300"
+            >
+              Next scenario
+            </motion.button>
+          )}
+
+          {/* Key principle */}
+          <div className="w-full max-w-xs bg-slate-500/10 backdrop-blur-sm border border-slate-500/30 rounded-lg p-3">
+            <p className="text-[10px] text-slate-400 text-center">
+              When you own everything in your world, you can change everything in your world.
+            </p>
+          </div>
+
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Extreme Ownership" by Jocko Willink
+          </p>
         </div>
       </div>
-
-      {/* Navigation */}
-      {showOwnership && (
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          onClick={nextScenario}
-          className="px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-xs text-gray-400 hover:text-gray-300"
-        >
-          Next scenario →
-        </motion.button>
-      )}
-
-      {/* Key principle */}
-      <div className="w-full max-w-xs bg-slate-500/10 border border-slate-500/30 rounded-lg p-3">
-        <p className="text-[10px] text-slate-400 text-center">
-          💡 When you own everything in your world, you can change everything in your world.
-        </p>
-      </div>
-
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Extreme Ownership" by Jocko Willink
-      </p>
     </div>
   );
 }

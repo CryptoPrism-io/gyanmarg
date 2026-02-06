@@ -47,12 +47,20 @@ export function DollarCostAveraging() {
   const maxPrice = Math.max(...prices);
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      {/* Title */}
-      <div className="text-center">
-        <h3 className="text-sm font-bold text-blue-400">Dollar Cost Averaging</h3>
-        <p className="text-[10px] text-gray-500">Invest consistently, regardless of price</p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-5">
+          {/* Title */}
+          <div className="text-center">
+            <h3 className="text-sm font-bold text-blue-400">Dollar Cost Averaging</h3>
+            <p className="text-[10px] text-gray-500">Invest consistently, regardless of price</p>
+          </div>
 
       {/* Investment slider */}
       <div className="w-full max-w-xs">
@@ -198,7 +206,7 @@ export function DollarCostAveraging() {
       )}
 
       {/* How it works */}
-      <div className="w-full max-w-xs p-3 bg-[#111113] border border-gray-800 rounded-xl">
+      <div className="w-full max-w-xs p-3 bg-white/[0.03] border border-white/[0.08] rounded-xl backdrop-blur-sm">
         <p className="text-[10px] text-gray-500 mb-2">How DCA works:</p>
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-[10px] text-gray-400">
@@ -214,7 +222,7 @@ export function DollarCostAveraging() {
       </div>
 
       {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
+      <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 max-w-xs backdrop-blur-sm">
         <p className="text-xs text-gray-400 leading-relaxed">
           <span className="text-blue-400 font-medium">Benjamin Graham:</span> "The investor's chief
           problem—and even his worst enemy—is likely to be himself." DCA removes emotion from
@@ -223,6 +231,8 @@ export function DollarCostAveraging() {
       </div>
 
       <p className="text-[10px] text-gray-600">From The Intelligent Investor</p>
+        </div>
+      </div>
     </div>
   );
 }

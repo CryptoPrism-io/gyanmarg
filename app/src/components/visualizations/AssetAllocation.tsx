@@ -100,149 +100,175 @@ export function AssetAllocation() {
   const segments = getSegments();
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      {/* Title */}
-      <div className="text-center">
-        <h3 className="text-sm font-bold text-amber-400">Asset Allocation</h3>
-        <p className="text-[10px] text-gray-500">The most important investment decision</p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Profile selector */}
-      <div className="flex flex-wrap justify-center gap-1.5">
-        {profiles.map((profile, index) => (
-          <button
-            key={profile.name}
-            onClick={() => {
-              setSelectedProfile(index);
-              setCustomMode(false);
-            }}
-            className={`px-3 py-1.5 rounded-lg text-[10px] border transition-all ${
-              !customMode && selectedProfile === index
-                ? 'bg-amber-500/20 border-amber-500 text-amber-400'
-                : 'border-gray-700 text-gray-400 hover:border-gray-600'
-            }`}
-          >
-            {profile.name}
-          </button>
-        ))}
-        <button
-          onClick={() => setCustomMode(true)}
-          className={`px-3 py-1.5 rounded-lg text-[10px] border transition-all ${
-            customMode
-              ? 'bg-purple-500/20 border-purple-500 text-purple-400'
-              : 'border-gray-700 text-gray-400 hover:border-gray-600'
-          }`}
-        >
-          Custom
-        </button>
-      </div>
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-5">
+          {/* Title */}
+          <div className="text-center">
+            <h3 className="text-sm font-bold text-amber-400">Asset Allocation</h3>
+            <p className="text-[10px] text-gray-500">The most important investment decision</p>
+          </div>
 
-      {/* Pie chart */}
-      <div className="relative w-52 h-52">
-        <svg viewBox="0 0 200 200" className="w-full h-full">
-          {segments.map((segment, index) => (
-            <motion.path
-              key={index}
-              d={segment.path}
-              fill={segment.color}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: index * 0.1 }}
-            />
-          ))}
-          <circle cx="100" cy="100" r="40" fill="#0A0A0B" />
-          <text x="100" y="95" textAnchor="middle" fontSize="14" fill="#fff" fontWeight="bold">
-            {expectedReturn}%
-          </text>
-          <text x="100" y="112" textAnchor="middle" fontSize="9" fill="#666">
-            Expected Return
-          </text>
-        </svg>
-      </div>
+          {/* Profile selector */}
+          <div className="flex flex-wrap justify-center gap-1.5">
+            {profiles.map((profile, index) => (
+              <button
+                key={profile.name}
+                onClick={() => {
+                  setSelectedProfile(index);
+                  setCustomMode(false);
+                }}
+                className={`px-3 py-1.5 rounded-lg text-[10px] backdrop-blur-sm transition-all ${
+                  !customMode && selectedProfile === index
+                    ? 'bg-amber-500/20 border border-amber-500/50 text-amber-400'
+                    : 'bg-white/[0.05] border border-white/[0.1] text-gray-400 hover:bg-white/[0.08]'
+                }`}
+              >
+                {profile.name}
+              </button>
+            ))}
+            <button
+              onClick={() => setCustomMode(true)}
+              className={`px-3 py-1.5 rounded-lg text-[10px] backdrop-blur-sm transition-all ${
+                customMode
+                  ? 'bg-purple-500/20 border border-purple-500/50 text-purple-400'
+                  : 'bg-white/[0.05] border border-white/[0.1] text-gray-400 hover:bg-white/[0.08]'
+              }`}
+            >
+              Custom
+            </button>
+          </div>
 
-      {/* Legend / Controls */}
-      <div className="w-full max-w-xs space-y-2">
-        {assetClasses.map((asset, index) => (
-          <div key={asset.name} className="flex items-center gap-3">
-            <div
-              className="w-4 h-4 rounded-sm flex-shrink-0"
-              style={{ backgroundColor: asset.color }}
-            />
-            <div className="flex-1">
-              <div className="flex justify-between items-center">
-                <span className="text-xs text-gray-300">{asset.name}</span>
-                <span className="text-xs font-bold" style={{ color: asset.color }}>
-                  {allocation[index]}%
-                </span>
-              </div>
-              {customMode && (
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={allocation[index]}
-                  onChange={(e) => updateCustomAllocation(index, Number(e.target.value))}
-                  className="w-full h-1"
-                  style={{ accentColor: asset.color }}
+          {/* Pie chart */}
+          <div className="relative w-52 h-52">
+            <svg viewBox="0 0 200 200" className="w-full h-full">
+              {segments.map((segment, index) => (
+                <motion.path
+                  key={index}
+                  d={segment.path}
+                  fill={segment.color}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: index * 0.1 }}
                 />
-              )}
+              ))}
+              <circle cx="100" cy="100" r="40" fill="rgba(10,10,11,0.8)" />
+              <text x="100" y="95" textAnchor="middle" fontSize="14" fill="#fff" fontWeight="bold">
+                {expectedReturn}%
+              </text>
+              <text x="100" y="112" textAnchor="middle" fontSize="9" fill="#666">
+                Expected Return
+              </text>
+            </svg>
+          </div>
+
+          {/* Legend / Controls */}
+          <div className="w-full max-w-xs space-y-2">
+            {assetClasses.map((asset, index) => (
+              <div key={asset.name} className="flex items-center gap-3">
+                <div
+                  className="w-4 h-4 rounded-sm flex-shrink-0"
+                  style={{ backgroundColor: asset.color }}
+                />
+                <div className="flex-1">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-300">{asset.name}</span>
+                    <span className="text-xs font-bold" style={{ color: asset.color }}>
+                      {allocation[index]}%
+                    </span>
+                  </div>
+                  {customMode && (
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={allocation[index]}
+                      onChange={(e) => updateCustomAllocation(index, Number(e.target.value))}
+                      className="w-full h-1"
+                      style={{ accentColor: asset.color }}
+                    />
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Profile description */}
+          {!customMode && (
+            <div className="relative w-full max-w-xs overflow-hidden rounded-xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+              <div className="relative p-3">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-xs font-bold text-amber-400">{profiles[selectedProfile].name}</span>
+                  <span className="text-[10px] text-gray-500">Age: {profiles[selectedProfile].age}</span>
+                </div>
+                <p className="text-[10px] text-gray-400">{profiles[selectedProfile].description}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Risk meter */}
+          <div className="w-full max-w-xs">
+            <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+              <span>Risk Level</span>
+              <span className={totalRisk > 70 ? 'text-red-400' : totalRisk > 40 ? 'text-amber-400' : 'text-green-400'}>
+                {totalRisk > 70 ? 'High' : totalRisk > 40 ? 'Moderate' : 'Low'}
+              </span>
+            </div>
+            <div className="h-2 bg-gray-800/50 rounded-full overflow-hidden">
+              <motion.div
+                className="h-full rounded-full"
+                style={{
+                  background: `linear-gradient(to right, #22C55E, #F59E0B, #EF4444)`,
+                }}
+                animate={{ width: `${totalRisk}%` }}
+              />
             </div>
           </div>
-        ))}
-      </div>
 
-      {/* Profile description */}
-      {!customMode && (
-        <div className="w-full max-w-xs p-3 bg-[#111113] border border-gray-800 rounded-xl">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-xs font-bold text-amber-400">{profiles[selectedProfile].name}</span>
-            <span className="text-[10px] text-gray-500">Age: {profiles[selectedProfile].age}</span>
+          {/* Key rules */}
+          <div className="w-full max-w-xs grid grid-cols-2 gap-2">
+            <div className="relative overflow-hidden rounded-lg">
+              <div className="absolute inset-0 bg-green-500/[0.08] backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-green-500/20 rounded-lg" />
+              <div className="relative p-2">
+                <p className="text-[10px] text-green-400 font-medium">Age Rule</p>
+                <p className="text-[9px] text-gray-400">100 - age = stock %</p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-lg">
+              <div className="absolute inset-0 bg-blue-500/[0.08] backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-blue-500/20 rounded-lg" />
+              <div className="relative p-2">
+                <p className="text-[10px] text-blue-400 font-medium">Rebalance</p>
+                <p className="text-[9px] text-gray-400">Quarterly or annually</p>
+              </div>
+            </div>
           </div>
-          <p className="text-[10px] text-gray-400">{profiles[selectedProfile].description}</p>
-        </div>
-      )}
 
-      {/* Risk meter */}
-      <div className="w-full max-w-xs">
-        <div className="flex justify-between text-[10px] text-gray-500 mb-1">
-          <span>Risk Level</span>
-          <span className={totalRisk > 70 ? 'text-red-400' : totalRisk > 40 ? 'text-amber-400' : 'text-green-400'}>
-            {totalRisk > 70 ? 'High' : totalRisk > 40 ? 'Moderate' : 'Low'}
-          </span>
-        </div>
-        <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-          <motion.div
-            className="h-full rounded-full"
-            style={{
-              background: `linear-gradient(to right, #22C55E, #F59E0B, #EF4444)`,
-            }}
-            animate={{ width: `${totalRisk}%` }}
-          />
+          {/* Key insight */}
+          <div className="relative max-w-xs overflow-hidden rounded-xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="relative p-4">
+              <p className="text-xs text-gray-400 leading-relaxed">
+                <span className="text-amber-400 font-medium">Benjamin Graham:</span> "The essence of
+                investment management is the management of risks, not the management of returns." Your
+                allocation decision determines 90% of your investment outcome.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-[10px] text-gray-600">From The Intelligent Investor</p>
         </div>
       </div>
-
-      {/* Key rules */}
-      <div className="w-full max-w-xs grid grid-cols-2 gap-2">
-        <div className="p-2 bg-green-500/10 border border-green-500/30 rounded-lg">
-          <p className="text-[10px] text-green-400 font-medium">📊 Age Rule</p>
-          <p className="text-[9px] text-gray-400">100 - age = stock %</p>
-        </div>
-        <div className="p-2 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-          <p className="text-[10px] text-blue-400 font-medium">🔄 Rebalance</p>
-          <p className="text-[9px] text-gray-400">Quarterly or annually</p>
-        </div>
-      </div>
-
-      {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
-        <p className="text-xs text-gray-400 leading-relaxed">
-          <span className="text-amber-400 font-medium">Benjamin Graham:</span> "The essence of
-          investment management is the management of risks, not the management of returns." Your
-          allocation decision determines 90% of your investment outcome.
-        </p>
-      </div>
-
-      <p className="text-[10px] text-gray-600">From The Intelligent Investor</p>
     </div>
   );
 }

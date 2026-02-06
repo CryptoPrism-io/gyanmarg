@@ -52,156 +52,190 @@ export function FramingEffect() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      {/* Title */}
-      <div className="text-center">
-        <h3 className="text-sm font-bold text-amber-400">The Framing Effect</h3>
-        <p className="text-[10px] text-gray-500">How words change our decisions</p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Scenario indicator */}
-      <div className="flex gap-2">
-        {scenarios.map((_, i) => (
-          <div
-            key={i}
-            className={`w-2 h-2 rounded-full transition-all ${
-              i === currentScenario ? 'bg-amber-400 scale-125' : 'bg-gray-600'
-            }`}
-          />
-        ))}
-      </div>
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-5">
+          {/* Title */}
+          <div className="text-center">
+            <h3 className="text-sm font-bold text-amber-400">The Framing Effect</h3>
+            <p className="text-[10px] text-gray-500">How words change our decisions</p>
+          </div>
 
-      {/* Question */}
-      <div className="w-full max-w-xs p-4 bg-[#111113] border border-gray-800 rounded-xl">
-        <p className="text-xs text-gray-300 text-center">{scenario.question}</p>
-      </div>
+          {/* Scenario indicator */}
+          <div className="flex gap-2">
+            {scenarios.map((_, i) => (
+              <div
+                key={i}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  i === currentScenario ? 'bg-amber-400 scale-125' : 'bg-gray-600'
+                }`}
+              />
+            ))}
+          </div>
 
-      {/* Options */}
-      <div className="w-full max-w-xs space-y-3">
-        <motion.button
-          onClick={() => !userChoice && handleChoice('A')}
-          className={`w-full p-4 rounded-xl border text-left transition-all ${
-            userChoice === 'A'
-              ? 'bg-green-500/20 border-green-500/50'
-              : userChoice
-              ? 'opacity-50'
-              : 'bg-green-500/10 border-green-500/30 hover:bg-green-500/20'
-          }`}
-          whileHover={!userChoice ? { scale: 1.02 } : {}}
-          whileTap={!userChoice ? { scale: 0.98 } : {}}
-        >
-          <div className="flex items-center gap-3">
-            <span className="text-green-400 text-lg">A</span>
-            <div>
-              <p className="text-sm text-gray-200">{scenario.optionA.label}</p>
-              <p className="text-[10px] text-green-400/70">Gain framing</p>
+          {/* Question */}
+          <div className="relative w-full max-w-xs overflow-hidden rounded-xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="relative p-4">
+              <p className="text-xs text-gray-300 text-center">{scenario.question}</p>
             </div>
           </div>
-        </motion.button>
 
-        <motion.button
-          onClick={() => !userChoice && handleChoice('B')}
-          className={`w-full p-4 rounded-xl border text-left transition-all ${
-            userChoice === 'B'
-              ? 'bg-red-500/20 border-red-500/50'
-              : userChoice
-              ? 'opacity-50'
-              : 'bg-red-500/10 border-red-500/30 hover:bg-red-500/20'
-          }`}
-          whileHover={!userChoice ? { scale: 1.02 } : {}}
-          whileTap={!userChoice ? { scale: 0.98 } : {}}
-        >
-          <div className="flex items-center gap-3">
-            <span className="text-red-400 text-lg">B</span>
-            <div>
-              <p className="text-sm text-gray-200">{scenario.optionB.label}</p>
-              <p className="text-[10px] text-red-400/70">Loss framing</p>
-            </div>
-          </div>
-        </motion.button>
-      </div>
-
-      {/* Result */}
-      <AnimatePresence>
-        {showResult && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="w-full max-w-xs space-y-3"
-          >
-            {/* Percentage bars */}
-            <div className="p-4 bg-[#111113] border border-gray-800 rounded-xl">
-              <p className="text-[10px] text-gray-500 mb-3">How people typically respond:</p>
-
-              <div className="space-y-2">
+          {/* Options */}
+          <div className="w-full max-w-xs space-y-3">
+            <motion.button
+              onClick={() => !userChoice && handleChoice('A')}
+              className={`relative w-full overflow-hidden rounded-xl text-left transition-all ${
+                userChoice === 'A'
+                  ? 'ring-1 ring-green-500/50'
+                  : userChoice
+                  ? 'opacity-50'
+                  : 'hover:ring-1 hover:ring-green-500/30'
+              }`}
+              whileHover={!userChoice ? { scale: 1.02 } : {}}
+              whileTap={!userChoice ? { scale: 0.98 } : {}}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.08] to-transparent backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-green-500/20 rounded-xl" />
+              <div className="relative p-4 flex items-center gap-3">
+                <span className="text-green-400 text-lg">A</span>
                 <div>
-                  <div className="flex justify-between text-[10px] text-gray-400 mb-1">
-                    <span>Option A (Gain)</span>
-                    <span className="text-green-400">{scenario.optionA.percentage}%</span>
-                  </div>
-                  <div className="h-3 bg-gray-800 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-green-500 rounded-full"
-                      initial={{ width: 0 }}
-                      animate={{ width: `${scenario.optionA.percentage}%` }}
-                      transition={{ duration: 0.8 }}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[10px] text-gray-400 mb-1">
-                    <span>Option B (Loss)</span>
-                    <span className="text-red-400">{scenario.optionB.percentage}%</span>
-                  </div>
-                  <div className="h-3 bg-gray-800 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-red-500 rounded-full"
-                      initial={{ width: 0 }}
-                      animate={{ width: `${scenario.optionB.percentage}%` }}
-                      transition={{ duration: 0.8, delay: 0.2 }}
-                    />
-                  </div>
+                  <p className="text-sm text-gray-200">{scenario.optionA.label}</p>
+                  <p className="text-[10px] text-green-400/70">Gain framing</p>
                 </div>
               </div>
-            </div>
+            </motion.button>
 
-            {/* Insight */}
-            <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl">
-              <p className="text-[10px] text-amber-400">💡 {scenario.insight}</p>
-            </div>
-
-            {/* Next button */}
-            <button
-              onClick={nextScenario}
-              className="w-full py-2 bg-gray-800 text-gray-300 text-xs rounded-lg hover:bg-gray-700 transition-colors"
+            <motion.button
+              onClick={() => !userChoice && handleChoice('B')}
+              className={`relative w-full overflow-hidden rounded-xl text-left transition-all ${
+                userChoice === 'B'
+                  ? 'ring-1 ring-red-500/50'
+                  : userChoice
+                  ? 'opacity-50'
+                  : 'hover:ring-1 hover:ring-red-500/30'
+              }`}
+              whileHover={!userChoice ? { scale: 1.02 } : {}}
+              whileTap={!userChoice ? { scale: 0.98 } : {}}
             >
-              Try Next Scenario →
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/[0.08] to-transparent backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-red-500/20 rounded-xl" />
+              <div className="relative p-4 flex items-center gap-3">
+                <span className="text-red-400 text-lg">B</span>
+                <div>
+                  <p className="text-sm text-gray-200">{scenario.optionB.label}</p>
+                  <p className="text-[10px] text-red-400/70">Loss framing</p>
+                </div>
+              </div>
+            </motion.button>
+          </div>
 
-      {/* Defense strategy */}
-      <div className="w-full max-w-xs p-3 bg-purple-500/10 border border-purple-500/30 rounded-xl">
-        <p className="text-[10px] text-purple-400 font-medium">🛡️ Defense:</p>
-        <p className="text-[10px] text-gray-400">
-          Always reframe options in both gain and loss terms before deciding. Ask: "What am I
-          actually choosing between?"
-        </p>
+          {/* Result */}
+          <AnimatePresence>
+            {showResult && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="w-full max-w-xs space-y-3"
+              >
+                {/* Percentage bars */}
+                <div className="relative overflow-hidden rounded-xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
+                  <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+                  <div className="relative p-4">
+                    <p className="text-[10px] text-gray-500 mb-3">How people typically respond:</p>
+
+                    <div className="space-y-2">
+                      <div>
+                        <div className="flex justify-between text-[10px] text-gray-400 mb-1">
+                          <span>Option A (Gain)</span>
+                          <span className="text-green-400">{scenario.optionA.percentage}%</span>
+                        </div>
+                        <div className="h-3 bg-gray-800/50 rounded-full overflow-hidden">
+                          <motion.div
+                            className="h-full bg-green-500 rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${scenario.optionA.percentage}%` }}
+                            transition={{ duration: 0.8 }}
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between text-[10px] text-gray-400 mb-1">
+                          <span>Option B (Loss)</span>
+                          <span className="text-red-400">{scenario.optionB.percentage}%</span>
+                        </div>
+                        <div className="h-3 bg-gray-800/50 rounded-full overflow-hidden">
+                          <motion.div
+                            className="h-full bg-red-500 rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${scenario.optionB.percentage}%` }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Insight */}
+                <div className="relative overflow-hidden rounded-xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.08] to-transparent backdrop-blur-sm" />
+                  <div className="absolute inset-0 border border-amber-500/20 rounded-xl" />
+                  <div className="relative p-3">
+                    <p className="text-[10px] text-amber-400">{scenario.insight}</p>
+                  </div>
+                </div>
+
+                {/* Next button */}
+                <button
+                  onClick={nextScenario}
+                  className="w-full py-2 bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] text-gray-300 text-xs rounded-lg hover:bg-white/[0.08] transition-colors"
+                >
+                  Try Next Scenario
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Defense strategy */}
+          <div className="relative w-full max-w-xs overflow-hidden rounded-xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.08] to-transparent backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-purple-500/20 rounded-xl" />
+            <div className="relative p-3">
+              <p className="text-[10px] text-purple-400 font-medium">Defense:</p>
+              <p className="text-[10px] text-gray-400">
+                Always reframe options in both gain and loss terms before deciding. Ask: "What am I
+                actually choosing between?"
+              </p>
+            </div>
+          </div>
+
+          {/* Key insight */}
+          <div className="relative max-w-xs overflow-hidden rounded-xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="relative p-4">
+              <p className="text-xs text-gray-400 leading-relaxed">
+                <span className="text-amber-400 font-medium">Kahneman & Tversky:</span> "The framing of a
+                decision problem can have a dramatic effect on the choices people make, even when the
+                underlying options are logically equivalent."
+              </p>
+            </div>
+          </div>
+
+          <p className="text-[10px] text-gray-600">From Thinking, Fast and Slow</p>
+        </div>
       </div>
-
-      {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
-        <p className="text-xs text-gray-400 leading-relaxed">
-          <span className="text-amber-400 font-medium">Kahneman & Tversky:</span> "The framing of a
-          decision problem can have a dramatic effect on the choices people make, even when the
-          underlying options are logically equivalent."
-        </p>
-      </div>
-
-      <p className="text-[10px] text-gray-600">From Thinking, Fast and Slow</p>
     </div>
   );
 }

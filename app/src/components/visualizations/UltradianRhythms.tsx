@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Clock } from 'lucide-react';
 
 export function UltradianRhythms() {
   const [minutes, setMinutes] = useState(0);
@@ -46,129 +47,165 @@ export function UltradianRhythms() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Cycle visualization */}
-      <div className="relative w-48 h-48">
-        {/* Background circle */}
-        <svg className="w-full h-full -rotate-90">
-          <circle
-            cx="96"
-            cy="96"
-            r="88"
-            fill="none"
-            stroke="#1F2937"
-            strokeWidth="12"
-          />
-          {/* Progress arc */}
-          <motion.circle
-            cx="96"
-            cy="96"
-            r="88"
-            fill="none"
-            stroke={phase.color}
-            strokeWidth="12"
-            strokeLinecap="round"
-            strokeDasharray={553}
-            animate={{ strokeDashoffset: 553 - (progress / 100) * 553 }}
-          />
-        </svg>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-purple-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        {/* Center content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <p className="text-3xl font-bold" style={{ color: phase.color }}>
-            {minutes}
-          </p>
-          <p className="text-[10px] text-gray-500">minutes</p>
-          <p className="text-xs font-medium mt-2" style={{ color: phase.color }}>
-            {phase.name}
-          </p>
-        </div>
-
-        {/* Phase markers */}
-        <div className="absolute inset-0">
-          {[20, 70, 90].map((marker) => (
-            <div
-              key={marker}
-              className="absolute w-2 h-2 rounded-full bg-gray-600"
-              style={{
-                left: '50%',
-                top: '50%',
-                transform: `rotate(${(marker / BREAK_END) * 360 - 90}deg) translateY(-88px) translateX(-50%)`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Phase legend */}
-      <div className="grid grid-cols-2 gap-2 w-full max-w-xs">
-        {[
-          { name: 'Warm-up', time: '0-20 min', color: '#F59E0B' },
-          { name: 'Peak Focus', time: '20-70 min', color: '#22C55E' },
-          { name: 'Wind-down', time: '70-90 min', color: '#3B82F6' },
-          { name: 'Recovery', time: '90-110 min', color: '#8B5CF6' },
-        ].map((p) => (
-          <div
-            key={p.name}
-            className={`p-2 rounded-lg border text-center ${
-              phase.name === p.name ? 'border-white/20' : 'border-gray-800'
-            }`}
-            style={{
-              backgroundColor: phase.name === p.name ? p.color + '15' : '#111113',
-            }}
-          >
-            <div className="w-2 h-2 rounded-full mx-auto mb-1" style={{ backgroundColor: p.color }} />
-            <p className="text-[10px] font-medium" style={{ color: p.color }}>{p.name}</p>
-            <p className="text-[8px] text-gray-500">{p.time}</p>
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-2.5 mb-5">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 flex items-center justify-center border border-amber-500/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+            <Clock className="w-4 h-4 text-amber-400" />
           </div>
-        ))}
-      </div>
-
-      {/* Stats */}
-      <div className="flex gap-4 text-center">
-        <div>
-          <p className="text-xl font-bold text-green-400">{cycles}</p>
-          <p className="text-[10px] text-gray-500">Cycles completed</p>
+          <span className="text-sm font-semibold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+            Ultradian Rhythms
+          </span>
         </div>
-        <div>
-          <p className="text-xl font-bold text-blue-400">{cycles * 50}</p>
-          <p className="text-[10px] text-gray-500">Peak focus minutes</p>
+
+        <div className="flex flex-col items-center gap-4">
+          {/* Cycle visualization */}
+          <div className="relative w-48 h-48">
+            {/* Background circle */}
+            <svg className="w-full h-full -rotate-90">
+              <circle
+                cx="96"
+                cy="96"
+                r="88"
+                fill="none"
+                stroke="rgba(255,255,255,0.08)"
+                strokeWidth="12"
+              />
+              {/* Progress arc */}
+              <motion.circle
+                cx="96"
+                cy="96"
+                r="88"
+                fill="none"
+                stroke={phase.color}
+                strokeWidth="12"
+                strokeLinecap="round"
+                strokeDasharray={553}
+                animate={{ strokeDashoffset: 553 - (progress / 100) * 553 }}
+                filter={`drop-shadow(0 0 8px ${phase.color}40)`}
+              />
+            </svg>
+
+            {/* Center content */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <p className="text-3xl font-bold" style={{ color: phase.color }}>
+                {minutes}
+              </p>
+              <p className="text-[10px] text-white/50">minutes</p>
+              <p className="text-xs font-medium mt-2" style={{ color: phase.color }}>
+                {phase.name}
+              </p>
+            </div>
+
+            {/* Phase markers */}
+            <div className="absolute inset-0">
+              {[20, 70, 90].map((marker) => (
+                <div
+                  key={marker}
+                  className="absolute w-2 h-2 rounded-full bg-white/30"
+                  style={{
+                    left: '50%',
+                    top: '50%',
+                    transform: `rotate(${(marker / BREAK_END) * 360 - 90}deg) translateY(-88px) translateX(-50%)`,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Phase legend */}
+          <div className="grid grid-cols-2 gap-2 w-full max-w-xs">
+            {[
+              { name: 'Warm-up', time: '0-20 min', color: '#F59E0B' },
+              { name: 'Peak Focus', time: '20-70 min', color: '#22C55E' },
+              { name: 'Wind-down', time: '70-90 min', color: '#3B82F6' },
+              { name: 'Recovery', time: '90-110 min', color: '#8B5CF6' },
+            ].map((p) => (
+              <div
+                key={p.name}
+                className={`relative overflow-hidden p-2 rounded-lg text-center border ${
+                  phase.name === p.name ? 'border-white/20' : 'border-white/[0.08]'
+                }`}
+                style={{
+                  background: phase.name === p.name
+                    ? `linear-gradient(135deg, ${p.color}15 0%, ${p.color}05 100%)`
+                    : 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                }}
+              >
+                {phase.name === p.name && (
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                )}
+                <div className="w-2 h-2 rounded-full mx-auto mb-1" style={{ backgroundColor: p.color }} />
+                <p className="text-[10px] font-medium" style={{ color: p.color }}>{p.name}</p>
+                <p className="text-[8px] text-white/50">{p.time}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Stats */}
+          <div className="flex gap-4 text-center">
+            <div className="relative overflow-hidden px-4 py-2 rounded-xl border border-white/[0.08]"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="text-xl font-bold text-green-400">{cycles}</p>
+              <p className="text-[10px] text-white/50">Cycles completed</p>
+            </div>
+            <div className="relative overflow-hidden px-4 py-2 rounded-xl border border-white/[0.08]"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="text-xl font-bold text-blue-400">{cycles * 50}</p>
+              <p className="text-[10px] text-white/50">Peak focus minutes</p>
+            </div>
+          </div>
+
+          {/* Controls */}
+          <div className="flex gap-2">
+            <button
+              onClick={() => setIsRunning(!isRunning)}
+              className={`px-4 py-2 rounded-lg text-xs font-medium transition-all border backdrop-blur-sm ${
+                isRunning
+                  ? 'bg-red-500/15 border-red-500/30 text-red-400 shadow-[0_0_12px_rgba(239,68,68,0.15)]'
+                  : 'bg-green-500/15 border-green-500/30 text-green-400 shadow-[0_0_12px_rgba(34,197,94,0.15)]'
+              }`}
+            >
+              {isRunning ? 'Pause' : 'Start cycle'}
+            </button>
+            <button
+              onClick={reset}
+              className="px-4 py-2 border border-white/[0.08] text-white/60
+                       rounded-lg text-xs hover:border-white/20 hover:text-white/80 transition-all"
+              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            >
+              Reset
+            </button>
+          </div>
+
+          {/* Key insight */}
+          <div className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-white/[0.08]"
+            style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+          >
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <p className="text-xs text-white/60">
+              <span className="text-green-400 font-medium">Science:</span> Your brain naturally
+              cycles through 90-minute ultradian rhythms. Work with them: focus hard for 90 min,
+              then rest for 20.
+            </p>
+          </div>
+
+          <p className="text-[10px] text-white/40">
+            Based on sleep & performance research
+          </p>
         </div>
       </div>
-
-      {/* Controls */}
-      <div className="flex gap-2">
-        <button
-          onClick={() => setIsRunning(!isRunning)}
-          className={`px-4 py-2 rounded-lg text-xs font-medium transition-all border ${
-            isRunning
-              ? 'bg-red-500/10 border-red-500/30 text-red-400'
-              : 'bg-green-500/10 border-green-500/30 text-green-400'
-          }`}
-        >
-          {isRunning ? '⏸ Pause' : '▶ Start cycle'}
-        </button>
-        <button
-          onClick={reset}
-          className="px-4 py-2 border border-gray-700 text-gray-400
-                   rounded-lg text-xs hover:border-gray-600 transition-all"
-        >
-          ↻ Reset
-        </button>
-      </div>
-
-      {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-lg p-3 max-w-xs text-center">
-        <p className="text-xs text-gray-400">
-          <span className="text-green-400 font-medium">Science:</span> Your brain naturally
-          cycles through 90-minute ultradian rhythms. Work with them: focus hard for 90 min,
-          then rest for 20.
-        </p>
-      </div>
-
-      <p className="text-[10px] text-gray-500">
-        Based on sleep & performance research
-      </p>
     </div>
   );
 }

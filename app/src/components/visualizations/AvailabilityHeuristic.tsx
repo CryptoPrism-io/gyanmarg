@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AlertTriangle } from 'lucide-react';
 
 interface RiskComparison {
   id: string;
@@ -51,129 +52,167 @@ export function AvailabilityHeuristic() {
   const maxDeaths = Math.max(comparison.scary.deaths, comparison.mundane.deaths);
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Question */}
-      <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-3 w-full max-w-xs text-center">
-        <p className="text-[10px] text-purple-400 uppercase tracking-wide mb-1">
-          Question {activeComparison + 1}/{comparisons.length}
-        </p>
-        <p className="text-sm text-gray-300">
-          Which causes more deaths annually (US)?
-        </p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Glass layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-red-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Options */}
-      {!showAnswer && (
-        <div className="w-full max-w-xs space-y-2">
-          <motion.button
-            onClick={() => handleGuess('scary')}
-            className="w-full p-3 bg-[#111113] border border-gray-800 rounded-lg
-                     text-left hover:border-purple-500/30 transition-all"
-            whileTap={{ scale: 0.98 }}
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-4">
+          <div
+            className="w-8 h-8 rounded-lg flex items-center justify-center"
+            style={{ background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(168, 85, 247, 0.1) 100%)' }}
           >
-            <span className="text-sm text-gray-300">{comparison.scary.name}</span>
-          </motion.button>
-
-          <motion.button
-            onClick={() => handleGuess('mundane')}
-            className="w-full p-3 bg-[#111113] border border-gray-800 rounded-lg
-                     text-left hover:border-purple-500/30 transition-all"
-            whileTap={{ scale: 0.98 }}
-          >
-            <span className="text-sm text-gray-300">{comparison.mundane.name}</span>
-          </motion.button>
+            <AlertTriangle className="w-4 h-4 text-purple-400" />
+          </div>
+          <div>
+            <h3 className="text-sm font-medium text-white/90">Availability Heuristic</h3>
+            <p className="text-[10px] text-white/50">From Thinking, Fast and Slow</p>
+          </div>
         </div>
-      )}
 
-      {/* Answer reveal */}
-      <AnimatePresence>
-        {showAnswer && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-xs space-y-3"
+        <div className="flex flex-col items-center gap-4">
+          {/* Question */}
+          <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-3 w-full max-w-xs text-center">
+            <p className="text-[10px] text-purple-400 uppercase tracking-wide mb-1">
+              Question {activeComparison + 1}/{comparisons.length}
+            </p>
+            <p className="text-sm text-white/80">
+              Which causes more deaths annually (US)?
+            </p>
+          </div>
+
+          {/* Options */}
+          {!showAnswer && (
+            <div className="w-full max-w-xs space-y-2">
+              <motion.button
+                onClick={() => handleGuess('scary')}
+                className="relative w-full p-3 border border-white/[0.08] rounded-lg
+                         text-left hover:border-purple-500/30 transition-all overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <span className="text-sm text-white/80">{comparison.scary.name}</span>
+              </motion.button>
+
+              <motion.button
+                onClick={() => handleGuess('mundane')}
+                className="relative w-full p-3 border border-white/[0.08] rounded-lg
+                         text-left hover:border-purple-500/30 transition-all overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                <span className="text-sm text-white/80">{comparison.mundane.name}</span>
+              </motion.button>
+            </div>
+          )}
+
+          {/* Answer reveal */}
+          <AnimatePresence>
+            {showAnswer && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full max-w-xs space-y-3"
+              >
+                {/* Feedback */}
+                <div className={`p-2 rounded-lg border text-center ${
+                  userGuess === 'mundane'
+                    ? 'bg-green-500/10 border-green-500/30 text-green-400'
+                    : 'bg-amber-500/10 border-amber-500/30 text-amber-400'
+                }`}>
+                  <p className="text-xs">
+                    {userGuess === 'mundane'
+                      ? 'Correct! You avoided the availability bias.'
+                      : 'The scarier option feels more dangerous because it\'s more memorable.'}
+                  </p>
+                </div>
+
+                {/* Comparison bars */}
+                <div className="space-y-3">
+                  {/* Scary option */}
+                  <div>
+                    <div className="flex justify-between text-xs mb-1">
+                      <span className="text-red-400">{comparison.scary.name}</span>
+                      <span className="text-white/50">{comparison.scary.deaths.toLocaleString()}/year</span>
+                    </div>
+                    <div
+                      className="h-4 rounded-full border border-white/[0.08] overflow-hidden"
+                      style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+                    >
+                      <motion.div
+                        className="h-full bg-red-500 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${(comparison.scary.deaths / maxDeaths) * 100}%` }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                      />
+                    </div>
+                    <p className="text-[10px] text-red-400/60 mt-1">{comparison.scary.coverage}</p>
+                  </div>
+
+                  {/* Mundane option */}
+                  <div>
+                    <div className="flex justify-between text-xs mb-1">
+                      <span className="text-green-400">{comparison.mundane.name}</span>
+                      <span className="text-white/50">{comparison.mundane.deaths.toLocaleString()}/year</span>
+                    </div>
+                    <div
+                      className="h-4 rounded-full border border-white/[0.08] overflow-hidden"
+                      style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+                    >
+                      <motion.div
+                        className="h-full bg-green-500 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${(comparison.mundane.deaths / maxDeaths) * 100}%` }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                      />
+                    </div>
+                    <p className="text-[10px] text-green-400/60 mt-1">{comparison.mundane.coverage}</p>
+                  </div>
+                </div>
+
+                {/* Ratio */}
+                <div
+                  className="relative text-center p-2 border border-white/[0.08] rounded-lg overflow-hidden"
+                  style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+                >
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <p className="text-xs text-white/60">
+                    <span className="text-green-400 font-bold">
+                      {Math.round(comparison.mundane.deaths / comparison.scary.deaths)}x
+                    </span> more deadly, but feels less scary
+                  </p>
+                </div>
+
+                <button
+                  onClick={nextComparison}
+                  className="w-full py-2 text-xs text-white/50 hover:text-white/70"
+                >
+                  Next comparison
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Key insight */}
+          <div
+            className="relative border border-white/[0.08] rounded-lg p-3 max-w-xs text-center overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
-            {/* Feedback */}
-            <div className={`p-2 rounded-lg border text-center ${
-              userGuess === 'mundane'
-                ? 'bg-green-500/10 border-green-500/30 text-green-400'
-                : 'bg-amber-500/10 border-amber-500/30 text-amber-400'
-            }`}>
-              <p className="text-xs">
-                {userGuess === 'mundane'
-                  ? '✓ Correct! You avoided the availability bias.'
-                  : '⚠️ The scarier option feels more dangerous because it\'s more memorable.'}
-              </p>
-            </div>
-
-            {/* Comparison bars */}
-            <div className="space-y-3">
-              {/* Scary option */}
-              <div>
-                <div className="flex justify-between text-xs mb-1">
-                  <span className="text-red-400">{comparison.scary.name}</span>
-                  <span className="text-gray-500">{comparison.scary.deaths.toLocaleString()}/year</span>
-                </div>
-                <div className="h-4 bg-[#111113] rounded-full border border-gray-800 overflow-hidden">
-                  <motion.div
-                    className="h-full bg-red-500 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(comparison.scary.deaths / maxDeaths) * 100}%` }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
-                  />
-                </div>
-                <p className="text-[10px] text-red-400/60 mt-1">{comparison.scary.coverage}</p>
-              </div>
-
-              {/* Mundane option */}
-              <div>
-                <div className="flex justify-between text-xs mb-1">
-                  <span className="text-green-400">{comparison.mundane.name}</span>
-                  <span className="text-gray-500">{comparison.mundane.deaths.toLocaleString()}/year</span>
-                </div>
-                <div className="h-4 bg-[#111113] rounded-full border border-gray-800 overflow-hidden">
-                  <motion.div
-                    className="h-full bg-green-500 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(comparison.mundane.deaths / maxDeaths) * 100}%` }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
-                  />
-                </div>
-                <p className="text-[10px] text-green-400/60 mt-1">{comparison.mundane.coverage}</p>
-              </div>
-            </div>
-
-            {/* Ratio */}
-            <div className="text-center p-2 bg-[#111113] border border-gray-800 rounded-lg">
-              <p className="text-xs text-gray-400">
-                <span className="text-green-400 font-bold">
-                  {Math.round(comparison.mundane.deaths / comparison.scary.deaths)}x
-                </span> more deadly, but feels less scary
-              </p>
-            </div>
-
-            <button
-              onClick={nextComparison}
-              className="w-full py-2 text-xs text-gray-500 hover:text-gray-300"
-            >
-              Next comparison →
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-lg p-3 max-w-xs text-center">
-        <p className="text-xs text-gray-400">
-          <span className="text-purple-400 font-medium">The bias:</span> We judge probability
-          by how easily examples come to mind. Vivid, emotional events (sharks, planes) feel
-          more common than mundane killers.
-        </p>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <p className="text-xs text-white/60">
+              <span className="text-purple-400 font-medium">The bias:</span> We judge probability
+              by how easily examples come to mind. Vivid, emotional events (sharks, planes) feel
+              more common than mundane killers.
+            </p>
+          </div>
+        </div>
       </div>
-
-      <p className="text-[10px] text-gray-500">
-        From Thinking, Fast and Slow by Kahneman
-      </p>
     </div>
   );
 }

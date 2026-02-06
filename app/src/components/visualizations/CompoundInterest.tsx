@@ -146,9 +146,17 @@ export function CompoundInterest() {
   const selectedData = selectedYear !== null ? data[selectedYear] : null;
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Hero number with animation */}
-      <motion.div
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Hero number with animation */}
+          <motion.div
         className="relative"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -386,7 +394,7 @@ export function CompoundInterest() {
       <div className="w-full max-w-sm space-y-3 px-2">
         {/* Principal and Monthly in grid */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-[#111113] border border-gray-800 rounded-xl p-3">
+          <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
               <span className="text-[10px] text-gray-500">💰 Starting</span>
               <span className="text-sm font-bold text-green-400">${principal.toLocaleString()}</span>
@@ -403,7 +411,7 @@ export function CompoundInterest() {
             />
           </div>
 
-          <div className="bg-[#111113] border border-gray-800 rounded-xl p-3">
+          <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
               <span className="text-[10px] text-gray-500">📅 Monthly</span>
               <span className="text-sm font-bold text-green-400">${monthlyAdd.toLocaleString()}</span>
@@ -423,7 +431,7 @@ export function CompoundInterest() {
 
         {/* Rate and Years in grid */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-[#111113] border border-gray-800 rounded-xl p-3">
+          <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
               <span className="text-[10px] text-gray-500">📈 Return</span>
               <span className="text-sm font-bold text-amber-400">{rate}%</span>
@@ -440,7 +448,7 @@ export function CompoundInterest() {
             />
           </div>
 
-          <div className="bg-[#111113] border border-gray-800 rounded-xl p-3">
+          <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
               <span className="text-[10px] text-gray-500">⏱️ Years</span>
               <span className="text-sm font-bold text-blue-400">{years}</span>
@@ -461,7 +469,7 @@ export function CompoundInterest() {
 
       {/* Visual breakdown - pie chart style */}
       <div className="w-full max-w-sm">
-        <div className="bg-[#111113] border border-gray-800 rounded-xl p-4">
+        <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 backdrop-blur-sm">
           <div className="flex items-center justify-center gap-4">
             {/* Simple bar breakdown */}
             <div className="flex-1">
@@ -558,6 +566,8 @@ export function CompoundInterest() {
       </div>
 
       <p className="text-[10px] text-gray-600">From The Intelligent Investor</p>
+        </div>
+      </div>
     </div>
   );
 }

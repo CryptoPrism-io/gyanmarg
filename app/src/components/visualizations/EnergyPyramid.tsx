@@ -48,81 +48,91 @@ export function EnergyPyramid() {
   const [activeLevel, setActiveLevel] = useState<number | null>(null);
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Header */}
-      <div className="text-center">
-        <p className="text-xs text-gray-400">
-          Energy, not time, is the fundamental currency of high performance.
-        </p>
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Pyramid */}
-      <div className="relative w-full max-w-xs h-56 flex flex-col items-center justify-center gap-1">
-        {energyLevels.map((level, idx) => {
-          const colors = colorMap[level.color];
-          const isActive = activeLevel === idx;
-          const widths = ['w-1/3', 'w-1/2', 'w-2/3', 'w-full'];
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Header */}
+          <div className="text-center">
+            <p className="text-xs text-gray-400">
+              Energy, not time, is the fundamental currency of high performance.
+            </p>
+          </div>
 
-          return (
-            <motion.button
-              key={idx}
-              onClick={() => setActiveLevel(isActive ? null : idx)}
-              className={`${widths[idx]} py-3 rounded-lg border transition-all ${
-                isActive ? `${colors.bg} ${colors.border}` : 'bg-[#111113] border-gray-800'
-              }`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+          {/* Pyramid */}
+          <div className="relative w-full max-w-xs h-56 flex flex-col items-center justify-center gap-1">
+            {energyLevels.map((level, idx) => {
+              const colors = colorMap[level.color];
+              const isActive = activeLevel === idx;
+              const widths = ['w-1/3', 'w-1/2', 'w-2/3', 'w-full'];
+
+              return (
+                <motion.button
+                  key={idx}
+                  onClick={() => setActiveLevel(isActive ? null : idx)}
+                  className={`${widths[idx]} py-3 rounded-lg border backdrop-blur-sm transition-all ${
+                    isActive ? `${colors.bg} ${colors.border}` : 'bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15]'
+                  }`}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <p className={`text-xs font-medium text-center ${isActive ? colors.text : 'text-gray-400'}`}>
+                    {level.name}
+                  </p>
+                  <p className="text-[8px] text-gray-500 text-center">{level.description}</p>
+                </motion.button>
+              );
+            })}
+
+            {/* Foundation label */}
+            <p className="text-[8px] text-gray-600 mt-1">Foundation → Peak</p>
+          </div>
+
+          {/* Active level detail */}
+          {activeLevel !== null && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`w-full max-w-xs backdrop-blur-sm ${colorMap[energyLevels[activeLevel].color].bg} border ${colorMap[energyLevels[activeLevel].color].border} rounded-lg p-4`}
             >
-              <p className={`text-xs font-medium text-center ${isActive ? colors.text : 'text-gray-400'}`}>
-                {level.name}
+              <p className={`text-sm font-medium ${colorMap[energyLevels[activeLevel].color].text} mb-2`}>
+                {energyLevels[activeLevel].name} Energy
               </p>
-              <p className="text-[8px] text-gray-500 text-center">{level.description}</p>
-            </motion.button>
-          );
-        })}
 
-        {/* Foundation label */}
-        <p className="text-[8px] text-gray-600 mt-1">Foundation → Peak</p>
-      </div>
+              <p className="text-[10px] text-gray-500 uppercase mb-1">Self-check:</p>
+              <ul className="space-y-1 mb-3">
+                {energyLevels[activeLevel].questions.map((q, idx) => (
+                  <li key={idx} className="text-[10px] text-gray-400">• {q}</li>
+                ))}
+              </ul>
 
-      {/* Active level detail */}
-      {activeLevel !== null && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={`w-full max-w-xs ${colorMap[energyLevels[activeLevel].color].bg} border ${colorMap[energyLevels[activeLevel].color].border} rounded-lg p-4`}
-        >
-          <p className={`text-sm font-medium ${colorMap[energyLevels[activeLevel].color].text} mb-2`}>
-            {energyLevels[activeLevel].name} Energy
+              <p className="text-[10px] text-gray-500 uppercase mb-1">Build this energy:</p>
+              <ul className="space-y-1">
+                {energyLevels[activeLevel].practices.map((p, idx) => (
+                  <li key={idx} className="text-[10px] text-gray-300">✓ {p}</li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+
+          {/* Key insight */}
+          <div className="w-full max-w-xs bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-lg p-3">
+            <p className="text-[10px] text-gray-400 text-center">
+              <span className="text-amber-400">Key insight:</span> Physical energy is the foundation.
+              Without it, the other levels collapse. Start from the bottom up.
+            </p>
+          </div>
+
+          <p className="text-[10px] text-gray-500 text-center">
+            From "The Power of Full Engagement" by Jim Loehr
           </p>
-
-          <p className="text-[10px] text-gray-500 uppercase mb-1">Self-check:</p>
-          <ul className="space-y-1 mb-3">
-            {energyLevels[activeLevel].questions.map((q, idx) => (
-              <li key={idx} className="text-[10px] text-gray-400">• {q}</li>
-            ))}
-          </ul>
-
-          <p className="text-[10px] text-gray-500 uppercase mb-1">Build this energy:</p>
-          <ul className="space-y-1">
-            {energyLevels[activeLevel].practices.map((p, idx) => (
-              <li key={idx} className="text-[10px] text-gray-300">✓ {p}</li>
-            ))}
-          </ul>
-        </motion.div>
-      )}
-
-      {/* Key insight */}
-      <div className="w-full max-w-xs bg-[#111113] border border-gray-800 rounded-lg p-3">
-        <p className="text-[10px] text-gray-400 text-center">
-          <span className="text-amber-400">Key insight:</span> Physical energy is the foundation.
-          Without it, the other levels collapse. Start from the bottom up.
-        </p>
+        </div>
       </div>
-
-      <p className="text-[10px] text-gray-500 text-center">
-        From "The Power of Full Engagement" by Jim Loehr
-      </p>
     </div>
   );
 }

@@ -64,99 +64,118 @@ export function NVCFourSteps() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {/* Progress */}
-      <div className="flex gap-2">
-        {steps.map((s, idx) => {
-          const c = colorMap[s.color];
-          return (
-            <button
-              key={idx}
-              onClick={() => {
-                setActiveStep(idx);
-                setShowGood(false);
-              }}
-              className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all ${
-                idx <= activeStep
-                  ? `${c.bg} ${c.border} ${c.text}`
-                  : 'border-gray-700 text-gray-600'
-              }`}
-            >
-              <span className="text-sm font-bold">{s.num}</span>
-            </button>
-          );
-        })}
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Dark Glassmorphism background - 88% transparent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-rose-500/[0.03] via-transparent to-green-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Current step */}
-      <motion.div
-        key={activeStep}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="w-full max-w-xs"
-      >
-        <div className={`${colors.bg} border ${colors.border} rounded-lg p-4 mb-3`}>
-          <p className={`text-sm font-medium ${colors.text} mb-1`}>
-            Step {step.num}: {step.name}
-          </p>
-          <p className="text-[10px] text-gray-400">{step.tip}</p>
-        </div>
+      <div className="relative z-10 p-5">
+        <div className="flex flex-col items-center gap-4">
+          {/* Progress */}
+          <div className="flex gap-2">
+            {steps.map((s, idx) => {
+              const c = colorMap[s.color];
+              return (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setActiveStep(idx);
+                    setShowGood(false);
+                  }}
+                  className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all backdrop-blur-sm ${
+                    idx <= activeStep
+                      ? `${c.bg} ${c.border} ${c.text}`
+                      : 'border-white/[0.1] text-gray-600 bg-white/[0.02]'
+                  }`}
+                >
+                  <span className="text-sm font-bold">{s.num}</span>
+                </button>
+              );
+            })}
+          </div>
 
-        {/* Bad example */}
-        <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 mb-2">
-          <p className="text-[10px] text-red-400 uppercase tracking-wide mb-1">❌ Avoid</p>
-          <p className="text-xs text-gray-300 italic">"{step.bad}"</p>
-        </div>
-
-        {/* Good example */}
-        {!showGood ? (
-          <button
-            onClick={() => setShowGood(true)}
-            className="w-full py-3 bg-[#111113] border border-gray-800 rounded-lg text-xs text-gray-400 hover:border-green-500/30"
-          >
-            Reveal the NVC way →
-          </button>
-        ) : (
+          {/* Current step */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-green-500/10 border border-green-500/30 rounded-lg p-3"
+            key={activeStep}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="w-full max-w-xs"
           >
-            <p className="text-[10px] text-green-400 uppercase tracking-wide mb-1">✓ Better</p>
-            <p className="text-xs text-gray-300 italic">"{step.good}"</p>
-          </motion.div>
-        )}
-      </motion.div>
-
-      {/* Navigation */}
-      {showGood && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          {activeStep < steps.length - 1 ? (
-            <button
-              onClick={nextStep}
-              className="px-4 py-2 bg-blue-500/20 border border-blue-500/50 rounded-lg text-xs text-blue-400"
-            >
-              Next Step →
-            </button>
-          ) : (
-            <div className="text-center">
-              <p className="text-xs text-green-400 mb-2">
-                ✓ Complete NVC message built!
-              </p>
-              <button
-                onClick={reset}
-                className="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-xs text-gray-400"
-              >
-                Start Over
-              </button>
+            <div className={`relative overflow-hidden ${colors.bg} border ${colors.border} rounded-lg p-4 mb-3`}>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
+              <div className="relative z-10">
+                <p className={`text-sm font-medium ${colors.text} mb-1`}>
+                  Step {step.num}: {step.name}
+                </p>
+                <p className="text-[10px] text-gray-400">{step.tip}</p>
+              </div>
             </div>
-          )}
-        </motion.div>
-      )}
 
-      <p className="text-[10px] text-gray-500 text-center">
-        From "Nonviolent Communication" by Marshall Rosenberg
-      </p>
+            {/* Bad example */}
+            <div className="relative overflow-hidden bg-red-500/10 border border-red-500/30 rounded-lg p-3 mb-2">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.01] to-transparent" />
+              <div className="relative z-10">
+                <p className="text-[10px] text-red-400 uppercase tracking-wide mb-1">❌ Avoid</p>
+                <p className="text-xs text-gray-300 italic">"{step.bad}"</p>
+              </div>
+            </div>
+
+            {/* Good example */}
+            {!showGood ? (
+              <button
+                onClick={() => setShowGood(true)}
+                className="w-full py-3 bg-white/[0.03] border border-white/[0.08] rounded-lg text-xs text-gray-400 hover:border-green-500/30 hover:bg-white/[0.05] backdrop-blur-sm transition-all"
+              >
+                Reveal the NVC way →
+              </button>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="relative overflow-hidden bg-green-500/10 border border-green-500/30 rounded-lg p-3"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.01] to-transparent" />
+                <div className="relative z-10">
+                  <p className="text-[10px] text-green-400 uppercase tracking-wide mb-1">✓ Better</p>
+                  <p className="text-xs text-gray-300 italic">"{step.good}"</p>
+                </div>
+              </motion.div>
+            )}
+          </motion.div>
+
+          {/* Navigation */}
+          {showGood && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              {activeStep < steps.length - 1 ? (
+                <button
+                  onClick={nextStep}
+                  className="px-4 py-2 bg-blue-500/20 border border-blue-500/50 rounded-lg text-xs text-blue-400 backdrop-blur-sm hover:bg-blue-500/30 transition-all"
+                >
+                  Next Step →
+                </button>
+              ) : (
+                <div className="text-center">
+                  <p className="text-xs text-green-400 mb-2">
+                    ✓ Complete NVC message built!
+                  </p>
+                  <button
+                    onClick={reset}
+                    className="px-4 py-2 bg-white/[0.03] border border-white/[0.1] rounded-lg text-xs text-gray-400 backdrop-blur-sm hover:bg-white/[0.05] transition-all"
+                  >
+                    Start Over
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          )}
+
+          <p className="text-[10px] text-gray-500 text-center">
+            From "Nonviolent Communication" by Marshall Rosenberg
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

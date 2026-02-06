@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Activity } from 'lucide-react';
 
 interface Stressor {
   id: string;
@@ -116,221 +117,248 @@ export function Hormesis() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      {/* Stressor selector */}
-      <div className="flex flex-wrap justify-center gap-2">
-        {stressors.map((s, index) => (
-          <motion.button
-            key={s.id}
-            onClick={() => {
-              setActiveStressor(index);
-              setDoseLevel(50);
-            }}
-            className={`px-3 py-2 rounded-xl transition-all border ${
-              activeStressor === index
-                ? 'bg-green-500/20 text-green-400 border-green-500/50'
-                : 'text-gray-500 hover:text-gray-300 border-gray-800 hover:border-gray-700'
-            }`}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="text-lg mr-1">{s.icon}</span>
-            <span className="text-[10px]">{s.name.split(' ')[0]}</span>
-          </motion.button>
-        ))}
-      </div>
+    <div className="relative overflow-hidden rounded-2xl">
+      {/* Glassmorphism layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
+      <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-red-500/[0.02]" />
+      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      {/* Hormesis curve visualization */}
-      <div className="w-full max-w-xs">
-        <div className="relative bg-gradient-to-b from-[#0A0A0B] to-[#111113] border border-gray-800 rounded-2xl overflow-hidden">
-          <svg viewBox="0 0 300 130" className="w-full">
-            {/* Zone backgrounds */}
-            <rect x="0" y="10" width="60" height="100" fill="#6B728015" />
-            <rect x="60" y="10" width="165" height="100" fill="#22C55E10" />
-            <rect x="225" y="10" width="75" height="100" fill="#EF444415" />
-
-            {/* Baseline */}
-            <line x1="0" y1="90" x2="300" y2="90" stroke="#374151" strokeWidth="1" strokeDasharray="4" />
-            <text x="295" y="88" fill="#374151" fontSize="8" textAnchor="end">baseline</text>
-
-            {/* The hormesis curve */}
-            <path
-              d="M 10 90 Q 30 85 60 80 Q 100 40 150 25 Q 200 35 225 60 Q 260 95 290 105"
-              fill="none"
-              stroke="url(#hormesisGradient)"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-
-            {/* Gradient definition */}
-            <defs>
-              <linearGradient id="hormesisGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#6B7280" />
-                <stop offset="20%" stopColor="#22C55E" />
-                <stop offset="60%" stopColor="#22C55E" />
-                <stop offset="80%" stopColor="#EF4444" />
-                <stop offset="100%" stopColor="#EF4444" />
-              </linearGradient>
-            </defs>
-
-            {/* Zone labels */}
-            <text x="30" y="120" fill="#6B7280" fontSize="9" textAnchor="middle">Insufficient</text>
-            <text x="142" y="120" fill="#22C55E" fontSize="9" textAnchor="middle" fontWeight="bold">Hormetic Zone</text>
-            <text x="262" y="120" fill="#EF4444" fontSize="9" textAnchor="middle">Toxic</text>
-
-            {/* Optimal marker */}
-            <line x1="150" y1="20" x2="150" y2="30" stroke="#22C55E" strokeWidth="2" />
-            <text x="150" y="18" fill="#22C55E" fontSize="8" textAnchor="middle">optimal</text>
-
-            {/* Current position marker */}
-            <motion.g
-              animate={{
-                transform: `translate(${10 + (doseLevel / 100) * 280}, ${getCurveY(doseLevel)})`,
-              }}
-            >
-              <circle r="6" fill={zone.color} />
-              <circle r="12" fill={zone.color} opacity="0.3">
-                <animate attributeName="r" values="10;16;10" dur="1.5s" repeatCount="indefinite" />
-              </circle>
-            </motion.g>
-
-            {/* Benefit indicator */}
-            <motion.text
-              x={10 + (doseLevel / 100) * 280}
-              y={getCurveY(doseLevel) - 15}
-              fill={zone.color}
-              fontSize="10"
-              fontWeight="bold"
-              textAnchor="middle"
-              animate={{
-                x: 10 + (doseLevel / 100) * 280,
-                y: getCurveY(doseLevel) - 15,
-              }}
-            >
-              {zone.benefit > 0 ? '+' : ''}{Math.round(zone.benefit)}%
-            </motion.text>
-          </svg>
+      <div className="relative z-10 p-5">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-5">
+          <div className="p-2 rounded-xl bg-green-500/20 border border-green-500/30">
+            <Activity className="w-5 h-5 text-green-400" />
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-white/90">Hormesis</h3>
+            <p className="text-[10px] text-white/50">The dose makes the medicine</p>
+          </div>
         </div>
-      </div>
 
-      {/* Dose slider */}
-      <div className="w-full max-w-xs">
-        <div className="flex justify-between items-center text-[10px] text-gray-500 mb-1">
-          <span>Dose / Intensity</span>
-          <span style={{ color: zone.color }} className="font-medium">{zone.name}</span>
-        </div>
-        <input
-          type="range"
-          min="0"
-          max="100"
-          value={doseLevel}
-          onChange={(e) => setDoseLevel(Number(e.target.value))}
-          disabled={isAnimating}
-          className="w-full disabled:opacity-50"
-          style={{ accentColor: zone.color }}
-        />
-        <div className="flex justify-between text-[8px] text-gray-600 mt-1">
-          <span>None 🛋️</span>
-          <span>Optimal ✨</span>
-          <span>Extreme ⚠️</span>
-        </div>
-      </div>
+        <div className="flex flex-col items-center gap-5">
+          {/* Stressor selector */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {stressors.map((s, index) => (
+              <motion.button
+                key={s.id}
+                onClick={() => {
+                  setActiveStressor(index);
+                  setDoseLevel(50);
+                }}
+                className={`px-3 py-2 rounded-xl transition-all border ${
+                  activeStressor === index
+                    ? 'bg-green-500/20 text-green-400 border-green-500/50'
+                    : 'text-white/50 hover:text-white/80 border-white/[0.08] hover:border-white/20'
+                }`}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="text-lg mr-1">{s.icon}</span>
+                <span className="text-[10px]">{s.name.split(' ')[0]}</span>
+              </motion.button>
+            ))}
+          </div>
 
-      {/* Animate button */}
-      <motion.button
-        onClick={() => setIsAnimating(!isAnimating)}
-        className={`px-4 py-2 rounded-xl text-xs font-medium border ${
-          isAnimating
-            ? 'bg-red-500/10 border-red-500/30 text-red-400'
-            : 'bg-purple-500/10 border-purple-500/30 text-purple-400'
-        }`}
-        whileTap={{ scale: 0.98 }}
-      >
-        {isAnimating ? '⏸ Stop' : '▶ Animate dose response'}
-      </motion.button>
+          {/* Hormesis curve visualization */}
+          <div className="w-full max-w-xs">
+            <div className="relative border border-white/[0.08] rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(180deg, rgba(10,10,11,0.8) 0%, rgba(17,17,19,0.9) 100%)' }}>
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <svg viewBox="0 0 300 130" className="w-full">
+                {/* Zone backgrounds */}
+                <rect x="0" y="10" width="60" height="100" fill="#6B728015" />
+                <rect x="60" y="10" width="165" height="100" fill="#22C55E10" />
+                <rect x="225" y="10" width="75" height="100" fill="#EF444415" />
 
-      {/* Current effect */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={zone.index}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="w-full max-w-xs p-4 rounded-xl border"
-          style={{
-            backgroundColor: zone.color + '15',
-            borderColor: zone.color + '40',
-          }}
-        >
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-3xl">{stressor.examples[zone.index].icon}</span>
-            <div>
-              <p className="text-sm font-semibold" style={{ color: zone.color }}>
-                {stressor.examples[zone.index].level}
-              </p>
-              <p className="text-[10px] text-gray-500">{stressor.name}</p>
+                {/* Baseline */}
+                <line x1="0" y1="90" x2="300" y2="90" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="4" />
+                <text x="295" y="88" fill="rgba(255,255,255,0.3)" fontSize="8" textAnchor="end">baseline</text>
+
+                {/* The hormesis curve */}
+                <path
+                  d="M 10 90 Q 30 85 60 80 Q 100 40 150 25 Q 200 35 225 60 Q 260 95 290 105"
+                  fill="none"
+                  stroke="url(#hormesisGradient)"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+
+                {/* Gradient definition */}
+                <defs>
+                  <linearGradient id="hormesisGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#6B7280" />
+                    <stop offset="20%" stopColor="#22C55E" />
+                    <stop offset="60%" stopColor="#22C55E" />
+                    <stop offset="80%" stopColor="#EF4444" />
+                    <stop offset="100%" stopColor="#EF4444" />
+                  </linearGradient>
+                </defs>
+
+                {/* Zone labels */}
+                <text x="30" y="120" fill="#6B7280" fontSize="9" textAnchor="middle">Insufficient</text>
+                <text x="142" y="120" fill="#22C55E" fontSize="9" textAnchor="middle" fontWeight="bold">Hormetic Zone</text>
+                <text x="262" y="120" fill="#EF4444" fontSize="9" textAnchor="middle">Toxic</text>
+
+                {/* Optimal marker */}
+                <line x1="150" y1="20" x2="150" y2="30" stroke="#22C55E" strokeWidth="2" />
+                <text x="150" y="18" fill="#22C55E" fontSize="8" textAnchor="middle">optimal</text>
+
+                {/* Current position marker */}
+                <motion.g
+                  animate={{
+                    transform: `translate(${10 + (doseLevel / 100) * 280}, ${getCurveY(doseLevel)})`,
+                  }}
+                >
+                  <circle r="6" fill={zone.color} />
+                  <circle r="12" fill={zone.color} opacity="0.3">
+                    <animate attributeName="r" values="10;16;10" dur="1.5s" repeatCount="indefinite" />
+                  </circle>
+                </motion.g>
+
+                {/* Benefit indicator */}
+                <motion.text
+                  x={10 + (doseLevel / 100) * 280}
+                  y={getCurveY(doseLevel) - 15}
+                  fill={zone.color}
+                  fontSize="10"
+                  fontWeight="bold"
+                  textAnchor="middle"
+                  animate={{
+                    x: 10 + (doseLevel / 100) * 280,
+                    y: getCurveY(doseLevel) - 15,
+                  }}
+                >
+                  {zone.benefit > 0 ? '+' : ''}{Math.round(zone.benefit)}%
+                </motion.text>
+              </svg>
             </div>
           </div>
-          <p className="text-xs text-gray-300 mb-3">
-            {stressor.examples[zone.index].effect}
-          </p>
-          <div className="pt-3 border-t border-gray-800">
-            <p className="text-[10px] text-gray-500">Optimal dose:</p>
-            <p className="text-[10px]" style={{ color: zone.color }}>
-              {stressor.optimalRange}
+
+          {/* Dose slider */}
+          <div className="w-full max-w-xs">
+            <div className="flex justify-between items-center text-[10px] text-white/50 mb-1">
+              <span>Dose / Intensity</span>
+              <span style={{ color: zone.color }} className="font-medium">{zone.name}</span>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={doseLevel}
+              onChange={(e) => setDoseLevel(Number(e.target.value))}
+              disabled={isAnimating}
+              className="w-full disabled:opacity-50"
+              style={{ accentColor: zone.color }}
+            />
+            <div className="flex justify-between text-[8px] text-white/40 mt-1">
+              <span>None 🛋️</span>
+              <span>Optimal ✨</span>
+              <span>Extreme ⚠️</span>
+            </div>
+          </div>
+
+          {/* Animate button */}
+          <motion.button
+            onClick={() => setIsAnimating(!isAnimating)}
+            className={`px-4 py-2 rounded-xl text-xs font-medium border ${
+              isAnimating
+                ? 'bg-red-500/10 border-red-500/30 text-red-400'
+                : 'bg-purple-500/10 border-purple-500/30 text-purple-400'
+            }`}
+            whileTap={{ scale: 0.98 }}
+          >
+            {isAnimating ? '⏸ Stop' : '▶ Animate dose response'}
+          </motion.button>
+
+          {/* Current effect */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={zone.index}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full max-w-xs p-4 rounded-xl border relative overflow-hidden"
+              style={{
+                backgroundColor: zone.color + '15',
+                borderColor: zone.color + '40',
+              }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-3xl">{stressor.examples[zone.index].icon}</span>
+                <div>
+                  <p className="text-sm font-semibold" style={{ color: zone.color }}>
+                    {stressor.examples[zone.index].level}
+                  </p>
+                  <p className="text-[10px] text-white/50">{stressor.name}</p>
+                </div>
+              </div>
+              <p className="text-xs text-white/80 mb-3">
+                {stressor.examples[zone.index].effect}
+              </p>
+              <div className="pt-3 border-t border-white/[0.08]">
+                <p className="text-[10px] text-white/50">Optimal dose:</p>
+                <p className="text-[10px]" style={{ color: zone.color }}>
+                  {stressor.optimalRange}
+                </p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Science toggle */}
+          <button
+            onClick={() => setShowScience(!showScience)}
+            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+          >
+            {showScience ? '▼ Hide' : '▶ Show'} the science
+          </button>
+
+          <AnimatePresence>
+            {showScience && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="w-full max-w-xs space-y-2"
+              >
+                <div className="relative overflow-hidden p-3 bg-green-500/10 border border-green-500/30 rounded-xl">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <p className="text-[10px] text-green-400 font-medium mb-1">🔬 Mechanism</p>
+                  <p className="text-[10px] text-white/60">{stressor.science}</p>
+                </div>
+                <div className="relative overflow-hidden p-3 bg-purple-500/10 border border-purple-500/30 rounded-xl">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <p className="text-[10px] text-purple-400 font-medium mb-1">📈 The Hormetic Response</p>
+                  <p className="text-[10px] text-white/60">
+                    Low doses stimulate beneficial adaptive responses. High doses overwhelm
+                    repair mechanisms and cause damage.
+                  </p>
+                </div>
+                <div className="relative overflow-hidden p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                  <p className="text-[10px] text-amber-400 font-medium mb-1">⚡ Adaptation</p>
+                  <p className="text-[10px] text-white/60">
+                    The body "overcompensates" for mild stress, becoming stronger than before.
+                    This is the foundation of all training.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Key insight */}
+          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <p className="text-xs text-white/60 leading-relaxed">
+              <span className="text-green-400 font-medium">The Hormesis Principle:</span> Small doses
+              of stress make you stronger. The dose makes the poison—and the medicine. What doesn't
+              kill you (in the right amount) truly makes you stronger.
             </p>
           </div>
-        </motion.div>
-      </AnimatePresence>
 
-      {/* Science toggle */}
-      <button
-        onClick={() => setShowScience(!showScience)}
-        className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-      >
-        {showScience ? '▼ Hide' : '▶ Show'} the science
-      </button>
-
-      <AnimatePresence>
-        {showScience && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="w-full max-w-xs space-y-2"
-          >
-            <div className="p-3 bg-green-500/10 border border-green-500/30 rounded-xl">
-              <p className="text-[10px] text-green-400 font-medium mb-1">🔬 Mechanism</p>
-              <p className="text-[10px] text-gray-400">{stressor.science}</p>
-            </div>
-            <div className="p-3 bg-purple-500/10 border border-purple-500/30 rounded-xl">
-              <p className="text-[10px] text-purple-400 font-medium mb-1">📈 The Hormetic Response</p>
-              <p className="text-[10px] text-gray-400">
-                Low doses stimulate beneficial adaptive responses. High doses overwhelm
-                repair mechanisms and cause damage.
-              </p>
-            </div>
-            <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl">
-              <p className="text-[10px] text-amber-400 font-medium mb-1">⚡ Adaptation</p>
-              <p className="text-[10px] text-gray-400">
-                The body "overcompensates" for mild stress, becoming stronger than before.
-                This is the foundation of all training.
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Key insight */}
-      <div className="bg-[#111113] border border-gray-800 rounded-xl p-4 max-w-xs">
-        <p className="text-xs text-gray-400 leading-relaxed">
-          <span className="text-green-400 font-medium">The Hormesis Principle:</span> Small doses
-          of stress make you stronger. The dose makes the poison—and the medicine. What doesn't
-          kill you (in the right amount) truly makes you stronger.
-        </p>
+          <p className="text-[10px] text-white/40">
+            Nietzsche / Nassim Taleb / Exercise Science
+          </p>
+        </div>
       </div>
-
-      <p className="text-[10px] text-gray-600">
-        Nietzsche / Nassim Taleb / Exercise Science
-      </p>
     </div>
   );
 }
