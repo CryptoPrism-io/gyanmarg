@@ -249,6 +249,48 @@ import levelEq08 from '@/assets/ai-images/levels/level-eq-08-leadership.webp';
 import levelEq09 from '@/assets/ai-images/levels/level-eq-09-dark-side.webp';
 import levelEq10 from '@/assets/ai-images/levels/level-eq-10-integration.webp';
 
+// ============================================
+// Level images - Sales Mastery (10)
+// ============================================
+import levelSm01 from '@/assets/ai-images/levels/level-sm-01-foundations.webp';
+import levelSm02 from '@/assets/ai-images/levels/level-sm-02-buyers.webp';
+import levelSm03 from '@/assets/ai-images/levels/level-sm-03-prospecting.webp';
+import levelSm04 from '@/assets/ai-images/levels/level-sm-04-discovery.webp';
+import levelSm05 from '@/assets/ai-images/levels/level-sm-05-pitch.webp';
+import levelSm06 from '@/assets/ai-images/levels/level-sm-06-objections.webp';
+import levelSm07 from '@/assets/ai-images/levels/level-sm-07-closing.webp';
+import levelSm08 from '@/assets/ai-images/levels/level-sm-08-relationships.webp';
+import levelSm09 from '@/assets/ai-images/levels/level-sm-09-psychology.webp';
+import levelSm10 from '@/assets/ai-images/levels/level-sm-10-leadership.webp';
+
+// ============================================
+// Level images - Personal Branding (10)
+// ============================================
+import levelPb01 from '@/assets/ai-images/levels/level-pb-01-foundations.webp';
+import levelPb02 from '@/assets/ai-images/levels/level-pb-02-niche.webp';
+import levelPb03 from '@/assets/ai-images/levels/level-pb-03-identity.webp';
+import levelPb04 from '@/assets/ai-images/levels/level-pb-04-content.webp';
+import levelPb05 from '@/assets/ai-images/levels/level-pb-05-platforms.webp';
+import levelPb06 from '@/assets/ai-images/levels/level-pb-06-audience.webp';
+import levelPb07 from '@/assets/ai-images/levels/level-pb-07-storytelling.webp';
+import levelPb08 from '@/assets/ai-images/levels/level-pb-08-monetization.webp';
+import levelPb09 from '@/assets/ai-images/levels/level-pb-09-thought-leadership.webp';
+import levelPb10 from '@/assets/ai-images/levels/level-pb-10-legacy.webp';
+
+// ============================================
+// Level images - Entrepreneurship 101 (10)
+// ============================================
+import levelEnt01 from '@/assets/ai-images/levels/level-ent-01-mindset.webp';
+import levelEnt02 from '@/assets/ai-images/levels/level-ent-02-ideas.webp';
+import levelEnt03 from '@/assets/ai-images/levels/level-ent-03-discovery.webp';
+import levelEnt04 from '@/assets/ai-images/levels/level-ent-04-models.webp';
+import levelEnt05 from '@/assets/ai-images/levels/level-ent-05-mvp.webp';
+import levelEnt06 from '@/assets/ai-images/levels/level-ent-06-offers.webp';
+import levelEnt07 from '@/assets/ai-images/levels/level-ent-07-growth.webp';
+import levelEnt08 from '@/assets/ai-images/levels/level-ent-08-systems.webp';
+import levelEnt09 from '@/assets/ai-images/levels/level-ent-09-funding.webp';
+import levelEnt10 from '@/assets/ai-images/levels/level-ent-10-scaling.webp';
+
 // Module ID to image mapping
 export const moduleImages: Record<string, string> = {
   // Original 16 modules
@@ -468,6 +510,42 @@ export const levelImages: Record<string, string> = {
   'eq-level8': levelEq08,
   'eq-level9': levelEq09,
   'eq-level10': levelEq10,
+
+  // Sales Mastery (10)
+  'sm-level1': levelSm01,
+  'sm-level2': levelSm02,
+  'sm-level3': levelSm03,
+  'sm-level4': levelSm04,
+  'sm-level5': levelSm05,
+  'sm-level6': levelSm06,
+  'sm-level7': levelSm07,
+  'sm-level8': levelSm08,
+  'sm-level9': levelSm09,
+  'sm-level10': levelSm10,
+
+  // Personal Branding (10)
+  'pb-level1': levelPb01,
+  'pb-level2': levelPb02,
+  'pb-level3': levelPb03,
+  'pb-level4': levelPb04,
+  'pb-level5': levelPb05,
+  'pb-level6': levelPb06,
+  'pb-level7': levelPb07,
+  'pb-level8': levelPb08,
+  'pb-level9': levelPb09,
+  'pb-level10': levelPb10,
+
+  // Entrepreneurship 101 (10)
+  'ent-level1': levelEnt01,
+  'ent-level2': levelEnt02,
+  'ent-level3': levelEnt03,
+  'ent-level4': levelEnt04,
+  'ent-level5': levelEnt05,
+  'ent-level6': levelEnt06,
+  'ent-level7': levelEnt07,
+  'ent-level8': levelEnt08,
+  'ent-level9': levelEnt09,
+  'ent-level10': levelEnt10,
 };
 
 // Helper to get module image with fallback

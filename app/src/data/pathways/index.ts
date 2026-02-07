@@ -21,6 +21,11 @@ export { default as polymathPathway } from './polymath';
 // Emotional Intelligence module
 export { default as emotionalIntelligencePathway } from './emotional-intelligence';
 
+// Wealth & Power modules
+export { default as salesMasteryPathway } from './sales-mastery';
+export { default as personalBrandingPathway } from './personal-branding';
+export { default as entrepreneurshipPathway } from './entrepreneurship';
+
 // FIRE Movement lessons for Wealth Building module
 export { fireLessons } from './wealth-fire';
 

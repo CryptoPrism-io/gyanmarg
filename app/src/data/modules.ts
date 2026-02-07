@@ -14,6 +14,11 @@ import { masterSynthesisPathway } from './pathways/master-synthesis';
 // New modules
 import { emotionalIntelligencePathway } from './pathways/emotional-intelligence';
 import { brainPathway } from './pathways/brain';
+
+// Wealth & Power modules
+import { salesMasteryPathway } from './pathways/sales-mastery';
+import { personalBrandingPathway } from './pathways/personal-branding';
+import { entrepreneurshipPathway } from './pathways/entrepreneurship';
 import { bodyPathway } from './pathways/body';
 import { spiritualityPathway } from './pathways/spirituality';
 import { shivaPathway } from './pathways/shiva';
@@ -579,7 +584,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Consultative Selling', 'Objection Handling', 'Closing Techniques', 'Relationship Building'],
     features: ['Sales Simulator', 'Objection Library', 'Pipeline Tracker', 'Role Play Scenarios'],
     route: '/modules/sales-mastery',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: salesMasteryPathway,
   },
   {
     id: 'personal-branding',
@@ -593,7 +599,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Brand Positioning', 'Content Strategy', 'Social Media', 'Thought Leadership'],
     features: ['Brand Canvas', 'Content Calendar', 'Bio Builder', 'Audience Analyzer'],
     route: '/modules/personal-branding',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: personalBrandingPathway,
   },
   {
     id: 'entrepreneurship-101',
@@ -607,7 +614,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Idea Validation', 'Business Models', 'Customer Discovery', 'MVP Building'],
     features: ['Idea Validator', 'Business Canvas', 'Interview Guide', 'Launch Checklist'],
     route: '/modules/entrepreneurship-101',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: entrepreneurshipPathway,
   },
   // Finance & Markets
   {
