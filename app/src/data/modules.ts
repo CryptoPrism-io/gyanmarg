@@ -25,6 +25,12 @@ import { shivaPathway } from './pathways/shiva';
 import { templePathway } from './pathways/temple';
 import { polymathPathway } from './pathways/polymath';
 
+// Ancient Wisdom modules
+import { stoicismPathway } from './pathways/stoicism';
+import { easternPhilosophyPathway } from './pathways/eastern-philosophy';
+import { vedicWisdomPathway } from './pathways/vedic-wisdom';
+import { mythologyPathway } from './pathways/mythology';
+
 export interface ModuleConfig {
   id: string;
   number: number;
@@ -1017,7 +1023,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Dichotomy of Control', 'Negative Visualization', 'Memento Mori', 'Virtue Ethics'],
     features: ['Daily Stoic', 'Meditation Journal', 'Virtue Tracker', 'Philosopher Profiles'],
     route: '/modules/stoicism',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: stoicismPathway,
   },
   {
     id: 'eastern-philosophy',
@@ -1031,7 +1038,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Taoism', 'Buddhism', 'Zen Practice', 'Confucian Ethics'],
     features: ['Philosophy Explorer', 'Meditation Guide', 'Koan Practice', 'Wisdom Library'],
     route: '/modules/eastern-philosophy',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: easternPhilosophyPathway,
   },
   {
     id: 'vedic-wisdom',
@@ -1045,7 +1053,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Vedantic Philosophy', 'Dharma & Karma', 'Self-Inquiry', 'Spiritual Practice'],
     features: ['Text Study', 'Concept Explorer', 'Practice Guide', 'Shloka Library'],
     route: '/modules/vedic-wisdom',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: vedicWisdomPathway,
   },
   {
     id: 'mythology',
@@ -1059,7 +1068,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Archetypes', 'Hero\'s Journey', 'Comparative Mythology', 'Symbol Interpretation'],
     features: ['Myth Explorer', 'Archetype Quiz', 'Story Analyzer', 'Pantheon Guide'],
     route: '/modules/mythology',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: mythologyPathway,
   },
 ];
 

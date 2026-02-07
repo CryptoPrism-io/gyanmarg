@@ -291,6 +291,54 @@ import levelEnt08 from '@/assets/ai-images/levels/level-ent-08-systems.webp';
 import levelEnt09 from '@/assets/ai-images/levels/level-ent-09-funding.webp';
 import levelEnt10 from '@/assets/ai-images/levels/level-ent-10-scaling.webp';
 
+// Stoicism level images
+import levelStoic01 from '@/assets/ai-images/levels/level-stoic-01-foundations.webp';
+import levelStoic02 from '@/assets/ai-images/levels/level-stoic-02-control.webp';
+import levelStoic03 from '@/assets/ai-images/levels/level-stoic-03-virtue.webp';
+import levelStoic04 from '@/assets/ai-images/levels/level-stoic-04-seneca.webp';
+import levelStoic05 from '@/assets/ai-images/levels/level-stoic-05-marcus.webp';
+import levelStoic06 from '@/assets/ai-images/levels/level-stoic-06-psychology.webp';
+import levelStoic07 from '@/assets/ai-images/levels/level-stoic-07-resilience.webp';
+import levelStoic08 from '@/assets/ai-images/levels/level-stoic-08-relationships.webp';
+import levelStoic09 from '@/assets/ai-images/levels/level-stoic-09-modern.webp';
+import levelStoic10 from '@/assets/ai-images/levels/level-stoic-10-integration.webp';
+
+// Eastern Philosophy level images
+import levelEast01 from '@/assets/ai-images/levels/level-east-01-landscape.webp';
+import levelEast02 from '@/assets/ai-images/levels/level-east-02-taoism.webp';
+import levelEast03 from '@/assets/ai-images/levels/level-east-03-buddhism.webp';
+import levelEast04 from '@/assets/ai-images/levels/level-east-04-zen.webp';
+import levelEast05 from '@/assets/ai-images/levels/level-east-05-confucianism.webp';
+import levelEast06 from '@/assets/ai-images/levels/level-east-06-mindfulness.webp';
+import levelEast07 from '@/assets/ai-images/levels/level-east-07-yoga.webp';
+import levelEast08 from '@/assets/ai-images/levels/level-east-08-japanese.webp';
+import levelEast09 from '@/assets/ai-images/levels/level-east-09-synthesis.webp';
+import levelEast10 from '@/assets/ai-images/levels/level-east-10-integration.webp';
+
+// Vedic Wisdom level images
+import levelVedic01 from '@/assets/ai-images/levels/level-vedic-01-tradition.webp';
+import levelVedic02 from '@/assets/ai-images/levels/level-vedic-02-upanishads.webp';
+import levelVedic03 from '@/assets/ai-images/levels/level-vedic-03-gita.webp';
+import levelVedic04 from '@/assets/ai-images/levels/level-vedic-04-dharma.webp';
+import levelVedic05 from '@/assets/ai-images/levels/level-vedic-05-yoga-sutras.webp';
+import levelVedic06 from '@/assets/ai-images/levels/level-vedic-06-vedanta.webp';
+import levelVedic07 from '@/assets/ai-images/levels/level-vedic-07-epics.webp';
+import levelVedic08 from '@/assets/ai-images/levels/level-vedic-08-ayurveda.webp';
+import levelVedic09 from '@/assets/ai-images/levels/level-vedic-09-thinkers.webp';
+import levelVedic10 from '@/assets/ai-images/levels/level-vedic-10-living.webp';
+
+// Mythology level images
+import levelMyth01 from '@/assets/ai-images/levels/level-myth-01-foundations.webp';
+import levelMyth02 from '@/assets/ai-images/levels/level-myth-02-hero-journey.webp';
+import levelMyth03 from '@/assets/ai-images/levels/level-myth-03-greek.webp';
+import levelMyth04 from '@/assets/ai-images/levels/level-myth-04-norse.webp';
+import levelMyth05 from '@/assets/ai-images/levels/level-myth-05-hindu.webp';
+import levelMyth06 from '@/assets/ai-images/levels/level-myth-06-egyptian.webp';
+import levelMyth07 from '@/assets/ai-images/levels/level-myth-07-world.webp';
+import levelMyth08 from '@/assets/ai-images/levels/level-myth-08-archetypes.webp';
+import levelMyth09 from '@/assets/ai-images/levels/level-myth-09-modern.webp';
+import levelMyth10 from '@/assets/ai-images/levels/level-myth-10-personal.webp';
+
 // Module ID to image mapping
 export const moduleImages: Record<string, string> = {
   // Original 16 modules
@@ -546,6 +594,54 @@ export const levelImages: Record<string, string> = {
   'ent-level8': levelEnt08,
   'ent-level9': levelEnt09,
   'ent-level10': levelEnt10,
+
+  // Stoicism
+  'stoic-level1': levelStoic01,
+  'stoic-level2': levelStoic02,
+  'stoic-level3': levelStoic03,
+  'stoic-level4': levelStoic04,
+  'stoic-level5': levelStoic05,
+  'stoic-level6': levelStoic06,
+  'stoic-level7': levelStoic07,
+  'stoic-level8': levelStoic08,
+  'stoic-level9': levelStoic09,
+  'stoic-level10': levelStoic10,
+
+  // Eastern Philosophy
+  'east-level1': levelEast01,
+  'east-level2': levelEast02,
+  'east-level3': levelEast03,
+  'east-level4': levelEast04,
+  'east-level5': levelEast05,
+  'east-level6': levelEast06,
+  'east-level7': levelEast07,
+  'east-level8': levelEast08,
+  'east-level9': levelEast09,
+  'east-level10': levelEast10,
+
+  // Vedic Wisdom
+  'vedic-level1': levelVedic01,
+  'vedic-level2': levelVedic02,
+  'vedic-level3': levelVedic03,
+  'vedic-level4': levelVedic04,
+  'vedic-level5': levelVedic05,
+  'vedic-level6': levelVedic06,
+  'vedic-level7': levelVedic07,
+  'vedic-level8': levelVedic08,
+  'vedic-level9': levelVedic09,
+  'vedic-level10': levelVedic10,
+
+  // Mythology
+  'myth-level1': levelMyth01,
+  'myth-level2': levelMyth02,
+  'myth-level3': levelMyth03,
+  'myth-level4': levelMyth04,
+  'myth-level5': levelMyth05,
+  'myth-level6': levelMyth06,
+  'myth-level7': levelMyth07,
+  'myth-level8': levelMyth08,
+  'myth-level9': levelMyth09,
+  'myth-level10': levelMyth10,
 };
 
 // Helper to get module image with fallback

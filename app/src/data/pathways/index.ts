@@ -26,6 +26,12 @@ export { default as salesMasteryPathway } from './sales-mastery';
 export { default as personalBrandingPathway } from './personal-branding';
 export { default as entrepreneurshipPathway } from './entrepreneurship';
 
+// Ancient Wisdom modules
+export { default as stoicismPathway } from './stoicism';
+export { default as easternPhilosophyPathway } from './eastern-philosophy';
+export { default as vedicWisdomPathway } from './vedic-wisdom';
+export { default as mythologyPathway } from './mythology';
+
 // FIRE Movement lessons for Wealth Building module
 export { fireLessons } from './wealth-fire';
 
