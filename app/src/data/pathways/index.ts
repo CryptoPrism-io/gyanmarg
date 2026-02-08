@@ -32,6 +32,16 @@ export { default as easternPhilosophyPathway } from './eastern-philosophy';
 export { default as vedicWisdomPathway } from './vedic-wisdom';
 export { default as mythologyPathway } from './mythology';
 
+// Bharat modules
+export { default as bhagavadGitaPathway } from './bhagavad-gita';
+export { default as ramayanaPathway } from './ramayana-mahabharata';
+export { default as upanishadsPathway } from './upanishads';
+export { default as shivSutrasPathway } from './shiv-sutras';
+export { default as ayurvedaPathway } from './ayurveda';
+export { default as yogaPhilosophyPathway } from './yoga-philosophy';
+export { default as sanskritMantrasPathway } from './sanskrit-mantras';
+export { default as jyotishVastuPathway } from './jyotish-vastu';
+
 // FIRE Movement lessons for Wealth Building module
 export { fireLessons } from './wealth-fire';
 

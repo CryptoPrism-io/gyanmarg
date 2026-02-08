@@ -31,6 +31,16 @@ import { easternPhilosophyPathway } from './pathways/eastern-philosophy';
 import { vedicWisdomPathway } from './pathways/vedic-wisdom';
 import { mythologyPathway } from './pathways/mythology';
 
+// Bharat modules
+import { bhagavadGitaPathway } from './pathways/bhagavad-gita';
+import { ramayanaPathway } from './pathways/ramayana-mahabharata';
+import { upanishadsPathway } from './pathways/upanishads';
+import { shivSutrasPathway } from './pathways/shiv-sutras';
+import { ayurvedaPathway } from './pathways/ayurveda';
+import { yogaPhilosophyPathway } from './pathways/yoga-philosophy';
+import { sanskritMantrasPathway } from './pathways/sanskrit-mantras';
+import { jyotishVastuPathway } from './pathways/jyotish-vastu';
+
 export interface ModuleConfig {
   id: string;
   number: number;
@@ -513,7 +523,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Dosha Analysis', 'Herbal Medicine', 'Dietary Principles', 'Lifestyle Design'],
     features: ['Dosha Quiz', 'Herb Database', 'Diet Planner', 'Routine Builder'],
     route: '/modules/ayurveda',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: ayurvedaPathway,
   },
   {
     id: 'mathematics-patterns',
@@ -693,7 +704,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Eight Limbs', 'Yamas & Niyamas', 'Asana Philosophy', 'Meditation Practice'],
     features: ['Sutra Study', 'Practice Guide', 'Philosophy Map', 'Daily Reflection'],
     route: '/modules/yoga-philosophy',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: yogaPhilosophyPathway,
   },
   // Synthesis & Mastery
   {
@@ -1070,6 +1082,99 @@ export const modules: ModuleConfig[] = [
     route: '/modules/mythology',
     isAvailable: true,
     pathway: mythologyPathway,
+  },
+  // ============================================
+  // BHARAT CATEGORY - NEW MODULES (71-76)
+  // ============================================
+  {
+    id: 'bhagavad-gita',
+    number: 71,
+    title: 'Bhagavad Gita',
+    subtitle: 'Actionable Wisdom',
+    description: 'Extract timeless principles from the Gita: detached action for peak performance, the three Gunas as energy management, and meditation techniques for modern life.',
+    icon: 'book-open',
+    color: 'orange',
+    books: ['Bhagavad Gita', 'The Gita Way', 'Karma Yoga by Vivekananda'],
+    skills: ['Detached Action', 'Energy Management', 'Meditation', 'Decision-Making', 'Self-Inquiry'],
+    features: ['Guna Assessment', 'Karma Yoga Tracker', 'Meditation Timer', 'Shloka Library'],
+    route: '/modules/bhagavad-gita',
+    isAvailable: true,
+    pathway: bhagavadGitaPathway,
+  },
+  {
+    id: 'ramayana-mahabharata',
+    number: 72,
+    title: 'Ramayana & Mahabharata',
+    subtitle: 'Epic Leadership',
+    description: 'Leadership, strategy, and moral complexity from the great Indian epics. Governance wisdom, alliance building, and resilience frameworks.',
+    icon: 'swords',
+    color: 'amber',
+    books: ['Ramayana', 'Mahabharata', 'Rajadharma Texts'],
+    skills: ['Strategic Leadership', 'Alliance Building', 'Resilience', 'Governance', 'Moral Reasoning'],
+    features: ['Character Profiles', 'Strategy Analyzer', 'Dharma Dilemmas', 'Leadership Journal'],
+    route: '/modules/ramayana-mahabharata',
+    isAvailable: true,
+    pathway: ramayanaPathway,
+  },
+  {
+    id: 'upanishads',
+    number: 73,
+    title: 'Upanishads',
+    subtitle: 'Self-Inquiry',
+    description: 'Master self-inquiry and consciousness exploration. Turn Upanishadic wisdom into practical self-coaching questions and awareness practices.',
+    icon: 'eye',
+    color: 'purple',
+    books: ['Principal Upanishads', 'Isha Upanishad', 'Katha Upanishad', 'Mandukya Upanishad'],
+    skills: ['Self-Inquiry', 'Consciousness Studies', 'Meditation', 'Critical Thinking', 'Awareness'],
+    features: ['Inquiry Practice', 'Consciousness Map', 'Meditation Guide', 'Kosha Explorer'],
+    route: '/modules/upanishads',
+    isAvailable: true,
+    pathway: upanishadsPathway,
+  },
+  {
+    id: 'shiv-sutras',
+    number: 74,
+    title: 'Shiv Sutras & Tantra',
+    subtitle: 'Consciousness Tech',
+    description: 'Kashmir Shaivism as consciousness technology: 112 meditation techniques, Spanda (vibration doctrine), and non-dual awareness practices.',
+    icon: 'flame',
+    color: 'violet',
+    books: ['Shiva Sutras', 'Spanda Karikas', 'Vijnanabhairava Tantra'],
+    skills: ['Meditation Mastery', 'Energy Awareness', 'Non-Dual Practice', 'Breath Work', 'Self-Recognition'],
+    features: ['112 Meditations', 'Chakra Explorer', 'Practice Timer', 'Sutra Study'],
+    route: '/modules/shiv-sutras',
+    isAvailable: true,
+    pathway: shivSutrasPathway,
+  },
+  {
+    id: 'sanskrit-mantras',
+    number: 75,
+    title: 'Sanskrit & Mantras',
+    subtitle: 'Sacred Sound Science',
+    description: 'The neuroscience of Sanskrit: how chanting rewires your nervous system, core mantras for daily practice, and the beauty of the most precise language.',
+    icon: 'volume-2',
+    color: 'rose',
+    books: ['Sanskrit Grammar', 'Mantra Shastra', 'Kalidasa Works'],
+    skills: ['Sanskrit Basics', 'Mantra Practice', 'Sound Science', 'Chanting', 'Literary Appreciation'],
+    features: ['Mantra Library', 'Chanting Guide', 'Script Trainer', 'Phonetics Lab'],
+    route: '/modules/sanskrit-mantras',
+    isAvailable: true,
+    pathway: sanskritMantrasPathway,
+  },
+  {
+    id: 'jyotish-vastu',
+    number: 76,
+    title: 'Jyotish & Vastu',
+    subtitle: 'Timing & Space',
+    description: 'Pattern recognition through Jyotish and space optimization through Vastu. Strategic timing for decisions and environmental design for productivity.',
+    icon: 'compass',
+    color: 'teal',
+    books: ['Brihat Parashara Hora Shastra', 'Vastu Shastra', 'Muhurta Texts'],
+    skills: ['Pattern Recognition', 'Strategic Timing', 'Space Design', 'Cycle Awareness', 'Sacred Geometry'],
+    features: ['Timing Calculator', 'Space Optimizer', 'Yantra Gallery', 'Cycle Tracker'],
+    route: '/modules/jyotish-vastu',
+    isAvailable: true,
+    pathway: jyotishVastuPathway,
   },
 ];
 

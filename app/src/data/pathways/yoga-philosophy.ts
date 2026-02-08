@@ -1,0 +1,115 @@
+import type { PathwayLevel } from '@/types';
+import {
+  yogaLessonsLevel1,
+  yogaLessonsLevel2,
+  yogaLessonsLevel3,
+  yogaLessonsLevel3Part2,
+  yogaLessonsLevel4,
+  yogaLessonsLevel4Part2,
+  yogaLessonsLevel5,
+  yogaLessonsLevel5Remaining,
+  yogaLessonsLevel6,
+  yogaLessonsLevel7,
+  yogaLessonsLevel8,
+  yogaLessonsLevel9,
+  yogaLessonsLevel10,
+} from './yoga-philosophy-lessons';
+
+/**
+ * Yoga Philosophy Pathway
+ * 80 lessons across 10 levels covering the intellectual system behind yoga
+ */
+export const yogaPhilosophyPathway: PathwayLevel[] = [
+  {
+    id: 'yoga-level1',
+    title: 'Level 1: Origins & History of Yoga',
+    description: 'What yoga really is — hint: not just poses',
+    icon: '📜',
+    color: 'amber',
+    unlockRequirement: 0,
+    lessons: yogaLessonsLevel1,
+  },
+  {
+    id: 'yoga-level2',
+    title: 'Level 2: Samadhi Pada — Absorption',
+    description: 'Mastering the mind and states of deep focus',
+    icon: '🌀',
+    color: 'purple',
+    unlockRequirement: 500,
+    lessons: yogaLessonsLevel2,
+  },
+  {
+    id: 'yoga-level3',
+    title: 'Level 3: Sadhana Pada — Practice',
+    description: 'The eight limbs and overcoming mental afflictions',
+    icon: '🛤️',
+    color: 'blue',
+    unlockRequirement: 1000,
+    lessons: [...yogaLessonsLevel3, ...yogaLessonsLevel3Part2],
+  },
+  {
+    id: 'yoga-level4',
+    title: 'Level 4: Vibhuti Pada — Powers',
+    description: 'Focus mastery and extraordinary human capabilities',
+    icon: '⚡',
+    color: 'orange',
+    unlockRequirement: 1500,
+    lessons: [...yogaLessonsLevel4, ...yogaLessonsLevel4Part2],
+  },
+  {
+    id: 'yoga-level5',
+    title: 'Level 5: Kaivalya Pada — Liberation',
+    description: 'Nature of consciousness and ultimate freedom',
+    icon: '🕊️',
+    color: 'emerald',
+    unlockRequirement: 2000,
+    lessons: [...yogaLessonsLevel5, ...yogaLessonsLevel5Remaining],
+  },
+  {
+    id: 'yoga-level6',
+    title: 'Level 6: Hatha Yoga Pradipika',
+    description: 'Pranayama, bandhas, mudras, and energy practices',
+    icon: '🫁',
+    color: 'rose',
+    unlockRequirement: 2500,
+    lessons: yogaLessonsLevel6,
+  },
+  {
+    id: 'yoga-level7',
+    title: 'Level 7: Kundalini & Tantra Yoga',
+    description: 'Energy systems, chakras, and tantra philosophy',
+    icon: '🐍',
+    color: 'red',
+    unlockRequirement: 3000,
+    lessons: yogaLessonsLevel7,
+  },
+  {
+    id: 'yoga-level8',
+    title: 'Level 8: Bhakti & Karma Yoga',
+    description: 'Devotion and selfless service as paths to mastery',
+    icon: '💝',
+    color: 'pink',
+    unlockRequirement: 3500,
+    lessons: yogaLessonsLevel8,
+  },
+  {
+    id: 'yoga-level9',
+    title: 'Level 9: Modern Yoga Schools',
+    description: 'Iyengar, Ashtanga Vinyasa, Yin, and their evolution',
+    icon: '🏫',
+    color: 'teal',
+    unlockRequirement: 4000,
+    lessons: yogaLessonsLevel9,
+  },
+  {
+    id: 'yoga-level10',
+    title: 'Level 10: Integration & Living Practice',
+    description: 'Building your personal practice — yoga off the mat',
+    icon: '🌟',
+    color: 'indigo',
+    unlockRequirement: 4500,
+    lessons: yogaLessonsLevel10,
+  },
+];
+
+export default yogaPhilosophyPathway;

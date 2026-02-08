@@ -89,13 +89,15 @@ function CelebrationModals() {
     }
   }, [pendingAchievement]);
 
-  // Handle pending level up
+  // Handle pending level up — auto-clear without blocking modal
+  // (disabled modal to prevent it from blocking game interactions)
   useEffect(() => {
     if (pendingLevelUp) {
       setCurrentLevel(pendingLevelUp);
-      setShowLevelUp(true);
+      // Auto-clear instead of showing blocking modal
+      clearPendingLevelUp();
     }
-  }, [pendingLevelUp]);
+  }, [pendingLevelUp, clearPendingLevelUp]);
 
   const handleAchievementClose = () => {
     setShowAchievement(false);

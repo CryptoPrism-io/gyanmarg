@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Trophy,
@@ -9,6 +9,7 @@ import {
   Zap,
   Heart,
   Star,
+  Play,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useUserStore } from '@/store/userStore';
@@ -20,7 +21,7 @@ import { LessonViewer } from '@/components/organisms/LessonViewer';
 import { SignInGate } from '@/components/organisms';
 import type { PathwayLevel, PathwayLesson } from '@/types';
 import { modules } from '@/data/modules';
-import { moduleCategories, getCategoriesWithModules } from '@/data/categories';
+import { moduleCategories, getCategoriesWithModules, getCategoryForModule } from '@/data/categories';
 import { getModuleImage, getLevelImage } from '@/lib/moduleImages';
 
 export function LearningPathway() {
@@ -57,6 +58,46 @@ export function LearningPathway() {
     []
   );
 
+  // Continue Reading — find the first incomplete lesson in any module with progress
+  const continueReading = useMemo(() => {
+    const availableModules = modules.filter((m) => m.isAvailable && m.pathway);
+    for (const mod of availableModules) {
+      if (!mod.pathway) continue;
+      // Check if this module has any completed lessons (user has started it)
+      const hasProgress = mod.pathway.some((level) =>
+        level.lessons.some((lesson) => isLessonCompleted(lesson.id))
+      );
+      if (!hasProgress) continue;
+
+      // Find first incomplete lesson
+      for (let lvlIdx = 0; lvlIdx < mod.pathway.length; lvlIdx++) {
+        const level = mod.pathway[lvlIdx];
+        for (let lessonIdx = 0; lessonIdx < level.lessons.length; lessonIdx++) {
+          const lesson = level.lessons[lessonIdx];
+          if (!isLessonCompleted(lesson.id)) {
+            const totalLessons = mod.pathway.reduce((acc, l) => acc + l.lessons.length, 0);
+            const completedLessons = mod.pathway.flatMap((l) => l.lessons).filter((l) => isLessonCompleted(l.id)).length;
+            let globalIdx = 0;
+            for (let i = 0; i < lvlIdx; i++) globalIdx += mod.pathway[i].lessons.length;
+            globalIdx += lessonIdx;
+            return {
+              module: mod,
+              level,
+              lesson,
+              levelIndex: lvlIdx,
+              lessonIndex: lessonIdx,
+              globalIndex: globalIdx,
+              progress: Math.round((completedLessons / totalLessons) * 100),
+              completedLessons,
+              totalLessons,
+            };
+          }
+        }
+      }
+    }
+    return null;
+  }, [isLessonCompleted]);
+
   // Categorized modules for Netflix-style display
   const categorizedModules = useMemo(() => getCategoriesWithModules(modules), []);
 
@@ -75,6 +116,23 @@ export function LearningPathway() {
       }, 100);
     }
   }, [selectedCategoryId, selectedModuleId, selectedComingSoonModuleId]);
+
+  // Handle favorite card click — navigate to parent category and select module there
+  const handleFavoriteModuleClick = useCallback((moduleId: string) => {
+    const category = getCategoryForModule(moduleId);
+    if (category) {
+      // Clear any active category filter so the parent category is visible
+      setActiveCategory(null);
+      setSelectedModuleId(moduleId);
+      setSelectedComingSoonModuleId(null);
+      setSelectedLevelId(null);
+      setSelectedCategoryId(category.id);
+      // Scroll to that category
+      setTimeout(() => {
+        categoryRefs.current[category.id]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    }
+  }, []);
 
   // Get selected Coming Soon module
   const selectedComingSoonModule = useMemo(
@@ -287,6 +345,64 @@ export function LearningPathway() {
           onCategorySelect={setActiveCategory}
         />
 
+        {/* Continue Reading Section — shows the next unfinished lesson */}
+        {continueReading && !activeCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-4 mb-6 scroll-mt-20"
+          >
+            <div className="flex items-center gap-3 mb-3 px-1">
+              <Play className="w-5 h-5 text-lavender fill-lavender" />
+              <h2 className="text-base font-semibold text-lavender">Continue Reading</h2>
+            </div>
+            <button
+              onClick={() => {
+                setSelectedModuleId(continueReading.module.id);
+                setSelectedComingSoonModuleId(null);
+                setSelectedLevelId(null);
+                handleOpenLesson(
+                  continueReading.lesson,
+                  continueReading.globalIndex,
+                  continueReading.levelIndex
+                );
+              }}
+              className="w-full text-left rounded-2xl border border-lavender/20 bg-lavender/[0.04] hover:bg-lavender/[0.08] transition-all overflow-hidden group"
+            >
+              <div className="flex items-center gap-4 p-4">
+                <img
+                  src={getModuleImage(continueReading.module.id)}
+                  alt={continueReading.module.title}
+                  className="w-14 h-14 rounded-xl object-cover border border-lavender/20 flex-shrink-0"
+                />
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs text-text-muted mb-0.5 truncate">
+                    {continueReading.module.title} &middot; {continueReading.level.title.replace(/^Level \d+: /, '')}
+                  </p>
+                  <p className="text-sm font-semibold text-text-primary group-hover:text-lavender transition-colors truncate">
+                    {continueReading.lesson.title}
+                  </p>
+                  <div className="flex items-center gap-3 mt-1.5">
+                    <div className="flex-1 h-1.5 rounded-full bg-white/[0.06] overflow-hidden max-w-[120px]">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-lavender to-sky"
+                        style={{ width: `${continueReading.progress}%` }}
+                      />
+                    </div>
+                    <span className="text-[10px] text-text-muted">
+                      {continueReading.completedLessons}/{continueReading.totalLessons} lessons
+                    </span>
+                    <span className="text-[10px] text-golden">
+                      {continueReading.lesson.duration} min
+                    </span>
+                  </div>
+                </div>
+                <ArrowRight className="w-5 h-5 text-lavender/50 group-hover:text-lavender transition-colors flex-shrink-0" />
+              </div>
+            </button>
+          </motion.div>
+        )}
+
         {/* Favorites Section — shown at top when user has favorites */}
         {favoriteModuleConfigs.length > 0 && !activeCategory && (
           <motion.div
@@ -315,15 +431,7 @@ export function LearningPathway() {
                   isActive={selectedModuleId === mod.id}
                   isFavorite={true}
                   onToggleFavorite={() => toggleFavoriteModule(mod.id)}
-                  onClick={() => {
-                    if (selectedModuleId === mod.id) {
-                      setSelectedModuleId(null);
-                    } else {
-                      setSelectedModuleId(mod.id);
-                      setSelectedComingSoonModuleId(null);
-                      setSelectedLevelId(null);
-                    }
-                  }}
+                  onClick={() => handleFavoriteModuleClick(mod.id)}
                 />
               ))}
             </div>

@@ -40,13 +40,22 @@ export const moduleCategories: ModuleCategory[] = [
     order: 4,
   },
   {
+    id: 'bharat-wisdom',
+    name: 'Bharat',
+    icon: '🙏',
+    description: 'Timeless Indian wisdom made actionable for modern life',
+    color: 'orange',
+    moduleIds: ['bhagavad-gita', 'ramayana-mahabharata', 'upanishads', 'shiv-sutras', 'ayurveda', 'yoga-philosophy', 'sanskrit-mantras', 'jyotish-vastu', 'vedic-wisdom', 'shiva-shakti', 'temple-science'],
+    order: 5,
+  },
+  {
     id: 'spirit-body',
     name: 'Spirit & Body',
     icon: '🕉️',
     description: 'Optimize your body and explore spiritual traditions',
     color: 'amber',
-    moduleIds: ['body-longevity', 'spirituality-sadhana', 'shiva-shakti', 'temple-science', 'yoga-philosophy'],
-    order: 5,
+    moduleIds: ['body-longevity', 'spirituality-sadhana'],
+    order: 6,
   },
   {
     id: 'synthesis-mastery',
@@ -55,7 +64,7 @@ export const moduleCategories: ModuleCategory[] = [
     description: 'Connect knowledge across domains and become a modern polymath',
     color: 'indigo',
     moduleIds: ['master-synthesis', 'polymath-mastery', 'mental-models', 'first-principles', 'meta-learning'],
-    order: 6,
+    order: 7,
   },
   {
     id: 'science-universe',
@@ -64,7 +73,7 @@ export const moduleCategories: ModuleCategory[] = [
     description: 'Explore astronomy, physics, and engineering principles',
     color: 'cyan',
     moduleIds: ['astronomy', 'physics-engineering', 'biology-evolution', 'quantum-mechanics', 'earth-sciences'],
-    order: 7,
+    order: 8,
   },
   {
     id: 'creative-arts',
@@ -73,7 +82,7 @@ export const moduleCategories: ModuleCategory[] = [
     description: 'Master storytelling, writing, music, and creative expression',
     color: 'rose',
     moduleIds: ['writing-storytelling', 'music-sound', 'creative-writing', 'content-creation', 'world-building'],
-    order: 8,
+    order: 9,
   },
   {
     id: 'strategy-systems',
@@ -82,7 +91,7 @@ export const moduleCategories: ModuleCategory[] = [
     description: 'Strategic thinking, game theory, and complex systems',
     color: 'slate',
     moduleIds: ['strategic-thinking', 'systems-complexity', 'game-theory', 'decision-making', 'risk-management'],
-    order: 9,
+    order: 10,
   },
   {
     id: 'history-culture',
@@ -91,7 +100,7 @@ export const moduleCategories: ModuleCategory[] = [
     description: 'Learn from civilizations past and philosophical traditions',
     color: 'orange',
     moduleIds: ['history-civilizations', 'western-philosophy', 'ancient-empires', 'modern-history', 'cultural-anthropology'],
-    order: 10,
+    order: 11,
   },
   {
     id: 'practical-mastery',
@@ -100,7 +109,7 @@ export const moduleCategories: ModuleCategory[] = [
     description: 'Design thinking, cybersecurity, and startup innovation',
     color: 'teal',
     moduleIds: ['design-thinking', 'cybersecurity', 'startups-innovation', 'leadership', 'problem-solving', 'productivity-systems'],
-    order: 11,
+    order: 12,
   },
   {
     id: 'relationships-society',
@@ -109,16 +118,16 @@ export const moduleCategories: ModuleCategory[] = [
     description: 'Social dynamics, geopolitics, and communication mastery',
     color: 'pink',
     moduleIds: ['relationships-social', 'geopolitics', 'communication-rhetoric', 'dating-attraction', 'networking', 'parenting', 'social-intelligence'],
-    order: 12,
+    order: 13,
   },
   {
     id: 'ancient-wisdom',
     name: 'Ancient Wisdom',
     icon: '🪷',
-    description: 'Ayurveda, sacred mathematics, and timeless knowledge',
+    description: 'Sacred mathematics, Stoic and Eastern philosophy, and timeless myths',
     color: 'yellow',
-    moduleIds: ['ayurveda', 'mathematics-patterns', 'stoicism', 'eastern-philosophy', 'vedic-wisdom', 'mythology'],
-    order: 13,
+    moduleIds: ['mathematics-patterns', 'stoicism', 'eastern-philosophy', 'mythology'],
+    order: 14,
   },
 ];
 

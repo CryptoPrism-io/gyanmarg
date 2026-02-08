@@ -92,6 +92,13 @@ import moduleStoicism from '@/assets/ai-images/modules/module-stoicism.webp';
 import moduleEasternPhilosophy from '@/assets/ai-images/modules/module-eastern-philosophy.webp';
 import moduleVedicWisdom from '@/assets/ai-images/modules/module-vedic-wisdom.webp';
 import moduleMythology from '@/assets/ai-images/modules/module-mythology.webp';
+// Bharat
+import moduleBhagavadGita from '@/assets/ai-images/modules/module-bhagavad-gita.webp';
+import moduleRamayanaMahabharata from '@/assets/ai-images/modules/module-ramayana-mahabharata.webp';
+import moduleUpanishads from '@/assets/ai-images/modules/module-upanishads.webp';
+import moduleShivSutras from '@/assets/ai-images/modules/module-shiv-sutras.webp';
+import moduleSanskritMantras from '@/assets/ai-images/modules/module-sanskrit-mantras.webp';
+import moduleJyotishVastu from '@/assets/ai-images/modules/module-jyotish-vastu.webp';
 
 // ============================================
 // Level images - Personal Development (10)
@@ -339,6 +346,118 @@ import levelMyth08 from '@/assets/ai-images/levels/level-myth-08-archetypes.webp
 import levelMyth09 from '@/assets/ai-images/levels/level-myth-09-modern.webp';
 import levelMyth10 from '@/assets/ai-images/levels/level-myth-10-personal.webp';
 
+// ============================================
+// Level images - Bhagavad Gita (10)
+// ============================================
+import levelGita01 from '@/assets/ai-images/levels/level-gita-01-crisis.webp';
+import levelGita02 from '@/assets/ai-images/levels/level-gita-02-karma.webp';
+import levelGita03 from '@/assets/ai-images/levels/level-gita-03-jnana.webp';
+import levelGita04 from '@/assets/ai-images/levels/level-gita-04-bhakti.webp';
+import levelGita05 from '@/assets/ai-images/levels/level-gita-05-gunas.webp';
+import levelGita06 from '@/assets/ai-images/levels/level-gita-06-dhyana.webp';
+import levelGita07 from '@/assets/ai-images/levels/level-gita-07-vibhuti.webp';
+import levelGita08 from '@/assets/ai-images/levels/level-gita-08-vishwarupa.webp';
+import levelGita09 from '@/assets/ai-images/levels/level-gita-09-kshetra.webp';
+import levelGita10 from '@/assets/ai-images/levels/level-gita-10-moksha.webp';
+
+// ============================================
+// Level images - Ramayana & Mahabharata (10)
+// ============================================
+import levelEpic01 from '@/assets/ai-images/levels/level-epic-01-bala.webp';
+import levelEpic02 from '@/assets/ai-images/levels/level-epic-02-exile.webp';
+import levelEpic03 from '@/assets/ai-images/levels/level-epic-03-alliance.webp';
+import levelEpic04 from '@/assets/ai-images/levels/level-epic-04-war.webp';
+import levelEpic05 from '@/assets/ai-images/levels/level-epic-05-dharma.webp';
+import levelEpic06 from '@/assets/ai-images/levels/level-epic-06-adi.webp';
+import levelEpic07 from '@/assets/ai-images/levels/level-epic-07-sabha.webp';
+import levelEpic08 from '@/assets/ai-images/levels/level-epic-08-diplomacy.webp';
+import levelEpic09 from '@/assets/ai-images/levels/level-epic-09-grief.webp';
+import levelEpic10 from '@/assets/ai-images/levels/level-epic-10-shanti.webp';
+
+// ============================================
+// Level images - Upanishads (10)
+// ============================================
+import levelUpan01 from '@/assets/ai-images/levels/level-upan-01-intro.webp';
+import levelUpan02 from '@/assets/ai-images/levels/level-upan-02-isha.webp';
+import levelUpan03 from '@/assets/ai-images/levels/level-upan-03-katha.webp';
+import levelUpan04 from '@/assets/ai-images/levels/level-upan-04-mundaka.webp';
+import levelUpan05 from '@/assets/ai-images/levels/level-upan-05-mandukya.webp';
+import levelUpan06 from '@/assets/ai-images/levels/level-upan-06-taittiriya.webp';
+import levelUpan07 from '@/assets/ai-images/levels/level-upan-07-chandogya.webp';
+import levelUpan08 from '@/assets/ai-images/levels/level-upan-08-brihadaranyaka.webp';
+import levelUpan09 from '@/assets/ai-images/levels/level-upan-09-shvetashvatara.webp';
+import levelUpan10 from '@/assets/ai-images/levels/level-upan-10-synthesis.webp';
+
+// ============================================
+// Level images - Shiv Sutras (10)
+// ============================================
+import levelShiv01 from '@/assets/ai-images/levels/level-shiv-01-kashmir.webp';
+import levelShiv02 from '@/assets/ai-images/levels/level-shiv-02-shambhava.webp';
+import levelShiv03 from '@/assets/ai-images/levels/level-shiv-03-shakta.webp';
+import levelShiv04 from '@/assets/ai-images/levels/level-shiv-04-anava.webp';
+import levelShiv05 from '@/assets/ai-images/levels/level-shiv-05-spanda.webp';
+import levelShiv06 from '@/assets/ai-images/levels/level-shiv-06-pratyabhijna.webp';
+import levelShiv07 from '@/assets/ai-images/levels/level-shiv-07-vijnana.webp';
+import levelShiv08 from '@/assets/ai-images/levels/level-shiv-08-tantric.webp';
+import levelShiv09 from '@/assets/ai-images/levels/level-shiv-09-kundalini.webp';
+import levelShiv10 from '@/assets/ai-images/levels/level-shiv-10-nondual.webp';
+
+// ============================================
+// Level images - Ayurveda (10)
+// ============================================
+import levelAyur01 from '@/assets/ai-images/levels/level-ayur-01-foundations.webp';
+import levelAyur02 from '@/assets/ai-images/levels/level-ayur-02-tridosha.webp';
+import levelAyur03 from '@/assets/ai-images/levels/level-ayur-03-prakriti.webp';
+import levelAyur04 from '@/assets/ai-images/levels/level-ayur-04-dinacharya.webp';
+import levelAyur05 from '@/assets/ai-images/levels/level-ayur-05-ahara.webp';
+import levelAyur06 from '@/assets/ai-images/levels/level-ayur-06-dravyaguna.webp';
+import levelAyur07 from '@/assets/ai-images/levels/level-ayur-07-panchakarma.webp';
+import levelAyur08 from '@/assets/ai-images/levels/level-ayur-08-rasa.webp';
+import levelAyur09 from '@/assets/ai-images/levels/level-ayur-09-psychology.webp';
+import levelAyur10 from '@/assets/ai-images/levels/level-ayur-10-modern.webp';
+
+// ============================================
+// Level images - Yoga Philosophy (10)
+// ============================================
+import levelYoga01 from '@/assets/ai-images/levels/level-yoga-01-origins.webp';
+import levelYoga02 from '@/assets/ai-images/levels/level-yoga-02-samadhi.webp';
+import levelYoga03 from '@/assets/ai-images/levels/level-yoga-03-sadhana.webp';
+import levelYoga04 from '@/assets/ai-images/levels/level-yoga-04-vibhuti.webp';
+import levelYoga05 from '@/assets/ai-images/levels/level-yoga-05-kaivalya.webp';
+import levelYoga06 from '@/assets/ai-images/levels/level-yoga-06-hatha.webp';
+import levelYoga07 from '@/assets/ai-images/levels/level-yoga-07-kundalini.webp';
+import levelYoga08 from '@/assets/ai-images/levels/level-yoga-08-bhakti.webp';
+import levelYoga09 from '@/assets/ai-images/levels/level-yoga-09-modern.webp';
+import levelYoga10 from '@/assets/ai-images/levels/level-yoga-10-integration.webp';
+
+// ============================================
+// Level images - Sanskrit & Mantras (10)
+// ============================================
+import levelSans01 from '@/assets/ai-images/levels/level-sans-01-devanagari.webp';
+import levelSans02 from '@/assets/ai-images/levels/level-sans-02-grammar.webp';
+import levelSans03 from '@/assets/ai-images/levels/level-sans-03-chanting.webp';
+import levelSans04 from '@/assets/ai-images/levels/level-sans-04-gayatri.webp';
+import levelSans05 from '@/assets/ai-images/levels/level-sans-05-stotras.webp';
+import levelSans06 from '@/assets/ai-images/levels/level-sans-06-sound.webp';
+import levelSans07 from '@/assets/ai-images/levels/level-sans-07-literature.webp';
+import levelSans08 from '@/assets/ai-images/levels/level-sans-08-kavya.webp';
+import levelSans09 from '@/assets/ai-images/levels/level-sans-09-darshana.webp';
+import levelSans10 from '@/assets/ai-images/levels/level-sans-10-living.webp';
+
+// ============================================
+// Level images - Jyotish & Vastu (10)
+// ============================================
+import levelJyot01 from '@/assets/ai-images/levels/level-jyot-01-foundations.webp';
+import levelJyot02 from '@/assets/ai-images/levels/level-jyot-02-navagraha.webp';
+import levelJyot03 from '@/assets/ai-images/levels/level-jyot-03-rashis.webp';
+import levelJyot04 from '@/assets/ai-images/levels/level-jyot-04-bhavas.webp';
+import levelJyot05 from '@/assets/ai-images/levels/level-jyot-05-dashas.webp';
+import levelJyot06 from '@/assets/ai-images/levels/level-jyot-06-muhurta.webp';
+import levelJyot07 from '@/assets/ai-images/levels/level-jyot-07-vastu.webp';
+import levelJyot08 from '@/assets/ai-images/levels/level-jyot-08-workplace.webp';
+import levelJyot09 from '@/assets/ai-images/levels/level-jyot-09-yantras.webp';
+import levelJyot10 from '@/assets/ai-images/levels/level-jyot-10-integration.webp';
+
 // Module ID to image mapping
 export const moduleImages: Record<string, string> = {
   // Original 16 modules
@@ -433,6 +552,13 @@ export const moduleImages: Record<string, string> = {
   'eastern-philosophy': moduleEasternPhilosophy,
   'vedic-wisdom': moduleVedicWisdom,
   'mythology': moduleMythology,
+  // Bharat
+  'bhagavad-gita': moduleBhagavadGita,
+  'ramayana-mahabharata': moduleRamayanaMahabharata,
+  'upanishads': moduleUpanishads,
+  'shiv-sutras': moduleShivSutras,
+  'sanskrit-mantras': moduleSanskritMantras,
+  'jyotish-vastu': moduleJyotishVastu,
 };
 
 // Level ID to image mapping - all 75 levels
@@ -642,6 +768,102 @@ export const levelImages: Record<string, string> = {
   'myth-level8': levelMyth08,
   'myth-level9': levelMyth09,
   'myth-level10': levelMyth10,
+
+  // Bhagavad Gita
+  'gita-level1': levelGita01,
+  'gita-level2': levelGita02,
+  'gita-level3': levelGita03,
+  'gita-level4': levelGita04,
+  'gita-level5': levelGita05,
+  'gita-level6': levelGita06,
+  'gita-level7': levelGita07,
+  'gita-level8': levelGita08,
+  'gita-level9': levelGita09,
+  'gita-level10': levelGita10,
+
+  // Ramayana & Mahabharata
+  'epic-level1': levelEpic01,
+  'epic-level2': levelEpic02,
+  'epic-level3': levelEpic03,
+  'epic-level4': levelEpic04,
+  'epic-level5': levelEpic05,
+  'epic-level6': levelEpic06,
+  'epic-level7': levelEpic07,
+  'epic-level8': levelEpic08,
+  'epic-level9': levelEpic09,
+  'epic-level10': levelEpic10,
+
+  // Upanishads
+  'upan-level1': levelUpan01,
+  'upan-level2': levelUpan02,
+  'upan-level3': levelUpan03,
+  'upan-level4': levelUpan04,
+  'upan-level5': levelUpan05,
+  'upan-level6': levelUpan06,
+  'upan-level7': levelUpan07,
+  'upan-level8': levelUpan08,
+  'upan-level9': levelUpan09,
+  'upan-level10': levelUpan10,
+
+  // Shiv Sutras
+  'shiv-level1': levelShiv01,
+  'shiv-level2': levelShiv02,
+  'shiv-level3': levelShiv03,
+  'shiv-level4': levelShiv04,
+  'shiv-level5': levelShiv05,
+  'shiv-level6': levelShiv06,
+  'shiv-level7': levelShiv07,
+  'shiv-level8': levelShiv08,
+  'shiv-level9': levelShiv09,
+  'shiv-level10': levelShiv10,
+
+  // Ayurveda
+  'ayur-level1': levelAyur01,
+  'ayur-level2': levelAyur02,
+  'ayur-level3': levelAyur03,
+  'ayur-level4': levelAyur04,
+  'ayur-level5': levelAyur05,
+  'ayur-level6': levelAyur06,
+  'ayur-level7': levelAyur07,
+  'ayur-level8': levelAyur08,
+  'ayur-level9': levelAyur09,
+  'ayur-level10': levelAyur10,
+
+  // Yoga Philosophy
+  'yoga-level1': levelYoga01,
+  'yoga-level2': levelYoga02,
+  'yoga-level3': levelYoga03,
+  'yoga-level4': levelYoga04,
+  'yoga-level5': levelYoga05,
+  'yoga-level6': levelYoga06,
+  'yoga-level7': levelYoga07,
+  'yoga-level8': levelYoga08,
+  'yoga-level9': levelYoga09,
+  'yoga-level10': levelYoga10,
+
+  // Sanskrit & Mantras
+  'sans-level1': levelSans01,
+  'sans-level2': levelSans02,
+  'sans-level3': levelSans03,
+  'sans-level4': levelSans04,
+  'sans-level5': levelSans05,
+  'sans-level6': levelSans06,
+  'sans-level7': levelSans07,
+  'sans-level8': levelSans08,
+  'sans-level9': levelSans09,
+  'sans-level10': levelSans10,
+
+  // Jyotish & Vastu
+  'jyot-level1': levelJyot01,
+  'jyot-level2': levelJyot02,
+  'jyot-level3': levelJyot03,
+  'jyot-level4': levelJyot04,
+  'jyot-level5': levelJyot05,
+  'jyot-level6': levelJyot06,
+  'jyot-level7': levelJyot07,
+  'jyot-level8': levelJyot08,
+  'jyot-level9': levelJyot09,
+  'jyot-level10': levelJyot10,
 };
 
 // Helper to get module image with fallback

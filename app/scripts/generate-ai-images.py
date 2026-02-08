@@ -86,6 +86,18 @@ No text, no logos, no watermarks.
 High quality digital art.
 """
 
+BHARAT_STYLE = """
+Minimalist illustration blending Japanese Zen sumi-e with ancient Indian art.
+Inspired by ink wash painting with subtle touches of Rajput miniature and temple art.
+Dark background #0A0A0B with subtle texture.
+Primary warm saffron-amber gold #F59E0B as accent.
+Secondary soft purple #8B5CF6 and deep indigo wisps.
+Clean brushstroke aesthetics, negative space, sacred geometry hints.
+Elegant line work, contemplative mood, spiritual depth.
+No text, no logos, no watermarks.
+High quality digital art.
+"""
+
 # ============================================================
 # PROMPTS
 # ============================================================
@@ -265,6 +277,16 @@ PROMPTS = {
         "module-eastern-philosophy.webp": "Yin-yang transforming into Tao symbol in ink brush, amber balance light, Eastern wisdom, purple harmony flows, zen Oriental enlightenment.",
         "module-vedic-wisdom.webp": "Om symbol radiating Upanishadic wisdom in sumi-e, amber dharmic light, Vedic understanding, purple karmic threads, zen sanatan knowledge.",
         "module-mythology.webp": "Hero ascending with amber archetypal light in ink wash, mythological patterns, purple universal stories spiraling, zen timeless narratives, Campbell's journey.",
+
+        # ============================================
+        # Bharat Wisdom — 6 NEW modules
+        # ============================================
+        "module-bhagavad-gita.webp": "Krishna and Arjuna on chariot silhouette in sumi-e with Indian miniature touches, amber divine light radiating from Krishna, Kurukshetra battlefield mist, purple cosmic energy, sacred discourse, ancient Indian wisdom.",
+        "module-ramayana-mahabharata.webp": "Epic bow and arrow crossing with royal crown in ink wash, amber heroic light, ancient Indian epic silhouettes, purple dharma flames, mythological grandeur, Rajput miniature style.",
+        "module-upanishads.webp": "Sacred flame in forest hermitage in sumi-e style, amber Brahman light radiating outward, Upanishadic self-inquiry, purple cosmic consciousness wisps, ancient Indian sage silhouette meditating.",
+        "module-shiv-sutras.webp": "Shiva in meditation with trishul and crescent moon in ink wash, amber Shakti energy spiraling upward, Kashmir Shaivism tantra, purple non-dual consciousness, sacred vibration spanda.",
+        "module-sanskrit-mantras.webp": "Devanagari OM symbol dissolving into sound waves in sumi-e, amber mantra vibrations radiating, Sanskrit sacred syllables, purple Vedic chanting energy, ancient Indian calligraphy art.",
+        "module-jyotish-vastu.webp": "Navagraha planetary alignment above temple floor plan in ink wash, amber celestial light, Jyotish astrology chart, purple sacred geometry Vastu mandala, ancient Indian cosmic science.",
     },
     "levels": {
         # ============================================
@@ -422,6 +444,160 @@ PROMPTS = {
         "level-eq-08-leadership.webp": "Leader figure radiating amber light to team below in ink wash, resonant leadership, purple psychological safety aura protecting group, zen emotionally intelligent command.",
         "level-eq-09-dark-side.webp": "Shield deflecting dark ink tendrils in sumi-e style, amber protective awareness glowing, defense against manipulation, purple toxic patterns repelled, zen emotional armor and boundaries.",
         "level-eq-10-integration.webp": "Lotus flower with ten petals fully bloomed in ink wash, amber EQ mastery light radiating from center, complete integration, purple wisdom of all emotions unified, zen emotional transcendence.",
+
+        # ============================================
+        # Sales Mastery - 10 Levels
+        # ============================================
+        "level-sm-01-foundations.webp": "Sumi-e handshake with amber golden energy flowing between two hands, sales foundations, purple trust aura radiating outward, zen art of serving through selling.",
+        "level-sm-02-buyers.webp": "Ink brush silhouette of a mind with amber gears turning inside, understanding buyer psychology, purple decision pathways illuminated, zen reading the customer's soul.",
+        "level-sm-03-prospecting.webp": "Sumi-e figure casting amber fishing line into vast ocean of dots, prospecting and outreach, purple ripples of connection spreading, zen patient persistence.",
+        "level-sm-04-discovery.webp": "Ink wash magnifying glass revealing amber golden insights beneath surface, SPIN discovery questions, purple layers of pain uncovered, zen art of deep listening.",
+        "level-sm-05-pitch.webp": "Sumi-e storyteller on stage with amber spotlight radiating outward, pitch mastery, purple audience captivated in awe, zen compelling presentation.",
+        "level-sm-06-objections.webp": "Ink brush shield transforming dark arrows into amber golden light, objection handling mastery, purple reframing energy, zen turning resistance into agreement.",
+        "level-sm-07-closing.webp": "Two sumi-e figures with amber golden seal forming between their hands, closing the deal, purple commitment energy crystallizing, zen decisive moment.",
+        "level-sm-08-relationships.webp": "Network of ink brush nodes connected by amber golden threads growing over time, relationship selling, purple trust roots deepening, zen lifelong client bonds.",
+        "level-sm-09-psychology.webp": "Sumi-e brain with six amber golden orbs orbiting it, Cialdini's influence principles, purple persuasion waves emanating, zen ethical mastery of human psychology.",
+        "level-sm-10-leadership.webp": "Ink wash figure atop mountain radiating amber light to team climbing below, sales leadership, purple coaching energy descending, zen building a world-class sales force.",
+
+        # ============================================
+        # Personal Branding - 10 Levels
+        # ============================================
+        "level-pb-01-foundations.webp": "Sumi-e diamond being polished with amber golden facets emerging, personal brand foundations, purple authentic glow radiating outward, zen discovering your unique brilliance.",
+        "level-pb-02-niche.webp": "Ink brush crosshairs zeroing in on amber golden target at center, finding your niche, purple Ikigai circles overlapping, zen precision of positioning.",
+        "level-pb-03-identity.webp": "Sumi-e calligraphy brush writing a glowing amber character, brand identity and messaging, purple StoryBrand framework flowing, zen crafting your brand story.",
+        "level-pb-04-content.webp": "Ink wash fountain pen with amber golden ink flowing into multiple streams, content strategy, purple ideas branching into pillars, zen creative abundance.",
+        "level-pb-05-platforms.webp": "Sumi-e figure standing at crossroads with amber glowing paths to different platforms, platform mastery, purple digital landscapes stretching to horizon, zen omnipresence.",
+        "level-pb-06-audience.webp": "Ink brush crowd of small figures drawn toward amber golden lighthouse, audience building, purple community bonds forming, zen magnetic attraction.",
+        "level-pb-07-storytelling.webp": "Sumi-e open book with amber golden characters leaping off pages, storytelling and copywriting, purple narrative threads weaving together, zen power of words.",
+        "level-pb-08-monetization.webp": "Ink wash tree with amber golden coins as fruit on every branch, monetization mastery, purple value exchange flowing, zen turning influence into income.",
+        "level-pb-09-thought-leadership.webp": "Sumi-e figure at podium with amber golden ideas radiating like sun rays, thought leadership, purple intellectual authority glowing, zen becoming the voice of your field.",
+        "level-pb-10-legacy.webp": "Ink wash oak tree with deep amber golden roots and vast canopy, brand legacy, purple generational impact spreading, zen building something that outlasts you.",
+
+        # ============================================
+        # Entrepreneurship 101 - 10 Levels
+        # ============================================
+        "level-ent-01-mindset.webp": "Sumi-e figure leaping across chasm with amber golden wings forming, entrepreneurial mindset, purple courage fire burning within, zen bold leap into the unknown.",
+        "level-ent-02-ideas.webp": "Ink brush lightbulb cracking open with amber golden sparks erupting, finding ideas worth building, purple problem-solution connections forming, zen moment of inspiration.",
+        "level-ent-03-discovery.webp": "Sumi-e figure with ear pressed to ground hearing amber golden sound waves, customer discovery, purple user insights rising from earth, zen art of truly listening.",
+        "level-ent-04-models.webp": "Ink wash canvas with nine amber golden building blocks arranged in grid, business model canvas, purple strategy flows connecting blocks, zen architectural blueprint.",
+        "level-ent-05-mvp.webp": "Sumi-e potter shaping rough clay on wheel with amber golden glow, building MVP, purple rapid iteration spirals, zen minimum viable craft.",
+        "level-ent-06-offers.webp": "Ink brush treasure chest overflowing with amber golden gems, grand slam offer, purple irresistible value stacking upward, zen art of the offer they can't refuse.",
+        "level-ent-07-growth.webp": "Sumi-e rocket trail curving upward in amber golden streak, marketing and growth, purple viral loops expanding, zen exponential trajectory.",
+        "level-ent-08-systems.webp": "Ink wash clockwork mechanism with amber golden gears meshing perfectly, operations and systems, purple efficiency flows, zen machine that runs itself.",
+        "level-ent-09-funding.webp": "Sumi-e seedling growing into amber golden tree with investors watching, fundraising and finance, purple capital flowing like rain, zen nurturing growth with resources.",
+        "level-ent-10-scaling.webp": "Ink wash mountain peak with amber golden flag planted at summit, scaling and leadership, purple empire spreading across landscape, zen building something extraordinary.",
+
+        # ============================================
+        # Bhagavad Gita - 10 Levels
+        # ============================================
+        "level-gita-01-crisis.webp": "Arjuna kneeling with bow dropped on battlefield in ink wash with Indian miniature touches, amber divine light from Krishna's silhouette, purple war mist, decision paralysis, ancient Indian chariot.",
+        "level-gita-02-karma.webp": "Hands performing action with flames in sumi-e Indian style, amber karma energy radiating outward, detached action, purple consequence streams flowing, selfless service.",
+        "level-gita-03-jnana.webp": "Sword of wisdom cutting through veil of illusion in ink wash, amber knowledge light piercing ego, purple maya dissolving, self-inquiry, ancient Indian sage.",
+        "level-gita-04-bhakti.webp": "Heart offering lotus to cosmic void in sumi-e Indian style, amber devotion light ascending, surrender as strength, purple divine love energy, temple silhouette.",
+        "level-gita-05-gunas.webp": "Three intertwined energy streams in ink wash, amber sattva light central, purple rajas and dark tamas, energy management framework, Indian sacred balance.",
+        "level-gita-06-dhyana.webp": "Meditating figure with third eye radiating in sumi-e, amber meditation light expanding, mind mastery, purple thought waves stilling, Himalayan peak backdrop.",
+        "level-gita-07-vibhuti.webp": "Cosmic manifestations spiraling from divine center in ink wash, amber excellence patterns, divine expressions in nature, purple greatness energy, Indian temple spire.",
+        "level-gita-08-vishwarupa.webp": "Infinite cosmic form with countless eyes and arms in sumi-e, amber cosmic vision overwhelming, systems thinking, purple universal expansion, mind-bending scale.",
+        "level-gita-09-kshetra.webp": "Observer watching their own mind as field in ink wash, amber awareness light, knower and known separation, purple metacognition streams, Indian mirror motif.",
+        "level-gita-10-moksha.webp": "Liberated bird soaring from golden cage into infinite sky in sumi-e, amber freedom light, personal philosophy synthesis, purple enlightened peace, lotus opening below.",
+
+        # ============================================
+        # Ramayana & Mahabharata - 10 Levels
+        # ============================================
+        "level-epic-01-bala.webp": "Young prince drawing impossible bow in ink wash Indian style, amber heroic destiny light, royal court silhouettes, purple divine weapons, Rama's preparation.",
+        "level-epic-02-exile.webp": "Royal figure walking into forest leaving palace behind in sumi-e, amber resilience flame within, exile into wilderness, purple adaptability streams, ancient Indian jungle.",
+        "level-epic-03-alliance.webp": "Hanuman flying with mountain silhouette in ink wash, amber devotion and alliance energy, bridge of cooperation, purple vanara army assembling, strategic partnerships.",
+        "level-epic-04-war.webp": "Epic battle with divine weapons clashing in sumi-e Indian style, amber strategic warfare light, Lanka burning distant, purple dharma vs adharma, arrows of destiny.",
+        "level-epic-05-dharma.webp": "Crown being placed on throne with balance scales in ink wash, amber governance wisdom, justice and dharma, purple legacy threads, Ram Rajya ideal kingdom.",
+        "level-epic-06-adi.webp": "Two rival families silhouetted with shared throne between in sumi-e, amber ambition fire, Kuru dynasty origins, purple jealousy and pride, palace intrigue.",
+        "level-epic-07-sabha.webp": "Dice game with devastating stakes in ink wash Indian style, amber risk and loss, Draupadi's dignity flame, purple patience as strategy, exile beginning.",
+        "level-epic-08-diplomacy.webp": "Krishna as peace envoy between two armies in sumi-e, amber negotiation light failing, war becoming inevitable, purple escalation dynamics, last chance for peace.",
+        "level-epic-09-grief.webp": "Lone figure on empty battlefield at sunset in ink wash, amber mourning light, cost of victory, purple grief waves, aftermath of Kurukshetra.",
+        "level-epic-10-shanti.webp": "Bhishma on arrow bed teaching governance wisdom in sumi-e, amber statecraft knowledge radiating, deathbed wisdom, purple leadership legacy, Shanti Parva teachings.",
+
+        # ============================================
+        # Upanishads - 10 Levels
+        # ============================================
+        "level-upan-01-intro.webp": "Forest hermitage with fire and students in ink wash Indian style, amber Brahman light emanating from fire, Upanishadic inquiry, purple consciousness wisps, guru-shishya.",
+        "level-upan-02-isha.webp": "World held in open hands yet not grasped in sumi-e, amber non-attachment light, Isha living fully yet free, purple renunciation energy, lotus untouched by water.",
+        "level-upan-03-katha.webp": "Nachiketa before Yama god of death in ink wash, amber immortality light, choosing good over pleasant, purple mortality awareness, chariot metaphor for self.",
+        "level-upan-04-mundaka.webp": "Two birds on tree branch one eating one watching in sumi-e, amber higher knowledge light, lower vs higher wisdom, purple six questions radiating, sacred fire.",
+        "level-upan-05-mandukya.webp": "OM symbol expanding through four states in ink wash, amber turiya consciousness, waking dreaming deep sleep, purple awareness beyond states, consciousness map.",
+        "level-upan-06-taittiriya.webp": "Five concentric layers of self like Russian dolls in sumi-e, amber annamaya to anandamaya, five koshas, purple holistic wellness, food to bliss body.",
+        "level-upan-07-chandogya.webp": "Salt dissolving into water becoming invisible yet present in ink wash, amber Tat Tvam Asi realization, that thou art, purple universal self pervading, father teaching son.",
+        "level-upan-08-brihadaranyaka.webp": "Figure pointing away from everything saying neti neti in sumi-e, amber ultimate reality beyond, elimination thinking, purple not this not this, Yajnavalkya wisdom.",
+        "level-upan-09-shvetashvatara.webp": "Spider spinning web from itself in ink wash Indian style, amber personal God devotion, grace and effort balance, purple creation emerging from self, meditation practice.",
+        "level-upan-10-synthesis.webp": "All Upanishadic symbols merging into one golden light in sumi-e, amber integrated wisdom, modern relevance, purple timeless truth radiating, living philosophy.",
+
+        # ============================================
+        # Shiv Sutras & Tantra - 10 Levels
+        # ============================================
+        "level-shiv-01-kashmir.webp": "Himalayan cave with pulsating awareness light in ink wash, amber chaitanya consciousness, Kashmir Shaivism foundations, purple non-dual Shiva, snow peaks and meditation.",
+        "level-shiv-02-shambhava.webp": "Lightning bolt of divine grace striking open crown in sumi-e, amber Shambhavopaya direct recognition, divine means, purple sudden awakening flash, effortless realization.",
+        "level-shiv-03-shakta.webp": "Mantra vibrations spiraling around meditating figure in ink wash, amber Shaktopaya energy, empowered means, purple sacred sound waves, will and intention focused.",
+        "level-shiv-04-anava.webp": "Breath pattern flowing through subtle channels in sumi-e, amber Anavopaya practice, individual means, purple pranayama energy, body as temple for realization.",
+        "level-shiv-05-spanda.webp": "Cosmic heartbeat pulse radiating through everything in ink wash, amber spanda vibration, doctrine of divine pulsation, purple creative tremor, life as vibration.",
+        "level-shiv-06-pratyabhijna.webp": "Face recognizing itself in cosmic mirror in sumi-e, amber self-recognition flash, Pratyabhijna philosophy, purple remembering divinity, already what you seek.",
+        "level-shiv-07-vijnana.webp": "112 doorways radiating from central point in ink wash, amber meditation techniques, Vijnanabhairava centering practices, purple experiential wisdom, practical tantra.",
+        "level-shiv-08-tantric.webp": "Sacred yantra geometry with ritual elements in sumi-e Indian style, amber tantric fire ceremony, practices and rituals, purple sacred technology, mantra yantra tantra.",
+        "level-shiv-09-kundalini.webp": "Serpent energy rising through seven chakra lotuses in ink wash, amber kundalini ascending, chakra system psychology, purple energy awakening, spine as axis mundi.",
+        "level-shiv-10-nondual.webp": "Shiva and Shakti merging into one boundless awareness in sumi-e, amber non-dual liberation light, everything is consciousness, purple absolute freedom, moksha achieved.",
+
+        # ============================================
+        # Ayurveda - 10 Levels
+        # ============================================
+        "level-ayur-01-foundations.webp": "Ancient healing herbs and mortar in ink wash Indian style, amber Ayurvedic wisdom light, foundations of life science, purple Dhanvantari energy, holistic health.",
+        "level-ayur-02-tridosha.webp": "Three elemental forces spiraling in balance in sumi-e, amber Vata Pitta Kapha harmony, tridosha theory, purple constitutional energy, body-mind typology.",
+        "level-ayur-03-prakriti.webp": "Human silhouette with elemental patterns mapped in ink wash, amber constitutional assessment, Prakriti discovery, purple unique body blueprint, personalized wellness.",
+        "level-ayur-04-dinacharya.webp": "Sun rising with daily routine elements in sumi-e Indian style, amber morning ritual glow, Dinacharya daily practice, purple circadian harmony, optimal living schedule.",
+        "level-ayur-05-ahara.webp": "Sacred food mandala with six tastes arranged in ink wash, amber nutritional wisdom, Ahara food science, purple digestive fire agni, mindful eating.",
+        "level-ayur-06-dravyaguna.webp": "Medicinal plant garden with labeled properties in sumi-e, amber herbal medicine glow, Dravyaguna pharmacology, purple healing plant energy, nature's pharmacy.",
+        "level-ayur-07-panchakarma.webp": "Five purification streams flowing through body silhouette in ink wash, amber detoxification light, Panchakarma cleansing, purple toxin removal energy, deep purification.",
+        "level-ayur-08-rasa.webp": "Alchemical transformation vessel with mineral essence in sumi-e Indian style, amber Rasa Shastra transmutation, mercury and mineral medicine, purple alchemical fire, sacred chemistry.",
+        "level-ayur-09-psychology.webp": "Mind layers with three gunas in sumi-e, amber sattva clarity radiating, Ayurvedic psychology, purple mental constitution mapping, emotional wellness.",
+        "level-ayur-10-modern.webp": "Ancient Ayurvedic texts meeting modern lab equipment in ink wash, amber integrative medicine bridge, modern applications, purple evidence-based tradition, best of both worlds.",
+
+        # ============================================
+        # Yoga Philosophy - 10 Levels
+        # ============================================
+        "level-yoga-01-origins.webp": "Pashupati seal and yoga timeline flowing in ink wash Indian style, amber ancient origins light, yoga history and meaning, purple tradition river, beyond just poses.",
+        "level-yoga-02-samadhi.webp": "Mind dissolving into infinite stillness in sumi-e, amber samadhi absorption light, mastering the mind, purple chitta vritti stilling, deep focus states.",
+        "level-yoga-03-sadhana.webp": "Eight-limbed path ascending like temple steps in ink wash, amber ashtanga practice glow, Sadhana Pada discipline, purple klesha obstacles dissolving, systematic practice.",
+        "level-yoga-04-vibhuti.webp": "Third eye radiating extraordinary perception in sumi-e, amber siddhis manifestation, Vibhuti powers through focus, purple superhuman capabilities, concentrated mind.",
+        "level-yoga-05-kaivalya.webp": "Consciousness separating from matter like sunrise in ink wash, amber Kaivalya liberation, absolute freedom, purple Purusha-Prakriti distinction, final liberation.",
+        "level-yoga-06-hatha.webp": "Sun and moon channels meeting at spine center in sumi-e Indian style, amber Hatha Yoga Pradipika, pranayama and bandhas, purple energy locks, embodied practice.",
+        "level-yoga-07-kundalini.webp": "Coiled serpent awakening with chakra flowers blooming in ink wash, amber Kundalini tantra energy, energy systems and chakras, purple shakti rising, subtle body map.",
+        "level-yoga-08-bhakti.webp": "Heart offering devotional flame to infinite in sumi-e, amber Bhakti love light, devotion and selfless service, purple Karma Yoga action, surrender and service.",
+        "level-yoga-09-modern.webp": "Multiple yoga lineage trees branching from ancient root in ink wash, amber modern school diversity, Iyengar Ashtanga Yin, purple evolution of tradition, contemporary practice.",
+        "level-yoga-10-integration.webp": "Yoga mat transforming into life path stretching forward in sumi-e, amber integrated living practice, yoga off the mat, purple daily embodiment, complete lifestyle.",
+
+        # ============================================
+        # Sanskrit & Mantras - 10 Levels
+        # ============================================
+        "level-sans-01-devanagari.webp": "Devanagari alphabet emerging from cosmic sound in ink wash Indian style, amber sacred script light, phonetics and pronunciation, purple vibrational linguistics, language of the gods.",
+        "level-sans-02-grammar.webp": "Sanskrit grammatical tree with Panini's sutras in sumi-e, amber linguistic precision glow, basic grammar structures, purple sandhi connections, perfect language architecture.",
+        "level-sans-03-chanting.webp": "Vedic fire ceremony with chanting waves rising in ink wash, amber Vedic recitation energy, chanting traditions, purple sonic mantras ascending, oral transmission lineage.",
+        "level-sans-04-gayatri.webp": "Gayatri mantra radiating solar light in sumi-e Indian style, amber Savitri sun goddess energy, core mantras, purple divine invocation, sunrise meditation practice.",
+        "level-sans-05-stotras.webp": "Devotional hymns flowing from temple bells in ink wash, amber devotional praise energy, stotras and hymns, purple bhakti sound waves, divine poetry.",
+        "level-sans-06-sound.webp": "OM vibration creating concentric reality waves in sumi-e, amber Nada Brahma sound science, mantra science and vibration, purple frequency healing, sound as creation.",
+        "level-sans-07-literature.webp": "Great Sanskrit texts stacked as mountain of wisdom in ink wash, amber Kalidasa literary light, Sanskrit classics, purple Mahakavya grandeur, literary heritage.",
+        "level-sans-08-kavya.webp": "Poetry verse flowing like river through moonlit landscape in sumi-e Indian style, amber Kavya beauty, Sanskrit poetic art, purple rasa aesthetic emotion, artistic perfection.",
+        "level-sans-09-darshana.webp": "Six philosophical schools as six pillars supporting truth in ink wash, amber Darshana wisdom light, Nyaya Vaisheshika Samkhya Yoga Mimamsa Vedanta, purple systematic thought.",
+        "level-sans-10-living.webp": "Modern person speaking Sanskrit with ancient echoes in sumi-e, amber living language revival, Sanskrit today, purple tradition meeting technology, eternal language.",
+
+        # ============================================
+        # Jyotish & Vastu - 10 Levels
+        # ============================================
+        "level-jyot-01-foundations.webp": "Celestial chart with Nakshatras and Rashis in ink wash Indian style, amber Jyotish foundation light, astrology basics, purple cosmic timing patterns, stargazing sage.",
+        "level-jyot-02-navagraha.webp": "Nine planets in sacred arrangement in sumi-e, amber Navagraha planetary influence, nine celestial bodies, purple gravitational wisdom, cosmic forces on life.",
+        "level-jyot-03-rashis.webp": "Twelve zodiac signs in Indian style arranged in circle in ink wash, amber Rashi energy glow, twelve signs, purple astrological archetypes, personality patterns.",
+        "level-jyot-04-bhavas.webp": "Twelve houses radiating from birth chart center in sumi-e, amber Bhava house meanings, life domains, purple karmic sectors, birth chart architecture.",
+        "level-jyot-05-dashas.webp": "Timeline with planetary periods flowing like river in ink wash Indian style, amber Dasha cycle timing, planetary transits, purple life phase navigation, cosmic calendar.",
+        "level-jyot-06-muhurta.webp": "Auspicious moment crystallizing from cosmic alignment in sumi-e, amber Muhurta sacred timing, electional astrology, purple perfect moment selection, when to act.",
+        "level-jyot-07-vastu.webp": "House floor plan with directional energies flowing in ink wash, amber Vastu Shastra foundation, spatial harmony, purple Pancha Bhuta elements, sacred architecture.",
+        "level-jyot-08-workplace.webp": "Home and office spaces optimized with energy flows in sumi-e Indian style, amber productive space design, Vastu for living, purple environmental harmony, space optimization.",
+        "level-jyot-09-yantras.webp": "Sri Yantra emerging from geometric construction in ink wash, amber sacred geometry radiating, Yantras and mandalas, purple mathematical perfection, visual meditation.",
+        "level-jyot-10-integration.webp": "Modern life with Jyotish and Vastu overlays guiding decisions in sumi-e, amber practical application, modern integration, purple empirical tradition, ancient meets contemporary.",
     },
 }
 
@@ -433,10 +609,20 @@ def is_missing(path: Path) -> bool:
     return not path.exists() or path.stat().st_size == 0
 
 
-def generate_image(client, prompt: str, output_path: Path, retries: int = 3, aspect_ratio: str = "16:9") -> bool:
+BHARAT_PREFIXES = (
+    "level-gita-", "level-epic-", "level-upan-", "level-shiv-",
+    "level-ayur-", "level-yoga-", "level-sans-", "level-jyot-",
+    "module-bhagavad-gita", "module-ramayana-mahabharata",
+    "module-upanishads", "module-shiv-sutras",
+    "module-sanskrit-mantras", "module-jyotish-vastu",
+)
+
+
+def generate_image(client, prompt: str, output_path: Path, retries: int = 3, aspect_ratio: str = "16:9", style: str = None) -> bool:
     for attempt in range(retries):
         try:
-            full_prompt = f"{STYLE}\n\n{prompt}"
+            chosen_style = style or STYLE
+            full_prompt = f"{chosen_style}\n\n{prompt}"
 
             response = client.models.generate_content(
                 model=MODEL_NAME,
@@ -524,7 +710,8 @@ def main():
 
             print(f"  GEN  {filename}...", end=" ", flush=True)
 
-            if generate_image(client, prompt, path, aspect_ratio=ASPECT_RATIO):
+            style = BHARAT_STYLE if filename.startswith(BHARAT_PREFIXES) else None
+            if generate_image(client, prompt, path, aspect_ratio=ASPECT_RATIO, style=style):
                 kb = path.stat().st_size / 1024
                 print(f"OK ({kb:.0f}KB)")
                 time.sleep(3)
@@ -546,7 +733,8 @@ def main():
 
                 print(f"\n  GEN  {args.file}...", end=" ", flush=True)
 
-                if generate_image(client, prompt, path, aspect_ratio=ASPECT_RATIO):
+                style = BHARAT_STYLE if args.file.startswith(BHARAT_PREFIXES) else None
+                if generate_image(client, prompt, path, aspect_ratio=ASPECT_RATIO, style=style):
                     kb = path.stat().st_size / 1024
                     print(f"OK ({kb:.0f}KB)")
                 else:
@@ -576,7 +764,8 @@ def main():
 
             print(f"  GEN  {filename}...", end=" ", flush=True)
 
-            if generate_image(client, prompt, path, aspect_ratio=ASPECT_RATIO):
+            style = BHARAT_STYLE if filename.startswith(BHARAT_PREFIXES) else None
+            if generate_image(client, prompt, path, aspect_ratio=ASPECT_RATIO, style=style):
                 kb = path.stat().st_size / 1024
                 print(f"OK ({kb:.0f}KB)")
                 time.sleep(3)  # Delay between successful generations

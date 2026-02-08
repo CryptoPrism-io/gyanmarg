@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import {
   LayoutDashboard,
   BookOpen,
-  Brain,
   Zap,
   Flame,
   Settings,
@@ -19,7 +18,6 @@ const navItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
   { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
   { id: 'visual-lab', path: '/lab', label: 'Visuals', icon: Eye },
-  { id: 'review', path: '/review', label: 'Review', icon: Brain },
   { id: 'challenges', path: '/challenges', label: 'Challenges', icon: Zap },
   { id: 'saved', path: '/saved', label: '', icon: Star, iconOnly: true },
   { id: 'settings', path: '/settings', label: '', icon: Settings, iconOnly: true },
@@ -29,12 +27,6 @@ export function Navbar() {
   const location = useLocation();
   const userProgress = useProgressStore((state) => state.userProgress);
   const { user, isConfigured } = useAuth();
-
-  // Filter nav items - hide Review for non-authenticated users
-  const isAuthenticated = Boolean(user) || !isConfigured;
-  const filteredNavItems = navItems.filter(item =>
-    item.id !== 'review' || isAuthenticated
-  );
 
   return (
     <nav className="glass-nav sticky top-0 z-50">
@@ -58,7 +50,7 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {filteredNavItems.map((item) => {
+            {navItems.map((item) => {
               const Icon = item.icon;
               const isActive =
                 location.pathname === item.path ||
@@ -150,19 +142,11 @@ const mobileNavItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
   { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
   { id: 'saved', path: '/saved', label: 'Saved', icon: Star },
-  { id: 'review', path: '/review', label: 'Review', icon: Brain },
   { id: 'settings', path: '/settings', label: '', icon: Settings },
 ];
 
 export function MobileNav() {
   const location = useLocation();
-  const { user, isConfigured } = useAuth();
-
-  // Filter nav items - hide Review for non-authenticated users
-  const isAuthenticated = Boolean(user) || !isConfigured;
-  const filteredMobileNavItems = mobileNavItems.filter(item =>
-    item.id !== 'review' || isAuthenticated
-  );
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 safe-area-bottom">
@@ -171,7 +155,7 @@ export function MobileNav() {
 
       {/* Nav content - taller for easier tapping */}
       <div className="relative flex justify-around items-center h-20 px-1">
-        {filteredMobileNavItems.map((item) => {
+        {mobileNavItems.map((item) => {
           const Icon = item.icon;
           const isActive =
             location.pathname === item.path ||
