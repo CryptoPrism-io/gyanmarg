@@ -31,6 +31,13 @@ import { easternPhilosophyPathway } from './pathways/eastern-philosophy';
 import { vedicWisdomPathway } from './pathways/vedic-wisdom';
 import { mythologyPathway } from './pathways/mythology';
 
+// New category modules
+import { technicalAnalysisPathway } from './pathways/technical-analysis';
+import { quantumMechanicsPathway } from './pathways/quantum-mechanics';
+import { gameTheoryPathway } from './pathways/game-theory';
+import { ancientEmpiresPathway } from './pathways/ancient-empires';
+import { communicationRhetoricPathway } from './pathways/communication-rhetoric';
+
 // Bharat modules
 import { bhagavadGitaPathway } from './pathways/bhagavad-gita';
 import { ramayanaPathway } from './pathways/ramayana-mahabharata';
@@ -509,7 +516,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Rhetoric', 'Debate', 'Public Speaking', 'Argumentation'],
     features: ['Speech Builder', 'Debate Simulator', 'Rhetoric Analyzer', 'Presentation Coach'],
     route: '/modules/communication-rhetoric',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: communicationRhetoricPathway,
   },
   {
     id: 'ayurveda',
@@ -647,7 +655,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Chart Patterns', 'Technical Indicators', 'Support/Resistance', 'Price Action'],
     features: ['Chart Trainer', 'Pattern Recognition', 'Indicator Lab', 'Backtesting'],
     route: '/modules/technical-analysis',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: technicalAnalysisPathway,
   },
   {
     id: 'options-trading',
@@ -777,7 +786,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Wave-Particle Duality', 'Superposition', 'Entanglement', 'Quantum Computing Basics'],
     features: ['Quantum Visualizer', 'Thought Experiments', 'Probability Simulator', 'Quantum Quiz'],
     route: '/modules/quantum-mechanics',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: quantumMechanicsPathway,
   },
   {
     id: 'earth-sciences',
@@ -849,7 +859,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Nash Equilibrium', 'Dominant Strategies', 'Mechanism Design', 'Auction Theory'],
     features: ['Game Simulator', 'Strategy Puzzles', 'Payoff Calculator', 'Scenario Builder'],
     route: '/modules/game-theory',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: gameTheoryPathway,
   },
   {
     id: 'decision-making',
@@ -892,7 +903,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Imperial Patterns', 'Leadership Lessons', 'Military Strategy', 'Cultural Legacy'],
     features: ['Empire Timeline', 'Leader Profiles', 'Battle Analyzer', 'Legacy Tracker'],
     route: '/modules/ancient-empires',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: ancientEmpiresPathway,
   },
   {
     id: 'modern-history',

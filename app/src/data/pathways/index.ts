@@ -42,6 +42,13 @@ export { default as yogaPhilosophyPathway } from './yoga-philosophy';
 export { default as sanskritMantrasPathway } from './sanskrit-mantras';
 export { default as jyotishVastuPathway } from './jyotish-vastu';
 
+// New category modules
+export { default as technicalAnalysisPathway } from './technical-analysis';
+export { default as quantumMechanicsPathway } from './quantum-mechanics';
+export { default as gameTheoryPathway } from './game-theory';
+export { default as ancientEmpiresPathway } from './ancient-empires';
+export { default as communicationRhetoricPathway } from './communication-rhetoric';
+
 // FIRE Movement lessons for Wealth Building module
 export { fireLessons } from './wealth-fire';
 

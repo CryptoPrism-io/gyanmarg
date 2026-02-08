@@ -458,6 +458,76 @@ import levelJyot08 from '@/assets/ai-images/levels/level-jyot-08-workplace.webp'
 import levelJyot09 from '@/assets/ai-images/levels/level-jyot-09-yantras.webp';
 import levelJyot10 from '@/assets/ai-images/levels/level-jyot-10-integration.webp';
 
+// ============================================
+// Level images - Technical Analysis (10)
+// ============================================
+import levelTa01 from '@/assets/ai-images/levels/level-ta-01-chart-reading.webp';
+import levelTa02 from '@/assets/ai-images/levels/level-ta-02-candlesticks.webp';
+import levelTa03 from '@/assets/ai-images/levels/level-ta-03-structure.webp';
+import levelTa04 from '@/assets/ai-images/levels/level-ta-04-trends.webp';
+import levelTa05 from '@/assets/ai-images/levels/level-ta-05-momentum.webp';
+import levelTa06 from '@/assets/ai-images/levels/level-ta-06-volume.webp';
+import levelTa07 from '@/assets/ai-images/levels/level-ta-07-patterns.webp';
+import levelTa08 from '@/assets/ai-images/levels/level-ta-08-risk.webp';
+import levelTa09 from '@/assets/ai-images/levels/level-ta-09-systems.webp';
+import levelTa10 from '@/assets/ai-images/levels/level-ta-10-psychology.webp';
+
+// ============================================
+// Level images - Quantum Mechanics (10)
+// ============================================
+import levelQm01 from '@/assets/ai-images/levels/level-qm-01-quantum-world.webp';
+import levelQm02 from '@/assets/ai-images/levels/level-qm-02-wave-particle.webp';
+import levelQm03 from '@/assets/ai-images/levels/level-qm-03-superposition.webp';
+import levelQm04 from '@/assets/ai-images/levels/level-qm-04-entanglement.webp';
+import levelQm05 from '@/assets/ai-images/levels/level-qm-05-uncertainty.webp';
+import levelQm06 from '@/assets/ai-images/levels/level-qm-06-tunneling.webp';
+import levelQm07 from '@/assets/ai-images/levels/level-qm-07-computing.webp';
+import levelQm08 from '@/assets/ai-images/levels/level-qm-08-field-theory.webp';
+import levelQm09 from '@/assets/ai-images/levels/level-qm-09-interpretations.webp';
+import levelQm10 from '@/assets/ai-images/levels/level-qm-10-daily-life.webp';
+
+// ============================================
+// Level images - Game Theory (10)
+// ============================================
+import levelGt01 from '@/assets/ai-images/levels/level-gt-01-strategic.webp';
+import levelGt02 from '@/assets/ai-images/levels/level-gt-02-prisoners.webp';
+import levelGt03 from '@/assets/ai-images/levels/level-gt-03-nash.webp';
+import levelGt04 from '@/assets/ai-images/levels/level-gt-04-sequential.webp';
+import levelGt05 from '@/assets/ai-images/levels/level-gt-05-mixed.webp';
+import levelGt06 from '@/assets/ai-images/levels/level-gt-06-repeated.webp';
+import levelGt07 from '@/assets/ai-images/levels/level-gt-07-bargaining.webp';
+import levelGt08 from '@/assets/ai-images/levels/level-gt-08-mechanism.webp';
+import levelGt09 from '@/assets/ai-images/levels/level-gt-09-information.webp';
+import levelGt10 from '@/assets/ai-images/levels/level-gt-10-evolutionary.webp';
+
+// ============================================
+// Level images - Ancient Empires (10)
+// ============================================
+import levelAe01 from '@/assets/ai-images/levels/level-ae-01-patterns.webp';
+import levelAe02 from '@/assets/ai-images/levels/level-ae-02-mesopotamia.webp';
+import levelAe03 from '@/assets/ai-images/levels/level-ae-03-greece.webp';
+import levelAe04 from '@/assets/ai-images/levels/level-ae-04-rome.webp';
+import levelAe05 from '@/assets/ai-images/levels/level-ae-05-persia.webp';
+import levelAe06 from '@/assets/ai-images/levels/level-ae-06-china.webp';
+import levelAe07 from '@/assets/ai-images/levels/level-ae-07-india.webp';
+import levelAe08 from '@/assets/ai-images/levels/level-ae-08-mongols.webp';
+import levelAe09 from '@/assets/ai-images/levels/level-ae-09-decline.webp';
+import levelAe10 from '@/assets/ai-images/levels/level-ae-10-leadership.webp';
+
+// ============================================
+// Level images - Communication & Rhetoric (10)
+// ============================================
+import levelCr01 from '@/assets/ai-images/levels/level-cr-01-persuasion.webp';
+import levelCr02 from '@/assets/ai-images/levels/level-cr-02-argumentation.webp';
+import levelCr03 from '@/assets/ai-images/levels/level-cr-03-storytelling.webp';
+import levelCr04 from '@/assets/ai-images/levels/level-cr-04-speaking.webp';
+import levelCr05 from '@/assets/ai-images/levels/level-cr-05-writing.webp';
+import levelCr06 from '@/assets/ai-images/levels/level-cr-06-difficult.webp';
+import levelCr07 from '@/assets/ai-images/levels/level-cr-07-listening.webp';
+import levelCr08 from '@/assets/ai-images/levels/level-cr-08-debate.webp';
+import levelCr09 from '@/assets/ai-images/levels/level-cr-09-influence.webp';
+import levelCr10 from '@/assets/ai-images/levels/level-cr-10-playbook.webp';
+
 // Module ID to image mapping
 export const moduleImages: Record<string, string> = {
   // Original 16 modules
@@ -864,6 +934,66 @@ export const levelImages: Record<string, string> = {
   'jyot-level8': levelJyot08,
   'jyot-level9': levelJyot09,
   'jyot-level10': levelJyot10,
+
+  // Technical Analysis
+  'ta-level1': levelTa01,
+  'ta-level2': levelTa02,
+  'ta-level3': levelTa03,
+  'ta-level4': levelTa04,
+  'ta-level5': levelTa05,
+  'ta-level6': levelTa06,
+  'ta-level7': levelTa07,
+  'ta-level8': levelTa08,
+  'ta-level9': levelTa09,
+  'ta-level10': levelTa10,
+
+  // Quantum Mechanics
+  'qm-level1': levelQm01,
+  'qm-level2': levelQm02,
+  'qm-level3': levelQm03,
+  'qm-level4': levelQm04,
+  'qm-level5': levelQm05,
+  'qm-level6': levelQm06,
+  'qm-level7': levelQm07,
+  'qm-level8': levelQm08,
+  'qm-level9': levelQm09,
+  'qm-level10': levelQm10,
+
+  // Game Theory
+  'gt-level1': levelGt01,
+  'gt-level2': levelGt02,
+  'gt-level3': levelGt03,
+  'gt-level4': levelGt04,
+  'gt-level5': levelGt05,
+  'gt-level6': levelGt06,
+  'gt-level7': levelGt07,
+  'gt-level8': levelGt08,
+  'gt-level9': levelGt09,
+  'gt-level10': levelGt10,
+
+  // Ancient Empires
+  'ae-level1': levelAe01,
+  'ae-level2': levelAe02,
+  'ae-level3': levelAe03,
+  'ae-level4': levelAe04,
+  'ae-level5': levelAe05,
+  'ae-level6': levelAe06,
+  'ae-level7': levelAe07,
+  'ae-level8': levelAe08,
+  'ae-level9': levelAe09,
+  'ae-level10': levelAe10,
+
+  // Communication & Rhetoric
+  'cr-level1': levelCr01,
+  'cr-level2': levelCr02,
+  'cr-level3': levelCr03,
+  'cr-level4': levelCr04,
+  'cr-level5': levelCr05,
+  'cr-level6': levelCr06,
+  'cr-level7': levelCr07,
+  'cr-level8': levelCr08,
+  'cr-level9': levelCr09,
+  'cr-level10': levelCr10,
 };
 
 // Helper to get module image with fallback

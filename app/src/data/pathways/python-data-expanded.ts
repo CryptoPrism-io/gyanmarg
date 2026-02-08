@@ -1783,8 +1783,8 @@ pio.templates.default = 'plotly_dark'
 custom_template = {
     'layout': {
         'font': {'family': 'Arial', 'size': 14},
-        'paper_bgcolor': 'white',
-        'plot_bgcolor': '#f8f9fa'
+        'paper_bgcolor\': \'white',
+        'plot_bgcolor\': \'#f8f9fa'
     }
 }
 \`\`\`
@@ -1798,9 +1798,9 @@ colors = sns.diverging_palette(220, 20, n=7)
 
 # Company colors
 brand_colors = {
-    'primary': '#1a73e8',
-    'secondary': '#ea4335',
-    'accent': '#34a853'
+    'primary\': \'#1a73e8',
+    'secondary\': \'#ea4335',
+    'accent\': \'#34a853'
 }
 \`\`\``,
       keyTakeaway: 'Consistent styling builds trust and recognition. Create reusable style sheets for your projects.',

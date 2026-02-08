@@ -598,6 +598,76 @@ PROMPTS = {
         "level-jyot-08-workplace.webp": "Home and office spaces optimized with energy flows in sumi-e Indian style, amber productive space design, Vastu for living, purple environmental harmony, space optimization.",
         "level-jyot-09-yantras.webp": "Sri Yantra emerging from geometric construction in ink wash, amber sacred geometry radiating, Yantras and mandalas, purple mathematical perfection, visual meditation.",
         "level-jyot-10-integration.webp": "Modern life with Jyotish and Vastu overlays guiding decisions in sumi-e, amber practical application, modern integration, purple empirical tradition, ancient meets contemporary.",
+
+        # ============================================
+        # Technical Analysis - 10 Levels
+        # ============================================
+        "level-ta-01-chart-reading.webp": "Sumi-e candlestick chart emerging from ink wash darkness, amber price bars glowing, chart reading foundations, purple support lines beneath, zen market observation.",
+        "level-ta-02-candlesticks.webp": "Japanese candlestick patterns as zen lanterns in ink brush, amber doji and hammer shapes, candlestick mastery, purple reversal signals, ukiyo-e trading wisdom.",
+        "level-ta-03-structure.webp": "Mountain range with horizontal amber support and resistance lines in sumi-e, market structure, purple price channels, zen levels holding firm, trendlines as pathways.",
+        "level-ta-04-trends.webp": "Flowing river with amber moving average ribbons in ink wash, trend analysis mastery, purple momentum currents, zen following the trend, market direction.",
+        "level-ta-05-momentum.webp": "Pendulum swinging with amber RSI oscillator arc in sumi-e, momentum indicators, purple MACD histogram, zen overbought oversold extremes, market energy.",
+        "level-ta-06-volume.webp": "Waterfall of amber volume bars in ink wash, volume and market internals, purple accumulation distribution flow, zen market participation, conviction behind moves.",
+        "level-ta-07-patterns.webp": "Geometric triangle and head-shoulders pattern in sumi-e amber outlines, chart pattern breakouts, purple measured moves projecting, zen pattern recognition, market geometry.",
+        "level-ta-08-risk.webp": "Shield with amber position size grid in ink brush, risk management mastery, purple stop-loss levels protecting, zen capital preservation, disciplined sizing.",
+        "level-ta-09-systems.webp": "Clockwork trading system with amber backtesting gears in sumi-e, systematic trading, purple algorithm pathways, zen mechanical approach, tested and proven.",
+        "level-ta-10-psychology.webp": "Meditating trader with amber emotional balance in ink wash, trading psychology integration, purple fear and greed dissolving, zen market mindset, complete trader.",
+
+        # ============================================
+        # Quantum Mechanics - 10 Levels
+        # ============================================
+        "level-qm-01-quantum-world.webp": "Atom with electron cloud in sumi-e style, amber quantum glow at subatomic scale, the quantum world, purple probability haze, zen mystery of the very small.",
+        "level-qm-02-wave-particle.webp": "Double-slit experiment with amber interference pattern in ink wash, wave-particle duality, purple photon paths diverging, zen nature of light, both and neither.",
+        "level-qm-03-superposition.webp": "Cat silhouette half-visible half-invisible in sumi-e, amber superposition glow, probability and possibility, purple multiple states coexisting, zen being and non-being.",
+        "level-qm-04-entanglement.webp": "Two particles connected by amber thread across vast distance in ink wash, quantum entanglement, purple spooky action at distance, zen instant connection, non-locality.",
+        "level-qm-05-uncertainty.webp": "Blurred particle with amber position-momentum trade-off in sumi-e, uncertainty principle, purple measurement limits, zen accepting the unknowable, Heisenberg wisdom.",
+        "level-qm-06-tunneling.webp": "Particle passing through amber barrier wall in ink wash, quantum tunneling, purple impossible becoming possible, zen penetrating obstacles, energy and faith.",
+        "level-qm-07-computing.webp": "Qubit in superposition as amber spinning sphere in sumi-e, quantum computing, purple entangled circuit gates, zen computational revolution, beyond binary.",
+        "level-qm-08-field-theory.webp": "Quantum field as amber rippling ocean surface in ink wash, quantum field theory, purple virtual particles appearing, zen everything is vibration, fields and forces.",
+        "level-qm-09-interpretations.webp": "Multiple worlds branching from amber decision point in sumi-e, quantum interpretations, purple Copenhagen vs Many-Worlds, zen philosophy of reality, observer's role.",
+        "level-qm-10-daily-life.webp": "Everyday objects revealing amber quantum nature beneath in ink wash, quantum thinking applied, purple practical insights radiating, zen quantum wisdom for living, integration.",
+
+        # ============================================
+        # Game Theory - 10 Levels
+        # ============================================
+        "level-gt-01-strategic.webp": "Chess board with amber strategic light illuminating moves in sumi-e, strategic thinking foundations, purple payoff matrix, zen rational choice, game of life.",
+        "level-gt-02-prisoners.webp": "Two figures in separate cells with amber cooperation light between in ink wash, prisoner's dilemma, purple trust vs betrayal, zen cooperation paradox, defect or cooperate.",
+        "level-gt-03-nash.webp": "Multiple arrows converging to amber equilibrium point in sumi-e, Nash equilibrium, purple dominant strategies radiating, zen stable balance point, no one deviates.",
+        "level-gt-04-sequential.webp": "Decision tree branching downward with amber optimal path in ink wash, sequential games, purple backward induction path, zen thinking ahead, game trees.",
+        "level-gt-05-mixed.webp": "Dice and probability waves in amber randomization in sumi-e, mixed strategies, purple unpredictability advantage, zen calculated randomness, keeping opponents guessing.",
+        "level-gt-06-repeated.webp": "Spiral of repeated interactions with amber trust building in ink wash, repeated games and reputation, purple tit-for-tat rhythm, zen long-term thinking, shadow of future.",
+        "level-gt-07-bargaining.webp": "Two hands dividing amber pie between them in sumi-e, bargaining theory, purple negotiation pressure, zen fair division, ultimatum and compromise.",
+        "level-gt-08-mechanism.webp": "Auction gavel with amber mechanism design gears in ink wash, mechanism design, purple incentive alignment, zen designing the rules of the game, auction theory.",
+        "level-gt-09-information.webp": "Peacock displaying amber signal feathers in sumi-e, information asymmetry and signaling, purple hidden information revealed, zen costly signals, market for lemons.",
+        "level-gt-10-evolutionary.webp": "Species adapting and competing with amber survival strategies in ink wash, evolutionary game theory, purple hawk-dove dynamics, zen nature's strategies, real-world application.",
+
+        # ============================================
+        # Ancient Empires - 10 Levels
+        # ============================================
+        "level-ae-01-patterns.webp": "Rising and falling civilization arcs in amber curves in sumi-e, patterns of empire, purple cyclical history, zen rise and fall, lessons across ages.",
+        "level-ae-02-mesopotamia.webp": "Pyramid and ziggurat silhouettes with amber Nile and Euphrates in ink wash, Egypt and Mesopotamia, purple cuneiform and hieroglyphs, zen cradle of civilization.",
+        "level-ae-03-greece.webp": "Parthenon columns with amber democratic light in sumi-e, Greek democracy and philosophy, purple Athenian ideals radiating, zen birthplace of Western thought.",
+        "level-ae-04-rome.webp": "Roman eagle standard with amber imperial glory in ink wash, Rome republic to empire, purple legionary paths expanding, zen law and governance, power and decline.",
+        "level-ae-05-persia.webp": "Silk Road caravan with amber trade goods glowing in sumi-e, Persia and the Silk Road, purple cultural exchange flowing, zen connecting civilizations, tolerance and trade.",
+        "level-ae-06-china.webp": "Great Wall stretching with amber dynastic light in ink wash, Chinese dynasties and philosophy, purple Confucian and Taoist wisdom, zen Middle Kingdom, mandate of heaven.",
+        "level-ae-07-india.webp": "Ashoka pillar with amber dharma wheel in sumi-e, Maurya and Gupta India, purple golden age brilliance, zen subcontinental wisdom, science and spirituality.",
+        "level-ae-08-mongols.webp": "Horseback archer with amber steppe fire in ink wash, Mongols and Ottomans, purple empire stretching across continents, zen nomadic power, military genius.",
+        "level-ae-09-decline.webp": "Crumbling pillars with amber sunset light in sumi-e, why empires fall, purple decay patterns recurring, zen impermanence of power, lessons from collapse.",
+        "level-ae-10-leadership.webp": "Crown with amber leadership wisdom radiating across timeline in ink wash, leadership lessons across empires, purple great leaders silhouettes, zen timeless command, history teaches.",
+
+        # ============================================
+        # Communication & Rhetoric - 10 Levels
+        # ============================================
+        "level-cr-01-persuasion.webp": "Rippling amber waves of influence emanating from speaker in sumi-e, foundations of persuasion, purple Aristotle's three appeals, zen art of convincing, ethos pathos logos.",
+        "level-cr-02-argumentation.webp": "Logical chain links in amber with fallacy shadows in ink wash, argumentation and logic, purple syllogism structure, zen clear reasoning, sound arguments.",
+        "level-cr-03-storytelling.webp": "Campfire with amber story arcs rising as smoke in sumi-e, storytelling for impact, purple narrative journey curving, zen power of story, hero's journey.",
+        "level-cr-04-speaking.webp": "Lone figure at podium with amber spotlight and audience in ink wash, public speaking mastery, purple confidence aura expanding, zen commanding the room, stage presence.",
+        "level-cr-05-writing.webp": "Quill pen with amber ink flowing into structured document in sumi-e, written communication mastery, purple clarity of prose, zen precise expression, words that last.",
+        "level-cr-06-difficult.webp": "Two figures at table with amber bridge forming between them in ink wash, difficult conversations, purple emotional tension dissolving, zen courageous dialogue, radical candor.",
+        "level-cr-07-listening.webp": "Large ear with amber sound waves entering and heart responding in sumi-e, active listening and empathy, purple understanding deepening, zen receiving fully, hearing beyond words.",
+        "level-cr-08-debate.webp": "Two opposing amber flames in balanced dialectic in ink wash, debate and dialectic, purple synthesis emerging from thesis-antithesis, zen constructive disagreement, truth through opposition.",
+        "level-cr-09-influence.webp": "Prism refracting amber light into multiple persuasion beams in sumi-e, influence and framing, purple perception shifts, zen shaping reality through language, frame control.",
+        "level-cr-10-playbook.webp": "Open playbook with amber communication tools radiating outward in ink wash, your communication playbook, purple integrated mastery, zen complete communicator, all skills unified.",
     },
 }
 
