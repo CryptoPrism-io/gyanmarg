@@ -213,7 +213,7 @@ export function ModuleHub() {
                 <div
                   className={`
                     relative overflow-hidden rounded-2xl border transition-all
-                    ${isLocked ? 'opacity-50' : 'hover:scale-[1.01] hover:shadow-lg'}
+                    ${isLocked ? 'opacity-75' : 'hover:scale-[1.01] hover:shadow-lg'}
                     glass ${colors.border}
                   `}
                 >

@@ -4,203 +4,152 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Polymind** — *Gamified Wisdom for the Modern Polymath*
+**Polymind** (Gyanmarg) — Gamified learning platform transforming 45+ ebooks into interactive experiences using spaced repetition, active recall, and interleaving.
 
-A gamified learning platform that transforms 45+ ebooks into interactive learning experiences using evidence-based learning science (spaced repetition, active recall, interleaving).
-
-**Live**: https://gyanmarg-963362833537.us-central1.run.app (pending domain setup)
+**Live**: https://gyanmarg-963362833537.us-central1.run.app
 
 ## Development Commands
+
+All commands run from `app/`:
 
 ```bash
 cd app
 npm install          # Install dependencies
-npm run dev          # Start dev server at http://localhost:5173
-npm run build        # TypeScript check + production build
+npm run dev          # Dev server at http://localhost:5173
+npm run build        # TypeScript check + Vite production build
+npm run lint         # ESLint
 npm run preview      # Preview production build
-npm run lint         # Run ESLint
 ```
+
+**Deployment**: Push to `master` triggers GitHub Actions → GCP Cloud Run.
 
 ## Tech Stack
 
-- **React 19** + **TypeScript** (strict mode)
-- **Vite 7.2** (build tool)
-- **TailwindCSS 3.4** (dark theme)
-- **Zustand 4.5** (state with localStorage persistence)
-- **Framer Motion** (animations)
-- **React Router DOM 7.1** (routing)
-- **Lucide React** (icons)
+React 19, TypeScript (strict), Vite 7.2, TailwindCSS 3.4, Zustand 4.5, Framer Motion, React Router DOM 7.1, Lucide React, Firebase (sync stub).
 
-## Project Structure
+## Architecture
 
-```
-Polymind/
-├── app/                      # Main React application
-│   ├── src/
-│   │   ├── components/       # Atomic design hierarchy
-│   │   │   ├── atoms/        # Badge, Button, Input, ProgressBar, Skeleton, Spinner
-│   │   │   ├── molecules/    # Card, FlashCard, LessonCard, PWAInstallPrompt, RichMarkdown
-│   │   │   ├── organisms/    # DeepWorkTimer, LessonViewer, Navbar, Modal, LevelUpModal
-│   │   │   └── templates/    # PageLayout
-│   │   ├── features/         # Feature modules (see Routes below)
-│   │   ├── store/            # Zustand stores
-│   │   ├── data/             # Content: modules.ts, flashcards, pathways/
-│   │   ├── types/            # TypeScript definitions
-│   │   ├── hooks/            # Custom React hooks
-│   │   └── lib/              # Utilities
-│   ├── public/               # PWA assets (manifest.json, sw.js, icons/)
-│   ├── Dockerfile            # Docker build
-│   └── nginx.conf            # Production server config
-├── .github/workflows/        # CI/CD to GCP Cloud Run
-├── .claude/skills/           # Claude Code custom skills
-└── docs/                     # Documentation
-```
+### Path Aliases (vite.config.ts + tsconfig.app.json)
 
-## Path Aliases
+`@/` → `src/`, `@/components`, `@/features`, `@/store`, `@/data`, `@/types`, `@/hooks`, `@/lib`, `@/styles`
 
-Configured in `vite.config.ts` and `tsconfig.app.json`:
+### Component Hierarchy (Atomic Design)
+
+`components/atoms/` → `molecules/` → `organisms/` → `templates/PageLayout`
+
+### Routing (App.tsx)
+
+**Protected** (require onboarding): `/dashboard`, `/pathway`, `/review`, `/challenges`, `/connections`, `/settings`, `/lab`, `/saved`, `/modules`, `/modules/:moduleId`
+
+**Public**: `/`, `/science`, `/books`, `/blog`, `/blog/:articleId`, `/how-to`, `/brand-kit`
+
+### State Management — 5 Zustand Stores
+
+All persisted to localStorage with `gyanmarg-*` prefix:
+
+| Store | Key | Purpose |
+|-------|-----|---------|
+| `userStore` | `gyanmarg-user` | Profile, onboarding, settings, favoriteModules, pendingAchievement |
+| `progressStore` | `gyanmarg-progress` | XP, level, completedLessons, achievements, streaks, streak freezes, bookmarks, starred cards, weekly challenges, pendingLevelUp |
+| `spacedRepetitionStore` | `gyanmarg-spaced-repetition` | SM-2 algorithm: unlockedCards, reviewHistory, easeFactor, intervals |
+| `gameStore` | `gyanmarg-games` | Post-lesson mini-game scores, totalGamesPlayed, totalGameXP |
+| `firebaseSync` | — | Sync trigger stub (`triggerSync()`) |
+
+### Gamification
+
+- 500 XP per level
+- Achievements with XP rewards (`data/achievements.ts`)
+- Streak tracking with 1 freeze/week
+- Weekly auto-generated challenges
+- LevelUpModal + AchievementUnlock trigger globally via store flags
+
+## Content System
+
+### Module Registry: 76 modules, 37 available
+
+Defined in `app/src/data/modules.ts`. Each module has an `isAvailable` flag — `true` means it has full pathway content, `false` shows as "Coming Soon".
+
+**14 Categories**: Mind & Performance, Technology & Code, Wealth & Power, Finance & Markets, Spirit & Body, Synthesis & Mastery, Science & Universe, Creative Arts, Strategy & Systems, History & Culture, Practical Mastery, Relationships & Society, Ancient Wisdom, Bharat Wisdom.
+
+### Pathway Content Types
 
 ```typescript
-@/           → src/
-@/components → src/components
-@/features   → src/features
-@/store      → src/store
-@/data       → src/data
-@/types      → src/types
-@/hooks      → src/hooks
-@/lib        → src/lib
-@/styles     → src/styles
-```
+type LessonType = 'intro' | 'concept' | 'exercise' | 'quiz' | 'reflection' | 'challenge';
 
-## Routes
-
-| Route | Component | Description |
-|-------|-----------|-------------|
-| `/` | LandingPage | Public landing page |
-| `/onboarding` | Onboarding | First-time user flow |
-| `/dashboard` | Dashboard | Main progress overview |
-| `/pathway` | LearningPathway | Current module learning path |
-| `/review` | SpacedRepetition | SM-2 flashcard review |
-| `/habits` | HabitCalendar | Habit tracking calendar |
-| `/challenges` | DailyChallenges | Daily challenges |
-| `/connections` | KnowledgeMap | Cross-concept connections |
-| `/modules` | ModuleHub | Browse all 16 modules |
-| `/modules/:moduleId` | ModulePage | Individual module content |
-
-All routes except `/` and `/onboarding` require onboarding completion (ProtectedRoute).
-
-## State Management (Zustand)
-
-Four stores with localStorage persistence (prefix `gyanmarg-*` for backward compatibility):
-
-| Store | Purpose | Key State |
-|-------|---------|-----------|
-| `userStore.ts` | User profile | isOnboarded, name, selectedModules, pendingAchievement |
-| `progressStore.ts` | Gamification | xp, level, completedLessons, achievements, pendingLevelUp |
-| `habitStore.ts` | Habit tracking | habits, completions, streaks |
-| `spacedRepetitionStore.ts` | Flashcards | cards, reviewQueue, SM-2 intervals |
-
-## The 16 Learning Modules
-
-Defined in `app/src/data/modules.ts`:
-
-1. Personal Development - Atomic Habits, Deep Work
-2. AI & Machine Learning - AI 2041, Deep Learning
-3. Wealth Building - Intelligent Investor, Algo Trading
-4. Negotiation & Influence - Never Split the Difference
-5. Bruce Lee Philosophy - Be Water My Friend
-6. Blockchain & Web3 - DeFi, Smart Contracts
-7. Psychology & Decisions - Thinking Fast & Slow
-8. Python & Data Science - Python, ML, Visualization
-9. Life Design & Independence - Off Grid, Purpose
-10. Master Synthesis - Cross-domain connections
-11. Brain & Neuroscience - Cognitive optimization
-12. Body & Longevity - Peter Attia, Bryan Johnson
-13. Spirituality & Sadhana - Meditation, Breathwork
-14. Shiva-Shakti Philosophy - Kashmir Shaivism
-15. Temple Science - Vastu, Sacred Geometry
-16. Polymath Mastery - Meta-learning, Mental Models
-
-## Gamification System
-
-- **XP**: 500 XP per level
-- **Achievements**: Unlockable badges with XP rewards (defined in `data/achievements.ts`)
-- **Streaks**: Consecutive days tracking
-- **Celebrations**: LevelUpModal and AchievementUnlock components trigger globally
-
-## Content Structure
-
-**Pathways** (`data/pathways/*.ts`):
-```typescript
-{
-  id: string;
-  level: number;
+interface PathwayLesson {
+  id: string;              // e.g., "eq-001", "gita-042"
   title: string;
-  lessons: Lesson[];
+  type: LessonType;
+  duration: number;        // minutes
+  xpReward: number;
+  content: {
+    overview: string;
+    mainContent: string;   // markdown
+    keyTakeaway: string;
+    actionItem?: string;
+    quiz?: QuizQuestion;   // { question, options[], correct (0-indexed), explanation }
+  };
 }
 
-interface Lesson {
-  id: string;
+interface PathwayLevel {
+  id: string;              // e.g., "eq-level1", "gita-level5"
   title: string;
-  type: 'concept' | 'exercise' | 'quiz';
-  duration: number;  // minutes
-  xp: number;
-  content: string;   // markdown
-  keyTakeaways: string[];
-  quiz?: QuizQuestion[];
+  description: string;
+  icon: string;            // emoji
+  color: string;           // tailwind class
+  lessons: PathwayLesson[];
+  unlockRequirement: number; // XP: 0, 500, 1000, 1500...
 }
 ```
 
-**Flashcards** (`data/flashcards*.ts`): 2000+ cards organized by topic/batch.
+### Pathway File Pattern (two files per module)
 
-## Key Conventions
+1. `data/pathways/{module-id}-lessons.ts` — exports named arrays: `{prefix}LessonsLevel1[]`, `{prefix}LessonsLevel2[]`, etc.
+2. `data/pathways/{module-id}.ts` — imports lesson arrays, exports `PathwayLevel[]` as default
 
-- Follow atomic design (atoms → molecules → organisms → templates)
-- Use TypeScript strict mode - no `any` types
-- Use path aliases for all imports
-- All user progress persists to Zustand stores
-- Add XP rewards for completed actions
-- Include quizzes with lessons
-- Use Framer Motion for page transitions
+**ID conventions**: Level IDs `{prefix}-level{n}`, Lesson IDs `{prefix}-{nnn}`. Typically 8 lessons/level, 6-8 quizzes per level.
 
-## Deployment
+### Image System (`lib/moduleImages.ts`)
 
-**CI/CD**: Push to `master` triggers GitHub Actions → GCP Cloud Run
+- Module images: `assets/ai-images/modules/module-{id}.webp`
+- Level images: `assets/ai-images/levels/level-{prefix}-{n}.webp`
+- `moduleImages` record maps module ID → import, `levelImages` maps level ID → import
+- Fallback: missing level image → module image → personalDevelopment default
 
-**Manual Docker**:
-```bash
-cd app
-docker build -t polymind .
-docker run -p 8080:8080 polymind
-```
+## Adding a New Module (Checklist)
 
-**Manual GCP**:
-```bash
-gcloud run deploy polymind --source . --region us-central1 --allow-unauthenticated
-```
+1. **Create** `data/pathways/{module-id}-lessons.ts` — export `PathwayLesson[]` arrays per level
+2. **Create** `data/pathways/{module-id}.ts` — import lessons, export `PathwayLevel[]` default
+3. **Update** `data/pathways/index.ts` — add export
+4. **Update** `data/modules.ts` — import pathway, add module config with `isAvailable: true` and `pathway` prop
+5. **Update** `lib/moduleImages.ts` — import + register module image and all level images
+6. **Create** image files in `assets/ai-images/levels/` and `assets/ai-images/modules/`
+
+## Utility Scripts (`app/scripts/`)
+
+| Script | Purpose |
+|--------|---------|
+| `generate-ai-images.py` | Generate module/level images via Gemini API |
+| `compress-images.py` | Batch compress images |
+| `convert-to-webp.mjs` | Convert images to WebP |
+| `generate-icons.cjs` | Generate PWA icon assets |
 
 ## Design System
 
-**Colors** (dark theme):
-- Background: `#0A0A0B`
-- Surface: `#111113`
-- Amber (primary): `#F59E0B`
-- Sage (success): `#22C55E`
+**Dark theme**: Background `#0A0A0B`, Surface `#111113`, Amber primary `#F59E0B`, Sage success `#22C55E`
 
 **Typography**: Outfit (headlines), Inter (body), DM Mono (code)
 
-## MCP Servers (.mcp.json)
+## Known Gotchas
 
-- `playwright` - UI testing
-- `github` - GitHub API access
-- `filesystem` - Local file access
-- `context7` - Context management
-- `shadcn` - shadcn/ui component suggestions
+- Generated TS lesson content often has **unescaped apostrophes** in single-quoted strings — always check after generating
+- Chunk/temp files (L1L2, L3L4 patterns) get compiled by Vite — delete them after use
+- The `gyanmarg-*` localStorage prefix is legacy from early naming — don't change it, breaks existing users
 
 ## Important Rules
 
 - NEVER use dummy/synthetic data without explicit user permission
 - ALWAYS prefer editing existing files over creating new ones
-- Persist user progress via Zustand stores
+- Persist all user progress via Zustand stores
 - Maintain the gamification loop (XP, achievements, celebrations)
-- Keep content in `data/pathways/` - don't hardcode lesson content
+- Keep lesson content in `data/pathways/` — never hardcode

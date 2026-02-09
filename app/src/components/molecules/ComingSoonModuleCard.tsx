@@ -26,7 +26,7 @@ export function ComingSoonModuleCard({
         w-[140px] md:w-[220px]
         ${isActive
           ? 'opacity-100 border-amber-500/50 shadow-[0_0_16px_rgba(245,158,11,0.4)] grayscale-0'
-          : 'opacity-60 border-white/[0.06] hover:border-amber-500/20 hover:shadow-[0_0_12px_rgba(245,158,11,0.2)] grayscale hover:grayscale-[50%]'}
+          : 'opacity-85 border-white/[0.08] hover:opacity-100 hover:border-amber-500/20 hover:shadow-[0_0_12px_rgba(245,158,11,0.2)] grayscale-[30%] hover:grayscale-0'}
       `}
     >
       {/* Thumbnail */}
@@ -39,10 +39,10 @@ export function ComingSoonModuleCard({
         />
 
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
 
         {/* Coming Soon Badge */}
         <div className="absolute top-2 right-2 z-10">
@@ -63,7 +63,7 @@ export function ComingSoonModuleCard({
           backdrop-blur-xl border-t border-white/5
         "
       >
-        <h3 className="text-[11px] md:text-sm font-semibold mb-1 truncate text-white/60">
+        <h3 className="text-[11px] md:text-sm font-semibold mb-1 truncate text-white/80">
           {title}
         </h3>
 
