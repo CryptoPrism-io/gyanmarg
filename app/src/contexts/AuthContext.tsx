@@ -21,8 +21,9 @@ import {
 } from '@/lib/firebase';
 import { initializeSync, clearSync } from '@/store/firebaseSync';
 
-// Sync interval for periodic backup (30 seconds)
-const PERIODIC_SYNC_INTERVAL = 30000;
+// Sync interval for periodic backup (5 minutes instead of 30 seconds to reduce server load)
+// This is a safety net for crashes - most syncs happen via debounce, visibility change, or beforeunload
+const PERIODIC_SYNC_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
 interface AuthContextValue {
   // Auth state
@@ -62,7 +63,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const debouncedSyncRef = useRef<(() => void) | null>(null);
 
   // Track if we've already synced on this session (to avoid duplicate syncs)
-  const hasAutoSyncedRef = useRef(false);
+  // IMPORTANT: Store in localStorage instead of ref so it persists across page reloads
+  const getHasAutoSynced = useCallback(() => {
+    return localStorage.getItem('gyanmarg-has-auto-synced') === 'true';
+  }, []);
+
+  const setHasAutoSynced = useCallback((value: boolean) => {
+    if (value) {
+      localStorage.setItem('gyanmarg-has-auto-synced', 'true');
+    } else {
+      localStorage.removeItem('gyanmarg-has-auto-synced');
+    }
+  }, []);
 
   // Periodic sync interval ref
   const periodicSyncRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -97,9 +109,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
         // AUTO-SYNC FOR RETURNING USERS ON NEW DEVICES
         // If user is already authenticated but localStorage is empty/stale,
         // automatically pull data from Firestore
-        if (!hasAutoSyncedRef.current && !hasLocalStorageData()) {
+        if (!getHasAutoSynced() && !hasLocalStorageData()) {
           console.log('[Sync] Detected returning user on new device, auto-syncing...');
-          hasAutoSyncedRef.current = true;
+          setHasAutoSynced(true); // Persist to localStorage to prevent reload loops
           setIsSyncing(true);
 
           try {
@@ -111,11 +123,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
             }
 
             // Reload to apply hydrated data to Zustand stores
+            // This reload is now safe because hasAutoSynced persists in localStorage
             if (syncResult.hydrated || syncResult.merged) {
+              console.log('[Sync] Reloading to apply synced data...');
               window.location.reload();
             }
           } catch (error) {
             console.error('[Sync] Auto-sync failed:', error);
+            setHasAutoSynced(false); // Reset flag if sync failed
           } finally {
             setIsSyncing(false);
           }
@@ -124,7 +139,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         debouncedSyncRef.current = null;
         // Clear global sync
         clearSync();
-        hasAutoSyncedRef.current = false;
+        setHasAutoSynced(false);
       }
     });
 
@@ -183,7 +198,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     const handleStorage = (event: StorageEvent) => {
       // Only sync for gyanmarg store changes
-      if (event.key?.startsWith('gyanmarg-') && debouncedSyncRef.current) {
+      // Ignore the auto-sync flag itself to prevent feedback loops
+      if (
+        event.key?.startsWith('gyanmarg-') &&
+        event.key !== 'gyanmarg-has-auto-synced' &&
+        debouncedSyncRef.current
+      ) {
         debouncedSyncRef.current();
       }
     };
