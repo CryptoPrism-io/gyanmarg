@@ -668,6 +668,62 @@ PROMPTS = {
         "level-cr-08-debate.webp": "Two opposing amber flames in balanced dialectic in ink wash, debate and dialectic, purple synthesis emerging from thesis-antithesis, zen constructive disagreement, truth through opposition.",
         "level-cr-09-influence.webp": "Prism refracting amber light into multiple persuasion beams in sumi-e, influence and framing, purple perception shifts, zen shaping reality through language, frame control.",
         "level-cr-10-playbook.webp": "Open playbook with amber communication tools radiating outward in ink wash, your communication playbook, purple integrated mastery, zen complete communicator, all skills unified.",
+
+        # ============================================
+        # Stoicism - 10 Levels
+        # ============================================
+        "level-stoic-01-foundations.webp": "Ancient Greek column with amber Stoic flame burning steadily in sumi-e, Stoic foundations, purple philosophical wisdom, zen inner citadel, Zeno's porch.",
+        "level-stoic-02-control.webp": "Two circles — inner amber circle of control, outer fading purple circle of concern in ink wash, dichotomy of control, zen acceptance, focus on what matters.",
+        "level-stoic-03-virtue.webp": "Four cardinal virtues as amber pillars supporting a temple in sumi-e, courage justice temperance wisdom, purple moral excellence, zen virtuous living.",
+        "level-stoic-04-seneca.webp": "Writing desk with amber candlelight and scrolls in ink wash, Seneca's letters and wisdom, purple philosophical contemplation, zen practical Stoicism, shortness of life.",
+        "level-stoic-05-marcus.webp": "Emperor's laurel crown beside meditation journal in sumi-e, amber Aurelius wisdom light, Meditations, purple duty and philosophy, zen philosopher-king.",
+        "level-stoic-06-psychology.webp": "Mind reframing negative thoughts into amber golden perspectives in ink wash, cognitive reappraisal, purple CBT connections, zen Stoic psychology, perception is everything.",
+        "level-stoic-07-resilience.webp": "Oak tree standing firm in storm with amber roots deep in sumi-e, Stoic resilience, purple adversity as training, zen amor fati, obstacle is the way.",
+        "level-stoic-08-relationships.webp": "Two Stoic figures in amber philosophical dialogue in ink wash, relationships and community, purple social virtue, zen cosmopolitan brotherhood, relating wisely.",
+        "level-stoic-09-modern.webp": "Modern city skyline with amber Stoic light shining through in sumi-e, modern Stoicism, purple ancient wisdom applied today, zen daily Stoic practice.",
+        "level-stoic-10-integration.webp": "Stoic sage silhouette radiating amber integrated wisdom in ink wash, complete Stoic life, purple all virtues unified, zen philosophical mastery, living the good life.",
+
+        # ============================================
+        # Eastern Philosophy - 10 Levels
+        # ============================================
+        "level-east-01-landscape.webp": "Vast Eastern landscape with mountains temples rivers in sumi-e, amber dawn light on Asian philosophy, purple mist of ancient wisdom, zen panoramic view of Eastern thought.",
+        "level-east-02-taoism.webp": "Yin-yang symbol flowing as water in ink wash, amber Tao light, Taoist philosophy, purple wu wei effortless action, zen following the way, Lao Tzu wisdom.",
+        "level-east-03-buddhism.webp": "Buddha silhouette under bodhi tree with amber enlightenment glow in sumi-e, Four Noble Truths, purple Eightfold Path radiating, zen liberation from suffering.",
+        "level-east-04-zen.webp": "Empty enso circle with amber brush stroke in ink wash, Zen Buddhism, purple satori flash of insight, zen direct pointing at reality, beginner's mind.",
+        "level-east-05-confucianism.webp": "Confucius teaching students with amber scroll of ren in sumi-e, social harmony, purple five relationships, zen virtuous governance, propriety and ritual.",
+        "level-east-06-mindfulness.webp": "Lotus flower with amber present-moment awareness radiating in ink wash, mindfulness practice, purple breath awareness, zen here and now, vipassana clarity.",
+        "level-east-07-yoga.webp": "Yogi in tree pose with amber chakra energy in sumi-e, yoga philosophy beyond poses, purple union of mind body spirit, zen ancient discipline, Patanjali's path.",
+        "level-east-08-japanese.webp": "Japanese tea ceremony with amber aesthetic precision in ink wash, wabi-sabi bushido ikigai, purple Japanese philosophical traditions, zen beauty in imperfection.",
+        "level-east-09-synthesis.webp": "Eastern philosophical streams merging into one amber river in sumi-e, synthesis of Eastern wisdom, purple complementary truths joining, zen unified understanding.",
+        "level-east-10-integration.webp": "Modern person living with amber Eastern wisdom glow in ink wash, daily integration, purple ancient-modern bridge, zen Eastern philosophy in Western life, practical application.",
+
+        # ============================================
+        # Vedic Wisdom - 10 Levels
+        # ============================================
+        "level-vedic-01-tradition.webp": "Ancient Vedic fire altar with amber sacred flames in sumi-e Indian style, Vedic tradition foundations, purple oral transmission lineage, zen Rishi wisdom, cosmic order.",
+        "level-vedic-02-upanishads.webp": "Forest hermitage with guru and student by amber fire in ink wash, Upanishadic inquiry, purple Brahman-Atman realization, zen secret teaching, knowledge of self.",
+        "level-vedic-03-gita.webp": "Chariot on battlefield with amber divine light from charioteer in sumi-e, Bhagavad Gita essence, purple dharma guidance, zen action without attachment, Krishna's song.",
+        "level-vedic-04-dharma.webp": "Dharma wheel with amber cosmic law radiating in ink wash Indian style, righteous living, purple moral order of universe, zen duty and purpose, eternal law.",
+        "level-vedic-05-yoga-sutras.webp": "Eight limbs of yoga ascending like amber temple steps in sumi-e, Patanjali's Yoga Sutras, purple chitta vritti nirodhah, zen mind mastery, systematic liberation.",
+        "level-vedic-06-vedanta.webp": "Wave realizing it is amber ocean in ink wash, Vedantic non-duality, purple Advaita realization, zen Brahman is everything, Shankara's wisdom, tat tvam asi.",
+        "level-vedic-07-epics.webp": "Ram's bow and Krishna's flute crossing in amber light in sumi-e Indian style, Ramayana Mahabharata, purple epic wisdom, zen dharmic storytelling, mythological lessons.",
+        "level-vedic-08-ayurveda.webp": "Three doshas balanced around amber healing center in ink wash, Ayurvedic wisdom, purple life science harmony, zen holistic health, ancient Indian medicine.",
+        "level-vedic-09-thinkers.webp": "Lineage of Indian sages with amber wisdom passing between them in sumi-e, great Vedic thinkers, purple Vivekananda Aurobindo, zen modern Indian philosophy.",
+        "level-vedic-10-living.webp": "Modern life infused with amber Vedic rituals and wisdom in ink wash, living Vedic wisdom today, purple sanatana dharma applied, zen eternal truths in modern world.",
+
+        # ============================================
+        # Mythology - 10 Levels
+        # ============================================
+        "level-myth-01-foundations.webp": "Ancient cave paintings coming alive with amber mythological fire in sumi-e, mythology foundations, purple archetypal patterns, zen why humans create myths, origin of stories.",
+        "level-myth-02-hero-journey.webp": "Hero crossing threshold into amber adventure unknown in ink wash, Campbell's monomyth, purple departure initiation return, zen hero's journey stages, call to adventure.",
+        "level-myth-03-greek.webp": "Mount Olympus with amber divine lightning in sumi-e, Greek mythology, purple Zeus Athena Apollo, zen Homeric wisdom, gods as human nature mirrors.",
+        "level-myth-04-norse.webp": "Yggdrasil world tree with amber cosmic branches in ink wash, Norse mythology, purple Viking runes glowing, zen Odin's wisdom sacrifice, Ragnarok and renewal.",
+        "level-myth-05-hindu.webp": "Cosmic dance of Shiva Nataraja with amber creation-destruction in sumi-e Indian style, Hindu mythology, purple divine trinity Brahma Vishnu Shiva, zen cosmic cycles.",
+        "level-myth-06-egyptian.webp": "Ankh and Eye of Horus with amber afterlife light in ink wash, Egyptian mythology, purple pharaonic wisdom, zen journey of the soul, Book of the Dead.",
+        "level-myth-07-world.webp": "Multiple mythological symbols from every culture merging in amber light in sumi-e, world mythology, purple universal themes connecting, zen comparative mythology, shared human stories.",
+        "level-myth-08-archetypes.webp": "Jungian archetypes as amber masks floating in collective unconscious in ink wash, archetypal psychology, purple shadow anima animus, zen understanding the psyche, inner mythology.",
+        "level-myth-09-modern.webp": "Modern superhero silhouette with amber mythological roots in sumi-e, modern mythology, purple Star Wars Marvel narrative, zen contemporary myth-making, stories we live by.",
+        "level-myth-10-personal.webp": "Person writing their own amber life story as mythological quest in ink wash, personal mythology, purple self as hero, zen crafting your narrative, living mythically.",
     },
 }
 
@@ -682,9 +738,11 @@ def is_missing(path: Path) -> bool:
 BHARAT_PREFIXES = (
     "level-gita-", "level-epic-", "level-upan-", "level-shiv-",
     "level-ayur-", "level-yoga-", "level-sans-", "level-jyot-",
+    "level-vedic-",
     "module-bhagavad-gita", "module-ramayana-mahabharata",
     "module-upanishads", "module-shiv-sutras",
     "module-sanskrit-mantras", "module-jyotish-vastu",
+    "module-vedic-wisdom",
 )
 
 
