@@ -47,6 +47,7 @@ import { ayurvedaPathway } from './pathways/ayurveda';
 import { yogaPhilosophyPathway } from './pathways/yoga-philosophy';
 import { sanskritMantrasPathway } from './pathways/sanskrit-mantras';
 import { jyotishVastuPathway } from './pathways/jyotish-vastu';
+import { designThinkingPathway } from './pathways/design-thinking';
 
 export interface ModuleConfig {
   id: string;
@@ -446,7 +447,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Design Thinking', 'UX Research', 'Prototyping', 'User Testing'],
     features: ['Design Sprint Kit', 'Persona Builder', 'Prototype Lab', 'Usability Tester'],
     route: '/modules/design-thinking',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: designThinkingPathway,
   },
   {
     id: 'cybersecurity',

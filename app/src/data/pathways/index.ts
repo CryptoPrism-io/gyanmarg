@@ -48,6 +48,7 @@ export { default as quantumMechanicsPathway } from './quantum-mechanics';
 export { default as gameTheoryPathway } from './game-theory';
 export { default as ancientEmpiresPathway } from './ancient-empires';
 export { default as communicationRhetoricPathway } from './communication-rhetoric';
+export { default as designThinkingPathway } from './design-thinking';
 
 // FIRE Movement lessons for Wealth Building module
 export { fireLessons } from './wealth-fire';
