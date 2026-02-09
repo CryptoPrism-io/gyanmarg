@@ -27,3 +27,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code / MCP config
+.claude/settings.local.json
+.claude/skills/
+.mcp.json
+.playwright-mcp/
+app/.playwright-mcp/
+
+# Temp build artifacts
+*.placeholder.webp
+app/build-check.txt
+app/build-output.txt
+
+# Design wireframe files (in docs/design/)
+*.pen
