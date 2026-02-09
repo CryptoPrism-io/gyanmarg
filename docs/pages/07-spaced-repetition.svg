@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1254" width="1080" height="1254">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1254" fill="#0A0A0B"/>
+
+
+    <rect x="0" y="0" width="1080" height="1080" fill="#1A1A1D" stroke="#F59E0B" stroke-width="3" rx="12"/>
+    <rect x="0" y="0" width="1080" height="60" fill="#F59E0B" rx="12"/>
+    <text x="540" y="38" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#0A0A0B" text-anchor="middle">SPACED REPETITION</text>
+    <text x="20" y="90" font-family="Inter, sans-serif" font-size="14" fill="#888">Route: /review</text>
+
+    <!-- Category Hub -->
+    <text x="20" y="130" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#F59E0B">📚 Review by Category</text>
+
+    <rect x="20" y="150" width="330" height="100" fill="#111113" stroke="#F59E0B" stroke-width="2" rx="8"/>
+    <text x="185" y="185" font-family="Inter, sans-serif" font-size="24" fill="#F59E0B" text-anchor="middle">🧠</text>
+    <text x="185" y="215" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#E5E5E5" text-anchor="middle">Brain Optimization</text>
+    <rect x="140" y="225" width="90" height="20" fill="#22C55E" fill-opacity="0.2" rx="4"/>
+    <text x="185" y="238" font-family="DM Mono, monospace" font-size="10" fill="#22C55E" text-anchor="middle">24 cards due</text>
+
+    <rect x="370" y="150" width="330" height="100" fill="#111113" stroke="#F59E0B" stroke-width="2" rx="8"/>
+    <text x="535" y="185" font-family="Inter, sans-serif" font-size="24" fill="#F59E0B" text-anchor="middle">⚡</text>
+    <text x="535" y="215" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#E5E5E5" text-anchor="middle">Quantum Mechanics</text>
+    <rect x="490" y="225" width="90" height="20" fill="#F59E0B" fill-opacity="0.2" rx="4"/>
+    <text x="535" y="238" font-family="DM Mono, monospace" font-size="10" fill="#F59E0B" text-anchor="middle">8 cards due</text>
+
+    <rect x="720" y="150" width="330" height="100" fill="#111113" stroke="#888" stroke-width="1" rx="8"/>
+    <text x="885" y="185" font-family="Inter, sans-serif" font-size="24" fill="#888" text-anchor="middle">🕉️</text>
+    <text x="885" y="215" font-family="Outfit, sans-serif" font-size="13" fill="#888" text-anchor="middle">Bhagavad Gita</text>
+    <text x="885" y="235" font-family="Inter, sans-serif" font-size="10" fill="#666" text-anchor="middle">No cards yet</text>
+
+    <!-- Flashcard Display -->
+    <text x="20" y="290" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#F59E0B">💳 Current Card</text>
+
+    <rect x="20" y="310" width="1040" height="320" fill="#111113" stroke="#F59E0B" stroke-width="3" rx="12"/>
+    <text x="540" y="350" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">Card 5 of 24 • Brain Optimization</text>
+
+    <!-- Card Front -->
+    <rect x="60" y="380" width="960" height="220" fill="#0A0A0B" stroke="#F59E0B" stroke-width="2" rx="8"/>
+    <text x="540" y="420" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#888" text-anchor="middle">QUESTION</text>
+    <text x="540" y="470" font-family="Outfit, sans-serif" font-size="18" font-weight="600" fill="#F59E0B" text-anchor="middle">What is neuroplasticity?</text>
+    <text x="540" y="510" font-family="Inter, sans-serif" font-size="12" fill="#E5E5E5" text-anchor="middle">Think about the definition and key principles</text>
+    <rect x="440" y="540" width="200" height="45" fill="#F59E0B" rx="6"/>
+    <text x="540" y="568" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0B" text-anchor="middle">Flip to See Answer</text>
+
+    <!-- Rating Buttons -->
+    <text x="20" y="670" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#F59E0B">⏱ How well did you remember?</text>
+
+    <rect x="20" y="690" width="330" height="100" fill="#111113" stroke="#EF4444" stroke-width="2" rx="8"/>
+    <text x="185" y="730" font-family="Outfit, sans-serif" font-size="16" font-weight="700" fill="#EF4444" text-anchor="middle">Hard</text>
+    <text x="185" y="755" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">Review in 1 day</text>
+    <text x="185" y="773" font-family="Inter, sans-serif" font-size="9" fill="#666" text-anchor="middle">+10 XP</text>
+
+    <rect x="370" y="690" width="330" height="100" fill="#F59E0B" fill-opacity="0.1" stroke="#F59E0B" stroke-width="2" rx="8"/>
+    <text x="535" y="730" font-family="Outfit, sans-serif" font-size="16" font-weight="700" fill="#F59E0B" text-anchor="middle">Good</text>
+    <text x="535" y="755" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">Review in 3 days</text>
+    <text x="535" y="773" font-family="Inter, sans-serif" font-size="9" fill="#F59E0B" text-anchor="middle">+20 XP</text>
+
+    <rect x="720" y="690" width="330" height="100" fill="#111113" stroke="#22C55E" stroke-width="2" rx="8"/>
+    <text x="885" y="730" font-family="Outfit, sans-serif" font-size="16" font-weight="700" fill="#22C55E" text-anchor="middle">Easy</text>
+    <text x="885" y="755" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">Review in 7 days</text>
+    <text x="885" y="773" font-family="Inter, sans-serif" font-size="9" fill="#22C55E" text-anchor="middle">+30 XP</text>
+
+    <!-- Stats -->
+    <text x="20" y="830" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#F59E0B">📊 Session Stats</text>
+
+    <rect x="20" y="850" width="250" height="90" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+    <text x="145" y="880" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">Cards Reviewed</text>
+    <text x="145" y="910" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#F59E0B" text-anchor="middle">4 / 24</text>
+
+    <rect x="290" y="850" width="250" height="90" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+    <text x="415" y="880" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">Retention Rate</text>
+    <text x="415" y="910" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#22C55E" text-anchor="middle">85%</text>
+
+    <rect x="560" y="850" width="250" height="90" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+    <text x="685" y="880" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">Cards Mastered</text>
+    <text x="685" y="910" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#F59E0B" text-anchor="middle">142</text>
+
+    <rect x="830" y="850" width="230" height="90" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+    <text x="945" y="880" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">XP Earned</text>
+    <text x="945" y="910" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#F59E0B" text-anchor="middle">+80</text>
+
+    <!-- Session Complete -->
+    <rect x="20" y="960" width="1040" height="80" fill="#22C55E" fill-opacity="0.1" stroke="#22C55E" stroke-width="2" rx="8"/>
+    <text x="540" y="995" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#22C55E" text-anchor="middle">🎉 Keep going! 20 cards remaining</text>
+    <rect x="420" y="1005" width="240" height="40" fill="#22C55E" rx="6"/>
+    <text x="540" y="1030" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0B" text-anchor="middle">Continue Review</text>
+  
+
+  <!-- Navigation Flow -->
+  <rect x="20" y="1100" width="1040" height="134" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+  <text x="540" y="1130" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#F59E0B" text-anchor="middle">🔀 Navigation Flow</text>
+
+  <!-- Entry Points -->
+  <text x="40" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#E5E5E5">Ways to reach this page (3):</text>
+  <text x="60" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888">• Dashboard: Review Cards</text>
+  <text x="60" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888">• After lesson completion</text>
+  <text x="60" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888">• Navbar</text>
+  <text x="560" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#E5E5E5">Where you can go (3):</text>
+  <text x="580" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Dashboard</text>
+  <text x="580" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Continue session</text>
+  <text x="580" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Category selection</text>
+</svg>

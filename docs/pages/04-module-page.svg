@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1254" width="1080" height="1254">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1254" fill="#0A0A0B"/>
+
+
+    <rect x="0" y="0" width="1080" height="1080" fill="#1A1A1D" stroke="#F59E0B" stroke-width="3" rx="12"/>
+    <rect x="0" y="0" width="1080" height="60" fill="#F59E0B" rx="12"/>
+    <text x="540" y="38" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#0A0A0B" text-anchor="middle">MODULE PAGE</text>
+    <text x="20" y="90" font-family="Inter, sans-serif" font-size="14" fill="#888">Route: /modules/:moduleId</text>
+
+    <!-- Back Button + Header -->
+    <rect x="20" y="110" width="80" height="40" fill="#111113" stroke="#F59E0B" stroke-width="1" rx="6"/>
+    <text x="60" y="135" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#F59E0B" text-anchor="middle">← Back</text>
+
+    <!-- Module Title Card -->
+    <rect x="20" y="165" width="1040" height="100" fill="#111113" stroke="#F59E0B" stroke-width="2" rx="8"/>
+    <text x="80" y="215" font-family="Inter, sans-serif" font-size="36" fill="#F59E0B">🧠</text>
+    <text x="140" y="210" font-family="Outfit, sans-serif" font-size="18" font-weight="700" fill="#E5E5E5">Brain Optimization</text>
+    <text x="140" y="235" font-family="Inter, sans-serif" font-size="11" fill="#888">Unlock your brain's full potential</text>
+    <text x="140" y="255" font-family="Inter, sans-serif" font-size="10" fill="#666">7 books • 10 levels • 80 lessons</text>
+
+    <!-- Progress Bar -->
+    <rect x="670" y="185" width="350" height="60" fill="#0A0A0B" rx="6"/>
+    <text x="845" y="207" font-family="DM Mono, monospace" font-size="10" fill="#888" text-anchor="middle">Module Progress</text>
+    <rect x="690" y="215" width="310" height="20" fill="#1A1A1D" stroke="#333" stroke-width="1" rx="10"/>
+    <rect x="690" y="215" width="210" height="20" fill="#F59E0B" rx="10"/>
+    <text x="845" y="229" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#0A0A0B" text-anchor="middle">68%</text>
+
+    <!-- Level Accordion -->
+    <text x="20" y="300" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#F59E0B">Pathway Levels</text>
+
+    <!-- Level 1 (Collapsed) -->
+    <rect x="20" y="315" width="1040" height="60" fill="#111113" stroke="#F59E0B" stroke-width="2" rx="6"/>
+    <text x="45" y="345" font-family="Inter, sans-serif" font-size="20" fill="#F59E0B">🌱</text>
+    <text x="90" y="340" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#E5E5E5">Level 1: Foundations</text>
+    <text x="90" y="360" font-family="Inter, sans-serif" font-size="10" fill="#888">8 lessons • 0 XP to unlock</text>
+    <circle cx="980" cy="345" r="14" fill="#22C55E"/>
+    <text x="980" y="350" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0A0A0B" text-anchor="middle">✓</text>
+    <text x="1030" y="350" font-family="Inter, sans-serif" font-size="16" fill="#888" text-anchor="middle">▼</text>
+
+    <!-- Level 2 (Expanded) -->
+    <rect x="20" y="395" width="1040" height="460" fill="#111113" stroke="#F59E0B" stroke-width="2" rx="6"/>
+    <text x="45" y="425" font-family="Inter, sans-serif" font-size="20" fill="#F59E0B">🚀</text>
+    <text x="90" y="420" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#E5E5E5">Level 2: Neural Enhancement</text>
+    <text x="90" y="440" font-family="Inter, sans-serif" font-size="10" fill="#888">8 lessons • 500 XP to unlock</text>
+    <rect x="940" y="410" width="80" height="25" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1" rx="4"/>
+    <text x="980" y="428" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#F59E0B" text-anchor="middle">5/8 done</text>
+    <text x="1030" y="430" font-family="Inter, sans-serif" font-size="16" fill="#F59E0B" text-anchor="middle">▲</text>
+
+    <!-- Lesson List -->
+    <rect x="40" y="460" width="1000" height="45" fill="#0A0A0B" stroke="#22C55E" stroke-width="1" rx="4"/>
+    <circle cx="70" cy="482" r="12" fill="#22C55E"/>
+    <text x="70" y="487" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0A0A0B" text-anchor="middle">✓</text>
+    <rect x="95" y="472" width="60" height="20" fill="#A78BFA" fill-opacity="0.2" stroke="#A78BFA" stroke-width="1" rx="4"/>
+    <text x="125" y="485" font-family="DM Mono, monospace" font-size="9" fill="#A78BFA" text-anchor="middle">INTRO</text>
+    <text x="170" y="485" font-family="Inter, sans-serif" font-size="12" fill="#E5E5E5">1. Welcome to Neural Enhancement</text>
+    <text x="920" y="485" font-family="DM Mono, monospace" font-size="10" fill="#888" text-anchor="end">15 min</text>
+    <text x="980" y="485" font-family="DM Mono, monospace" font-size="10" fill="#22C55E" text-anchor="end">+50 XP</text>
+
+    <rect x="40" y="515" width="1000" height="45" fill="#0A0A0B" stroke="#22C55E" stroke-width="1" rx="4"/>
+    <circle cx="70" cy="537" r="12" fill="#22C55E"/>
+    <text x="70" y="542" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0A0A0B" text-anchor="middle">✓</text>
+    <rect x="95" y="527" width="70" height="20" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-width="1" rx="4"/>
+    <text x="130" y="540" font-family="DM Mono, monospace" font-size="9" fill="#3B82F6" text-anchor="middle">CONCEPT</text>
+    <text x="180" y="540" font-family="Inter, sans-serif" font-size="12" fill="#E5E5E5">2. Neuroplasticity Fundamentals</text>
+    <text x="920" y="540" font-family="DM Mono, monospace" font-size="10" fill="#888" text-anchor="end">20 min</text>
+    <text x="980" y="540" font-family="DM Mono, monospace" font-size="10" fill="#22C55E" text-anchor="end">+60 XP</text>
+
+    <rect x="40" y="570" width="1000" height="45" fill="#0A0A0B" stroke="#22C55E" stroke-width="1" rx="4"/>
+    <circle cx="70" cy="592" r="12" fill="#22C55E"/>
+    <text x="70" y="597" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0A0A0B" text-anchor="middle">✓</text>
+    <rect x="95" y="582" width="80" height="20" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1" rx="4"/>
+    <text x="135" y="595" font-family="DM Mono, monospace" font-size="9" fill="#F59E0B" text-anchor="middle">EXERCISE</text>
+    <text x="190" y="595" font-family="Inter, sans-serif" font-size="12" fill="#E5E5E5">3. Brain Training Drills</text>
+    <text x="920" y="595" font-family="DM Mono, monospace" font-size="10" fill="#888" text-anchor="end">25 min</text>
+    <text x="980" y="595" font-family="DM Mono, monospace" font-size="10" fill="#22C55E" text-anchor="end">+75 XP</text>
+
+    <rect x="40" y="625" width="1000" height="45" fill="#0A0A0B" stroke="#22C55E" stroke-width="1" rx="4"/>
+    <circle cx="70" cy="647" r="12" fill="#22C55E"/>
+    <text x="70" y="652" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0A0A0B" text-anchor="middle">✓</text>
+    <rect x="95" y="637" width="50" height="20" fill="#EC4899" fill-opacity="0.2" stroke="#EC4899" stroke-width="1" rx="4"/>
+    <text x="120" y="650" font-family="DM Mono, monospace" font-size="9" fill="#EC4899" text-anchor="middle">QUIZ</text>
+    <text x="160" y="650" font-family="Inter, sans-serif" font-size="12" fill="#E5E5E5">4. Knowledge Check</text>
+    <text x="920" y="650" font-family="DM Mono, monospace" font-size="10" fill="#888" text-anchor="end">10 min</text>
+    <text x="980" y="650" font-family="DM Mono, monospace" font-size="10" fill="#22C55E" text-anchor="end">+40 XP</text>
+
+    <rect x="40" y="680" width="1000" height="45" fill="#0A0A0B" stroke="#22C55E" stroke-width="1" rx="4"/>
+    <circle cx="70" cy="702" r="12" fill="#22C55E"/>
+    <text x="70" y="707" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0A0A0B" text-anchor="middle">✓</text>
+    <rect x="95" y="692" width="70" height="20" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-width="1" rx="4"/>
+    <text x="130" y="705" font-family="DM Mono, monospace" font-size="9" fill="#3B82F6" text-anchor="middle">CONCEPT</text>
+    <text x="180" y="705" font-family="Inter, sans-serif" font-size="12" fill="#E5E5E5">5. Memory Formation</text>
+    <text x="920" y="705" font-family="DM Mono, monospace" font-size="10" fill="#888" text-anchor="end">18 min</text>
+    <text x="980" y="705" font-family="DM Mono, monospace" font-size="10" fill="#22C55E" text-anchor="end">+55 XP</text>
+
+    <rect x="40" y="735" width="1000" height="45" fill="#F59E0B" fill-opacity="0.1" stroke="#F59E0B" stroke-width="2" rx="4"/>
+    <circle cx="70" cy="757" r="12" fill="#F59E0B"/>
+    <text x="70" y="762" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0A0A0B" text-anchor="middle">▶</text>
+    <rect x="95" y="747" width="70" height="20" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-width="1" rx="4"/>
+    <text x="130" y="760" font-family="DM Mono, monospace" font-size="9" fill="#3B82F6" text-anchor="middle">CONCEPT</text>
+    <text x="180" y="760" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#F59E0B">6. Learning Optimization ← CURRENT</text>
+    <text x="920" y="760" font-family="DM Mono, monospace" font-size="10" fill="#888" text-anchor="end">22 min</text>
+    <text x="980" y="760" font-family="DM Mono, monospace" font-size="10" fill="#F59E0B" text-anchor="end">+65 XP</text>
+
+    <rect x="40" y="790" width="1000" height="45" fill="#0A0A0B" stroke="#555" stroke-width="1" rx="4" opacity="0.5"/>
+    <circle cx="70" cy="812" r="12" fill="#333" stroke="#555" stroke-width="1"/>
+    <rect x="95" y="802" width="80" height="20" fill="#F59E0B" fill-opacity="0.1" stroke="#666" stroke-width="1" rx="4"/>
+    <text x="135" y="815" font-family="DM Mono, monospace" font-size="9" fill="#666" text-anchor="middle">EXERCISE</text>
+    <text x="190" y="815" font-family="Inter, sans-serif" font-size="12" fill="#666">7. Focus Training</text>
+    <text x="920" y="815" font-family="DM Mono, monospace" font-size="10" fill="#666" text-anchor="end">30 min</text>
+    <text x="980" y="815" font-family="DM Mono, monospace" font-size="10" fill="#666" text-anchor="end">+80 XP</text>
+
+    <rect x="40" y="835" width="500" height="30" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="3,3" rx="4"/>
+    <text x="290" y="855" font-family="Inter, sans-serif" font-size="10" fill="#666" text-anchor="middle">... 1 more lesson locked ...</text>
+
+    <!-- Level 3 (Collapsed + Locked) -->
+    <rect x="20" y="875" width="1040" height="60" fill="#111113" stroke="#555" stroke-width="2" stroke-dasharray="5,5" rx="6" opacity="0.6"/>
+    <text x="45" y="905" font-family="Inter, sans-serif" font-size="20" fill="#555">🔒</text>
+    <text x="90" y="900" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#666">Level 3: Advanced Optimization</text>
+    <text x="90" y="920" font-family="Inter, sans-serif" font-size="10" fill="#555">8 lessons • 1000 XP to unlock</text>
+    <rect x="900" y="890" width="120" height="30" fill="#333" rx="6"/>
+    <text x="960" y="910" font-family="DM Mono, monospace" font-size="10" fill="#666" text-anchor="middle">250 XP needed</text>
+
+    <!-- Bottom CTA -->
+    <rect x="20" y="960" width="1040" height="80" fill="#F59E0B" fill-opacity="0.1" stroke="#F59E0B" stroke-width="2" rx="8"/>
+    <text x="540" y="995" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#F59E0B" text-anchor="middle">Ready to continue your learning journey?</text>
+    <rect x="420" y="1005" width="240" height="40" fill="#F59E0B" rx="6"/>
+    <text x="540" y="1030" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0B" text-anchor="middle">Continue Lesson 6</text>
+  
+
+  <!-- Navigation Flow -->
+  <rect x="20" y="1100" width="1040" height="134" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+  <text x="540" y="1130" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#F59E0B" text-anchor="middle">🔀 Navigation Flow</text>
+
+  <!-- Entry Points -->
+  <text x="40" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#E5E5E5">Ways to reach this page (3):</text>
+  <text x="60" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888">• Module Hub</text>
+  <text x="60" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888">• Learning Pathway</text>
+  <text x="60" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888">• Dashboard module cards</text>
+  <text x="560" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#E5E5E5">Where you can go (3):</text>
+  <text x="580" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Lesson Viewer (click lesson)</text>
+  <text x="580" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Module Hub (back)</text>
+  <text x="580" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Continue current lesson</text>
+</svg>

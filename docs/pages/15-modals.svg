@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1254" width="1080" height="1254">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1254" fill="#0A0A0B"/>
+
+
+    <rect x="0" y="0" width="1080" height="1080" fill="#1A1A1D" stroke="#F59E0B" stroke-width="3" rx="12"/>
+    <rect x="0" y="0" width="1080" height="60" fill="#F59E0B" rx="12"/>
+    <text x="540" y="38" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#0A0A0B" text-anchor="middle">MODALS</text>
+    <text x="20" y="90" font-family="Inter, sans-serif" font-size="14" fill="#888">Components: Floating Overlays</text>
+
+    <!-- LevelUp Modal -->
+    <text x="20" y="130" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#F59E0B">🎉 Level Up Modal</text>
+
+    <rect x="20" y="150" width="500" height="300" fill="#111113" stroke="#F59E0B" stroke-width="3" rx="12"/>
+    <text x="270" y="200" font-family="Inter, sans-serif" font-size="48" fill="#F59E0B" text-anchor="middle">🎊</text>
+    <text x="270" y="250" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#F59E0B" text-anchor="middle">Level Up!</text>
+    <text x="270" y="280" font-family="Inter, sans-serif" font-size="14" fill="#E5E5E5" text-anchor="middle">You've reached Level 8</text>
+    <rect x="110" y="300" width="320" height="40" fill="#0A0A0B" stroke="#F59E0B" stroke-width="1" rx="6"/>
+    <text x="270" y="325" font-family="DM Mono, monospace" font-size="12" fill="#888" text-anchor="middle">3,500 / 4,000 XP to Level 9</text>
+    <text x="270" y="370" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">Keep learning to reach the next level!</text>
+    <rect x="160" y="390" width="220" height="45" fill="#F59E0B" rx="6"/>
+    <text x="270" y="418" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0B" text-anchor="middle">Continue</text>
+
+    <!-- Achievement Modal -->
+    <text x="540" y="130" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#F59E0B">🏆 Achievement Unlocked</text>
+
+    <rect x="540" y="150" width="500" height="300" fill="#111113" stroke="#22C55E" stroke-width="3" rx="12"/>
+    <text x="790" y="200" font-family="Inter, sans-serif" font-size="48" fill="#22C55E" text-anchor="middle">🏆</text>
+    <text x="790" y="250" font-family="Outfit, sans-serif" font-size="20" font-weight="700" fill="#22C55E" text-anchor="middle">Achievement Unlocked!</text>
+    <text x="790" y="280" font-family="Inter, sans-serif" font-size="14" fill="#E5E5E5" text-anchor="middle">Speed Learner</text>
+    <text x="790" y="310" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">Complete 10 lessons in one day</text>
+    <rect x="680" y="330" width="220" height="35" fill="#22C55E" fill-opacity="0.2" stroke="#22C55E" stroke-width="1" rx="6"/>
+    <text x="790" y="353" font-family="DM Mono, monospace" font-size="12" font-weight="600" fill="#22C55E" text-anchor="middle">+100 XP Reward</text>
+    <rect x="680" y="385" width="220" height="45" fill="#22C55E" rx="6"/>
+    <text x="790" y="413" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0B" text-anchor="middle">Awesome!</text>
+
+    <!-- SignIn Gate -->
+    <text x="20" y="490" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#F59E0B">🔐 Sign In Gate</text>
+
+    <rect x="20" y="510" width="1040" height="280" fill="#111113" stroke="#F59E0B" stroke-width="3" rx="12"/>
+    <text x="540" y="570" font-family="Inter, sans-serif" font-size="48" fill="#F59E0B" text-anchor="middle">🚀</text>
+    <text x="540" y="620" font-family="Outfit, sans-serif" font-size="20" font-weight="700" fill="#F59E0B" text-anchor="middle">Ready to Start Your Journey?</text>
+    <text x="540" y="650" font-family="Inter, sans-serif" font-size="12" fill="#E5E5E5" text-anchor="middle">Sign in to save your progress and access all features</text>
+    <text x="540" y="675" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="middle">• Track your XP and level • Save favorite lessons • Unlock achievements</text>
+    <rect x="320" y="700" width="200" height="50" fill="none" stroke="#F59E0B" stroke-width="2" rx="6"/>
+    <text x="360" y="725" font-family="Inter, sans-serif" font-size="16" fill="#F59E0B">🔑</text>
+    <text x="395" y="732" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#F59E0B">Sign in with Google</text>
+    <rect x="540" y="700" width="140" height="50" fill="#111113" stroke="#888" stroke-width="1" rx="6"/>
+    <text x="610" y="732" font-family="Inter, sans-serif" font-size="12" fill="#888" text-anchor="middle">Continue as Guest</text>
+    <text x="540" y="770" font-family="Inter, sans-serif" font-size="9" fill="#666" text-anchor="middle">By signing in, you agree to our Terms of Service and Privacy Policy</text>
+
+    <!-- Modal Behavior Notes -->
+    <text x="20" y="830" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#F59E0B">⚙️ Behavior &amp; Triggers</text>
+
+    <rect x="20" y="850" width="330" height="210" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+    <text x="185" y="880" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#F59E0B" text-anchor="middle">Level Up Modal</text>
+    <text x="40" y="905" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">Triggers:</text>
+    <text x="50" y="925" font-family="Inter, sans-serif" font-size="9" fill="#888">• XP crosses level threshold</text>
+    <text x="50" y="942" font-family="Inter, sans-serif" font-size="9" fill="#888">• Appears after lesson completion</text>
+    <text x="40" y="965" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">Features:</text>
+    <text x="50" y="985" font-family="Inter, sans-serif" font-size="9" fill="#888">• Confetti animation</text>
+    <text x="50" y="1002" font-family="Inter, sans-serif" font-size="9" fill="#888">• Level badge display</text>
+    <text x="50" y="1019" font-family="Inter, sans-serif" font-size="9" fill="#888">• Progress to next level</text>
+    <text x="50" y="1036" font-family="Inter, sans-serif" font-size="9" fill="#888">• Dismissible or auto-close (5s)</text>
+
+    <rect x="370" y="850" width="330" height="210" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+    <text x="535" y="880" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#22C55E" text-anchor="middle">Achievement Modal</text>
+    <text x="390" y="905" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">Triggers:</text>
+    <text x="400" y="925" font-family="Inter, sans-serif" font-size="9" fill="#888">• Achievement criteria met</text>
+    <text x="400" y="942" font-family="Inter, sans-serif" font-size="9" fill="#888">• Appears immediately</text>
+    <text x="390" y="965" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">Features:</text>
+    <text x="400" y="985" font-family="Inter, sans-serif" font-size="9" fill="#888">• Trophy animation</text>
+    <text x="400" y="1002" font-family="Inter, sans-serif" font-size="9" fill="#888">• Achievement name + desc</text>
+    <text x="400" y="1019" font-family="Inter, sans-serif" font-size="9" fill="#888">• XP reward display</text>
+    <text x="400" y="1036" font-family="Inter, sans-serif" font-size="9" fill="#888">• User must dismiss</text>
+
+    <rect x="720" y="850" width="330" height="210" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+    <text x="885" y="880" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#F59E0B" text-anchor="middle">Sign In Gate</text>
+    <text x="740" y="905" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">Triggers:</text>
+    <text x="750" y="925" font-family="Inter, sans-serif" font-size="9" fill="#888">• Accessing protected route</text>
+    <text x="750" y="942" font-family="Inter, sans-serif" font-size="9" fill="#888">• Blocks navigation</text>
+    <text x="740" y="965" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">Features:</text>
+    <text x="750" y="985" font-family="Inter, sans-serif" font-size="9" fill="#888">• Google OAuth button</text>
+    <text x="750" y="1002" font-family="Inter, sans-serif" font-size="9" fill="#888">• Guest mode option</text>
+    <text x="750" y="1019" font-family="Inter, sans-serif" font-size="9" fill="#888">• Feature benefits list</text>
+    <text x="750" y="1036" font-family="Inter, sans-serif" font-size="9" fill="#888">• Cannot dismiss</text>
+  
+
+  <!-- Navigation Flow -->
+  <rect x="20" y="1100" width="1040" height="134" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+  <text x="540" y="1130" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#F59E0B" text-anchor="middle">🔀 Navigation Flow</text>
+
+  <!-- Entry Points -->
+  <text x="40" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#E5E5E5">Ways to reach this page (3):</text>
+  <text x="60" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888">• Level Up: XP threshold crossed</text>
+  <text x="60" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888">• Achievement: Criteria met</text>
+  <text x="60" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888">• Sign In Gate: Protected routes</text>
+  <text x="560" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#E5E5E5">Where you can go (3):</text>
+  <text x="580" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Dismiss/Continue to underlying page</text>
+  <text x="580" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Sign in with Google</text>
+  <text x="580" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Guest mode</text>
+</svg>

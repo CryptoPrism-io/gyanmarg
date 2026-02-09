@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1254" width="1080" height="1254">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1254" fill="#0A0A0B"/>
+
+
+    <rect x="0" y="0" width="1080" height="1080" fill="#1A1A1D" stroke="#F59E0B" stroke-width="3" rx="12"/>
+    <rect x="0" y="0" width="1080" height="60" fill="#F59E0B" rx="12"/>
+    <text x="540" y="38" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#0A0A0B" text-anchor="middle">SAVED CARDS</text>
+    <text x="20" y="90" font-family="Inter, sans-serif" font-size="14" fill="#888">Route: /saved</text>
+
+    <!-- Filter Tabs -->
+    <text x="20" y="130" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#F59E0B">📌 Your Saved Content</text>
+    <text x="1040" y="130" font-family="Inter, sans-serif" font-size="11" fill="#888" text-anchor="end">34 cards saved</text>
+
+    <rect x="20" y="145" width="160" height="40" fill="#F59E0B" rx="6"/>
+    <text x="100" y="170" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0A0A0B" text-anchor="middle">All Modules</text>
+
+    <rect x="195" y="145" width="180" height="40" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+    <text x="285" y="170" font-family="Inter, sans-serif" font-size="11" fill="#E5E5E5" text-anchor="middle">Brain Optimization</text>
+
+    <rect x="390" y="145" width="150" height="40" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+    <text x="465" y="170" font-family="Inter, sans-serif" font-size="11" fill="#E5E5E5" text-anchor="middle">Bhagavad Gita</text>
+
+    <rect x="555" y="145" width="180" height="40" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+    <text x="645" y="170" font-family="Inter, sans-serif" font-size="11" fill="#E5E5E5" text-anchor="middle">Quantum Mechanics</text>
+
+    <!-- Card List -->
+    <text x="20" y="220" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#F59E0B">Recent Saves</text>
+
+    <rect x="20" y="235" width="1040" height="100" fill="#111113" stroke="#F59E0B" stroke-width="2" rx="8"/>
+    <rect x="40" y="253" width="70" height="22" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-width="1" rx="4"/>
+    <text x="75" y="268" font-family="DM Mono, monospace" font-size="9" fill="#3B82F6" text-anchor="middle">CONCEPT</text>
+    <text x="130" y="268" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#E5E5E5">Optimal Learning Zone</text>
+    <text x="40" y="290" font-family="Inter, sans-serif" font-size="10" fill="#888">Brain Optimization • Level 2 • Lesson 6</text>
+    <text x="40" y="310" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">The sweet spot between boredom and anxiety where learning is most effective...</text>
+    <text x="1000" y="268" font-family="Inter, sans-serif" font-size="20" fill="#F59E0B" text-anchor="end">⭐</text>
+    <text x="40" y="325" font-family="Inter, sans-serif" font-size="9" fill="#666">Saved 2 hours ago</text>
+
+    <rect x="20" y="355" width="1040" height="100" fill="#111113" stroke="#F59E0B" stroke-width="2" rx="8"/>
+    <rect x="40" y="373" width="50" height="22" fill="#EC4899" fill-opacity="0.2" stroke="#EC4899" stroke-width="1" rx="4"/>
+    <text x="65" y="388" font-family="DM Mono, monospace" font-size="9" fill="#EC4899" text-anchor="middle">QUIZ</text>
+    <text x="110" y="388" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#E5E5E5">Neuroplasticity Definition</text>
+    <text x="40" y="410" font-family="Inter, sans-serif" font-size="10" fill="#888">Brain Optimization • Level 2 • Lesson 2</text>
+    <text x="40" y="430" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">Q: What is neuroplasticity? A: The brain's ability to form new neural pathways...</text>
+    <text x="1000" y="388" font-family="Inter, sans-serif" font-size="20" fill="#F59E0B" text-anchor="end">⭐</text>
+    <text x="40" y="445" font-family="Inter, sans-serif" font-size="9" fill="#666">Saved 1 day ago</text>
+
+    <rect x="20" y="475" width="1040" height="100" fill="#111113" stroke="#F59E0B" stroke-width="2" rx="8"/>
+    <rect x="40" y="493" width="80" height="22" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1" rx="4"/>
+    <text x="80" y="508" font-family="DM Mono, monospace" font-size="9" fill="#F59E0B" text-anchor="middle">EXERCISE</text>
+    <text x="140" y="508" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#E5E5E5">Morning Memory Practice</text>
+    <text x="40" y="530" font-family="Inter, sans-serif" font-size="10" fill="#888">Brain Optimization • Level 2 • Lesson 3</text>
+    <text x="40" y="550" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">Try this exercise: Spend 5 minutes each morning recalling what you learned yesterday...</text>
+    <text x="1000" y="508" font-family="Inter, sans-serif" font-size="20" fill="#F59E0B" text-anchor="end">⭐</text>
+    <text x="40" y="565" font-family="Inter, sans-serif" font-size="9" fill="#666">Saved 3 days ago</text>
+
+    <rect x="20" y="595" width="1040" height="100" fill="#111113" stroke="#F59E0B" stroke-width="2" rx="8"/>
+    <rect x="40" y="613" width="70" height="22" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-width="1" rx="4"/>
+    <text x="75" y="628" font-family="DM Mono, monospace" font-size="9" fill="#3B82F6" text-anchor="middle">CONCEPT</text>
+    <text x="130" y="628" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#E5E5E5">Wave-Particle Duality</text>
+    <text x="40" y="650" font-family="Inter, sans-serif" font-size="10" fill="#888">Quantum Mechanics • Level 1 • Lesson 4</text>
+    <text x="40" y="670" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">Light behaves as both a wave and a particle depending on how you observe it...</text>
+    <text x="1000" y="628" font-family="Inter, sans-serif" font-size="20" fill="#F59E0B" text-anchor="end">⭐</text>
+    <text x="40" y="685" font-family="Inter, sans-serif" font-size="9" fill="#666">Saved 1 week ago</text>
+
+    <!-- Expanded Card -->
+    <text x="20" y="735" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#F59E0B">📖 Card Detail</text>
+
+    <rect x="20" y="750" width="1040" height="310" fill="#111113" stroke="#F59E0B" stroke-width="3" rx="12"/>
+    <rect x="40" y="770" width="70" height="22" fill="#3B82F6" fill-opacity="0.2" stroke="#3B82F6" stroke-width="1" rx="4"/>
+    <text x="75" y="785" font-family="DM Mono, monospace" font-size="9" fill="#3B82F6" text-anchor="middle">CONCEPT</text>
+    <text x="130" y="785" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#E5E5E5">Optimal Learning Zone</text>
+    <text x="1000" y="785" font-family="Inter, sans-serif" font-size="24" fill="#F59E0B" text-anchor="end">⭐</text>
+    <text x="40" y="810" font-family="Inter, sans-serif" font-size="10" fill="#888">Brain Optimization • Level 2 • Lesson 6: Learning Optimization</text>
+    <rect x="40" y="825" width="1000" height="180" fill="#0A0A0B" stroke="#F59E0B" stroke-width="1" rx="6"/>
+    <text x="60" y="850" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#F59E0B">🎯 Optimal Learning Zone</text>
+    <text x="60" y="875" font-family="Inter, sans-serif" font-size="11" fill="#E5E5E5">The sweet spot between boredom and anxiety where learning is most effective.</text>
+    <text x="60" y="895" font-family="Inter, sans-serif" font-size="11" fill="#E5E5E5">Challenge + 15% is ideal.</text>
+    <text x="60" y="930" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#E5E5E5">Why this matters:</text>
+    <text x="60" y="950" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">• Too easy → no growth, boredom sets in</text>
+    <text x="60" y="968" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">• Too hard → overwhelm, give up</text>
+    <text x="60" y="986" font-family="Inter, sans-serif" font-size="10" fill="#E5E5E5">• Just right → engaged, motivated, learning sticks</text>
+    <rect x="40" y="1015" width="150" height="35" fill="#F59E0B" rx="6"/>
+    <text x="115" y="1038" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#0A0A0B" text-anchor="middle">Go to Lesson</text>
+    <rect x="210" y="1015" width="150" height="35" fill="none" stroke="#EF4444" stroke-width="2" rx="6"/>
+    <text x="285" y="1038" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#EF4444" text-anchor="middle">Unsave</text>
+  
+
+  <!-- Navigation Flow -->
+  <rect x="20" y="1100" width="1040" height="134" fill="#111113" stroke="#333" stroke-width="1" rx="6"/>
+  <text x="540" y="1130" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#F59E0B" text-anchor="middle">🔀 Navigation Flow</text>
+
+  <!-- Entry Points -->
+  <text x="40" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#E5E5E5">Ways to reach this page (2):</text>
+  <text x="60" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888">• Navbar: Saved</text>
+  <text x="60" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888">• Lesson Viewer: Star button</text>
+  <text x="560" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#E5E5E5">Where you can go (3):</text>
+  <text x="580" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Original lesson (Go to Lesson)</text>
+  <text x="580" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Dashboard</text>
+  <text x="580" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888">→ Unsave card</text>
+</svg>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1520" width="1080" height="1520">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.2"/>
+    </filter>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#D97706;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1520" fill="#FFFFFF"/>
+
+  <!-- Main Container -->
+  <rect x="0" y="0" width="1080" height="1520" fill="#FFFFFF" stroke="#D97706" stroke-width="4" rx="12"/>
+
+  <!-- Header Banner -->
+  <rect x="0" y="0" width="1080" height="180" fill="url(#headerGradient)" rx="12"/>
+  <text x="540" y="80" font-family="Outfit, sans-serif" font-size="48" font-weight="800" fill="#FFFFFF" text-anchor="middle">POLYMIND</text>
+  <text x="540" y="120" font-family="Inter, sans-serif" font-size="18" font-weight="500" fill="#FFFFFF" text-anchor="middle">Product Wireframe Documentation</text>
+  <text x="540" y="150" font-family="DM Mono, monospace" font-size="12" fill="#FFFFFF" text-anchor="middle">Complete UI/UX Map • 16 Screens • February 2026</text>
+
+  <!-- Product Brief Section -->
+  <text x="40" y="230" font-family="Outfit, sans-serif" font-size="18" font-weight="700" fill="#D97706">📚 Product Overview</text>
+
+  <rect x="20" y="250" width="1040" height="180" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+
+  <text x="40" y="280" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1D">What is Polymind?</text>
+  <text x="40" y="305" font-family="Inter, sans-serif" font-size="11" fill="#888888666">Gamified learning platform transforming 45+ ebooks into interactive experiences</text>
+  <text x="40" y="325" font-family="Inter, sans-serif" font-size="11" fill="#888888666">using spaced repetition, active recall, and interleaving techniques.</text>
+
+  <text x="40" y="360" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1D">Core Features</text>
+  <text x="60" y="385" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• 76 interactive modules across 14 knowledge domains</text>
+  <text x="60" y="403" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Science-backed learning: Spaced repetition, Active recall, Interleaving</text>
+  <text x="60" y="421" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Gamification: XP system, levels, achievements, daily challenges, streaks</text>
+
+  <!-- Stats Grid -->
+  <text x="40" y="480" font-family="Outfit, sans-serif" font-size="18" font-weight="700" fill="#D97706">📊 Platform Stats</text>
+
+  <rect x="20" y="500" width="250" height="80" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="6"/>
+  <text x="145" y="530" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="middle">Total Modules</text>
+  <text x="145" y="560" font-family="Outfit, sans-serif" font-size="28" font-weight="700" fill="#D97706" text-anchor="middle">76</text>
+
+  <rect x="290" y="500" width="250" height="80" fill="#F8F8F8" stroke="#16A34A" stroke-width="2" rx="6"/>
+  <text x="415" y="530" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="middle">Available Now</text>
+  <text x="415" y="560" font-family="Outfit, sans-serif" font-size="28" font-weight="700" fill="#16A34A" text-anchor="middle">37</text>
+
+  <rect x="560" y="500" width="250" height="80" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="6"/>
+  <text x="685" y="530" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="middle">Total Lessons</text>
+  <text x="685" y="560" font-family="Outfit, sans-serif" font-size="28" font-weight="700" fill="#D97706" text-anchor="middle">2,400+</text>
+
+  <rect x="830" y="500" width="230" height="80" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="6"/>
+  <text x="945" y="530" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="middle">Categories</text>
+  <text x="945" y="560" font-family="Outfit, sans-serif" font-size="28" font-weight="700" fill="#D97706" text-anchor="middle">14</text>
+
+  <!-- Screen Map Section -->
+  <text x="40" y="630" font-family="Outfit, sans-serif" font-size="18" font-weight="700" fill="#D97706">🗺️ Wireframe Index (16 Screens)</text>
+
+  <rect x="20" y="650" width="1040" height="820" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+
+  <!-- Column 1: Entry &amp; Core -->
+  <text x="40" y="680" font-family="Outfit, sans-serif" font-size="12" font-weight="700" fill="#D97706">Entry &amp; Core Screens</text>
+
+  <text x="40" y="705" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">01</text>
+  <text x="70" y="705" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Landing Page</text>
+  <text x="70" y="720" font-family="Inter, sans-serif" font-size="9" fill="#888888">Marketing entry point, value proposition, CTA</text>
+
+  <text x="40" y="745" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">02</text>
+  <text x="70" y="745" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Dashboard</text>
+  <text x="70" y="760" font-family="Inter, sans-serif" font-size="9" fill="#888888">Home base: daily focus, stats, visual of day, quick actions</text>
+
+  <text x="40" y="785" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">03</text>
+  <text x="70" y="785" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Module Hub</text>
+  <text x="70" y="800" font-family="Inter, sans-serif" font-size="9" fill="#888888">Browse 76 modules by category, track progress</text>
+
+  <text x="40" y="825" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">04</text>
+  <text x="70" y="825" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Module Page</text>
+  <text x="70" y="840" font-family="Inter, sans-serif" font-size="9" fill="#888888">Level accordion, lesson list, XP requirements</text>
+
+  <!-- Column 2: Learning Loop -->
+  <text x="560" y="680" font-family="Outfit, sans-serif" font-size="12" font-weight="700" fill="#D97706">Learning Loop</text>
+
+  <text x="560" y="705" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">05</text>
+  <text x="590" y="705" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Lesson Viewer</text>
+  <text x="590" y="720" font-family="Inter, sans-serif" font-size="9" fill="#888888">Main learning interface: tabs, cards, quiz, actions</text>
+
+  <text x="560" y="745" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">06</text>
+  <text x="590" y="745" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Learning Pathway</text>
+  <text x="590" y="760" font-family="Inter, sans-serif" font-size="9" fill="#888888">Netflix-style content discovery &amp; continuation</text>
+
+  <text x="560" y="785" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">07</text>
+  <text x="590" y="785" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Spaced Repetition</text>
+  <text x="590" y="800" font-family="Inter, sans-serif" font-size="9" fill="#888888">Flashcard review system with SM-2 algorithm</text>
+
+  <text x="560" y="825" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">08</text>
+  <text x="590" y="825" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Daily Challenges</text>
+  <text x="590" y="840" font-family="Inter, sans-serif" font-size="9" fill="#888888">Weekly generated challenges for engagement</text>
+
+  <!-- Row 2 Column 1: Tools -->
+  <text x="40" y="880" font-family="Outfit, sans-serif" font-size="12" font-weight="700" fill="#D97706">Tools &amp; Management</text>
+
+  <text x="40" y="905" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">09</text>
+  <text x="70" y="905" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Knowledge Map</text>
+  <text x="70" y="920" font-family="Inter, sans-serif" font-size="9" fill="#888888">Discover connections between concepts</text>
+
+  <text x="40" y="945" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">10</text>
+  <text x="70" y="945" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Visual Lab</text>
+  <text x="70" y="960" font-family="Inter, sans-serif" font-size="9" fill="#888888">Browse &amp; explore visual content library</text>
+
+  <text x="40" y="985" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">11</text>
+  <text x="70" y="985" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Saved Cards</text>
+  <text x="70" y="1000" font-family="Inter, sans-serif" font-size="9" fill="#888888">Personal collection of starred flashcards</text>
+
+  <text x="40" y="1025" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">12</text>
+  <text x="70" y="1025" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Settings</text>
+  <text x="70" y="1040" font-family="Inter, sans-serif" font-size="9" fill="#888888">Profile, sync, export/import, preferences</text>
+
+  <!-- Row 2 Column 2: Navigation -->
+  <text x="560" y="880" font-family="Outfit, sans-serif" font-size="12" font-weight="700" fill="#D97706">Navigation &amp; UI</text>
+
+  <text x="560" y="905" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">13</text>
+  <text x="590" y="905" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Desktop Navbar</text>
+  <text x="590" y="920" font-family="Inter, sans-serif" font-size="9" fill="#888888">Persistent top navigation (&gt;1024px)</text>
+
+  <text x="560" y="945" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">14</text>
+  <text x="590" y="945" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Mobile Navbar</text>
+  <text x="590" y="960" font-family="Inter, sans-serif" font-size="9" fill="#888888">Bottom bar navigation (&lt;768px)</text>
+
+  <text x="560" y="985" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">15</text>
+  <text x="590" y="985" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Modals</text>
+  <text x="590" y="1000" font-family="Inter, sans-serif" font-size="9" fill="#888888">LevelUp, Achievement, SignIn Gate overlays</text>
+
+  <text x="560" y="1025" font-family="DM Mono, monospace" font-size="10" font-weight="600" fill="#16A34A">16</text>
+  <text x="590" y="1025" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#1A1A1D">Legend</text>
+  <text x="590" y="1040" font-family="Inter, sans-serif" font-size="9" fill="#888888">Visual guide &amp; design system reference</text>
+
+  <!-- Navigation Flow Key -->
+  <rect x="40" y="1070" width="1000" height="100" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="4"/>
+  <text x="540" y="1095" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#D97706" text-anchor="middle">🔀 Each Screen Includes Navigation Flow</text>
+  <text x="540" y="1120" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D" text-anchor="middle">Entry Points: How users arrive at each screen</text>
+  <text x="540" y="1140" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D" text-anchor="middle">Exit Destinations: Where users can navigate from each screen</text>
+  <text x="540" y="1160" font-family="Inter, sans-serif" font-size="9" fill="#888888666" text-anchor="middle">(See bottom of each wireframe page)</text>
+
+  <!-- Tech Stack -->
+  <text x="40" y="1220" font-family="Outfit, sans-serif" font-size="12" font-weight="700" fill="#D97706">⚡ Tech Stack</text>
+  <text x="40" y="1245" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">React 19 • TypeScript • Vite • TailwindCSS • Zustand • Framer Motion • Firebase</text>
+
+  <!-- Usage Instructions -->
+  <text x="40" y="1280" font-family="Outfit, sans-serif" font-size="12" font-weight="700" fill="#D97706">📄 How to Use This Documentation</text>
+
+  <rect x="20" y="1295" width="1040" height="140" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+  <text x="40" y="1320" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">• Print all 17 pages (this cover + 16 wireframes) on A4 paper</text>
+  <text x="40" y="1340" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">• Pin to whiteboard for product planning &amp; team discussions</text>
+  <text x="40" y="1360" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">• Each wireframe shows screen structure, features, and navigation flows</text>
+  <text x="40" y="1380" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">• Dark theme optimized for screen viewing, light theme (BW) for printing</text>
+  <text x="40" y="1400" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">• SVG format = resolution-independent, scales to any size</text>
+  <text x="40" y="1420" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Open in any modern browser or vector graphics editor</text>
+
+  <!-- Footer -->
+  <rect x="20" y="1455" width="1040" height="50" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="6"/>
+  <text x="540" y="1485" font-family="Inter, sans-serif" font-size="11" fill="#D97706" text-anchor="middle">Polymind Product Wireframes • February 2026 • https://gyanmarg.us-central1.run.app</text>
+</svg>

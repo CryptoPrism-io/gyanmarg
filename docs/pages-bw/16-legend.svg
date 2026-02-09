@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1218" width="1080" height="1218">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1218" fill="#FFFFFF"/>
+
+  <!-- [3,3] Legend &amp; Info -->
+  <rect x="0" y="0" width="1080" height="1218" fill="#FFFFFF" stroke="#D97706" stroke-width="3" rx="12"/>
+  <rect x="0" y="0" width="1080" height="1218" fill="#D97706" rx="12"/>
+  <text x="540" y="38" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">PRODUCT MAP GUIDE</text>
+
+  <!-- Title -->
+  <text x="540" y="150" font-family="Outfit, sans-serif" font-size="28" font-weight="700" fill="#D97706" text-anchor="middle">Polymind</text>
+  <text x="540" y="180" font-family="Inter, sans-serif" font-size="14" fill="#1A1A1D" text-anchor="middle">Complete Product Wireframe Map</text>
+  <text x="540" y="205" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="middle">4x4 Grid • 12 Screens + 3 Modals + Navbar • February 2026</text>
+
+  <!-- Legend -->
+  <text x="20" y="260" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">🎨 Visual Legend</text>
+
+  <rect x="20" y="280" width="510" height="1218" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="6"/>
+  <rect x="40" y="300" width="80" height="1218" fill="#D97706" rx="4"/>
+  <text x="140" y="320" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1D">Primary Action / Active State</text>
+
+  <rect x="40" y="340" width="80" height="1218" fill="#D97706" rx="5"/>
+  <text x="140" y="348" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1D">Progress Bar / Indicator</text>
+
+  <rect x="550" y="280" width="510" height="1218" fill="#F8F8F8" stroke="#16A34A" stroke-width="2" rx="6"/>
+  <rect x="570" y="300" width="80" height="1218" fill="#16A34A" rx="4"/>
+  <text x="670" y="320" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1D">Success / Completed State</text>
+
+  <circle cx="610" cy="345" r="8" fill="#16A34A"/>
+  <text x="670" y="350" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1D">Checkmark / Completion Badge</text>
+
+  <rect x="20" y="380" width="510" height="1218" fill="#F8F8F8" stroke="#AAAAAA" stroke-width="1" stroke-dasharray="5,5" rx="6"/>
+  <rect x="40" y="400" width="80" height="1218" fill="#F8F8F8" stroke="#AAAAAA" stroke-width="1" stroke-dasharray="5,5" rx="4"/>
+  <text x="140" y="420" font-family="Inter, sans-serif" font-size="11" fill="#888888666">Locked / Disabled State</text>
+
+  <text x="140" y="448" font-family="Inter, sans-serif" font-size="11" fill="#888888">Coming Soon / Unavailable</text>
+
+  <rect x="550" y="380" width="510" height="1218" fill="#F8F8F8" stroke="#DC2626" stroke-width="2" rx="6"/>
+  <rect x="570" y="400" width="80" height="1218" fill="#DC2626" rx="4"/>
+  <text x="670" y="420" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1D">Danger / Delete Action</text>
+
+  <text x="670" y="448" font-family="Inter, sans-serif" font-size="11" fill="#DC2626">Warning / Hard Difficulty</text>
+
+  <!-- Map Structure -->
+  <text x="20" y="500" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">🗺️ Map Structure (4x4 Grid)</text>
+
+  <rect x="20" y="520" width="1040" height="1218" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+
+  <!-- Row labels -->
+  <text x="40" y="550" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#D97706">Row 1: Entry &amp; Core</text>
+  <text x="60" y="570" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">Landing Page • Dashboard • Module Hub • Module Page</text>
+
+  <text x="40" y="605" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#D97706">Row 2: Learning Loop</text>
+  <text x="60" y="625" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">Lesson Viewer • Learning Pathway • Spaced Repetition • Daily Challenges</text>
+
+  <text x="40" y="660" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#D97706">Row 3: Tools &amp; Management</text>
+  <text x="60" y="680" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">Knowledge Map • Visual Lab • Saved Cards • Settings</text>
+
+  <text x="40" y="715" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#D97706">Row 4: Navigation &amp; Overlays</text>
+  <text x="60" y="735" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">Desktop Navbar • Mobile Navbar • Modals • Legend (this page)</text>
+
+  <!-- Quick Stats -->
+  <text x="20" y="820" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">📊 Platform Stats</text>
+
+  <rect x="20" y="840" width="250" height="1218" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+  <text x="145" y="870" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="middle">Total Modules</text>
+  <text x="145" y="895" font-family="Outfit, sans-serif" font-size="20" font-weight="700" fill="#D97706" text-anchor="middle">76</text>
+
+  <rect x="290" y="840" width="250" height="1218" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+  <text x="415" y="870" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="middle">Available Now</text>
+  <text x="415" y="895" font-family="Outfit, sans-serif" font-size="20" font-weight="700" fill="#D97706" text-anchor="middle">37</text>
+
+  <rect x="560" y="840" width="250" height="1218" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+  <text x="685" y="870" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="middle">Total Lessons</text>
+  <text x="685" y="895" font-family="Outfit, sans-serif" font-size="20" font-weight="700" fill="#D97706" text-anchor="middle">2,400+</text>
+
+  <rect x="830" y="840" width="230" height="1218" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+  <text x="945" y="870" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="middle">Categories</text>
+  <text x="945" y="895" font-family="Outfit, sans-serif" font-size="20" font-weight="700" fill="#D97706" text-anchor="middle">14</text>
+
+  <!-- Footer Info -->
+  <text x="20" y="950" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">ℹ️ How to Use This Map</text>
+
+  <rect x="20" y="970" width="1040" height="1218" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="6"/>
+  <text x="40" y="995" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">• Each box represents one screen/component of the Polymind app</text>
+  <text x="40" y="1012" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">• Wireframes show the structure and key features of each screen</text>
+  <text x="40" y="1029" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">• Print this SVG at any size — it's resolution-independent</text>
+  <text x="40" y="1046" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">• Pin it on your wall to see the entire product at a glance</text>
+
+  <!-- Navigation Flow -->
+  <rect x="20" y="1100" width="1040" height="98" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+  <text x="540" y="1130" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#D97706" text-anchor="middle">🔀 Navigation Flow</text>
+
+  <!-- Entry Points -->
+  <text x="40" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D">Ways to reach this page (1):</text>
+  <text x="60" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Reference guide (no navigation)</text>
+  <text x="560" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D">Where you can go (1):</text>
+  <text x="580" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ N/A - Informational only</text>
+</svg>

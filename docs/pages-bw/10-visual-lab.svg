@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1254" width="1080" height="1254">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1254" fill="#FFFFFF"/>
+
+
+    <rect x="0" y="0" width="1080" height="1080" fill="#FFFFFF" stroke="#D97706" stroke-width="3" rx="12"/>
+    <rect x="0" y="0" width="1080" height="60" fill="#D97706" rx="12"/>
+    <text x="540" y="38" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">VISUAL LAB</text>
+    <text x="20" y="90" font-family="Inter, sans-serif" font-size="14" fill="#888888666">Route: /lab</text>
+
+    <!-- Search &amp; Filter -->
+    <rect x="20" y="110" width="700" height="50" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="40" y="140" font-family="Inter, sans-serif" font-size="12" fill="#888888666">🔍 Search visualizations...</text>
+
+    <rect x="740" y="110" width="160" height="50" fill="#F8F8F8" stroke="#D97706" stroke-width="1" rx="6"/>
+    <text x="820" y="140" font-family="Inter, sans-serif" font-size="11" fill="#D97706" text-anchor="middle">📚 All Modules ▼</text>
+
+    <rect x="920" y="110" width="140" height="50" fill="#F8F8F8" stroke="#D97706" stroke-width="1" rx="6"/>
+    <text x="990" y="140" font-family="Inter, sans-serif" font-size="11" fill="#D97706" text-anchor="middle">🎨 All Types ▼</text>
+
+    <!-- Visualization Grid -->
+    <text x="20" y="200" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">🎨 Knowledge Visualizations</text>
+    <text x="1040" y="200" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="end">187 visualizations</text>
+
+    <!-- Row 1 -->
+    <rect x="20" y="220" width="330" height="240" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="8"/>
+    <rect x="40" y="240" width="290" height="180" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="4"/>
+    <text x="185" y="340" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706" text-anchor="middle">[Chart Image]</text>
+    <text x="185" y="365" font-family="Inter, sans-serif" font-size="10" fill="#888888666" text-anchor="middle">Forgetting Curve</text>
+    <text x="185" y="435" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D" text-anchor="middle">Ebbinghaus Forgetting Curve</text>
+    <text x="40" y="450" font-family="Inter, sans-serif" font-size="9" fill="#888888666">Brain Optimization</text>
+
+    <rect x="370" y="220" width="330" height="240" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="8"/>
+    <rect x="390" y="240" width="290" height="180" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="4"/>
+    <text x="535" y="340" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706" text-anchor="middle">[Diagram]</text>
+    <text x="535" y="365" font-family="Inter, sans-serif" font-size="10" fill="#888888666" text-anchor="middle">Neural Network</text>
+    <text x="535" y="435" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D" text-anchor="middle">Synaptic Plasticity</text>
+    <text x="390" y="450" font-family="Inter, sans-serif" font-size="9" fill="#888888666">Brain Optimization</text>
+
+    <rect x="720" y="220" width="330" height="240" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="8"/>
+    <rect x="740" y="240" width="290" height="180" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="4"/>
+    <text x="885" y="340" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706" text-anchor="middle">[Flowchart]</text>
+    <text x="885" y="365" font-family="Inter, sans-serif" font-size="10" fill="#888888666" text-anchor="middle">Habit Loop</text>
+    <text x="885" y="435" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D" text-anchor="middle">The Habit Formation Cycle</text>
+    <text x="740" y="450" font-family="Inter, sans-serif" font-size="9" fill="#888888666">Personal Development</text>
+
+    <!-- Row 2 -->
+    <rect x="20" y="480" width="330" height="240" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="8"/>
+    <rect x="40" y="500" width="290" height="180" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="4"/>
+    <text x="185" y="600" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706" text-anchor="middle">[Timeline]</text>
+    <text x="185" y="625" font-family="Inter, sans-serif" font-size="10" fill="#888888666" text-anchor="middle">Spaced Intervals</text>
+    <text x="185" y="695" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D" text-anchor="middle">SM-2 Review Schedule</text>
+    <text x="40" y="710" font-family="Inter, sans-serif" font-size="9" fill="#888888666">Memory Systems</text>
+
+    <rect x="370" y="480" width="330" height="240" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="8"/>
+    <rect x="390" y="500" width="290" height="180" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="4"/>
+    <text x="535" y="600" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706" text-anchor="middle">[Wave Pattern]</text>
+    <text x="535" y="625" font-family="Inter, sans-serif" font-size="10" fill="#888888666" text-anchor="middle">Quantum State</text>
+    <text x="535" y="695" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D" text-anchor="middle">Wave-Particle Duality</text>
+    <text x="390" y="710" font-family="Inter, sans-serif" font-size="9" fill="#888888666">Quantum Mechanics</text>
+
+    <rect x="720" y="480" width="330" height="240" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="8"/>
+    <rect x="740" y="500" width="290" height="180" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="4"/>
+    <text x="885" y="600" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706" text-anchor="middle">[Mandala]</text>
+    <text x="885" y="625" font-family="Inter, sans-serif" font-size="10" fill="#888888666" text-anchor="middle">Sacred Geometry</text>
+    <text x="885" y="695" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D" text-anchor="middle">Yantra Meditation</text>
+    <text x="740" y="710" font-family="Inter, sans-serif" font-size="9" fill="#888888666">Bharat Wisdom</text>
+
+    <!-- Full Screen Viewer -->
+    <text x="20" y="760" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">🖼️ Full Screen Viewer</text>
+
+    <rect x="20" y="780" width="1040" height="280" fill="#FFFFFF" stroke="#D97706" stroke-width="3" rx="12"/>
+    <rect x="40" y="800" width="40" height="40" fill="#F8F8F8" stroke="#D97706" stroke-width="1" rx="6"/>
+    <text x="60" y="826" font-family="Inter, sans-serif" font-size="16" fill="#D97706" text-anchor="middle">✕</text>
+    <text x="540" y="880" font-family="Outfit, sans-serif" font-size="18" font-weight="700" fill="#D97706" text-anchor="middle">[Full Visualization Display]</text>
+    <text x="540" y="910" font-family="Inter, sans-serif" font-size="12" fill="#1A1A1D" text-anchor="middle">Ebbinghaus Forgetting Curve</text>
+    <text x="540" y="935" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="middle">Shows memory retention over time without review</text>
+    <rect x="440" y="965" width="90" height="35" fill="#F8F8F8" stroke="#D97706" stroke-width="1" rx="6"/>
+    <text x="485" y="988" font-family="Inter, sans-serif" font-size="11" fill="#D97706" text-anchor="middle">← Prev</text>
+    <rect x="550" y="965" width="90" height="35" fill="#F8F8F8" stroke="#D97706" stroke-width="1" rx="6"/>
+    <text x="595" y="988" font-family="Inter, sans-serif" font-size="11" fill="#D97706" text-anchor="middle">Next →</text>
+    <rect x="900" y="1020" width="140" height="35" fill="#D97706" rx="6"/>
+    <text x="970" y="1043" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="middle">Download</text>
+  
+
+  <!-- Navigation Flow -->
+  <rect x="20" y="1100" width="1040" height="134" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+  <text x="540" y="1130" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#D97706" text-anchor="middle">🔀 Navigation Flow</text>
+
+  <!-- Entry Points -->
+  <text x="40" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D">Ways to reach this page (2):</text>
+  <text x="60" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Dashboard: Visual of Day</text>
+  <text x="60" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Navbar: Visuals</text>
+  <text x="560" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D">Where you can go (3):</text>
+  <text x="580" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Full screen viewer</text>
+  <text x="580" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Dashboard</text>
+  <text x="580" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Filter by module</text>
+</svg>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1254" width="1080" height="1254">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1254" fill="#FFFFFF"/>
+
+
+    <rect x="0" y="0" width="1080" height="1080" fill="#FFFFFF" stroke="#D97706" stroke-width="3" rx="12"/>
+    <rect x="0" y="0" width="1080" height="60" fill="#D97706" rx="12"/>
+    <text x="540" y="38" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">DAILY CHALLENGES</text>
+    <text x="20" y="90" font-family="Inter, sans-serif" font-size="14" fill="#888888666">Route: /challenges</text>
+
+    <text x="20" y="130" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">⚡ Today's Challenges</text>
+    <text x="1040" y="130" font-family="Inter, sans-serif" font-size="11" fill="#888888666" text-anchor="end">New challenges every Monday</text>
+
+    <!-- Challenge 1 -->
+    <rect x="20" y="150" width="1040" height="140" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="8"/>
+    <rect x="40" y="170" width="80" height="24" fill="#16A34A" fill-opacity="0.1" stroke="#16A34A" stroke-width="1" rx="4"/>
+    <text x="80" y="186" font-family="DM Mono, monospace" font-size="9" fill="#16A34A" text-anchor="middle">BEGINNER</text>
+    <text x="140" y="186" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#1A1A1D">Reflect on Your Learning</text>
+    <text x="900" y="186" font-family="DM Mono, monospace" font-size="11" font-weight="600" fill="#D97706" text-anchor="end">+100 XP</text>
+    <text x="40" y="215" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1D">Write about what you learned this week and how you plan to apply it.</text>
+    <text x="40" y="235" font-family="Inter, sans-serif" font-size="10" fill="#888888666">Minimum 100 words</text>
+    <rect x="40" y="250" width="150" height="35" fill="#D97706" rx="6"/>
+    <text x="115" y="273" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="middle">Start Challenge</text>
+
+    <!-- Challenge 2 -->
+    <rect x="20" y="310" width="1040" height="140" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="8"/>
+    <rect x="40" y="330" width="100" height="24" fill="#D97706" fill-opacity="0.1" stroke="#D97706" stroke-width="1" rx="4"/>
+    <text x="90" y="346" font-family="DM Mono, monospace" font-size="9" fill="#D97706" text-anchor="middle">INTERMEDIATE</text>
+    <text x="160" y="346" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#1A1A1D">Connect Two Concepts</text>
+    <text x="900" y="346" font-family="DM Mono, monospace" font-size="11" font-weight="600" fill="#D97706" text-anchor="end">+150 XP</text>
+    <text x="40" y="375" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1D">Explain how neuroplasticity relates to habit formation. Use examples.</text>
+    <text x="40" y="395" font-family="Inter, sans-serif" font-size="10" fill="#888888666">Minimum 150 words</text>
+    <rect x="40" y="410" width="150" height="35" fill="#D97706" rx="6"/>
+    <text x="115" y="433" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="middle">Start Challenge</text>
+
+    <!-- Challenge 3 -->
+    <rect x="20" y="470" width="1040" height="140" fill="#F8F8F8" stroke="#DC2626" stroke-width="2" rx="8"/>
+    <rect x="40" y="490" width="90" height="24" fill="#DC2626" fill-opacity="0.1" stroke="#DC2626" stroke-width="1" rx="4"/>
+    <text x="85" y="506" font-family="DM Mono, monospace" font-size="9" fill="#DC2626" text-anchor="middle">ADVANCED</text>
+    <text x="150" y="506" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#1A1A1D">Teach a Concept</text>
+    <text x="900" y="506" font-family="DM Mono, monospace" font-size="11" font-weight="600" fill="#D97706" text-anchor="end">+200 XP</text>
+    <text x="40" y="535" font-family="Inter, sans-serif" font-size="11" fill="#1A1A1D">Create a lesson plan to teach someone about the Ebbinghaus forgetting curve.</text>
+    <text x="40" y="555" font-family="Inter, sans-serif" font-size="10" fill="#888888666">Minimum 200 words • Include examples and exercises</text>
+    <rect x="40" y="570" width="150" height="35" fill="#DC2626" rx="6"/>
+    <text x="115" y="593" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="middle">Start Challenge</text>
+
+    <!-- Response Modal Preview -->
+    <text x="20" y="650" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">✍️ Response Editor</text>
+
+    <rect x="20" y="670" width="1040" height="200" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="8"/>
+    <text x="40" y="700" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">Challenge: Reflect on Your Learning</text>
+    <rect x="40" y="720" width="1000" height="100" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="4"/>
+    <text x="50" y="745" font-family="Inter, sans-serif" font-size="11" fill="#888888666">This week I learned about neuroplasticity and how the brain...</text>
+    <text x="1020" y="845" font-family="DM Mono, monospace" font-size="10" fill="#888888666" text-anchor="end">85 / 100 words</text>
+
+    <!-- Completed Section -->
+    <text x="20" y="910" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">✅ This Week's Completed</text>
+
+    <rect x="20" y="930" width="1040" height="60" fill="#16A34A" fill-opacity="0.1" stroke="#16A34A" stroke-width="1" rx="6"/>
+    <text x="40" y="957" font-family="Inter, sans-serif" font-size="12" fill="#1A1A1D">Practice Active Recall</text>
+    <text x="40" y="975" font-family="Inter, sans-serif" font-size="10" fill="#888888666">Completed 2 days ago • +100 XP</text>
+    <circle cx="1020" cy="960" r="14" fill="#16A34A"/>
+    <text x="1020" y="965" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">✓</text>
+
+    <rect x="20" y="1005" width="1040" height="60" fill="#16A34A" fill-opacity="0.1" stroke="#16A34A" stroke-width="1" rx="6"/>
+    <text x="40" y="1032" font-family="Inter, sans-serif" font-size="12" fill="#1A1A1D">Explain Spaced Repetition</text>
+    <text x="40" y="1050" font-family="Inter, sans-serif" font-size="10" fill="#888888666">Completed 4 days ago • +150 XP</text>
+    <circle cx="1020" cy="1035" r="14" fill="#16A34A"/>
+    <text x="1020" y="1040" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">✓</text>
+  
+
+  <!-- Navigation Flow -->
+  <rect x="20" y="1100" width="1040" height="134" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+  <text x="540" y="1130" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#D97706" text-anchor="middle">🔀 Navigation Flow</text>
+
+  <!-- Entry Points -->
+  <text x="40" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D">Ways to reach this page (2):</text>
+  <text x="60" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Dashboard: Daily Challenge</text>
+  <text x="60" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Navbar: Challenges</text>
+  <text x="560" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D">Where you can go (3):</text>
+  <text x="580" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Dashboard</text>
+  <text x="580" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Submit response</text>
+  <text x="580" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ View completed</text>
+</svg>

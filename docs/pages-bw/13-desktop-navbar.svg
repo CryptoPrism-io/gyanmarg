@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1254" width="1080" height="1254">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1254" fill="#FFFFFF"/>
+
+
+    <rect x="0" y="0" width="1080" height="1080" fill="#FFFFFF" stroke="#D97706" stroke-width="3" rx="12"/>
+    <rect x="0" y="0" width="1080" height="60" fill="#D97706" rx="12"/>
+    <text x="540" y="38" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">DESKTOP NAVBAR</text>
+    <text x="20" y="90" font-family="Inter, sans-serif" font-size="14" fill="#888888666">Component: Desktop Navigation</text>
+
+    <rect x="20" y="140" width="1040" height="80" fill="#F8F8F8" stroke="#D97706" stroke-width="3" rx="8"/>
+
+    <!-- Logo -->
+    <text x="50" y="185" font-family="Outfit, sans-serif" font-size="18" font-weight="700" fill="#D97706">Polymind</text>
+
+    <!-- Nav Links -->
+    <text x="200" y="185" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1A1A1D">Home</text>
+    <text x="280" y="185" font-family="Inter, sans-serif" font-size="13" fill="#888888666">Learn</text>
+    <text x="360" y="185" font-family="Inter, sans-serif" font-size="13" fill="#888888666">Visuals</text>
+    <text x="460" y="185" font-family="Inter, sans-serif" font-size="13" fill="#888888666">Challenges</text>
+    <text x="580" y="185" font-family="Inter, sans-serif" font-size="13" fill="#888888666">Saved</text>
+    <text x="670" y="185" font-family="Inter, sans-serif" font-size="13" fill="#888888666">Settings</text>
+
+    <!-- Right Side -->
+    <rect x="800" y="165" width="80" height="30" fill="#D97706" fill-opacity="0.1" stroke="#D97706" stroke-width="1" rx="6"/>
+    <text x="840" y="185" font-family="DM Mono, monospace" font-size="11" font-weight="600" fill="#D97706" text-anchor="middle">14🔥</text>
+
+    <rect x="900" y="165" width="90" height="30" fill="#F8F8F8" stroke="#D97706" stroke-width="1" rx="6"/>
+    <text x="945" y="185" font-family="DM Mono, monospace" font-size="11" fill="#D97706" text-anchor="middle">3,250 XP</text>
+
+    <circle cx="1020" cy="180" r="20" fill="#D97706" fill-opacity="0.1" stroke="#D97706" stroke-width="2"/>
+    <text x="1020" y="187" font-family="Outfit, sans-serif" font-size="12" font-weight="700" fill="#D97706" text-anchor="middle">JD</text>
+
+    <!-- Features List -->
+    <text x="20" y="270" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">🎯 Navigation Features</text>
+
+    <rect x="20" y="290" width="510" height="120" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="40" y="320" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">Logo &amp; Branding</text>
+    <text x="40" y="345" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• "Polymind" wordmark (left)</text>
+    <text x="40" y="365" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Clickable → returns to dashboard</text>
+    <text x="40" y="385" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Amber accent color for brand consistency</text>
+
+    <rect x="550" y="290" width="510" height="120" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="570" y="320" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">Primary Navigation</text>
+    <text x="570" y="345" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Home, Learn, Visuals, Challenges, Saved, Settings</text>
+    <text x="570" y="365" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Active route highlighted in white</text>
+    <text x="570" y="385" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Hover states with amber underline</text>
+
+    <rect x="20" y="430" width="510" height="120" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="40" y="460" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">Streak Indicator</text>
+    <text x="40" y="485" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Fire emoji + day count (e.g., "14🔥")</text>
+    <text x="40" y="505" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Amber background when active</text>
+    <text x="40" y="525" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Red pulse animation when streak at risk</text>
+
+    <rect x="550" y="430" width="510" height="120" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="570" y="460" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">XP Counter</text>
+    <text x="570" y="485" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Current total XP displayed</text>
+    <text x="570" y="505" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Animates +XP when earned</text>
+    <text x="570" y="525" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Click to view XP breakdown</text>
+
+    <rect x="20" y="570" width="510" height="120" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="40" y="600" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">User Avatar</text>
+    <text x="40" y="625" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Initials or profile picture</text>
+    <text x="40" y="645" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Click to open account menu</text>
+    <text x="40" y="665" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Dropdown: Profile, Settings, Sign Out</text>
+
+    <rect x="550" y="570" width="510" height="120" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="570" y="600" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">Responsive Behavior</text>
+    <text x="570" y="625" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Full navbar on desktop (&gt;1024px)</text>
+    <text x="570" y="645" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Collapses to hamburger on tablet</text>
+    <text x="570" y="665" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Bottom nav bar on mobile (see next page)</text>
+
+    <!-- States -->
+    <text x="20" y="730" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">🎨 Visual States</text>
+
+    <rect x="20" y="750" width="330" height="100" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="185" y="780" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D" text-anchor="middle">Default State</text>
+    <text x="185" y="805" font-family="Inter, sans-serif" font-size="10" fill="#888888666" text-anchor="middle">Links in gray (#888888666)</text>
+    <text x="185" y="825" font-family="Inter, sans-serif" font-size="10" fill="#888888666" text-anchor="middle">Dark background (#F8F8F8)</text>
+
+    <rect x="370" y="750" width="330" height="100" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="6"/>
+    <text x="535" y="780" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#D97706" text-anchor="middle">Active State</text>
+    <text x="535" y="805" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D" text-anchor="middle">Link in white (#1A1A1D)</text>
+    <text x="535" y="825" font-family="Inter, sans-serif" font-size="10" fill="#D97706" text-anchor="middle">Amber underline</text>
+
+    <rect x="720" y="750" width="330" height="100" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="885" y="780" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D" text-anchor="middle">Hover State</text>
+    <text x="885" y="805" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D" text-anchor="middle">Link transitions to white</text>
+    <text x="885" y="825" font-family="Inter, sans-serif" font-size="10" fill="#D97706" text-anchor="middle">Subtle amber glow</text>
+
+    <!-- Technical Notes -->
+    <text x="20" y="890" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">💻 Technical Details</text>
+
+    <rect x="20" y="910" width="1040" height="150" fill="#FFFFFF" stroke="#D97706" stroke-width="1" rx="6"/>
+    <text x="40" y="940" font-family="DM Mono, monospace" font-size="10" fill="#1A1A1D">Component: components/organisms/Navbar.tsx</text>
+    <text x="40" y="960" font-family="DM Mono, monospace" font-size="10" fill="#888888666">Height: 80px (fixed)</text>
+    <text x="40" y="980" font-family="DM Mono, monospace" font-size="10" fill="#888888666">Position: sticky top-0 z-50</text>
+    <text x="40" y="1000" font-family="DM Mono, monospace" font-size="10" fill="#888888666">Background: rgba(17, 17, 19, 0.95) + backdrop-blur</text>
+    <text x="40" y="1020" font-family="DM Mono, monospace" font-size="10" fill="#888888666">Border: 1px solid #CCCCCC (bottom)</text>
+    <text x="40" y="1040" font-family="DM Mono, monospace" font-size="10" fill="#888888666">Animations: Framer Motion (fade in/out, slide transitions)</text>
+  
+
+  <!-- Navigation Flow -->
+  <rect x="20" y="1100" width="1040" height="134" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+  <text x="540" y="1130" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#D97706" text-anchor="middle">🔀 Navigation Flow</text>
+
+  <!-- Entry Points -->
+  <text x="40" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D">Ways to reach this page (1):</text>
+  <text x="60" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Always visible on desktop (&gt;1024px)</text>
+  <text x="560" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D">Where you can go (3):</text>
+  <text x="580" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Home, Learn, Visuals, Challenges, Saved, Settings</text>
+  <text x="580" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Avatar menu</text>
+  <text x="580" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ XP details</text>
+</svg>

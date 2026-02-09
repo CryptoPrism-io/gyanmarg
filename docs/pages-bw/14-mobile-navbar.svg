@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1272" width="1080" height="1272">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1272" fill="#FFFFFF"/>
+
+
+    <rect x="0" y="0" width="1080" height="1080" fill="#FFFFFF" stroke="#D97706" stroke-width="3" rx="12"/>
+    <rect x="0" y="0" width="1080" height="60" fill="#D97706" rx="12"/>
+    <text x="540" y="38" font-family="Outfit, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">MOBILE NAVBAR</text>
+    <text x="20" y="90" font-family="Inter, sans-serif" font-size="14" fill="#888888666">Component: Mobile Bottom Navigation</text>
+
+    <text x="540" y="150" font-family="Inter, sans-serif" font-size="12" fill="#888888666" text-anchor="middle">Shown on mobile devices (&lt;768px)</text>
+
+    <rect x="120" y="200" width="840" height="100" fill="#F8F8F8" stroke="#D97706" stroke-width="3" rx="12"/>
+
+    <!-- Nav Items -->
+    <g transform="translate(210, 230)">
+      <circle cx="0" cy="20" r="18" fill="#D97706" fill-opacity="0.1"/>
+      <text x="0" y="27" font-family="Inter, sans-serif" font-size="16" fill="#D97706" text-anchor="middle">🏠</text>
+      <text x="0" y="55" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#D97706" text-anchor="middle">Home</text>
+    </g>
+
+    <g transform="translate(360, 230)">
+      <circle cx="0" cy="20" r="18" fill="none" stroke="#AAAAAA" stroke-width="1"/>
+      <text x="0" y="27" font-family="Inter, sans-serif" font-size="16" fill="#888888666" text-anchor="middle">📚</text>
+      <text x="0" y="55" font-family="Inter, sans-serif" font-size="9" fill="#888888666" text-anchor="middle">Learn</text>
+    </g>
+
+    <g transform="translate(540, 230)">
+      <circle cx="0" cy="20" r="18" fill="none" stroke="#AAAAAA" stroke-width="1"/>
+      <text x="0" y="27" font-family="Inter, sans-serif" font-size="16" fill="#888888666" text-anchor="middle">⭐</text>
+      <text x="0" y="55" font-family="Inter, sans-serif" font-size="9" fill="#888888666" text-anchor="middle">Saved</text>
+    </g>
+
+    <g transform="translate(690, 230)">
+      <circle cx="0" cy="20" r="18" fill="none" stroke="#AAAAAA" stroke-width="1"/>
+      <text x="0" y="27" font-family="Inter, sans-serif" font-size="16" fill="#888888666" text-anchor="middle">⚙️</text>
+      <text x="0" y="55" font-family="Inter, sans-serif" font-size="9" fill="#888888666" text-anchor="middle">Settings</text>
+    </g>
+
+    <!-- Features -->
+    <text x="20" y="360" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">📱 Mobile Features</text>
+
+    <rect x="20" y="380" width="510" height="120" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="40" y="410" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">Fixed Bottom Position</text>
+    <text x="40" y="435" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Always visible at bottom of screen</text>
+    <text x="40" y="455" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Floats above content (z-index: 50)</text>
+    <text x="40" y="475" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Safe area insets for notched devices</text>
+
+    <rect x="550" y="380" width="510" height="120" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="570" y="410" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">Icon-First Design</text>
+    <text x="570" y="435" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Large touch targets (44x44px minimum)</text>
+    <text x="570" y="455" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Emoji icons for quick recognition</text>
+    <text x="570" y="475" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Small labels below icons</text>
+
+    <rect x="20" y="520" width="510" height="120" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="40" y="550" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">4 Primary Routes</text>
+    <text x="40" y="575" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Home (Dashboard)</text>
+    <text x="40" y="595" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Learn (Learning Pathway)</text>
+    <text x="40" y="615" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Saved (Bookmarked Cards)</text>
+    <text x="40" y="635" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Settings (Profile &amp; Preferences)</text>
+
+    <rect x="550" y="520" width="510" height="120" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="570" y="550" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">Active State Indicator</text>
+    <text x="570" y="575" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Active icon: filled circle + amber glow</text>
+    <text x="570" y="595" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Inactive icons: gray outline</text>
+    <text x="570" y="615" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Smooth transition animations</text>
+
+    <!-- Access Other Features -->
+    <text x="20" y="680" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">🔗 Accessing Other Features</text>
+
+    <rect x="20" y="700" width="1040" height="140" fill="#F8F8F8" stroke="#D97706" stroke-width="1" rx="6"/>
+    <text x="40" y="730" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D">Via Dashboard (Home Tab)</text>
+    <text x="60" y="755" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Today's Focus → Review cards, Challenges, Connections</text>
+    <text x="60" y="775" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Visual of the Day → Visual Lab</text>
+    <text x="60" y="795" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Module cards → Module Hub</text>
+    <text x="60" y="815" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Quick action tiles for all features</text>
+
+    <!-- Comparison -->
+    <text x="20" y="880" font-family="Outfit, sans-serif" font-size="14" font-weight="600" fill="#D97706">🖥️ Desktop vs Mobile</text>
+
+    <rect x="20" y="900" width="510" height="150" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+    <text x="275" y="930" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#1A1A1D" text-anchor="middle">Desktop (Top Bar)</text>
+    <text x="40" y="960" font-family="Inter, sans-serif" font-size="10" fill="#888888666">✓ Full navigation (8 items)</text>
+    <text x="40" y="980" font-family="Inter, sans-serif" font-size="10" fill="#888888666">✓ Streak + XP counters visible</text>
+    <text x="40" y="1000" font-family="Inter, sans-serif" font-size="10" fill="#888888666">✓ User avatar + dropdown</text>
+    <text x="40" y="1020" font-family="Inter, sans-serif" font-size="10" fill="#888888666">✓ Always at top of page</text>
+
+    <rect x="550" y="900" width="510" height="150" fill="#F8F8F8" stroke="#D97706" stroke-width="2" rx="6"/>
+    <text x="805" y="930" font-family="Outfit, sans-serif" font-size="12" font-weight="600" fill="#D97706" text-anchor="middle">Mobile (Bottom Bar)</text>
+    <text x="570" y="960" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">✓ Essential routes only (4 items)</text>
+    <text x="570" y="980" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">✓ Large touch targets</text>
+    <text x="570" y="1000" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">✓ Thumb-friendly positioning</text>
+    <text x="570" y="1020" font-family="Inter, sans-serif" font-size="10" fill="#1A1A1D">✓ Fixed at bottom (iOS safe area)</text>
+  
+
+  <!-- Navigation Flow -->
+  <rect x="20" y="1100" width="1040" height="152" fill="#F8F8F8" stroke="#CCCCCC" stroke-width="1" rx="6"/>
+  <text x="540" y="1130" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#D97706" text-anchor="middle">🔀 Navigation Flow</text>
+
+  <!-- Entry Points -->
+  <text x="40" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D">Ways to reach this page (1):</text>
+  <text x="60" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888888666">• Always visible on mobile (&lt;768px)</text>
+  <text x="560" y="1155" font-family="Outfit, sans-serif" font-size="11" font-weight="600" fill="#1A1A1D">Where you can go (4):</text>
+  <text x="580" y="1175" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Home (Dashboard)</text>
+  <text x="580" y="1193" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Learn (Pathway)</text>
+  <text x="580" y="1211" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Saved</text>
+  <text x="580" y="1229" font-family="Inter, sans-serif" font-size="10" fill="#888888666">→ Settings</text>
+</svg>

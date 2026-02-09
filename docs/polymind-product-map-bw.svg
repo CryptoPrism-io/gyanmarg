@@ -1,0 +1,732 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5600 3800" width="5600" height="3800">
+  <defs>
+    <marker id="arrow-amber" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000000"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666666"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="5600" height="3800" fill="#FFFFFF"/>
+
+  <!-- ============ TITLE BAR ============ -->
+  <rect x="60" y="30" width="5480" height="80" rx="12" fill="#F0F0F0" stroke="#000000" stroke-width="1.5"/>
+  <text x="100" y="82" font-family="sans-serif" font-size="36" font-weight="bold" fill="#000000">POLYMIND</text>
+  <text x="350" y="82" font-family="sans-serif" font-size="28" fill="#444444">Product Map — All Screens &amp; Navigation Flows</text>
+  <!-- Legend -->
+  <rect x="4400" y="50" width="24" height="4" fill="#000000"/>
+  <text x="4435" y="58" font-family="sans-serif" font-size="14" fill="#000000">Primary flow</text>
+  <line x1="4400" y1="75" x2="4424" y2="75" stroke="#000000" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="4435" y="80" font-family="sans-serif" font-size="14" fill="#000000">Secondary flow</text>
+  <rect x="4700" y="46" width="18" height="18" rx="4" fill="#FFFFFF" stroke="#000000"/>
+  <text x="4725" y="58" font-family="sans-serif" font-size="14" fill="#000000">Screen</text>
+  <rect x="4700" y="70" width="18" height="18" rx="4" fill="none" stroke="#000000" stroke-dasharray="4,2"/>
+  <text x="4725" y="82" font-family="sans-serif" font-size="14" fill="#000000">Modal</text>
+  <text x="4950" y="58" font-family="sans-serif" font-size="13" fill="#666666">76 modules · 37 available</text>
+  <text x="4950" y="78" font-family="sans-serif" font-size="13" fill="#666666">14 categories · 5 stores</text>
+
+  <!-- ========================================================== -->
+  <!-- ZONE 1: PUBLIC ENTRY (y=140-780)                           -->
+  <!-- ========================================================== -->
+  <text x="80" y="148" font-family="sans-serif" font-size="22" font-weight="bold" fill="#000000" opacity="0.4">ZONE 1 — PUBLIC ENTRY</text>
+  <line x1="410" y1="140" x2="5520" y2="140" stroke="#000000" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- === Landing Page === -->
+  <rect x="100" y="170" width="2000" height="580" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="100" y="170" width="2000" height="42" rx="14" fill="#000000"/>
+  <rect x="100" y="198" width="2000" height="14" fill="#000000"/>
+  <text x="130" y="200" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Landing Page</text>
+  <text x="1980" y="200" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7" text-anchor="end">/</text>
+  <rect x="130" y="228" width="1940" height="36" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="150" y="252" font-family="sans-serif" font-size="13" fill="#000000">Logo</text>
+  <text x="450" y="252" font-family="sans-serif" font-size="12" fill="#444444">Home | Science | Books | Blog | How-To</text>
+  <rect x="1880" y="234" width="160" height="24" rx="6" fill="#000000" opacity="0.3"/>
+  <text x="1910" y="251" font-family="sans-serif" font-size="12" fill="#000000">Start Learning</text>
+  <rect x="130" y="278" width="1940" height="90" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="700" y="318" font-family="sans-serif" font-size="18" fill="#000000">Hero: "Transform Your Mind Through Science-Backed Learning"</text>
+  <rect x="750" y="332" width="140" height="24" rx="6" fill="#000000" opacity="0.3"/>
+  <text x="775" y="349" font-family="sans-serif" font-size="11" fill="#000000">Get Started</text>
+  <rect x="910" y="332" width="140" height="24" rx="6" fill="#D0D0D0"/>
+  <text x="940" y="349" font-family="sans-serif" font-size="11" fill="#444444">Learn More</text>
+  <text x="140" y="394" font-family="sans-serif" font-size="12" fill="#444444">Problem Section — 3 Stat Cards</text>
+  <rect x="130" y="404" width="620" height="45" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="330" y="432" font-family="sans-serif" font-size="11" fill="#000000">73% forget in 48hrs</text>
+  <rect x="770" y="404" width="620" height="45" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="990" y="432" font-family="sans-serif" font-size="11" fill="#000000">Only 10% apply</text>
+  <rect x="1410" y="404" width="620" height="45" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1610" y="432" font-family="sans-serif" font-size="11" fill="#000000">3x better retention</text>
+  <text x="140" y="474" font-family="sans-serif" font-size="12" fill="#444444">Science Features — 3 Cards</text>
+  <rect x="130" y="484" width="620" height="45" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="340" y="512" font-family="sans-serif" font-size="11" fill="#000000">Spaced Repetition</text>
+  <rect x="770" y="484" width="620" height="45" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="990" y="512" font-family="sans-serif" font-size="11" fill="#000000">Active Recall</text>
+  <rect x="1410" y="484" width="620" height="45" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1630" y="512" font-family="sans-serif" font-size="11" fill="#000000">Interleaving</text>
+  <text x="140" y="554" font-family="sans-serif" font-size="12" fill="#444444">3-Step Plan</text>
+  <rect x="130" y="564" width="620" height="38" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="360" y="588" font-family="sans-serif" font-size="11" fill="#000000">1. Choose Path</text>
+  <rect x="770" y="564" width="620" height="38" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1000" y="588" font-family="sans-serif" font-size="11" fill="#000000">2. Learn Daily</text>
+  <rect x="1410" y="564" width="620" height="38" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1640" y="588" font-family="sans-serif" font-size="11" fill="#000000">3. Master It</text>
+  <text x="140" y="626" font-family="sans-serif" font-size="12" fill="#444444">Domain Grid — 14 Categories</text>
+  <rect x="130" y="636" width="380" height="38" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="250" y="660" font-family="sans-serif" font-size="10" fill="#000000">Mind &amp; Performance</text>
+  <rect x="525" y="636" width="380" height="38" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="660" y="660" font-family="sans-serif" font-size="10" fill="#000000">Tech &amp; Code</text>
+  <rect x="920" y="636" width="380" height="38" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1040" y="660" font-family="sans-serif" font-size="10" fill="#000000">Wealth &amp; Power</text>
+  <rect x="1315" y="636" width="380" height="38" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1430" y="660" font-family="sans-serif" font-size="10" fill="#000000">Bharat Wisdom</text>
+  <rect x="1710" y="636" width="380" height="38" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1840" y="660" font-family="sans-serif" font-size="10" fill="#000000">+ 10 more...</text>
+  <rect x="130" y="694" width="1940" height="40" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="800" y="720" font-family="sans-serif" font-size="12" fill="#444444">CTA: "Start Your Learning Journey" + Footer Links</text>
+
+  <!-- === Blog === -->
+  <rect x="2220" y="170" width="780" height="400" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="2220" y="170" width="780" height="42" rx="14" fill="#000000"/>
+  <rect x="2220" y="198" width="780" height="14" fill="#000000"/>
+  <text x="2250" y="200" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Blog</text>
+  <text x="2900" y="200" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/blog</text>
+  <rect x="2250" y="228" width="720" height="55" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2490" y="260" font-family="sans-serif" font-size="12" fill="#000000">Featured Article Hero Card</text>
+  <rect x="2250" y="296" width="345" height="45" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2350" y="324" font-family="sans-serif" font-size="10" fill="#444444">Article Card 1</text>
+  <rect x="2615" y="296" width="345" height="45" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2715" y="324" font-family="sans-serif" font-size="10" fill="#444444">Article Card 2</text>
+  <rect x="2250" y="354" width="345" height="45" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2350" y="382" font-family="sans-serif" font-size="10" fill="#444444">Article Card 3</text>
+  <rect x="2615" y="354" width="345" height="45" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2715" y="382" font-family="sans-serif" font-size="10" fill="#444444">Article Card 4</text>
+  <rect x="2250" y="414" width="720" height="30" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2500" y="434" font-family="sans-serif" font-size="10" fill="#444444">Pagination · Tags · Categories</text>
+  <text x="2500" y="555" font-family="sans-serif" font-size="11" fill="#666666">→ /blog/:articleId (detail view)</text>
+
+  <!-- === Science === -->
+  <rect x="3120" y="170" width="580" height="400" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="3120" y="170" width="580" height="42" rx="14" fill="#000000"/>
+  <rect x="3120" y="198" width="580" height="14" fill="#000000"/>
+  <text x="3150" y="200" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Science</text>
+  <text x="3600" y="200" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/science</text>
+  <rect x="3150" y="230" width="520" height="35" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3310" y="253" font-family="sans-serif" font-size="11" fill="#000000">Spaced Repetition Science</text>
+  <rect x="3150" y="275" width="520" height="35" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3320" y="298" font-family="sans-serif" font-size="11" fill="#000000">Active Recall Research</text>
+  <rect x="3150" y="320" width="520" height="35" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3320" y="343" font-family="sans-serif" font-size="11" fill="#000000">Interleaving Studies</text>
+  <rect x="3150" y="365" width="520" height="35" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3310" y="388" font-family="sans-serif" font-size="11" fill="#000000">Interactive Demos &amp; Charts</text>
+  <rect x="3150" y="410" width="520" height="35" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3310" y="433" font-family="sans-serif" font-size="11" fill="#000000">Peer-reviewed References</text>
+
+  <!-- === How-To === -->
+  <rect x="3820" y="170" width="580" height="400" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="3820" y="170" width="580" height="42" rx="14" fill="#000000"/>
+  <rect x="3820" y="198" width="580" height="14" fill="#000000"/>
+  <text x="3850" y="200" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">How To Use</text>
+  <text x="4300" y="200" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/how-to</text>
+  <rect x="3850" y="230" width="520" height="35" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <circle cx="3870" cy="248" r="8" fill="#000000" opacity="0.3"/>
+  <text x="3890" y="253" font-family="sans-serif" font-size="11" fill="#000000">Step 1: Pick a Learning Path</text>
+  <rect x="3850" y="275" width="520" height="35" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <circle cx="3870" cy="293" r="8" fill="#000000" opacity="0.3"/>
+  <text x="3890" y="298" font-family="sans-serif" font-size="11" fill="#000000">Step 2: Complete Daily Lessons</text>
+  <rect x="3850" y="320" width="520" height="35" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <circle cx="3870" cy="338" r="8" fill="#000000" opacity="0.3"/>
+  <text x="3890" y="343" font-family="sans-serif" font-size="11" fill="#000000">Step 3: Review Flashcards</text>
+  <rect x="3850" y="365" width="520" height="35" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <circle cx="3870" cy="383" r="8" fill="#000000" opacity="0.3"/>
+  <text x="3890" y="388" font-family="sans-serif" font-size="11" fill="#000000">Step 4: Track Growth &amp; Streak</text>
+  <rect x="3850" y="410" width="520" height="35" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <circle cx="3870" cy="428" r="8" fill="#000000" opacity="0.3"/>
+  <text x="3890" y="433" font-family="sans-serif" font-size="11" fill="#000000">Step 5: Take Challenges</text>
+
+  <!-- ========================================================== -->
+  <!-- ZONE 2: NAVIGATION (y=820-910)                             -->
+  <!-- ========================================================== -->
+  <text x="80" y="808" font-family="sans-serif" font-size="22" font-weight="bold" fill="#000000" opacity="0.4">ZONE 2 — NAVIGATION</text>
+  <line x1="400" y1="800" x2="5520" y2="800" stroke="#000000" stroke-width="0.5" opacity="0.15"/>
+
+  <rect x="100" y="825" width="3400" height="72" rx="10" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="100" y="825" width="3400" height="36" rx="10" fill="#000000"/>
+  <rect x="100" y="848" width="3400" height="13" fill="#000000"/>
+  <text x="130" y="851" font-family="sans-serif" font-size="15" font-weight="bold" fill="#FFFFFF">Desktop Navbar (sticky top)</text>
+  <text x="140" y="884" font-family="sans-serif" font-size="14" fill="#000000">Logo</text>
+  <text x="330" y="884" font-family="sans-serif" font-size="13" fill="#000000">Home</text>
+  <text x="480" y="884" font-family="sans-serif" font-size="13" fill="#000000">Learn</text>
+  <text x="640" y="884" font-family="sans-serif" font-size="13" fill="#000000">Visuals</text>
+  <text x="820" y="884" font-family="sans-serif" font-size="13" fill="#000000">Challenges</text>
+  <text x="1040" y="884" font-family="sans-serif" font-size="13" fill="#000000">Saved</text>
+  <text x="1200" y="884" font-family="sans-serif" font-size="13" fill="#000000">Settings</text>
+  <circle cx="2800" cy="878" r="6" fill="#000000"/>
+  <text x="2815" y="884" font-family="sans-serif" font-size="13" fill="#000000">7-day Streak</text>
+  <text x="3050" y="884" font-family="sans-serif" font-size="14" font-weight="bold" fill="#000000">1250 XP</text>
+  <circle cx="3400" cy="878" r="14" fill="#D0D0D0" stroke="#000000" stroke-width="1"/>
+  <text x="3392" y="883" font-family="sans-serif" font-size="11" fill="#000000">Av</text>
+
+  <rect x="3640" y="825" width="560" height="72" rx="10" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="3640" y="825" width="560" height="36" rx="10" fill="#000000"/>
+  <rect x="3640" y="848" width="560" height="13" fill="#000000"/>
+  <text x="3670" y="851" font-family="sans-serif" font-size="15" font-weight="bold" fill="#FFFFFF">Mobile Bottom Nav</text>
+  <text x="3680" y="884" font-family="sans-serif" font-size="13" fill="#000000">Home</text>
+  <text x="3810" y="884" font-family="sans-serif" font-size="13" fill="#000000">Learn</text>
+  <text x="3940" y="884" font-family="sans-serif" font-size="13" fill="#000000">Saved</text>
+  <text x="4060" y="884" font-family="sans-serif" font-size="13" fill="#000000">Settings</text>
+
+  <!-- ========================================================== -->
+  <!-- ZONE 3: HOME BASE (y=940-1700)                             -->
+  <!-- ========================================================== -->
+  <text x="80" y="952" font-family="sans-serif" font-size="22" font-weight="bold" fill="#000000" opacity="0.4">ZONE 3 — HOME BASE</text>
+  <line x1="400" y1="944" x2="5520" y2="944" stroke="#000000" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- === Dashboard === -->
+  <rect x="1100" y="970" width="1400" height="720" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="1100" y="970" width="1400" height="42" rx="14" fill="#000000"/>
+  <rect x="1100" y="998" width="1400" height="14" fill="#000000"/>
+  <text x="1130" y="1000" font-family="sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">Dashboard</text>
+  <text x="2360" y="1000" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/dashboard</text>
+  <rect x="1130" y="1028" width="1340" height="60" rx="8" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="1155" y="1052" font-family="sans-serif" font-size="14" fill="#000000">Daily Quote</text>
+  <text x="1155" y="1075" font-family="sans-serif" font-size="11" fill="#444444">"The mind is everything. What you think you become." — Buddha</text>
+  <rect x="1130" y="1100" width="650" height="80" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1155" y="1125" font-family="sans-serif" font-size="13" fill="#000000">Visual of the Day</text>
+  <rect x="1155" y="1135" width="80" height="30" rx="4" fill="#E0E0E0"/>
+  <text x="1170" y="1155" font-family="sans-serif" font-size="9" fill="#444444">Thumb</text>
+  <text x="1250" y="1155" font-family="sans-serif" font-size="11" fill="#000000">Topic Visualization Card</text>
+  <rect x="1810" y="1100" width="650" height="80" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1835" y="1125" font-family="sans-serif" font-size="13" fill="#000000">Level Progress</text>
+  <rect x="1835" y="1140" width="600" height="12" rx="6" fill="#D0D0D0"/>
+  <rect x="1835" y="1140" width="380" height="12" rx="6" fill="#000000" opacity="0.7"/>
+  <text x="1835" y="1170" font-family="sans-serif" font-size="11" fill="#444444">1250 / 1500 XP to Level 4</text>
+  <text x="1140" y="1210" font-family="sans-serif" font-size="15" fill="#000000">Today's Focus</text>
+  <rect x="1130" y="1222" width="310" height="58" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <circle cx="1155" cy="1245" r="5" fill="#000000"/>
+  <text x="1170" y="1248" font-family="sans-serif" font-size="12" fill="#000000">Continue Lesson</text>
+  <text x="1170" y="1268" font-family="sans-serif" font-size="10" fill="#444444">EQ Level 3</text>
+  <rect x="1460" y="1222" width="310" height="58" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <circle cx="1485" cy="1245" r="5" fill="#000000"/>
+  <text x="1500" y="1248" font-family="sans-serif" font-size="12" fill="#000000">Review Cards</text>
+  <text x="1500" y="1268" font-family="sans-serif" font-size="10" fill="#444444">12 due today</text>
+  <rect x="1790" y="1222" width="310" height="58" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <circle cx="1815" cy="1245" r="5" fill="#000000"/>
+  <text x="1830" y="1248" font-family="sans-serif" font-size="12" fill="#000000">Daily Challenges</text>
+  <text x="1830" y="1268" font-family="sans-serif" font-size="10" fill="#444444">3 new today</text>
+  <rect x="2120" y="1222" width="310" height="58" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <circle cx="2145" cy="1245" r="5" fill="#000000"/>
+  <text x="2160" y="1248" font-family="sans-serif" font-size="12" fill="#000000">Explore Modules</text>
+  <text x="2160" y="1268" font-family="sans-serif" font-size="10" fill="#444444">37 available</text>
+  <text x="1140" y="1314" font-family="sans-serif" font-size="15" fill="#000000">Stats</text>
+  <rect x="1130" y="1326" width="310" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1240" y="1360" font-family="sans-serif" font-size="26" font-weight="bold" fill="#000000">1250</text>
+  <text x="1250" y="1388" font-family="sans-serif" font-size="12" fill="#444444">Total XP</text>
+  <rect x="1460" y="1326" width="310" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1590" y="1360" font-family="sans-serif" font-size="26" font-weight="bold" fill="#000000">3</text>
+  <text x="1585" y="1388" font-family="sans-serif" font-size="12" fill="#444444">Level</text>
+  <rect x="1790" y="1326" width="310" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1920" y="1360" font-family="sans-serif" font-size="26" font-weight="bold" fill="#000000">7</text>
+  <text x="1910" y="1388" font-family="sans-serif" font-size="12" fill="#444444">Streak</text>
+  <rect x="2120" y="1326" width="310" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2240" y="1360" font-family="sans-serif" font-size="26" font-weight="bold" fill="#000000">42</text>
+  <text x="2230" y="1388" font-family="sans-serif" font-size="12" fill="#444444">Lessons</text>
+  <rect x="1130" y="1418" width="1340" height="50" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1155" y="1440" font-family="sans-serif" font-size="13" fill="#000000">Leaderboard</text>
+  <text x="1155" y="1458" font-family="sans-serif" font-size="11" fill="#000000">1. You — 1250 XP</text>
+  <text x="1500" y="1458" font-family="sans-serif" font-size="11" fill="#444444">2. Scholar — 980 XP</text>
+  <text x="1850" y="1458" font-family="sans-serif" font-size="11" fill="#444444">3. Seeker — 750 XP</text>
+  <rect x="1130" y="1482" width="650" height="55" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1155" y="1505" font-family="sans-serif" font-size="13" fill="#000000">Favorite Modules</text>
+  <rect x="1155" y="1512" width="80" height="16" rx="3" fill="#D0D0D0"/>
+  <text x="1175" y="1524" font-family="sans-serif" font-size="8" fill="#444444">EQ</text>
+  <rect x="1245" y="1512" width="80" height="16" rx="3" fill="#D0D0D0"/>
+  <text x="1260" y="1524" font-family="sans-serif" font-size="8" fill="#444444">Stoicism</text>
+  <rect x="1335" y="1512" width="80" height="16" rx="3" fill="#D0D0D0"/>
+  <text x="1360" y="1524" font-family="sans-serif" font-size="8" fill="#444444">Gita</text>
+  <rect x="1810" y="1482" width="650" height="55" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1835" y="1505" font-family="sans-serif" font-size="13" fill="#000000">Achievement Progress</text>
+  <rect x="1835" y="1515" width="400" height="10" rx="5" fill="#D0D0D0"/>
+  <rect x="1835" y="1515" width="260" height="10" rx="5" fill="#000000" opacity="0.5"/>
+  <rect x="1130" y="1552" width="1340" height="50" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1155" y="1578" font-family="sans-serif" font-size="13" fill="#000000">Quick Access</text>
+  <text x="1350" y="1578" font-family="sans-serif" font-size="11" fill="#000000">Continue EQ Level 3 →</text>
+  <text x="1700" y="1578" font-family="sans-serif" font-size="11" fill="#444444">|</text>
+  <text x="1750" y="1578" font-family="sans-serif" font-size="11" fill="#000000">12 cards to review →</text>
+  <text x="2100" y="1578" font-family="sans-serif" font-size="11" fill="#444444">|</text>
+  <text x="2150" y="1578" font-family="sans-serif" font-size="11" fill="#000000">3 challenges today →</text>
+
+  <!-- ========================================================== -->
+  <!-- ZONE 4: CORE LEARNING LOOP (y=1730-2520)                   -->
+  <!-- ========================================================== -->
+  <text x="80" y="1730" font-family="sans-serif" font-size="22" font-weight="bold" fill="#000000" opacity="0.4">ZONE 4 — CORE LEARNING LOOP</text>
+  <line x1="520" y1="1722" x2="5520" y2="1722" stroke="#000000" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- === Module Hub === -->
+  <rect x="100" y="1755" width="1000" height="680" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="100" y="1755" width="1000" height="42" rx="14" fill="#000000"/>
+  <rect x="100" y="1783" width="1000" height="14" fill="#000000"/>
+  <text x="130" y="1786" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Module Hub</text>
+  <text x="980" y="1786" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/modules</text>
+  <text x="130" y="1822" font-family="sans-serif" font-size="12" fill="#444444">Overall Progress</text>
+  <rect x="130" y="1830" width="940" height="10" rx="5" fill="#D0D0D0"/>
+  <rect x="130" y="1830" width="460" height="10" rx="5" fill="#000000" opacity="0.6"/>
+  <text x="130" y="1858" font-family="sans-serif" font-size="11" fill="#444444">37 / 76 modules available</text>
+  <rect x="130" y="1870" width="940" height="30" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="155" y="1890" font-family="sans-serif" font-size="11" fill="#666666">Search modules...</text>
+  <text x="130" y="1920" font-family="sans-serif" font-size="12" fill="#444444">Category Filters</text>
+  <rect x="130" y="1928" width="65" height="22" rx="11" fill="#000000" opacity="0.3"/>
+  <text x="148" y="1943" font-family="sans-serif" font-size="9" fill="#000000">All</text>
+  <rect x="205" y="1928" width="95" height="22" rx="11" fill="#D0D0D0"/>
+  <text x="218" y="1943" font-family="sans-serif" font-size="9" fill="#444444">Mind &amp; Perf</text>
+  <rect x="310" y="1928" width="95" height="22" rx="11" fill="#D0D0D0"/>
+  <text x="323" y="1943" font-family="sans-serif" font-size="9" fill="#444444">Tech &amp; Code</text>
+  <rect x="415" y="1928" width="70" height="22" rx="11" fill="#D0D0D0"/>
+  <text x="430" y="1943" font-family="sans-serif" font-size="9" fill="#444444">Bharat</text>
+  <rect x="495" y="1928" width="50" height="22" rx="11" fill="#D0D0D0"/>
+  <text x="510" y="1943" font-family="sans-serif" font-size="9" fill="#444444">+10</text>
+  <rect x="130" y="1965" width="300" height="130" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="148" y="1990" font-family="sans-serif" font-size="18">🧠</text>
+  <text x="175" y="1992" font-family="sans-serif" font-size="12" font-weight="bold" fill="#000000">Emotional Intelligence</text>
+  <text x="148" y="2012" font-family="sans-serif" font-size="10" fill="#444444">10 levels · 80 lessons</text>
+  <rect x="148" y="2025" width="260" height="6" rx="3" fill="#D0D0D0"/>
+  <rect x="148" y="2025" width="162" height="6" rx="3" fill="#000000" opacity="0.6"/>
+  <text x="148" y="2055" font-family="sans-serif" font-size="9" fill="#444444">3 books</text>
+  <rect x="370" y="2050" width="40" height="16" rx="4" fill="#000000" opacity="0.2"/>
+  <text x="380" y="2061" font-family="sans-serif" font-size="8" fill="#000000">62%</text>
+  <rect x="450" y="1965" width="300" height="130" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="468" y="1990" font-family="sans-serif" font-size="18">📿</text>
+  <text x="495" y="1992" font-family="sans-serif" font-size="12" font-weight="bold" fill="#000000">Bhagavad Gita</text>
+  <text x="468" y="2012" font-family="sans-serif" font-size="10" fill="#444444">10 levels · 80 lessons</text>
+  <rect x="468" y="2025" width="260" height="6" rx="3" fill="#D0D0D0"/>
+  <rect x="468" y="2025" width="60" height="6" rx="3" fill="#000000" opacity="0.6"/>
+  <rect x="770" y="1965" width="300" height="130" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="788" y="1990" font-family="sans-serif" font-size="18">📊</text>
+  <text x="815" y="1992" font-family="sans-serif" font-size="12" font-weight="bold" fill="#000000">Technical Analysis</text>
+  <text x="788" y="2012" font-family="sans-serif" font-size="10" fill="#444444">10 levels · 80 lessons</text>
+  <rect x="788" y="2025" width="260" height="6" rx="3" fill="#D0D0D0"/>
+  <rect x="130" y="2110" width="300" height="100" rx="8" fill="#F0F0F0" stroke="#000000"/>
+  <text x="148" y="2140" font-family="sans-serif" font-size="18">⚛️</text>
+  <text x="175" y="2142" font-family="sans-serif" font-size="12" font-weight="bold" fill="#000000">Quantum Mechanics</text>
+  <rect x="450" y="2110" width="300" height="100" rx="8" fill="#F0F0F0" stroke="#000000" stroke-dasharray="4,2" opacity="0.5"/>
+  <text x="468" y="2140" font-family="sans-serif" font-size="18">🔒</text>
+  <text x="495" y="2142" font-family="sans-serif" font-size="12" font-weight="bold" fill="#444444">Cybersecurity</text>
+  <text x="468" y="2162" font-family="sans-serif" font-size="10" fill="#666666">Coming Soon</text>
+  <rect x="770" y="2110" width="300" height="100" rx="8" fill="#F0F0F0" stroke="#000000" stroke-dasharray="4,2" opacity="0.5"/>
+  <text x="788" y="2140" font-family="sans-serif" font-size="18">🔒</text>
+  <text x="815" y="2142" font-family="sans-serif" font-size="12" font-weight="bold" fill="#444444">Persuasion</text>
+  <text x="788" y="2162" font-family="sans-serif" font-size="10" fill="#666666">Coming Soon</text>
+  <rect x="130" y="2228" width="940" height="40" rx="8" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="155" y="2253" font-family="sans-serif" font-size="12" fill="#000000">Recommended:</text>
+  <text x="290" y="2253" font-family="sans-serif" font-size="12" fill="#000000">Continue "Emotional Intelligence" — Level 3</text>
+
+  <!-- === Module Page === -->
+  <rect x="1220" y="1755" width="900" height="680" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="1220" y="1755" width="900" height="42" rx="14" fill="#000000"/>
+  <rect x="1220" y="1783" width="900" height="14" fill="#000000"/>
+  <text x="1250" y="1786" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Module Page</text>
+  <text x="1960" y="1786" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/modules/:id</text>
+  <text x="1250" y="1822" font-family="sans-serif" font-size="14" fill="#444444">← Back</text>
+  <text x="1330" y="1822" font-family="sans-serif" font-size="17" font-weight="bold" fill="#000000">🧠 Emotional Intelligence</text>
+  <rect x="1250" y="1835" width="840" height="32" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1275" y="1856" font-family="sans-serif" font-size="11" fill="#444444">10 Levels · 80 Lessons · 3 Books · 62% Complete</text>
+  <text x="1250" y="1892" font-family="sans-serif" font-size="14" fill="#000000">Levels</text>
+  <rect x="1250" y="1902" width="840" height="34" rx="6" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="1275" y="1924" font-family="sans-serif" font-size="12" fill="#000000">✅ Level 1: Foundations of EQ</text>
+  <text x="2030" y="1924" font-family="sans-serif" font-size="10" fill="#000000">8/8</text>
+  <rect x="1250" y="1944" width="840" height="34" rx="6" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="1275" y="1966" font-family="sans-serif" font-size="12" fill="#000000">✅ Level 2: Self-Awareness</text>
+  <text x="2030" y="1966" font-family="sans-serif" font-size="10" fill="#000000">8/8</text>
+  <rect x="1250" y="1986" width="840" height="230" rx="6" fill="#F0F0F0" stroke="#000000" stroke-width="0.8"/>
+  <text x="1275" y="2010" font-family="sans-serif" font-size="13" font-weight="bold" fill="#000000">▼ Level 3: Social Skills (In Progress)</text>
+  <text x="2030" y="2010" font-family="sans-serif" font-size="10" fill="#000000">5/8</text>
+  <rect x="1270" y="2024" width="800" height="24" rx="4" fill="#E0E0E0"/>
+  <text x="1290" y="2041" font-family="sans-serif" font-size="11" fill="#000000">✓</text>
+  <rect x="1310" y="2028" width="45" height="15" rx="3" fill="#000000" opacity="0.3"/>
+  <text x="1318" y="2040" font-family="sans-serif" font-size="9" fill="#000000">intro</text>
+  <text x="1368" y="2041" font-family="sans-serif" font-size="11" fill="#000000">Introduction to Social Skills</text>
+  <text x="2010" y="2041" font-family="sans-serif" font-size="10" fill="#000000">+25 XP</text>
+  <rect x="1270" y="2054" width="800" height="24" rx="4" fill="#E0E0E0"/>
+  <text x="1290" y="2071" font-family="sans-serif" font-size="11" fill="#000000">✓</text>
+  <rect x="1310" y="2058" width="55" height="15" rx="3" fill="#000000" opacity="0.3"/>
+  <text x="1318" y="2070" font-family="sans-serif" font-size="9" fill="#000000">concept</text>
+  <text x="1378" y="2071" font-family="sans-serif" font-size="11" fill="#000000">Active Listening Mastery</text>
+  <text x="2010" y="2071" font-family="sans-serif" font-size="10" fill="#000000">+30 XP</text>
+  <rect x="1270" y="2084" width="800" height="24" rx="4" fill="#E0E0E0"/>
+  <text x="1290" y="2101" font-family="sans-serif" font-size="11" fill="#000000">✓</text>
+  <rect x="1310" y="2088" width="40" height="15" rx="3" fill="#000000" opacity="0.3"/>
+  <text x="1318" y="2100" font-family="sans-serif" font-size="9" fill="#000000">quiz</text>
+  <text x="1363" y="2101" font-family="sans-serif" font-size="11" fill="#000000">Social Skills Quiz</text>
+  <text x="2010" y="2101" font-family="sans-serif" font-size="10" fill="#000000">+35 XP</text>
+  <rect x="1270" y="2114" width="800" height="24" rx="4" fill="#E0E0E0"/>
+  <circle cx="1297" cy="2126" r="5" fill="#000000" opacity="0.5"/>
+  <rect x="1310" y="2118" width="55" height="15" rx="3" fill="#000000" opacity="0.3"/>
+  <text x="1318" y="2130" font-family="sans-serif" font-size="9" fill="#000000">exercise</text>
+  <text x="1378" y="2131" font-family="sans-serif" font-size="11" fill="#000000">Empathy Practice</text>
+  <text x="2010" y="2131" font-family="sans-serif" font-size="10" fill="#000000">+30 XP</text>
+  <rect x="1270" y="2144" width="800" height="24" rx="4" fill="#FFFFFF" opacity="0.5"/>
+  <text x="1290" y="2161" font-family="sans-serif" font-size="11" fill="#666666">○ Conflict Resolution ... 2 more</text>
+  <rect x="1250" y="2228" width="840" height="32" rx="6" fill="#F0F0F0" stroke="#000000" opacity="0.5"/>
+  <text x="1275" y="2250" font-family="sans-serif" font-size="12" fill="#666666">🔒 Level 4: Emotional Regulation (1500 XP)</text>
+  <rect x="1250" y="2268" width="840" height="32" rx="6" fill="#F0F0F0" stroke="#000000" opacity="0.4"/>
+  <text x="1275" y="2290" font-family="sans-serif" font-size="12" fill="#666666">🔒 Level 5-10...</text>
+
+  <!-- === Lesson Viewer === -->
+  <rect x="2240" y="1755" width="1060" height="760" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="2240" y="1755" width="1060" height="42" rx="14" fill="#000000"/>
+  <rect x="2240" y="1783" width="1060" height="14" fill="#000000"/>
+  <text x="2270" y="1786" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Lesson Viewer</text>
+  <text x="3140" y="1786" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">(in-page overlay)</text>
+  <rect x="2270" y="1812" width="1000" height="35" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2290" y="1835" font-family="sans-serif" font-size="12" fill="#444444">✕ Close</text>
+  <text x="2400" y="1835" font-family="sans-serif" font-size="11" fill="#666666">EQ › Level 3 › Lesson 6</text>
+  <rect x="2850" y="1818" width="50" height="20" rx="4" fill="#000000" opacity="0.3"/>
+  <text x="2860" y="1833" font-family="sans-serif" font-size="10" fill="#000000">6 / 8</text>
+  <rect x="2910" y="1818" width="60" height="20" rx="4" fill="#000000" opacity="0.3"/>
+  <text x="2920" y="1833" font-family="sans-serif" font-size="10" fill="#000000">concept</text>
+  <rect x="2980" y="1818" width="55" height="20" rx="4" fill="#000000" opacity="0.3"/>
+  <text x="2990" y="1833" font-family="sans-serif" font-size="10" fill="#000000">+30 XP</text>
+  <rect x="2270" y="1858" width="1000" height="28" rx="6" fill="#F0F0F0"/>
+  <text x="2320" y="1877" font-family="sans-serif" font-size="12" fill="#000000" text-decoration="underline">Overview</text>
+  <text x="2440" y="1877" font-family="sans-serif" font-size="12" fill="#444444">Main Content</text>
+  <text x="2600" y="1877" font-family="sans-serif" font-size="12" fill="#444444">Quiz</text>
+  <text x="2700" y="1877" font-family="sans-serif" font-size="12" fill="#444444">Takeaway</text>
+  <text x="2830" y="1877" font-family="sans-serif" font-size="12" fill="#444444">Action</text>
+  <rect x="2270" y="1898" width="800" height="240" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2295" y="1925" font-family="sans-serif" font-size="15" font-weight="bold" fill="#000000">Active Listening Mastery</text>
+  <text x="2295" y="1950" font-family="sans-serif" font-size="11" fill="#444444">Overview: Learn the core principles of active listening...</text>
+  <rect x="2295" y="1960" width="750" height="1" fill="#D0D0D0"/>
+  <text x="2295" y="1985" font-family="sans-serif" font-size="11" fill="#000000">Main content area (markdown rendered)</text>
+  <text x="2295" y="2005" font-family="sans-serif" font-size="11" fill="#444444">• Active listening involves fully concentrating...</text>
+  <text x="2295" y="2025" font-family="sans-serif" font-size="11" fill="#444444">• The HEAR technique: Halt, Engage, Anticipate, Replay</text>
+  <text x="2295" y="2045" font-family="sans-serif" font-size="11" fill="#444444">• Studies show 45% of communication is listening...</text>
+  <rect x="2295" y="2060" width="750" height="50" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="0.5"/>
+  <text x="2315" y="2082" font-family="sans-serif" font-size="12" fill="#000000">Key Takeaway</text>
+  <text x="2315" y="2100" font-family="sans-serif" font-size="10" fill="#000000">True listening is an act of empathy and presence...</text>
+  <rect x="3090" y="1898" width="180" height="240" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3115" y="1928" font-family="sans-serif" font-size="12" fill="#000000">Time</text>
+  <text x="3115" y="1952" font-family="sans-serif" font-size="22" font-weight="bold" fill="#000000">8 min</text>
+  <rect x="3115" y="1965" width="130" height="1" fill="#D0D0D0"/>
+  <text x="3115" y="1988" font-family="sans-serif" font-size="12" fill="#000000">XP Reward</text>
+  <text x="3115" y="2012" font-family="sans-serif" font-size="22" font-weight="bold" fill="#000000">+30</text>
+  <rect x="3115" y="2025" width="130" height="1" fill="#D0D0D0"/>
+  <text x="3115" y="2048" font-family="sans-serif" font-size="12" fill="#000000">Progress</text>
+  <rect x="3115" y="2058" width="130" height="8" rx="4" fill="#D0D0D0"/>
+  <rect x="3115" y="2058" width="82" height="8" rx="4" fill="#000000" opacity="0.6"/>
+  <text x="3115" y="2082" font-family="sans-serif" font-size="10" fill="#444444">5/8 complete</text>
+  <rect x="3115" y="2096" width="130" height="26" rx="4" fill="#000000" opacity="0.2"/>
+  <text x="3145" y="2114" font-family="sans-serif" font-size="11" fill="#000000">★ Save</text>
+  <text x="2280" y="2162" font-family="sans-serif" font-size="14" fill="#000000">Flashcard Stack (swipe)</text>
+  <rect x="2340" y="2172" width="420" height="100" rx="8" fill="#E0E0E0" stroke="#000000" transform="rotate(-2,2550,2222)"/>
+  <rect x="2320" y="2178" width="420" height="100" rx="8" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="2420" y="2220" font-family="sans-serif" font-size="14" font-weight="bold" fill="#000000">What is the HEAR technique?</text>
+  <text x="2415" y="2248" font-family="sans-serif" font-size="11" fill="#444444">← swipe left (skip) | swipe right (save) →</text>
+  <text x="2480" y="2268" font-family="sans-serif" font-size="10" fill="#666666">tap to flip</text>
+  <rect x="2780" y="2178" width="240" height="100" rx="8" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="2855" y="2216" font-family="sans-serif" font-size="26">🎉</text>
+  <text x="2828" y="2242" font-family="sans-serif" font-size="13" font-weight="bold" fill="#000000">Lesson Complete!</text>
+  <text x="2860" y="2262" font-family="sans-serif" font-size="11" fill="#000000">+30 XP earned</text>
+  <rect x="2270" y="2290" width="1000" height="35" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2300" y="2313" font-family="sans-serif" font-size="12" fill="#444444">← Previous</text>
+  <text x="2700" y="2313" font-family="sans-serif" font-size="12" fill="#000000">Mark Complete</text>
+  <text x="3170" y="2313" font-family="sans-serif" font-size="12" fill="#444444">Next →</text>
+  <rect x="2270" y="2338" width="1000" height="35" rx="6" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="2580" y="2361" font-family="sans-serif" font-size="12" fill="#000000">🎮 Play Mini-Game for Bonus XP</text>
+  <rect x="2270" y="2386" width="1000" height="30" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2500" y="2406" font-family="sans-serif" font-size="11" fill="#000000">3 new flashcards unlocked for Spaced Repetition →</text>
+
+  <!-- === Learning Pathway === -->
+  <rect x="3420" y="1755" width="1100" height="680" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="3420" y="1755" width="1100" height="42" rx="14" fill="#000000"/>
+  <rect x="3420" y="1783" width="1100" height="14" fill="#000000"/>
+  <text x="3450" y="1786" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Learning Pathway</text>
+  <text x="4350" y="1786" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/pathway</text>
+  <text x="3450" y="1822" font-family="sans-serif" font-size="14" fill="#000000">Your Favorites</text>
+  <rect x="3450" y="1832" width="160" height="65" rx="6" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="3490" y="1870" font-family="sans-serif" font-size="11" fill="#000000">EQ</text>
+  <rect x="3630" y="1832" width="160" height="65" rx="6" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="3670" y="1870" font-family="sans-serif" font-size="11" fill="#000000">Stoicism</text>
+  <rect x="3810" y="1832" width="160" height="65" rx="6" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="3855" y="1870" font-family="sans-serif" font-size="11" fill="#000000">Gita</text>
+  <rect x="3990" y="1832" width="160" height="65" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="4025" y="1870" font-family="sans-serif" font-size="11" fill="#444444">+5 more →</text>
+  <text x="3450" y="1924" font-family="sans-serif" font-size="14" fill="#000000">Latest Release</text>
+  <rect x="3450" y="1934" width="1040" height="60" rx="6" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <rect x="3450" y="1934" width="80" height="60" rx="6" fill="#E0E0E0"/>
+  <text x="3467" y="1970" font-family="sans-serif" font-size="9" fill="#444444">Img</text>
+  <text x="3550" y="1962" font-family="sans-serif" font-size="14" font-weight="bold" fill="#000000">Communication &amp; Rhetoric</text>
+  <text x="3550" y="1982" font-family="sans-serif" font-size="10" fill="#444444">10 levels · 80 lessons · NEW</text>
+  <rect x="4400" y="1950" width="70" height="24" rx="6" fill="#000000" opacity="0.3"/>
+  <text x="4413" y="1967" font-family="sans-serif" font-size="10" fill="#000000">Start →</text>
+  <text x="3450" y="2020" font-family="sans-serif" font-size="14" fill="#000000">Continue Reading</text>
+  <rect x="3450" y="2030" width="1040" height="50" rx="6" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="3480" y="2060" font-family="sans-serif" font-size="12" fill="#000000">🧠 Emotional Intelligence — Level 3, Lesson 6</text>
+  <rect x="4400" y="2042" width="70" height="24" rx="6" fill="#000000" opacity="0.3"/>
+  <text x="4407" y="2059" font-family="sans-serif" font-size="10" fill="#000000">Resume</text>
+  <text x="3450" y="2110" font-family="sans-serif" font-size="14" fill="#000000">Mind &amp; Performance</text>
+  <rect x="3450" y="2118" width="240" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3520" y="2162" font-family="sans-serif" font-size="11" fill="#000000">Stoicism</text>
+  <rect x="3710" y="2118" width="240" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3780" y="2162" font-family="sans-serif" font-size="11" fill="#000000">Deep Work</text>
+  <rect x="3970" y="2118" width="240" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="4025" y="2162" font-family="sans-serif" font-size="11" fill="#000000">Brain Hacking</text>
+  <rect x="4230" y="2118" width="240" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="4315" y="2162" font-family="sans-serif" font-size="11" fill="#444444">EQ ✓</text>
+  <text x="3450" y="2222" font-family="sans-serif" font-size="14" fill="#000000">Bharat Wisdom</text>
+  <rect x="3450" y="2230" width="240" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3505" y="2274" font-family="sans-serif" font-size="11" fill="#000000">Bhagavad Gita</text>
+  <rect x="3710" y="2230" width="240" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3775" y="2274" font-family="sans-serif" font-size="11" fill="#000000">Upanishads</text>
+  <rect x="3970" y="2230" width="240" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="4030" y="2274" font-family="sans-serif" font-size="11" fill="#000000">Shiv Sutras</text>
+  <rect x="4230" y="2230" width="240" height="75" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="4295" y="2274" font-family="sans-serif" font-size="11" fill="#444444">+ more →</text>
+  <text x="3450" y="2340" font-family="sans-serif" font-size="14" fill="#000000">Coming Soon</text>
+  <rect x="3450" y="2348" width="240" height="55" rx="6" fill="#F0F0F0" stroke="#000000" stroke-dasharray="4,2" opacity="0.5"/>
+  <text x="3510" y="2382" font-family="sans-serif" font-size="10" fill="#666666">🔒 Cybersecurity</text>
+  <rect x="3710" y="2348" width="240" height="55" rx="6" fill="#F0F0F0" stroke="#000000" stroke-dasharray="4,2" opacity="0.5"/>
+  <text x="3780" y="2382" font-family="sans-serif" font-size="10" fill="#666666">🔒 Persuasion</text>
+
+  <!-- ========================================================== -->
+  <!-- ZONE 5: RETENTION &amp; EXTRAS (y=2560-2980)               -->
+  <!-- ========================================================== -->
+  <text x="80" y="2562" font-family="sans-serif" font-size="22" font-weight="bold" fill="#000000" opacity="0.4">ZONE 5 — RETENTION &amp; EXTRAS</text>
+  <line x1="530" y1="2554" x2="5520" y2="2554" stroke="#000000" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- === Spaced Repetition === -->
+  <rect x="100" y="2585" width="860" height="360" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="100" y="2585" width="860" height="42" rx="14" fill="#000000"/>
+  <rect x="100" y="2613" width="860" height="14" fill="#000000"/>
+  <text x="130" y="2616" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Spaced Repetition</text>
+  <text x="840" y="2616" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/review</text>
+  <text x="130" y="2656" font-family="sans-serif" font-size="12" fill="#444444">Category Hub — card counts</text>
+  <rect x="130" y="2665" width="140" height="28" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="160" y="2684" font-family="sans-serif" font-size="10" fill="#000000">EQ (24)</text>
+  <rect x="284" y="2665" width="140" height="28" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="306" y="2684" font-family="sans-serif" font-size="10" fill="#000000">Stoicism (18)</text>
+  <rect x="438" y="2665" width="140" height="28" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="468" y="2684" font-family="sans-serif" font-size="10" fill="#000000">Gita (12)</text>
+  <rect x="592" y="2665" width="80" height="28" rx="6" fill="#D0D0D0"/>
+  <text x="615" y="2684" font-family="sans-serif" font-size="10" fill="#444444">+5</text>
+  <rect x="190" y="2710" width="340" height="110" rx="10" fill="#F0F0F0" stroke="#000000" stroke-width="1"/>
+  <text x="285" y="2755" font-family="sans-serif" font-size="15" font-weight="bold" fill="#000000">Card Front</text>
+  <text x="255" y="2780" font-family="sans-serif" font-size="11" fill="#444444">What is Active Listening?</text>
+  <text x="310" y="2808" font-family="sans-serif" font-size="10" fill="#666666">tap to flip →</text>
+  <rect x="570" y="2715" width="100" height="30" rx="6" fill="#000000" opacity="0.2"/>
+  <text x="600" y="2735" font-family="sans-serif" font-size="12" fill="#000000">Hard</text>
+  <rect x="570" y="2755" width="100" height="30" rx="6" fill="#000000" opacity="0.2"/>
+  <text x="600" y="2775" font-family="sans-serif" font-size="12" fill="#000000">Good</text>
+  <rect x="570" y="2795" width="100" height="30" rx="6" fill="#000000" opacity="0.2"/>
+  <text x="600" y="2815" font-family="sans-serif" font-size="12" fill="#000000">Easy</text>
+  <rect x="130" y="2840" width="800" height="40" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="160" y="2866" font-family="sans-serif" font-size="11" fill="#444444">Session: 8/12</text>
+  <text x="350" y="2866" font-family="sans-serif" font-size="11" fill="#444444">Retention: 85%</text>
+  <text x="560" y="2866" font-family="sans-serif" font-size="11" fill="#444444">Mastered: 18</text>
+  <rect x="130" y="2892" width="800" height="30" rx="6" fill="#F0F0F0" stroke="#000000" stroke-width="0.5"/>
+  <text x="350" y="2912" font-family="sans-serif" font-size="11" fill="#000000">Session Complete: +120 XP earned</text>
+
+  <!-- === Daily Challenges === -->
+  <rect x="1080" y="2585" width="820" height="360" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="1080" y="2585" width="820" height="42" rx="14" fill="#000000"/>
+  <rect x="1080" y="2613" width="820" height="14" fill="#000000"/>
+  <text x="1110" y="2616" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Daily Challenges</text>
+  <text x="1760" y="2616" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/challenges</text>
+  <rect x="1110" y="2645" width="760" height="58" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1135" y="2670" font-family="sans-serif" font-size="13" font-weight="bold" fill="#000000">Apply Stoic Principles</text>
+  <rect x="1360" y="2660" width="55" height="16" rx="4" fill="#000000" opacity="0.2"/>
+  <text x="1368" y="2672" font-family="sans-serif" font-size="9" fill="#000000">Medium</text>
+  <text x="1800" y="2670" font-family="sans-serif" font-size="11" fill="#000000">+50 XP</text>
+  <text x="1135" y="2694" font-family="sans-serif" font-size="10" fill="#444444">Write about a situation where you applied...</text>
+  <rect x="1110" y="2713" width="760" height="58" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1135" y="2738" font-family="sans-serif" font-size="13" font-weight="bold" fill="#000000">EQ Reflection</text>
+  <rect x="1290" y="2728" width="40" height="16" rx="4" fill="#000000" opacity="0.2"/>
+  <text x="1298" y="2740" font-family="sans-serif" font-size="9" fill="#000000">Easy</text>
+  <text x="1800" y="2738" font-family="sans-serif" font-size="11" fill="#000000">+30 XP</text>
+  <rect x="1110" y="2781" width="760" height="58" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1135" y="2806" font-family="sans-serif" font-size="13" font-weight="bold" fill="#000000">Cross-Domain Connection</text>
+  <rect x="1390" y="2796" width="40" height="16" rx="4" fill="#000000" opacity="0.2"/>
+  <text x="1398" y="2808" font-family="sans-serif" font-size="9" fill="#000000">Hard</text>
+  <text x="1800" y="2806" font-family="sans-serif" font-size="11" fill="#000000">+75 XP</text>
+  <rect x="1110" y="2852" width="760" height="35" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1310" y="2875" font-family="sans-serif" font-size="11" fill="#666666">Response: textarea + word count + submit</text>
+
+  <!-- === Knowledge Map === -->
+  <rect x="2020" y="2585" width="720" height="360" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="2020" y="2585" width="720" height="42" rx="14" fill="#000000"/>
+  <rect x="2020" y="2613" width="720" height="14" fill="#000000"/>
+  <text x="2050" y="2616" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Knowledge Map</text>
+  <text x="2600" y="2616" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/connections</text>
+  <rect x="2050" y="2645" width="660" height="32" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2075" y="2666" font-family="sans-serif" font-size="10" fill="#444444">Discover hidden connections between concepts across modules</text>
+  <rect x="2050" y="2690" width="320" height="80" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <rect x="2050" y="2690" width="320" height="5" rx="2" fill="#000000"/>
+  <text x="2075" y="2718" font-family="sans-serif" font-size="11" fill="#000000">Stoic Detachment</text>
+  <text x="2170" y="2738" font-family="sans-serif" font-size="14" fill="#000000">↔</text>
+  <text x="2075" y="2758" font-family="sans-serif" font-size="11" fill="#000000">Gita's Nishkama Karma</text>
+  <rect x="2390" y="2690" width="320" height="80" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <rect x="2390" y="2690" width="320" height="5" rx="2" fill="#000000"/>
+  <text x="2415" y="2718" font-family="sans-serif" font-size="11" fill="#000000">Active Listening (EQ)</text>
+  <text x="2510" y="2738" font-family="sans-serif" font-size="14" fill="#000000">↔</text>
+  <text x="2415" y="2758" font-family="sans-serif" font-size="11" fill="#000000">Empathy (Rhetoric)</text>
+  <rect x="2050" y="2785" width="320" height="80" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <rect x="2050" y="2785" width="320" height="5" rx="2" fill="#000000"/>
+  <text x="2075" y="2813" font-family="sans-serif" font-size="11" fill="#000000">Quantum Observer</text>
+  <text x="2170" y="2833" font-family="sans-serif" font-size="14" fill="#000000">↔</text>
+  <text x="2075" y="2853" font-family="sans-serif" font-size="11" fill="#000000">Upanishadic Witness</text>
+  <text x="2430" y="2840" font-family="sans-serif" font-size="11" fill="#666666">Detail modal on tap</text>
+
+  <!-- === Visual Lab === -->
+  <rect x="2860" y="2585" width="720" height="360" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="2860" y="2585" width="720" height="42" rx="14" fill="#000000"/>
+  <rect x="2860" y="2613" width="720" height="14" fill="#000000"/>
+  <text x="2890" y="2616" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Visual Lab</text>
+  <text x="3460" y="2616" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/lab</text>
+  <rect x="2890" y="2645" width="440" height="28" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="2915" y="2664" font-family="sans-serif" font-size="11" fill="#666666">Search visualizations...</text>
+  <rect x="3350" y="2645" width="70" height="28" rx="6" fill="#D0D0D0"/>
+  <text x="3365" y="2664" font-family="sans-serif" font-size="10" fill="#444444">Filter</text>
+  <rect x="3435" y="2645" width="70" height="28" rx="6" fill="#D0D0D0"/>
+  <text x="3453" y="2664" font-family="sans-serif" font-size="10" fill="#444444">Book</text>
+  <rect x="2890" y="2688" width="210" height="100" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <rect x="2890" y="2688" width="210" height="60" rx="6" fill="#E0E0E0"/>
+  <text x="2960" y="2725" font-family="sans-serif" font-size="9" fill="#444444">Viz Image</text>
+  <text x="2950" y="2778" font-family="sans-serif" font-size="10" fill="#000000">Habit Loop</text>
+  <rect x="3115" y="2688" width="210" height="100" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <rect x="3115" y="2688" width="210" height="60" rx="6" fill="#E0E0E0"/>
+  <text x="3185" y="2725" font-family="sans-serif" font-size="9" fill="#444444">Viz Image</text>
+  <text x="3180" y="2778" font-family="sans-serif" font-size="10" fill="#000000">Flow State</text>
+  <rect x="3340" y="2688" width="210" height="100" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <rect x="3340" y="2688" width="210" height="60" rx="6" fill="#E0E0E0"/>
+  <text x="3410" y="2725" font-family="sans-serif" font-size="9" fill="#444444">Viz Image</text>
+  <text x="3405" y="2778" font-family="sans-serif" font-size="10" fill="#000000">EQ Model</text>
+  <rect x="2890" y="2800" width="210" height="100" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <rect x="2890" y="2800" width="210" height="60" rx="6" fill="#E0E0E0"/>
+  <text x="2950" y="2892" font-family="sans-serif" font-size="10" fill="#000000">Chakras</text>
+  <rect x="3115" y="2800" width="210" height="100" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <rect x="3115" y="2800" width="210" height="60" rx="6" fill="#E0E0E0"/>
+  <text x="3175" y="2892" font-family="sans-serif" font-size="10" fill="#000000">SM-2 Algo</text>
+  <text x="3370" y="2870" font-family="sans-serif" font-size="11" fill="#666666">Full-screen on tap</text>
+
+  <!-- === Saved Cards === -->
+  <rect x="3700" y="2585" width="640" height="240" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="3700" y="2585" width="640" height="42" rx="14" fill="#000000"/>
+  <rect x="3700" y="2613" width="640" height="14" fill="#000000"/>
+  <text x="3730" y="2616" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Saved Cards</text>
+  <text x="4220" y="2616" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/saved</text>
+  <rect x="3730" y="2645" width="55" height="20" rx="4" fill="#000000" opacity="0.3"/>
+  <text x="3745" y="2659" font-family="sans-serif" font-size="9" fill="#000000">All</text>
+  <rect x="3795" y="2645" width="55" height="20" rx="4" fill="#D0D0D0"/>
+  <text x="3810" y="2659" font-family="sans-serif" font-size="9" fill="#444444">EQ</text>
+  <rect x="3860" y="2645" width="75" height="20" rx="4" fill="#D0D0D0"/>
+  <text x="3872" y="2659" font-family="sans-serif" font-size="9" fill="#444444">Stoicism</text>
+  <rect x="3730" y="2678" width="580" height="38" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <rect x="3745" y="2686" width="50" height="16" rx="3" fill="#000000" opacity="0.3"/>
+  <text x="3753" y="2698" font-family="sans-serif" font-size="8" fill="#000000">concept</text>
+  <text x="3808" y="2700" font-family="sans-serif" font-size="11" fill="#000000">Active Listening — HEAR Technique</text>
+  <text x="4240" y="2700" font-family="sans-serif" font-size="14" fill="#000000">★</text>
+  <rect x="3730" y="2724" width="580" height="38" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <rect x="3745" y="2732" width="40" height="16" rx="3" fill="#000000" opacity="0.3"/>
+  <text x="3753" y="2744" font-family="sans-serif" font-size="8" fill="#000000">quiz</text>
+  <text x="3798" y="2746" font-family="sans-serif" font-size="11" fill="#000000">Stoic Virtues — Key Insight</text>
+  <text x="4240" y="2746" font-family="sans-serif" font-size="14" fill="#000000">★</text>
+  <rect x="3730" y="2770" width="580" height="30" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3920" y="2790" font-family="sans-serif" font-size="10" fill="#666666">Expandable content</text>
+
+  <!-- === Settings === -->
+  <rect x="3700" y="2855" width="640" height="240" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="1.5"/>
+  <rect x="3700" y="2855" width="640" height="42" rx="14" fill="#000000"/>
+  <rect x="3700" y="2883" width="640" height="14" fill="#000000"/>
+  <text x="3730" y="2886" font-family="sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Settings</text>
+  <text x="4220" y="2886" font-family="sans-serif" font-size="14" fill="#FFFFFF" opacity="0.7">/settings</text>
+  <rect x="3730" y="2912" width="580" height="34" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <circle cx="3755" cy="2929" r="10" fill="#D0D0D0" stroke="#000000" stroke-width="0.5"/>
+  <text x="3778" y="2933" font-family="sans-serif" font-size="11" fill="#000000">Profile: Name, Focus Areas, Daily Goal</text>
+  <rect x="3730" y="2955" width="580" height="30" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3755" y="2975" font-family="sans-serif" font-size="11" fill="#000000">☁ Cloud Sync: Google Sign-In + Sync</text>
+  <rect x="3730" y="2994" width="280" height="26" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3815" y="3012" font-family="sans-serif" font-size="10" fill="#444444">Export Data</text>
+  <rect x="4020" y="2994" width="280" height="26" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="4110" y="3012" font-family="sans-serif" font-size="10" fill="#444444">Import Data</text>
+  <rect x="3730" y="3028" width="580" height="22" rx="4" fill="#F0F0F0" stroke="#000000"/>
+  <text x="3920" y="3043" font-family="sans-serif" font-size="10" fill="#444444">Audio Toggle</text>
+  <rect x="3730" y="3058" width="580" height="24" rx="4" fill="#F0F0F0" stroke="#000000" stroke-width="0.5" opacity="0.6"/>
+  <text x="3850" y="3075" font-family="sans-serif" font-size="10" fill="#000000">Danger Zone: Reset Progress | Clear All Data</text>
+
+  <!-- ========================================================== -->
+  <!-- FLOATING MODALS                                             -->
+  <!-- ========================================================== -->
+  <text x="80" y="3140" font-family="sans-serif" font-size="22" font-weight="bold" fill="#000000" opacity="0.4">FLOATING MODALS</text>
+  <line x1="340" y1="3132" x2="5520" y2="3132" stroke="#000000" stroke-width="0.5" opacity="0.15"/>
+
+  <rect x="100" y="3165" width="420" height="150" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="118" y="3200" font-family="sans-serif" font-size="10" fill="#666666">confetti animation</text>
+  <text x="270" y="3210" font-family="sans-serif" font-size="34">🎉</text>
+  <text x="235" y="3248" font-family="sans-serif" font-size="22" font-weight="bold" fill="#000000">Level Up!</text>
+  <text x="230" y="3275" font-family="sans-serif" font-size="14" fill="#000000">You reached Level 4</text>
+  <text x="245" y="3300" font-family="sans-serif" font-size="12" fill="#444444">+500 XP milestone</text>
+
+  <rect x="640" y="3165" width="420" height="150" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="810" y="3210" font-family="sans-serif" font-size="34">🏆</text>
+  <text x="730" y="3248" font-family="sans-serif" font-size="18" font-weight="bold" fill="#000000">Achievement Unlocked!</text>
+  <text x="770" y="3275" font-family="sans-serif" font-size="14" fill="#000000">"Knowledge Seeker"</text>
+  <text x="800" y="3300" font-family="sans-serif" font-size="12" fill="#000000">+100 XP reward</text>
+
+  <rect x="1180" y="3165" width="420" height="150" rx="14" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="1310" y="3215" font-family="sans-serif" font-size="16" font-weight="bold" fill="#000000">Sign In to Sync</text>
+  <rect x="1280" y="3235" width="220" height="32" rx="6" fill="#F0F0F0" stroke="#000000"/>
+  <text x="1320" y="3256" font-family="sans-serif" font-size="12" fill="#000000">Sign in with Google</text>
+  <text x="1280" y="3300" font-family="sans-serif" font-size="11" fill="#444444">Save progress across devices</text>
+
+  <!-- ========================================================== -->
+  <!-- NAVIGATION ARROWS                                           -->
+  <!-- ========================================================== -->
+
+  <!-- Arrow 1: Landing → Dashboard -->
+  <path d="M 1100 750 L 1100 810 Q 1100 820 1110 820 L 1700 820 Q 1710 820 1710 830 L 1710 965" stroke="#000000" stroke-width="2.5" fill="none" marker-end="url(#arrow-amber)"/>
+  <text x="1200" y="815" font-family="sans-serif" font-size="12" fill="#000000">Sign up / Start</text>
+
+  <!-- Arrow 2: Dashboard → Module Hub -->
+  <path d="M 1300 1690 L 1300 1730 Q 1300 1742 1280 1742 L 660 1742 Q 640 1742 640 1752" stroke="#000000" stroke-width="2.5" fill="none" marker-end="url(#arrow-amber)"/>
+  <text x="800" y="1738" font-family="sans-serif" font-size="11" fill="#000000">Explore Modules</text>
+
+  <!-- Arrow 3: Dashboard → Learning Pathway -->
+  <path d="M 2300 1690 L 2300 1730 Q 2300 1742 2320 1742 L 3960 1742 Q 3970 1742 3970 1752" stroke="#000000" stroke-width="2.5" fill="none" marker-end="url(#arrow-amber)"/>
+  <text x="2900" y="1738" font-family="sans-serif" font-size="11" fill="#000000">Learn / Pathway</text>
+
+  <!-- Arrow 4: Dashboard → Spaced Rep -->
+  <path d="M 1610 1690 L 1610 1730 Q 1610 1742 1590 1742 L 130 1742 Q 110 1742 110 1752 L 110 2440 Q 110 2460 90 2460 L 70 2460 Q 60 2460 60 2480 L 60 2620 Q 60 2640 80 2640 L 100 2640" stroke="#000000" stroke-width="1.5" fill="none" marker-end="url(#arrow-amber)" opacity="0.7"/>
+  <text x="65" y="2200" font-family="sans-serif" font-size="11" fill="#000000" writing-mode="tb">Review Cards</text>
+
+  <!-- Arrow 5: Dashboard → Challenges -->
+  <path d="M 1920 1690 L 1920 1730 Q 1920 1742 1930 1742 L 1950 1742 Q 1960 1742 1960 1752 L 1960 2520 Q 1960 2540 1940 2540 L 1490 2540 Q 1480 2540 1480 2560 L 1480 2585" stroke="#000000" stroke-width="1.5" fill="none" marker-end="url(#arrow-amber)" opacity="0.7"/>
+  <text x="1965" y="2200" font-family="sans-serif" font-size="11" fill="#000000" writing-mode="tb">Challenges</text>
+
+  <!-- Arrow 6: Module Hub → Module Page -->
+  <path d="M 1100 2050 L 1150 2050 Q 1165 2050 1180 2050 L 1220 2050" stroke="#000000" stroke-width="3" fill="none" marker-end="url(#arrow-amber)"/>
+  <text x="1120" y="2040" font-family="sans-serif" font-size="11" fill="#000000">Click module</text>
+
+  <!-- Arrow 7: Module Page → Lesson Viewer -->
+  <path d="M 2120 2100 L 2170 2100 Q 2190 2100 2210 2100 L 2240 2100" stroke="#000000" stroke-width="3" fill="none" marker-end="url(#arrow-amber)"/>
+  <text x="2140" y="2090" font-family="sans-serif" font-size="11" fill="#000000">Click lesson</text>
+
+  <!-- Arrow 8: Learning Pathway → Lesson Viewer -->
+  <path d="M 3420 2060 L 3370 2060 Q 3350 2060 3340 2060 L 3300 2060" stroke="#000000" stroke-width="2.5" fill="none" marker-end="url(#arrow-amber)"/>
+  <text x="3320" y="2050" font-family="sans-serif" font-size="11" fill="#000000">← Click lesson</text>
+
+  <!-- Arrow 9: Lesson Viewer → Spaced Rep -->
+  <path d="M 2770 2416 L 2770 2480 Q 2770 2500 2750 2500 L 550 2500 Q 530 2500 530 2520 L 530 2585" stroke="#000000" stroke-width="2" fill="none" marker-end="url(#arrow-amber)"/>
+  <text x="1500" y="2495" font-family="sans-serif" font-size="11" fill="#000000">Cards unlocked after lesson</text>
+
+  <!-- Arrow 10: Lesson Viewer → Saved Cards (secondary) -->
+  <line x1="3200" y1="2515" x2="4020" y2="2585" stroke="#000000" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrow-gray)"/>
+  <text x="3500" y="2540" font-family="sans-serif" font-size="10" fill="#666666">Star a card</text>
+
+  <!-- Arrow 11: Dashboard → Visual Lab (secondary) -->
+  <path d="M 1780 1180 L 1760 1180 Q 1740 1180 1740 1200 L 1740 2510 Q 1740 2530 1760 2530 L 3200 2530 Q 3220 2530 3220 2550 L 3220 2585" stroke="#000000" stroke-width="1.5" stroke-dasharray="6,3" fill="none" marker-end="url(#arrow-gray)"/>
+  <text x="2400" y="2525" font-family="sans-serif" font-size="10" fill="#666666">Visual of the Day</text>
+
+  <!-- ============ FOOTER ============ -->
+  <rect x="60" y="3360" width="5480" height="30" rx="8" fill="#F0F0F0"/>
+  <text x="1900" y="3380" font-family="sans-serif" font-size="14" fill="#666666">Polymind Product Map — 12 Screens + 3 Modals + Navbar — 5 Zones — February 2026</text>
+
+</svg>
