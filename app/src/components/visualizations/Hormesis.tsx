@@ -203,16 +203,27 @@ export function Hormesis() {
                 <text x="150" y="18" fill="#22C55E" fontSize="8" textAnchor="middle">optimal</text>
 
                 {/* Current position marker */}
-                <motion.g
+                <motion.circle
+                  r="6"
+                  fill={zone.color}
                   animate={{
-                    transform: `translate(${10 + (doseLevel / 100) * 280}, ${getCurveY(doseLevel)})`,
+                    cx: 10 + (doseLevel / 100) * 280,
+                    cy: getCurveY(doseLevel),
                   }}
+                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                />
+                <motion.circle
+                  r="12"
+                  fill={zone.color}
+                  opacity="0.3"
+                  animate={{
+                    cx: 10 + (doseLevel / 100) * 280,
+                    cy: getCurveY(doseLevel),
+                  }}
+                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
                 >
-                  <circle r="6" fill={zone.color} />
-                  <circle r="12" fill={zone.color} opacity="0.3">
-                    <animate attributeName="r" values="10;16;10" dur="1.5s" repeatCount="indefinite" />
-                  </circle>
-                </motion.g>
+                  <animate attributeName="r" values="10;16;10" dur="1.5s" repeatCount="indefinite" />
+                </motion.circle>
 
                 {/* Benefit indicator */}
                 <motion.text

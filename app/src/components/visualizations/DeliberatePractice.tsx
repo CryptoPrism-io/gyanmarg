@@ -167,17 +167,28 @@ export function DeliberatePractice() {
                 ))}
 
                 {/* Current position marker */}
-                <motion.g
+                <motion.circle
+                  r="5"
+                  fill={type.color}
                   animate={{
-                    transform: `translate(${Math.min(95, hours / 100)}, ${100 - skillLevel})`,
+                    cx: Math.min(95, hours / 100),
+                    cy: 100 - skillLevel,
                   }}
+                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                />
+                <motion.circle
+                  r="10"
+                  fill={type.color}
+                  opacity="0.3"
+                  animate={{
+                    cx: Math.min(95, hours / 100),
+                    cy: 100 - skillLevel,
+                  }}
+                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
                 >
-                  <circle r="5" fill={type.color} />
-                  <circle r="10" fill={type.color} opacity="0.3">
-                    <animate attributeName="r" values="8;14;8" dur="1.5s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0.3;0.1;0.3" dur="1.5s" repeatCount="indefinite" />
-                  </circle>
-                </motion.g>
+                  <animate attributeName="r" values="8;14;8" dur="1.5s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.3;0.1;0.3" dur="1.5s" repeatCount="indefinite" />
+                </motion.circle>
               </svg>
 
               {/* X-axis label */}
