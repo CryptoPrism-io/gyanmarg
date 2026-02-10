@@ -12,6 +12,7 @@ import {
 import { AnimatePresence } from 'framer-motion';
 import { useAuthContext } from '@/contexts/AuthContext';
 import { useProgressStore } from '@/store/progressStore';
+import { useUserStore } from '@/store/userStore';
 import { ModuleLayout, Section } from '@/components/templates';
 import { Card, GlassCard } from '@/components/molecules';
 import { TodaysFocus, LocalLeaderboard, VisualOfTheDay } from '@/components/organisms';
@@ -135,6 +136,8 @@ export function Dashboard() {
   const generateWeeklyChallenge = useProgressStore((state) => state.generateWeeklyChallenge);
   const updateStreak = useProgressStore((state) => state.updateStreak);
   const refreshStreakFreeze = useProgressStore((state) => state.refreshStreakFreeze);
+  const consecutiveLogins = useUserStore((state) => state.consecutiveLogins);
+  const dailyRewardClaimed = useUserStore((state) => state.dailyRewardClaimed);
 
   useEffect(() => {
     generateWeeklyChallenge();
@@ -159,10 +162,12 @@ export function Dashboard() {
     },
     {
       icon: <Flame className="w-3.5 h-3.5 sm:w-5 sm:h-5" />,
-      label: 'Day Streak',
-      value: userProgress?.currentStreak ?? 0,
+      label: 'Login Streak',
+      value: consecutiveLogins ?? 0,
       color: 'coral' as const,
       gradient: 'from-coral/20 to-coral/5',
+      badge: dailyRewardClaimed ? '✓' : '!',
+      badgeColor: dailyRewardClaimed ? 'text-sage' : 'text-amber-400',
     },
     {
       icon: <Target className="w-3.5 h-3.5 sm:w-5 sm:h-5" />,
@@ -269,9 +274,16 @@ export function Dashboard() {
                 <div className={`${colorStyles[stat.color].text} mb-1.5 sm:mb-3`}>
                   {stat.icon}
                 </div>
-                <p className="text-base sm:text-2xl font-display font-bold text-text-primary">
-                  {stat.value}
-                </p>
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <p className="text-base sm:text-2xl font-display font-bold text-text-primary">
+                    {stat.value}
+                  </p>
+                  {'badge' in stat && stat.badge && (
+                    <span className={`text-xs sm:text-sm ${('badgeColor' in stat && stat.badgeColor) || 'text-text-muted'}`} title={stat.badge === '✓' ? 'Reward claimed today' : 'Reward available'}>
+                      {stat.badge}
+                    </span>
+                  )}
+                </div>
                 <p className="text-[9px] sm:text-xs text-text-muted mt-0.5 sm:mt-1">{stat.label}</p>
 
                 {/* Decorative gradient */}

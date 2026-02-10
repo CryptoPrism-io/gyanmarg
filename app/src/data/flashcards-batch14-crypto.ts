@@ -4,8 +4,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   // Bitcoin Fundamentals
   {
     id: 'fc-cw3-001',
-    front: 'What is Bitcoin and who created it?',
-    back: 'Bitcoin is a decentralized digital currency created in 2008 by an anonymous person or group using the pseudonym Satoshi Nakamoto. It operates without a central authority and uses peer-to-peer technology for transactions.',
+    front: 'What is Bitcoin & who created it?',
+    back: 'Bitcoin: decentralized digital currency; Satoshi Nakamoto created it anonymously in 2008 using peer-to-peer tech.',
     category: 'Bitcoin',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -14,8 +14,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-002',
-    front: 'What is the maximum supply of Bitcoin?',
-    back: '21 million BTC. This hard cap is built into the Bitcoin protocol and makes Bitcoin a deflationary asset. The last Bitcoin is expected to be mined around the year 2140.',
+    front: 'Bitcoin\'s max supply is?',
+    back: '21 million BTC. Protocol hard cap makes it deflationary; last coin mined ~2140.',
     category: 'Bitcoin',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -24,8 +24,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-003',
-    front: 'What is Bitcoin halving?',
-    back: 'Bitcoin halving is an event that occurs approximately every 4 years (every 210,000 blocks) where the block reward for miners is cut in half. This reduces the rate of new Bitcoin creation and contributes to its scarcity.',
+    front: 'What happens during a Bitcoin halving event?',
+    back: 'Halve the block reward for miners; reduce new Bitcoin creation, increasing scarcity. Occurs ~every 4 years.',
     category: 'Bitcoin',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -34,8 +34,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-004',
-    front: 'What is a UTXO in Bitcoin?',
-    back: 'UTXO (Unspent Transaction Output) is the output of a transaction that has not yet been spent. Bitcoin uses the UTXO model where your balance is the sum of all UTXOs associated with your addresses.',
+    front: 'What is a UTXO (Unspent Transaction Output) in Bitcoin?',
+    back: 'UTXO is unspent transaction output. Calculate Bitcoin balance by summing UTXOs associated with your addresses.',
     category: 'Bitcoin',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -44,20 +44,18 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-005',
-    front: 'What is the Lightning Network?',
-    back: 'The Lightning Network is a Layer 2 scaling solution for Bitcoin that enables fast, low-cost transactions through payment channels. Transactions occur off-chain and are only settled on the main blockchain when channels are opened or closed.',
+    front: 'What does Bitcoin\'s Lightning Network do?',
+    back: 'Enable fast, cheap Bitcoin transactions. Use off-chain payment channels, settle on-chain only for open/close. ID: fc-cw3-005',
     category: 'Bitcoin',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
     difficulty: 'intermediate',
     tags: ['crypto', 'bitcoin', 'layer2']
-  },
-
-  // Ethereum and Smart Contracts
+  }
   {
     id: 'fc-cw3-006',
-    front: 'What is Ethereum and how does it differ from Bitcoin?',
-    back: 'Ethereum is a decentralized blockchain platform that enables smart contracts and decentralized applications (dApps). Unlike Bitcoin which is primarily a store of value, Ethereum is a programmable blockchain with Turing-complete functionality.',
+    front: 'Explain Ethereum; how does it differ from Bitcoin?',
+    back: 'Ethereum: platform for smart contracts & dApps.  Bitcoin: primarily a store of value; Ethereum is programmable.',
     category: 'Ethereum',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -67,7 +65,7 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-cw3-007',
     front: 'What is a smart contract?',
-    back: 'A smart contract is self-executing code stored on a blockchain that automatically enforces the terms of an agreement when predetermined conditions are met. They run exactly as programmed without downtime, censorship, or third-party interference.',
+    back: 'Execute code automatically on a blockchain when conditions are met. Ensure programmed actions without censorship; third-party control.',
     category: 'Ethereum',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -76,8 +74,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-008',
-    front: 'What is gas in Ethereum?',
-    back: 'Gas is the unit measuring computational effort required to execute operations on Ethereum. Users pay gas fees (in ETH) to compensate validators for processing transactions. Gas price varies based on network demand.',
+    front: 'What is Ethereum gas?',
+    back: 'Gas measures compute effort; pay gas fees (ETH) to validators for processing transactions. Gas price fluctuates with network demand. ID: fc-cw3-008',
     category: 'Ethereum',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -86,8 +84,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-009',
-    front: 'What is the EVM (Ethereum Virtual Machine)?',
-    back: 'The EVM is a Turing-complete virtual machine that executes smart contract bytecode on Ethereum. It provides a sandboxed runtime environment ensuring that code runs identically on all nodes in the network.',
+    front: 'What is the Ethereum Virtual Machine (EVM)?',
+    back: 'Execute smart contract bytecode on Ethereum using a Turing-complete virtual machine. Ensure consistent, sandboxed runtime on all nodes; use bytecode.',
     category: 'Ethereum',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -96,20 +94,18 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-010',
-    front: 'What are ERC-20 tokens?',
-    back: 'ERC-20 is a technical standard for fungible tokens on Ethereum. It defines a common set of rules (like transfer, approve, balanceOf) that all compliant tokens must implement, ensuring interoperability across the ecosystem.',
+    front: 'What\'s the ERC-20 token standard?',
+    back: 'ERC-20 defines rules for fungible Ethereum tokens; Implement transfer, approve, balanceOf for interoperability.',
     category: 'Ethereum',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
     difficulty: 'intermediate',
     tags: ['crypto', 'ethereum', 'tokens']
-  },
-
-  // Consensus Mechanisms
+  }
   {
     id: 'fc-cw3-011',
     front: 'What is Proof of Work (PoW)?',
-    back: 'Proof of Work is a consensus mechanism where miners compete to solve complex mathematical puzzles to validate transactions and create new blocks. The first to solve the puzzle gets the block reward. Used by Bitcoin.',
+    back: 'Solve puzzles to validate transactions & create blocks; winner gets reward. Bitcoin uses it.',
     category: 'Consensus',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -119,7 +115,7 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-cw3-012',
     front: 'What is Proof of Stake (PoS)?',
-    back: 'Proof of Stake is a consensus mechanism where validators are selected to create blocks based on the amount of cryptocurrency they have staked as collateral. It is more energy-efficient than PoW. Used by Ethereum post-Merge.',
+    back: 'Validators create blocks proportional to staked crypto; It\'s more energy-efficient than PoW. Ethereum uses it.',
     category: 'Consensus',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -128,8 +124,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-013',
-    front: 'What is slashing in Proof of Stake?',
-    back: 'Slashing is a penalty mechanism in PoS systems where validators lose a portion of their staked tokens for malicious behavior (like double signing) or extended downtime. It incentivizes honest participation.',
+    front: 'PoS Slashing: What action causes stake loss?',
+    back: 'Penalize validators: Slash stake for malicious actions (double signing) or downtime. It incentivizes honesty; ensure chain security.',
     category: 'Consensus',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -138,8 +134,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-014',
-    front: 'What is Delegated Proof of Stake (DPoS)?',
-    back: 'DPoS is a variant of PoS where token holders vote for a limited number of delegates who validate transactions and create blocks on their behalf. Used by networks like EOS and Tron for faster consensus.',
+    front: 'Define Delegated Proof of Stake (DPoS).',
+    back: 'Token holders elect delegates; Delegates validate transactions, create blocks. Used in EOS, Tron for faster consensus.',
     category: 'Consensus',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -148,20 +144,18 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-015',
-    front: 'What is the Byzantine Generals Problem?',
-    back: 'A computer science problem describing how distributed systems can reach agreement despite potentially malicious actors. Blockchain consensus mechanisms solve this by achieving Byzantine Fault Tolerance (BFT).',
+    front: 'Explain the Byzantine Generals Problem.',
+    back: 'Distributed systems reach agreement despite malicious actors. Achieve Byzantine Fault Tolerance (BFT) with blockchain consensus mechanisms.',
     category: 'Consensus',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
     difficulty: 'advanced',
     tags: ['crypto', 'consensus', 'security']
-  },
-
-  // Wallets and Security
+  }
   {
     id: 'fc-cw3-016',
-    front: 'What is the difference between a hot wallet and cold wallet?',
-    back: 'A hot wallet is connected to the internet (mobile apps, browser extensions) for convenience but higher risk. A cold wallet is offline (hardware wallets, paper wallets) providing better security for long-term storage.',
+    front: 'Hot wallet vs. cold wallet: What distinguishes them?',
+    back: 'Hot: Online, convenient, riskier; use for frequent transactions. Cold: Offline, secure, for long-term storage; use for holding.',
     category: 'Security',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -171,7 +165,7 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-cw3-017',
     front: 'What is a seed phrase (recovery phrase)?',
-    back: 'A seed phrase is a series of 12-24 words that serves as a backup for your crypto wallet. It can regenerate all your private keys and should be stored securely offline. Never share it with anyone.',
+    back: 'Back up your crypto wallet with 12-24 words. Regenerate private keys; store offline; NEVER share!',
     category: 'Security',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -180,8 +174,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-018',
-    front: 'What is the difference between custodial and non-custodial wallets?',
-    back: 'Custodial wallets (like exchanges) hold your private keys on your behalf. Non-custodial wallets give you full control of your private keys. "Not your keys, not your coins" emphasizes self-custody importance.',
+    front: 'Custodial vs Non-Custodial Wallets: What\'s the Key Difference?',
+    back: 'Custodial: Exchange holds keys. You trust them; Non-custodial: You control keys. More responsibility.',
     category: 'Security',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -190,8 +184,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-019',
-    front: 'What is a multi-signature (multisig) wallet?',
-    back: 'A multisig wallet requires multiple private keys to authorize a transaction (e.g., 2-of-3). It provides enhanced security for organizations and large holdings by preventing single points of failure.',
+    front: 'What does a multi-signature (multisig) wallet require?',
+    back: 'Authorize transactions with multiple private keys (e.g., 2-of-3); Enhance security, prevent single failures.',
     category: 'Security',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -200,20 +194,18 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-020',
-    front: 'What is a rug pull in crypto?',
-    back: 'A rug pull is a scam where developers abandon a project and run away with investor funds. Common in DeFi when liquidity is suddenly removed or token contracts have hidden malicious functions.',
+    front: 'What\'s a crypto \'rug pull\'?',
+    back: 'Developers abandon project; steal investor funds. Often DeFi; liquidity vanishes or contracts hide malicious functions. ',
     category: 'Security',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
     difficulty: 'intermediate',
     tags: ['crypto', 'security', 'scams']
-  },
-
-  // NFT Basics
+  }
   {
     id: 'fc-cw3-021',
-    front: 'What is an NFT (Non-Fungible Token)?',
-    back: 'An NFT is a unique digital asset on a blockchain representing ownership of items like art, music, or collectibles. Unlike fungible tokens (where each unit is identical), each NFT has distinct properties and cannot be exchanged 1:1.',
+    front: 'Define NFT (Non-Fungible Token).',
+    back: 'Represent ownership of unique digital items on a blockchain (art, music, etc.). They\'re distinct; not 1:1 exchangeable.',
     category: 'NFTs',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -222,8 +214,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-022',
-    front: 'What is the ERC-721 standard?',
-    back: 'ERC-721 is the Ethereum standard for non-fungible tokens. It defines functions for tracking ownership, transferring tokens, and approving others to manage tokens. Each token has a unique tokenId.',
+    front: 'What does Ethereum\'s ERC-721 standard define?',
+    back: 'It defines NFT ownership, transfer, and approval functions. Each token possesses a unique tokenId; crucial for non-fungibility. fc-cw3-022',
     category: 'NFTs',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -232,8 +224,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-023',
-    front: 'What is ERC-1155 and how does it differ from ERC-721?',
-    back: 'ERC-1155 is a multi-token standard that can handle both fungible and non-fungible tokens in a single contract. It is more gas-efficient for batch transfers and commonly used in gaming for items and currencies.',
+    front: 'ERC-1155 vs ERC-721: What\'s the key difference?',
+    back: 'ERC-1155 handles fungible & non-fungible tokens in one contract; use it for gas-efficient batch transfers, like in gaming.',
     category: 'NFTs',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -242,8 +234,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-024',
-    front: 'What are NFT royalties?',
-    back: 'NFT royalties are percentages paid to original creators on secondary sales. They are typically encoded in smart contracts (though enforcement varies by marketplace), enabling creators to earn from future resales.',
+    front: 'NFT Royalties: What are they?',
+    back: 'Get paid a percentage on resales; encoded in smart contracts. Enforcement varies by marketplace.',
     category: 'NFTs',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -253,19 +245,17 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-cw3-025',
     front: 'What is minting an NFT?',
-    back: 'Minting is the process of creating an NFT on the blockchain. It involves uploading metadata (usually to IPFS), calling the smart contract mint function, and paying gas fees to record ownership on-chain.',
+    back: 'Create an NFT on the blockchain; Upload metadata, call mint function, pay gas to record ownership.',
     category: 'NFTs',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
     difficulty: 'beginner',
     tags: ['crypto', 'nft', 'minting']
-  },
-
-  // DAOs
+  }
   {
     id: 'fc-cw3-026',
     front: 'What is a DAO (Decentralized Autonomous Organization)?',
-    back: 'A DAO is an organization governed by smart contracts and token-based voting rather than traditional hierarchical management. Members collectively make decisions on proposals, treasury management, and protocol changes.',
+    back: 'Execute governance via smart contracts and token voting, not hierarchy. Members decide proposals; manage treasury; change protocol.',
     category: 'DAOs',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -274,8 +264,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-027',
-    front: 'What is governance token voting?',
-    back: 'Governance tokens grant holders voting rights on protocol decisions. Voting power is typically proportional to token holdings. Proposals may cover treasury spending, parameter changes, or protocol upgrades.',
+    front: 'Governance token voting: What is it?',
+    back: 'Token holders vote on protocol changes; power scales with holdings. Decide on treasury, parameters, upgrades.',
     category: 'DAOs',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -284,8 +274,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-028',
-    front: 'What is quadratic voting in DAOs?',
-    back: 'Quadratic voting is a mechanism where the cost of additional votes increases quadratically (1 vote = 1 token, 2 votes = 4 tokens, etc.). It reduces plutocracy by making it expensive for whales to dominate decisions.',
+    front: 'Explain quadratic voting in DAOs.',
+    back: 'Cost of votes increases quadratically; 1 vote = 1 token, 2 votes = 4 tokens.  Mitigates whale dominance by making extra votes increasingly expensive.',
     category: 'DAOs',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -294,8 +284,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-029',
-    front: 'What is a DAO treasury?',
-    back: 'A DAO treasury is a pool of funds controlled by the DAO through governance votes. It typically holds native tokens, stablecoins, and other assets used for grants, development funding, and operational expenses.',
+    front: 'DAO Treasury: What is it?',
+    back: 'It\'s DAO-controlled funds for grants, development, operations. Holds native tokens, stablecoins, and other assets; Governed by votes. ',
     category: 'DAOs',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -305,19 +295,17 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-cw3-030',
     front: 'What is vote delegation in DAOs?',
-    back: 'Vote delegation allows token holders to assign their voting power to another address (a delegate) who votes on their behalf. This enables more active governance participation without requiring all holders to vote directly.',
+    back: 'Assign voting power to a delegate; enable active governance. Delegate votes on your behalf; you don\'t need to vote directly.',
     category: 'DAOs',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
     difficulty: 'intermediate',
     tags: ['crypto', 'dao', 'governance']
-  },
-
-  // Tokenomics
+  }
   {
     id: 'fc-cw3-031',
     front: 'What is tokenomics?',
-    back: 'Tokenomics refers to the economic design of a cryptocurrency including supply mechanics, distribution, utility, incentives, and monetary policy. Good tokenomics aligns stakeholder interests and creates sustainable value.',
+    back: 'Define a crypto\'s economic design. Consider supply, distribution, utility, incentives; align interests; create value. fc-cw3-031',
     category: 'Tokenomics',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -327,7 +315,7 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-cw3-032',
     front: 'What is token vesting?',
-    back: 'Vesting is a schedule that restricts when tokens become transferable. Team and investor tokens often vest over 2-4 years with a cliff period. This prevents immediate selling and aligns long-term incentives.',
+    back: 'Control token release over time; prevent immediate sell-offs. Distribute team/investor tokens over years with cliff periods; align long-term incentives.',
     category: 'Tokenomics',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -336,8 +324,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-033',
-    front: 'What is a token burn?',
-    back: 'Token burning permanently removes tokens from circulation by sending them to an inaccessible address. Burns reduce supply, potentially increasing scarcity and value. Ethereum burns base fees through EIP-1559.',
+    front: 'Define token burn.',
+    back: 'Remove tokens permanently; Send to inaccessible address. Reduce supply; may increase value; Ethereum uses via EIP-1559.',
     category: 'Tokenomics',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -346,8 +334,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-034',
-    front: 'What is the difference between inflationary and deflationary tokens?',
-    back: 'Inflationary tokens have no max supply and continuously mint new tokens (often for staking rewards). Deflationary tokens have fixed or decreasing supply through burns. Each model has different economic implications.',
+    front: 'Inflationary vs. deflationary tokens: What\'s the key difference?',
+    back: 'Inflationary: Mint new tokens, no max supply. Deflationary: Burn tokens, fixed or decreasing supply; impacts token economics.',
     category: 'Tokenomics',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -356,20 +344,18 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-035',
-    front: 'What is fully diluted valuation (FDV)?',
-    back: 'FDV is the theoretical market cap if all tokens were in circulation (total supply x current price). Comparing FDV to current market cap reveals how much supply inflation could dilute current holders.',
+    front: 'What\'s Fully Diluted Valuation (FDV)?',
+    back: 'Calculate market cap if all tokens circulate (total supply x price). Compare to market cap to gauge dilution impact.',
     category: 'Tokenomics',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
     difficulty: 'intermediate',
     tags: ['crypto', 'tokenomics', 'valuation']
-  },
-
-  // Layer 2 Solutions
+  }
   {
     id: 'fc-cw3-036',
-    front: 'What are Layer 2 scaling solutions?',
-    back: 'Layer 2 solutions are protocols built on top of Layer 1 blockchains to improve scalability. They process transactions off the main chain while inheriting its security, enabling faster and cheaper transactions.',
+    front: 'What are Layer 2 scaling solutions for blockchains?',
+    back: 'Process transactions off-chain; improve scalability by inheriting Layer 1 security; enable faster, cheaper txs.',
     category: 'Layer 2',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -378,8 +364,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-037',
-    front: 'What is an Optimistic Rollup?',
-    back: 'Optimistic Rollups batch transactions off-chain and post them to L1 assuming they are valid (optimistically). A challenge period allows fraud proofs if invalid transactions are detected. Used by Optimism and Arbitrum.',
+    front: 'Define Optimistic Rollup.',
+    back: 'Batch L2 txs, post to L1, assume valid. Use fraud proofs during challenge period if invalid; see Optimism, Arbitrum. ID: fc-cw3-037',
     category: 'Layer 2',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -388,8 +374,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-038',
-    front: 'What is a ZK-Rollup?',
-    back: 'ZK-Rollups use zero-knowledge proofs to cryptographically verify off-chain transaction batches. No challenge period needed as validity is mathematically proven. Used by zkSync, StarkNet, and Polygon zkEVM.',
+    front: 'Define ZK-Rollup.',
+    back: 'Verify off-chain tx batches using zero-knowledge proofs; No challenge period needed. Examples: zkSync, StarkNet, Polygon zkEVM.',
     category: 'Layer 2',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -398,8 +384,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-039',
-    front: 'What is data availability in rollups?',
-    back: 'Data availability ensures that transaction data is accessible so anyone can reconstruct the state and verify correctness. Rollups typically post compressed data to L1, though solutions like EIP-4844 reduce costs.',
+    front: 'Explain data availability within rollups.',
+    back: 'Ensure transaction data is accessible to reconstruct state and verify. Post compressed data to L1; EIP-4844 lowers cost.',
     category: 'Layer 2',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -408,20 +394,18 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-040',
-    front: 'What is a bridge in crypto?',
-    back: 'A bridge is a protocol that enables transferring assets between different blockchains or between L1 and L2. Bridges typically lock assets on one chain and mint wrapped versions on another.',
+    front: 'What does a crypto bridge do?',
+    back: 'Transfer assets between blockchains or L1/L2; lock assets on one chain, mint wrapped versions on another.',
     category: 'Layer 2',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
     difficulty: 'intermediate',
     tags: ['crypto', 'layer2', 'bridges']
-  },
-
-  // DeFi Protocols
+  }
   {
     id: 'fc-cw3-041',
     front: 'What is DeFi (Decentralized Finance)?',
-    back: 'DeFi refers to financial services built on blockchain without traditional intermediaries. It includes lending, borrowing, trading, and yield farming through smart contracts, offering permissionless and transparent finance.',
+    back: 'Build financial services on blockchain; Remove intermediaries. Use smart contracts for lending; borrowing; trading; yield farming.',
     category: 'DeFi',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -430,8 +414,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-042',
-    front: 'What is an AMM (Automated Market Maker)?',
-    back: 'An AMM is a DEX mechanism using liquidity pools and mathematical formulas (like x*y=k) instead of order books. Liquidity providers deposit token pairs and earn fees from trades. Uniswap popularized this model.',
+    front: 'Explain Automated Market Makers (AMMs) in DeFi.',
+    back: 'Trade tokens via liquidity pools & math (x*y=k), not order books. LPs deposit pairs, earn fees; Uniswap popularized.',
     category: 'DeFi',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -440,8 +424,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-043',
-    front: 'What is impermanent loss?',
-    back: 'Impermanent loss occurs when providing liquidity to an AMM and the price ratio of deposited tokens changes. The loss compared to simply holding becomes permanent when you withdraw. Greater price divergence means greater loss.',
+    front: 'What causes impermanent loss in AMM liquidity pools?',
+    back: 'Price ratio changes cause it; Withdraw tokens and realize loss. Greater divergence means greater loss.',
     category: 'DeFi',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -451,7 +435,7 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-cw3-044',
     front: 'What is yield farming?',
-    back: 'Yield farming involves strategically moving crypto across DeFi protocols to maximize returns. Users earn yields from lending interest, trading fees, liquidity mining rewards, and governance token incentives.',
+    back: 'Maximize crypto returns by moving assets across DeFi protocols. Earn yields via lending; fees; liquidity mining; governance tokens.',
     category: 'DeFi',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -460,20 +444,18 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-045',
-    front: 'What is TVL (Total Value Locked)?',
-    back: 'TVL measures the total value of assets deposited in a DeFi protocol. It is a key metric for comparing protocol adoption and trust. Higher TVL generally indicates more user confidence and liquidity depth.',
+    front: 'What does TVL (Total Value Locked) measure in DeFi?',
+    back: 'TVL measures total assets locked in a protocol; Use it to compare adoption and trust. Higher TVL = more confidence/liquidity. ID: fc-cw3-045',
     category: 'DeFi',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
     difficulty: 'beginner',
     tags: ['crypto', 'defi', 'metrics']
-  },
-
-  // Web3 Identity
+  }
   {
     id: 'fc-cw3-046',
     front: 'What is ENS (Ethereum Name Service)?',
-    back: 'ENS is a decentralized naming system that maps human-readable names (like vitalik.eth) to Ethereum addresses and other resources. It functions like DNS for Web3, making addresses easier to share and remember.',
+    back: 'Map human-readable names to Ethereum addresses. Share and remember addresses easily; like DNS for Web3.',
     category: 'Web3 Identity',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -482,8 +464,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-047',
-    front: 'What are Soulbound Tokens (SBTs)?',
-    back: 'Soulbound Tokens are non-transferable NFTs representing credentials, achievements, or affiliations. Proposed by Vitalik Buterin, they enable on-chain identity and reputation without the speculation of tradeable tokens.',
+    front: 'Define Soulbound Tokens (SBTs).',
+    back: 'SBTs: Non-transferable NFTs represent credentials & affiliations. Enable on-chain identity/reputation; bypass speculation. fc-cw3-047',
     category: 'Web3 Identity',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -492,8 +474,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-048',
-    front: 'What is Sign-In with Ethereum (SIWE)?',
-    back: 'SIWE is an authentication standard allowing users to sign in to applications using their Ethereum wallet. It provides self-sovereign identity without passwords, replacing traditional OAuth with cryptographic signatures.',
+    front: 'What does Sign-In with Ethereum (SIWE) accomplish?',
+    back: 'Authenticate users with Ethereum wallets; Replace OAuth with crypto signatures for self-sovereign identity without passwords.',
     category: 'Web3 Identity',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -502,8 +484,8 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-049',
-    front: 'What is a DID (Decentralized Identifier)?',
-    back: 'A DID is a globally unique identifier that enables verifiable, self-sovereign digital identity. DIDs are controlled by the identity owner, not centralized registries, and can be verified cryptographically.',
+    front: 'Define DID (Decentralized Identifier).',
+    back: 'DID: Globally unique, verifiable, self-sovereign digital identity. Owner-controlled; verify cryptographically.',
     category: 'Web3 Identity',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
@@ -512,12 +494,11 @@ export const cryptoWeb3Flashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-cw3-050',
-    front: 'What is a zero-knowledge proof in identity verification?',
-    back: 'Zero-knowledge proofs allow proving statements (like being over 18 or owning a credential) without revealing underlying data. In Web3 identity, they enable privacy-preserving verification of claims and credentials.',
+    front: 'What does a zero-knowledge proof achieve in identity?',
+    back: 'Prove identity claims without revealing the data itself. Enable privacy-preserving verification in Web3; e.g., age, credential ownership.',
     category: 'Web3 Identity',
     source: 'Crypto & Web3',
     pathwayId: 'blockchain',
     difficulty: 'advanced',
     tags: ['crypto', 'web3', 'privacy', 'zk-proofs']
-  }
-];
+  };

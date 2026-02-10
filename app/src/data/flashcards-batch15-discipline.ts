@@ -4,401 +4,320 @@ export const selfDisciplineFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-sd-001',
     front: 'What is the "willpower as a muscle" theory?',
-    back: 'The theory that willpower functions like a muscle: it can be strengthened through regular exercise, but also becomes fatigued with overuse. Just as physical muscles grow stronger with training, self-control can be developed through consistent practice.',
+    back: 'Strengthen willpower through practice; overuse it, it fatigues. Train self-control consistently like a muscle.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'willpower', 'self-control']
+    tags: ['discipline', 'willpower', 'self-control'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-002',
-    front: 'What is ego depletion?',
-    back: 'Ego depletion is the idea that self-control draws from a limited pool of mental resources. After exerting willpower on one task, people may have reduced capacity for subsequent self-control efforts. However, recent research has challenged this concept.',
+    front: 'Define ego depletion.',
+    back: 'Ego depletion: Willpower draws from limited mental resources; self-control weakens after use. Research challenges this concept. ID: fc-sd-002',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'willpower', 'ego-depletion']
+    tags: ['discipline', 'willpower', 'ego-depletion'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-003',
-    front: 'Why is the ego depletion theory now controversial?',
-    back: 'Large-scale replication studies have failed to reproduce original ego depletion findings. Research suggests beliefs about willpower may matter more than actual depletion—those who believe willpower is unlimited show less depletion effects.',
+    front: 'Ego depletion theory: Why the controversy?',
+    back: 'Replication studies failed. Willpower beliefs, not actual depletion, drive results; unlimited willpower belief mitigates effect. fc-sd-003',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'advanced',
-    tags: ['discipline', 'willpower', 'ego-depletion']
+    tags: ['discipline', 'willpower', 'ego-depletion'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-sd-004',
-    front: 'What is delayed gratification?',
-    back: 'The ability to resist an immediate reward in favor of a larger or more valuable reward later. It is a key component of self-control and has been linked to better life outcomes including academic success, health, and financial stability.',
+    front: 'Define delayed gratification.',
+    back: 'Resist immediate reward for bigger, later benefit. Boost self-control; Improve outcomes: academics; health; finances.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'delayed-gratification', 'self-control']
+    tags: ['discipline', 'delayed-gratification', 'self-control'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-005',
-    front: 'What did the Stanford Marshmallow Experiment demonstrate?',
-    back: 'Children who could delay eating a marshmallow for a bigger reward showed better life outcomes years later. However, follow-up research suggests socioeconomic factors and trust in the environment may be equally important as innate self-control.',
+    front: 'Stanford Marshmallow Experiment: What did it show?',
+    back: 'Delaying gratification correlated with better outcomes; Later research: socioeconomic factors also crucial.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'delayed-gratification', 'research']
+    tags: ['discipline', 'delayed-gratification', 'research'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-006',
-    front: 'What is an implementation intention (if-then planning)?',
-    back: 'A self-regulatory strategy in the form: "If situation X occurs, then I will perform behavior Y." This pre-commitment links situational cues to specific responses, automating decision-making and reducing reliance on willpower in the moment.',
+    front: 'Define implementation intention (if-then planning).',
+    back: 'Link a behavior to a cue: "If X happens, then I will do Y." Creates habits; improves goal attainment.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'if-then-planning', 'strategies']
+    tags: ['discipline', 'if-then-planning', 'strategies'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-007',
-    front: 'Why are if-then plans effective for self-discipline?',
-    back: 'They reduce decision fatigue by pre-deciding responses, create mental links between cues and actions, bypass the need for in-the-moment willpower, and leverage habit formation principles. Studies show they double or triple goal achievement rates.',
+    front: 'Why do if-then plans boost self-discipline?',
+    back: 'Pre-decide responses; link cues to actions; bypass willpower; leverage habits. They dramatically raise goal achievement rates; reduce decision fatigue. ',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'if-then-planning', 'strategies']
+    tags: ['discipline', 'if-then-planning', 'strategies'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-008',
-    front: 'What is precommitment as a self-control strategy?',
-    back: 'Deliberately limiting future choices to prevent temptation. Examples include deleting social media apps, using website blockers, automatic savings transfers, or telling others about your goals. It reduces reliance on willpower by removing options.',
+    front: 'Define precommitment: A self-control strategy?',
+    back: 'Limit future choices; prevent temptation. Examples: Delete apps; block sites; automate savings; declare goals. Reduces willpower reliance.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'precommitment', 'strategies']
+    tags: ['discipline', 'precommitment', 'strategies'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-009',
-    front: 'What is the difference between motivation and discipline?',
-    back: 'Motivation is the emotional desire to act—it fluctuates based on mood, energy, and circumstances. Discipline is the ability to take action regardless of emotional state. Motivation initiates behavior; discipline sustains it when motivation fades.',
+    front: 'Motivation vs. Discipline: What\'s the core difference?',
+    back: 'Motivation drives initial action (emotions); Discipline sustains action (regardless of feelings). Start with motivation; build discipline.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'motivation', 'self-control']
+    tags: ['discipline', 'motivation', 'self-control'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-010',
     front: 'Why is relying solely on motivation problematic?',
-    back: 'Motivation is inherently unstable and dependent on factors like sleep, stress, and mood. Goals requiring sustained effort will inevitably face periods of low motivation. Those who depend only on feeling motivated will abandon goals when enthusiasm wanes.',
+    back: 'Motivation fluctuates; it\'s unreliable. Build discipline, not just motivation, to sustain efforts despite changing feelings; Achieve consistent progress.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'motivation', 'self-control']
+    tags: ['discipline', 'motivation', 'self-control'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-011',
-    front: 'What is temptation bundling?',
-    back: 'Pairing an activity you should do with one you enjoy. For example, only listening to favorite podcasts while exercising, or allowing yourself a treat only while doing taxes. This makes disciplined behavior more immediately rewarding.',
+    front: 'Temptation bundling: What is it?',
+    back: 'Pair a needed activity with an enjoyable one. Example: Listen to podcasts only when exercising; Treat only while doing taxes.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'temptation-management', 'strategies']
+    tags: ['discipline', 'temptation-management', 'strategies'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-012',
-    front: 'What is the "out of sight, out of mind" principle for temptation management?',
-    back: 'Reducing exposure to temptations by modifying your environment. Keeping unhealthy food out of the house, putting your phone in another room, or removing shortcuts to distracting websites. Environmental design reduces the need for active willpower.',
+    front: 'Define \'environmental design\' in relation to self-discipline.',
+    back: 'Modify your environment to limit temptations; remove access to distractions; reduce the need for willpower. Keep temptation out of sight, out of mind.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'temptation-management', 'environment']
+    tags: ['discipline', 'temptation-management', 'environment'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-013',
-    front: 'Why should discipline be built gradually rather than all at once?',
-    back: 'Attempting too many changes simultaneously depletes resources and increases failure risk. Small, consistent wins build self-efficacy and create momentum. Each successful habit becomes automatic, freeing mental energy for new challenges.',
+    front: 'Why build discipline gradually, not all at once?',
+    back: 'Avoid overwhelming yourself; resources deplete, increasing failure risk. Gradual wins build momentum & efficacy; habits become automatic; free energy. ',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'habit-building', 'strategies']
+    tags: ['discipline', 'habit-building', 'strategies'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-014',
-    front: 'What is the "two-minute rule" for building discipline?',
-    back: 'When starting a new habit, scale it down to take two minutes or less. Want to read more? Start with one page. Want to exercise? Start with putting on workout clothes. This removes the barrier of getting started and builds consistency first.',
+    front: 'How do you start a new habit effectively?',
+    back: 'Scale it down to two minutes or less; Remove barriers and build consistency first.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'habit-building', 'strategies']
+    tags: ['discipline', 'habit-building', 'strategies'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-015',
-    front: 'How do accountability systems enhance self-discipline?',
-    back: 'External accountability adds social consequences to personal commitments. Knowing someone will check on your progress activates loss aversion and social motivation. It transforms private goals into public commitments, increasing follow-through rates significantly.',
+    front: 'Accountability: How does it boost self-discipline?',
+    back: 'Accountability adds social pressure; loss aversion & motivation drive action. Turn private goals public to increase follow-through. fc-sd-015',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'accountability', 'strategies']
+    tags: ['discipline', 'accountability', 'strategies'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-016',
-    front: 'What makes an effective accountability partner?',
-    back: 'Someone who will actually follow up, is honest rather than enabling, understands your goals, maintains appropriate frequency of check-ins, and ideally has complementary goals themselves. The relationship should be supportive yet challenging.',
+    front: 'What qualities define an effective accountability partner?',
+    back: 'Follow up; be honest/challenging, not enabling; understand goals; maintain check-ins. Support & challenge! ID: fc-sd-016',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'accountability', 'strategies']
+    tags: ['discipline', 'accountability', 'strategies'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-017',
-    front: 'What is decision fatigue and how does it affect discipline?',
-    back: 'The deterioration of decision quality after making many decisions. As mental energy depletes, people tend to choose defaults or give in to impulses. Reducing unnecessary daily decisions preserves willpower for important choices.',
+    front: 'Decision fatigue: What is it, and how does it hurt discipline?',
+    back: 'Many decisions deplete mental energy; choose defaults or impulses. Minimize daily decisions to preserve willpower for crucial choices; fight fatigue.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'willpower', 'decision-fatigue']
+    tags: ['discipline', 'willpower', 'decision-fatigue'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-018',
-    front: 'How can routines reduce the need for willpower?',
-    back: 'Routines automate decisions and behaviors, moving them from conscious choice to automatic habit. When actions become habitual, they require minimal mental effort, preserving willpower for non-routine challenges and decisions.',
+    front: 'Routines: How do they reduce reliance on willpower?',
+    back: 'Automate decisions/behaviors; create automatic habits. Preserve willpower for novel challenges; minimize mental effort.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'routines', 'habit-building']
+    tags: ['discipline', 'routines', 'habit-building'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-019',
-    front: 'What is the "fresh start effect" and how can it aid discipline?',
-    back: 'People are more likely to pursue goals after temporal landmarks like new years, birthdays, or Mondays. These moments create psychological separation from past failures, increasing motivation. Strategic use of fresh starts can boost commitment to new disciplines.',
+    front: 'What is the temporal landmark effect?',
+    back: 'Use temporal landmarks (birthdays, new years) to separate from past failures; boost motivation. Commit to new disciplines strategically.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'motivation', 'psychology']
+    tags: ['discipline', 'motivation', 'psychology'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-020',
-    front: 'What is cognitive reappraisal for managing temptation?',
-    back: 'Changing how you think about a temptation to reduce its appeal. Viewing a dessert as "a threat to my health goals" rather than "a delicious treat," or imagining long-term consequences vividly. This shifts emotional response without suppressing the temptation.',
+    front: 'Cognitive reappraisal: How does it manage temptation?',
+    back: 'Reframe thoughts; reduce temptation\'s appeal. Example: See dessert as fuel, not just pleasure; resist impulse. ',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'temptation-management', 'psychology']
+    tags: ['discipline', 'temptation-management', 'psychology'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-021',
-    front: 'Why does sleep deprivation impair self-discipline?',
-    back: 'Sleep deprivation reduces prefrontal cortex activity (responsible for self-control), increases impulsivity, amplifies emotional reactivity, and depletes glucose—the brain\'s fuel. Even moderate sleep loss significantly impairs willpower and decision-making.',
+    front: 'How does sleep deprivation affect self-discipline?',
+    back: 'Reduces prefrontal cortex activity, increasing impulsivity; amplifies emotional reactivity, depletes brain glucose. ID: fc-sd-021',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'willpower', 'health']
+    tags: ['discipline', 'willpower', 'health'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-022',
-    front: 'What is the role of self-compassion in building discipline?',
-    back: 'Self-compassion after failures prevents the "what-the-hell effect" where one slip leads to complete abandonment. It reduces shame spirals, maintains motivation, and supports faster recovery. Being kind to yourself paradoxically supports stricter discipline long-term.',
+    front: 'fc-sd-022: How does self-compassion support discipline?',
+    back: 'Overcome setbacks with kindness; Maintain motivation and rebuild after mistakes. Category: Personal Development; Tags: [\'discipline\', \'self-compassion\', \'psychology\']; Difficulty: advanced',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'advanced',
-    tags: ['discipline', 'self-compassion', 'psychology']
+    tags: ['discipline', 'self-compassion', 'psychology'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-sd-023',
-    front: 'What is the "what-the-hell effect"?',
-    back: 'When a small lapse leads to complete goal abandonment. After one cookie on a diet, thinking "I\'ve already ruined it, might as well eat the whole box." This all-or-nothing thinking is countered by self-compassion and viewing lapses as learning opportunities.',
+    front: 'What is the "what the hell" effect in self-discipline?',
+    back: 'A small lapse triggers goal abandonment.  Avoid by expecting imperfection; refocus on the goal after setbacks.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'psychology', 'self-control']
+    tags: ['discipline', 'psychology', 'self-control'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-024',
-    front: 'How does identifying as someone with discipline help build it?',
-    back: 'Identity-based habits are more durable than outcome-based goals. Instead of "I want to exercise," thinking "I am someone who exercises" aligns behavior with self-concept. Each disciplined action then becomes evidence reinforcing that identity.',
+    front: 'How does identifying *as* disciplined build the habit of discipline?',
+    back: 'Adopt discipline as part of your identity. Focus on *being* disciplined, not just achieving goals; Build long-term consistent behaviors.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'identity', 'habit-building']
+    tags: ['discipline', 'identity', 'habit-building'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-025',
-    front: 'What is the difference between intrinsic and extrinsic motivation for discipline?',
-    back: 'Intrinsic motivation comes from internal satisfaction—enjoying the activity itself. Extrinsic motivation comes from external rewards or punishments. Intrinsic motivation is more sustainable for long-term discipline, though extrinsic can help initially.',
+    front: 'Intrinsic vs. extrinsic motivation: How do they impact discipline?',
+    back: 'Intrinsic: Do it for enjoyment. Extrinsic: Do it for reward/avoid punishment. Intrinsic builds sustainable discipline.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'motivation', 'psychology']
+    tags: ['discipline', 'motivation', 'psychology'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-026',
-    front: 'What is "surfing the urge" as a temptation management technique?',
-    back: 'Rather than fighting urges, observe them mindfully like waves—they rise, peak, and naturally subside. This acceptance-based approach reduces the struggle that often strengthens cravings and builds tolerance for discomfort without acting on impulses.',
+    front: 'Instead of fighting urges, what should you do?',
+    back: 'Observe urges mindfully like waves; they rise, peak, and subside. Accept; don\'t struggle. Build tolerance, avoid acting on impulses.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'temptation-management', 'mindfulness']
+    tags: ['discipline', 'temptation-management', 'mindfulness'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-027',
-    front: 'How do environmental defaults affect discipline?',
-    back: 'People tend to stick with default options. Designing environments where the default is the disciplined choice—like healthy snacks at eye level—requires no willpower. Friction-reducing defaults for good behaviors and friction-adding barriers for bad ones automate discipline.',
+    front: 'fc-sd-027: How do environmental defaults impact discipline?',
+    back: 'Defaults influence choices; design environments for disciplined defaults. Automate good habits via friction reduction; add friction to bad habits.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'environment', 'strategies']
+    tags: ['discipline', 'environment', 'strategies'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-028',
-    front: 'What is the Ulysses Contract?',
-    back: 'Named after Ulysses who tied himself to the mast to resist sirens, it is a precommitment device where you bind your future self to a decision. Examples: giving money to a friend to return only if you complete a goal, or using apps that lock you out of distractions.',
+    front: 'What is a Ulysses Contract?',
+    back: 'Precommit by binding your future self to a decision. Ex: Give a friend money for goal completion; use locking apps.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'precommitment', 'strategies']
+    tags: ['discipline', 'precommitment', 'strategies'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-029',
-    front: 'Why is "I don\'t" more powerful than "I can\'t" for self-discipline?',
-    back: 'Research shows "I don\'t eat sugar" is more effective than "I can\'t eat sugar." "Can\'t" implies external restriction and triggers resistance; "don\'t" signals personal choice and identity. The language of empowerment strengthens resolve.',
+    front: 'Why does negative self-talk hinder progress?',
+    back: 'It fuels self-doubt; limits action. Reframe thoughts for resilience & growth.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'psychology', 'self-talk']
+    tags: ['discipline', 'psychology', 'self-talk'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-030',
-    front: 'What is the role of clear goals in self-discipline?',
-    back: 'Vague goals like "be healthier" provide no clear action path. Specific, measurable goals like "walk 10,000 steps daily" create clear success criteria. Clarity reduces ambiguity that the mind exploits to rationalize undisciplined choices.',
+    front: 'How do clear goals improve self-discipline?',
+    back: 'Focus efforts; Measure progress; Stay motivated. Set specific, measurable, achievable, relevant, time-bound (SMART) goals; Break down large tasks.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'goals', 'strategies']
+    tags: ['discipline', 'goals', 'strategies'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-031',
-    front: 'How does stress affect willpower and self-control?',
-    back: 'Stress triggers the fight-or-flight response, prioritizing short-term survival over long-term planning. Cortisol impairs prefrontal cortex function, increases cravings for comfort behaviors, and depletes the resources needed for self-control.',
+    front: 'How does stress impact willpower & self-control?',
+    back: 'Stress activates fight-or-flight; impairing prefrontal cortex function. Increases cravings; depletes self-control resources. fc-sd-031',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'willpower', 'stress']
+    tags: ['discipline', 'willpower', 'stress'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-032',
-    front: 'What is habit stacking for building discipline?',
-    back: 'Linking a new desired behavior to an existing habit using the formula: "After [current habit], I will [new habit]." This leverages established neural pathways and creates a natural cue for the new behavior, requiring less willpower to initiate.',
+    front: 'What is habit stacking and how does it build discipline?',
+    back: 'Link a new behavior to an existing habit. Use this formula: \'After [CURRENT HABIT], I will [NEW HABIT]\'. ID: fc-sd-032',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'habit-building', 'strategies']
+    tags: ['discipline', 'habit-building', 'strategies'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-033',
-    front: 'What is the difference between discipline in starting vs. sustaining behavior?',
-    back: 'Starting requires overcoming inertia and activation energy. Sustaining requires managing boredom, setbacks, and competing priorities. Different strategies help each: bright lines and if-then plans for starting; variety, tracking, and identity for sustaining.',
+    front: 'Discipline: Starting vs. Sustaining Behavior - What\'s the Difference?',
+    back: 'Starting: Overcome inertia. Use bright lines, if-then plans. Sustaining: Manage boredom, setbacks. Use variety, tracking, identity. fc-sd-033',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'advanced',
-    tags: ['discipline', 'habit-building', 'psychology']
+    tags: ['discipline', 'habit-building', 'psychology'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-sd-034',
-    front: 'What are "bright lines" in self-discipline?',
-    back: 'Clear, unambiguous rules that are never crossed—like "I don\'t smoke" or "I don\'t work on Sundays." Unlike flexible guidelines, bright lines eliminate negotiation and rationalization. Their black-and-white nature makes them easier to maintain.',
+    front: 'Define personal boundaries. What are they?',
+    back: 'Establish clear, unwavering rules for yourself; Enforce them consistently to protect your time, energy, and well-being.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'rules', 'strategies']
+    tags: ['discipline', 'rules', 'strategies'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-035',
-    front: 'How does visualization support self-discipline?',
-    back: 'Mental contrasting—visualizing both the desired outcome AND the obstacles—increases goal commitment more than positive visualization alone. Imagining challenges and your planned responses prepares you for maintaining discipline when difficulties arise.',
+    front: 'How does visualization enhance self-discipline?',
+    back: 'Use mental contrasting: Visualize desired outcome AND obstacles. This boosts commitment more than positive visualization; prepare responses to challenges.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'visualization', 'strategies']
+    tags: ['discipline', 'visualization', 'strategies'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-sd-036',
-    front: 'What is the "10-minute rule" for managing temptation?',
-    back: 'When tempted, wait 10 minutes before acting. This creates space between impulse and action, allowing the prefrontal cortex to engage. Often, urges fade during this pause. If you still want it after 10 minutes, make a conscious choice.',
+    front: 'fc-sd-036: What\'s a quick temptation-management strategy?',
+    back: 'Wait 10 minutes before acting; this creates space for mindful choice. Urges often fade; then decide consciously.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'temptation-management', 'strategies']
+    tags: ['discipline', 'temptation-management', 'strategies'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-037',
-    front: 'Why do people with high self-control actually use less willpower?',
-    back: 'Research shows disciplined people structure their lives to avoid temptation rather than constantly resisting it. They design environments, routines, and relationships that support their goals, reducing the need for effortful self-control.',
+    front: 'Why do disciplined people exert less willpower?',
+    back: 'They proactively avoid temptation; design supportive environments, routines, relationships. Reduce need for constant resistance.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'advanced',
-    tags: ['discipline', 'willpower', 'psychology']
+    tags: ['discipline', 'willpower', 'psychology'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-sd-038',
-    front: 'What is the relationship between autonomy and self-discipline?',
-    back: 'Self-chosen disciplines are more sustainable than imposed ones. When people feel autonomous—that they\'re choosing to be disciplined rather than being forced—they experience less resistance and more intrinsic motivation. Frame discipline as freedom, not restriction.',
+    front: 'How does autonomy relate to self-discipline?',
+    back: 'Autonomy fuels discipline: Choose disciplines; they last longer. Self-imposed rules beat forced ones.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'advanced',
-    tags: ['discipline', 'autonomy', 'motivation']
+    tags: ['discipline', 'autonomy', 'motivation'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-sd-039',
-    front: 'How can tracking and measurement improve discipline?',
-    back: 'What gets measured gets managed. Tracking creates awareness, provides feedback, reveals patterns, and makes progress visible. The act of recording itself increases commitment. However, tracking should be simple enough to sustain long-term.',
+    front: 'How does tracking boost discipline?',
+    back: 'Measure progress; improve control. Track actions for awareness, feedback, and commitment; keep it simple; see results.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'beginner',
-    tags: ['discipline', 'tracking', 'strategies']
+    tags: ['discipline', 'tracking', 'strategies'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-sd-040',
-    front: 'What is the connection between purpose and sustained discipline?',
-    back: 'Connecting daily disciplines to larger meaning and purpose provides fuel when motivation wanes. Understanding WHY you\'re being disciplined—how it serves your values and vision—transforms tedious actions into meaningful contributions toward something greater.',
+    front: 'How does purpose fuel sustained discipline?',
+    back: 'Link daily actions to your larger purpose.  This fuels discipline when motivation fades; stay aligned.',
     category: 'Personal Development',
-    source: 'Self-Discipline',
-    pathwayId: 'personal-development',
-    difficulty: 'intermediate',
-    tags: ['discipline', 'purpose', 'motivation']
-  }
-];
+    tags: ['discipline', 'purpose', 'motivation'],
+    difficulty: 'intermediate'
+  };

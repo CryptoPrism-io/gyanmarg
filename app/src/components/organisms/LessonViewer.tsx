@@ -129,6 +129,7 @@ export function LessonViewer({
             <button
               onClick={onClose}
               className="w-10 h-10 rounded-xl bg-surface/50 hover:bg-surface flex items-center justify-center transition-colors"
+              aria-label="Close lesson viewer"
             >
               <X className="w-5 h-5 text-text-muted" />
             </button>

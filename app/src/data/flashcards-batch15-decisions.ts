@@ -3,502 +3,401 @@ import type { SpacedRepetitionCard } from '@/types';
 export const decisionMakingFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-dec-001',
-    front: 'What is the key distinction between Type 1 and Type 2 decisions according to Jeff Bezos?',
-    back: 'Type 1 decisions are irreversible (one-way doors) requiring careful analysis. Type 2 decisions are reversible (two-way doors) that can be made quickly and corrected if wrong.',
+    front: 'Bezos: Differentiate Type 1 & Type 2 decisions.',
+    back: 'Type 1: Irreversible; analyze carefully. Type 2: Reversible; decide quickly, correct later.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'frameworks', 'reversibility']
+    tags: ['decisions', 'frameworks', 'reversibility'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-002',
-    front: 'What is the Regret Minimization Framework?',
-    back: 'Project yourself to age 80 and ask: "Will I regret not having done this?" It helps prioritize long-term fulfillment over short-term comfort, especially for irreversible life decisions.',
+    front: 'fc-dec-002: What\'s the Regret Minimization Framework?',
+    back: 'Imagine age 80. Ask: Will I regret NOT doing this? Then, decide accordingly.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'frameworks', 'regret']
+    tags: ['decisions', 'frameworks', 'regret'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-003',
-    front: 'How do you calculate Expected Value (EV) for a decision?',
-    back: 'EV = Sum of (Probability of each outcome × Value of that outcome). Positive EV decisions are worth taking repeatedly even if individual outcomes vary.',
+    front: 'Calculate Expected Value (EV) of a decision.',
+    back: 'Sum (Probability × Value) of each outcome. Take decisions with positive EV repeatedly.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'frameworks', 'probability']
+    tags: ['decisions', 'frameworks', 'probability'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-004',
-    front: 'What is a pre-mortem and how does it differ from a post-mortem?',
-    back: 'A pre-mortem imagines the decision has failed and works backward to identify causes BEFORE implementation. Post-mortems analyze after failure. Pre-mortems leverage prospective hindsight to prevent problems.',
+    front: 'Pre-Mortem vs. Post-Mortem: What\'s the key difference?',
+    back: 'Pre-Mortem: Imagine failure, identify causes beforehand to prevent issues. Post-Mortem: Analyze after failure.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'frameworks', 'pre-mortem']
+    tags: ['decisions', 'frameworks', 'pre-mortem'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-005',
-    front: 'What should a decision journal entry include?',
-    back: '1) The decision and alternatives considered, 2) Information available at the time, 3) Your confidence level (%), 4) Expected outcomes, 5) Your mental/emotional state, 6) Later: actual outcome and lessons.',
+    front: 'Decision journal: What key details should you record for each entry?',
+    back: 'Record: Decision; Alternatives; Info; Confidence; Expected outcome; Mental state; Actual outcome & lessons. Track everything!',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'journals', 'tracking']
+    tags: ['decisions', 'journals', 'tracking'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-006',
-    front: 'What is second-order thinking?',
-    back: 'Considering the consequences of consequences. First-order: "What happens if I do X?" Second-order: "And then what happens after that?" It reveals hidden costs and unintended effects.',
+    front: 'What\'s second-order thinking in decision making?',
+    back: 'Consider consequences of consequences. First-order thinking analyzes the direct impact only; go beyond that.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'thinking', 'consequences']
+    tags: ['decisions', 'thinking', 'consequences'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-007',
-    front: 'What is a base rate and why is it crucial for decisions?',
-    back: 'The base rate is the general probability of an outcome in a reference class (e.g., startup failure rate is ~90%). Ignoring base rates leads to overconfidence in exceptional outcomes.',
+    front: 'Define base rate & why is it critical for decision-making?',
+    back: 'Base rate: general probability of an event. Use it! Ignoring it causes overconfidence in unlikely outcomes; skewing your decisions.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'probability', 'base-rates']
+    tags: ['decisions', 'probability', 'base-rates'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-008',
-    front: 'What is confidence calibration?',
-    back: 'The alignment between your stated confidence and actual accuracy. Well-calibrated: when you say 70% confident, you are right 70% of the time. Most people are overconfident.',
+    front: 'Define confidence calibration.',
+    back: 'Align confidence with accuracy. Saying 70% confident, be right 70% of the time; most are overconfident.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'calibration', 'confidence']
+    tags: ['decisions', 'calibration', 'confidence'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-009',
-    front: 'What is decision hygiene?',
-    back: 'Practices that reduce noise and bias in decisions: independent judgments before discussion, structured criteria, blind evaluation where possible, and aggregating multiple opinions.',
+    front: 'Decision hygiene: Define it.',
+    back: 'Reduce noise & bias in decisions; Use independent judgments, structured criteria, blind evaluation, and aggregate opinions.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'hygiene', 'bias']
+    tags: ['decisions', 'hygiene', 'bias'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-010',
-    front: 'What is the difference between risk and uncertainty?',
-    back: 'Risk: probabilities are known or estimable (rolling dice). Uncertainty: probabilities are unknown or unknowable (novel situations). Different strategies apply to each.',
+    front: 'Differentiate between risk and uncertainty in decision making.',
+    back: 'Risk: Quantify probabilities. Uncertainty: Probabilities unknown; use different decision strategies.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'risk', 'uncertainty']
+    tags: ['decisions', 'risk', 'uncertainty'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-011',
-    front: 'What is the Planning Fallacy and how do you combat it?',
-    back: 'Systematic underestimation of time, costs, and risks while overestimating benefits. Combat with: reference class forecasting, adding buffer time, tracking past estimates vs actuals.',
+    front: 'Planning Fallacy: What is it, and how do you avoid it?',
+    back: 'Underestimate time, costs, risks; overestimate benefits. Avoid it: Use reference class forecasting; add buffer time; track estimates vs. actuals.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'bias', 'planning']
+    tags: ['decisions', 'bias', 'planning'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-012',
-    front: 'What is the difference between reversible and irreversible decisions in terms of optimal strategy?',
-    back: 'Reversible: decide quickly, iterate, learn from feedback. Irreversible: invest heavily in analysis, seek diverse opinions, consider long-term regret. Speed matters for reversible; accuracy for irreversible.',
+    front: 'Reversible vs. irreversible decisions: How should strategies differ?',
+    back: 'Reversible: Decide fast, iterate. Irreversible: Analyze thoroughly; consider long-term impact. Prioritize speed vs. accuracy.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'frameworks', 'reversibility']
+    tags: ['decisions', 'frameworks', 'reversibility'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-013',
-    front: 'What is resulting and why is it a decision-making error?',
-    back: 'Judging decision quality solely by outcomes. A good decision can have bad outcomes (bad luck) and bad decisions can have good outcomes (good luck). Evaluate the process, not just results.',
+    front: 'What is resulting bias? Why is it a decision-making error?',
+    back: 'Judge decision quality only by outcome; ignore process. Evaluate process, not results; good decisions can have bad outcomes, bad decisions can have good outcomes.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'bias', 'outcomes']
+    tags: ['decisions', 'bias', 'outcomes'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-014',
-    front: 'How does the 10/10/10 rule help with decisions?',
-    back: 'Ask: How will I feel about this decision in 10 minutes? 10 months? 10 years? It balances short-term emotions with long-term perspective and reveals what truly matters.',
+    front: '10/10/10 Rule: How does it improve decision-making?',
+    back: 'Consider impact: 10 minutes; 10 months; 10 years. Balances emotions with long-term values; reveals what matters.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'frameworks', 'time']
+    tags: ['decisions', 'frameworks', 'time'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-015',
-    front: 'What is the Outside View vs Inside View in decision-making?',
-    back: 'Inside View: focusing on the specific case and its unique features. Outside View: treating it as one instance of a broader reference class. The outside view typically produces more accurate predictions.',
+    front: 'Outside View vs Inside View: What distinguishes them in decision making?',
+    back: 'Inside: Focus on unique case details. Outside: See it as a broad class instance; yields better predictions. fc-dec-015',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'base-rates', 'perspective']
+    tags: ['decisions', 'base-rates', 'perspective'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-016',
-    front: 'What is the sunk cost fallacy in decision-making?',
-    back: 'Continuing a course of action because of past investments (time, money, effort) rather than future value. Rational decisions should only consider future costs and benefits.',
+    front: 'Explain the sunk cost fallacy in decision-making.',
+    back: 'Ignore past investments; decide based only on future costs & benefits. Avoid escalating commitment to failing ventures.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'bias', 'sunk-cost']
+    tags: ['decisions', 'bias', 'sunk-cost'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-017',
-    front: 'What is asymmetric risk and why does it matter?',
-    back: 'When potential gains and losses are not proportional. Seek asymmetric upside (limited downside, unlimited upside). Avoid asymmetric downside (limited upside, catastrophic downside).',
+    front: 'Asymmetric risk: What is it, and why should you care?',
+    back: 'Gains/losses are disproportionate. Seek asymmetric upside: limit downside, maximize upside. Avoid asymmetric downside: prevent catastrophic loss.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'risk', 'asymmetry']
+    tags: ['decisions', 'risk', 'asymmetry'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-018',
-    front: 'What is the difference between maximizers and satisficers?',
-    back: 'Maximizers seek the absolute best option (exhaustive search). Satisficers seek "good enough" (stop when criteria are met). Satisficers often report higher life satisfaction with less decision fatigue.',
+    front: 'Maximizers vs. Satisficers: What\'s the core difference?',
+    back: 'Maximizers: Seek the absolute best option. Satisficers: Seek "good enough"; stop searching when criteria met.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'psychology', 'satisfaction']
+    tags: ['decisions', 'psychology', 'satisfaction'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-019',
-    front: 'What is probabilistic thinking?',
-    back: 'Thinking in likelihoods rather than certainties. Assigning probability ranges to outcomes, updating beliefs with new evidence, and accepting that most predictions have uncertainty.',
+    front: 'Probabilistic Thinking: What is it?',
+    back: 'Assess likelihoods, not certainties. Update beliefs; predict with uncertainty.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'probability', 'thinking']
+    tags: ['decisions', 'probability', 'thinking'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-020',
-    front: 'What is the WRAP framework for decisions?',
-    back: 'W: Widen your options. R: Reality-test assumptions. A: Attain distance before deciding. P: Prepare to be wrong. From "Decisive" by Chip and Dan Heath.',
+    front: 'What\'s the WRAP decision-making framework?',
+    back: 'Widen options; Reality-test; Attain distance; Prepare to be wrong. Use WRAP to improve decisions.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'frameworks', 'WRAP']
+    tags: ['decisions', 'frameworks', 'WRAP'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-021',
-    front: 'What is narrow framing and how do you avoid it?',
-    back: 'Considering too few options (often just yes/no). Avoid by: generating at least 3 alternatives, asking "What else could I do?", and considering the opportunity cost of the current option.',
+    front: 'Narrow framing: What is it & how do you combat it?',
+    back: 'Focus on too few options. Counter: Generate at least 3 options; Seek input from others; Challenge assumptions. ',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'bias', 'framing']
+    tags: ['decisions', 'bias', 'framing'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-022',
-    front: 'What is the Eisenhower Matrix for decision prioritization?',
-    back: 'Categorize tasks by Urgent/Not Urgent and Important/Not Important. Do urgent+important. Schedule important+not urgent. Delegate urgent+not important. Eliminate neither.',
+    front: 'Eisenhower Matrix: How do you prioritize decisions?',
+    back: 'Categorize tasks by urgency/importance. Do: urgent+important; Schedule: important+not urgent; Delegate: urgent+not important; Eliminate: neither.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'frameworks', 'prioritization']
+    tags: ['decisions', 'frameworks', 'prioritization'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-023',
-    front: 'How do emotions affect decision quality?',
-    back: 'Emotions provide important signals but can hijack rational analysis. Best practice: acknowledge emotions, delay major decisions during peak emotional states, but don\'t ignore emotional data entirely.',
+    front: 'How do emotions impact decision quality?',
+    back: 'Emotions signal info, but bias rationality. Acknowledge them; postpone big decisions during strong feelings.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'emotions', 'psychology']
+    tags: ['decisions', 'emotions', 'psychology'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-024',
-    front: 'What is confirmation bias in decision-making?',
-    back: 'Seeking information that confirms existing beliefs while ignoring contradictory evidence. Counter by actively seeking disconfirming evidence and assigning someone to argue the opposite view.',
+    front: 'Confirmation bias: How does it skew decisions?',
+    back: 'Seek confirming info; ignore opposing data. Counter: Actively seek disconfirming evidence; assign devil\'s advocate.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'bias', 'confirmation']
+    tags: ['decisions', 'bias', 'confirmation'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-025',
-    front: 'What is the value of reversibility in decisions?',
-    back: 'Reversibility reduces risk and enables learning. When possible, structure decisions to be reversible: pilot programs, trial periods, options to exit. Pay a premium for reversibility in uncertain situations.',
+    front: 'What\'s the value of making decisions reversible?',
+    back: 'Reduce risk; enable learning. Structure decisions for reversibility when possible: use pilot programs, trial periods, exit options; pay premium in uncertainty.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'reversibility', 'risk']
+    tags: ['decisions', 'reversibility', 'risk'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-026',
-    front: 'What is the distinction between process and outcome in decision evaluation?',
-    back: 'Good process: thorough analysis, appropriate information, sound reasoning. Good outcome: favorable result. Focus on improving process because you control it; outcomes involve luck.',
+    front: 'Distinguish decision evaluation: process vs. outcome.',
+    back: 'Process: Analysis, info, reasoning. Outcome: Favorable result. Improve process; you control it. Outcomes involve luck. fc-dec-026',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'process', 'outcomes']
+    tags: ['decisions', 'process', 'outcomes'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-027',
     front: 'What is the paradox of choice?',
-    back: 'More options can lead to worse decisions and lower satisfaction due to: decision paralysis, regret over unchosen options, and raised expectations. Sometimes limiting options improves outcomes.',
+    back: 'More options worsen decisions & lower satisfaction.  Cause: paralysis; regret; raised expectations. Limit choices for better outcomes.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'psychology', 'choice']
+    tags: ['decisions', 'psychology', 'choice'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-028',
-    front: 'How do you use a decision tree for complex choices?',
-    back: 'Map out decision points, possible outcomes, probabilities, and payoffs. Calculate expected value of each branch. Reveals which factors most impact the decision and clarifies thinking.',
+    front: 'Decision Trees: How do they guide complex decisions?',
+    back: 'Map options; calculate branch EV. Identify key factors; clarify decision process. fc-dec-028',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'frameworks', 'analysis']
+    tags: ['decisions', 'frameworks', 'analysis'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-029',
-    front: 'What is the difference between noise and bias in decisions?',
-    back: 'Bias: systematic error in one direction (consistently over/underestimating). Noise: random variability in judgments. Both degrade decision quality but require different interventions.',
+    front: 'Noise vs. Bias: What distinguishes them in decision-making?',
+    back: 'Bias: Systematic error; consistently skewed. Noise: Random variability. Reduce bias through standardization; reduce noise by averaging.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'bias', 'noise']
+    tags: ['decisions', 'bias', 'noise'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-030',
-    front: 'What is the "two newspaper test" for ethical decisions?',
-    back: 'Would this decision be criticized on the front page of a newspaper? Would refusing to make it be criticized? Both extreme caution and recklessness can be wrong. Find the defensible middle.',
+    front: 'fc-dec-030 Psychology Intermediate decisions ethics frameworks: Newspaper Test?',
+    back: 'Analyze decision: Would action or inaction cause newspaper criticism? Choose defensible middle ground; avoid extremes.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'ethics', 'frameworks']
+    tags: ['decisions', 'ethics', 'frameworks'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-031',
-    front: 'How does anchoring bias affect decisions?',
-    back: 'Initial information (the anchor) disproportionately influences final judgments, even if arbitrary. Counter by: generating your own estimate first, considering multiple anchors, questioning anchor relevance.',
+    front: 'Anchoring Bias: How does it skew decisions?',
+    back: 'Initial anchor overly influences judgments. Mitigate: estimate first; consider multiple anchors; question relevance. fc-dec-031',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'bias', 'anchoring']
+    tags: ['decisions', 'bias', 'anchoring'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-032',
-    front: 'What is the "kill criterion" in decision-making?',
-    back: 'Pre-defined conditions that would cause you to abandon a course of action. Setting these before emotional investment prevents escalation of commitment and sunk cost thinking.',
+    front: 'What are pre-commitment abandonment criteria to avoid sunk cost fallacy?',
+    back: 'Define triggers to quit projects before emotional investment.  Prevent escalation of commitment; optimize resource allocation.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'frameworks', 'commitment']
+    tags: ['decisions', 'frameworks', 'commitment'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-033',
-    front: 'What is the availability heuristic in decisions?',
-    back: 'Overweighting easily recalled information (vivid, recent, emotional). Plane crashes feel more dangerous than car accidents despite statistics. Counter with base rates and systematic data collection.',
+    front: 'Availability heuristic: How does it bias decisions?',
+    back: 'Overweight easily recalled info. Recognize it; prioritize base rates; systematically gather data. ID: fc-dec-033',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'bias', 'availability']
+    tags: ['decisions', 'bias', 'availability'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-034',
-    front: 'What is the value of sleep on major decisions?',
-    back: 'Sleep consolidates information, reduces emotional reactivity, and enables insight. "Sleep on it" advice is neurologically sound. Never make irreversible decisions when sleep-deprived.',
+    front: 'Sleep\'s impact on important decisions?',
+    back: 'Sleep consolidates info; reduce emotional reaction; gain insight.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'psychology', 'sleep']
+    tags: ['decisions', 'psychology', 'sleep'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-035',
-    front: 'How do you handle decisions under time pressure?',
-    back: 'Use recognition-primed decision making: pattern match to similar situations, mentally simulate first option, adjust if simulation fails. Works when you have relevant experience; dangerous when you don\'t.',
+    front: 'Time pressure: How should you decide?',
+    back: 'Use recognition-primed decision making: pattern match; simulate first option; adjust if needed. Requires expertise; otherwise risky.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'time-pressure', 'expertise']
+    tags: ['decisions', 'time-pressure', 'expertise'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-036',
-    front: 'What is the role of intuition in decision-making?',
-    back: 'Intuition is pattern recognition from experience—valuable in familiar domains with clear feedback. Unreliable in novel situations or where feedback is delayed/ambiguous. Know when to trust it.',
+    front: 'Role of intuition in decisions?',
+    back: 'Leverage intuition for pattern recognition in familiar domains with immediate feedback. Avoid it in novel situations or with delayed/ambiguous feedback.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'intuition', 'expertise']
+    tags: ['decisions', 'intuition', 'expertise'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-037',
-    front: 'What is opportunity cost and why is it often ignored?',
-    back: 'The value of the next best alternative foregone. Choosing A means not choosing B. People focus on direct costs/benefits while ignoring what else that time/money could achieve.',
+    front: 'Define opportunity cost & explain why it\'s frequently overlooked.',
+    back: 'It\'s the value of your next best option. People focus on direct gains, ignoring alternatives for their time/money; don\'t choose A over B!',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'economics', 'opportunity-cost']
+    tags: ['decisions', 'economics', 'opportunity-cost'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-038',
-    front: 'How do you improve calibration of confidence?',
-    back: 'Track predictions with stated confidence levels, review accuracy, adjust. Use confidence intervals instead of point estimates. Practice with calibration training. Seek feedback on past predictions.',
+    front: 'Improve your calibration of confidence, how?',
+    back: 'Track predictions; review accuracy & adjust. Use confidence intervals; practice calibration training; seek feedback.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'calibration', 'practice']
+    tags: ['decisions', 'calibration', 'practice'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-039',
-    front: 'What is the difference between correlation and causation in decision evidence?',
-    back: 'Correlation: two things occur together. Causation: one causes the other. Decisions based on correlations may fail if the relationship is spurious or the causal direction is reversed.',
+    front: 'Correlation vs. Causation in decision-making: What\'s the key difference?',
+    back: 'Correlation: Things occur together. Causation: One causes another. Avoid decision errors by confirming genuine causal links; identify potential spurious relationships.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'evidence', 'causation']
+    tags: ['decisions', 'evidence', 'causation'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-040',
-    front: 'What is the "disconfirmation" practice in decisions?',
-    back: 'Actively seeking evidence that proves your preferred option wrong. Ask: "What would have to be true for this to fail?" and "What evidence would change my mind?" Combats confirmation bias.',
+    front: 'What is disconfirmation bias?',
+    back: 'Seek evidence that disproves your choice; fight confirmation bias. Question assumptions.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'bias', 'disconfirmation']
+    tags: ['decisions', 'bias', 'disconfirmation'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-041',
-    front: 'How does group decision-making differ from individual?',
-    back: 'Groups can pool information but suffer from: groupthink, social pressure, anchoring on first speaker, hidden profiles (unshared info). Structure processes to capture diverse views independently first.',
+    front: 'Group vs. Individual Decisions: Key differences?',
+    back: 'Groups: Pool data but risk groupthink, pressure, anchoring, hidden info. Elicit diverse views independently first.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'groups', 'collaboration']
+    tags: ['decisions', 'groups', 'collaboration'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-042',
-    front: 'What is the principle of "disagree and commit"?',
-    back: 'Voice disagreement during deliberation, but once a decision is made, commit fully to execution. Prevents endless debate while allowing dissent. Requires psychological safety to disagree openly.',
+    front: 'Define \'Voice & Commitment\' principle in team decision-making.',
+    back: 'Voice concerns, then commit. Prevent endless debates; enable dissent. Requires psychological safety.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'teams', 'commitment']
+    tags: ['decisions', 'teams', 'commitment'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-043',
-    front: 'What is scenario planning for decisions under uncertainty?',
-    back: 'Develop multiple plausible future scenarios (not just best/worst case). Test how your decision performs across scenarios. Identify robust options that work reasonably well in many futures.',
+    front: 'Scenario planning: Decisions under uncertainty?',
+    back: 'Develop multiple plausible scenarios; test decisions across them. Find robust options working in many futures.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'uncertainty', 'planning']
+    tags: ['decisions', 'uncertainty', 'planning'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-044',
-    front: 'How do you balance speed vs accuracy in decisions?',
-    back: 'Consider: reversibility (reversible = speed), stakes (high = accuracy), information decay (time-sensitive = speed), competitive advantage (first-mover = speed). Match approach to decision type.',
+    front: 'Balance speed vs. accuracy in decisions: How?',
+    back: 'Prioritize speed if reversible, time-sensitive, or for first-mover advantage; prioritize accuracy if stakes are high. Adapt your approach.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'speed', 'accuracy']
+    tags: ['decisions', 'speed', 'accuracy'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-045',
-    front: 'What is the "mediocrity of averages" problem?',
-    back: 'Compromising between options often produces worse outcomes than committing to one. Going "half in" on two strategies may capture neither\'s benefits. Sometimes bold commitment beats hedging.',
+    front: 'Why can compromise strategies lead to worse decisions than commitment?',
+    back: 'Commit! Compromise may yield inferior outcomes; Commit fully to maximize results.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'commitment', 'strategy']
+    tags: ['decisions', 'commitment', 'strategy'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-046',
-    front: 'What is the value of decision reviews/post-mortems?',
-    back: 'Systematic review of past decisions reveals patterns in thinking errors, improves calibration, and builds organizational learning. Schedule reviews for both successes and failures.',
+    front: 'Why conduct decision reviews/post-mortems?',
+    back: 'Reveal thinking errors; improve calibration; build learning. Review successes & failures.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'learning', 'review']
+    tags: ['decisions', 'learning', 'review'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-047',
-    front: 'How do defaults affect decisions?',
-    back: 'People disproportionately stick with default options (status quo bias, effort avoidance). Powerful for choice architecture. Question whether defaults serve your interests or someone else\'s.',
+    front: 'How do defaults influence choices?',
+    back: 'People stick with defaults; use them for choice architecture. Consider whose interests they serve. ',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['decisions', 'defaults', 'nudge']
+    tags: ['decisions', 'defaults', 'nudge'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-dec-048',
-    front: 'What is the role of "red teams" in decisions?',
-    back: 'A designated group argues against the proposed decision, finding weaknesses and alternatives. Institutionalizes dissent and disconfirmation. Prevents groupthink in high-stakes decisions.',
+    front: 'Define devil\'s advocate in group decisions.',
+    back: 'Challenge decisions; find weaknesses & alternatives; prevent groupthink. Institutionalize dissent & disconfirmation.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'teams', 'devil-advocate']
+    tags: ['decisions', 'teams', 'devil-advocate'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-049',
-    front: 'What is Bayes\' theorem\'s relevance to decisions?',
-    back: 'Update probability estimates when new evidence arrives: P(H|E) = P(E|H) × P(H) / P(E). Start with base rates, adjust based on evidence strength. Prevents over/under-reacting to new information.',
+    front: 'Bayes\' Theorem: How update probabilities with new evidence?',
+    back: 'Calculate posterior probability: P(H|E) = [P(E|H) * P(H)] / P(E). Adjust base rates based on evidence; avoid over/under-reaction.',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'probability', 'bayesian']
+    tags: ['decisions', 'probability', 'bayesian'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-dec-050',
-    front: 'What makes a decision truly "good" regardless of outcome?',
-    back: 'A good decision: 1) Uses available information appropriately, 2) Considers relevant alternatives, 3) Aligns with values and goals, 4) Accounts for uncertainty, 5) Is made with appropriate time/effort given stakes.',
+    front: 'Define a high-quality decision.',
+    back: 'Use information; Consider options; Align with values/goals; Account for uncertainty; Match time/effort to stakes. ID: fc-dec-050',
     category: 'Psychology',
-    source: 'Decision Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['decisions', 'quality', 'evaluation']
-  }
-];
+    tags: ['decisions', 'quality', 'evaluation'],
+    difficulty: 'advanced'
+  };

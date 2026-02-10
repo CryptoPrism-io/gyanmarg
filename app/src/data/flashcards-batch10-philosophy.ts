@@ -4,8 +4,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   // Stoic Philosophy - Marcus Aurelius
   {
     id: 'fc-phil-001',
-    front: 'What is the central teaching of Marcus Aurelius in "Meditations" regarding control?',
-    back: 'Focus only on what is within your control (your thoughts, actions, and responses) and accept what is not (external events, others\' actions, outcomes). This dichotomy of control is fundamental to Stoic peace of mind.',
+    front: 'Marcus Aurelius: What is the key tenet of Stoic philosophy?',
+    back: 'Control your thoughts/actions; accept what you can\'t. Focus inward; manage responses.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -14,8 +14,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-002',
-    front: 'What does Marcus Aurelius mean by "The obstacle is the way"?',
-    back: 'Every impediment to action can advance action. What stands in the way becomes the way. Obstacles are opportunities for growth, virtue, and strength. We should embrace challenges as training for character.',
+    front: 'Explain Marcus Aurelius: "What stands in the way becomes the way."',
+    back: 'Turn obstacles into opportunities. Build virtue and strength by embracing challenges; use them to train your character.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -24,20 +24,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-003',
-    front: 'What is "memento mori" and how did the Stoics use it?',
-    back: 'Latin for "remember you will die." Stoics used this practice to maintain perspective, prioritize what matters, live fully in the present, and avoid wasting time on trivial concerns. Death awareness sharpens life.',
+    front: 'fc-phil-003: Memento Mori meaning?',
+    back: 'Category: Philosophy; Remember you must die. Reflect on mortality.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'beginner',
     tags: ['philosophy', 'stoicism', 'memento-mori', 'death']
   },
-
-  // Stoic Philosophy - Seneca
   {
     id: 'fc-phil-004',
-    front: 'What is Seneca\'s key teaching about time in "On the Shortness of Life"?',
-    back: 'Life is not short; we make it short by wasting it. We squander time on trivial pursuits while being stingy with money. The wise person lives deliberately, making every moment count. Time is our most precious resource.',
+    front: 'Seneca: What causes a perceived \'short life\'?',
+    back: 'Waste time on trivialities; be deliberate. Time is your most precious resource; use it wisely. fc-phil-004',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -46,8 +44,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-005',
-    front: 'What is "premeditatio malorum" (premeditation of evils) in Stoic practice?',
-    back: 'Deliberately visualizing potential hardships and worst-case scenarios in advance. This practice reduces anxiety, builds resilience, promotes gratitude for current blessings, and prepares the mind to handle adversity with equanimity.',
+    front: 'fc-phil-005: Define premeditatio malorum (negative visualization).',
+    back: 'Imagine hardships to reduce anxiety & build resilience; promote gratitude & prepare for adversity. Category: Philosophy',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -56,20 +54,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-006',
-    front: 'What did Seneca teach about anger and its remedy?',
-    back: 'Anger is temporary madness that harms the angry person most. The remedy is delay - when angry, do nothing, say nothing. Give reason time to reassert control. Ask: "Will this matter in a year?"',
+    front: 'fc-phil-006: What did Seneca teach about controlling anger?',
+    back: 'Anger harms you most; delay reaction. Do nothing, say nothing. Let reason regain control.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'beginner',
     tags: ['philosophy', 'stoicism', 'seneca', 'anger']
   },
-
-  // Stoic Philosophy - Epictetus
   {
     id: 'fc-phil-007',
-    front: 'What is the opening teaching of Epictetus\' Enchiridion?',
-    back: '"Some things are within our power, while others are not." Within our power: opinions, impulses, desires, aversions. Not in our power: body, property, reputation, office. Freedom comes from focusing only on what we control.',
+    front: 'Epictetus\' first lesson: What should you focus on?',
+    back: 'Control your thoughts & actions; accept what you cannot. Focus inward; find freedom.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -78,20 +74,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-008',
-    front: 'What did Epictetus teach about how we are disturbed by events?',
-    back: '"It is not things that disturb us, but our judgments about things." Events are neutral; our interpretations create suffering. By changing our judgments, we change our experience. We have power over our minds.',
+    front: 'fc-phil-008: Epictetus: What truly disturbs us about events?',
+    back: 'Control your judgments; external events are indifferent. Focus on what you can influence: your internal state.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'intermediate',
     tags: ['philosophy', 'stoicism', 'epictetus', 'judgment']
   },
-
-  // Eastern Philosophy - Taoism
   {
     id: 'fc-phil-009',
-    front: 'What is "Wu Wei" in Taoist philosophy?',
-    back: 'Often translated as "non-action" or "effortless action." It means acting in harmony with the natural flow of things, without forcing or struggling. Like water finding its path - soft yet powerful, yielding yet persistent.',
+    front: 'fc-phil-009: Define Wu Wei in Taoism.',
+    back: 'Action: Practice non-action; effortless doing. Align with Tao; let nature take its course.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -100,8 +94,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-010',
-    front: 'What does "The Tao that can be spoken is not the eternal Tao" mean?',
-    back: 'The opening line of the Tao Te Ching suggests ultimate reality transcends language and concepts. The true Way cannot be fully captured in words. Direct experience and intuition are needed to understand the Tao.',
+    front: 'fc-phil-010: What does Tao Te Ching\'s opening line suggest about ultimate reality?',
+    back: 'Ultimate reality transcends language; Words cannot capture the Tao. Use direct experience & intuition.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -110,20 +104,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-011',
-    front: 'What is the Taoist concept of Yin and Yang?',
-    back: 'Complementary opposites that together form a whole. Light/dark, active/passive, masculine/feminine. Neither is superior; both are necessary. Balance comes from harmonizing these forces. Change is constant as they cycle.',
+    front: 'Yin and Yang: What\'s the core Taoist idea?',
+    back: 'Opposites form a whole; harmonize them.  Balance light/dark, active/passive, masculine/feminine; change cycles.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'beginner',
     tags: ['philosophy', 'taoism', 'yin-yang', 'balance']
   },
-
-  // Eastern Philosophy - Buddhism
   {
     id: 'fc-phil-012',
-    front: 'What are the Four Noble Truths of Buddhism?',
-    back: '1) Dukkha: Life involves suffering. 2) Samudaya: Suffering arises from craving/attachment. 3) Nirodha: Suffering can end. 4) Magga: The Eightfold Path leads to the end of suffering.',
+    front: 'Name Buddhism\'s Four Noble Truths.',
+    back: 'Acknowledge suffering; Identify craving as its cause; Believe it can end; Follow the Eightfold Path.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -132,8 +124,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-013',
-    front: 'What is "Anicca" (impermanence) in Buddhist philosophy?',
-    back: 'All conditioned phenomena are impermanent. Nothing lasts forever - pleasure, pain, relationships, life itself. Understanding impermanence reduces attachment and suffering, and helps us appreciate the present moment.',
+    front: 'What is Anicca in Buddhism?',
+    back: 'Acknowledge impermanence of all things. Reduce suffering; appreciate the present moment; detach from transient phenomena.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -142,20 +134,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-014',
-    front: 'What is the Buddhist concept of "Anatta" (non-self)?',
-    back: 'There is no permanent, unchanging self or soul. What we call "self" is a constantly changing process of physical and mental phenomena. Attachment to a fixed self-concept causes suffering.',
+    front: 'Explain the Buddhist concept of Anatta (non-self).',
+    back: 'Deny a permanent self/soul. Understand "self" as a collection of impermanent processes; experience them.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'advanced',
     tags: ['philosophy', 'buddhism', 'anatta', 'non-self']
   },
-
-  // Zen Concepts
   {
     id: 'fc-phil-015',
-    front: 'What is "Beginner\'s Mind" (Shoshin) in Zen Buddhism?',
-    back: 'An attitude of openness, eagerness, and lack of preconceptions when studying, even at an advanced level. "In the beginner\'s mind there are many possibilities, in the expert\'s mind there are few." - Shunryu Suzuki',
+    front: 'What is Shoshin (Beginner\'s Mind)?',
+    back: 'Approach learning with openness & eagerness; shed preconceptions. Embrace novice mindset for continuous growth.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -164,8 +154,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-016',
-    front: 'What is a Zen Koan and what purpose does it serve?',
-    back: 'A paradoxical riddle or statement used to provoke enlightenment. Examples: "What is the sound of one hand clapping?" Koans bypass rational thinking to trigger direct insight beyond conceptual understanding.',
+    front: 'What is a Zen Koan, and what does it aim to achieve?',
+    back: 'It\'s a paradoxical riddle; Use it to provoke enlightenment; e.g., \'What is the sound of one hand clapping?\'',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -174,20 +164,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-017',
-    front: 'What does "Before enlightenment, chop wood, carry water. After enlightenment, chop wood, carry water" mean?',
-    back: 'Enlightenment does not remove us from ordinary life. Spiritual awakening is found within everyday activities, not by escaping them. The difference is in our awareness and presence, not our circumstances.',
+    front: 'How does enlightenment relate to everyday life?',
+    back: 'Find enlightenment in everyday activities, not by escaping them; shift your awareness and presence.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'intermediate',
     tags: ['philosophy', 'zen', 'enlightenment', 'everyday']
   },
-
-  // Ethical Frameworks - Utilitarianism
   {
     id: 'fc-phil-018',
-    front: 'What is Utilitarianism and who were its main proponents?',
-    back: 'An ethical theory holding that the best action maximizes overall happiness/well-being for the greatest number. Main proponents: Jeremy Bentham (quantitative) and John Stuart Mill (qualitative pleasures). Consequences determine morality.',
+    front: 'Utilitarianism: What is it, and who championed this philosophy?',
+    back: 'Maximize overall happiness for the greatest number. Bentham (quantity); Mill (quality). Judge actions by their consequences.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -196,20 +184,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-019',
-    front: 'What is the difference between Act and Rule Utilitarianism?',
-    back: 'Act Utilitarianism: Judge each action by its specific consequences. Rule Utilitarianism: Follow rules that generally maximize utility. Rule version addresses criticisms about justice violations in individual cases.',
+    front: 'Act vs. Rule Utilitarianism: What\'s the core difference?',
+    back: 'Act: Maximize utility with each ACTION. Rule: Follow rules that generally maximize utility; addresses justice concerns.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'intermediate',
     tags: ['philosophy', 'ethics', 'utilitarianism', 'moral-theory']
   },
-
-  // Ethical Frameworks - Deontology
   {
     id: 'fc-phil-020',
-    front: 'What is Kant\'s Categorical Imperative (first formulation)?',
-    back: '"Act only according to that maxim by which you can at the same time will that it should become a universal law." Test: Could everyone follow your principle without contradiction? If not, the action is wrong.',
+    front: 'fc-phil-020: Kant\'s Categorical Imperative: What is it?',
+    back: 'Obey moral law, derived from reason. Act only on maxims you can will to become universal law.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -218,8 +204,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-021',
-    front: 'What is Kant\'s "humanity formula" (second formulation of the Categorical Imperative)?',
-    back: '"Treat humanity, whether in your own person or in that of another, always as an end and never merely as a means." People have inherent dignity and should never be used merely as tools for others\' purposes.',
+    front: 'fc-phil-021: Kant: What\'s the core principle of his moral philosophy?',
+    back: 'Treat humanity as an end, never a mere means. Respect autonomy and intrinsic dignity; avoid exploitation.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -228,20 +214,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-022',
-    front: 'What distinguishes deontological ethics from consequentialist ethics?',
-    back: 'Deontology judges actions by their inherent rightness (duties, rules, intentions), not outcomes. Some actions are intrinsically wrong regardless of consequences. Consequentialism judges actions solely by their outcomes.',
+    front: 'Deontology vs. Consequentialism: What\'s the key difference?',
+    back: 'Deontology: Judge actions by inherent rightness (duties; rules); ignore outcomes. Consequentialism: Judge actions solely by their outcomes.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'beginner',
     tags: ['philosophy', 'ethics', 'deontology', 'consequentialism']
   },
-
-  // Ethical Frameworks - Virtue Ethics
   {
     id: 'fc-phil-023',
-    front: 'What is Aristotle\'s concept of Eudaimonia?',
-    back: 'Often translated as "happiness" or "flourishing." It is the highest human good - living well and doing well. Achieved through virtuous activity over a complete life, fulfilling our human function excellently.',
+    front: 'fc-phil-023: What is Aristotle\'s Eudaimonia?',
+    back: 'Achieve \'human flourishing\' or \'living well\'.  Act virtuously according to reason for a fulfilling life.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -250,8 +234,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-024',
-    front: 'What is Aristotle\'s Doctrine of the Mean?',
-    back: 'Virtue lies between two extremes (vices of excess and deficiency). Courage is between recklessness and cowardice. Generosity between extravagance and stinginess. Finding the appropriate mean requires practical wisdom.',
+    front: 'Aristotle: What defines a virtue?',
+    back: 'Find the Golden Mean! It\'s the balance between excess and deficiency; use practical wisdom to discern.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -260,20 +244,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-025',
-    front: 'What is Phronesis (practical wisdom) in Aristotelian ethics?',
-    back: 'The intellectual virtue of knowing how to act well in specific situations. It is the ability to discern the right action in particular circumstances, considering relevant factors. Essential for applying all other virtues correctly.',
+    front: 'Define Aristotelian Phronesis (practical wisdom).',
+    back: 'Discern the best action in specific situations; consider relevant factors. Apply other virtues correctly with this intellectual virtue. ',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'advanced',
     tags: ['philosophy', 'ethics', 'aristotle', 'phronesis']
   },
-
-  // Existentialism - Sartre
   {
     id: 'fc-phil-026',
-    front: 'What does Sartre mean by "existence precedes essence"?',
-    back: 'Humans first exist, then define themselves through choices and actions. There is no predetermined human nature or purpose. We are "condemned to be free" - we must create our own meaning and take responsibility for who we become.',
+    front: 'fc-phil-026: What\'s Sartre\'s take on human existence and self-definition?',
+    back: 'Humans exist first, then define themselves through choices. Accept freedom; there\'s no inherent purpose; embrace existence.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -282,8 +264,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-027',
-    front: 'What is "bad faith" (mauvaise foi) in Sartre\'s philosophy?',
-    back: 'Self-deception where we deny our freedom and responsibility by pretending we have no choice. Examples: "I had to do it," "That\'s just how I am." We flee from the anxiety of freedom into false determinism.',
+    front: 'fc-phil-027: Define "bad faith" (mauvaise foi) in Sartre\'s existentialism.',
+    back: 'Philosophy; Deny freedom/responsibility, act as if you lack choice.  Example: believe you *must* follow societal norms; not authentically choosing.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -292,20 +274,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-028',
-    front: 'What does Sartre mean by "Hell is other people"?',
-    back: 'From his play "No Exit." It does not mean others are inherently hellish, but that we are perpetually judged and objectified by others\' gaze, which can trap us in their definitions. We struggle for authentic self-definition.',
+    front: 'fc-phil-028: What is Sartre\'s concept of \'Hell is other people\'?',
+    back: 'Embrace responsibility; Act authentically despite others. Sartre\'s play explores how others\' judgments limit freedom.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'intermediate',
     tags: ['philosophy', 'existentialism', 'sartre', 'others']
   },
-
-  // Existentialism - Camus
   {
     id: 'fc-phil-029',
-    front: 'What is "the Absurd" in Camus\' philosophy?',
-    back: 'The conflict between our desire for meaning and the universe\'s apparent meaninglessness. Life has no inherent purpose, yet we cannot stop seeking one. This tension is the absurd condition of human existence.',
+    front: 'fc-phil-029: What\'s the core conflict in Camus\' Absurdism?',
+    back: 'Desire meaning; face universe\'s meaninglessness. Reconcile this conflict.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -314,8 +294,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-030',
-    front: 'Why does Camus say we must imagine Sisyphus happy?',
-    back: 'Sisyphus, condemned to roll a boulder up a hill forever, represents the human condition. By embracing his fate and finding meaning in the struggle itself (not the outcome), he triumphs over absurdity. The struggle itself is enough to fill a heart.',
+    front: 'Why \'imagine Sisyphus happy\' according to Camus?',
+    back: 'Embrace the absurd; find meaning in the endless struggle itself, not the futile outcome.  The struggle fills the heart; triumph over meaninglessness.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -324,20 +304,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-031',
-    front: 'What are Camus\' three responses to the Absurd?',
-    back: '1) Suicide (rejected - does not solve the problem). 2) Philosophical suicide/faith (rejected - escaping through belief). 3) Revolt - accept the absurd, live fully despite it, create meaning through rebellion and passion.',
+    front: 'Camus: What 3 responses does he propose to the absurd, and which is preferable?',
+    back: 'Reject suicide/faith; Revolt! Accept absurd; live passionately; create meaning through rebellion.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'advanced',
     tags: ['philosophy', 'existentialism', 'camus', 'revolt']
   },
-
-  // Thought Experiments
   {
     id: 'fc-phil-032',
-    front: 'What is the Trolley Problem and what does it reveal?',
-    back: 'A runaway trolley will kill 5 people unless you divert it to kill 1 person instead. Most say divert. Variant: push a large man onto the tracks? Most say no. Reveals tension between utilitarian calculation and moral intuitions about direct harm.',
+    front: 'Describe the Trolley Problem & what tension does it reveal?',
+    back: 'Divert trolley to kill 1, save 5? People say yes. Push man to save 5? People say no. Shows conflict: utilitarianism vs. direct harm intuitions.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -346,8 +324,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-033',
-    front: 'What is the Ship of Theseus thought experiment about?',
-    back: 'If you replace every plank of a ship over time, is it still the same ship? What about if you rebuild the original from the old planks? Explores personal identity, persistence through change, and what makes something "the same."',
+    front: 'Ship of Theseus: What core problem does this thought experiment explore?',
+    back: 'Ship replacement: Is it the same ship? If you rebuild it, which is original? Study identity; persistence; definition.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -356,8 +334,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-034',
-    front: 'What is the Chinese Room argument and what does it challenge?',
-    back: 'John Searle: Imagine following rules to answer Chinese questions without understanding Chinese. You manipulate symbols correctly but have no comprehension. Challenges the idea that computational processes alone can produce understanding or consciousness.',
+    front: 'Chinese Room argument: What does it challenge about consciousness?',
+    back: 'Searle: Manipulate Chinese symbols; no understanding. Challenges computationalism: computation alone creates understanding/consciousness.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -366,20 +344,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-035',
-    front: 'What is Plato\'s Allegory of the Cave about?',
-    back: 'Prisoners chained in a cave see only shadows and mistake them for reality. One escapes, sees the sun (truth), and returns. Represents the journey from ignorance to knowledge, and the philosopher\'s duty to enlighten others despite resistance.',
+    front: 'Plato\'s Allegory of the Cave: What does it illustrate?',
+    back: 'Prisoners see shadows, mistake for reality. Escapee sees truth; represents knowledge journey; philosopher returns.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'beginner',
     tags: ['philosophy', 'plato', 'epistemology', 'allegory']
   },
-
-  // Ancient Wisdom
   {
     id: 'fc-phil-036',
-    front: 'What is the Socratic Method and its purpose?',
-    back: 'A form of inquiry through questions and answers to stimulate critical thinking and illuminate ideas. By questioning assumptions and exposing contradictions, it leads to deeper understanding. The teacher guides rather than lectures.',
+    front: 'Explain the Socratic Method.',
+    back: 'Question assumptions; expose contradictions to gain understanding. Guide, don\'t lecture.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -388,8 +364,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-037',
-    front: 'What did Socrates mean by "I know that I know nothing"?',
-    back: 'True wisdom begins with recognizing the limits of one\'s knowledge. Unlike those who falsely believe they know, Socrates\' awareness of ignorance makes him wiser. Intellectual humility is the foundation of genuine learning.',
+    front: 'fc-phil-037: What did Socrates mean by "I know that I know nothing?"',
+    back: 'Acknowledge your ignorance; Embrace intellectual humility; Pursue wisdom.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -398,20 +374,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-038',
-    front: 'What is "The Unexamined Life" according to Socrates?',
-    back: '"The unexamined life is not worth living." Spoken at his trial before death. Living authentically requires constant self-reflection, questioning one\'s beliefs and actions. Passive, unreflective existence fails to achieve human potential.',
+    front: 'ID: fc-phil-038 What is Socrates\' view of the unexamined life?',
+    back: 'It isn\'t worth living; Prioritize constant self-examination and critical thinking.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'beginner',
     tags: ['philosophy', 'socrates', 'self-examination', 'life']
   },
-
-  // Philosophy of Mind
   {
     id: 'fc-phil-039',
-    front: 'What is the Mind-Body Problem in philosophy?',
-    back: 'How do mental states (thoughts, feelings) relate to physical states (brain processes)? Are they the same thing (physicalism), separate substances (dualism), or something else? Central question in philosophy of mind.',
+    front: 'Explain the Mind-Body Problem in philosophy.',
+    back: 'Relate mental states to physical states. Explore physicalism; dualism; other possibilities. Central question for philosophy of mind.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -420,8 +394,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-040',
-    front: 'What is the "Hard Problem of Consciousness"?',
-    back: 'Coined by David Chalmers: Why do we have subjective, qualitative experience at all? Even if we explain all brain mechanisms, why is there "something it is like" to be conscious? The explanatory gap between physical processes and felt experience.',
+    front: 'ID: fc-phil-040 What is the \'hard problem of consciousness\'?',
+    back: 'Explain subjective experience. Even with complete brain mechanism understanding, explain qualia existence.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -430,20 +404,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-041',
-    front: 'What is "Qualia" in philosophy of mind?',
-    back: 'The subjective, qualitative aspects of conscious experience - the "what it is like" quality. The redness of red, the painfulness of pain. Qualia pose challenges for physicalist theories that try to explain mind purely in terms of brain states.',
+    front: 'fc-phil-041: Define qualia in philosophy of mind.',
+    back: 'Subjective, qualitative features of experience; internal feelings like redness of red or pain of pain.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'advanced',
     tags: ['philosophy', 'philosophy-of-mind', 'qualia', 'experience']
   },
-
-  // Logic and Argumentation
   {
     id: 'fc-phil-042',
-    front: 'What is a logical fallacy and why is it important to recognize them?',
-    back: 'An error in reasoning that undermines an argument\'s validity. Common types: ad hominem (attack the person), straw man (misrepresent opponent), false dichotomy (false either/or). Recognizing fallacies enables clearer thinking and better discourse.',
+    front: 'Define logical fallacy & its importance.',
+    back: 'It\'s flawed reasoning that weakens arguments; Spot them to strengthen your reasoning & critique others\' claims.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -452,8 +424,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-043',
-    front: 'What is the difference between valid and sound arguments?',
-    back: 'Valid: If the premises are true, the conclusion must be true (logical structure is correct). Sound: The argument is valid AND the premises are actually true. All sound arguments are valid, but not all valid arguments are sound.',
+    front: 'Valid vs. Sound Argument: What\'s the difference?',
+    back: 'Valid: Conclusion MUST be true if premises are. Sound: Valid AND premises ARE true. Sound implies valid, not vice-versa.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -462,20 +434,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-044',
-    front: 'What is Occam\'s Razor principle?',
-    back: 'Among competing hypotheses, prefer the one with the fewest assumptions. "Entities should not be multiplied beyond necessity." Simpler explanations are more likely to be correct. Not a proof, but a useful heuristic for theory selection.',
+    front: 'Occam\'s Razor: What should you prefer among competing hypotheses?',
+    back: 'Choose the hypothesis with the fewest assumptions; Seek simplicity.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'beginner',
     tags: ['philosophy', 'logic', 'occams-razor', 'simplicity']
   },
-
-  // Living Philosophically
   {
     id: 'fc-phil-045',
-    front: 'What is "Amor Fati" and how can it transform one\'s life?',
-    back: 'Latin for "love of fate." Nietzsche\'s concept of embracing everything that happens - not just accepting, but loving one\'s fate, including suffering. Transforms victimhood into affirmation. Every experience becomes integral to who you are.',
+    front: 'fc-phil-045: Define amor fati (Nietzsche).',
+    back: 'Love your fate; Accept everything that happens. Embrace both good and bad.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -484,8 +454,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-046',
-    front: 'What is the Stoic practice of "the view from above"?',
-    back: 'Mentally zooming out to see yourself from progressively greater distances - your city, country, planet, cosmos. Provides perspective on personal problems, reveals our connection to the whole, and diminishes petty concerns.',
+    front: 'fc-phil-046: Define Stoic "zooming out" meditation practice.',
+    back: 'Gain perspective; envision self from increasing distances (city, planet, cosmos). Diminish petty concerns; see your connection to all.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -494,20 +464,18 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-047',
-    front: 'What is the philosophical concept of "Negative Visualization"?',
-    back: 'Regularly imagining losing what you have - health, loved ones, possessions. Counterintuitively increases gratitude and happiness by preventing hedonic adaptation. Prepares you emotionally while deepening appreciation for the present.',
+    front: 'fc-phil-047: What philosophical exercise boosts gratitude & happiness?',
+    back: 'Visualize loss; appreciate what you have. Fight hedonic adaptation; prepare emotionally.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
     difficulty: 'beginner',
     tags: ['philosophy', 'stoicism', 'gratitude', 'visualization']
   },
-
-  // Modern Philosophy Applications
   {
     id: 'fc-phil-048',
-    front: 'How does "Effective Altruism" apply philosophical reasoning to doing good?',
-    back: 'Uses evidence and reason to determine the most effective ways to benefit others. Applies utilitarian thinking to charity - not just "doing good" but "doing the most good possible." Prioritizes high-impact, neglected, tractable causes.',
+    front: 'How does Effective Altruism prioritize helping others?',
+    back: 'Maximize positive impact! Use evidence and reason to choose effective charities; apply utilitarian principles.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -516,8 +484,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-049',
-    front: 'What philosophical insights come from Stoic morning and evening routines?',
-    back: 'Morning: Preview the day, anticipate challenges, set intentions aligned with values. Evening: Review actions, acknowledge mistakes without harsh judgment, note progress. Creates self-awareness, accountability, and continuous improvement.',
+    front: 'Stoic morning/evening routines: What philosophical benefits do they provide?',
+    back: 'Morning: Prepare for challenges; set intentions. Evening: Review actions; note progress. Build self-awareness; encourage improvement.',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',
@@ -526,8 +494,8 @@ export const philosophyFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-phil-050',
-    front: 'What is "philosophical counseling" and how does ancient wisdom apply to modern life?',
-    back: 'Using philosophical frameworks to address life challenges. Stoicism for anxiety and control issues. Existentialism for meaning crises. Buddhism for attachment suffering. Philosophy as practical medicine for the soul, not just academic theory.',
+    front: 'What is philosophical counseling?',
+    back: 'Address life\'s challenges with philosophy. Use Stoicism, Existentialism, Buddhism practically for anxiety, meaning, suffering; apply philosophy as soul medicine. ',
     category: 'Philosophy',
     source: 'Philosophy & Ethics',
     pathwayId: 'bruce-lee',

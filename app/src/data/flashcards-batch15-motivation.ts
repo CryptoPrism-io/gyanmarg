@@ -3,402 +3,321 @@ import type { SpacedRepetitionCard } from '@/types';
 export const motivationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mot-001',
-    front: 'What is intrinsic motivation?',
-    back: 'Motivation that comes from within—engaging in an activity for its own sake because it is inherently interesting, enjoyable, or satisfying, rather than for external rewards or pressures.',
+    front: 'Define intrinsic motivation.',
+    back: 'Engage in activity for its inherent satisfaction, not external rewards; it\'s interesting and enjoyable. Motivation from within.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'beginner',
-    tags: ['motivation', 'intrinsic motivation', 'psychology']
+    tags: ['motivation', 'intrinsic motivation', 'psychology'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-mot-002',
-    front: 'What is extrinsic motivation?',
-    back: 'Motivation driven by external factors such as rewards, recognition, money, grades, or avoiding punishment. The behavior is performed to obtain an outcome separate from the activity itself.',
+    front: 'Extrinsic Motivation: Define it.',
+    back: 'External rewards (money, grades) drive behavior; Achieve outcome separate from activity. ID: fc-mot-002',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'beginner',
-    tags: ['motivation', 'extrinsic motivation', 'psychology']
+    tags: ['motivation', 'extrinsic motivation', 'psychology'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-mot-003',
-    front: 'What is the "overjustification effect" in motivation?',
-    back: 'A phenomenon where providing external rewards for an already intrinsically rewarding activity can decrease intrinsic motivation. When rewards are removed, interest in the activity drops below original levels.',
+    front: 'fc-mot-003: Define overjustification effect on intrinsic motivation.',
+    back: 'Rewards undermine intrinsic motivation. Remove rewards and activity interest declines below baseline.; Psychology; motivation,overjustification,intrinsic motivation; intermediate',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'overjustification', 'intrinsic motivation']
+    tags: ['motivation', 'overjustification', 'intrinsic motivation'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-004',
-    front: 'What are the three basic psychological needs in Self-Determination Theory (SDT)?',
-    back: 'Autonomy (feeling in control of one\'s actions), Competence (feeling effective and capable), and Relatedness (feeling connected to others). Satisfying these needs promotes intrinsic motivation and well-being.',
+    front: 'SDT: What 3 basic psychological needs drive motivation?',
+    back: 'Satisfy these needs: Autonomy; Competence; Relatedness. They foster intrinsic motivation & well-being. ',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'self-determination theory', 'SDT']
+    tags: ['motivation', 'self-determination theory', 'SDT'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-005',
-    front: 'Who developed Self-Determination Theory?',
-    back: 'Edward Deci and Richard Ryan developed Self-Determination Theory (SDT) beginning in the 1970s-80s. Their research demonstrated that autonomy, competence, and relatedness are essential for psychological health and intrinsic motivation.',
+    front: 'Who are the primary developers of Self-Determination Theory (SDT)?',
+    back: 'Deci & Ryan developed SDT;  Autonomy, competence, relatedness drive psychological health & intrinsic motivation.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'beginner',
-    tags: ['motivation', 'self-determination theory', 'Deci', 'Ryan']
+    tags: ['motivation', 'self-determination theory', 'Deci', 'Ryan'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-mot-006',
-    front: 'What is the motivation continuum in Self-Determination Theory?',
-    back: 'A spectrum from amotivation (no motivation) through extrinsic motivation types (external regulation, introjected, identified, integrated) to intrinsic motivation. Movement toward intrinsic motivation is called "internalization."',
+    front: 'SDT Motivation Continuum: What\'s the range and end goal?',
+    back: 'Ranges from amotivation to intrinsic motivation; Achieve internalization by moving towards intrinsic motivation.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['motivation', 'self-determination theory', 'internalization']
+    tags: ['motivation', 'self-determination theory', 'internalization'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-mot-007',
-    front: 'What is "flow state" according to Csikszentmihalyi?',
-    back: 'A mental state of complete absorption in an activity where one loses track of time, self-consciousness fades, and performance feels effortless. It occurs when skill level and challenge level are both high and well-matched.',
+    front: 'Define the flow state in psychology.',
+    back: 'Experience total absorption; lose track of time. Match skill and challenge for optimal performance.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'flow', 'Csikszentmihalyi', 'optimal experience']
+    tags: ['motivation', 'flow', 'Csikszentmihalyi', 'optimal experience'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-008',
-    front: 'What conditions are necessary for achieving flow state?',
-    back: 'Clear goals, immediate feedback, balance between challenge and skill (both high), sense of control, merging of action and awareness, and the activity being intrinsically rewarding.',
+    front: 'What conditions enable achieving flow state?',
+    back: 'Set clear goals; Get immediate feedback; Balance high challenge & skill; Feel in control; Merge action & awareness; Find intrinsic reward. ',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'flow', 'peak performance']
+    tags: ['motivation', 'flow', 'peak performance'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-009',
-    front: 'What happens when challenge exceeds skill level according to flow theory?',
-    back: 'Anxiety results. When challenges are too high relative to skills, people feel overwhelmed and stressed. Flow requires a balance where both challenge and skill are high and matched.',
+    front: 'Flow theory: What emotion arises if challenge greatly exceeds skill?',
+    back: 'Experience anxiety! Reduce challenge or improve skill; find balance between challenge and skill for flow.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'flow', 'anxiety', 'challenge']
+    tags: ['motivation', 'flow', 'anxiety', 'challenge'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-010',
-    front: 'What is mastery orientation vs. performance orientation?',
-    back: 'Mastery orientation focuses on learning, improving, and developing competence. Performance orientation focuses on demonstrating ability relative to others or avoiding looking incompetent. Mastery orientation leads to more resilient motivation.',
+    front: 'Mastery vs. Performance Orientation: What\'s the difference?',
+    back: 'Mastery: Learn & improve competence. Performance: Show ability vs. others, avoid incompetence; builds resilient motivation. ',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'mastery', 'achievement goals']
+    tags: ['motivation', 'mastery', 'achievement goals'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-011',
-    front: 'How do mastery-oriented individuals respond to failure?',
-    back: 'They view failure as feedback and learning opportunity, increase effort, try new strategies, and persist longer. They attribute setbacks to controllable factors like effort or strategy rather than fixed ability.',
+    front: 'How do mastery-oriented people react to failure?',
+    back: 'View failure as feedback; Increase effort, try new strategies, persist. Attribute setbacks to controllable factors like effort; not fixed ability.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'mastery', 'failure', 'resilience']
+    tags: ['motivation', 'mastery', 'failure', 'resilience'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-012',
-    front: 'What is Carol Dweck\'s growth mindset theory?',
-    back: 'The belief that abilities and intelligence can be developed through effort, learning, and persistence. Contrasts with fixed mindset (believing abilities are innate and unchangeable). Growth mindset promotes resilience and motivation to learn.',
+    front: 'Define Carol Dweck\'s "growth mindset."',
+    back: 'Abilities develop through effort. Cultivate learning, persistence; boost resilience, motivation. Contrast: fixed mindset.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'beginner',
-    tags: ['motivation', 'growth mindset', 'Dweck', 'intelligence']
+    tags: ['motivation', 'growth mindset', 'Dweck', 'intelligence'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-mot-013',
-    front: 'How does praise affect mindset development in children?',
-    back: 'Praising effort and process ("You worked hard") promotes growth mindset. Praising intelligence or talent ("You\'re so smart") promotes fixed mindset and can make children avoid challenges to protect their "smart" label.',
+    front: 'How does praise impact a child\'s mindset development?',
+    back: 'Praise effort & process, not innate ability; foster growth mindset & resilience. Avoid fixed mindset & learned helplessness.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'growth mindset', 'praise', 'parenting']
+    tags: ['motivation', 'growth mindset', 'praise', 'parenting'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-014',
-    front: 'What is Vroom\'s Expectancy Theory of motivation?',
-    back: 'Motivation = Expectancy × Instrumentality × Valence. People are motivated when they believe effort leads to performance (expectancy), performance leads to outcomes (instrumentality), and the outcomes are valuable (valence).',
+    front: 'Vroom\'s Expectancy Theory: What drives motivation?',
+    back: 'Motivation = Expectancy x Instrumentality x Valence. Increase belief that effort yields valuable outcomes via performance.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['motivation', 'expectancy theory', 'Vroom', 'workplace']
+    tags: ['motivation', 'expectancy theory', 'Vroom', 'workplace'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-mot-015',
-    front: 'What is "expectancy" in Expectancy Theory?',
-    back: 'The belief that one\'s effort will lead to the desired level of performance. If someone believes no amount of effort will enable them to succeed, expectancy is low and motivation suffers.',
+    front: 'fc-mot-015: What\'s self-efficacy in expectancy theory?',
+    back: 'Judge your capability to perform a task. Higher self-efficacy boosts motivation; increases effort, persistence.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'expectancy theory', 'self-efficacy']
+    tags: ['motivation', 'expectancy theory', 'self-efficacy'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-016',
-    front: 'What is the Goal-Gradient Effect?',
-    back: 'People accelerate their behavior as they get closer to a goal. Motivation and effort increase as the finish line approaches. First demonstrated by Clark Hull with rats running faster near food.',
+    front: 'Define the Goal-Gradient Effect.',
+    back: 'Accelerate behavior approaching a goal. Increase motivation/effort near finish; Hull\'s rats ran faster near food. ',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'goal-gradient', 'goals', 'behavior']
+    tags: ['motivation', 'goal-gradient', 'goals', 'behavior'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-017',
-    front: 'How can the Goal-Gradient Effect be applied practically?',
-    back: 'Break large goals into smaller milestones, use progress bars, give "head starts" (like coffee cards with 2 stamps already), and make progress visible. People work harder when they can see the end approaching.',
+    front: 'Apply the Goal-Gradient Effect. How?',
+    back: 'Break down large goals; visualize progress! Incentivize early progress; show remaining distance shrinking.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'goal-gradient', 'applied psychology']
+    tags: ['motivation', 'goal-gradient', 'applied psychology'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-018',
-    front: 'What is the Progress Principle discovered by Amabile and Kramer?',
-    back: 'Of all things that can boost motivation and positive emotions during a workday, the single most important is making progress in meaningful work. Small wins have disproportionately positive effects on motivation.',
+    front: 'Define Amabile & Kramer\'s Progress Principle in motivation.',
+    back: 'Make progress in meaningful work; it\'s the strongest workday motivator. Small wins drive disproportionate positive effects.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'progress principle', 'workplace', 'small wins']
+    tags: ['motivation', 'progress principle', 'workplace', 'small wins'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-019',
-    front: 'What are "catalysts" and "nourishers" in the Progress Principle?',
-    back: 'Catalysts are actions that directly support work (clear goals, autonomy, resources, sufficient time). Nourishers are interpersonal events that uplift workers (respect, encouragement, emotional support, affiliation).',
+    front: 'Define catalysts & nourishers, and how they impact motivation at work.',
+    back: 'Catalysts fuel progress: Give clear goals, autonomy, resources, time. Nourishers uplift: Show respect, encourage, support, affiliate; boost morale.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['motivation', 'progress principle', 'management', 'workplace']
+    tags: ['motivation', 'progress principle', 'management', 'workplace'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-mot-020',
-    front: 'What is the myth that motivation must come before action?',
-    back: 'Many believe you need to "feel motivated" to start. Research shows action often precedes motivation—starting a task, even reluctantly, generates momentum and motivation. Behavioral activation demonstrates this principle.',
+    front: 'Myth: Motivation must precede action? What\'s the truth?',
+    back: 'Bust this myth! Act first; then fuel further action with achieved progress; generate intrinsic motivation.; Don\'t wait!',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'myths', 'action', 'procrastination']
+    tags: ['motivation', 'myths', 'action', 'procrastination'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-021',
-    front: 'Why is willpower an unreliable motivation strategy?',
-    back: 'Willpower depletes with use (ego depletion), varies by time of day and stress levels, and fights against rather than working with natural tendencies. Environment design and habit formation are more sustainable strategies.',
+    front: 'Why is willpower unreliable for motivation?',
+    back: 'Willpower depletes; use environment design and habits. Don\'t fight yourself; work *with* your nature. ID: fc-mot-021',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'willpower', 'ego depletion', 'myths']
+    tags: ['motivation', 'willpower', 'ego depletion', 'myths'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-022',
-    front: 'What is the "what-the-hell effect" in motivation?',
-    back: 'After a small failure or indulgence, people often abandon their goals entirely ("I already ate one cookie, might as well eat the whole box"). Breaking this cycle requires self-compassion and viewing lapses as temporary setbacks.',
+    front: 'What\'s the "what the hell" effect related to motivation?',
+    back: 'Abandon goals entirely after small setbacks or indulgences. Avoid by setting flexible goals; forgive minor slips.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'self-regulation', 'failure', 'goals']
+    tags: ['motivation', 'self-regulation', 'failure', 'goals'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-023',
-    front: 'How does autonomy support sustain long-term motivation?',
-    back: 'When people feel they have choice and control over their actions, motivation becomes more internalized and self-sustaining. Controlling environments undermine intrinsic motivation even when rewards are present.',
+    front: 'Autonomy & Long-Term Motivation: How are they linked?',
+    back: 'Choice and control internalize motivation for the long run. Controlling environments undermine it, even with rewards. ',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'autonomy', 'self-determination theory', 'long-term']
+    tags: ['motivation', 'autonomy', 'self-determination theory', 'long-term'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-024',
-    front: 'What is "identified regulation" in Self-Determination Theory?',
-    back: 'A type of extrinsic motivation where the person has consciously identified with the value of an activity and accepted it as personally important, even if not inherently enjoyable. More autonomous than external or introjected regulation.',
+    front: 'Define identified regulation within Self-Determination Theory.',
+    back: 'Value activity & accept it as important; more autonomous than external/introjected regulation.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['motivation', 'self-determination theory', 'internalization']
+    tags: ['motivation', 'self-determination theory', 'internalization'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-mot-025',
-    front: 'What role does purpose play in sustaining motivation?',
-    back: 'Connecting activities to larger meaning and purpose increases persistence and engagement. Purpose provides "why" that sustains motivation through difficulties. Viktor Frankl: "Those who have a why can bear almost any how."',
+    front: 'How does purpose affect sustained motivation?',
+    back: 'Find deeper meaning to increase persistence and engagement; Purpose fuels long-term goals.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'purpose', 'meaning', 'long-term']
+    tags: ['motivation', 'purpose', 'meaning', 'long-term'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-026',
-    front: 'What is the difference between approach and avoidance motivation?',
-    back: 'Approach motivation moves toward desired outcomes (gains, rewards). Avoidance motivation moves away from undesired outcomes (losses, punishment). Approach motivation is generally more sustainable and associated with positive emotions.',
+    front: 'Approach vs. Avoidance Motivation: What\'s the core difference?',
+    back: 'Approach: Pursue gains/rewards; generates positive feelings. Avoidance: Evade losses/punishment; less sustainable.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'approach', 'avoidance', 'goals']
+    tags: ['motivation', 'approach', 'avoidance', 'goals'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-027',
-    front: 'How do implementation intentions boost goal achievement?',
-    back: 'Specifying when, where, and how you will act ("If situation X, then I will do Y") dramatically increases follow-through. They automate initiation by linking behavior to specific cues, reducing reliance on motivation in the moment.',
+    front: 'fc-mot-027: How do implementation intentions improve goal attainment?',
+    back: 'Specify when, where, and how you\'ll act; link cues to actions. Use "If X, then Y" plans to form habits.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'implementation intentions', 'goals', 'habits']
+    tags: ['motivation', 'implementation intentions', 'goals', 'habits'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-028',
-    front: 'What is "temptation bundling" as a motivation strategy?',
-    back: 'Pairing an activity you should do but don\'t enjoy with one you want to do but feel guilty about. Example: only listening to favorite podcasts while exercising. Links intrinsic reward to desired behavior.',
+    front: 'fc-mot-028: Explain temptation bundling, a motivation strategy.',
+    back: 'Pair a needed activity with an enjoyable one. E.g., Watch TV while exercising; Listen to a podcast while cleaning.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'temptation bundling', 'behavior change', 'strategies']
+    tags: ['motivation', 'temptation bundling', 'behavior change', 'strategies'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-029',
-    front: 'What is the role of social connection in motivation?',
-    back: 'Relatedness is a basic psychological need. Social support, accountability partners, and being part of a community significantly boost motivation and persistence. Humans are fundamentally social, and isolation undermines motivation.',
+    front: 'How does social connection affect motivation?',
+    back: 'Relatedness fuels motivation; Isolation undermines it. Use social support; find accountability partners; build community.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'beginner',
-    tags: ['motivation', 'relatedness', 'social support', 'community']
+    tags: ['motivation', 'relatedness', 'social support', 'community'],
+    difficulty: 'beginner'
   },
   {
     id: 'fc-mot-030',
-    front: 'How does self-efficacy differ from self-esteem in motivation?',
-    back: 'Self-efficacy is belief in ability to succeed at specific tasks ("I can learn this"). Self-esteem is overall self-worth. Self-efficacy is a stronger predictor of motivation and performance than general self-esteem.',
+    front: 'Self-efficacy vs. self-esteem: What\'s the difference in motivation?',
+    back: 'Self-efficacy: believe you can DO specific things. Self-esteem: How you FEEL about yourself; distinct from task competence. ',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'self-efficacy', 'Bandura', 'confidence']
+    tags: ['motivation', 'self-efficacy', 'Bandura', 'confidence'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-031',
-    front: 'What are the four sources of self-efficacy according to Bandura?',
-    back: 'Mastery experiences (past successes), Vicarious experiences (seeing others succeed), Social persuasion (encouragement from others), and Physiological/emotional states (interpreting arousal positively). Mastery experiences are most powerful.',
+    front: 'Bandura\'s self-efficacy: What are the four sources?',
+    back: 'Boost efficacy: Master it; Watch others; Get support; Control emotions. Mastery is key! ID: fc-mot-031',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['motivation', 'self-efficacy', 'Bandura', 'confidence']
+    tags: ['motivation', 'self-efficacy', 'Bandura', 'confidence'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-mot-032',
-    front: 'What is "motivational crowding out"?',
-    back: 'When external incentives (money, rewards) replace or diminish intrinsic motivation for an activity. Particularly problematic for activities originally driven by interest, purpose, or prosocial motives.',
+    front: 'Define \'crowding out\' in motivational psychology.',
+    back: 'External rewards diminish intrinsic motivation. Avoid using incentives for activities driven by interest; purpose; or prosocial motives.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['motivation', 'crowding out', 'intrinsic motivation', 'rewards']
+    tags: ['motivation', 'crowding out', 'intrinsic motivation', 'rewards'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-mot-033',
-    front: 'How does variable reinforcement affect motivation?',
-    back: 'Unpredictable rewards create stronger, more persistent motivation than fixed schedules. This explains gambling\'s appeal and why social media (variable likes/comments) is so engaging. Can be used constructively or exploitatively.',
+    front: 'How does variable reinforcement impact motivation?',
+    back: 'Create stronger motivation; Extinguish behaviors slower. Explains persistence in gambling.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'reinforcement', 'rewards', 'behaviorism']
+    tags: ['motivation', 'reinforcement', 'rewards', 'behaviorism'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-034',
-    front: 'What is the Zeigarnik Effect and how does it relate to motivation?',
-    back: 'Uncompleted tasks are remembered better than completed ones—the mind keeps incomplete tasks active. Starting a task creates psychological tension that motivates completion. Useful for overcoming procrastination.',
+    front: 'What\'s the Zeigarnik Effect? How does it boost motivation?',
+    back: 'Incomplete tasks stick in memory; complete them! Begin a task to create tension; drive yourself to finish.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'Zeigarnik effect', 'procrastination', 'memory']
+    tags: ['motivation', 'Zeigarnik effect', 'procrastination', 'memory'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-035',
     front: 'Why do most New Year\'s resolutions fail?',
-    back: 'Reliance on motivation rather than systems, vague goals without implementation intentions, attempting too many changes, no accountability or social support, and environmental triggers unchanged. Success requires behavior design, not just motivation.',
+    back: 'Motivation fades; build systems instead. Set clear goals with concrete plans; limit changes; seek accountability; modify environment. Design behavior, don\'t just wish.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'resolutions', 'goals', 'behavior change']
+    tags: ['motivation', 'resolutions', 'goals', 'behavior change'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-036',
-    front: 'What is "ego depletion" and its implications for motivation?',
-    back: 'The theory that self-control draws from a limited resource that depletes with use. After exerting willpower, subsequent self-control is harder. Implications: schedule important decisions early, reduce decision fatigue, use habits over willpower.',
+    front: 'Ego Depletion: How does willpower work?',
+    back: 'Self-control drains a limited resource; exert willpower, then struggle to self-control. Schedule important decisions early; use habits.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'ego depletion', 'willpower', 'self-control']
+    tags: ['motivation', 'ego depletion', 'willpower', 'self-control'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-037',
-    front: 'How do "commitment devices" support motivation?',
-    back: 'Mechanisms that lock you into future actions or make backing out costly. Examples: public commitments, financial stakes, removing temptations from environment. They work by removing the option to rely on future motivation.',
+    front: 'Define commitment devices in behavioral psychology.',
+    back: 'Force future action; remove reliance on later motivation. Examples: public commitment; financial stakes; remove temptation. fc-mot-037',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'commitment devices', 'precommitment', 'behavior']
+    tags: ['motivation', 'commitment devices', 'precommitment', 'behavior'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-038',
-    front: 'What is the difference between harmonious and obsessive passion?',
-    back: 'Harmonious passion involves autonomous internalization where the activity integrates with identity flexibly. Obsessive passion involves controlled internalization with rigid persistence despite negative consequences. Harmonious passion leads to better well-being.',
+    front: 'Harmonious vs. Obsessive Passion: What distinguishes them?',
+    back: 'Harmonious: Autonomous internalization, integrates flexibly. Obsessive: Controlled internalization, rigid persistence despite harm; lower well-being. ',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'advanced',
-    tags: ['motivation', 'passion', 'well-being', 'self-determination']
+    tags: ['motivation', 'passion', 'well-being', 'self-determination'],
+    difficulty: 'advanced'
   },
   {
     id: 'fc-mot-039',
-    front: 'How does framing goals as "learning" vs. "performance" affect motivation?',
-    back: 'Learning goals (focus on improvement) promote challenge-seeking, persistence after failure, and intrinsic interest. Performance goals (focus on proving ability) can lead to avoiding challenges and giving up after setbacks.',
+    front: 'Learning vs. Performance goals: How do they affect motivation?',
+    back: 'Learning: seek challenge, persist, enjoy. Performance: avoid challenge, give up; focus on proving ability.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'goals', 'learning', 'achievement']
+    tags: ['motivation', 'goals', 'learning', 'achievement'],
+    difficulty: 'intermediate'
   },
   {
     id: 'fc-mot-040',
-    front: 'What is the "fresh start effect" in motivation?',
-    back: 'People are more motivated to pursue goals after temporal landmarks (new year, birthday, Monday, beginning of month). These moments create psychological separation from past failures and enhance self-efficacy for new beginnings.',
+    front: 'fc-mot-040: What fuels motivation after temporal landmarks?',
+    back: 'Capitalize on fresh start effect; Use temporal landmarks (e.g., new year, birthday) to separate from past failures and boost self-efficacy.',
     category: 'Psychology',
-    source: 'Motivation Science',
-    pathwayId: 'psychology',
-    difficulty: 'intermediate',
-    tags: ['motivation', 'fresh start effect', 'goals', 'temporal landmarks']
-  }
-];
+    tags: ['motivation', 'fresh start effect', 'goals', 'temporal landmarks'],
+    difficulty: 'intermediate'
+  };

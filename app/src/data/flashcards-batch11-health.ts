@@ -4,8 +4,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   // Sleep Science and Optimization
   {
     id: 'fc-hw-001',
-    front: 'What are the four main stages of sleep, and what is their significance?',
-    back: 'The four stages are: N1 (light sleep, transition), N2 (deeper sleep, memory consolidation begins), N3 (deep/slow-wave sleep, physical restoration and growth hormone release), and REM (dreaming, emotional processing, and memory consolidation). A complete cycle takes 90-110 minutes.',
+    front: 'List the 4 sleep stages and their key functions.',
+    back: 'N1: Transition; N2: Memory consolidation; N3: Physical restoration; REM: Dreaming & emotional processing. Cycle lasts 90-110 mins. ',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -14,8 +14,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-002',
-    front: 'What is sleep debt and can it be fully repaid?',
-    back: 'Sleep debt is the cumulative effect of not getting enough sleep. While short-term sleep debt can be partially recovered with extra sleep, chronic sleep debt causes lasting cognitive impairment, metabolic dysfunction, and increased disease risk that cannot be fully reversed. Prevention through consistent adequate sleep is essential.',
+    front: 'Define sleep debt. Can you fully repay it?',
+    back: 'Sleep debt is accumulated sleep loss. Repay short-term debt with extra sleep; Chronic debt causes lasting harm; prevent it!',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -24,8 +24,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-003',
-    front: 'What is the ideal bedroom temperature for optimal sleep?',
-    back: 'Research suggests 65-68°F (18-20°C) is optimal for most adults. Cooler temperatures facilitate the natural drop in core body temperature that signals sleep onset. The body needs to cool down by about 2-3°F to initiate and maintain sleep effectively.',
+    front: 'Ideal bedroom temperature for optimal sleep?',
+    back: 'Aim for 65-68°F (18-20°C). Cooler temps help your body cool down for sleep onset and maintenance; lower core temp by 2-3°F.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -34,8 +34,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-004',
-    front: 'How does blue light affect sleep and what can be done about it?',
-    back: 'Blue light (450-495nm wavelength) suppresses melatonin production by up to 50%, delays circadian rhythm, and reduces REM sleep. Mitigation strategies: avoid screens 1-2 hours before bed, use blue light filtering apps/glasses after sunset, and increase exposure to natural light during the day.',
+    front: 'Blue light: How does it affect sleep & what are key solutions?',
+    back: 'Suppress melatonin; delay circadian rhythm; reduce REM. Block blue light with filters/glasses; limit screen time before bed; maximize daytime light. ',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -44,20 +44,18 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-005',
-    front: 'What is sleep inertia and how long does it typically last?',
-    back: 'Sleep inertia is the groggy, disoriented feeling upon waking, caused by residual adenosine and incomplete transition from sleep to wakefulness. It typically lasts 15-30 minutes but can extend to 2-4 hours after sleep deprivation. Light exposure, movement, and caffeine can help reduce its duration.',
+    front: 'Define sleep inertia and its typical duration.',
+    back: 'Groggy disorientation upon waking; adenosine lingers. Lasts 15-30 min normally, up to 4 hrs after sleep deprivation; use light/movement/caffeine.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
     difficulty: 'intermediate',
     tags: ['health', 'wellness', 'sleep', 'waking']
   },
-
-  // Exercise Fundamentals
   {
     id: 'fc-hw-006',
-    front: 'What is the difference between muscular strength and muscular endurance?',
-    back: 'Muscular strength is the maximum force a muscle can produce in a single effort (trained with heavy weights, low reps: 1-6). Muscular endurance is the ability to sustain repeated contractions over time (trained with lighter weights, high reps: 15-25+). Both are important for functional fitness.',
+    front: 'Strength vs. Endurance: What distinguishes muscle force from sustained effort?',
+    back: 'Maximize force (strength) with heavy weights/low reps; Sustain contractions (endurance) with light weights/high reps. Train both for fitness.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -66,8 +64,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-007',
-    front: 'What is progressive overload and why is it essential for fitness gains?',
-    back: 'Progressive overload is the gradual increase of stress placed on the body during exercise. It is essential because the body adapts to consistent stimuli. Without progressively increasing weight, reps, sets, or intensity, muscles have no reason to grow stronger. This principle applies to all training modalities.',
+    front: 'Explain progressive overload and its role in fitness gains.',
+    back: 'Gradually increase exercise stress (weight, reps, intensity) to force adaptation. Without it, muscles won\'t strengthen or grow.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -76,8 +74,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-008',
-    front: 'What are the three energy systems the body uses during exercise?',
-    back: 'ATP-PC (phosphocreatine) system: immediate energy for 0-10 seconds of max effort. Glycolytic (anaerobic) system: 10 seconds to 2 minutes, uses glucose without oxygen. Oxidative (aerobic) system: sustained activity beyond 2 minutes, uses oxygen to metabolize carbs and fats. All systems work together but dominate at different intensities.',
+    front: 'Name the 3 energy systems your body uses during exercise.',
+    back: 'ATP-PC: Fuel max effort (0-10s). Glycolytic: Use glucose (10s-2min). Oxidative: Sustain activity, metabolize carbs/fats (+2min). All collaborate.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -86,8 +84,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-009',
-    front: 'What is Zone 2 cardio and why is it important for metabolic health?',
-    back: 'Zone 2 is aerobic exercise at 60-70% max heart rate where you can still hold a conversation. It builds mitochondrial density, improves fat oxidation, enhances cardiac efficiency, and forms the aerobic base for all other training. Experts recommend 3-4 hours weekly for optimal metabolic health and longevity.',
+    front: 'Zone 2 Cardio: Define & explain its key benefit for metabolic health.',
+    back: 'Maintain 60-70% max HR; conversational pace. Boost mitochondrial density & cardiac efficiency; build aerobic base. Aim: 3-4 hrs/week.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -96,20 +94,18 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-010',
-    front: 'What are the key components of flexibility and how do static vs dynamic stretching differ?',
-    back: 'Flexibility depends on muscle elasticity, joint structure, and neural tension. Static stretching (holding positions 30-60 seconds) is best post-workout for increasing range of motion. Dynamic stretching (controlled movements through range) is ideal pre-workout to prepare muscles without reducing power output.',
+    front: 'Key to flexibility? Differentiate static and dynamic stretching.',
+    back: 'Muscle/joint/nerves matter. Static: hold, boosts ROM post-workout. Dynamic: move, preps muscles pre-workout.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
     difficulty: 'beginner',
     tags: ['health', 'wellness', 'exercise', 'flexibility', 'stretching']
   },
-
-  // Nutrition Basics
   {
     id: 'fc-hw-011',
-    front: 'What are the three macronutrients and their caloric values per gram?',
-    back: 'Protein: 4 calories/gram - builds and repairs tissue, enzymes, hormones. Carbohydrates: 4 calories/gram - primary energy source, especially for brain and high-intensity exercise. Fat: 9 calories/gram - hormone production, vitamin absorption, cell membranes, sustained energy.',
+    front: 'Name 3 macronutrients & their calories/gram?',
+    back: 'Protein: 4 cal/g (build/repair); Carbs: 4 cal/g (energy); Fat: 9 cal/g (hormones/absorption).',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -118,8 +114,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-012',
-    front: 'How much protein does the average person need daily for muscle maintenance and growth?',
-    back: 'General health: 0.8g per kg body weight. Active individuals: 1.2-1.6g per kg. Athletes/muscle building: 1.6-2.2g per kg. Older adults may need higher amounts (1.2-1.5g/kg) to combat muscle loss. Distribute intake across 3-4 meals for optimal muscle protein synthesis (20-40g per meal).',
+    front: 'How much daily protein do you need for muscle maintenance/growth?',
+    back: 'Aim for 0.8g/kg (general), 1.2-1.6g/kg (active), or 1.6-2.2g/kg (athletes). Distribute 20-40g protein across 3-4 meals.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -128,8 +124,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-013',
-    front: 'What is the glycemic index and why does it matter for energy management?',
-    back: 'The glycemic index (GI) measures how quickly foods raise blood sugar on a scale of 0-100. High-GI foods (>70) cause rapid spikes and crashes, affecting energy and hunger. Low-GI foods (<55) provide sustained energy. Glycemic load (GI × carb grams ÷ 100) is more practical as it considers portion size.',
+    front: 'What\'s glycemic index (GI) and why manage energy with it?',
+    back: 'GI ranks foods by blood sugar impact (0-100). Manage energy by favoring low-GI (<55) for sustained fuel; limit high-GI (>70) spike/crash.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -138,8 +134,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-014',
-    front: 'What are the essential micronutrients most commonly deficient in modern diets?',
-    back: 'Vitamin D (immune function, bone health), Magnesium (300+ enzymatic reactions, sleep, stress), Omega-3 fatty acids (brain health, inflammation), Iron (especially in women), Vitamin B12 (energy, nervous system), and Zinc (immune function, wound healing). Whole foods are preferred over supplements when possible.',
+    front: 'Common micronutrient deficiencies in modern diets?',
+    back: 'Get Vit D; Mg for enzymes/sleep; Omega-3 for brain/inflam; Fe for women; B12 for energy; Zn for immunity. Prefer whole foods!',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -148,20 +144,18 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-015',
-    front: 'What is nutrient timing and when does it actually matter?',
-    back: 'Nutrient timing refers to strategically eating around workouts. For most people, total daily intake matters more than timing. However, timing becomes important for: athletes training multiple times daily, those training fasted for long sessions, and optimizing post-workout recovery (protein within 2-3 hours). Pre-workout carbs help performance for intense sessions.',
+    front: 'Nutrient timing: What is it, and when does it matter the most?',
+    back: 'Strategically eat around workouts.  Prioritize timing if you\'re: an athlete training intensely/multiple times; training fasted long; optimizing recovery (protein 2-3 hrs post-workout).',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
     difficulty: 'advanced',
     tags: ['health', 'wellness', 'nutrition', 'nutrient-timing']
   },
-
-  // Stress Management
   {
     id: 'fc-hw-016',
-    front: 'What is the difference between acute and chronic stress, and their effects on health?',
-    back: 'Acute stress is short-term and can be beneficial (hormesis) - sharpening focus and mobilizing energy. Chronic stress causes sustained cortisol elevation leading to: immune suppression, muscle breakdown, fat storage, impaired memory, anxiety, and increased disease risk. The key is recovery between stressors.',
+    front: 'Acute vs. chronic stress: What are they, and how do they affect health?',
+    back: 'Acute: short-term, boosts focus. Chronic: sustained cortisol, causes immune issues; muscle breakdown; fat gain; memory loss; anxiety; disease. Prioritize recovery!',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -170,8 +164,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-017',
-    front: 'How does the physiological sigh technique work for rapid stress relief?',
-    back: 'The physiological sigh consists of a double inhale through the nose (one full breath, then a second short inhale to fully expand lungs) followed by a long exhale through the mouth. This activates the parasympathetic nervous system by stimulating the vagus nerve and quickly reduces heart rate and stress response in 1-3 breaths.',
+    front: 'Explain the physiological sigh\'s stress relief mechanism.',
+    back: 'Double inhale (nose), expand lungs; long exhale (mouth). Activates parasympathetic system; stimulates vagus nerve; reduces heart rate/stress quickly.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -180,8 +174,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-018',
-    front: 'What is Heart Rate Variability (HRV) and why is it a key stress metric?',
-    back: 'HRV measures the variation in time between heartbeats. Higher HRV indicates better parasympathetic tone and stress resilience - the body can flexibly respond to demands. Lower HRV suggests chronic stress, overtraining, or poor recovery. It is improved through sleep, exercise, meditation, and stress management.',
+    front: 'What is Heart Rate Variability (HRV) and why is it vital?',
+    back: 'HRV tracks time between heartbeats. Improve HRV (stress resilience) with sleep, exercise, and meditation. Lower HRV suggests chronic stress.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -190,8 +184,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-019',
-    front: 'What is the box breathing technique and when should it be used?',
-    back: 'Box breathing involves: 4 seconds inhale, 4 seconds hold, 4 seconds exhale, 4 seconds hold (repeat). It balances the autonomic nervous system and is used by Navy SEALs and athletes. Best for: pre-performance anxiety, anger management, general stress reduction. Practice 4-5 cycles for immediate calming effect.',
+    front: 'Explain box breathing; When to use it?',
+    back: 'Inhale 4, hold 4, exhale 4, hold 4 (repeat).; Use for stress, anxiety, anger. Practice 4-5 cycles to calm.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -200,20 +194,18 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-020',
-    front: 'How does chronic stress affect the brain structurally and functionally?',
-    back: 'Chronic stress shrinks the prefrontal cortex (decision-making, impulse control) and hippocampus (memory), while enlarging the amygdala (fear response). It impairs neurogenesis, reduces BDNF (brain-derived neurotrophic factor), and creates negative thought loops. These changes are partially reversible with stress reduction and exercise.',
+    front: 'Chronic stress: What structural and functional brain changes occur?',
+    back: 'Brain changes: Shrinks prefrontal cortex & hippocampus; enlarges amygdala. Impairs neurogenesis & BDNF; creates negative loops. Reverse with stress reduction.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
     difficulty: 'advanced',
     tags: ['health', 'wellness', 'stress', 'brain', 'neuroscience']
   },
-
-  // Energy Management
   {
     id: 'fc-hw-021',
-    front: 'What is the ultradian rhythm and how can it be used to optimize productivity?',
-    back: 'Ultradian rhythms are 90-120 minute cycles of higher and lower alertness throughout the day. Peak performance occurs in 90-minute focused blocks followed by 15-20 minute recovery periods. Working with these natural rhythms instead of pushing through fatigue leads to better sustained energy and output quality.',
+    front: 'What is the ultradian rhythm & how do you optimize productivity with it?',
+    back: 'Cycle through 90-120 min alertness peaks and troughs. Work in 90-min blocks; recover 15-20 min. Sustained energy & quality result.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -222,8 +214,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-022',
-    front: 'What is adenosine and how does caffeine interact with it?',
-    back: 'Adenosine is a neurotransmitter that accumulates during waking hours and creates sleep pressure. Caffeine blocks adenosine receptors without clearing adenosine, temporarily masking fatigue. When caffeine wears off, accumulated adenosine floods receptors, causing a crash. Half-life is 5-6 hours, so avoid caffeine after early afternoon.',
+    front: 'Adenosine: What is it, and how does caffeine affect its function?',
+    back: 'Adenosine builds sleep pressure; caffeine blocks its receptors, masking fatigue. Avoid caffeine after early afternoon (5-6 hour half-life) to prevent crashes.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -232,8 +224,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-023',
-    front: 'What is the post-lunch dip and how can it be managed?',
-    back: 'The post-lunch dip (typically 1-3 PM) is a natural circadian low point, not just caused by eating. Management strategies: time demanding tasks for morning peak, take a brief walk after lunch, expose yourself to bright light, consider a 10-20 minute power nap (not longer to avoid sleep inertia), and eat a protein-rich, lower-carb lunch.',
+    front: 'Post-lunch dip: What is it and how do you manage it?',
+    back: 'Circadian low; Manage with morning focus, walk, light, brief nap, protein/low-carb lunch; Avoid sleep inertia.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -242,8 +234,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-024',
-    front: 'How does hydration affect cognitive performance and energy levels?',
-    back: 'Even mild dehydration (1-2% body weight loss) impairs concentration, short-term memory, and mood. The brain is 75% water and highly sensitive to fluid balance. Symptoms include fatigue, headaches, and reduced alertness. Aim for pale yellow urine and approximately 2-3 liters daily, more with exercise or heat.',
+    front: 'How does hydration impact cognition and energy?',
+    back: 'Dehydration impairs concentration & memory; Brain needs water. Drink 2-3L daily; more with exercise/heat. Check for pale yellow urine. ',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -252,20 +244,18 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-025',
-    front: 'What is the optimal morning routine for maximizing daily energy?',
-    back: 'Evidence-based morning energy optimization: 1) Get bright light exposure within 30 minutes of waking (resets circadian rhythm), 2) Delay caffeine 90-120 minutes (clears adenosine first), 3) Light movement or exercise, 4) Cold water exposure (activates norepinephrine), 5) Protein-rich breakfast to stabilize blood sugar.',
+    front: 'Optimize daily energy: Best morning routine?',
+    back: 'Get bright light; Delay caffeine; Move/exercise; Cold exposure; Eat protein. Boost circadian rhythm & norepinephrine; Stabilize blood sugar.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
     difficulty: 'intermediate',
     tags: ['health', 'wellness', 'energy', 'morning-routine']
   },
-
-  // Habits for Longevity
   {
     id: 'fc-hw-026',
-    front: 'What are the Blue Zones and what lifestyle factors do centenarians share?',
-    back: 'Blue Zones are five regions with exceptional longevity (Okinawa, Sardinia, Nicoya, Ikaria, Loma Linda). Shared factors: natural daily movement, plant-rich diet (80% plants), moderate caloric intake, strong social connections, sense of purpose, stress-reduction rituals, moderate alcohol (except Adventists), and belonging to a faith community.',
+    front: 'Define Blue Zones & list shared lifestyle factors of its centenarians.',
+    back: 'Blue Zones: Regions with high longevity. Centenarians share: move naturally; eat mostly plants; reduce stress; belong; have purpose; connect socially; drink moderately.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -274,8 +264,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-027',
-    front: 'What is the relationship between muscle mass and longevity?',
-    back: 'Muscle mass is a strong predictor of longevity. Sarcopenia (age-related muscle loss) begins around age 30 at 3-5% per decade. Low muscle mass correlates with higher mortality, metabolic dysfunction, falls, and reduced quality of life. Resistance training 2-3x weekly and adequate protein intake are essential for maintaining muscle throughout life.',
+    front: 'How does muscle mass relate to longevity?',
+    back: 'More muscle predicts longer life. Prevent sarcopenia with resistance training (2-3x/week) and adequate protein intake; reduce mortality risks.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -284,8 +274,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-028',
-    front: 'What is hormesis and how does it relate to longevity practices?',
-    back: 'Hormesis is the beneficial response to mild stressors that would be harmful at higher doses. Examples: exercise (muscle damage triggers growth), fasting (activates autophagy), cold exposure (increases brown fat, norepinephrine), heat stress (heat shock proteins). These controlled stressors activate repair mechanisms and cellular resilience pathways.',
+    front: 'Define hormesis & its link to longevity practices.',
+    back: 'Hormesis: Benefit from low-dose stressors. Exercise, fasting, cold/heat boost resilience; trigger repair & cellular pathways.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -294,8 +284,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-029',
-    front: 'What is VO2 max and why is it considered one of the best predictors of lifespan?',
-    back: 'VO2 max measures the maximum oxygen your body can use during exercise - an indicator of cardiorespiratory fitness. Studies show those in the top 25% of VO2 max for their age have 5x lower mortality risk than the bottom 25%. It is improvable at any age through consistent aerobic training, especially high-intensity intervals.',
+    front: 'fc-hw-029 What\'s VO2 max & why does it predict lifespan well?',
+    back: 'Measure max O2 use during exercise; shows cardio fitness. High VO2 max = much lower mortality risk; improve it with aerobic/interval training.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -304,20 +294,18 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-030',
-    front: 'What role does social connection play in health and longevity?',
-    back: 'Loneliness increases mortality risk by 26% - comparable to smoking 15 cigarettes daily. Strong social ties reduce inflammation, improve immune function, lower blood pressure, and decrease dementia risk. Quality matters over quantity: a few deep relationships are more protective than many superficial ones. Regular social engagement is a core longevity practice.',
+    front: 'Social connection: How does it affect health and longevity?',
+    back: 'Strong ties improve immunity, lower blood pressure, reduce dementia risk. Prioritize quality over quantity; engage regularly.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
     difficulty: 'beginner',
     tags: ['health', 'wellness', 'longevity', 'social-connection']
   },
-
-  // Mental Health Fundamentals
   {
     id: 'fc-hw-031',
-    front: 'What is neuroplasticity and how can it be leveraged for mental health?',
-    back: 'Neuroplasticity is the brain\'s ability to reorganize and form new neural connections throughout life. It can be leveraged through: learning new skills, meditation (increases gray matter), physical exercise (boosts BDNF), cognitive behavioral techniques (rewires thought patterns), and sleep (consolidates new pathways). Negative patterns can also be unlearned through consistent practice.',
+    front: 'Neuroplasticity: What is it & how improve mental health with it?',
+    back: 'Brain\'s ability to reorganize; Strengthen useful connections, weaken harmful ones to enhance well-being. Active learning; Focused attention.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -326,8 +314,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-032',
-    front: 'What is the gut-brain axis and how does it affect mental health?',
-    back: 'The gut-brain axis is the bidirectional communication between gut microbiome and brain via the vagus nerve, immune system, and neurotransmitters. 90% of serotonin is produced in the gut. Dysbiosis (microbial imbalance) is linked to anxiety and depression. Support through: diverse fiber, fermented foods, limiting processed foods, and stress reduction.',
+    front: 'Explain the gut-brain axis\'s impact on mental health.',
+    back: 'Gut-brain axis links gut & brain via microbiome, vagus nerve, immune system, & neurotransmitters; 90% serotonin made in gut. Improve mental health: eat fiber, fermented foods, reduce stress.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -336,8 +324,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-033',
-    front: 'What is the difference between clinical depression and normal sadness?',
-    back: 'Clinical depression involves persistent symptoms for 2+ weeks: depressed mood most of the day, loss of interest/pleasure (anhedonia), sleep changes, fatigue, concentration problems, appetite changes, worthlessness, and/or suicidal thoughts. Normal sadness is typically linked to specific events, fluctuates, and doesn\'t significantly impair daily functioning for extended periods.',
+    front: 'Differentiate clinical depression from normal sadness.',
+    back: 'Depression: Persistent symptoms 2+ weeks, like anhedonia, fatigue, or worthlessness. Sadness: Linked to events; it fluctuates.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -346,8 +334,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-034',
-    front: 'What is cognitive behavioral therapy (CBT) and how does it work?',
-    back: 'CBT is an evidence-based therapy targeting the connection between thoughts, feelings, and behaviors. Core principle: distorted thinking patterns cause emotional distress. Techniques include identifying cognitive distortions (catastrophizing, black-and-white thinking), challenging negative thoughts, behavioral experiments, and gradual exposure. Effective for anxiety, depression, and many other conditions.',
+    front: 'Define Cognitive Behavioral Therapy (CBT) and its core principle.',
+    back: 'CBT links thoughts, feelings, and behaviors. Fix distorted thinking; use techniques like exposure; challenge negative thoughts; improve mental health. ',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -356,20 +344,18 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-035',
-    front: 'What is the Window of Tolerance and how does it relate to emotional regulation?',
-    back: 'The Window of Tolerance (Dan Siegel) is the optimal zone where we can experience and integrate emotions without becoming dysregulated. Hyperarousal (above window): anxiety, panic, overwhelm. Hypoarousal (below window): numbness, disconnection, depression. Trauma narrows the window. Therapy, mindfulness, and gradual exposure help widen it.',
+    front: 'What\'s the Window of Tolerance? How does it impact emotional regulation?',
+    back: 'Optimal emotional zone (Dan Siegel); avoid hyper/hypoarousal (anxiety/numbness). Trauma narrows; widen it with therapy, mindfulness, exposure. ',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
     difficulty: 'advanced',
     tags: ['health', 'wellness', 'mental-health', 'emotional-regulation', 'trauma']
   },
-
-  // Recovery and Rest
   {
     id: 'fc-hw-036',
-    front: 'What is the difference between active and passive recovery?',
-    back: 'Passive recovery involves complete rest (sleep, relaxation). Active recovery involves low-intensity movement (walking, light swimming, yoga) that increases blood flow without adding training stress. Active recovery often speeds healing by delivering nutrients to tissues and clearing metabolic waste. Optimal recovery uses both strategically.',
+    front: 'Active vs. Passive Recovery: What\'s the difference?',
+    back: 'Passive: Rest; let body recover. Active: Light movement; boost blood flow without stress. Use both for optimal healing & waste removal.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -378,8 +364,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-037',
-    front: 'What are the signs of overtraining syndrome and how is it prevented?',
-    back: 'Signs: persistent fatigue, decreased performance, elevated resting heart rate, sleep disturbances, mood changes, frequent illness, and loss of motivation. Prevention: progressive training (10% weekly increase max), adequate sleep, proper nutrition, planned deload weeks (reduced volume every 4-6 weeks), and monitoring recovery metrics like HRV.',
+    front: 'Overtraining Syndrome: Key signs & how do you prevent it?',
+    back: 'Signs: Fatigue; decreased performance; elevated heart rate; poor sleep; mood swings. Prevent: Progress slowly; sleep well; eat right; deload; monitor recovery.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -388,8 +374,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-038',
-    front: 'How does sleep affect muscle recovery and athletic performance?',
-    back: 'During deep sleep, growth hormone peaks (up to 70% of daily secretion), stimulating muscle repair and protein synthesis. REM sleep restores cognitive function crucial for skill learning. Sleep deprivation impairs muscle glycogen restoration, increases injury risk by 1.7x, reduces reaction time, and elevates cortisol. Athletes should aim for 8-10 hours.',
+    front: 'How does sleep impact muscle recovery & athletic performance?',
+    back: 'Deep sleep: growth hormone peaks, repair muscles. REM: restores cognition, learn skills. Lack of sleep: impairs glycogen, raises injury risk, slows reaction. Aim: 8-10 hrs.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -398,8 +384,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-039',
-    front: 'What is a deload week and why is it important for training progress?',
-    back: 'A deload week involves reducing training volume (typically by 40-60%) while maintaining intensity. It allows accumulated fatigue to dissipate, tendons/joints to heal, and central nervous system to recover. Scheduled every 4-8 weeks depending on training intensity. After deloading, strength and performance often surge (supercompensation).',
+    front: 'Deload week: What is it & why does it boost training?',
+    back: 'Reduce volume; maintain intensity. Dissipate fatigue, heal, recover CNS. Cycle every 4-8 weeks for supercompensation.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -408,20 +394,18 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-040',
-    front: 'What is the science behind cold exposure for recovery?',
-    back: 'Cold exposure (ice baths, cold showers) causes vasoconstriction, reducing inflammation and swelling. It activates norepinephrine (3-5x increase), improving mood and alertness. However, immediately after strength training, it may blunt hypertrophy adaptations by reducing inflammation needed for muscle growth. Best used strategically - great for recovery between competitions, not post-strength training.',
+    front: 'Explain the science behind cold exposure\'s effect on recovery.',
+    back: 'Cold exposure reduces inflammation via vasoconstriction & boosts norepinephrine. Use strategically; avoid post-strength training to prevent blunted muscle growth.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
     difficulty: 'advanced',
     tags: ['health', 'wellness', 'recovery', 'cold-exposure']
   },
-
-  // Circadian Rhythms
   {
     id: 'fc-hw-041',
-    front: 'What is the circadian rhythm and how is it regulated?',
-    back: 'Circadian rhythm is the ~24-hour internal clock governing sleep-wake cycles, hormone release, and metabolism. It is primarily regulated by the suprachiasmatic nucleus (SCN) in the hypothalamus, which responds to light signals from the eyes. Key hormones: melatonin (darkness promotes sleep) and cortisol (morning alertness). Light is the most powerful zeitgeber (time-giver).',
+    front: 'Define circadian rhythm and its regulation.',
+    back: 'Circadian rhythm: 24hr clock for sleep, hormones, metabolism. SCN in hypothalamus regulates via light; melatonin promotes sleep; cortisol drives alertness.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -430,8 +414,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-042',
-    front: 'What is the best time of day for different types of exercise based on circadian biology?',
-    back: 'Morning exercise: lower injury risk, boosts alertness, supports circadian rhythm. Afternoon/early evening (2-6 PM): body temperature peaks, reaction time and strength are optimal, flexibility is greatest. Late exercise (within 2-3 hours of bed) can delay sleep onset. Consistency matters most - train when you can maintain the habit.',
+    front: 'Optimal exercise timing based on circadian rhythms?',
+    back: 'Morning: less injury, boosts alertness. Afternoon/Evening: best strength, flexibility. Late: may delay sleep. Prioritize consistent habit.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -440,8 +424,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-043',
-    front: 'How does shift work affect health and what can mitigate the damage?',
-    back: 'Shift work disrupts circadian rhythm, increasing risks of: cardiovascular disease (40%), metabolic syndrome, obesity, depression, and cancer. Mitigation strategies: maintain consistent sleep schedule even on days off, use blackout curtains for daytime sleep, bright light during work shifts, strategic caffeine use, and prioritize sleep as non-negotiable.',
+    front: 'Shift work: How does it affect health? What mitigates harm?',
+    back: 'Disrupts circadian rhythm; Increases CVD, metabolic issues, depression, cancer. Mitigate: consistent sleep, blackout curtains, bright light, caffeine, prioritize sleep.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -450,8 +434,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-044',
-    front: 'What is chronotype and how should daily activities be aligned with it?',
-    back: 'Chronotype is your genetic predisposition for sleep-wake timing: early birds (lions), night owls (wolves), or in-between (bears, dolphins). Schedule cognitively demanding work during your peak alertness, exercise when body temperature rises, and sleep/wake times aligned with natural tendencies. Forcing against chronotype reduces performance and wellbeing.',
+    front: 'Define chronotype and align daily activities for optimal performance.',
+    back: 'Chronotype: genetic sleep-wake preference (lion, wolf, bear, dolphin). Schedule peak work during alertness, exercise when warm, sleep/wake aligned; avoid forcing against it.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -460,20 +444,18 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-045',
-    front: 'What is social jet lag and how does it impact health?',
-    back: 'Social jet lag is the discrepancy between biological clock and social schedule - often seen when people sleep late on weekends versus weekdays. A 2+ hour difference disrupts circadian rhythm similarly to crossing time zones. It is linked to increased obesity, metabolic problems, and mood disorders. Consistent sleep/wake times (within 1 hour) minimize this effect.',
+    front: 'Define social jet lag & its health impacts.',
+    back: 'It\'s biological clock vs. social schedule mismatch; weekend sleep-ins. Disrupts circadian rhythm; linked to obesity, metabolic issues, mood. Keep consistent sleep/wake times.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
     difficulty: 'intermediate',
     tags: ['health', 'wellness', 'circadian', 'social-jet-lag', 'sleep']
   },
-
-  // Mind-Body Connection
   {
     id: 'fc-hw-046',
-    front: 'What is the parasympathetic nervous system and how can it be activated?',
-    back: 'The parasympathetic nervous system (rest-and-digest) counterbalances the stress response by slowing heart rate, promoting digestion, and enabling recovery. Activation methods: slow diaphragmatic breathing (especially longer exhales), cold water on face, gargling, singing/humming (vagus nerve stimulation), meditation, social connection, and physical touch.',
+    front: 'Parasympathetic Nervous System: What is it, and how do you activate it?',
+    back: 'It\'s your \'rest-and-digest\' system; counter stress. Activate it: breathe deeply; use cold water; gargle/sing; meditate; connect socially; touch others.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -482,8 +464,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-047',
-    front: 'What is interoception and why is it important for health?',
-    back: 'Interoception is the sense of the internal state of the body - feeling hunger, thirst, heartbeat, breath, temperature, and emotions as body sensations. Strong interoceptive awareness improves emotional regulation, decision-making, and early detection of health issues. It is developed through mindfulness, body scanning, and attention to physical sensations.',
+    front: 'Interoception: What is it, and why does it matter for your health?',
+    back: 'Sense your body\'s internal state. Improves emotional regulation, decisions, and health awareness; Develop it through mindfulness & body scans.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -492,8 +474,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-048',
-    front: 'How does regular meditation physically change the brain?',
-    back: 'Studies show meditation increases gray matter density in areas related to learning, memory, emotional regulation, and self-awareness (hippocampus, prefrontal cortex). It decreases amygdala size (fear/stress center). 8 weeks of MBSR shows measurable changes. Long-term meditators show preserved brain volume with age and increased cortical thickness.',
+    front: 'Meditation\'s impact on the brain: physical changes?',
+    back: 'Increase gray matter (learning/memory); shrink amygdala (stress). MBSR (8 weeks) yields measurable changes; preserve brain volume.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -502,8 +484,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-049',
-    front: 'What is the relaxation response and how is it different from simply resting?',
-    back: 'The relaxation response (coined by Dr. Herbert Benson) is a physiological state of deep rest that actively counteracts the stress response. Unlike passive rest, it involves specific techniques (meditation, deep breathing, progressive muscle relaxation) that reduce metabolism, heart rate, blood pressure, and muscle tension more effectively than just sitting quietly.',
+    front: 'Define relaxation response; How does it differ from rest?',
+    back: 'It actively reverses stress; Techniques like meditation reduce heart rate/blood pressure more than passive rest. ID: fc-hw-049',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',
@@ -512,8 +494,8 @@ export const healthWellnessFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hw-050',
-    front: 'What is the biopsychosocial model of health?',
-    back: 'The biopsychosocial model views health as the interaction of biological factors (genetics, physiology), psychological factors (thoughts, emotions, behaviors), and social factors (relationships, culture, socioeconomic status). Unlike the biomedical model, it recognizes that physical health cannot be separated from mental and social wellbeing - all three must be addressed for optimal health outcomes.',
+    front: 'Define the biopsychosocial model of health.',
+    back: 'Health links bio, psycho, & social factors. Address all three (biology; psychology; social factors) for optimal outcomes.',
     category: 'Life Design',
     source: 'Health & Wellness',
     pathwayId: 'life-design',

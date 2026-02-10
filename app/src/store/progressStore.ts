@@ -5,6 +5,8 @@ import { getAchievementById } from '@/data/achievements';
 import { useUserStore } from '@/store/userStore';
 import { triggerSync } from '@/store/firebaseSync';
 import { analytics } from '@/lib/analytics';
+import type { Badge } from '@/data/badges';
+import { BADGES, checkBadgeUnlock } from '@/data/badges';
 
 // Starred cards — saved from lesson card flow
 export interface StarredCard {
@@ -105,6 +107,13 @@ interface ProgressState {
   isCardStarred: (cardId: string) => boolean;
   getStarredCards: () => StarredCard[];
 
+  // Badges
+  unlockedBadges: Badge[];
+  checkAndUnlockBadges: () => string[]; // Returns IDs of newly unlocked badges
+  hasBadge: (badgeId: string) => boolean;
+  getBadges: () => Badge[];
+  getBadgeProgress: (badgeId: string) => number;
+
   // Hint XP deduction (for game hints — never levels down)
   deductXP: (amount: number) => boolean;
 
@@ -161,6 +170,7 @@ export const useProgressStore = create<ProgressState>()(
       weeklyChallenge: null,
       challengeCompletions: [],
       starredCards: [],
+      unlockedBadges: [], // Users start with no badges
       unlockedVisualizations: [], // Users start with no unlocked visualizations
       longestStreak: 0,
       streakFreezes: 1,
@@ -168,7 +178,7 @@ export const useProgressStore = create<ProgressState>()(
       freezeRefreshDate: new Date().toISOString().split('T')[0],
       pendingLevelUp: null,
 
-      addXP: (amount) =>
+      addXP: (amount) => {
         set((state) => {
           const newXP = state.userProgress.xp + amount;
           const oldLevel = state.userProgress.level;
@@ -204,7 +214,11 @@ export const useProgressStore = create<ProgressState>()(
             weeklyChallenge: updatedWeekly,
             pendingLevelUp: leveledUp ? newLevel : state.pendingLevelUp,
           };
-        }),
+        });
+
+        // Check for badge unlocks after XP update
+        get().checkAndUnlockBadges();
+      },
 
       getXPForNextLevel: () => {
         const { level } = get().userProgress;
@@ -251,15 +265,16 @@ export const useProgressStore = create<ProgressState>()(
           };
         }),
 
-      completeLesson: (lessonId, xpReward) =>
+      completeLesson: (lessonId, xpReward) => {
+        const state = get();
+        if (state.userProgress.lessonsCompleted.includes(lessonId)) {
+          return;
+        }
+
+        // Track lesson completion
+        analytics.track('lesson_completed', { lesson_id: lessonId, xp_reward: xpReward });
+
         set((state) => {
-          if (state.userProgress.lessonsCompleted.includes(lessonId)) {
-            return state;
-          }
-
-          // Track lesson completion
-          analytics.track('lesson_completed', { lesson_id: lessonId, xp_reward: xpReward });
-
           const newXP = state.userProgress.xp + xpReward;
           const oldLevel = state.userProgress.level;
           const newLevel = Math.floor(newXP / 500) + 1;
@@ -294,7 +309,11 @@ export const useProgressStore = create<ProgressState>()(
             weeklyChallenge: updatedWeekly,
             pendingLevelUp: leveledUp ? newLevel : state.pendingLevelUp,
           };
-        }),
+        });
+
+        // Check for badge unlocks after lesson completion
+        get().checkAndUnlockBadges();
+      },
 
       isLessonCompleted: (lessonId) => {
         return get().userProgress.lessonsCompleted.includes(lessonId);
@@ -644,6 +663,93 @@ export const useProgressStore = create<ProgressState>()(
       isCardStarred: (cardId) => get().starredCards.some((c) => c.cardId === cardId),
 
       getStarredCards: () => get().starredCards,
+
+      // Badges
+      checkAndUnlockBadges: () => {
+        const state = get();
+        const newlyUnlockedIds: string[] = [];
+
+        // Calculate user stats for badge checks
+        const userStats = {
+          streak: state.userProgress.currentStreak,
+          modulesCompleted: state.pathwayProgress.completedLessons.length,
+          xp: state.userProgress.xp,
+          lessonsCompleted: state.userProgress.lessonsCompleted.length,
+          reviewsCompleted: state.userProgress.habitsCompleted, // Using habitsCompleted as review count
+        };
+
+        // Check all badges for unlock
+        const unlockedBadgeIds = state.unlockedBadges.map((b) => b.id);
+
+        for (const badge of BADGES) {
+          // Skip if already unlocked
+          if (unlockedBadgeIds.includes(badge.id)) continue;
+
+          // Check if requirements are met
+          if (checkBadgeUnlock(badge, userStats)) {
+            newlyUnlockedIds.push(badge.id);
+
+            // Add unlockedAt timestamp
+            const unlockedBadge: Badge = {
+              ...badge,
+              unlockedAt: new Date().toISOString(),
+            };
+
+            set((state) => ({
+              unlockedBadges: [...state.unlockedBadges, unlockedBadge],
+            }));
+
+            // Track analytics
+            analytics.track('badge_unlocked', {
+              badge_id: badge.id,
+              badge_name: badge.name,
+              badge_tier: badge.tier,
+              badge_category: badge.category,
+            });
+          }
+        }
+
+        return newlyUnlockedIds;
+      },
+
+      hasBadge: (badgeId) => get().unlockedBadges.some((b) => b.id === badgeId),
+
+      getBadges: () => get().unlockedBadges,
+
+      getBadgeProgress: (badgeId) => {
+        const state = get();
+        const badge = BADGES.find((b) => b.id === badgeId);
+        if (!badge) return 0;
+
+        const userStats = {
+          streak: state.userProgress.currentStreak,
+          modulesCompleted: state.pathwayProgress.completedLessons.length,
+          xp: state.userProgress.xp,
+          lessonsCompleted: state.userProgress.lessonsCompleted.length,
+          reviewsCompleted: state.userProgress.habitsCompleted,
+        };
+
+        let current = 0;
+        switch (badge.requirement.type) {
+          case 'streak':
+            current = userStats.streak;
+            break;
+          case 'modules':
+            current = userStats.modulesCompleted;
+            break;
+          case 'xp':
+            current = userStats.xp;
+            break;
+          case 'lessons':
+            current = userStats.lessonsCompleted;
+            break;
+          case 'reviews':
+            current = userStats.reviewsCompleted;
+            break;
+        }
+
+        return Math.min(100, (current / badge.requirement.value) * 100);
+      },
 
       // Deduct XP for game hints — never levels down
       deductXP: (amount: number) => {

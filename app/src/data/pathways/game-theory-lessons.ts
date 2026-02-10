@@ -1528,7 +1528,7 @@ Consider a game with *n* players. Each player *i* has a set of strategies *S_i* 
 
 > **u_i(s_i\\*, s_{-i}\\*) \u2265 u_i(s_i, s_{-i}\\*)** for all s_i in S_i
 
-In plain English: no one can do better by switching, assuming others don\\'t switch.
+In plain English: no one can do better by switching, assuming others don\'t switch.
 
 ## A Simple Example: The Driving Game
 
@@ -1537,11 +1537,11 @@ In plain English: no one can do better by switching, assuming others don\\'t swi
 | **Drive Left** | 1, 1 | -1, -1 |
 | **Drive Right** | -1, -1 | 1, 1 |
 
-This game has **two Nash Equilibria**: (Left, Left) and (Right, Right). In each, neither driver gains by switching sides. If both drive on the right, you won\\'t improve your situation by swerving to the left.
+This game has **two Nash Equilibria**: (Left, Left) and (Right, Right). In each, neither driver gains by switching sides. If both drive on the right, you won\'t improve your situation by swerving to the left.
 
 ## Why Nash Equilibrium Matters
 
-Nash Equilibrium provides a **prediction tool**: if rational players analyze a game, they should converge on NE strategies. It doesn\\'t guarantee the best collective outcome (as we saw with the Prisoner\\'s Dilemma), but it predicts **stable** outcomes.
+Nash Equilibrium provides a **prediction tool**: if rational players analyze a game, they should converge on NE strategies. It doesn\'t guarantee the best collective outcome (as we saw with the Prisoner\'s Dilemma), but it predicts **stable** outcomes.
 
 **Real-world applications:**
 - **Traffic patterns**: Drivers settle into equilibrium routes even without coordination
@@ -1549,13 +1549,13 @@ Nash Equilibrium provides a **prediction tool**: if rational players analyze a g
 - **Arms races**: Nations accumulate weapons because unilateral disarmament is costly
 - **Social norms**: People conform to conventions (handshakes, tipping) because deviating alone is awkward
 
-## Nash\\'s Existence Theorem
+## Nash\'s Existence Theorem
 
-Nash proved that **every finite game** (finite players, finite strategies) has at least one Nash Equilibrium\u2014possibly in mixed strategies. This was groundbreaking because it guaranteed that the equilibrium concept always applies. Before Nash, game theorists could only analyze special cases. His proof used Brouwer\\'s fixed-point theorem from topology, elegantly bridging pure mathematics and strategic reasoning.
+Nash proved that **every finite game** (finite players, finite strategies) has at least one Nash Equilibrium\u2014possibly in mixed strategies. This was groundbreaking because it guaranteed that the equilibrium concept always applies. Before Nash, game theorists could only analyze special cases. His proof used Brouwer\'s fixed-point theorem from topology, elegantly bridging pure mathematics and strategic reasoning.
 
 ## Limitations to Keep in Mind
 
-Nash Equilibrium assumes players are rational and have complete information about the game\\'s structure. In reality, people often lack information, make cognitive errors, or have bounded rationality. Behavioral game theory, pioneered by Colin Camerer, studies how real human behavior deviates from NE predictions.`,
+Nash Equilibrium assumes players are rational and have complete information about the game\'s structure. In reality, people often lack information, make cognitive errors, or have bounded rationality. Behavioral game theory, pioneered by Colin Camerer, studies how real human behavior deviates from NE predictions.`,
       keyTakeaway: 'A Nash Equilibrium is a stable strategy profile where no player can improve their payoff by changing strategy alone. It predicts stable outcomes in strategic interactions, though it does not always predict the most efficient outcome.',
       actionItem: 'Think of a recurring social situation (e.g., choosing which coffee shop to go to, which route to drive). Identify whether the outcome you observe might be a Nash Equilibrium\u2014would anyone improve by changing their behavior alone?',
       quiz: {
@@ -1581,12 +1581,12 @@ Nash Equilibrium assumes players are rational and have complete information abou
       overview: 'Knowing the definition of Nash Equilibrium is one thing; finding it in actual games is another. This lesson teaches you the Best Response method\u2014a systematic technique for identifying all Nash Equilibria in any matrix game. This is a skill you will use repeatedly throughout game theory.',
       mainContent: `## The Best Response Approach
 
-A **best response** is a player\\'s optimal strategy given a specific strategy chosen by the other player. Finding Nash Equilibria is as simple as finding strategy profiles where **every player is simultaneously playing a best response**.
+A **best response** is a player\'s optimal strategy given a specific strategy chosen by the other player. Finding Nash Equilibria is as simple as finding strategy profiles where **every player is simultaneously playing a best response**.
 
 ### Step-by-Step Method
 
-1. For each of Player 1\\'s strategies, find Player 2\\'s best response (mark it)
-2. For each of Player 2\\'s strategies, find Player 1\\'s best response (mark it)
+1. For each of Player 1\'s strategies, find Player 2\'s best response (mark it)
+2. For each of Player 2\'s strategies, find Player 1\'s best response (mark it)
 3. Any cell where **both** players are playing best responses is a Nash Equilibrium
 
 ## Worked Example: A Market Entry Game
@@ -1598,13 +1598,13 @@ Two firms decide whether to enter a market or stay out:
 | **Firm A: Enter** | 2, 2 | 5, 0 |
 | **Firm A: Stay Out** | 0, 5 | 3, 3 |
 
-**Step 1: Find Firm B\\'s best responses**
-- If Firm A enters: B gets 2 (enter) vs 0 (stay out) \u2192 B\\'s best response = **Enter**
-- If Firm A stays out: B gets 5 (enter) vs 3 (stay out) \u2192 B\\'s best response = **Enter**
+**Step 1: Find Firm B\'s best responses**
+- If Firm A enters: B gets 2 (enter) vs 0 (stay out) \u2192 B\'s best response = **Enter**
+- If Firm A stays out: B gets 5 (enter) vs 3 (stay out) \u2192 B\'s best response = **Enter**
 
-**Step 2: Find Firm A\\'s best responses**
-- If Firm B enters: A gets 2 (enter) vs 0 (stay out) \u2192 A\\'s best response = **Enter**
-- If Firm B stays out: A gets 5 (enter) vs 3 (stay out) \u2192 A\\'s best response = **Enter**
+**Step 2: Find Firm A\'s best responses**
+- If Firm B enters: A gets 2 (enter) vs 0 (stay out) \u2192 A\'s best response = **Enter**
+- If Firm B stays out: A gets 5 (enter) vs 3 (stay out) \u2192 A\'s best response = **Enter**
 
 **Step 3: Both playing best response?**
 - (Enter, Enter): A is best-responding \u2713, B is best-responding \u2713 \u2192 **Nash Equilibrium!**
@@ -1635,13 +1635,13 @@ Nash Equilibria: **(Hawk, Dove)** and **(Dove, Hawk)**\u2014the asymmetric outco
 
 ## Why Multiple Equilibria Complicate Things
 
-When a game has multiple Nash Equilibria, game theory alone doesn\\'t tell us which one will occur. The Hawk-Dove game has two pure-strategy equilibria plus a mixed-strategy equilibrium. Which one emerges depends on context, history, conventions, and beliefs\u2014topics we\\'ll explore in upcoming lessons.
+When a game has multiple Nash Equilibria, game theory alone doesn\'t tell us which one will occur. The Hawk-Dove game has two pure-strategy equilibria plus a mixed-strategy equilibrium. Which one emerges depends on context, history, conventions, and beliefs\u2014topics we\'ll explore in upcoming lessons.
 
 ## Common Mistakes to Avoid
 
-- **Don\\'t compare across rows/columns**: Best responses compare payoffs within a given opponent strategy
-- **Don\\'t forget to check both players**: A cell is only NE if both are best-responding
-- **Don\\'t assume uniqueness**: Many games have multiple equilibria`,
+- **Don\'t compare across rows/columns**: Best responses compare payoffs within a given opponent strategy
+- **Don\'t forget to check both players**: A cell is only NE if both are best-responding
+- **Don\'t assume uniqueness**: Many games have multiple equilibria`,
       keyTakeaway: 'The best response method systematically identifies Nash Equilibria by finding each player\u2019s optimal reply to every opponent strategy. Where best responses intersect, you have an equilibrium.',
       actionItem: 'Draw a 3x3 payoff matrix with made-up numbers. Apply the best response method to find all Nash Equilibria. Verify by checking that no player wants to deviate.',
       quiz: {
@@ -1686,7 +1686,7 @@ In the example above, (A, A) Pareto-dominates (B, B) because both players get 3 
 
 ## Risk Dominance (Harsanyi & Selten)
 
-John Harsanyi and Reinhard Selten proposed **risk dominance** as an alternative criterion. A strategy is risk-dominant if it\\'s the best response to a uniform probability belief about the opponent\\'s play.
+John Harsanyi and Reinhard Selten proposed **risk dominance** as an alternative criterion. A strategy is risk-dominant if it\'s the best response to a uniform probability belief about the opponent\'s play.
 
 Modify the technology game:
 
@@ -1714,19 +1714,19 @@ Here B is both Pareto-dominant and risk-dominant. But in general, these criteria
 
 ## Historical Examples of Multiple Equilibria
 
-**VHS vs. Betamax (1975-1988)**: Both formats were equilibria. Sony\\'s Betamax was arguably technically superior (Pareto-dominant), but JVC\\'s VHS achieved market dominance through longer recording time and licensing strategy. The market selected the "worse" equilibrium by some measures.
+**VHS vs. Betamax (1975-1988)**: Both formats were equilibria. Sony\'s Betamax was arguably technically superior (Pareto-dominant), but JVC\'s VHS achieved market dominance through longer recording time and licensing strategy. The market selected the "worse" equilibrium by some measures.
 
-**QWERTY vs. Dvorak Keyboards**: The QWERTY layout, designed in the 1870s to prevent typewriter jamming, persists despite the Dvorak layout\\'s ergonomic advantages. Once an equilibrium is established, switching costs lock society in.
+**QWERTY vs. Dvorak Keyboards**: The QWERTY layout, designed in the 1870s to prevent typewriter jamming, persists despite the Dvorak layout\'s ergonomic advantages. Once an equilibrium is established, switching costs lock society in.
 
 **Driving Conventions**: Left-hand vs. right-hand driving are both equilibria. Historical accident and colonial influence determined which countries adopted which convention.
 
 ## Evolutionary Game Theory Approach
 
-Biologist John Maynard Smith proposed that equilibrium selection happens through **evolutionary dynamics**: populations try different strategies, and successful ones spread. Under certain dynamics, risk-dominant equilibria tend to be selected because they\\'re more robust to mistakes.
+Biologist John Maynard Smith proposed that equilibrium selection happens through **evolutionary dynamics**: populations try different strategies, and successful ones spread. Under certain dynamics, risk-dominant equilibria tend to be selected because they\'re more robust to mistakes.
 
 ## Why This Matters
 
-The equilibrium selection problem means game theory often **cannot make unique predictions**. Understanding this limitation is crucial: when someone claims "game theory predicts X," ask whether there might be other equilibria they\\'re ignoring.`,
+The equilibrium selection problem means game theory often **cannot make unique predictions**. Understanding this limitation is crucial: when someone claims "game theory predicts X," ask whether there might be other equilibria they\'re ignoring.`,
       keyTakeaway: 'When multiple Nash Equilibria exist, game theory alone cannot always predict which one will emerge. Pareto dominance and risk dominance offer partial guidance, but history, conventions, and coordination mechanisms often determine the actual outcome.',
       actionItem: 'Identify a technology standard you use daily (USB-C, Wi-Fi, metric system). Research whether competing standards existed. What factors caused the current equilibrium to be selected?'
     }
@@ -1753,7 +1753,7 @@ The simplest coordination game:
 | **Left** | 1, 1 | 0, 0 |
 | **Right** | 0, 0 | 1, 1 |
 
-Both (Left, Left) and (Right, Right) are equilibria. Players don\\'t care which one\u2014they just need to **match**.
+Both (Left, Left) and (Right, Right) are equilibria. Players don\'t care which one\u2014they just need to **match**.
 
 ## Pure Coordination vs. Assurance Games
 
@@ -1766,7 +1766,7 @@ Both (Left, Left) and (Right, Right) are equilibria. Players don\\'t care which 
 | **Hunt Stag** | 4, 4 | 0, 3 |
 | **Hunt Hare** | 3, 0 | 2, 2 |
 
-(Stag, Stag) is Pareto-dominant\u2014both get 4. But hunting stag requires your partner to cooperate. If you\\'re unsure, hunting hare guarantees 2 or 3 regardless. The (Hare, Hare) equilibrium is **risk-dominant**: it\\'s safer.
+(Stag, Stag) is Pareto-dominant\u2014both get 4. But hunting stag requires your partner to cooperate. If you\'re unsure, hunting hare guarantees 2 or 3 regardless. The (Hare, Hare) equilibrium is **risk-dominant**: it\'s safer.
 
 This captures real dilemmas:
 - **Climate agreements**: Everyone benefits from cooperation, but unilateral action is costly
@@ -1779,17 +1779,17 @@ This captures real dilemmas:
 
 **2. Conventions and Norms**: David Lewis, in his 1969 book *Convention*, showed that social conventions are self-reinforcing coordination equilibria. Once established, no one benefits from unilateral deviation.
 
-**3. Focal Points**: Thomas Schelling\\'s concept (next lesson) of natural salience helps players coordinate without communication.
+**3. Focal Points**: Thomas Schelling\'s concept (next lesson) of natural salience helps players coordinate without communication.
 
 **4. Leadership and Institutions**: A central authority can announce which equilibrium to target. Traffic laws, industry standards bodies (ISO, IEEE), and social institutions serve this function.
 
-**5. History and Precedent**: Past coordination success creates expectations. If you always meet at the same restaurant, you\\'ll go there again even without confirming.
+**5. History and Precedent**: Past coordination success creates expectations. If you always meet at the same restaurant, you\'ll go there again even without confirming.
 
 ## The Coordination Game in Business
 
 **Network Effects** create coordination dynamics: the value of a product increases with the number of users. Microsoft Windows, Facebook, and the English language all exhibit coordination game dynamics\u2014everyone benefits from being on the same platform, creating strong equilibria that resist switching.
 
-**Metcalfe\\'s Law** states that the value of a network is proportional to the square of its users. This means coordination equilibria in network goods have increasingly powerful lock-in effects.
+**Metcalfe\'s Law** states that the value of a network is proportional to the square of its users. This means coordination equilibria in network goods have increasingly powerful lock-in effects.
 
 ## Experimental Evidence
 
@@ -1819,7 +1819,7 @@ Mehta, Starmer, and Sugden (1994) asked subjects to coordinate on choices withou
       overview: 'The Battle of the Sexes is a classic coordination game where players agree they want to coordinate but disagree on which outcome to coordinate on. This models everything from couples choosing a restaurant to nations negotiating trade standards\u2014situations where cooperation is desired but preferences conflict.',
       mainContent: `## The Classic Setup
 
-Two partners want to spend an evening together but prefer different activities. The original formulation (from R. Duncan Luce and Howard Raiffa\\'s 1957 textbook) uses a couple choosing between a boxing match and an opera:
+Two partners want to spend an evening together but prefer different activities. The original formulation (from R. Duncan Luce and Howard Raiffa\'s 1957 textbook) uses a couple choosing between a boxing match and an opera:
 
 | | **Boxing** | **Opera** |
 |---|---|---|
@@ -1838,7 +1838,7 @@ Unlike pure coordination games, the Battle of the Sexes introduces **distributio
 
 ## Mixed Strategy Equilibrium
 
-Besides the two pure-strategy equilibria, there\\'s a **mixed strategy Nash Equilibrium** where:
+Besides the two pure-strategy equilibria, there\'s a **mixed strategy Nash Equilibrium** where:
 - Player 1 plays Boxing with probability 3/5 and Opera with probability 2/5
 - Player 2 plays Boxing with probability 2/5 and Opera with probability 3/5
 
@@ -1860,7 +1860,7 @@ The expected payoff for each player in the mixed equilibrium is **6/5 = 1.2**, w
 
 **2. Side Payments**: One player compensates the other. "We go to the opera, but I cook your favorite dinner tomorrow." This can make both players prefer the same equilibrium.
 
-**3. Asymmetric Information**: If one player\\'s preference is known to be stronger, the other may concede. In practice, the player who cares more often gets their way\u2014a phenomenon called the **"intensity of preference"** principle.
+**3. Asymmetric Information**: If one player\'s preference is known to be stronger, the other may concede. In practice, the player who cares more often gets their way\u2014a phenomenon called the **"intensity of preference"** principle.
 
 **4. Correlated Equilibrium**: A shared signal (like a coin flip) can coordinate players fairly. Economist Robert Aumann showed that correlated equilibria can achieve payoffs outside the set reachable by mixed strategies alone.
 
@@ -1890,19 +1890,19 @@ The Battle of the Sexes teaches that **coordination and conflict often coexist**
     xpReward: 100,
     content: {
       overview: 'Thomas Schelling\u2019s concept of focal points is one of the most elegant ideas in game theory. When players cannot communicate, they often coordinate successfully by choosing options that are psychologically prominent or culturally salient. This lesson explores how shared context, symmetry, and social knowledge guide coordination.',
-      mainContent: `## Schelling\\'s Insight
+      mainContent: `## Schelling\'s Insight
 
 In his 1960 masterwork *The Strategy of Conflict*, Thomas Schelling posed a deceptively simple question:
 
-> *"If you had to meet someone in New York City tomorrow, and you couldn\\'t communicate beforehand, where and when would you go?"*
+> *"If you had to meet someone in New York City tomorrow, and you couldn\'t communicate beforehand, where and when would you go?"*
 
-The most common answer: **Grand Central Station at noon.** There\\'s nothing strategically special about this answer\u2014it\\'s not the "best" location. But it\\'s **salient**: it stands out in people\\'s shared mental landscape of New York City.
+The most common answer: **Grand Central Station at noon.** There\'s nothing strategically special about this answer\u2014it\'s not the "best" location. But it\'s **salient**: it stands out in people\'s shared mental landscape of New York City.
 
 Schelling called these natural coordination points **focal points** (now commonly called **Schelling points**).
 
 ## Why Focal Points Work
 
-Focal points exploit **common knowledge of salience**. Players don\\'t just need to find a prominent option; they need to find one that they expect *others* to find prominent, and that others expect *them* to find prominent, and so on recursively.
+Focal points exploit **common knowledge of salience**. Players don\'t just need to find a prominent option; they need to find one that they expect *others* to find prominent, and that others expect *them* to find prominent, and so on recursively.
 
 This relies on:
 - **Shared cultural knowledge**: Common references, landmarks, conventions
@@ -1934,7 +1934,7 @@ These results demonstrate that people gravitate toward prominent, simple, "obvio
 
 ## Focal Points and Bargaining
 
-Schelling showed that **fairness norms** often function as focal points. When splitting a surplus, the 50-50 division is focal not because it\\'s strategically optimal, but because it\\'s **salient**. This insight connects game theory to behavioral economics: "fair" divisions emerge not from moral reasoning but from coordination logic.
+Schelling showed that **fairness norms** often function as focal points. When splitting a surplus, the 50-50 division is focal not because it\'s strategically optimal, but because it\'s **salient**. This insight connects game theory to behavioral economics: "fair" divisions emerge not from moral reasoning but from coordination logic.
 
 In experiments by Judith Mehta and colleagues (1994), subjects asked to name any city overwhelmingly chose their own capital. Asked to name a mountain, most said Everest. The pattern: **the most famous, most default, most "obvious" option wins**.
 
@@ -1947,7 +1947,7 @@ Focal points are **culturally specific**:
 
 This means game-theoretic predictions depend on understanding the **shared cultural context** of the players\u2014something no mathematical model can fully capture.
 
-## Schelling\\'s Legacy
+## Schelling\'s Legacy
 
 Thomas Schelling won the Nobel Prize in Economics in 2005, largely for this work. His insight that **strategic behavior depends on perception, salience, and shared understanding** moved game theory beyond pure mathematics into psychology and sociology. Modern applications include urban planning, interface design (default options as focal points), and conflict resolution.`,
       keyTakeaway: 'Focal (Schelling) points are psychologically prominent options that players gravitate toward when they need to coordinate without communication. They depend on shared cultural knowledge, simplicity, and uniqueness\u2014not mathematical optimality.',
@@ -1975,15 +1975,15 @@ Thomas Schelling won the Nobel Prize in Economics in 2005, largely for this work
       overview: 'John Forbes Nash Jr. transformed game theory with just a few pages of mathematics, won the Nobel Prize, and battled paranoid schizophrenia for decades. His life story\u2014popularized in the film A Beautiful Mind\u2014is a testament to mathematical genius, human resilience, and the power of ideas that outlast their creators.',
       mainContent: `## Early Brilliance
 
-John Nash was born in Bluefield, West Virginia, on June 13, 1928. His mathematical gifts were evident early\u2014he read E.T. Bell\\'s *Men of Mathematics* as a teenager and arrived at Princeton in 1948 with a one-sentence recommendation letter from his Carnegie Tech advisor: **"This man is a genius."**
+John Nash was born in Bluefield, West Virginia, on June 13, 1928. His mathematical gifts were evident early\u2014he read E.T. Bell\'s *Men of Mathematics* as a teenager and arrived at Princeton in 1948 with a one-sentence recommendation letter from his Carnegie Tech advisor: **"This man is a genius."**
 
 At Princeton, Nash encountered the newly published *Theory of Games and Economic Behavior* by von Neumann and Morgenstern. While this landmark work solved zero-sum games, Nash saw further: most real strategic interactions are **non-zero-sum**.
 
 ## The 27-Page Revolution
 
-Nash\\'s 1950 PhD dissertation, "Non-Cooperative Games," was just 27 pages long. In it, he proved that every finite game has at least one equilibrium point (in pure or mixed strategies). This single theorem\u2014now called the **Nash Equilibrium**\u2014became the foundation of modern game theory.
+Nash\'s 1950 PhD dissertation, "Non-Cooperative Games," was just 27 pages long. In it, he proved that every finite game has at least one equilibrium point (in pure or mixed strategies). This single theorem\u2014now called the **Nash Equilibrium**\u2014became the foundation of modern game theory.
 
-Von Neumann reportedly dismissed Nash\\'s work as "trivial" because it used a known fixed-point theorem. History proved von Neumann wrong: Nash\\'s conceptual insight\u2014applying equilibrium to all strategic interactions, not just zero-sum games\u2014was profoundly original.
+Von Neumann reportedly dismissed Nash\'s work as "trivial" because it used a known fixed-point theorem. History proved von Neumann wrong: Nash\'s conceptual insight\u2014applying equilibrium to all strategic interactions, not just zero-sum games\u2014was profoundly original.
 
 Nash also made fundamental contributions to:
 - **Bargaining theory** (the Nash Bargaining Solution, 1950)
@@ -2019,11 +2019,11 @@ The concept has been cited in over **100,000 academic papers** across discipline
 
 ## Tragic End
 
-On May 23, 2015, John and Alicia Nash died in a taxi accident on the New Jersey Turnpike. Nash was 86. He had just returned from Oslo, where he received the Abel Prize\u2014mathematics\\' highest honor\u2014for his work on partial differential equations.
+On May 23, 2015, John and Alicia Nash died in a taxi accident on the New Jersey Turnpike. Nash was 86. He had just returned from Oslo, where he received the Abel Prize\u2014mathematics\' highest honor\u2014for his work on partial differential equations.
 
 ## What We Can Learn
 
-Nash\\'s story illustrates that **great ideas transcend their creator\\'s circumstances**. His equilibrium concept works whether the person who conceived it was healthy or ill, celebrated or forgotten. It also reminds us that genius does not protect against suffering, and that recovery from severe mental illness, while rare, is possible.`,
+Nash\'s story illustrates that **great ideas transcend their creator\'s circumstances**. His equilibrium concept works whether the person who conceived it was healthy or ill, celebrated or forgotten. It also reminds us that genius does not protect against suffering, and that recovery from severe mental illness, while rare, is possible.`,
       keyTakeaway: 'John Nash\u2019s 27-page dissertation introduced the most widely used concept in game theory. His life\u2014marked by extraordinary mathematical ability, severe mental illness, and eventual recovery\u2014demonstrates that transformative ideas can emerge from unexpected circumstances.',
       actionItem: 'Read Nash\u2019s original 1950 paper "Non-Cooperative Games" (freely available online\u2014it is only 27 pages). Notice how concisely he states one of the most important ideas in social science.'
     }
@@ -2042,13 +2042,13 @@ Two gas stations sit on opposite corners of an intersection. Each sets a price f
 
 **Nash Equilibrium**: Both stations price at **$3** (marginal cost). Why?
 - If Station A prices at $3.50 and Station B at $3.00, all customers go to B
-- A\\'s best response is to undercut B slightly
+- A\'s best response is to undercut B slightly
 - B then undercuts A, and so on until both hit marginal cost
-- At $3, neither can profit by cutting further (they\\'d lose money) or raising price (they\\'d lose all customers)
+- At $3, neither can profit by cutting further (they\'d lose money) or raising price (they\'d lose all customers)
 
 This is the **Bertrand Paradox**: with just two competitors, prices can drop to competitive levels. It explains why gas stations on the same block often have nearly identical prices.
 
-## Application 2: Traffic and Braess\\'s Paradox
+## Application 2: Traffic and Braess\'s Paradox
 
 Consider 1,000 drivers commuting between two points via two routes:
 - **Route A**: 45 minutes regardless of traffic
@@ -2056,7 +2056,7 @@ Consider 1,000 drivers commuting between two points via two routes:
 
 **Nash Equilibrium**: Drivers distribute so that neither route is faster. If Route B has 750 drivers: 20 + 750/50 = 35 minutes. Route A is 45. So more drivers take B. At N = 1,250... but we only have 1,000. Actually, if all 1,000 take B: 20 + 20 = 40 < 45, so the equilibrium is all 1,000 on Route B at 40 minutes.
 
-**Braess\\'s Paradox** (1968): Adding a new road to a network can actually **increase** everyone\\'s travel time. This happens because the new equilibrium, where each driver selfishly optimizes, produces worse aggregate outcomes. This paradox has been documented in real road networks in Stuttgart, Seoul, and New York.
+**Braess\'s Paradox** (1968): Adding a new road to a network can actually **increase** everyone\'s travel time. This happens because the new equilibrium, where each driver selfishly optimizes, produces worse aggregate outcomes. This paradox has been documented in real road networks in Stuttgart, Seoul, and New York.
 
 ## Application 3: Social Norms as Equilibria
 
@@ -2085,7 +2085,7 @@ Two nations decide whether to build weapons:
 | **Nation A: Arm** | -2, -2 | 3, -3 |
 | **Nation A: Disarm** | -3, 3 | 0, 0 |
 
-The Nash Equilibrium is (Arm, Arm) with payoffs (-2, -2). Both nations would prefer (Disarm, Disarm) at (0, 0), but unilateral disarmament is too risky. This Prisoner\\'s Dilemma structure explains Cold War dynamics and why arms control treaties require **mutual, verified** commitments.
+The Nash Equilibrium is (Arm, Arm) with payoffs (-2, -2). Both nations would prefer (Disarm, Disarm) at (0, 0), but unilateral disarmament is too risky. This Prisoner\'s Dilemma structure explains Cold War dynamics and why arms control treaties require **mutual, verified** commitments.
 
 ## How to Spot Equilibria in Daily Life
 
@@ -2126,7 +2126,7 @@ export const gtLessonsLevel4: PathwayLesson[] = [
       overview: 'So far we have studied simultaneous games where players choose at the same time. But most real strategic situations unfold sequentially: one player moves, the other observes, then responds. Extensive form games\u2014represented as decision trees\u2014capture this temporal structure and reveal how the order of moves fundamentally changes strategic outcomes.',
       mainContent: `## From Matrices to Trees
 
-In **simultaneous (normal form)** games, players choose strategies without knowing others\\' choices. We represent these as payoff matrices. But many strategic interactions are **sequential**: chess, negotiations, market entry, legal proceedings. In these, players observe previous moves before deciding.
+In **simultaneous (normal form)** games, players choose strategies without knowing others\' choices. We represent these as payoff matrices. But many strategic interactions are **sequential**: chess, negotiations, market entry, legal proceedings. In these, players observe previous moves before deciding.
 
 **Extensive form games** use a **game tree** (decision tree) to represent:
 - **Nodes**: Decision points for each player
@@ -2184,7 +2184,7 @@ The extensive form was developed by John von Neumann in his 1928 paper "Zur Theo
 
 Any extensive form game can be converted to normal form (a matrix), but the conversion **loses information** about sequencing. This is why the extensive form is essential: it captures strategic nuances that matrices cannot.
 
-Consider a game where Player 1 chooses Left or Right, then Player 2 (observing Player 1\\'s choice) chooses Up or Down. Player 2 has **four** strategies in normal form: (Up if Left, Up if Right), (Up if Left, Down if Right), etc. The extensive form represents this more naturally with two decision nodes for Player 2.
+Consider a game where Player 1 chooses Left or Right, then Player 2 (observing Player 1\'s choice) chooses Up or Down. Player 2 has **four** strategies in normal form: (Up if Left, Up if Right), (Up if Left, Down if Right), etc. The extensive form represents this more naturally with two decision nodes for Player 2.
 
 ## When to Use Extensive Form
 
@@ -2261,20 +2261,20 @@ The backward induction solution: **Player 1 takes immediately**, getting (1, 0).
 \`\`\`
 
 **Backward induction:**
-1. At the Incumbent\\'s node: Accommodate (1) > Fight (-1). Incumbent accommodates.
-2. At the Entrant\\'s node: Enter gives 1 (since Incumbent will accommodate) vs. Stay Out gives 0. Entrant enters.
+1. At the Incumbent\'s node: Accommodate (1) > Fight (-1). Incumbent accommodates.
+2. At the Entrant\'s node: Enter gives 1 (since Incumbent will accommodate) vs. Stay Out gives 0. Entrant enters.
 
 **Solution: (Enter, Accommodate)** with payoffs (1, 1).
 
 The threat to fight is **not credible**\u2014the incumbent would not actually follow through. Backward induction strips away empty threats.
 
-## Zermelo\\'s Theorem (1913)
+## Zermelo\'s Theorem (1913)
 
 Mathematician Ernst Zermelo proved that in any finite, two-player, perfect-information game with no ties:
 
 > **One player has a winning strategy, or both players can force a draw.**
 
-For chess, this means there exists a "solution"\u2014either White can always win, Black can always win, or both can force a draw. We just do not know which, because chess\\'s game tree is astronomically large (~10^120 possible games). But for simpler games like tic-tac-toe, backward induction completely solves the game: optimal play by both sides forces a draw.
+For chess, this means there exists a "solution"\u2014either White can always win, Black can always win, or both can force a draw. We just do not know which, because chess\'s game tree is astronomically large (~10^120 possible games). But for simpler games like tic-tac-toe, backward induction completely solves the game: optimal play by both sides forces a draw.
 
 ## Limitations of Backward Induction
 
@@ -2293,7 +2293,7 @@ Despite its limitations, backward induction is most reliable when:
 - The game is short (few stages)
 - Stakes are high (incentivizing careful analysis)
 - Players are sophisticated (experienced, trained)
-- The game\\'s structure is transparent to all players`,
+- The game\'s structure is transparent to all players`,
       keyTakeaway: 'Backward induction solves sequential games by reasoning from the end to the beginning, revealing what rational players would actually do at each stage. It eliminates non-credible threats but assumes perfect rationality and common knowledge.',
       actionItem: 'Apply backward induction to a three-round negotiation: if you know the final deadline forces a concession, work backward to determine the optimal first offer. How does knowing the endgame change your opening strategy?',
       quiz: {
@@ -2319,7 +2319,7 @@ Despite its limitations, backward induction is most reliable when:
       overview: 'In many sequential games, the player who moves first gains a strategic advantage by shaping the game\u2019s trajectory. First-mover advantage explains why companies race to market, why nations preemptively set agendas, and why "he who hesitates is lost." But as we will see, going first is not always better\u2014sometimes the second mover wins.',
       mainContent: `## What Is First-Mover Advantage?
 
-**First-mover advantage (FMA)** exists when the player who acts first can secure a better outcome than if they moved second. The first mover gains by **committing** to a strategy that constrains the opponent\\'s choices favorably.
+**First-mover advantage (FMA)** exists when the player who acts first can secure a better outcome than if they moved second. The first mover gains by **committing** to a strategy that constrains the opponent\'s choices favorably.
 
 ## The Stackelberg Model: First-Mover in Markets
 
@@ -2327,11 +2327,11 @@ Heinrich von Stackelberg (1934) modeled a market where one firm (the leader) cho
 
 **Setup**: Two firms produce identical goods. Market price decreases as total output increases. The leader commits to a quantity; the follower observes and responds.
 
-**Result**: The leader produces **more** than in the simultaneous (Cournot) game and earns higher profit. The follower, constrained by the leader\\'s large output, produces less and earns lower profit.
+**Result**: The leader produces **more** than in the simultaneous (Cournot) game and earns higher profit. The follower, constrained by the leader\'s large output, produces less and earns lower profit.
 
-**Why it works**: By committing to high output, the leader makes it unprofitable for the follower to also produce high output (that would crash the price). The follower\\'s best response is to produce less, leaving more market share for the leader.
+**Why it works**: By committing to high output, the leader makes it unprofitable for the follower to also produce high output (that would crash the price). The follower\'s best response is to produce less, leaving more market share for the leader.
 
-**Numerical Example**: If market demand is P = 100 - Q, and each firm\\'s cost is $10 per unit:
+**Numerical Example**: If market demand is P = 100 - Q, and each firm\'s cost is $10 per unit:
 - **Cournot (simultaneous)**: Each produces 30, profit = $900 each
 - **Stackelberg (leader/follower)**: Leader produces 45, follower produces 22.5. Leader profit = $1,012, follower profit = $506
 
@@ -2339,7 +2339,7 @@ The leader gains ~12% more profit by moving first.
 
 ## Classic Examples of First-Mover Advantage
 
-**Amazon (1994)**: Jeff Bezos launched the first major online bookstore, establishing brand recognition, customer data, and logistics infrastructure that later entrants could not easily replicate. By the time competitors recognized e-commerce\\'s potential, Amazon had an insurmountable head start.
+**Amazon (1994)**: Jeff Bezos launched the first major online bookstore, establishing brand recognition, customer data, and logistics infrastructure that later entrants could not easily replicate. By the time competitors recognized e-commerce\'s potential, Amazon had an insurmountable head start.
 
 **Standard Oil (1870s-1900s)**: John D. Rockefeller built refining capacity before competitors, then used his scale to negotiate exclusive railroad shipping rates. Early commitment to infrastructure created compounding advantages.
 
@@ -2351,7 +2351,7 @@ First-mover advantage is **not universal**. Several conditions favor the **secon
 
 **1. Learning from Mistakes**: In technology markets, first movers often fail because they bear the cost of educating the market and debugging the concept. Facebook succeeded where Friendster and MySpace pioneered. Google succeeded where AltaVista and Yahoo searched first.
 
-**2. Free-Riding on Investment**: First movers invest in R&D, market creation, and infrastructure. Second movers can observe what works and invest more efficiently. Samsung in smartphones followed Apple\\'s trail while avoiding its missteps.
+**2. Free-Riding on Investment**: First movers invest in R&D, market creation, and infrastructure. Second movers can observe what works and invest more efficiently. Samsung in smartphones followed Apple\'s trail while avoiding its missteps.
 
 **3. The "Wait and See" Advantage**: In uncertain environments, delaying preserves **optionality**. If market conditions are unclear, the second mover can choose the best response after uncertainty resolves. This is the logic behind poker: letting others bet first gives you information.
 
@@ -2412,20 +2412,20 @@ Consider the **Chicken Game** (two cars driving toward each other):
 | **Swerve** | 0, 0 | -1, 1 |
 | **Straight** | 1, -1 | -5, -5 |
 
-If Player 1 **visibly removes their steering wheel** and throws it out the window, Player 2 knows Player 1 cannot swerve. Player 2\\'s only rational choice is to swerve. Player 1 wins by **eliminating their own option**.
+If Player 1 **visibly removes their steering wheel** and throws it out the window, Player 2 knows Player 1 cannot swerve. Player 2\'s only rational choice is to swerve. Player 1 wins by **eliminating their own option**.
 
 This works because:
 1. The commitment is **observable** (the opponent sees the missing steering wheel)
 2. The commitment is **irreversible** (you cannot reinstall a steering wheel at 100 mph)
-3. The commitment changes the **opponent\\'s best response**
+3. The commitment changes the **opponent\'s best response**
 
 ## Modern Commitment Strategies
 
 **Contractual Commitments**: Companies sign long-term supply contracts to commit to prices, deterring competitors from entering. The contract makes price-cutting literally impossible.
 
-**Reputation as Commitment**: A firm known for always fighting new entrants (even at short-term cost) effectively commits to future aggression. Walmart\\'s reputation for matching any competitor\\'s price serves as a commitment device that deters price competition.
+**Reputation as Commitment**: A firm known for always fighting new entrants (even at short-term cost) effectively commits to future aggression. Walmart\'s reputation for matching any competitor\'s price serves as a commitment device that deters price competition.
 
-**Organizational Structure**: Publicly announcing corporate strategy limits flexibility but signals commitment. When Jeff Bezos sent his famous "it is always Day 1" memos, he committed Amazon\\'s culture to perpetual innovation, shaping competitors\\' expectations.
+**Organizational Structure**: Publicly announcing corporate strategy limits flexibility but signals commitment. When Jeff Bezos sent his famous "it is always Day 1" memos, he committed Amazon\'s culture to perpetual innovation, shaping competitors\' expectations.
 
 **Constitutional Constraints**: Nations adopt constitutions that are deliberately hard to change, committing future governments to certain principles. Central bank independence commits monetary policy to inflation control, even when politicians prefer stimulus.
 
@@ -2437,11 +2437,11 @@ Commitment strategies fail when:
 - **The commitment is not credible**: If everyone knows you *can* undo it, it is not a real commitment
 - **The commitment is not observable**: If your opponent does not know about your constraint, it does not change their behavior
 - **The environment changes**: Rigid commitment in a rapidly changing world can trap you in a bad position
-- **The opponent is irrational**: Commitment works by changing a rational opponent\\'s calculation. Against irrational or uninformed opponents, the logic breaks down
+- **The opponent is irrational**: Commitment works by changing a rational opponent\'s calculation. Against irrational or uninformed opponents, the logic breaks down
 
 ## The Ulysses Pact
 
-The original commitment device comes from Homer\\'s *Odyssey*: Ulysses ordered his sailors to tie him to the mast so he could hear the Sirens\\' song without steering toward them. He deliberately removed his future freedom of action, knowing his future self would make a bad decision.
+The original commitment device comes from Homer\'s *Odyssey*: Ulysses ordered his sailors to tie him to the mast so he could hear the Sirens\' song without steering toward them. He deliberately removed his future freedom of action, knowing his future self would make a bad decision.
 
 Modern "Ulysses pacts" include:
 - **Automatic savings deductions** (committing future income)
@@ -2476,7 +2476,7 @@ These self-binding strategies work in games against your own future self\u2014wh
 
 In strategic interactions, players can say anything. A firm can threaten a price war. A parent can threaten to cancel vacation. A nation can threaten military action. But **rational opponents evaluate whether you would actually follow through** based on your incentives at the moment of action, not your words beforehand.
 
-A threat or promise is **credible** if, when the time comes to execute it, it is in the player\\'s self-interest to do so.
+A threat or promise is **credible** if, when the time comes to execute it, it is in the player\'s self-interest to do so.
 
 ## The Credibility Test
 
@@ -2486,7 +2486,7 @@ For any threat or promise, ask: **"When the moment comes, will the player actual
 A large corporation tells a startup: "If you enter our market, we will cut prices below cost and drive you out." But:
 - Price wars cost the incumbent millions
 - The incumbent has shareholders demanding profitability
-- After the startup enters, the incumbent\\'s best response is usually to accommodate
+- After the startup enters, the incumbent\'s best response is usually to accommodate
 
 The startup, analyzing this rationally, enters anyway. The threat was **not credible** because following through would hurt the threatener more than accommodating.
 
@@ -2497,12 +2497,12 @@ The startup, analyzing this rationally, enters anyway. The threat was **not cred
 - Build **excess capacity** before a competitor enters. Fighting becomes cheaper when your factory is already built and needs volume.
 
 **2. Delegation**: Hand the decision to someone who *will* follow through.
-- A company hires an aggressive CEO known for fighting competitors. The CEO\\'s reputation makes the threat credible\u2014they *will* start a price war.
+- A company hires an aggressive CEO known for fighting competitors. The CEO\'s reputation makes the threat credible\u2014they *will* start a price war.
 - Nations establish automatic retaliation systems (the Soviet "Dead Hand" nuclear system) to ensure threats are carried out even if leaders would hesitate.
 
 **3. Reputation Building**: Establish a pattern of following through.
 - If a firm has fought every previous entrant (even at short-term cost), the next potential entrant takes the threat seriously.
-- Israel\\'s consistent military responses to provocations, regardless of scale, built credibility that deters larger threats.
+- Israel\'s consistent military responses to provocations, regardless of scale, built credibility that deters larger threats.
 
 **4. Emotional Commitment**: Genuine anger, pride, or moral conviction can make threats credible because the player *wants* to follow through regardless of cost.
 - This is why "irrational" actors can be strategically powerful: their unpredictability makes all threats credible.
@@ -2583,11 +2583,11 @@ This game has **two** Nash Equilibria:
 1. **(Enter, Accommodate)**: Payoffs (1, 1)
 2. **(Stay Out, Fight)**: Payoffs (0, 2)
 
-In equilibrium #2, the incumbent\\'s strategy is "fight if entry occurs." Since the entrant anticipates fighting, they stay out. The incumbent never actually has to fight\u2014the threat alone deters entry. As a Nash Equilibrium, this is valid: neither player benefits from unilateral deviation given the other\\'s strategy.
+In equilibrium #2, the incumbent\'s strategy is "fight if entry occurs." Since the entrant anticipates fighting, they stay out. The incumbent never actually has to fight\u2014the threat alone deters entry. As a Nash Equilibrium, this is valid: neither player benefits from unilateral deviation given the other\'s strategy.
 
 But this equilibrium relies on a **non-credible threat**. If entry actually occurred, the incumbent would prefer accommodating (1 > -1). The "fight" strategy is rational only because it is never tested.
 
-## Selten\\'s Refinement
+## Selten\'s Refinement
 
 Reinhard Selten (Nobel Prize 1994) introduced **Subgame Perfect Equilibrium** to eliminate exactly these situations:
 
@@ -2597,7 +2597,7 @@ A **subgame** starts at any single decision node where the player knows exactly 
 
 ## Applying SPE to the Entry Game
 
-**Subgame 1**: The incumbent\\'s decision (after entry occurs)
+**Subgame 1**: The incumbent\'s decision (after entry occurs)
 - Fight: payoff -1
 - Accommodate: payoff 1
 - Nash Equilibrium of this subgame: **Accommodate**
@@ -2622,7 +2622,7 @@ This means you do not need to check all possible multi-stage deviations\u2014jus
 **Setup**: Player 1 proposes a split of $10. Player 2 accepts or rejects. If rejected, both get $0.
 
 **Backward induction / SPE analysis:**
-- Player 2\\'s subgame: Accept any positive amount (getting something > nothing)
+- Player 2\'s subgame: Accept any positive amount (getting something > nothing)
 - Player 1, knowing this: Offer the minimum possible (e.g., $0.01)
 - **SPE**: Player 1 offers $0.01, Player 2 accepts
 
@@ -2650,7 +2650,7 @@ This paradoxical result showed that SPE sometimes gives counterintuitive predict
 
 ## Limitations of SPE
 
-SPE inherits backward induction\\'s limitations:
+SPE inherits backward induction\'s limitations:
 - Requires **common knowledge of rationality**
 - Can produce counterintuitive results (Centipede Game, Chain Store)
 - Does not account for bounded rationality or behavioral factors
@@ -2682,7 +2682,7 @@ Despite these limitations, SPE remains the primary solution concept for sequenti
       overview: 'Sequential game theory is not just theory\u2014it is the logic behind chess grandmasters calculating 20 moves ahead, generals planning invasions, and CEOs timing market entries. This lesson connects the formal tools of backward induction and subgame perfection to real strategic thinking in three domains: board games, business competition, and military strategy.',
       mainContent: `## Chess: The Ultimate Sequential Game
 
-Chess is a finite, two-player, perfect-information, zero-sum game. By Zermelo\\'s theorem, it is theoretically "solved"\u2014but the game tree has approximately 10^120 nodes (the Shannon number), making full backward induction computationally impossible.
+Chess is a finite, two-player, perfect-information, zero-sum game. By Zermelo\'s theorem, it is theoretically "solved"\u2014but the game tree has approximately 10^120 nodes (the Shannon number), making full backward induction computationally impossible.
 
 **How Grandmasters Think (Without Full Backward Induction):**
 
@@ -2694,7 +2694,7 @@ Herbert Simon and William Chase (1973) studied chess expertise and found that gr
 
 This is **bounded backward induction**: applying the logic of working backward, but only in critical subgames where the calculation is tractable.
 
-**Computer Chess and Game Theory**: DeepBlue (1997) and AlphaZero (2017) approach chess differently. DeepBlue used brute-force search (evaluating 200 million positions/second). AlphaZero used neural networks trained through self-play, developing an "intuition" about position quality. AlphaZero\\'s approach mirrors human pattern recognition\u2014a form of approximate backward induction.
+**Computer Chess and Game Theory**: DeepBlue (1997) and AlphaZero (2017) approach chess differently. DeepBlue used brute-force search (evaluating 200 million positions/second). AlphaZero used neural networks trained through self-play, developing an "intuition" about position quality. AlphaZero\'s approach mirrors human pattern recognition\u2014a form of approximate backward induction.
 
 ## Business: Product Launch Timing
 
@@ -2705,21 +2705,21 @@ Apple launched iPhone in 2007 with a first-mover commitment strategy:
 2. **Exclusive carrier deal** (AT&T): Locked in distribution
 3. **Patent portfolio**: Legal commitment to defend innovations
 
-**Google\\'s Sequential Response** (Android, 2008):
-- Observed iPhone\\'s success and market reception
-- Chose an **open-source** platform strategy (different from Apple\\'s closed ecosystem)
+**Google\'s Sequential Response** (Android, 2008):
+- Observed iPhone\'s success and market reception
+- Chose an **open-source** platform strategy (different from Apple\'s closed ecosystem)
 - Used second-mover information advantage: knew the market existed
 
-**Samsung\\'s Third-Mover Strategy**:
+**Samsung\'s Third-Mover Strategy**:
 - Waited to see which platform won (Android)
 - Invested in manufacturing at scale (commitment through capacity)
 - Undercut iPhone on price, matched on features
 
-Each player\\'s timing was a strategic choice in a sequential game. Apple\\'s first-mover advantage came from network effects (App Store ecosystem). Samsung\\'s later entry succeeded because manufacturing scale does not require first-mover timing.
+Each player\'s timing was a strategic choice in a sequential game. Apple\'s first-mover advantage came from network effects (App Store ecosystem). Samsung\'s later entry succeeded because manufacturing scale does not require first-mover timing.
 
 ## Military Strategy: The Schlieffen Plan
 
-Germany\\'s strategy in World War I illustrates sequential game theory\\'s principles\u2014and their failures.
+Germany\'s strategy in World War I illustrates sequential game theory\'s principles\u2014and their failures.
 
 **The Setup**: Germany faced a two-front war (France and Russia). The Schlieffen Plan committed to:
 1. Attack France first through Belgium (6-week blitzkrieg)
@@ -2727,33 +2727,33 @@ Germany\\'s strategy in World War I illustrates sequential game theory\\'s princ
 
 **Game-Theoretic Analysis**:
 - **Commitment**: Invading Belgium was irreversible (burned bridges with neutral nations)
-- **Sequential logic**: Assumed Russia\\'s slow mobilization created a time window
-- **Backward induction failure**: Did not account for Belgium\\'s resistance, British intervention, or France\\'s adaptive response
+- **Sequential logic**: Assumed Russia\'s slow mobilization created a time window
+- **Backward induction failure**: Did not account for Belgium\'s resistance, British intervention, or France\'s adaptive response
 
 The plan treated the war as a decision tree with predictable branches. Reality was a simultaneous game with imperfect information, fog of war, and adaptive opponents.
 
 ## Decision Trees in Business Strategy
 
-**Amazon\\'s Entry into Cloud Computing (2006)**:
+**Amazon\'s Entry into Cloud Computing (2006)**:
 
 \`\`\`
          Amazon
         /       \\\\
-   Launch AWS    Don\\'t
+   Launch AWS    Don\'t
       |            |
    Competitors    (0, status quo)
     /      \\\\
-  Enter     Don\\'t Enter
+  Enter     Don\'t Enter
    |            |
 (share, share) (monopoly, 0)
 \`\`\`
 
-Amazon\\'s backward induction:
-- If AWS launched and succeeded: competitors would eventually enter, but Amazon\\'s head start (learning curve, customer lock-in) would sustain advantage
+Amazon\'s backward induction:
+- If AWS launched and succeeded: competitors would eventually enter, but Amazon\'s head start (learning curve, customer lock-in) would sustain advantage
 - If AWS launched and failed: losses from infrastructure already built for Amazon.com would be minimal (sunk cost repurposed)
 - If AWS not launched: competitors might launch first, or the market might not develop
 
-The asymmetry in downside risk (repurposed infrastructure vs. missed market) made launching the dominant strategy. AWS now generates ~70% of Amazon\\'s operating profit.
+The asymmetry in downside risk (repurposed infrastructure vs. missed market) made launching the dominant strategy. AWS now generates ~70% of Amazon\'s operating profit.
 
 ## Lessons for Your Own Strategic Thinking
 
@@ -2805,7 +2805,7 @@ Moving left means committing early: seizing initiative, preempting competitors, 
 When a resource, market, or position can only be claimed once, speed matters. Domain names, patent filings, prime real estate\u2014these are winner-take-all races where the first mover captures irreplaceable value.
 
 **2. Network Effects Are Strong**
-In markets where value increases with users (social media, payment systems, communication platforms), early adoption creates a snowball effect that late entrants cannot overcome. WhatsApp\\'s early dominance in messaging created a network effect that even Facebook\\'s resources could not initially replicate (hence the $19B acquisition).
+In markets where value increases with users (social media, payment systems, communication platforms), early adoption creates a snowball effect that late entrants cannot overcome. WhatsApp\'s early dominance in messaging created a network effect that even Facebook\'s resources could not initially replicate (hence the $19B acquisition).
 
 **3. Commitment Credibility Is Needed**
 When you need others to believe you are serious, early irreversible action speaks louder than promises. Building a factory, signing a long-term lease, or publicly announcing a strategy creates credible commitment.
@@ -2822,10 +2822,10 @@ If key uncertainties will resolve soon (regulatory decisions, technology standar
 When being first means educating the market, debugging technology, and bearing regulatory scrutiny, letting others go first can be efficient. You learn from their mistakes without paying their tuition.
 
 **3. Flexibility Has Option Value**
-In finance, an option\\'s value increases with uncertainty. Similarly, strategic flexibility is most valuable when the future is unpredictable. Committing early in a volatile environment means you might lock into a suboptimal position.
+In finance, an option\'s value increases with uncertainty. Similarly, strategic flexibility is most valuable when the future is unpredictable. Committing early in a volatile environment means you might lock into a suboptimal position.
 
-**4. Opponents\\' Moves Reveal Information**
-In poker, acting last lets you observe others\\' bets before deciding. In business, letting competitors launch first reveals market demand, customer preferences, and pricing sensitivity\u2014information that improves your own entry strategy.
+**4. Opponents\' Moves Reveal Information**
+In poker, acting last lets you observe others\' bets before deciding. In business, letting competitors launch first reveals market demand, customer preferences, and pricing sensitivity\u2014information that improves your own entry strategy.
 
 ## The Option Value of Waiting
 
@@ -2834,7 +2834,7 @@ Financial option theory provides a rigorous framework. An **option to invest** h
 - If conditions worsen: you let the option expire (do not invest)
 - This asymmetry (upside captured, downside avoided) makes the option valuable
 
-Avinash Dixit and Robert Pindyck\\'s *Investment Under Uncertainty* (1994) showed that the option value of waiting can be substantial\u2014often exceeding traditional NPV analysis suggests. This explains why firms sometimes delay "obviously" profitable investments: the option to wait has value that simple analysis misses.
+Avinash Dixit and Robert Pindyck\'s *Investment Under Uncertainty* (1994) showed that the option value of waiting can be substantial\u2014often exceeding traditional NPV analysis suggests. This explains why firms sometimes delay "obviously" profitable investments: the option to wait has value that simple analysis misses.
 
 ## Synthesizing Sequential Game Theory
 
@@ -2863,7 +2863,7 @@ When facing a significant decision:
 
 As Sun Tzu wrote in *The Art of War*: "The victorious strategist only seeks battle after the victory has been won, whereas he who is destined to defeat first fights and afterwards looks for victory."
 
-Strategic timing is not about always moving first or always waiting. It is about reading the structure of the game and choosing the moment when action\\'s benefits outweigh delay\\'s advantages.`,
+Strategic timing is not about always moving first or always waiting. It is about reading the structure of the game and choosing the moment when action\'s benefits outweigh delay\'s advantages.`,
       keyTakeaway: 'Strategic timing is the art of balancing commitment power (moving early) against informational flexibility (waiting). The right timing depends on preemption value, network effects, uncertainty levels, and the option value of delay. Master strategists read the game\u2019s structure to choose the optimal moment for action.',
       actionItem: 'Identify one decision you have been postponing. Apply the timing framework: Is uncertainty resolvable soon? Are there preemption risks? What is the option value of waiting versus the cost of delay? Write down your analysis and set a specific deadline for your decision.',
       quiz: {

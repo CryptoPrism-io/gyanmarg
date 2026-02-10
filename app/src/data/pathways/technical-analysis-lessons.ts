@@ -1527,7 +1527,7 @@ If you only learn one thing in technical analysis, make it support and resistanc
 
 ### How to Identify Strong Levels
 
-Not all support and resistance are equal. Here\\'s what separates a minor level from a fortress:
+Not all support and resistance are equal. Here\'s what separates a minor level from a fortress:
 
 | Factor | Weak Level | Strong Level |
 |--------|-----------|--------------|
@@ -1595,7 +1595,7 @@ While horizontal levels are static, trendlines move with price. An uptrend line 
 
 ### The Body vs. Wick Debate
 
-Should you draw trendlines through candle bodies or wicks? There\\'s no universally "correct" answer, but here\\'s a practical approach:
+Should you draw trendlines through candle bodies or wicks? There\'s no universally "correct" answer, but here\'s a practical approach:
 
 - **Use wicks** when the trendline connects cleanly across wicks without bodies violating it
 - **Use bodies** when wicks are erratic and messy
@@ -1663,7 +1663,7 @@ The simplest and most common definition:
 
 **Swing Low:** A bar whose low is lower than the low of the bar before it AND the bar after it.
 
-For stronger pivots, use the **5-bar rule**: the central bar\\'s high/low must be higher/lower than the two bars on each side. The more bars required, the fewer and more significant the pivots.
+For stronger pivots, use the **5-bar rule**: the central bar\'s high/low must be higher/lower than the two bars on each side. The more bars required, the fewer and more significant the pivots.
 
 ### Why Pivots Matter
 
@@ -1676,7 +1676,7 @@ Pivots are the building blocks for almost everything in technical analysis:
 
 ### The Hierarchy of Pivots
 
-Not all pivots are equal. There\\'s a fractal nature to markets—pivots exist within pivots:
+Not all pivots are equal. There\'s a fractal nature to markets—pivots exist within pivots:
 
 | Pivot Level | Timeframe | Use Case |
 |-------------|-----------|----------|
@@ -1688,7 +1688,7 @@ A minor pivot on a daily chart is invisible on a weekly chart. Always identify p
 
 ### Pivot Failure: A Powerful Signal
 
-When price makes a swing low, rallies, then returns to test that low and **fails to break below it**, that\\'s a pivot support hold—a bullish signal. When it returns and **breaks below**, that\\'s a pivot failure—often triggering a cascade of selling as stop-losses below the pivot are hit.
+When price makes a swing low, rallies, then returns to test that low and **fails to break below it**, that\'s a pivot support hold—a bullish signal. When it returns and **breaks below**, that\'s a pivot failure—often triggering a cascade of selling as stop-losses below the pivot are hit.
 
 **Pivot failure cascades** happen because traders cluster their stop-losses just below swing lows (for longs) and just above swing highs (for shorts). When these stops are triggered, they add fuel to the move, pushing price further.
 
@@ -1700,7 +1700,7 @@ When price makes a swing low, rallies, then returns to test that low and **fails
 4. Label each pivot with its price and date for reference
 5. Watch how current price interacts with these levels
 
-This creates a roadmap of the market\\'s memory. Price doesn\\'t care about your indicators—it reacts to the levels where real money previously changed hands.`,
+This creates a roadmap of the market\'s memory. Price doesn\'t care about your indicators—it reacts to the levels where real money previously changed hands.`,
       keyTakeaway: 'Swing highs and swing lows are the skeleton of price movement. They define trends (higher highs/lows vs lower highs/lows), set natural stop-loss levels, and form the basis of every chart pattern. Always identify pivots on the timeframe relevant to your trading style.',
       actionItem: 'Take any chart and mark the last 5 swing highs and 5 swing lows on the daily timeframe using the 3-bar rule. Label each with its price. Now step back and notice: are these pivots making higher highs and higher lows (uptrend) or lower highs and lower lows (downtrend)?'
     }
@@ -1745,7 +1745,7 @@ The Fibonacci sequence (1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89...) produces ratios
 | **50.0%** | Psychological midpoint | Balanced pullback |
 | **61.8%** | Golden ratio | Last line of defense for the trend |
 
-If price retraces past 78.6%, the trend is likely broken—you\\'re probably looking at a reversal, not a pullback.
+If price retraces past 78.6%, the trend is likely broken—you\'re probably looking at a reversal, not a pullback.
 
 ### Why Fibonacci Levels Work
 
@@ -1766,13 +1766,13 @@ A single Fibonacci level is interesting. A Fibonacci level that **aligns with ot
 - Fibonacci level + round number = **institutional order cluster**
 - Fibonacci level from two different swing moves overlapping = **Fibonacci cluster**
 
-When multiple Fibonacci levels from different swings land in the same price zone, that\\'s a **Fibonacci cluster**—one of the highest-probability support/resistance areas you can identify.
+When multiple Fibonacci levels from different swings land in the same price zone, that\'s a **Fibonacci cluster**—one of the highest-probability support/resistance areas you can identify.
 
 ### Common Mistakes with Fibonacci
 
 1. **Drawing from the wrong pivots**: Always use significant swing points, not minor wiggles
 2. **Using Fibonacci in isolation**: Fibonacci levels need confirmation from price action or other tools
-3. **Forcing Fibonacci onto every move**: Not every move retraces to a clean Fibonacci level—and that\\'s fine
+3. **Forcing Fibonacci onto every move**: Not every move retraces to a clean Fibonacci level—and that\'s fine
 4. **Ignoring the trend**: Fibonacci retracements measure pullbacks within a trend, not reversals against a trend`,
       keyTakeaway: 'Fibonacci retracement levels (38.2%, 50%, 61.8%) predict where pullbacks within a trend are likely to end. They work best when combined with other technical evidence like horizontal support or trendlines. Always draw from significant swing points, not minor moves.',
       actionItem: 'Find a stock that recently made a strong move up or down. Apply the Fibonacci retracement tool from the swing low to the swing high (or vice versa). Note which Fibonacci level price is currently nearest. Did the pullback stall at one of the key levels?',
@@ -1799,7 +1799,7 @@ When multiple Fibonacci levels from different swings land in the same price zone
       overview: 'Market structure is the language of price action. It tells you whether bulls or bears are in control, when control is shifting, and where the most dangerous and most profitable moments occur. Master this, and you can read a chart with no indicators at all.',
       mainContent: `## Defining Market Structure
 
-Market structure is simply the pattern of swing highs and swing lows on a chart. It\\'s the most objective way to define a trend:
+Market structure is simply the pattern of swing highs and swing lows on a chart. It\'s the most objective way to define a trend:
 
 **Bullish structure (uptrend):**
 - Price makes a **higher high** (HH): a swing high above the previous swing high
@@ -1817,13 +1817,13 @@ Market structure is simply the pattern of swing highs and swing lows on a chart.
 
 ### Break of Structure (BOS)
 
-A **Break of Structure** occurs when price violates the current trend\\'s pattern. In an uptrend, a BOS happens when price breaks below the most recent higher low. In a downtrend, a BOS happens when price breaks above the most recent lower high.
+A **Break of Structure** occurs when price violates the current trend\'s pattern. In an uptrend, a BOS happens when price breaks below the most recent higher low. In a downtrend, a BOS happens when price breaks above the most recent lower high.
 
 This is the earliest warning that the trend may be changing. Professional traders watch for BOS signals obsessively because they mark the transition zones where trends die and new ones are born.
 
 ### Change of Character (ChoCH)
 
-A **Change of Character** is a stronger signal than a BOS. It\\'s when the structure fully shifts:
+A **Change of Character** is a stronger signal than a BOS. It\'s when the structure fully shifts:
 
 1. **Uptrend ChoCH**: Price makes a lower low AND then a lower high (complete shift from bullish to bearish structure)
 2. **Downtrend ChoCH**: Price makes a higher high AND then a higher low (complete shift from bearish to bullish structure)
@@ -1834,7 +1834,7 @@ The difference between BOS and ChoCH:
 
 ### Reading Structure in Real Time
 
-Here\\'s a step-by-step process for reading market structure on any chart:
+Here\'s a step-by-step process for reading market structure on any chart:
 
 1. **Label the last 5-6 swing highs and swing lows** on your trading timeframe
 2. **Mark them as HH, HL, LH, or LL** relative to the previous swing of the same type
@@ -1901,7 +1901,7 @@ Mirror the demand zone criteria:
 
 1. **Strong departure downward**: Price left the zone with impulsive selling
 2. **Base formation**: Brief pause before the drop
-3. **Fresh zone**: Price hasn\\'t retested yet
+3. **Fresh zone**: Price hasn\'t retested yet
 4. **Rally-Base-Drop pattern**: Price rallies into the zone, pauses, then drops sharply
 
 ### Drawing Supply/Demand Zones
@@ -1910,13 +1910,13 @@ Mirror the demand zone criteria:
 1. Find the strong upward move on your chart
 2. Look at where it started—the last down candle or consolidation before the impulse
 3. Draw a rectangle from the low of the base candle(s) to the high of the base candle(s)
-4. Extend that rectangle to the right—that\\'s your demand zone
+4. Extend that rectangle to the right—that\'s your demand zone
 
 **For a supply zone:**
 1. Find the strong downward move
 2. Look at where it started—the last up candle or consolidation before the drop
 3. Draw a rectangle covering the base candle(s)
-4. Extend to the right—that\\'s your supply zone
+4. Extend to the right—that\'s your supply zone
 
 ### Zone Quality Checklist
 
@@ -1929,7 +1929,7 @@ Mirror the demand zone criteria:
 
 ### Why Fresh Zones Are Strongest
 
-When an institution places a large buy order at $50, they often can\\'t fill the entire order at once—there aren\\'t enough sellers. Price moves up before the order is completely filled. When price returns to $50, the institution\\'s unfilled orders are still sitting there, waiting. This is why the **first retest** of a supply or demand zone has the highest probability of producing a reaction.
+When an institution places a large buy order at $50, they often can\'t fill the entire order at once—there aren\'t enough sellers. Price moves up before the order is completely filled. When price returns to $50, the institution\'s unfilled orders are still sitting there, waiting. This is why the **first retest** of a supply or demand zone has the highest probability of producing a reaction.
 
 Each subsequent retest absorbs more of those resting orders. By the third or fourth retest, the orders are mostly filled and the zone is "used up."
 
@@ -1954,7 +1954,7 @@ This alignment means you have both institutional order flow AND structural trend
       overview: 'All the concepts you have learned—horizontal support/resistance, trendlines, pivots, Fibonacci, market structure, and supply/demand zones—come together to form a price map. This exercise teaches you to layer these tools into a single, actionable view of any market.',
       mainContent: `## The Price Map Framework
 
-A price map is your pre-trade preparation. Before you ever consider a trade, you should have a clear picture of the battlefield. Here\\'s the systematic process for building one.
+A price map is your pre-trade preparation. Before you ever consider a trade, you should have a clear picture of the battlefield. Here\'s the systematic process for building one.
 
 ### Step 1: Major Horizontal Levels (Weekly/Monthly Chart)
 
@@ -1995,9 +1995,9 @@ On the same daily chart:
 
 ### Step 6: Consolidate Your Map
 
-You should now have a chart with multiple layers. The final step is critical: **remove any level that doesn\\'t align with at least one other tool.**
+You should now have a chart with multiple layers. The final step is critical: **remove any level that doesn\'t align with at least one other tool.**
 
-A horizontal level on its own? Maybe interesting. A horizontal level that aligns with a Fibonacci 61.8% AND sits inside a demand zone? That\\'s a high-conviction level.
+A horizontal level on its own? Maybe interesting. A horizontal level that aligns with a Fibonacci 61.8% AND sits inside a demand zone? That\'s a high-conviction level.
 
 ### The Confluence Score
 
@@ -2012,14 +2012,14 @@ Rate each level by how many tools confirm it:
 
 ### Practical Example Walkthrough
 
-Let\\'s say you\\'re analyzing Apple (AAPL):
+Let\'s say you\'re analyzing Apple (AAPL):
 1. Weekly chart shows major resistance at $200 and support at $165
 2. Daily structure is bullish (HH, HL), with last HL at $178
 3. Fresh demand zone at $175-$178
 4. Fibonacci 38.2% retracement from the last swing sits at $176
 5. Rising trendline passes through $177
 
-The $175-$178 area has a confluence score of 4: horizontal support, demand zone, Fibonacci level, and trendline. If price pulls back to this zone, it\\'s a high-probability buying opportunity.
+The $175-$178 area has a confluence score of 4: horizontal support, demand zone, Fibonacci level, and trendline. If price pulls back to this zone, it\'s a high-probability buying opportunity.
 
 ### Maintaining Your Map
 
@@ -2041,7 +2041,7 @@ Markets are dynamic. Update your price map:
       overview: 'Put everything from this level into practice. You will analyze a chart from scratch using only the tools covered in Level 3: horizontal levels, trendlines, pivots, Fibonacci, market structure, and supply/demand zones. No indicators allowed—just price.',
       mainContent: `## The Structure Analysis Challenge
 
-This challenge tests your ability to read raw price action and build a complete structural analysis. You\\'ll do this on a real chart—not a textbook example.
+This challenge tests your ability to read raw price action and build a complete structural analysis. You\'ll do this on a real chart—not a textbook example.
 
 ### The Task
 
@@ -2072,7 +2072,7 @@ Identify the most recent significant swing (at least a 10% move if stocks, or 20
 **Answer these questions:**
 - Which Fibonacci level did the pullback respect?
 - Does any Fibonacci level align with a horizontal level?
-- If price hasn\\'t pulled back yet, where would the key Fibonacci levels be?
+- If price hasn\'t pulled back yet, where would the key Fibonacci levels be?
 
 ### Part 4: Find Supply/Demand Zones
 
@@ -2108,8 +2108,8 @@ Combine all your work into a single analysis.
 
 ### Common Pitfalls
 
-- **Overcrowded charts**: If you can\\'t read your own analysis, neither can your decision-making under pressure
-- **Confirmation bias**: Don\\'t draw levels to justify a trade you already want to make—draw them objectively first, then decide
+- **Overcrowded charts**: If you can\'t read your own analysis, neither can your decision-making under pressure
+- **Confirmation bias**: Don\'t draw levels to justify a trade you already want to make—draw them objectively first, then decide
 - **Ignoring structure**: Many beginners draw beautiful levels but forget to read the overall trend. Structure tells you whether to look for longs or shorts
 - **Skipping the weekly chart**: Always start zoomed out before zooming in
 
@@ -2155,7 +2155,7 @@ The SMA is the arithmetic mean of the last N closing prices:
 
 **SMA = (P1 + P2 + P3 + ... + PN) / N**
 
-A 20-day SMA adds up the last 20 closing prices and divides by 20. Every data point has equal weight—the price from 20 days ago matters just as much as today\\'s close.
+A 20-day SMA adds up the last 20 closing prices and divides by 20. Every data point has equal weight—the price from 20 days ago matters just as much as today\'s close.
 
 **SMA strengths:**
 - Smooth and stable—less prone to whipsaws
@@ -2173,7 +2173,7 @@ The EMA applies more weight to recent prices using a multiplier:
 
 **Multiplier = 2 / (N + 1)**
 
-For a 20-day EMA, the multiplier is 2/21 = 0.0952. Today\\'s price gets 9.52% of the weighting, with the remainder distributed (with declining weight) across previous days.
+For a 20-day EMA, the multiplier is 2/21 = 0.0952. Today\'s price gets 9.52% of the weighting, with the remainder distributed (with declining weight) across previous days.
 
 **EMA strengths:**
 - Reacts faster to recent price changes
@@ -2196,14 +2196,14 @@ For a 20-day EMA, the multiplier is 2/21 = 0.0952. Today\\'s price gets 9.52% of
 
 ### The Practical Truth
 
-Here\\'s what experienced traders know: **the difference between SMA and EMA matters far less than choosing the right period and using the average consistently.** A 20 SMA and a 20 EMA will give you similar signals 90% of the time. The 10% where they differ is usually in choppy, noisy markets where neither gives great signals anyway.
+Here\'s what experienced traders know: **the difference between SMA and EMA matters far less than choosing the right period and using the average consistently.** A 20 SMA and a 20 EMA will give you similar signals 90% of the time. The 10% where they differ is usually in choppy, noisy markets where neither gives great signals anyway.
 
-What matters more is understanding that moving averages are **lagging indicators**. They confirm trends that are already happening—they don\\'t predict future moves. This isn\\'t a weakness; it\\'s their purpose. Moving averages keep you on the right side of the trend and prevent you from fighting the market.
+What matters more is understanding that moving averages are **lagging indicators**. They confirm trends that are already happening—they don\'t predict future moves. This isn\'t a weakness; it\'s their purpose. Moving averages keep you on the right side of the trend and prevent you from fighting the market.
 
 ### The Key Periods Every Trader Should Know
 
 - **9 or 10 EMA**: Fast-moving, day/swing trading
-- **20 or 21 EMA**: The "trader\\'s MA," widely watched for pullback entries
+- **20 or 21 EMA**: The "trader\'s MA," widely watched for pullback entries
 - **50 SMA**: Intermediate trend identifier, often called the "line in the sand"
 - **100 SMA**: Less common but useful as a halfway point
 - **200 SMA**: The gold standard for long-term trend direction—above it is bullish, below it is bearish`,
@@ -2226,11 +2226,11 @@ The 50, 100, and 200-day moving averages correspond roughly to:
 - **100-day**: ~5 months (roughly half a year)
 - **200-day**: ~10 months (roughly one trading year)
 
-These aren\\'t magic numbers—they\\'re anchored to real institutional time horizons. Quarterly rebalancing, semi-annual reviews, and annual performance periods all align with these timeframes.
+These aren\'t magic numbers—they\'re anchored to real institutional time horizons. Quarterly rebalancing, semi-annual reviews, and annual performance periods all align with these timeframes.
 
 ### The 200-Day Moving Average: The Trend Divider
 
-The 200-day SMA is the single most watched moving average in finance. Here\\'s why:
+The 200-day SMA is the single most watched moving average in finance. Here\'s why:
 
 **Research backing:** Brock, Lakonishok, and LeBaron (1992) published a landmark study in the *Journal of Finance* showing that simple moving average rules—particularly the 200-day—generated statistically significant returns across 90 years of Dow Jones data. The study has been replicated and debated, but the core finding holds: being long above the 200-day and defensive below it has historically improved risk-adjusted returns.
 
@@ -2245,7 +2245,7 @@ The 200-day SMA is the single most watched moving average in finance. Here\\'s w
 3. The 200-day itself acts as dynamic support in uptrends and dynamic resistance in downtrends
 4. The slope of the 200-day matters—a rising 200-day is more bullish than a flat one
 
-### The 50-Day Moving Average: The Swing Trader\\'s Anchor
+### The 50-Day Moving Average: The Swing Trader\'s Anchor
 
 The 50-day SMA is the go-to moving average for intermediate-term trend following:
 - In healthy uptrends, price often pulls back to the 50-day before bouncing
@@ -2255,9 +2255,9 @@ The 50-day SMA is the go-to moving average for intermediate-term trend following
 ### The 100-Day Moving Average: The Forgotten Middle Child
 
 The 100-day SMA gets less attention but serves a useful purpose:
-- It sits between the 50 and 200, catching pullbacks that overshoot the 50 but don\\'t reach the 200
+- It sits between the 50 and 200, catching pullbacks that overshoot the 50 but don\'t reach the 200
 - In strong trends, price might bounce off the 50-day three times, then finally pull back to the 100-day before resuming
-- Some traders use it as a filter: if the 50-day is above the 100-day, the trend is accelerating; if below, it\\'s decelerating
+- Some traders use it as a filter: if the 50-day is above the 100-day, the trend is accelerating; if below, it\'s decelerating
 
 ### MA Stacking: Reading Trend Strength
 
@@ -2270,7 +2270,7 @@ The relative position of the 50, 100, and 200-day MAs reveals trend strength:
 | 200 > 100 > 50 > Price | Strong downtrend (avoid longs) |
 | Mixed/intertwined | Choppy, ranging market (reduce position sizes) |
 
-When all three moving averages are fanning out in order (50 above 100 above 200, all rising), you\\'re in a confirmed, strong uptrend. This is the environment where trend-following strategies perform best. When the MAs are tangled together, the market is confused—and your trades should be smaller and more selective.
+When all three moving averages are fanning out in order (50 above 100 above 200, all rising), you\'re in a confirmed, strong uptrend. This is the environment where trend-following strategies perform best. When the MAs are tangled together, the market is confused—and your trades should be smaller and more selective.
 
 ### Using MAs as Dynamic Support/Resistance
 
@@ -2326,9 +2326,9 @@ A moving average crossover occurs when a faster (shorter-period) MA crosses abov
 
 ### The Truth About Crossover Signals
 
-Here\\'s what the textbooks don\\'t always tell you:
+Here\'s what the textbooks don\'t always tell you:
 
-**Crossovers are lagging signals.** By the time the 50-day crosses the 200-day, a significant move has already happened. The golden cross doesn\\'t predict the bottom—it confirms that a trend change has already occurred. Similarly, the death cross confirms a downtrend that\\'s already underway.
+**Crossovers are lagging signals.** By the time the 50-day crosses the 200-day, a significant move has already happened. The golden cross doesn\'t predict the bottom—it confirms that a trend change has already occurred. Similarly, the death cross confirms a downtrend that\'s already underway.
 
 **Whipsaws are common.** In ranging markets, the 50 and 200-day can cross back and forth repeatedly, generating a series of losing signals. The worst environment for crossover trading is a sideways, choppy market.
 
@@ -2341,7 +2341,7 @@ Here\\'s what the textbooks don\\'t always tell you:
 
 ### Improving Crossover Signals
 
-Smart traders don\\'t blindly follow crossovers. They add filters:
+Smart traders don\'t blindly follow crossovers. They add filters:
 
 1. **Slope filter**: Only take a golden cross if both MAs are rising. A golden cross where the 200-day is still declining is weaker.
 2. **Volume filter**: Crossovers with increasing volume have more conviction
@@ -2360,7 +2360,7 @@ While the 50/200 gets the headlines, other crossovers are useful for different t
 
 ### The MACD Connection
 
-The MACD indicator is essentially a moving average crossover system. The MACD line is the difference between the 12-period and 26-period EMAs. When it crosses its signal line (9-period EMA of the MACD), it\\'s a crossover signal on a faster timeframe. Understanding MAs deeply means you already understand the foundation of MACD.`,
+The MACD indicator is essentially a moving average crossover system. The MACD line is the difference between the 12-period and 26-period EMAs. When it crosses its signal line (9-period EMA of the MACD), it\'s a crossover signal on a faster timeframe. Understanding MAs deeply means you already understand the foundation of MACD.`,
       keyTakeaway: 'The golden cross (50 SMA above 200 SMA) signals a bullish regime shift; the death cross signals bearish. These are lagging but powerful confirmation signals. They work best in trending markets and should be filtered with slope, volume, and market structure context to avoid whipsaws.',
       actionItem: 'Find the last golden cross and death cross on the S&P 500 daily chart. Note the date of each and then check what price did in the following 3 months. Was the signal accurate? Was there lag?',
       quiz: {
@@ -2391,11 +2391,11 @@ A moving average envelope places two bands at a fixed percentage above and below
 - **Upper band** = MA + (MA x percentage)
 - **Lower band** = MA - (MA x percentage)
 
-For example, a 20-day SMA with 5% envelopes creates an upper band 5% above the SMA and a lower band 5% below. The idea is simple: price tends to oscillate around its moving average. When it stretches too far above or below, it\\'s likely to revert back.
+For example, a 20-day SMA with 5% envelopes creates an upper band 5% above the SMA and a lower band 5% below. The idea is simple: price tends to oscillate around its moving average. When it stretches too far above or below, it\'s likely to revert back.
 
 ### Choosing the Right Percentage
 
-The percentage depends on the instrument\\'s volatility and your timeframe:
+The percentage depends on the instrument\'s volatility and your timeframe:
 
 | Instrument | Suggested Envelope % | Timeframe |
 |-----------|---------------------|-----------|
@@ -2416,7 +2416,7 @@ The goal is to set the envelopes so that price touches or slightly exceeds them 
 **Trend-following approach (trending markets):**
 - In an uptrend, use the lower envelope as a buy zone on pullbacks
 - In a downtrend, use the upper envelope as a sell zone on rallies
-- Don\\'t fade the trend—use envelopes for entries WITH the trend
+- Don\'t fade the trend—use envelopes for entries WITH the trend
 
 ### Keltner Channels: The Adaptive Upgrade
 
@@ -2509,7 +2509,7 @@ Zoom out to the weekly or monthly chart. What does the trend look like from 30,0
 
 ### The 200-Day SMA Trend Test
 
-Here\\'s a simple, robust regime filter used by many professional traders:
+Here\'s a simple, robust regime filter used by many professional traders:
 
 | Condition | Regime | Strategy Bias |
 |-----------|--------|---------------|
@@ -2519,14 +2519,14 @@ Here\\'s a simple, robust regime filter used by many professional traders:
 
 ### Why Regime Identification Matters More Than Signal Selection
 
-Consider this: a golden cross in a trending market has a 70%+ success rate historically. A golden cross in a ranging market has a success rate barely above 50%. The signal didn\\'t change—the regime changed.
+Consider this: a golden cross in a trending market has a 70%+ success rate historically. A golden cross in a ranging market has a success rate barely above 50%. The signal didn\'t change—the regime changed.
 
 The same is true for almost every trading strategy:
 - **Breakout trading** works in trending markets, fails in ranges
 - **Mean reversion** works in ranges, gets destroyed in trends
 - **Momentum** works in trends, whipsaws in ranges
 
-If you correctly identify the regime 80% of the time and use the appropriate strategy, you\\'ll outperform someone with a "better" strategy who ignores regime entirely.
+If you correctly identify the regime 80% of the time and use the appropriate strategy, you\'ll outperform someone with a "better" strategy who ignores regime entirely.
 
 ### Regime Transitions: The Danger Zones
 
@@ -2548,7 +2548,7 @@ Markets trend only about 20-30% of the time. They spend the remaining 70-80% in 
 - The big money is made during the 20-30% trending periods
 - Your job during ranging periods is to preserve capital and stay ready
 
-Patience during ranges is not passive—it\\'s strategic. You\\'re preserving your capital and mental energy for the trending periods where the real opportunities emerge.`,
+Patience during ranges is not passive—it\'s strategic. You\'re preserving your capital and mental energy for the trending periods where the real opportunities emerge.`,
       keyTakeaway: 'Markets exist in three regimes: trending up, trending down, or ranging. Using the wrong strategy for the current regime is the primary cause of trading losses. Combine market structure, moving average position, MA slope, and higher timeframe analysis to correctly identify the regime before choosing your strategy.',
       actionItem: 'Open the daily chart of any stock or index. Using the 200-day SMA slope and price position, categorize the current regime as bullish, bearish, or neutral. Then check the weekly chart—does it confirm or contradict your daily assessment? Write down your regime classification and review it weekly.',
       quiz: {
@@ -2617,7 +2617,7 @@ This is where ADX becomes most powerful—not as a signal generator, but as a fi
 **ADX above 25 and rising: Trending regime**
 - Activate trend-following strategies
 - Trade with normal or larger position sizes
-- Don\\'t fight the trend direction indicated by +DI/-DI
+- Don\'t fight the trend direction indicated by +DI/-DI
 - Look for pullback entries rather than reversal entries
 
 **ADX above 25 and falling: Trend weakening**
@@ -2631,21 +2631,21 @@ A useful pattern: when ADX has been above 25, drops, and then hooks back up, it 
 
 ### ADX Divergence
 
-When price makes new highs but ADX makes lower peaks, the trend is losing momentum. This **ADX divergence** warns that while price is still moving in the trend direction, the underlying strength is fading. It doesn\\'t mean the trend reverses immediately, but it suggests tightening stops and reducing position sizes.
+When price makes new highs but ADX makes lower peaks, the trend is losing momentum. This **ADX divergence** warns that while price is still moving in the trend direction, the underlying strength is fading. It doesn\'t mean the trend reverses immediately, but it suggests tightening stops and reducing position sizes.
 
 ### Practical ADX Workflow
 
 1. **Check ADX value**: Is it above or below 25?
 2. **Check ADX slope**: Is it rising (trend strengthening) or falling (trend weakening)?
-3. **Check +DI/-DI**: Which is on top? That\\'s your directional bias.
+3. **Check +DI/-DI**: Which is on top? That\'s your directional bias.
 4. **Combine with price action**: Does the ADX reading confirm what price structure is showing?
 
-If ADX says "strong trend" and price structure shows higher highs/higher lows and price is above the 200-day SMA—everything is aligned. If ADX says "no trend" but you think you see an uptrend forming—the evidence doesn\\'t support aggressive positioning yet.
+If ADX says "strong trend" and price structure shows higher highs/higher lows and price is above the 200-day SMA—everything is aligned. If ADX says "no trend" but you think you see an uptrend forming—the evidence doesn\'t support aggressive positioning yet.
 
 ### ADX Limitations
 
 - ADX is a **lagging indicator** (based on 14 periods of averaged directional movement)
-- It doesn\\'t give precise entry/exit prices—it tells you the environment, not the trade
+- It doesn\'t give precise entry/exit prices—it tells you the environment, not the trade
 - In very fast market reversals (crash events), ADX lags behind the move
 - Best used as a filter alongside other tools, not as a standalone system`,
       keyTakeaway: 'ADX measures trend strength on a 0-100 scale: below 20 means no trend, above 25 means a tradeable trend exists. Use it as a regime filter to determine whether to use trend-following or mean-reversion strategies. Combine the ADX reading with +DI/-DI crossovers and price structure for directional confirmation.',
@@ -2713,10 +2713,10 @@ Without multi-timeframe analysis, you might have entered too early (before the 4
 ### Rules for Multi-Timeframe Alignment
 
 1. **Never trade against the higher timeframe trend** unless you have extremely compelling evidence
-2. **Don\\'t over-optimize**: Checking 5+ timeframes creates analysis paralysis—three is enough
+2. **Don\'t over-optimize**: Checking 5+ timeframes creates analysis paralysis—three is enough
 3. **The higher timeframe wins conflicts**: If the daily is bullish but the 15-minute is bearish, the bearish move is likely temporary
 4. **Entries come from the lowest timeframe**: This gives you the tightest stop-loss and best risk/reward
-5. **Targets come from the trading or higher timeframe**: This ensures you\\'re aiming for meaningful moves, not scalping noise
+5. **Targets come from the trading or higher timeframe**: This ensures you\'re aiming for meaningful moves, not scalping noise
 
 ### Common Multi-Timeframe Mistakes
 
@@ -2724,9 +2724,9 @@ Without multi-timeframe analysis, you might have entered too early (before the 4
 
 **Mistake 2: Fighting the weekly trend on the 15-minute.** A 15-minute bearish pattern in a weekly uptrend is almost always a trap.
 
-**Mistake 3: Ignoring divergence between timeframes.** When the weekly says bullish but the daily shows a BOS, it doesn\\'t mean "ignore the daily." It means "the daily pullback is likely a buying opportunity within the weekly uptrend."
+**Mistake 3: Ignoring divergence between timeframes.** When the weekly says bullish but the daily shows a BOS, it doesn\'t mean "ignore the daily." It means "the daily pullback is likely a buying opportunity within the weekly uptrend."
 
-**Mistake 4: Using the same indicators on all timeframes.** The 200 SMA on a 5-minute chart doesn\\'t carry the same institutional significance as the 200 SMA on the daily chart.`,
+**Mistake 4: Using the same indicators on all timeframes.** The 200 SMA on a 5-minute chart doesn\'t carry the same institutional significance as the 200 SMA on the daily chart.`,
       keyTakeaway: 'Multi-timeframe analysis uses a higher timeframe for direction, a trading timeframe for setup identification, and a lower timeframe for precise entry timing. Always work top-down, never trade against the higher timeframe, and use the lower timeframe to get the tightest possible stop-loss.',
       actionItem: 'Choose a stock and analyze it on three timeframes (weekly, daily, 4-hour). Write down: (1) the higher timeframe trend direction, (2) a setup you see on the daily, and (3) where you would enter on the 4-hour chart with your exact stop-loss and target levels.'
     }
@@ -2741,7 +2741,7 @@ Without multi-timeframe analysis, you might have entered too early (before the 4
       overview: 'This challenge brings together everything from Level 4: moving averages, crossovers, trend identification, ADX, and multi-timeframe analysis. You will analyze a real market using all of these tools and make a complete trading plan based on your findings.',
       mainContent: `## The Complete Trend Analysis Challenge
 
-This is your most comprehensive challenge yet. You\\'ll use every tool from Level 4 to analyze a real market and create a complete trading plan.
+This is your most comprehensive challenge yet. You\'ll use every tool from Level 4 to analyze a real market and create a complete trading plan.
 
 ### Part 1: Moving Average Setup
 
@@ -2795,7 +2795,7 @@ Based on your analysis, create a complete plan:
 - **Risk/Reward ratio**: Calculate it
 
 **If no trade setup exists:**
-- Document why (conflicting timeframes, low ADX, price in no-man\\'s-land)
+- Document why (conflicting timeframes, low ADX, price in no-man\'s-land)
 - Identify what would need to happen for a trade to develop
 - Set an alert at the level where the next decision point occurs
 
@@ -2821,13 +2821,13 @@ After completing the challenge, answer honestly:
 
 2. **Were your three timeframes aligned or conflicting?** If conflicting, did you correctly default to the higher timeframe for direction?
 
-3. **Could you explain your trade plan (or decision not to trade) to another trader in 60 seconds?** If not, it\\'s too complicated.
+3. **Could you explain your trade plan (or decision not to trade) to another trader in 60 seconds?** If not, it\'s too complicated.
 
 4. **What was the hardest part of this analysis?** Identifying it tells you what to practice next.
 
 ### The Most Important Takeaway
 
-The best traders don\\'t trade every day. They analyze every day, but they only deploy capital when the regime is favorable, the timeframes are aligned, and the risk/reward justifies the risk. Saying "no trade today" is a valid and profitable conclusion.
+The best traders don\'t trade every day. They analyze every day, but they only deploy capital when the regime is favorable, the timeframes are aligned, and the risk/reward justifies the risk. Saying "no trade today" is a valid and profitable conclusion.
 
 Markets will always be there tomorrow. Your capital might not be if you force trades in unfavorable conditions.`,
       keyTakeaway: 'A complete trading analysis combines moving average stack order, ADX regime identification, multi-timeframe alignment, and precise entry planning. The goal is not to find a trade at all costs—it is to determine whether conditions favor a trade and, if so, to define exact entry, stop, and target levels.',
@@ -2880,7 +2880,7 @@ Imagine two stocks both trading at $50. Stock A climbed from $45 over the past m
 
 Momentum is the **rate of change** of price. It answers one critical question: *Is the current trend accelerating or decelerating?*
 
-Think of it like a car on the highway. Price tells you where the car is. Momentum tells you how fast it\\'s going -- and more importantly, whether it\\'s **speeding up or slowing down**. A car can still be moving forward while decelerating, and that deceleration is the first signal it might eventually stop or reverse.
+Think of it like a car on the highway. Price tells you where the car is. Momentum tells you how fast it\'s going -- and more importantly, whether it\'s **speeding up or slowing down**. A car can still be moving forward while decelerating, and that deceleration is the first signal it might eventually stop or reverse.
 
 ### Leading vs. Lagging Indicators
 
@@ -2905,15 +2905,15 @@ This single principle is the foundation of everything in this level. Momentum pe
 - **Setting exits**: Momentum deterioration tells you to tighten stops or take profit
 - **Filtering setups**: Only take trades where price *and* momentum agree
 
-### The Three Momentum Indicators You\\'ll Master
+### The Three Momentum Indicators You\'ll Master
 
-Over the next lessons, you\\'ll build practical skill with:
+Over the next lessons, you\'ll build practical skill with:
 
 1. **RSI** (Relative Strength Index) -- The universal momentum gauge
 2. **MACD** (Moving Average Convergence Divergence) -- The trend-momentum hybrid
 3. **Stochastic Oscillator** -- The speed-sensitive reversal detector
 
-Each has strengths and weaknesses. By the end of this level, you\\'ll know exactly when to use which -- and how to combine them into a system that\\'s greater than its parts.`,
+Each has strengths and weaknesses. By the end of this level, you\'ll know exactly when to use which -- and how to combine them into a system that\'s greater than its parts.`,
       keyTakeaway: `Momentum measures the rate of change of price, not the direction. It acts as a leading indicator that often signals trend changes before they appear on the price chart -- making it one of the most valuable tools in a trader\'s arsenal.`,
       actionItem: 'Pull up a chart of any stock or index you follow. Add an RSI indicator (default 14 periods). Scan the last 6 months and find one instance where the RSI peaked or troughed *before* the price did. Screenshot it and note the time difference between the momentum signal and the price reversal.',
     },
@@ -2938,7 +2938,7 @@ RSI oscillates between **0 and 100** using this formula:
 
 Where RS = Average Gain over N periods / Average Loss over N periods
 
-The default period is **14** (Wilder\\'s original recommendation). Here\\'s what the math tells you in plain English:
+The default period is **14** (Wilder\'s original recommendation). Here\'s what the math tells you in plain English:
 
 - **RSI = 70+**: The stock has had significantly more up days than down days recently
 - **RSI = 30-**: The stock has had significantly more down days than up days recently
@@ -2946,7 +2946,7 @@ The default period is **14** (Wilder\\'s original recommendation). Here\\'s what
 
 ### The Overbought/Oversold Trap
 
-Here\\'s what most beginners get wrong: **Overbought does NOT mean "sell" and oversold does NOT mean "buy."**
+Here\'s what most beginners get wrong: **Overbought does NOT mean "sell" and oversold does NOT mean "buy."**
 
 | RSI Zone | What It Actually Means | Common Mistake |
 |----------|----------------------|----------------|
@@ -2986,7 +2986,7 @@ The bearish version is the mirror image with the 70 level.
 | Setting | Best For | Sensitivity |
 |---------|---------|------------|
 | **7-9 periods** | Day trading, scalping | Very high -- more signals, more noise |
-| **14 periods** | Swing trading (default) | Balanced -- Wilder\\'s original |
+| **14 periods** | Swing trading (default) | Balanced -- Wilder\'s original |
 | **21-25 periods** | Position trading | Low -- fewer but higher-quality signals |
 
 > "The RSI is not a standalone system. It is a tool that tells you the character of the current price action." -- J. Welles Wilder`,
@@ -3080,7 +3080,7 @@ Most traders focus on the crossovers and ignore the histogram. This is a mistake
 
 | Setting | Parameters | Use Case |
 |---------|-----------|----------|
-| **Standard** | 12, 26, 9 | All-purpose (Appel\\'s original) |
+| **Standard** | 12, 26, 9 | All-purpose (Appel\'s original) |
 | **Fast** | 8, 17, 9 | Day trading, more responsive |
 | **Slow** | 19, 39, 9 | Position trading, fewer signals |
 
@@ -3123,7 +3123,7 @@ Like RSI, it oscillates between **0 and 100**:
 - **%K = 0**: Price closed at the very bottom of its recent range
 - **%K = 50**: Price closed exactly in the middle
 
-The **%D line** is a 3-period simple moving average of %K, serving as the signal line (similar to MACD\\'s signal line).
+The **%D line** is a 3-period simple moving average of %K, serving as the signal line (similar to MACD\'s signal line).
 
 ### Fast vs. Slow Stochastic
 
@@ -3151,7 +3151,7 @@ The **%D line** is a 3-period simple moving average of %K, serving as the signal
 The stochastic oscillator shines in specific situations:
 
 - **Range-bound markets**: Stochastic is designed for ranges -- it excels when RSI gives ambiguous readings between 40-60
-- **Mean-reversion strategies**: Because it measures position within a range, it\\'s ideal for buying the bottom and selling the top of a range
+- **Mean-reversion strategies**: Because it measures position within a range, it\'s ideal for buying the bottom and selling the top of a range
 - **Fast-moving pullbacks**: The stochastic reacts faster than RSI to short-term reversals
 - **Confirmation with support/resistance**: Stochastic below 20 at a known support level is an extremely reliable buy setup
 
@@ -3168,7 +3168,7 @@ The stochastic oscillator shines in specific situations:
 | **5, 3, 3** | Short-term -- more sensitive | Day trading, scalping |
 | **21, 5, 5** | Long-term -- smoother | Weekly charts, position trading |
 
-> "The stochastic doesn\\'t follow price, and it doesn\\'t follow volume. It follows the speed or momentum of price." -- George Lane`,
+> "The stochastic doesn\'t follow price, and it doesn\'t follow volume. It follows the speed or momentum of price." -- George Lane`,
       keyTakeaway: 'The stochastic oscillator measures where price closes relative to its recent high-low range. It excels in range-bound markets and mean-reversion strategies, using the %K and %D crossover system to generate buy and sell signals at overbought (80+) and oversold (20-) extremes.',
       actionItem: 'Add a slow stochastic (14, 3, 3) to a stock that has been trading in a range for at least a month. Identify instances where %K crossed %D below 20 or above 80. Count how many of these signals resulted in profitable short-term reversals versus false signals. Calculate your hypothetical win rate.',
       quiz: {
@@ -3204,7 +3204,7 @@ The logic is simple but powerful: for a trend to continue, momentum must support
 - The "smart money" may already be exiting
 - The trend is running on fumes
 
-> "Divergence doesn\\'t tell you *when* a reversal will happen -- it tells you the probability of one has increased dramatically." -- Martin Pring
+> "Divergence doesn\'t tell you *when* a reversal will happen -- it tells you the probability of one has increased dramatically." -- Martin Pring
 
 ### Regular (Classic) Divergence
 
@@ -3283,13 +3283,13 @@ Hidden divergence signals **trend continuation** -- the existing trend is about 
     xpReward: 100,
     content: {
       overview: 'Move past the beginner mistake of blindly trading overbought and oversold levels. Learn dynamic thresholds, regime-dependent reading, and the specific conditions under which extreme readings become actionable trade signals.',
-      mainContent: `## Overbought/Oversold: What the Textbooks Don\\'t Tell You
+      mainContent: `## Overbought/Oversold: What the Textbooks Don\'t Tell You
 
 Every beginner learns: "RSI above 70 = overbought, sell. RSI below 30 = oversold, buy." And every beginner who trades this way loses money. The truth is far more nuanced, and understanding it separates amateurs from professionals.
 
 ### The Problem With Static Levels
 
-Static overbought/oversold levels (70/30) assume that markets behave the same way regardless of conditions. They don\\'t.
+Static overbought/oversold levels (70/30) assume that markets behave the same way regardless of conditions. They don\'t.
 
 **In Bull Markets:**
 - RSI often oscillates between **40 and 90**
@@ -3344,8 +3344,8 @@ Follow these steps on a chart of your choice:
 
 ### Common Mistakes to Avoid
 
-1. **Selling simply because RSI is above 70**: In Apple\\'s 2020 rally, RSI stayed above 70 for over three weeks while price gained another 25%
-2. **Buying simply because RSI is below 30**: In the 2022 crypto crash, Bitcoin\\'s RSI stayed below 30 for weeks as price fell another 40%
+1. **Selling simply because RSI is above 70**: In Apple\'s 2020 rally, RSI stayed above 70 for over three weeks while price gained another 25%
+2. **Buying simply because RSI is below 30**: In the 2022 crypto crash, Bitcoin\'s RSI stayed below 30 for weeks as price fell another 40%
 3. **Ignoring the trend**: Overbought in an uptrend is a sign of strength, not weakness. Oversold in a downtrend is a sign of weakness, not opportunity
 4. **Using a single timeframe**: Check OB/OS on at least two timeframes. If the daily is oversold but the weekly is neutral, the signal is weaker
 
@@ -3381,9 +3381,9 @@ One indicator gives you a signal. Two indicators give you confirmation. Three in
 
 ### The Redundancy Trap
 
-Adding indicators that measure the **same thing** doesn\\'t improve your analysis -- it just makes you overconfident in a single signal:
+Adding indicators that measure the **same thing** doesn\'t improve your analysis -- it just makes you overconfident in a single signal:
 
-| Redundant Combo | Why It\\'s Redundant |
+| Redundant Combo | Why It\'s Redundant |
 |----------------|-------------------|
 | RSI + Stochastic | Both measure momentum oscillation in similar ways |
 | MACD + Two Moving Averages | MACD IS two moving averages |
@@ -3401,7 +3401,7 @@ Effective indicator combinations measure **different aspects** of price action:
 
 ### The Triple-Filter System
 
-This framework, inspired by Alexander Elder\\'s Triple Screen system, uses three indicators across three roles:
+This framework, inspired by Alexander Elder\'s Triple Screen system, uses three indicators across three roles:
 
 **Filter 1: MACD -- Trend Identification**
 - MACD above zero = only look for long trades
@@ -3438,7 +3438,7 @@ When indicators disagree, follow this hierarchy:
 
 1. **Trend wins**: If MACD says bullish but RSI and stochastic say sell, the dip is likely a buying opportunity, not a reversal
 2. **Divergence overrides everything**: If price diverges from ANY momentum indicator, prioritize the divergence signal regardless of other readings
-3. **When in doubt, sit out**: If you can\\'t build a clear case, there\\'s no trade. Protecting capital is always a valid position
+3. **When in doubt, sit out**: If you can\'t build a clear case, there\'s no trade. Protecting capital is always a valid position
 
 ### The Confirmation Score
 
@@ -3452,7 +3452,7 @@ Rate each trade setup on a simple 1-5 scale:
 | **2** | Two of three conditions met (watch list only) |
 | **1** | Single indicator signal (no trade) |
 
-> "The goal is not to find the perfect indicator. It\\'s to build a system where multiple imperfect indicators confirm each other." -- Alexander Elder`,
+> "The goal is not to find the perfect indicator. It\'s to build a system where multiple imperfect indicators confirm each other." -- Alexander Elder`,
       keyTakeaway: 'Effective momentum analysis combines indicators that measure different dimensions: MACD for trend direction, RSI for momentum condition, and stochastic for entry timing. Avoid redundant combinations that measure the same thing, and use a confirmation score to rate setup quality before risking capital.',
       actionItem: 'Set up a chart with MACD, RSI, and slow stochastic. Scan through the last 3 months and find at least two instances where all three filters aligned (MACD direction + RSI condition + stochastic entry trigger). Document the setups and their outcomes. Then find two instances where the indicators conflicted and note what happened -- this builds your skill in reading multi-indicator disagreement.',
       quiz: {
@@ -3478,11 +3478,11 @@ Rate each trade setup on a simple 1-5 scale:
       overview: 'Reflect on the full Level 5 momentum toolkit. Learn how to optimize indicator settings for your specific trading style and timeframe, avoid the curve-fitting trap, and build your personal momentum playbook.',
       mainContent: `## Your Momentum Playbook: Personalizing the Tools
 
-You\\'ve now learned three powerful momentum indicators and how to combine them. But there\\'s a critical step most traders skip: **adapting the settings to YOUR trading style, timeframe, and risk tolerance**. Default settings are a starting point, not a destination.
+You\'ve now learned three powerful momentum indicators and how to combine them. But there\'s a critical step most traders skip: **adapting the settings to YOUR trading style, timeframe, and risk tolerance**. Default settings are a starting point, not a destination.
 
-### Why Default Settings Aren\\'t Always Best
+### Why Default Settings Aren\'t Always Best
 
-J. Welles Wilder chose 14 periods for RSI in 1978 when markets moved differently than they do today. Gerald Appel\\'s MACD settings (12, 26, 9) were optimized for the stock market of the late 1970s. Markets have changed:
+J. Welles Wilder chose 14 periods for RSI in 1978 when markets moved differently than they do today. Gerald Appel\'s MACD settings (12, 26, 9) were optimized for the stock market of the late 1970s. Markets have changed:
 
 - **Algorithmic trading** has compressed reaction times
 - **24/7 crypto markets** behave differently from equities
@@ -3503,7 +3503,7 @@ J. Welles Wilder chose 14 periods for RSI in 1978 when markets moved differently
 **Curve fitting** is the #1 mistake traders make when optimizing indicator settings:
 
 - You test RSI 11 on Apple over the past 6 months and it gives perfect signals
-- You change to RSI 11 thinking you\\'ve found the magic number
+- You change to RSI 11 thinking you\'ve found the magic number
 - The next 6 months, RSI 11 performs terribly because you optimized for **past noise**, not future signal
 
 **How to Avoid Curve Fitting:**
@@ -3511,23 +3511,23 @@ J. Welles Wilder chose 14 periods for RSI in 1978 when markets moved differently
 1. **Out-of-sample testing**: Optimize on 2023 data, then test on 2024 data. If the results hold, the settings have merit
 2. **Use round numbers**: Settings of 14, 20, 50 tend to work because many traders use them, creating self-fulfilling prophecy
 3. **Stick to small adjustments**: Moving RSI from 14 to 12 is reasonable. Moving it to 7 is a different tool entirely
-4. **Test across multiple assets**: If RSI 11 only works on one stock, it\\'s curve-fitted. If it works across your whole watchlist, it might be legitimate
+4. **Test across multiple assets**: If RSI 11 only works on one stock, it\'s curve-fitted. If it works across your whole watchlist, it might be legitimate
 
 ### Reflection: Build Your Personal Momentum Playbook
 
 Take time to answer these questions honestly:
 
 **1. What is your primary trading timeframe?**
-Your answer determines your base indicator settings. Don\\'t use day-trading settings on a weekly chart.
+Your answer determines your base indicator settings. Don\'t use day-trading settings on a weekly chart.
 
 **2. Which indicator resonates most with how you think?**
-Some traders are visual and love the MACD histogram. Others are numerical and prefer exact RSI levels. Use what clicks with your brain -- you\\'ll read it faster under pressure.
+Some traders are visual and love the MACD histogram. Others are numerical and prefer exact RSI levels. Use what clicks with your brain -- you\'ll read it faster under pressure.
 
 **3. What is your biggest momentum mistake so far?**
 Be honest. Did you sell because RSI was "overbought" in a trend? Did you ignore divergence? Did you enter on a single indicator without confirmation? Name the mistake so you can build a rule against it.
 
 **4. What is your minimum confirmation requirement?**
-Based on everything you\\'ve learned, define your personal minimum. Example: "I will not enter a momentum trade unless MACD direction agrees AND at least one oscillator gives an extreme reading with a crossover."
+Based on everything you\'ve learned, define your personal minimum. Example: "I will not enter a momentum trade unless MACD direction agrees AND at least one oscillator gives an extreme reading with a crossover."
 
 **5. What market regime are you currently in?**
 Check your primary asset right now. Is it trending or ranging? This determines which indicators and settings to prioritize today.
@@ -3536,7 +3536,7 @@ Check your primary asset right now. Is it trending or ranging? This determines w
 
 > "Simplicity is the ultimate sophistication. Use the fewest indicators necessary to make a decision, with settings that match your actual trading behavior." -- Leonardo da Vinci (adapted for trading)
 
-Your goal is not to master every indicator setting -- it\\'s to build a **repeatable system** that you trust and can execute consistently under pressure. The best indicator settings are the ones you\\'ve tested, understood, and committed to following.`,
+Your goal is not to master every indicator setting -- it\'s to build a **repeatable system** that you trust and can execute consistently under pressure. The best indicator settings are the ones you\'ve tested, understood, and committed to following.`,
       keyTakeaway: 'Optimize momentum indicator settings to match your specific trading timeframe and style, but beware of curve-fitting to past data. The best settings are ones that work across multiple assets and time periods, not ones that look perfect on a single historical chart. Build a personal momentum playbook with clear rules you can execute under pressure.',
       actionItem: 'Write out your personal momentum playbook by answering all five reflection questions. Then define three specific rules: (1) your standard indicator settings and why, (2) your minimum confirmation requirement for entering a trade, (3) the one momentum mistake you will not repeat. Pin this playbook next to your trading screen.',
       quiz: {
@@ -3575,7 +3575,7 @@ Price tells you *what* happened. Volume tells you *how much conviction* was behi
 
 > **Volume should expand in the direction of the trend and contract during counter-trend moves.**
 
-This single sentence is the foundation of all volume analysis. Let\\'s break it down:
+This single sentence is the foundation of all volume analysis. Let\'s break it down:
 
 **In a Healthy Uptrend:**
 - **Rally days**: Volume increases (buyers are aggressive)
@@ -3603,7 +3603,7 @@ This single sentence is the foundation of all volume analysis. Let\\'s break it 
 
 ### Reading Volume Bars Like a Professional
 
-Most platforms display volume as vertical bars below the price chart. Here\\'s how to extract maximum information:
+Most platforms display volume as vertical bars below the price chart. Here\'s how to extract maximum information:
 
 **Volume Spike (3x+ Average)**
 - A sudden surge in participation
@@ -3613,7 +3613,7 @@ Most platforms display volume as vertical bars below the price chart. Here\\'s h
 **Gradual Volume Increase**
 - Steadily rising volume over days/weeks
 - Indicates **accumulation** (if price is rising) or **distribution** (if price is falling)
-- This is institutional activity -- big players can\\'t buy/sell all at once
+- This is institutional activity -- big players can\'t buy/sell all at once
 
 **Volume Dry-Up**
 - Volume shrinks to well below average
@@ -3622,7 +3622,7 @@ Most platforms display volume as vertical bars below the price chart. Here\\'s h
 
 ### Why Volume Matters More Than Most Indicators
 
-Every momentum indicator (RSI, MACD, stochastic) is derived from **price**. They\\'re all looking at the same data through different mathematical lenses. Volume is the **only major data point that is independent of price**. It represents real human decisions -- real money being committed.
+Every momentum indicator (RSI, MACD, stochastic) is derived from **price**. They\'re all looking at the same data through different mathematical lenses. Volume is the **only major data point that is independent of price**. It represents real human decisions -- real money being committed.
 
 | Data Source | What It Tells You | Examples |
 |-------------|------------------|---------|
@@ -3634,7 +3634,7 @@ Every momentum indicator (RSI, MACD, stochastic) is derived from **price**. They
 
 The simplest volume tool is the **50-day simple moving average of volume**. Add this to any chart and you instantly know:
 
-- Is today\\'s volume above or below normal?
+- Is today\'s volume above or below normal?
 - By how much? (Percentage above/below average matters)
 - Is there a volume trend developing?
 
@@ -3653,17 +3653,17 @@ The simplest volume tool is the **50-day simple moving average of volume**. Add 
       overview: `Master Joe Granville\'s On-Balance Volume indicator -- a cumulative volume tool that reveals whether smart money is quietly accumulating or distributing a stock, often weeks before the price reacts.`,
       mainContent: `## OBV: Tracking the Smart Money
 
-**Joe Granville** introduced On-Balance Volume in his 1963 book *Granville\\'s New Key to Stock Market Profits*. His insight was revolutionary: **volume leads price**. By tracking cumulative volume flow, you can see what institutional players are doing before their activity shows up in price.
+**Joe Granville** introduced On-Balance Volume in his 1963 book *Granville\'s New Key to Stock Market Profits*. His insight was revolutionary: **volume leads price**. By tracking cumulative volume flow, you can see what institutional players are doing before their activity shows up in price.
 
 ### How OBV Works
 
 The calculation is elegantly simple:
 
-- **If today\\'s close > yesterday\\'s close**: OBV = Yesterday\\'s OBV + Today\\'s Volume
-- **If today\\'s close < yesterday\\'s close**: OBV = Yesterday\\'s OBV - Today\\'s Volume
-- **If today\\'s close = yesterday\\'s close**: OBV = Yesterday\\'s OBV (no change)
+- **If today\'s close > yesterday\'s close**: OBV = Yesterday\'s OBV + Today\'s Volume
+- **If today\'s close < yesterday\'s close**: OBV = Yesterday\'s OBV - Today\'s Volume
+- **If today\'s close = yesterday\'s close**: OBV = Yesterday\'s OBV (no change)
 
-The absolute OBV number doesn\\'t matter. What matters is the **direction** and **trend** of OBV relative to price.
+The absolute OBV number doesn\'t matter. What matters is the **direction** and **trend** of OBV relative to price.
 
 ### The Four OBV Scenarios
 
@@ -3676,12 +3676,12 @@ The absolute OBV number doesn\\'t matter. What matters is the **direction** and 
 
 ### Why OBV Reveals Smart Money
 
-Large institutional investors (mutual funds, hedge funds, pension funds) can\\'t buy or sell millions of shares at once without moving the price against themselves. Instead, they accumulate or distribute over **days or weeks**, trying to disguise their activity.
+Large institutional investors (mutual funds, hedge funds, pension funds) can\'t buy or sell millions of shares at once without moving the price against themselves. Instead, they accumulate or distribute over **days or weeks**, trying to disguise their activity.
 
-But they can\\'t hide from OBV:
+But they can\'t hide from OBV:
 
-- When an institution quietly buys over two weeks, each day\\'s buying adds volume on up days
-- Price may barely move because they\\'re buying slowly and steadily
+- When an institution quietly buys over two weeks, each day\'s buying adds volume on up days
+- Price may barely move because they\'re buying slowly and steadily
 - But OBV rises steadily, revealing the accumulation
 - Eventually, when buying is complete, the stock breaks out -- and OBV was there first
 
@@ -3700,7 +3700,7 @@ The most powerful OBV signal mirrors the divergence concept from Level 5:
 
 Apply basic trendline analysis to the OBV line itself:
 - Draw a trendline connecting OBV lows in an uptrend
-- If OBV breaks its trendline while price hasn\\'t broken its own, OBV is leading
+- If OBV breaks its trendline while price hasn\'t broken its own, OBV is leading
 - Trade in the direction of the OBV trendline break
 
 **Strategy 3: OBV + Moving Average**
@@ -3712,7 +3712,7 @@ Add a 20-period moving average to the OBV:
 
 ### OBV in Practice: A Real-World Example Pattern
 
-Imagine a stock trading sideways between $48 and $52 for a month. On the price chart alone, there\\'s no signal. But OBV tells the real story:
+Imagine a stock trading sideways between $48 and $52 for a month. On the price chart alone, there\'s no signal. But OBV tells the real story:
 
 1. **Week 1**: Price flat at $50. OBV trends up slightly.
 2. **Week 2**: Price dips to $48, bounces to $50. OBV barely declines on the dip, then surges.
@@ -3723,7 +3723,7 @@ The trader watching OBV positioned before the breakout. The trader watching only
 
 ### Limitations of OBV
 
-- **Doesn\\'t work well in low-volume stocks**: Thin trading creates erratic OBV readings
+- **Doesn\'t work well in low-volume stocks**: Thin trading creates erratic OBV readings
 - **Binary approach**: All volume is added or subtracted based on a single close comparison, which oversimplifies intraday dynamics
 - **Best combined with**: Price patterns, support/resistance, and at least one momentum indicator`,
       keyTakeaway: 'On-Balance Volume (OBV) is a cumulative volume indicator that reveals accumulation and distribution before price reacts. When OBV diverges from price -- rising while price is flat or falling -- it signals that smart money is accumulating, often weeks before a breakout occurs.',
@@ -3759,7 +3759,7 @@ If you could only use ONE indicator for intraday trading, most professional trad
 
 More specifically, for each bar:
 1. Calculate the **typical price**: (High + Low + Close) / 3
-2. Multiply by the bar\\'s volume
+2. Multiply by the bar\'s volume
 3. Add to the running cumulative total
 4. Divide by cumulative volume
 
@@ -3775,7 +3775,7 @@ VWAP represents the **average price that all participants paid today**. This mak
 
 ### Why Institutions Obsess Over VWAP
 
-Large fund managers are judged by their **execution quality**. If a portfolio manager decides to buy 500,000 shares of a stock, the trading desk\\'s goal is to buy at or below VWAP. Why?
+Large fund managers are judged by their **execution quality**. If a portfolio manager decides to buy 500,000 shares of a stock, the trading desk\'s goal is to buy at or below VWAP. Why?
 
 - Buying **below VWAP** = better than average execution (the PM is happy)
 - Buying **above VWAP** = worse than average execution (the PM is not happy)
@@ -3811,19 +3811,19 @@ Many platforms offer VWAP with standard deviation bands (similar concept to Boll
 
 Standard VWAP resets daily. **Anchored VWAP** lets you set the start point to any significant event:
 - Anchor to an **earnings date** to see average price since the report
-- Anchor to a **major breakout** to see who\\'s still in profit
+- Anchor to a **major breakout** to see who\'s still in profit
 - Anchor to a **market crash low** to identify long-term fair value
 
 Anchored VWAP from key events acts as powerful support and resistance on higher timeframes.
 
 ### VWAP Limitations
 
-- **Intraday only** (standard version): Resets each day, so it\\'s not useful for multi-day swing trades without anchoring
+- **Intraday only** (standard version): Resets each day, so it\'s not useful for multi-day swing trades without anchoring
 - **Lagging in the morning**: In the first 30 minutes, VWAP is based on limited data and can be volatile
 - **Less useful in illiquid stocks**: Low volume creates erratic VWAP readings
 - **Not useful in isolation**: Combine with volume bars, price action, and at least one momentum indicator
 
-> "VWAP is not just an indicator -- it\\'s the price that institutions are actively defending or attacking. Trade accordingly." -- Professional trading desk axiom`,
+> "VWAP is not just an indicator -- it\'s the price that institutions are actively defending or attacking. Trade accordingly." -- Professional trading desk axiom`,
       keyTakeaway: 'VWAP (Volume-Weighted Average Price) represents the average price all participants paid today, making it the institutional benchmark for execution quality. Price above VWAP is bullish, below is bearish. Institutions actively buy dips to VWAP and sell rallies to it, creating reliable support and resistance.',
       actionItem: 'Add VWAP to an intraday chart (5-minute or 15-minute) of an actively traded stock or ETF. Watch for one full session and note: (1) How many times does price touch VWAP? (2) Does VWAP act as support or resistance? (3) At the end of the day, did the stock close above or below VWAP? This exercise builds your VWAP intuition.',
       quiz: {
@@ -3855,7 +3855,7 @@ While OBV treats every up-close day equally (adding ALL volume to the running to
 
 Think about it: if a stock has a wide range day and closes near the high, buyers dominated. If it closes near the low, sellers won. And if it closes near the middle, neither side won convincingly. The A/D Line captures this nuance.
 
-### How It\\'s Calculated
+### How It\'s Calculated
 
 **Step 1: Calculate the Close Location Value (CLV)**
 
@@ -3901,7 +3901,7 @@ The interpretation follows the same four-scenario framework as OBV:
 Consider a stock that:
 - Opens at $50, drops to $48, rallies to $53, then closes at $51
 
-With OBV: Since $51 > yesterday\\'s close of $50, OBV adds ALL of today\\'s volume. This suggests strong buying.
+With OBV: Since $51 > yesterday\'s close of $50, OBV adds ALL of today\'s volume. This suggests strong buying.
 
 With A/D: The close of $51 is only slightly above the midpoint of the $48-$53 range (midpoint = $50.50). So the A/D Line adds only a small fraction of volume. This more accurately reflects the mixed day.
 
@@ -4013,7 +4013,7 @@ The pattern is consistent: when an index makes new highs but fewer stocks partic
 ### How to Use Breadth in Your Trading
 
 **For Index/ETF Traders:**
-Breadth tells you whether the index\\'s move is trustworthy. An S&P 500 rally confirmed by broad breadth is far more sustainable than one driven by five mega-cap tech stocks.
+Breadth tells you whether the index\'s move is trustworthy. An S&P 500 rally confirmed by broad breadth is far more sustainable than one driven by five mega-cap tech stocks.
 
 **For Stock Pickers:**
 When breadth is strong (many stocks advancing), momentum trades have higher success rates because the "rising tide lifts all boats." When breadth narrows, be much more selective -- only the strongest stocks will hold up.
@@ -4064,7 +4064,7 @@ The result is a histogram on the side of your chart that immediately reveals:
 
 Price tends to gravitate toward the Point of Control over time. When price deviates significantly from the POC:
 - Expect a **pullback toward the POC** (mean reversion)
-- Trade in the direction of the POC if you\\'re looking for high-probability short-term trades
+- Trade in the direction of the POC if you\'re looking for high-probability short-term trades
 
 **Strategy 2: Value Area Rotation**
 
@@ -4094,7 +4094,7 @@ Low-Volume Nodes create "air pockets" in the volume profile. When price approach
 **Step 4**: Identify at least two Low-Volume Nodes. These are the "fast travel zones" where price is likely to accelerate if it enters.
 
 **Step 5**: Create a trade plan:
-- If price approaches the POC, what\\'s your bias?
+- If price approaches the POC, what\'s your bias?
 - If price exits the Value Area, what confirmation do you need?
 - Which LVN would create the best breakout trade?
 
@@ -4102,19 +4102,19 @@ Low-Volume Nodes create "air pockets" in the volume profile. When price approach
 
 | Type | Period | Best For |
 |------|--------|---------|
-| **Session VP** | Single trading day | Intraday trading -- shows where today\\'s volume concentrated |
+| **Session VP** | Single trading day | Intraday trading -- shows where today\'s volume concentrated |
 | **Fixed Range VP** | Custom date range | Swing trades -- shows volume structure over days/weeks |
-| **Visible Range VP** | Whatever\\'s on screen | Quick overview of the entire visible chart\\'s volume structure |
+| **Visible Range VP** | Whatever\'s on screen | Quick overview of the entire visible chart\'s volume structure |
 
 ### Combining Volume Profile with Other Tools
 
 Volume Profile becomes even more powerful when layered with:
 
-- **VWAP**: If the POC and VWAP align at the same level, that\\'s a fortress-level support/resistance
+- **VWAP**: If the POC and VWAP align at the same level, that\'s a fortress-level support/resistance
 - **Fibonacci retracements**: A fib level that coincides with an HVN has much higher reliability
-- **Traditional support/resistance**: A previous swing high that\\'s also a high-volume node is extremely significant
+- **Traditional support/resistance**: A previous swing high that\'s also a high-volume node is extremely significant
 
-> "Volume Profile doesn\\'t predict the future. It shows you where the market has agreed on value -- and where it hasn\\'t. Trade the disagreements."`,
+> "Volume Profile doesn\'t predict the future. It shows you where the market has agreed on value -- and where it hasn\'t. Trade the disagreements."`,
       keyTakeaway: 'Volume Profile displays volume horizontally by price level, revealing the Point of Control (highest-volume price), Value Area (where 70% of volume traded), and Low-Volume Nodes (price levels the market moved through quickly). These levels represent real institutional positions and create far more reliable support and resistance than traditional swing highs and lows.',
       actionItem: 'Add a Visible Range Volume Profile to your primary chart. Identify the POC, VAH, and VAL. Then compare these levels to your existing support/resistance lines drawn from price action alone. Note any areas where Volume Profile reveals support/resistance that price action alone does not show. Trade based on the Volume Profile levels for one week and track the results.',
       quiz: {
@@ -4187,7 +4187,7 @@ When volume reaches **extreme levels** (5x-10x average) accompanied by a wide pr
 **Pattern 4: Quiet Accumulation (Volume Creep)**
 
 Subtle but powerful: daily volume gradually increases over 2-4 weeks while price barely moves:
-- Each day\\'s volume is slightly above average
+- Each day\'s volume is slightly above average
 - Price is range-bound or drifting slightly up
 - OBV and A/D Line trend higher
 - **Interpretation**: An institution is slowly building a position without attracting attention
@@ -4208,16 +4208,16 @@ Create a daily checklist for detecting institutional footprints:
 1. **Volume screen**: Which stocks traded 200%+ of their 50-day average volume today?
 2. **Close location**: Of those stocks, which closed in the upper 25% of their range (institutional buying) or lower 25% (institutional selling)?
 3. **News check**: Remove any stocks with obvious news catalysts. The remaining stocks are your institutional activity candidates.
-4. **OBV confirmation**: Do the candidates show OBV trending in the direction of today\\'s move?
+4. **OBV confirmation**: Do the candidates show OBV trending in the direction of today\'s move?
 5. **Follow-through check**: Monitor these candidates for the next 5 trading days. Track the hit rate of institutional footprints leading to sustained moves.
 
 ### The Institutional Edge in Your Trading
 
-> "Don\\'t try to outsmart institutions. Try to trade with them. They have better information, more capital, and longer time horizons. Your job is to identify their footprints and follow." -- Market wisdom
+> "Don\'t try to outsmart institutions. Try to trade with them. They have better information, more capital, and longer time horizons. Your job is to identify their footprints and follow." -- Market wisdom
 
 When you see multiple footprint patterns converging on the same stock:
 - Unusual volume + quiet accumulation pattern + OBV divergence = **high-conviction setup**
-- Position early, set reasonable stops, and let the institution\\'s capital do the heavy lifting`,
+- Position early, set reasonable stops, and let the institution\'s capital do the heavy lifting`,
       keyTakeaway: 'Institutional traders always leave volume footprints despite their efforts to trade discreetly. Key footprint patterns include unusual volume without news, end-of-day surges, volume climaxes, quiet accumulation creep, and block trade prints. Identifying these patterns lets you position alongside the biggest and best-informed players in the market.',
       actionItem: `Run the institutional activity scanner exercise today: (1) Find stocks that traded 200%+ of their 50-day average volume with no news, (2) Note their close location within the day\'s range, (3) Check OBV trend. Track these stocks for one week and record whether the institutional footprint predicted the subsequent direction. Build this into a daily routine.`,
       quiz: {
@@ -4243,14 +4243,14 @@ When you see multiple footprint patterns converging on the same stock:
       overview: 'Integrate everything from Level 6 into a practical volume and market internals framework. Reflect on how volume analysis transforms your trading, build your personal checklist, and prepare to combine volume with the momentum skills from Level 5.',
       mainContent: `## The Complete Volume & Internals Framework
 
-You now possess a toolkit that most retail traders never develop. Volume analysis and market internals are the "hidden curriculum" of professional trading -- widely used on institutional desks but rarely taught in popular trading courses. Let\\'s synthesize everything into a framework you can apply starting tomorrow.
+You now possess a toolkit that most retail traders never develop. Volume analysis and market internals are the "hidden curriculum" of professional trading -- widely used on institutional desks but rarely taught in popular trading courses. Let\'s synthesize everything into a framework you can apply starting tomorrow.
 
 ### Your Volume Analysis Hierarchy
 
 When analyzing any trade setup, work through these layers in order:
 
 **Layer 1: Raw Volume (Is there conviction?)**
-- Is today\\'s volume above or below the 50-day average?
+- Is today\'s volume above or below the 50-day average?
 - By what percentage?
 - Is volume expanding or contracting over the past 5 days?
 
@@ -4265,7 +4265,7 @@ When analyzing any trade setup, work through these layers in order:
 | **CMF** | Bounded buying/selling pressure | Quick assessment of volume flow direction |
 
 **Layer 3: Market Internals (Is the environment favorable?)**
-- A/D Line (Advance/Decline): Are most stocks supporting the index\\'s direction?
+- A/D Line (Advance/Decline): Are most stocks supporting the index\'s direction?
 - New Highs vs. New Lows: Is the broad market expanding or contracting?
 - Percentage above 200-day MA: Is the market broadly healthy?
 
@@ -4293,7 +4293,7 @@ Take time to honestly assess your development:
 
 **1. Which volume tool resonated most with your trading style?**
 
-Different traders gravitate to different tools. Day traders often love VWAP. Swing traders prefer Volume Profile. Position traders lean toward OBV and the A/D Line. There\\'s no wrong answer -- but you need a primary tool.
+Different traders gravitate to different tools. Day traders often love VWAP. Swing traders prefer Volume Profile. Position traders lean toward OBV and the A/D Line. There\'s no wrong answer -- but you need a primary tool.
 
 **2. How has volume analysis changed how you see charts?**
 
@@ -4305,7 +4305,7 @@ Be honest. Maybe you struggle to read Volume Profile intuitively. Maybe market b
 
 **4. How will you integrate breadth into your routine?**
 
-Market breadth is most useful as a **daily check** -- a quick assessment of the market\\'s health before you look at individual stocks. What time each day will you check breadth? Which breadth indicator will you use as your primary gauge?
+Market breadth is most useful as a **daily check** -- a quick assessment of the market\'s health before you look at individual stocks. What time each day will you check breadth? Which breadth indicator will you use as your primary gauge?
 
 **5. What is your complete pre-trade checklist now?**
 
@@ -4324,11 +4324,11 @@ Write out every step you will complete before entering a trade, incorporating bo
 - [ ] **Stop loss**: Defined before entry -- never after
 - [ ] **Target**: At least 2:1 reward-to-risk ratio
 
-> "The trader who masters both momentum and volume doesn\\'t predict the future. They read the present so clearly that the future becomes obvious." -- Trading proverb
+> "The trader who masters both momentum and volume doesn\'t predict the future. They read the present so clearly that the future becomes obvious." -- Trading proverb
 
 ### What Comes Next
 
-With momentum (Level 5) and volume (Level 6) now in your arsenal, you have the two most powerful dimensions of market analysis beyond price itself. In the next levels, you\\'ll learn chart patterns, risk management, and how to build these skills into a complete trading system. The foundation you\\'ve built here will make everything else click faster.`,
+With momentum (Level 5) and volume (Level 6) now in your arsenal, you have the two most powerful dimensions of market analysis beyond price itself. In the next levels, you\'ll learn chart patterns, risk management, and how to build these skills into a complete trading system. The foundation you\'ve built here will make everything else click faster.`,
       keyTakeaway: `Volume analysis and market internals complete the picture that price and momentum alone cannot provide. Use a layered approach: raw volume for conviction, volume indicators (OBV, A/D, VWAP, Volume Profile) for flow direction, market breadth for environment assessment, and institutional footprint patterns for smart money alignment. Combined with Level 5\'s momentum tools, you now have a professional-grade analytical framework.`,
       actionItem: 'Write out your complete pre-trade checklist incorporating both momentum indicators (from Level 5) and volume tools (from Level 6). Apply this checklist to three potential trade setups this week. For each, score the setup 1-10 based on how many checklist items confirm the trade. Only execute trades scoring 7 or above. Review the results after one week.',
       quiz: {

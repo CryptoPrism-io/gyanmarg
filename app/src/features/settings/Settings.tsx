@@ -19,10 +19,11 @@ import {
 import { useUserStore } from '@/store/userStore';
 import { useProgressStore } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
-import { GoogleSignInButton } from '@/components/molecules';
+import { GoogleSignInButton, BadgeCard } from '@/components/molecules';
 import { ModuleLayout, Section } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { Button } from '@/components/atoms';
+import { BADGES } from '@/data/badges';
 
 // Storage keys for all stores
 const STORAGE_KEYS = {
@@ -67,8 +68,13 @@ export function Settings() {
   // Store data for display
   const profile = useUserStore((s) => s.profile);
   const userProgress = useProgressStore((s) => s.userProgress);
+  const unlockedBadges = useProgressStore((s) => s.unlockedBadges);
+  const getBadgeProgress = useProgressStore((s) => s.getBadgeProgress);
   const resetUser = useUserStore((s) => s.resetUser);
   const resetProgress = useProgressStore((s) => s.resetProgress);
+
+  // Badge filtering
+  const [badgeFilter, setBadgeFilter] = useState<'all' | 'unlocked' | 'locked'>('all');
 
   // Auth state
   const { user, signOut, isSyncing, syncNow, lastSyncAt, syncError, isConfigured } = useAuth();
@@ -247,6 +253,94 @@ export function Settings() {
             </div>
           </GlassCard>
         </motion.div>
+
+        {/* Badge Showcase */}
+        <Section
+          title="Badge Collection"
+          subtitle={`${unlockedBadges.length} of ${BADGES.length} earned`}
+        >
+          <motion.div variants={itemVariants}>
+            {/* Filter Tabs */}
+            <div className="flex gap-2 mb-4">
+              <button
+                onClick={() => setBadgeFilter('all')}
+                className={`
+                  px-4 py-2 rounded-lg text-sm font-medium transition-all
+                  ${badgeFilter === 'all'
+                    ? 'bg-golden/20 text-golden border border-golden/30'
+                    : 'bg-surface/50 text-white/60 border border-white/10 hover:bg-white/5'
+                  }
+                `}
+              >
+                All ({BADGES.length})
+              </button>
+              <button
+                onClick={() => setBadgeFilter('unlocked')}
+                className={`
+                  px-4 py-2 rounded-lg text-sm font-medium transition-all
+                  ${badgeFilter === 'unlocked'
+                    ? 'bg-sage/20 text-sage border border-sage/30'
+                    : 'bg-surface/50 text-white/60 border border-white/10 hover:bg-white/5'
+                  }
+                `}
+              >
+                Unlocked ({unlockedBadges.length})
+              </button>
+              <button
+                onClick={() => setBadgeFilter('locked')}
+                className={`
+                  px-4 py-2 rounded-lg text-sm font-medium transition-all
+                  ${badgeFilter === 'locked'
+                    ? 'bg-white/10 text-white border border-white/20'
+                    : 'bg-surface/50 text-white/60 border border-white/10 hover:bg-white/5'
+                  }
+                `}
+              >
+                Locked ({BADGES.length - unlockedBadges.length})
+              </button>
+            </div>
+
+            {/* Badge Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {BADGES.filter(badge => {
+                const isUnlocked = unlockedBadges.some(b => b.id === badge.id);
+                if (badgeFilter === 'unlocked') return isUnlocked;
+                if (badgeFilter === 'locked') return !isUnlocked;
+                return true;
+              })
+              .sort((a, b) => {
+                // Sort unlocked first, then by tier, then by requirement value
+                const aUnlocked = unlockedBadges.some(ub => ub.id === a.id);
+                const bUnlocked = unlockedBadges.some(ub => ub.id === b.id);
+                if (aUnlocked !== bUnlocked) return bUnlocked ? 1 : -1;
+                return a.requirement.value - b.requirement.value;
+              })
+              .map(badge => {
+                const unlocked = unlockedBadges.find(b => b.id === badge.id);
+                return (
+                  <BadgeCard
+                    key={badge.id}
+                    badge={unlocked || badge}
+                    unlocked={!!unlocked}
+                    progress={!unlocked ? getBadgeProgress(badge.id) : undefined}
+                    size="md"
+                    showProgress={true}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Empty State */}
+            {badgeFilter === 'unlocked' && unlockedBadges.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-white/40 mb-2">No badges unlocked yet</p>
+                <p className="text-sm text-white/30">
+                  Complete lessons, maintain streaks, and reach milestones to earn badges!
+                </p>
+              </div>
+            )}
+          </motion.div>
+        </Section>
 
         {/* Cloud Sync Section */}
         {isConfigured && (

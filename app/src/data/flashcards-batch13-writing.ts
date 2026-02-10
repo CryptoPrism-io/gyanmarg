@@ -4,8 +4,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   // Clear Writing Principles
   {
     id: 'fc-writ-001',
-    front: 'What is the "curse of knowledge" in writing, and how do you overcome it?',
-    back: 'The curse of knowledge is the cognitive bias where writers assume readers have the same background information they do. Overcome it by: using simple language, defining jargon, asking someone unfamiliar with the topic to review your work, and imagining you\'re explaining to a smart friend outside your field.',
+    front: 'What is the curse of knowledge in writing?',
+    back: 'Assume readers lack your background. Use simple language; define jargon; get fresh eyes; imagine you\'re explaining to a novice. fc-writ-001',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -14,8 +14,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-002',
-    front: 'What is the Hemingway principle for clear writing?',
-    back: 'Write short sentences. Use simple words. Prefer active voice. Eliminate unnecessary adverbs and adjectives. Cut everything that doesn\'t advance your point. Aim for a 4th-8th grade reading level for maximum clarity and impact.',
+    front: 'Hemingway principle: how do you write with clarity?',
+    back: 'Write short sentences; use simple words; prefer active voice. Cut unnecessary words.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -24,8 +24,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-003',
-    front: 'What is the "one idea per paragraph" rule and why does it matter?',
-    back: 'Each paragraph should contain one main idea, introduced in the topic sentence. Supporting sentences develop that single idea. This structure helps readers process information, creates natural pauses, makes scanning easier, and forces writers to organize thoughts logically.',
+    front: 'How do you build an effective paragraph?',
+    back: 'Focus each paragraph on one clear idea; introduce it with a topic sentence. Support with details to develop that idea.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -34,20 +34,18 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-004',
-    front: 'What is the difference between active and passive voice? When should you use each?',
-    back: 'Active: Subject performs action ("The dog bit the man"). Passive: Subject receives action ("The man was bitten by the dog"). Use active for clarity, energy, and directness. Use passive when the actor is unknown, unimportant, or when you want to emphasize the action/recipient over the doer.',
+    front: 'Active vs. Passive Voice: Define each & when to use which?',
+    back: 'Active: Subject acts; Use for clarity. Passive: Subject receives action; Use when actor is unknown/unimportant.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
     difficulty: 'beginner',
     tags: ['writing', 'content', 'grammar', 'style']
-  },
-
-  // Story Structure
+  }
   {
     id: 'fc-writ-005',
-    front: 'What is the three-act structure in storytelling?',
-    back: 'Act 1 (Setup, ~25%): Introduce characters, world, and inciting incident. Act 2 (Confrontation, ~50%): Rising action, obstacles, midpoint shift, darkest moment. Act 3 (Resolution, ~25%): Climax, falling action, resolution. This structure creates satisfying narrative tension and release.',
+    front: 'Explain the three-act storytelling structure.',
+    back: 'Act 1: Setup; Act 2: Confrontation/Rising Action; Act 3: Resolution/Climax. Use it to build narrative tension and provide release.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -56,8 +54,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-006',
-    front: 'What is the Hero\'s Journey and its key stages?',
-    back: 'Joseph Campbell\'s monomyth: 1) Ordinary World, 2) Call to Adventure, 3) Refusal of Call, 4) Meeting the Mentor, 5) Crossing the Threshold, 6) Tests/Allies/Enemies, 7) Approach to Innermost Cave, 8) Ordeal, 9) Reward, 10) Road Back, 11) Resurrection, 12) Return with Elixir. Universal template for transformational stories.',
+    front: 'Who popularized the concept of the Hero\'s Journey?',
+    back: 'Joseph Campbell; Study myths to reveal universal narrative patterns.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -66,8 +64,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-007',
-    front: 'What is "in medias res" and why is it an effective storytelling technique?',
-    back: 'Latin for "in the middle of things" - starting a story in the midst of action rather than at the beginning. Effective because it: immediately hooks readers, creates intrigue about how characters got there, avoids slow exposition, and demonstrates confidence in the audience to catch up.',
+    front: 'ID: fc-writ-007 What does "in medias res" mean?',
+    back: 'Start a story mid-action; Engage readers immediately. Latin for "into the middle of things."',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -76,20 +74,18 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-008',
-    front: 'What is the "story spine" framework for quick story construction?',
-    back: 'Pixar\'s story spine: "Once upon a time... Every day... One day... Because of that... Because of that... Because of that... Until finally... And ever since then..." This framework ensures cause-and-effect logic and character transformation in any narrative.',
+    front: 'What is the Pixar Story Spine framework, and how does it work?',
+    back: 'Craft compelling narratives; Use: Once upon a time... Every day... But one day... Because of that... Until finally...',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
     difficulty: 'intermediate',
     tags: ['writing', 'content', 'storytelling', 'framework']
-  },
-
-  // Hooks and Headlines
+  }
   {
     id: 'fc-writ-009',
-    front: 'What are the 4 U\'s of headline writing?',
-    back: '1) Useful: Promise clear value or benefit. 2) Urgent: Create time sensitivity or FOMO. 3) Unique: Offer something different or unexpected. 4) Ultra-specific: Use concrete numbers, details, or outcomes. Strong headlines hit at least 2-3 of these elements.',
+    front: 'Name the 4 U\'s of powerful headline writing.',
+    back: 'Make headlines: Useful; Urgent; Unique; Ultra-specific. Strong headlines use 2-3.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -98,8 +94,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-010',
-    front: 'What is the "curiosity gap" technique for hooks?',
-    back: 'Creating a gap between what readers know and what they want to know. Tease enough to intrigue but withhold the payoff. Example: "She did one thing differently at every job interview. It\'s the reason she\'s now CEO." Works because humans are wired to seek closure on open loops.',
+    front: 'fc-writ-010: What is the purpose of a curiosity gap in writing?',
+    back: 'Create a need to know; Intrigue readers; withhold full payoff. Tease; don\'t reveal all.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -108,8 +104,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-011',
-    front: 'What are the five classic headline formulas that consistently perform?',
-    back: '1) How to [achieve desired outcome]. 2) [Number] ways to [solve problem]. 3) Why [surprising statement or contrarian view]. 4) The secret to [desirable result]. 5) What [authority/research] knows about [topic] that you don\'t. These work because they promise specific value.',
+    front: 'List 5 high-performing headline formulas.',
+    back: 'How to achieve X; Number ways to solve Y; Why Z; Secret to A; What B knows about C you don\'t.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -118,20 +114,18 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-012',
-    front: 'What is the "power of the first sentence" principle?',
-    back: 'The only job of the first sentence is to get you to read the second sentence. It should be short, punchy, and intriguing. Techniques: Ask a provocative question, state a surprising fact, make a bold claim, drop into action, or challenge conventional wisdom.',
+    front: 'What\'s the single purpose of your first sentence?',
+    back: 'Make them read the second! Be short, punchy, intriguing. Use questions, facts, claims, action, or challenge norms. ',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
     difficulty: 'beginner',
     tags: ['writing', 'content', 'hooks', 'openings']
-  },
-
-  // Editing Techniques
+  }
   {
     id: 'fc-writ-013',
-    front: 'What is the "10% rule" in editing?',
-    back: 'After your first draft, aim to cut at least 10% of your word count. This forces you to eliminate redundancy, tighten prose, and keep only essential content. Most writing improves dramatically when trimmed. Stephen King suggests cutting 10-15% of every draft.',
+    front: 'How should you revise writing for conciseness?',
+    back: 'Cut at least 10% word count; eliminate redundancy, tighten prose, keep only essentials. Stephen King cuts 10-15%.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -140,8 +134,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-014',
-    front: 'What is the "murder your darlings" editing principle?',
-    back: 'Be willing to cut your favorite passages if they don\'t serve the piece. Often our most "clever" or "beautiful" writing is self-indulgent and distracts from the message. Ask: Does this advance the reader\'s understanding or just showcase my skill? If the latter, cut it.',
+    front: 'What is the \'kill your darlings\' writing principle?',
+    back: 'Edit ruthlessly; remove unnecessary passages, even favorites. Improve overall clarity; strengthen core message.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -150,8 +144,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-015',
-    front: 'What are the three passes of effective editing?',
-    back: 'Pass 1 (Structural): Is the argument logical? Is information in the right order? Are there gaps? Pass 2 (Line edit): Is each sentence clear and necessary? Does it flow? Pass 3 (Proofreading): Grammar, spelling, punctuation, formatting. Never try to do all three simultaneously.',
+    front: 'Name the 3 passes of effective editing.',
+    back: 'Structure: check logic/order/gaps; Line: clarify/streamline sentences; Proofread: fix grammar/spelling/formatting. Edit in distinct passes.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -160,20 +154,18 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-016',
-    front: 'Why is "reading aloud" one of the most powerful editing techniques?',
-    back: 'Reading aloud reveals: awkward phrasing your eye skips over, sentences that are too long (you run out of breath), missing words, repetitive word choices, unnatural dialogue, and rhythm problems. Your ear catches what your eye misses because speech and reading use different brain processes.',
+    front: 'Why read your writing aloud?',
+    back: 'Catch awkward phrasing, long sentences, missing words, repetition, and rhythm issues. Speech engages different brain processes.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
     difficulty: 'beginner',
     tags: ['writing', 'content', 'editing', 'technique']
-  },
-
-  // Overcoming Writer's Block
+  }
   {
     id: 'fc-writ-017',
-    front: 'What is the "two-minute rule" for overcoming writer\'s block?',
-    back: 'Commit to writing for just two minutes. This overcomes the initial resistance of starting. Usually, once you begin, momentum carries you forward. The block isn\'t about inability to write - it\'s about resistance to starting. Lower the bar until action becomes inevitable.',
+    front: 'What\'s the 2-minute rule\'s purpose for writer\'s block?',
+    back: 'Start writing for 2 minutes; overcome initial resistance. Momentum will carry you forward.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -182,8 +174,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-018',
-    front: 'What is "freewriting" and how does it help with writer\'s block?',
-    back: 'Write continuously for a set time (10-20 minutes) without stopping, editing, or censoring. Don\'t lift your pen. If stuck, write "I don\'t know what to write" until something comes. This bypasses the inner critic, accesses subconscious ideas, and generates raw material you can edit later.',
+    front: 'What\'s the best cure for writer\'s block?',
+    back: 'Freewrite; write continuously for 10-20 mins without stopping, editing, or censoring. Just write!',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -192,8 +184,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-019',
-    front: 'What is the "shitty first draft" concept and why is it liberating?',
-    back: 'Anne Lamott\'s principle: Give yourself permission to write badly in your first draft. Perfectionism during creation kills creativity. The purpose of draft one is to exist - you can\'t edit a blank page. Separate creation (draft 1) from evaluation (editing) into different sessions.',
+    front: 'What should you do if overwhelmed by a writing assignment?',
+    back: 'Break it down; Focus on tiny, manageable chunks. Write a \'child\'s draft\'; Don\'t aim for perfection.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -202,20 +194,18 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-020',
-    front: 'What is the "stop in the middle" technique for maintaining writing momentum?',
-    back: 'Hemingway\'s method: Stop writing for the day when you know what comes next, ideally mid-sentence or mid-scene. This makes it easy to start the next session - you have a clear entry point. Finishing a section creates a void that\'s harder to fill. Always leave yourself a thread to pick up.',
+    front: 'What defines the Hemingway writing style?',
+    back: 'Use simple, direct language; omit unnecessary words. Focus on action, not explanation. Show, don\'t tell.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
     difficulty: 'intermediate',
     tags: ['writing', 'content', 'productivity', 'technique']
-  },
-
-  // Audience Awareness
+  }
   {
     id: 'fc-writ-021',
-    front: 'What is the "one reader" technique for audience-focused writing?',
-    back: 'Write to one specific person, not a vague audience. Create a detailed persona: their knowledge level, goals, objections, and language. Write as if emailing this person. This makes your writing more conversational, relevant, and focused than writing to "everyone."',
+    front: 'fc-writ-021: Who should you target when writing content?',
+    back: 'Write to a specific persona; define knowledge, goals, objections.  Email them directly; make content conversational and focused.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -224,8 +214,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-022',
-    front: 'What are the five questions to answer about your audience before writing?',
-    back: '1) What do they already know about this topic? 2) What do they want/need to know? 3) What objections or skepticism might they have? 4) What action do you want them to take? 5) What\'s their emotional state coming into this content? Answers shape tone, depth, and structure.',
+    front: 'Before writing, what 5 audience questions must you answer?',
+    back: 'Know: existing knowledge; desired knowledge; objections; desired action; reading level. Target content effectively.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -234,8 +224,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-023',
-    front: 'What is the "WIIFM" principle in writing?',
-    back: '"What\'s In It For Me?" - the question every reader subconsciously asks. Always lead with reader benefits, not features or your credentials. Transform "I will explain..." to "You will learn..." Make the reader the hero of your content. Self-focused writing loses readers fast.',
+    front: 'ID: fc-writ-023. Category: Master Synthesis. Audience affects writing how?',
+    back: 'Tailor content to audience needs and knowledge; Improve engagement; Increase resonance.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -244,20 +234,18 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-024',
-    front: 'How do you adjust writing for different expertise levels?',
-    back: 'Beginners: Define all terms, use analogies, focus on "what" and "why," provide step-by-step guidance. Intermediate: Assume basic knowledge, focus on "how," include nuance and exceptions. Experts: Skip fundamentals, dive into edge cases, use technical language, focus on novel insights or debates.',
+    front: 'How do you adapt writing for varying audience expertise?',
+    back: 'Define terms; use analogies; focus on basics for beginners. Prioritize nuance & advanced concepts for experts.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
     difficulty: 'intermediate',
     tags: ['writing', 'content', 'audience', 'adaptation']
-  },
-
-  // Content Strategy
+  }
   {
     id: 'fc-writ-025',
-    front: 'What is the "content pillar" strategy?',
-    back: 'Create 3-5 core themes (pillars) that define your expertise and audience interests. All content maps to these pillars. This ensures consistency, builds authority in specific areas, makes ideation easier, and creates content clusters that perform better for SEO and audience building.',
+    front: 'Define content pillars: What are they, and why are they important?',
+    back: 'Establish 3-5 core themes; map content to them. Ensures consistency; builds authority; eases ideation; improves SEO.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -266,8 +254,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-026',
-    front: 'What is the "content repurposing" framework?',
-    back: 'Create once, distribute many: Long-form content (blog/video) becomes: Twitter thread, LinkedIn post, email newsletter, podcast episode, infographic, carousel slides, quotes for social, and FAQ content. Multiply reach without multiplying effort. Different formats reach different audiences.',
+    front: 'Content Repurposing Strategy: What\'s the key principle?',
+    back: 'Create content once, then repurpose it multiple times for varied platforms/formats; Expand reach, reduce redundant effort.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -276,8 +264,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-027',
-    front: 'What is the "hub and spoke" content model?',
-    back: 'Hub: Comprehensive cornerstone content on a major topic (ultimate guide). Spokes: Shorter pieces that cover subtopics in depth and link to the hub. Benefits: SEO authority, logical content organization, easier navigation, natural internal linking, and clear content roadmap.',
+    front: 'Define Hub & Spoke content architecture and its benefits.',
+    back: 'Hub: Ultimate guide; Spokes: Subtopics linked to Hub. Gain SEO, organize logically; ease nav, link internally, clarify roadmap. ID: fc-writ-027',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -286,20 +274,18 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-028',
-    front: 'What is the "content lifecycle" and how do you extend it?',
-    back: 'Content decays: initial spike, gradual decline, eventual irrelevance. Extend lifecycle by: updating statistics/examples annually, refreshing for new trends, optimizing based on performance data, republishing with improvements, and building evergreen foundations with timely updates.',
+    front: 'Content lifecycle: What happens and how do you extend it?',
+    back: 'Content decays. Extend it: Update stats/examples; refresh for trends; optimize performance; republish; build evergreen foundations with timely updates.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
     difficulty: 'intermediate',
     tags: ['writing', 'content', 'strategy', 'maintenance']
-  },
-
-  // Copywriting Basics
+  }
   {
     id: 'fc-writ-029',
-    front: 'What is the AIDA framework in copywriting?',
-    back: 'Attention: Grab attention with headline/hook. Interest: Build interest with relevant information. Desire: Create desire by showing benefits and transformation. Action: Call to action - tell them exactly what to do next. Classic framework for any persuasive content from ads to landing pages.',
+    front: 'AIDA framework: What are the steps?',
+    back: 'Grab attention; build interest; create desire; prompt action. Persuade readers in ads, landing pages, and more.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -308,8 +294,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-030',
-    front: 'What is the difference between features and benefits in copywriting?',
-    back: 'Features: What something is/has (specs, components, facts). Benefits: What it does for the customer (outcomes, transformations, feelings). Example: "500GB storage" (feature) vs. "Never worry about running out of space for your precious memories" (benefit). Sell benefits, use features as proof.',
+    front: 'fc-writ-030: Features vs. Benefits in copywriting?',
+    back: 'Features: Describe WHAT it *is*. Benefits: Describe WHAT it *does* for the user; focus on outcomes and positive impacts.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -318,8 +304,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-031',
-    front: 'What is the PAS formula in copywriting?',
-    back: 'Problem: Identify and agitate the reader\'s pain point. Agitation: Intensify the problem - explore consequences, emotions, and stakes. Solution: Present your offering as the resolution. Effective because it meets readers where they are (in pain) before offering relief.',
+    front: 'Define the PAS copywriting formula.',
+    back: 'Problem: name the pain; Agitate: amplify it; Solution: offer relief.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -328,20 +314,18 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-032',
-    front: 'What are "power words" in copywriting and what are examples?',
-    back: 'Words that trigger emotional or psychological responses. Categories: Urgency (now, limited, deadline), Exclusivity (secret, insider, members-only), Safety (proven, guaranteed, risk-free), Curiosity (discover, revealed, unlock), Value (free, bonus, save). Use strategically - overuse dilutes impact.',
+    front: 'Define trigger words in writing.  How should they be used?',
+    back: 'Evoke strong emotions; use sparingly. Examples: Urgency; Exclusivity; Safety; Curiosity; Value. Avoid overuse, which weakens impact.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
     difficulty: 'intermediate',
     tags: ['writing', 'content', 'copywriting', 'vocabulary']
-  },
-
-  // Technical Writing
+  }
   {
     id: 'fc-writ-033',
-    front: 'What are the core principles of effective technical writing?',
-    back: '1) Clarity over cleverness - no ambiguity. 2) Task-oriented - what does the reader need to DO? 3) Consistent terminology - same term for same concept throughout. 4) Scannable structure - headings, bullets, numbered steps. 5) Testable - can someone follow your instructions successfully?',
+    front: 'Effective technical writing: Key principles?',
+    back: 'Prioritize clarity, task focus, consistency; use scannable structure. Test accuracy; ensure successful instruction following. fc-writ-033',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -350,8 +334,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-034',
-    front: 'What is the "inverted pyramid" structure for technical documentation?',
-    back: 'Present information in order of importance: most critical first, details later. Lead with the "what" and "why," then "how." Allows readers to stop reading when they have enough information. Essential for reference documentation, troubleshooting guides, and executive summaries.',
+    front: 'What\'s the key principle for structuring technical information effectively?',
+    back: 'Prioritize information; present most important details first. Lead with the \'so what?\'; then provide supporting details.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -360,8 +344,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-035',
-    front: 'How do you write effective step-by-step instructions?',
-    back: '1) One action per step. 2) Start each step with a verb. 3) Number steps sequentially. 4) Include expected results after key steps. 5) Warn before the point of no return. 6) Use consistent formatting. 7) Test with actual users. 8) Include screenshots for complex UI actions.',
+    front: 'Write effective step-by-step instructions: How?',
+    back: 'Use one action per step; start with verbs; number steps; include results & screenshots; warn about no return; test & format consistently. ID: fc-writ-035',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -370,20 +354,18 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-036',
-    front: 'What is the "explain like I\'m five" (ELI5) technique for complex topics?',
-    back: 'Simplify by: using everyday analogies, avoiding jargon, breaking into smallest concepts, using concrete examples, asking "why does this matter?", and building from known to unknown. Not actually for five-year-olds - it\'s about finding the simplest accurate explanation for non-experts.',
+    front: 'fc-writ-036: How do you simplify technical writing for a broader audience?',
+    back: 'Use analogies; avoid jargon; break down concepts; give concrete examples; ask clarifying questions. Prioritize clarity.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
     difficulty: 'intermediate',
     tags: ['writing', 'content', 'technical', 'explanation']
-  },
-
-  // Persuasive Writing
+  }
   {
     id: 'fc-writ-037',
-    front: 'What are Aristotle\'s three modes of persuasion and how do they apply to writing?',
-    back: 'Ethos (credibility): Establish expertise and trustworthiness. Logos (logic): Use evidence, data, and reasoning. Pathos (emotion): Connect to feelings and values. Effective persuasion uses all three - credibility gets attention, logic justifies, emotion motivates action.',
+    front: 'Aristotle\'s persuasive appeals: What are they and how do they work?',
+    back: 'Use Ethos (credibility); Logos (logic); Pathos (emotion).  Build trust, justify claims, and motivate action.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -392,8 +374,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-038',
-    front: 'What is the "steel man" technique in persuasive writing?',
-    back: 'Present the strongest version of opposing arguments before countering them. Opposite of "straw man." Benefits: builds credibility, shows fairness, makes your counterarguments more impressive, preempts reader objections, and demonstrates deep understanding. Readers trust writers who engage honestly with complexity.',
+    front: 'fc-writ-038: How should you present opposing arguments for best effect?',
+    back: 'Acknowledge & strengthen counter-arguments first, then refute; Avoid straw-manning; Build ethos & anticipate objections.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -402,8 +384,8 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-039',
-    front: 'What is "social proof" in writing and how do you use it effectively?',
-    back: 'People follow the actions of others. In writing, use: testimonials, case studies, statistics ("10,000 customers"), expert endorsements, user-generated content, and "most popular" indicators. Make proof specific, relevant, and credible. Vague claims ("many people") are weak; specifics ("147 CEOs") are strong.',
+    front: 'What is the bandwagon effect and how do you leverage it in writing?',
+    back: 'Show widespread adoption; use testimonials, case studies, statistics.  Persuade by proving others trust the content; create FOMO.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
@@ -412,12 +394,11 @@ export const writingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-writ-040',
-    front: 'What is the "yes ladder" technique in persuasive writing?',
-    back: 'Start with small, easily agreeable statements before building to larger asks. Each "yes" creates psychological momentum and commitment. Example: "You want to save time, right? And you want quality results? And you deserve tools that just work? Then you\'ll love..." Based on consistency principle - people act consistently with prior commitments.',
+    front: 'What is the \'Yes Ladder\' persuasion technique in writing?',
+    back: 'Get agreement early! Build to bigger asks via small, accepted statements. Increase compliance.',
     category: 'Master Synthesis',
     source: 'Writing & Content',
     pathwayId: 'master-synthesis',
     difficulty: 'advanced',
     tags: ['writing', 'content', 'persuasion', 'technique']
-  }
-];
+  };

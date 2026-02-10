@@ -221,7 +221,7 @@ export interface SpacedRepetitionCard {
   front: string;
   back: string;
   category: string;
-  source: string;
+  source?: string; // Optional - not all cards have explicit source attribution
   pathwayId?: string;
   lessonId?: string;
   difficulty: 'beginner' | 'intermediate' | 'advanced';

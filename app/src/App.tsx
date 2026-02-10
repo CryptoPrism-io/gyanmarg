@@ -11,6 +11,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 // Analytics
 import { analytics } from '@/lib/analytics';
 
+// Celebration Queue
+import { celebrationQueue, type CelebrationEvent } from '@/lib/celebrationQueue';
+
 // Store
 import { useUserStore, usePendingAchievement } from '@/store/userStore';
 import { useProgressStore, usePendingLevelUp } from '@/store/progressStore';
@@ -20,6 +23,7 @@ import { AuthProvider } from '@/contexts/AuthContext';
 
 // Celebration Components
 import { AchievementUnlock, LevelUpModal } from '@/components/organisms';
+import DailyRewardModal from '@/components/organisms/DailyRewardModal';
 
 // PWA Install Prompt
 import { PWAInstallPrompt } from '@/components/molecules';
@@ -36,8 +40,6 @@ const LearningPathway = lazy(() => import('@/features/learning-pathway/LearningP
 const SpacedRepetition = lazy(() => import('@/features/spaced-repetition/SpacedRepetition').then(m => ({ default: m.SpacedRepetition })));
 const DailyChallenges = lazy(() => import('@/features/daily-challenges/DailyChallenges').then(m => ({ default: m.DailyChallenges })));
 const KnowledgeMap = lazy(() => import('@/features/knowledge-map/KnowledgeMap').then(m => ({ default: m.KnowledgeMap })));
-const ModuleHub = lazy(() => import('@/features/module-hub/ModuleHub').then(m => ({ default: m.ModuleHub })));
-const ModulePage = lazy(() => import('@/features/module-page/ModulePage'));
 const Settings = lazy(() => import('@/features/settings/Settings').then(m => ({ default: m.Settings })));
 const VisualLab = lazy(() => import('@/features/visual-lab/VisualLab').then(m => ({ default: m.VisualLab })));
 const SavedCards = lazy(() => import('@/features/saved-cards/SavedCards').then(m => ({ default: m.SavedCards })));
@@ -77,40 +79,88 @@ function CelebrationModals() {
   } | null>(null);
   const [currentLevel, setCurrentLevel] = useState<number>(1);
 
-  // Handle pending achievement
+  // Daily reward state
+  const [showDailyReward, setShowDailyReward] = useState(false);
+  const [dailyRewardData, setDailyRewardData] = useState<{
+    streak: number;
+    reward: number;
+  } | null>(null);
+
+  const checkDailyLogin = useUserStore((s) => s.checkDailyLogin);
+
+  // Check daily login on mount
+  useEffect(() => {
+    const result = checkDailyLogin();
+    if (result.isNewDay && result.reward !== null) {
+      setDailyRewardData({
+        streak: result.streak,
+        reward: result.reward,
+      });
+      setShowDailyReward(true);
+    }
+  }, []); // Only run once on mount
+
+  // Initialize celebration queue
+  useEffect(() => {
+    celebrationQueue.initialize((event: CelebrationEvent) => {
+      if (event.type === 'achievement') {
+        setCurrentAchievement({
+          id: event.payload.id,
+          name: event.payload.name,
+          xpReward: event.payload.xpReward,
+        });
+        setShowAchievement(true);
+      } else if (event.type === 'levelUp') {
+        setCurrentLevel(event.payload.newLevel);
+        setShowLevelUp(true);
+      }
+    });
+
+    return () => celebrationQueue.destroy();
+  }, []);
+
+  // Handle pending achievement - enqueue instead of showing immediately
   useEffect(() => {
     if (pendingAchievement) {
-      setCurrentAchievement({
-        id: pendingAchievement.id,
-        name: pendingAchievement.name,
-        xpReward: pendingAchievement.xpReward,
+      // Just use the pending achievement directly - it's already the right shape
+      celebrationQueue.enqueue({
+        type: 'achievement',
+        payload: pendingAchievement,
       });
-      setShowAchievement(true);
+      clearPendingAchievement();
     }
-  }, [pendingAchievement]);
+  }, [pendingAchievement, clearPendingAchievement]);
 
-  // Handle pending level up — auto-clear without blocking modal
-  // (disabled modal to prevent it from blocking game interactions)
+  // Handle pending level up - enqueue instead of auto-clearing
+  // NOW ENABLED: Modal queue system prevents blocking during lessons
   useEffect(() => {
     if (pendingLevelUp) {
-      setCurrentLevel(pendingLevelUp);
-      // Auto-clear instead of showing blocking modal
+      celebrationQueue.enqueue({
+        type: 'levelUp',
+        payload: { newLevel: pendingLevelUp },
+      });
       clearPendingLevelUp();
     }
   }, [pendingLevelUp, clearPendingLevelUp]);
 
   const handleAchievementClose = () => {
     setShowAchievement(false);
-    clearPendingAchievement();
+    celebrationQueue.onCelebrationClosed();
   };
 
   const handleLevelUpClose = () => {
     setShowLevelUp(false);
-    clearPendingLevelUp();
+    celebrationQueue.onCelebrationClosed();
   };
 
   return (
     <>
+      <DailyRewardModal
+        isOpen={showDailyReward}
+        onClose={() => setShowDailyReward(false)}
+        streak={dailyRewardData?.streak || 1}
+        reward={dailyRewardData?.reward || 0}
+      />
       <AchievementUnlock
         isOpen={showAchievement}
         onClose={handleAchievementClose}
@@ -290,37 +340,6 @@ function AppRoutes() {
         }
       />
 
-      {/* Module Hub */}
-      <Route
-        path="/modules"
-        element={
-          <ProtectedRoute>
-            <PageLayout>
-              <PageTransition>
-                <Suspense fallback={<PageLoader />}>
-                  <ModuleHub />
-                </Suspense>
-              </PageTransition>
-            </PageLayout>
-          </ProtectedRoute>
-        }
-      />
-
-      {/* Individual Module Pages */}
-      <Route
-        path="/modules/:moduleId"
-        element={
-          <ProtectedRoute>
-            <PageLayout>
-              <PageTransition>
-                <Suspense fallback={<PageLoader />}>
-                  <ModulePage />
-                </Suspense>
-              </PageTransition>
-            </PageLayout>
-          </ProtectedRoute>
-        }
-      />
 
       {/* Landing Page */}
       <Route

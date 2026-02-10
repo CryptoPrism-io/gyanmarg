@@ -1066,7 +1066,7 @@ export function LandingPage() {
               <h4 className="font-medium text-sm mb-4 text-white">Product</h4>
               <ul className="space-y-3 text-sm text-gray-400">
                 <li><Link to="/dashboard" className="hover:text-white transition">Dashboard</Link></li>
-                <li><Link to="/modules" className="hover:text-white transition">Modules</Link></li>
+                <li><Link to="/pathway" className="hover:text-white transition">Learning Pathway</Link></li>
                 <li><Link to="/review" className="hover:text-white transition">Flashcards</Link></li>
                 <li><Link to="/dashboard" className="hover:text-white transition">Get Started</Link></li>
               </ul>
