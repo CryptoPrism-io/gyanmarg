@@ -5,7 +5,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-001',
     front: 'What are the 3 stages of memory processing?',
-    back: 'Encode; store; retrieve. Encoding converts, storage maintains, retrieval accesses. Failure at any stage leads to forgetting.',
+    back: 'Encode; store; retrieve. Encoding converts, storage maintains, retrieval accesses. Failure at any stage leads to forgetting',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -25,7 +25,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-003',
     front: 'Encoding specificity: How does encoding context affect memory retrieval?',
-    back: 'Match retrieval conditions to encoding conditions for best recall. Include physical context, mental state, and cues; boosts performance.',
+    back: 'Match retrieval conditions to encoding conditions for best recall. Include physical context, mental state, and cues; boosts performance',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -35,7 +35,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-004',
     front: 'Attention\'s role in memory encoding?',
-    back: 'Direct attention to encode; ignore, and forget. Focus boosts deep processing and strong traces; divide attention, and memory suffers.',
+    back: 'Direct attention to encode; ignore, and forget. Focus boosts deep processing and strong traces; divide attention, and memory suffers',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -45,7 +45,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-005',
     front: 'Elaborative encoding: What is it and why does it boost memory?',
-    back: 'Link new info to existing knowledge using associations and examples. Creates retrieval pathways; embeds info in semantic networks.',
+    back: 'Link new info to existing knowledge using associations and examples. Creates retrieval pathways; embeds info in semantic networks',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -55,7 +55,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-006',
     front: 'Define memory consolidation & when does it occur?',
-    back: 'Stabilize memories after encoding; transform short-term into long-term. Happens primarily during sleep; SWS (declarative); REM (procedural).',
+    back: 'Stabilize memories after encoding; transform short-term into long-term. Happens primarily during sleep; SWS (declarative); REM (procedural)',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -65,7 +65,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-007',
     front: 'Declarative vs. procedural memory: What\'s the key difference?',
-    back: 'Declarative: Consciously recall facts/events; Semantic/Episodic. Procedural: Unconscious skills/habits; Ride a bike. Use different brain systems.',
+    back: 'Declarative: Consciously recall facts/events; Semantic/Episodic. Procedural: Unconscious skills/habits; Ride a bike. Use different brain systems',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -75,7 +75,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-008',
     front: 'Hippocampus\' role in memory storage?',
-    back: 'Encode/index memories, bind cortical representations; Replay during sleep for consolidation; Transfer memories to neocortex.',
+    back: 'Encode/index memories, bind cortical representations; Replay during sleep for consolidation; Transfer memories to neocortex',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -84,8 +84,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-009',
-    front: 'fc-mem-009: What is Ebbinghaus\' Forgetting Curve?',
-    back: 'Show exponential decay of memory; Lose 50% in 1 hour, 70% in 24 hours, 90% in a week. Use spaced repetition to combat this.',
+    front: 'What is Ebbinghaus\' Forgetting Curve?',
+    back: 'Show exponential decay of memory; Lose 50% in 1 hour, 70% in 24 hours, 90% in a week. Use spaced repetition to combat this',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -95,7 +95,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-010',
     front: 'What causes memory interference?',
-    back: 'Old memories block new (proactive); new memories block old (retroactive). Reduce it: Use distinctiveness; space learning.',
+    back: 'Old memories block new (proactive); new memories block old (retroactive). Reduce it: Use distinctiveness; space learning',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -104,8 +104,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-011',
-    front: 'Explain the testing effect (retrieval practice).',
-    back: 'Actively retrieve info to strengthen memory; it\'s more effective than re-studying. Successful retrievals modify memory; feedback after failure helps too.',
+    front: 'Explain the testing effect (retrieval practice)',
+    back: 'Actively retrieve info to strengthen memory; it\'s more effective than re-studying. Successful retrievals modify memory; feedback after failure helps too',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -124,8 +124,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-013',
-    front: 'Define retrieval cues & how they aid memory recall.',
-    back: 'Cues activate associated memory networks; Effective cues encoded with target. Maximize overlap of encoding context to enhance recall (encoding specificity).',
+    front: 'Define retrieval cues & how they aid memory recall',
+    back: 'Cues activate associated memory networks; Effective cues encoded with target. Maximize overlap of encoding context to enhance recall (encoding specificity)',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -134,7 +134,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-014',
-    front: 'Explain retrieval-induced forgetting.',
+    front: 'Explain retrieval-induced forgetting',
     back: 'Retrieving some memories inhibits related ones; competing items are suppressed. Review all, not just favorite, material; ID: fc-mem-014',
     category: 'Master Synthesis',
     source: 'Learning Science',
@@ -144,8 +144,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-015',
-    front: 'fc-mem-015: Reconstructive memory affects retrieval accuracy how?',
-    back: 'Reconstructive memory distorts recall; you actively rebuild memories during retrieval, introducing potential inaccuracies.',
+    front: 'Reconstructive memory affects retrieval accuracy how?',
+    back: 'Reconstructive memory distorts recall; you actively rebuild memories during retrieval, introducing potential inaccuracies',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -154,8 +154,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-016',
-    front: 'Explain the spacing effect & its benefit for long-term memory.',
-    back: 'Space out your learning sessions! Distributed practice improves memory because forgetting between sessions strengthens recall.',
+    front: 'Explain the spacing effect & its benefit for long-term memory',
+    back: 'Space out your learning sessions! Distributed practice improves memory because forgetting between sessions strengthens recall',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -165,7 +165,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-017',
     front: 'What spacing maximizes learning retention?',
-    back: 'Space reviews at 10-30% of the target retention; For 10-day retention, review 1-3 days apart; use progressively longer intervals for long-term retention.',
+    back: 'Space reviews at 10-30% of the target retention; For 10-day retention, review 1-3 days apart; use progressively longer intervals for long-term retention',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -175,7 +175,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-018',
     front: 'How does spaced repetition defeat the forgetting curve?',
-    back: 'Resets & flattens the curve each review; Intervals increase as memory stabilizes, slowing forgetting; Eventually require rare reviews. ',
+    back: 'Resets & flattens the curve each review; Intervals increase as memory stabilizes, slowing forgetting; Eventually require rare reviews',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -185,7 +185,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-019',
     front: 'Fixed vs. expanding retrieval schedules: What\'s the difference?',
-    back: 'Fixed: Constant intervals. Expanding: Intervals increase; boost long-term retention. Choose fixed for difficult content or short retention.',
+    back: 'Fixed: Constant intervals. Expanding: Intervals increase; boost long-term retention. Choose fixed for difficult content or short retention',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -195,7 +195,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-020',
     front: 'Spaced Repetition: How does difficulty impact review scheduling?',
-    back: 'Adjust intervals based on difficulty; easy items reviewed less, hard items more often. Recalibrate difficulty estimates with recall success/failure.',
+    back: 'Adjust intervals based on difficulty; easy items reviewed less, hard items more often. Recalibrate difficulty estimates with recall success/failure',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -205,7 +205,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-021',
     front: 'Active recall vs. passive review: Why is active recall better for learning?',
-    back: 'Active recall strengthens memory through retrieval; reveals gaps; improves transfer. Passive review gives false fluency; use active recall.',
+    back: 'Active recall strengthens memory through retrieval; reveals gaps; improves transfer. Passive review gives false fluency; use active recall',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -214,8 +214,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-022',
-    front: 'Define the generation effect in memory.',
-    back: 'Generate information yourself; recall is improved. Actively construct knowledge, don\'t passively receive it.',
+    front: 'Define the generation effect in memory',
+    back: 'Generate information yourself; recall is improved. Actively construct knowledge, don\'t passively receive it',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -225,7 +225,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-023',
     front: 'Maximize practice test benefits: What\'s the best structure?',
-    back: 'Recall freely, then with cues; Test early, then space it out. Give feedback, mix question types, and test both main concepts and details.',
+    back: 'Recall freely, then with cues; Test early, then space it out. Give feedback, mix question types, and test both main concepts and details',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -234,8 +234,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-024',
-    front: 'Define the pretesting effect.',
-    back: 'Test yourself before studying! It boosts later learning even with wrong answers; activate knowledge; direct focus.',
+    front: 'Define the pretesting effect',
+    back: 'Test yourself before studying! It boosts later learning even with wrong answers; activate knowledge; direct focus',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -245,7 +245,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-025',
     front: 'Why does highlighting/re-reading feel effective but fail to produce real learning?',
-    back: 'Fluency illusions! Familiarity is mistaken for understanding; don\'t confuse ease of processing with actual knowledge retention.',
+    back: 'Fluency illusions! Familiarity is mistaken for understanding; don\'t confuse ease of processing with actual knowledge retention',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -255,7 +255,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-026',
     front: 'Elaborative interrogation: What is it, and how do you use it?',
-    back: 'Explain why a fact is true; Generate detailed explanations. This boosts deeper understanding.',
+    back: 'Explain why a fact is true; Generate detailed explanations. This boosts deeper understanding',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -265,7 +265,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-027',
     front: 'Elaborative interrogation boosts memory, how?',
-    back: 'Connect new info to existing knowledge; generate explanations; process deeply; create retrieval cues.',
+    back: 'Connect new info to existing knowledge; generate explanations; process deeply; create retrieval cues',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -275,7 +275,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-028',
     front: 'How does prior knowledge impact elaborative interrogation?',
-    back: 'More knowledge? Better elaboration. Novices need scaffolding or risk generating incorrect explanations; start with provided explanations.',
+    back: 'More knowledge? Better elaboration. Novices need scaffolding or risk generating incorrect explanations; start with provided explanations',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -284,8 +284,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-029',
-    front: 'Self-explanation vs. elaborative interrogation: Define, differentiate.',
-    back: 'Self-explain: Explain how/why material works. Elaborative interrogate: Ask why facts are true. Self-explanation applies more broadly.',
+    front: 'Self-explanation vs. elaborative interrogation: Define, differentiate',
+    back: 'Self-explain: Explain how/why material works. Elaborative interrogate: Ask why facts are true. Self-explanation applies more broadly',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -305,7 +305,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-031',
     front: 'Memory Palace: How does the method of loci work?',
-    back: 'Associate items with locations in a familiar space. Mentally \'walk\' through the space to retrieve the items; Visualize clearly.',
+    back: 'Associate items with locations in a familiar space. Mentally \'walk\' through the space to retrieve the items; Visualize clearly',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -315,7 +315,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-032',
     front: 'Why is the memory palace technique so effective?',
-    back: 'Use spatial memory & vivid visuals. Organize & retrieve info via familiar routes; encode unfamiliar with familiar, concrete imagery. Avoid omissions with structure.',
+    back: 'Use spatial memory & vivid visuals. Organize & retrieve info via familiar routes; encode unfamiliar with familiar, concrete imagery. Avoid omissions with structure',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -325,7 +325,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-033',
     front: 'Create effective memory palace images by following which principles?',
-    back: 'Make them vivid, bizarre, interactive; use exaggeration, motion, sensory details. Ensure images interact with the location; unusual images are most memorable.',
+    back: 'Make them vivid, bizarre, interactive; use exaggeration, motion, sensory details. Ensure images interact with the location; unusual images are most memorable',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -345,7 +345,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-035',
     front: 'How do memory champions leverage memory palaces in competition?',
-    back: 'Maintain many palace routes; Assign multiple images per location; Standardize image systems (PAO); Practice daily; Hone visualization. They win.',
+    back: 'Maintain many palace routes; Assign multiple images per location; Standardize image systems (PAO); Practice daily; Hone visualization. They win',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -355,7 +355,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-036',
     front: 'What is chunking and how does it increase working memory capacity?',
-    back: 'Combine items into single, meaningful chunks; Reduce the number of items to remember, freeing up space.',
+    back: 'Combine items into single, meaningful chunks; Reduce the number of items to remember, freeing up space',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -364,8 +364,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-037',
-    front: 'fc-mem-037: How does expertise affect chunking?',
-    back: 'Experts chunk more efficiently due to meaningful patterns in their knowledge domain; see Chess masters recognize configurations; This enables better recall.',
+    front: 'How does expertise affect chunking?',
+    back: 'Experts chunk more efficiently due to meaningful patterns in their knowledge domain; see Chess masters recognize configurations; This enables better recall',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -375,7 +375,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-038',
     front: 'Chunking Strategies: How do you build effective knowledge chunks?',
-    back: 'Find patterns; connect to prior knowledge; use acronyms; group by category/function; identify hierarchies; practice. Transform arbitrary data into meaningful units.',
+    back: 'Find patterns; connect to prior knowledge; use acronyms; group by category/function; identify hierarchies; practice. Transform arbitrary data into meaningful units',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -385,7 +385,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-039',
     front: 'How does chunking drive skill acquisition & automaticity?',
-    back: 'Chunk component actions into fluid sequences; attention becomes automatic subroutines. Free working memory; experts perform complex tasks effortlessly.',
+    back: 'Chunk component actions into fluid sequences; attention becomes automatic subroutines. Free working memory; experts perform complex tasks effortlessly',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -394,8 +394,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-040',
-    front: 'Differentiate natural vs. artificial memory chunks.',
-    back: 'Natural: Meaning inherent; form automatically. Artificial: Associate deliberately; create acronyms/mnemonics. Learn & practice for efficacy. ',
+    front: 'Differentiate natural vs. artificial memory chunks',
+    back: 'Natural: Meaning inherent; form automatically. Artificial: Associate deliberately; create acronyms/mnemonics. Learn & practice for efficacy',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -404,8 +404,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-041',
-    front: 'Explain interleaved vs. blocked practice.',
-    back: 'Interleaved: Mix topics (ABCABC). Blocked: Focus one at a time (AAABBB). Interleaving improves retention despite feeling harder.',
+    front: 'Explain interleaved vs. blocked practice',
+    back: 'Interleaved: Mix topics (ABCABC). Blocked: Focus one at a time (AAABBB). Interleaving improves retention despite feeling harder',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -415,7 +415,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-042',
     front: 'Interleaving feels harder; why does it improve learning?',
-    back: 'It forces discrimination & selection; strengthens retrieval; prevents fluency illusion; builds adaptable knowledge. Difficulty drives effectiveness.',
+    back: 'It forces discrimination & selection; strengthens retrieval; prevents fluency illusion; builds adaptable knowledge. Difficulty drives effectiveness',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -425,7 +425,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-043',
     front: 'When is blocked practice preferred over interleaved practice?',
-    back: 'Use blocked practice for complete beginners; it builds initial understanding before interleaving to enhance retention. ',
+    back: 'Use blocked practice for complete beginners; it builds initial understanding before interleaving to enhance retention',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -444,8 +444,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-045',
-    front: 'Define desirable difficulties in learning.',
-    back: 'Introduce challenges that slow initial learning but boost long-term retention and transfer; Examples: spacing, interleaving, testing.',
+    front: 'Define desirable difficulties in learning',
+    back: 'Introduce challenges that slow initial learning but boost long-term retention and transfer; Examples: spacing, interleaving, testing',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -455,7 +455,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-046',
     front: 'When does difficulty impede, rather than improve, learning?',
-    back: 'It impedes when learners lack prerequisites; Task is too difficult for meaningful completion.',
+    back: 'It impedes when learners lack prerequisites; Task is too difficult for meaningful completion',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -465,7 +465,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-047',
     front: 'Why avoid desirable difficulties in learning?',
-    back: 'They feel frustrating & reduce immediate performance; Fluency ≠ learning. People mistake performance for actual durable learning.',
+    back: 'They feel frustrating & reduce immediate performance; Fluency ≠ learning. People mistake performance for actual durable learning',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -474,8 +474,8 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-mem-048',
-    front: 'fc-mem-048: Define transfer of learning & its difficulty.',
-    back: 'Apply knowledge to new situations. Achieve it by focusing on deep understanding; context similarities.',
+    front: 'Define transfer of learning & its difficulty',
+    back: 'Apply knowledge to new situations. Achieve it by focusing on deep understanding; context similarities',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',
@@ -495,7 +495,7 @@ export const memoryLearningFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-mem-050',
     front: 'What is metacognition & why is it key for effective learning?',
-    back: 'Understand & regulate your thinking! Monitor knowledge; adjust strategies. Improve effort allocation; avoid learning illusions. ',
+    back: 'Understand & regulate your thinking! Monitor knowledge; adjust strategies. Improve effort allocation; avoid learning illusions',
     category: 'Master Synthesis',
     source: 'Learning Science',
     pathwayId: 'master-synthesis',

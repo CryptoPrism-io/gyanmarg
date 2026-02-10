@@ -4,8 +4,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   // BJ Fogg's Tiny Habits Model
   {
     id: 'fc-hab-001',
-    front: 'What is BJ Fogg\'s Behavior Model formula and what does each component represent?',
-    back: 'B = MAP (Behavior = Motivation + Ability + Prompt). Behavior occurs when Motivation, Ability, and a Prompt converge at the same moment. If any element is missing or insufficient, the behavior won\'t happen.',
+    front: 'Explain BJ Fogg\'s Behavior Model (B=MAP)',
+    back: 'Behavior (B) happens when Motivation, Ability, and a Prompt (MAP) converge. Increase motivation/ability; use effective prompts',
     category: 'Personal Development',
     source: 'BJ Fogg - Tiny Habits',
     pathwayId: 'personal-development',
@@ -14,8 +14,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-002',
-    front: 'What is an "anchor" in the Tiny Habits method?',
-    back: 'An anchor is an existing routine or event that serves as a reliable prompt for a new tiny behavior. The format is: "After I [ANCHOR], I will [TINY BEHAVIOR]." Anchors work because they leverage existing neural pathways and daily patterns.',
+    front: 'What is an anchor in the context of behavior change?',
+    back: 'Use an existing routine as a prompt for a tiny behavior. Formula: After [anchor], I will [new behavior]',
     category: 'Personal Development',
     source: 'BJ Fogg - Tiny Habits',
     pathwayId: 'personal-development',
@@ -24,8 +24,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-003',
-    front: 'According to BJ Fogg, why is "celebration" crucial immediately after performing a tiny habit?',
-    back: 'Celebration creates a positive emotion that wires the habit into the brain through dopamine release. Fogg calls this "Shine" - the feeling of success. This emotional response is what actually encodes the behavior as a habit, not repetition alone.',
+    front: 'Why is celebration crucial for new habits, per BJ Fogg?',
+    back: 'Celebration wires habits via dopamine release. Fogg terms this feeling \'shine\'; reward behavior!',
     category: 'Personal Development',
     source: 'BJ Fogg - Tiny Habits',
     pathwayId: 'personal-development',
@@ -34,20 +34,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-004',
-    front: 'What is the "Ability Chain" in BJ Fogg\'s model, and how do you use it to increase ability?',
-    back: 'The Ability Chain has 5 links: Time, Money, Physical Effort, Mental Effort, and Routine (fitting into existing patterns). To make behavior easier, identify which factor is making it hard and address that specific barrier. Make the behavior tiny enough that ability is never the limiting factor.',
+    front: 'Ability Chain: What are its links & how do you use it for habit formation?',
+    back: 'Links: Time; Money; Physical/Mental Effort; Routine. Find & address the hardest link to make the behavior easier. Ensure ability isn\'t the barrier',
     category: 'Personal Development',
     source: 'BJ Fogg - Tiny Habits',
     pathwayId: 'personal-development',
     difficulty: 'advanced',
     tags: ['habits', 'behavior-change', 'tiny-habits', 'ability']
   },
-
-  // Charles Duhigg - The Habit Loop
   {
     id: 'fc-hab-005',
-    front: 'What are the three components of Charles Duhigg\'s Habit Loop?',
-    back: 'Cue (trigger that initiates the behavior), Routine (the behavior itself), and Reward (the benefit you gain that reinforces the loop). This loop becomes increasingly automatic through repetition as it gets encoded in the basal ganglia.',
+    front: 'Duhigg\'s habit loop: What are its three components?',
+    back: 'Identify Cue; Perform Routine; Receive Reward. Repeat to encode the habit in the basal ganglia',
     category: 'Personal Development',
     source: 'Charles Duhigg - The Power of Habit',
     pathwayId: 'personal-development',
@@ -56,8 +54,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-006',
-    front: 'What is the "Golden Rule of Habit Change" according to Charles Duhigg?',
-    back: 'You cannot extinguish a bad habit; you can only change it. Keep the same cue and reward, but change the routine. This works because the neural pathways for cue-reward remain intact while you substitute a new, healthier routine.',
+    front: 'How do you break a bad habit? (Hint: you cannot extinguish it)',
+    back: 'Replace the routine; keep the cue and reward. Existing neural pathways adapt, substituting a healthier routine',
     category: 'Personal Development',
     source: 'Charles Duhigg - The Power of Habit',
     pathwayId: 'personal-development',
@@ -66,8 +64,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-007',
-    front: 'What role does the basal ganglia play in habit formation?',
-    back: 'The basal ganglia stores habits as automatic routines, freeing up the prefrontal cortex for other tasks. Once a behavior becomes habitual, it shifts from conscious decision-making areas to this more primitive brain region, making it automatic and requiring minimal mental energy.',
+    front: 'Habit formation: What\'s the basal ganglia\'s role?',
+    back: 'Basal ganglia store habits as automatic routines; they reduce prefrontal cortex workload. Behavior shifts to it, becoming automatic',
     category: 'Personal Development',
     source: 'Neuroscience of Habits',
     pathwayId: 'personal-development',
@@ -76,20 +74,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-008',
-    front: 'What are the five categories of habit cues identified by researchers?',
-    back: 'Location (where you are), Time (when it happens), Emotional State (how you feel), Other People (who is around), and Immediately Preceding Action (what just happened). Identifying which cue triggers an unwanted habit is essential for changing it.',
+    front: 'Name the five categories of habit cues',
+    back: 'Location; Time; Emotional State; Other People; Preceding Action. Identify your habit cues to change behavior',
     category: 'Personal Development',
     source: 'Charles Duhigg - The Power of Habit',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['habits', 'behavior-change', 'cues', 'triggers']
   },
-
-  // Keystone Habits
   {
     id: 'fc-hab-009',
-    front: 'What are keystone habits and why are they strategically important?',
-    back: 'Keystone habits are behaviors that trigger a cascade of other positive changes. They create "small wins" that build momentum and shift self-identity. Examples include exercise (improves eating, productivity, mood) and making your bed (increases sense of control and organization).',
+    front: 'Keystone habits: Define and explain their strategic importance',
+    back: 'Behaviors triggering positive cascades.  Leverage them to initiate broad change; they influence other habits',
     category: 'Personal Development',
     source: 'Charles Duhigg - The Power of Habit',
     pathwayId: 'personal-development',
@@ -98,20 +94,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-010',
-    front: 'How does the keystone habit of exercise create spillover effects into other areas of life?',
-    back: 'Exercise increases self-efficacy, improves executive function, reduces stress hormones, and provides a "small win" that builds momentum. Research shows people who exercise regularly also tend to eat better, sleep better, be more productive, use credit cards less, and feel less stressed.',
+    front: 'How does exercise, as a keystone habit, generate positive spillover effects?',
+    back: 'Exercise boosts self-efficacy & executive function; reduce stress; positively impact other habits. Leverage it!',
     category: 'Personal Development',
     source: 'Behavior Science Research',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['habits', 'behavior-change', 'keystone-habits', 'exercise']
   },
-
-  // Implementation Intentions
   {
     id: 'fc-hab-011',
-    front: 'What are implementation intentions and what is their format?',
-    back: 'Implementation intentions are specific plans that link a situational cue to a planned response using the format: "When [SITUATION X] occurs, I will perform [BEHAVIOR Y]." Research by Peter Gollwitzer shows they double or triple the likelihood of following through on goals.',
+    front: 'What are implementation intentions, and what\'s their format?',
+    back: 'Plan behavior; link cue to action: "When X happens, I will do Y."; Improves habit formation via pre-planning',
     category: 'Personal Development',
     source: 'Peter Gollwitzer Research',
     pathwayId: 'personal-development',
@@ -120,8 +114,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-012',
-    front: 'Why are implementation intentions more effective than simply setting goals?',
-    back: 'Implementation intentions pre-decide when, where, and how to act, reducing reliance on willpower in the moment. They create automatic links between situations and responses, delegating control to environmental cues rather than requiring conscious deliberation.',
+    front: 'Why are implementation intentions better than just setting goals?',
+    back: 'Pre-decide when, where, how to act; reduce reliance on willpower. Create automatic situation-response links via environmental cues; delegate control',
     category: 'Personal Development',
     source: 'Peter Gollwitzer Research',
     pathwayId: 'personal-development',
@@ -130,20 +124,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-013',
-    front: 'What is "action planning" vs "coping planning" in implementation intentions?',
-    back: 'Action planning specifies when, where, and how to perform a desired behavior ("If it\'s 7am, I\'ll go to the gym"). Coping planning anticipates obstacles and specifies responses ("If I feel too tired, I\'ll do just 10 minutes"). Using both types together maximizes success.',
+    front: 'Action planning: What elements define effective habit implementation?',
+    back: 'Specify WHEN; WHERE; and HOW you will perform the desired behavior. These actions help ensure successful habit formation',
     category: 'Personal Development',
     source: 'Behavior Science Research',
     pathwayId: 'personal-development',
     difficulty: 'advanced',
     tags: ['habits', 'behavior-change', 'implementation-intentions', 'coping']
   },
-
-  // Temptation Bundling
   {
     id: 'fc-hab-014',
-    front: 'What is temptation bundling and who developed this concept?',
-    back: 'Temptation bundling, developed by Katherine Milkman, pairs an instantly gratifying activity (want) with a beneficial behavior (should). Example: only listening to addictive audiobooks while exercising. It leverages present bias by making virtuous behaviors immediately rewarding.',
+    front: 'Temptation Bundling: What is it and who developed the concept?',
+    back: 'Pair a \'want\' with a \'should\' (Milkman); use addictive audiobooks only while exercising. Make virtuous behaviors immediately rewarding',
     category: 'Personal Development',
     source: 'Katherine Milkman Research',
     pathwayId: 'personal-development',
@@ -152,20 +144,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-015',
-    front: 'How does temptation bundling address the "want-should conflict" in decision-making?',
-    back: 'We often choose immediate pleasures (wants) over long-term benefits (shoulds) due to present bias. Temptation bundling resolves this conflict by making the "should" behavior the only way to access the "want" reward, transforming delayed benefits into immediate gratification.',
+    front: 'Temptation bundling: How overcome present bias in habit formation?',
+    back: 'Pair a \'want\' with a \'should\'; Increase motivation; Boost long-term habit adherence',
     category: 'Personal Development',
     source: 'Katherine Milkman Research',
     pathwayId: 'personal-development',
     difficulty: 'advanced',
     tags: ['habits', 'behavior-change', 'temptation-bundling', 'present-bias']
   },
-
-  // Commitment Devices
   {
     id: 'fc-hab-016',
-    front: 'What is a commitment device and why is it effective for behavior change?',
-    back: 'A commitment device is a choice made in the present that locks in future behavior, often by creating costs for non-compliance. Examples: giving money to a friend (forfeit if you fail), website blockers, automatic savings. They work because they remove future decision points and leverage loss aversion.',
+    front: 'Define \'commitment device\' & why it aids behavior change',
+    back: 'Lock in future behavior by creating costs for non-compliance; remove decision points and leverage loss aversion. Ex: forfeit money; block websites',
     category: 'Personal Development',
     source: 'Behavioral Economics',
     pathwayId: 'personal-development',
@@ -174,8 +164,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-017',
-    front: 'What is the "Ulysses Contract" and how does it apply to behavior change?',
-    back: 'Named after Odysseus tying himself to the mast to resist the Sirens, a Ulysses Contract is a commitment made when rational to bind future behavior when tempted. Modern examples: giving car keys to friends before drinking, using apps like StickK that donate to charities you oppose if you fail.',
+    front: 'What\'s a Ulysses Contract?',
+    back: 'Commit to resist future temptations; like Odysseus tied to the mast. Examples: give keys away before drinking; use StickK',
     category: 'Personal Development',
     source: 'Behavioral Economics',
     pathwayId: 'personal-development',
@@ -184,20 +174,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-018',
-    front: 'What makes commitment devices most effective according to research?',
-    back: 'Most effective commitment devices: (1) have meaningful stakes, (2) are difficult to escape, (3) have external accountability, (4) provide immediate consequences for violation. The emotional pain of loss should exceed the pleasure of the unwanted behavior.',
+    front: 'Maximize commitment device effectiveness: What factors matter most?',
+    back: 'Create meaningful stakes; make escape hard; add external accountability; ensure immediate consequences. Losses outweigh behavior pleasure',
     category: 'Personal Development',
     source: 'Behavioral Economics Research',
     pathwayId: 'personal-development',
     difficulty: 'advanced',
     tags: ['habits', 'behavior-change', 'commitment-devices', 'accountability']
   },
-
-  // Identity-Based Habits
   {
     id: 'fc-hab-019',
-    front: 'What is the difference between outcome-based habits and identity-based habits?',
-    back: 'Outcome-based habits focus on what you want to achieve ("I want to lose weight"). Identity-based habits focus on who you want to become ("I am a healthy person"). Identity-based habits are more sustainable because they align behavior with self-concept rather than external goals.',
+    front: 'Outcome vs. Identity-Based Habits: What\'s the key difference?',
+    back: 'Outcome habits target results; Identity habits aim to change your self-concept. Build habits by focusing on who you wish to become. ID: fc-hab-019',
     category: 'Personal Development',
     source: 'James Clear - Atomic Habits',
     pathwayId: 'personal-development',
@@ -206,8 +194,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-020',
-    front: 'How does identity drive behavior according to the self-consistency principle?',
-    back: 'Humans have a deep need to act consistently with their self-image. Once you adopt an identity ("I am a runner"), behaviors that contradict it create cognitive dissonance. This makes aligned behaviors feel natural and misaligned ones feel wrong, reducing reliance on motivation.',
+    front: 'How does identity influence behavior via self-consistency?',
+    back: 'Act consistently with your self-image; reduce cognitive dissonance after adopting an identity. Behavior reinforces identity',
     category: 'Personal Development',
     source: 'Social Psychology',
     pathwayId: 'personal-development',
@@ -216,20 +204,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-021',
-    front: 'What is the "two-way relationship" between habits and identity?',
-    back: 'Each behavior is a vote for the type of person you want to become. As you repeat a behavior, you accumulate evidence for a new identity. Conversely, as your identity strengthens, the behaviors become more natural. This creates a positive feedback loop of identity and behavior reinforcement.',
+    front: 'How do habits shape identity and vice versa?',
+    back: 'Each behavior is a vote for your desired identity. Identity reinforces behaviors; behaviors reinforce identity. Create a positive feedback loop',
     category: 'Personal Development',
     source: 'James Clear - Atomic Habits',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['habits', 'behavior-change', 'identity', 'feedback-loop']
   },
-
-  // Willpower and Ego Depletion
   {
     id: 'fc-hab-022',
-    front: 'What is ego depletion and what did Roy Baumeister\'s original research suggest?',
-    back: 'Ego depletion theory proposed that self-control draws from a limited mental resource that gets depleted with use, like a muscle getting tired. Baumeister\'s experiments showed that people who resisted temptation performed worse on subsequent self-control tasks.',
+    front: 'What is ego depletion? Who proposed it?',
+    back: 'Ego depletion: Self-control drains a limited resource. Baumeister proposed this; Replenish willpower',
     category: 'Personal Development',
     source: 'Roy Baumeister Research',
     pathwayId: 'personal-development',
@@ -238,8 +224,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-023',
-    front: 'How has the ego depletion theory been challenged by recent research?',
-    back: 'Large-scale replication studies found weak or no effects for ego depletion. Carol Dweck\'s research suggests that beliefs about willpower matter more than actual depletion. People who believe willpower is unlimited show no depletion effects. The original effect may be partly explained by motivation and beliefs.',
+    front: 'Ego depletion theory: How did recent research challenge it?',
+    back: 'Replication studies showed weak/no effects; Dweck\'s mindset theory offers alternative explanation',
     category: 'Personal Development',
     source: 'Recent Willpower Research',
     pathwayId: 'personal-development',
@@ -248,20 +234,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-024',
-    front: 'What practical strategies help conserve willpower for important decisions?',
-    back: 'Reduce decision fatigue by: (1) making important decisions early in the day, (2) automating routine choices (meal planning, wardrobe simplification), (3) designing environments that reduce temptations, (4) using habits to put recurring behaviors on autopilot, (5) maintaining blood glucose through regular meals.',
+    front: 'How do you conserve willpower for key decisions?',
+    back: 'Fight decision fatigue: Decide early; Automate routines (meals, wardrobe); Design temptation-free environments; Habituate recurring tasks; Maintain blood glucose',
     category: 'Personal Development',
     source: 'Behavioral Science',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['habits', 'behavior-change', 'willpower', 'decision-fatigue']
   },
-
-  // Environment Design
   {
     id: 'fc-hab-025',
-    front: 'What is "choice architecture" and how does it influence behavior?',
-    back: 'Choice architecture is how the environment presents options, which significantly influences decisions. Key principles: make good choices easy and visible, make bad choices hard and invisible. Example: putting healthy food at eye level, removing junk food from the house entirely.',
+    front: 'Define choice architecture and its influence on decisions',
+    back: 'Design environments to guide decisions.  Make good choices easy & visible; bad choices hard & invisible (e.g., healthy food at eye level)',
     category: 'Personal Development',
     source: 'Nudge Theory - Thaler & Sunstein',
     pathwayId: 'personal-development',
@@ -270,8 +254,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-026',
-    front: 'What is the "Law of Least Effort" and how does it apply to habit formation?',
-    back: 'Humans naturally gravitate toward behaviors requiring the least effort. To build good habits, reduce friction (put running shoes by the bed). To break bad habits, increase friction (keep phone in another room, remove social media apps). Even small friction changes have outsized effects.',
+    front: 'Why does reducing friction help build good habits & break bad ones?',
+    back: 'Humans choose easy options. Reduce friction for good habits; increase it for bad ones. Small friction changes have big effects',
     category: 'Personal Development',
     source: 'Behavioral Science',
     pathwayId: 'personal-development',
@@ -280,8 +264,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-027',
-    front: 'How did the "Hawthorne Works" cafeteria study demonstrate environmental influence on eating?',
-    back: 'Google studied cafeteria design and found that placing water bottles at eye level and making candy less visible reduced candy consumption by 30% and increased water intake by 47%. People took the path of least resistance, showing that environment trumps willpower.',
+    front: 'How did Google change cafeteria design to affect choices?',
+    back: 'Place water at eye level; hide candy. Results: Less candy consumption; more water intake. Environment beats willpower',
     category: 'Personal Development',
     source: 'Google Food Study',
     pathwayId: 'personal-development',
@@ -290,20 +274,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-028',
-    front: 'What is "context-dependent memory" and why does it matter for habits?',
-    back: 'Memory and behavior are strongly linked to environmental contexts. Habits formed in one location may not transfer to new environments. This explains why vacations can disrupt routines and why moving can be an opportunity to build new habits. Design your environment intentionally for each desired behavior.',
+    front: 'Why don\'t habits always transfer across environments?',
+    back: 'Context cues behavior; design your environment. Leverage moves/travel to break old habits; build new ones',
     category: 'Personal Development',
     source: 'Psychology Research',
     pathwayId: 'personal-development',
     difficulty: 'advanced',
     tags: ['habits', 'behavior-change', 'environment-design', 'context']
   },
-
-  // Breaking Bad Habits
   {
     id: 'fc-hab-029',
-    front: 'What is "extinction" in behavioral psychology and why don\'t habits truly disappear?',
-    back: 'Extinction occurs when a behavior decreases because the reward is removed. However, the neural pathways remain dormant, not erased. This is why old habits can resurface instantly when triggered, especially under stress. The key is to build new habits that compete with old ones.',
+    front: 'Explain extinction in the context of habits & behavior change',
+    back: 'Remove a reward, decrease behavior. Neural pathways remain; old habits resurface under stress. Compete with new habits',
     category: 'Personal Development',
     source: 'Behavioral Psychology',
     pathwayId: 'personal-development',
@@ -312,8 +294,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-030',
-    front: 'What is "habit substitution" and why is it more effective than trying to stop a habit cold turkey?',
-    back: 'Habit substitution replaces an unwanted routine with a healthier alternative while keeping the same cue and satisfying the same underlying craving. It\'s more effective because you\'re working with your brain\'s natural tendency to seek rewards rather than fighting against established neural pathways.',
+    front: 'Define habit substitution.  What\'s replaced, and what remains the same?',
+    back: 'Replace unwanted habit with a healthier one; Keep the same cue; Satisfy the same craving. Example: Swap sugary soda for sparkling water',
     category: 'Personal Development',
     source: 'Behavior Change Science',
     pathwayId: 'personal-development',
@@ -322,8 +304,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-031',
-    front: 'How can you use the "awareness habit" technique to break automatic behaviors?',
-    back: 'The awareness habit involves consciously noting each time you engage in an unwanted behavior, often using a tracking method. This interrupts automaticity by bringing the behavior into conscious awareness. Many people discover they engage in habits far more often than they realized.',
+    front: 'How can you use the awareness habit to break unwanted behaviors?',
+    back: 'Track each instance of the unwanted behavior; this increases awareness. Disrupt automaticity by bringing the behavior into conscious thought',
     category: 'Personal Development',
     source: 'Behavior Change Science',
     pathwayId: 'personal-development',
@@ -332,20 +314,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-032',
-    front: 'What is "surfing the urge" and how does it help with breaking habits?',
-    back: 'Urge surfing, from mindfulness-based approaches, involves observing cravings without acting on them. You notice the urge, accept it without judgment, and observe it rise and fall like a wave. Most urges peak within 15-20 minutes. This weakens the cue-behavior connection over time.',
+    front: 'Explain urge surfing for behavior change, from a mindfulness perspective',
+    back: 'Observe cravings non-judgmentally as waves rising and falling; weaken cue-behavior link. Urges often peak in 15-20 minutes',
     category: 'Personal Development',
     source: 'Mindfulness-Based Cognitive Therapy',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['habits', 'behavior-change', 'breaking-habits', 'mindfulness']
   },
-
-  // Habit Stacking
   {
     id: 'fc-hab-033',
-    front: 'What is habit stacking and what is its formula?',
-    back: 'Habit stacking links a new habit to an existing one using the formula: "After [CURRENT HABIT], I will [NEW HABIT]." It leverages the strong neural connections of established habits to create reliable cues for new behaviors. Example: "After I pour my morning coffee, I will write in my journal for 2 minutes."',
+    front: 'What is habit stacking and its core formula?',
+    back: 'Link a new habit to a current one; Formula: "After [CURRENT HABIT], I will [NEW HABIT]"',
     category: 'Personal Development',
     source: 'James Clear - Atomic Habits',
     pathwayId: 'personal-development',
@@ -354,20 +334,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-034',
-    front: 'What criteria make for an effective habit stack anchor?',
-    back: 'Effective anchors are: (1) highly consistent - happen at the same frequency as your desired habit, (2) specific - clearly defined moment, not vague, (3) contextually appropriate - same location and mindset as new habit, (4) already automatic - requires no willpower. Example: "After I sit down with lunch" is better than "After I eat."',
+    front: 'Effective habit stack anchor: what are key characteristics?',
+    back: 'Anchor should be consistent; specific; contextually relevant; automatic. E.g., After I brush my teeth, I will meditate',
     category: 'Personal Development',
     source: 'Behavior Science',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['habits', 'behavior-change', 'habit-stacking', 'anchoring']
   },
-
-  // Dopamine and Reward Systems
   {
     id: 'fc-hab-035',
-    front: 'How does dopamine function in habit formation - is it about pleasure or anticipation?',
-    back: 'Dopamine is primarily about anticipation and motivation, not pleasure. It spikes in anticipation of reward, driving you to take action. This is why craving precedes the behavior. Over time, the dopamine spike shifts from the reward itself to the cue that predicts it, making habits feel automatic.',
+    front: 'Dopamine in habit formation: Pleasure or anticipation drives behavior?',
+    back: 'Anticipation, not pleasure, drives habit. Dopamine spikes anticipate rewards, prompting action; shift the spike to cues making habit automatic',
     category: 'Personal Development',
     source: 'Neuroscience Research',
     pathwayId: 'personal-development',
@@ -376,20 +354,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-036',
-    front: 'What is "variable reward" and why is it so powerful for creating sticky habits?',
-    back: 'Variable rewards are unpredictable in timing or magnitude. They trigger stronger dopamine responses than predictable rewards because the brain is wired to pay attention to uncertainty. This is why social media (unpredictable likes), gambling, and games are so addictive. Can be used ethically by adding variety to healthy habits.',
+    front: 'Explain why variable rewards are more effective at behavior change',
+    back: 'Trigger stronger dopamine responses due to uncertainty; use variety to ethically boost healthy habit engagement. ID: fc-hab-036',
     category: 'Personal Development',
     source: 'B.F. Skinner / Nir Eyal - Hooked',
     pathwayId: 'personal-development',
     difficulty: 'advanced',
     tags: ['habits', 'behavior-change', 'reward', 'variable-reward']
   },
-
-  // Social Influence on Habits
   {
     id: 'fc-hab-037',
-    front: 'How does social environment affect habit formation according to research?',
-    back: 'We absorb habits from three key groups: the close (family, friends), the many (social norms), and the powerful (those with status). The Framingham Heart Study showed obesity spreads through social networks. Surrounding yourself with people who have your desired habits makes those behaviors feel normal and achievable.',
+    front: 'How does your social environment affect habit formation?',
+    back: 'Absorb habits from close contacts; follow social norms; emulate powerful figures. Surround yourself with desired habits for easier adoption',
     category: 'Personal Development',
     source: 'Social Psychology Research',
     pathwayId: 'personal-development',
@@ -398,20 +374,18 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-038',
-    front: 'What is "social proof" and how can it be leveraged for habit change?',
-    back: 'Social proof is the tendency to look to others\' behavior to determine correct action. Leverage it by: joining groups with desired habits, publicly committing to goals, finding accountability partners, displaying evidence of desired identity (gym bag visible at work). We unconsciously mirror the behavior of our tribe.',
+    front: 'What\'s social proof?',
+    back: 'Model your behavior after others; especially in uncertain situations.  Leverage it to form positive habits',
     category: 'Personal Development',
     source: 'Robert Cialdini - Influence',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['habits', 'behavior-change', 'social-proof', 'accountability']
   },
-
-  // Habit Timing and Consistency
   {
     id: 'fc-hab-039',
-    front: 'How long does it really take to form a habit according to Phillippa Lally\'s research?',
-    back: 'Lally\'s 2009 UCL study found habit formation takes an average of 66 days, with a range of 18-254 days depending on the behavior and person. The "21 days" myth is unfounded. More complex behaviors take longer. Consistency matters more than perfection - missing one day didn\'t significantly affect habit formation.',
+    front: 'According to Lally, how long does it take to form a habit?',
+    back: 'Varies greatly; it depends on the habit\'s complexity, person, and circumstances.  Establish a consistent routine',
     category: 'Personal Development',
     source: 'Phillippa Lally Research',
     pathwayId: 'personal-development',
@@ -420,8 +394,8 @@ export const habitsFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-hab-040',
-    front: 'What is the "fresh start effect" and how can it be used strategically for habit change?',
-    back: 'The fresh start effect (Katherine Milkman) shows people are more likely to pursue goals after temporal landmarks: new year, birthdays, Mondays, first of the month, new semester. These create psychological "new chapters" that separate us from past failures. Strategic timing of habit launches can increase success rates.',
+    front: 'Fresh start effect: When are people more likely to pursue goals?',
+    back: 'Temporal landmarks trigger goal pursuit; examples: new year, birthdays, Mondays, month\'s start, new semester. Re-associate behaviors with fresh start',
     category: 'Personal Development',
     source: 'Katherine Milkman Research',
     pathwayId: 'personal-development',

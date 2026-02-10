@@ -5,7 +5,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-001',
     front: 'Define attention residue. How does it affect productivity?',
-    back: 'Residue: attention lingers on past task after switching. Reduces cognitive performance; can drop by 40%.',
+    back: 'Residue: attention lingers on past task after switching. Reduces cognitive performance; can drop by 40%',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -15,7 +15,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-002',
     front: 'Attention residue: How long does it typically linger after task switching?',
-    back: 'Expect 15-25 minutes of attention residue after switching tasks. Minimize task switching to maintain focus; boost cognitive capacity.',
+    back: 'Expect 15-25 minutes of attention residue after switching tasks. Minimize task switching to maintain focus; boost cognitive capacity',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -35,17 +35,17 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-004',
     front: 'Why do incomplete tasks create stronger attention residue?',
-    back: 'Zeigarnik Effect: Incomplete tasks occupy working memory. Complete tasks or make concrete plans to release this mental hold.',
+    back: 'Zeigarnik Effect: Incomplete tasks occupy working memory. Complete tasks or make concrete plans to release this mental hold',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
     difficulty: 'advanced',
     tags: ['focus', 'attention-residue', 'zeigarnik-effect']
-  }
+  },
   {
     id: 'fc-foc-005',
-    front: 'List 3 internal flow triggers for deep focus.',
-    back: 'Set clear goals; get immediate feedback; balance challenge & skill (task ~4% harder).',
+    front: 'List 3 internal flow triggers for deep focus',
+    back: 'Set clear goals; get immediate feedback; balance challenge & skill (task ~4% harder)',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -55,7 +55,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-006',
     front: 'How do challenge and skill levels affect entering flow state?',
-    back: 'Balance them! Too much challenge creates anxiety; too much skill causes boredom. Aim for ~4% difficulty increase to enter flow.',
+    back: 'Balance them! Too much challenge creates anxiety; too much skill causes boredom. Aim for ~4% difficulty increase to enter flow',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -64,7 +64,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-foc-007',
-    front: 'Name environmental triggers that help you enter a flow state.',
+    front: 'Name environmental triggers that help you enter a flow state',
     back: 'Increase stakes; Enrich environment (novelty, complexity); Physically engage; Reduce distractions. ID: fc-foc-007',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
@@ -75,17 +75,17 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-008',
     front: 'How long to enter flow state? Why schedule work sessions accordingly?',
-    back: 'Enter flow in 15-25 minutes. Schedule at least 90-min sessions; fragmented time prevents flow; maximize focused work.',
+    back: 'Enter flow in 15-25 minutes. Schedule at least 90-min sessions; fragmented time prevents flow; maximize focused work',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
     difficulty: 'beginner',
     tags: ['focus', 'flow-state', 'time-management']
-  }
+  },
   {
     id: 'fc-foc-009',
-    front: 'Differentiate internal vs. external distractions.',
-    back: 'External: Environment. Manage environment. Internal: Thoughts/feelings. Manage self; use mindfulness; focus on tasks.',
+    front: 'Differentiate internal vs. external distractions',
+    back: 'External: Environment. Manage environment. Internal: Thoughts/feelings. Manage self; use mindfulness; focus on tasks',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -95,7 +95,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-010',
     front: 'Manage internal distractions: what is the 10-minute rule?',
-    back: 'Delay distractions for 10 mins. Often, the urge will pass. Build distraction tolerance by avoiding immediate action.',
+    back: 'Delay distractions for 10 mins. Often, the urge will pass. Build distraction tolerance by avoiding immediate action',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -105,7 +105,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-011',
     front: 'Distraction Notepad Technique: How does it work?',
-    back: 'Write down distracting thoughts immediately; return to your task. Address written items later; maintain focus.',
+    back: 'Write down distracting thoughts immediately; return to your task. Address written items later; maintain focus',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -115,17 +115,17 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-012',
     front: 'Proactive vs. Reactive: Manage distractions BEFORE or AFTER they happen?',
-    back: 'Proactive: Prevent distractions; remove sources beforehand. Reactive: Handle distractions as they appear. Proactive saves willpower; improves focus.',
+    back: 'Proactive: Prevent distractions; remove sources beforehand. Reactive: Handle distractions as they appear. Proactive saves willpower; improves focus',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['focus', 'distraction', 'prevention']
-  }
+  },
   {
     id: 'fc-foc-013',
     front: 'How does meditation train the \'attention muscle\'?',
-    back: 'Notice attention wander; gently return it to focus (breath, etc.). This wandering/returning cycle strengthens focus neural pathways.',
+    back: 'Notice attention wander; gently return it to focus (breath, etc.). This wandering/returning cycle strengthens focus neural pathways',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -135,7 +135,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-014',
     front: 'Productive meditation: What is it, and how do you practice?',
-    back: 'Focus on a problem during activity (walk, commute). When you get distracted, refocus on the problem; this builds attention and deep thinking. ',
+    back: 'Focus on a problem during activity (walk, commute). When you get distracted, refocus on the problem; this builds attention and deep thinking',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -145,7 +145,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-015',
     front: 'Attention training vs. willpower: What\'s the core difference?',
-    back: 'Attention training builds focus capacity; make attention automatic. Willpower depletes effort; unsustainable.',
+    back: 'Attention training builds focus capacity; make attention automatic. Willpower depletes effort; unsustainable',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -155,17 +155,17 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-016',
     front: 'What is Attention Restoration Theory? How do you use it?',
-    back: 'Nature restores focus by engaging involuntary attention, resting directed attention. Spend time in nature or view nature images for restoration.',
+    back: 'Nature restores focus by engaging involuntary attention, resting directed attention. Spend time in nature or view nature images for restoration',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['focus', 'attention-training', 'restoration']
-  }
+  },
   {
     id: 'fc-foc-017',
     front: 'What are the 3 types of cognitive load, & how do they impact focus?',
-    back: 'Manage intrinsic (task complexity); extraneous (distractions); germane (learning). Minimize extraneous load to boost intrinsic & germane processing.',
+    back: 'Manage intrinsic (task complexity); extraneous (distractions); germane (learning). Minimize extraneous load to boost intrinsic & germane processing',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -175,7 +175,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-018',
     front: 'Working memory limits impact focus *how*?',
-    back: 'Manage cognitive load; externalize info (notes, lists) to free working memory for active thinking.',
+    back: 'Manage cognitive load; externalize info (notes, lists) to free working memory for active thinking',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -184,8 +184,8 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-foc-019',
-    front: 'Define decision fatigue & explain its impact on focus.',
-    back: 'Decision fatigue depletes mental resources; impairs focus. Make key decisions early; routinize trivial choices; batch decisions. ',
+    front: 'Define decision fatigue & explain its impact on focus',
+    back: 'Decision fatigue depletes mental resources; impairs focus. Make key decisions early; routinize trivial choices; batch decisions',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -195,17 +195,17 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-020',
     front: 'How does chunking minimize cognitive load in complex tasks?',
-    back: 'Group info into meaningful units, expanding working memory. Build mental models; break tasks into familiar patterns for efficient chunking.',
+    back: 'Group info into meaningful units, expanding working memory. Build mental models; break tasks into familiar patterns for efficient chunking',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
     difficulty: 'advanced',
     tags: ['focus', 'cognitive-load', 'chunking']
-  }
+  },
   {
     id: 'fc-foc-021',
     front: 'Why is multitasking a myth for cognitively demanding tasks?',
-    back: 'Brain switches tasks rapidly, causing loss; serial processing only. Expect ~40% less productivity; increased errors.',
+    back: 'Brain switches tasks rapidly, causing loss; serial processing only. Expect ~40% less productivity; increased errors',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -215,7 +215,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-022',
     front: 'Define single-tasking. How can you implement it effectively?',
-    back: 'Focus on one task until complete. Implement: Choose a task; set a time; remove distractions; close unrelated apps; commit to not switch.',
+    back: 'Focus on one task until complete. Implement: Choose a task; set a time; remove distractions; close unrelated apps; commit to not switch',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -225,7 +225,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-023',
     front: 'Task batching: How does it improve monotasking?',
-    back: 'Batch similar tasks to minimize context switching; deepen focus. Dedicate blocks to single activity types: email; calls; writing.',
+    back: 'Batch similar tasks to minimize context switching; deepen focus. Dedicate blocks to single activity types: email; calls; writing',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -234,17 +234,17 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-foc-024',
-    front: 'fc-foc-024: What is the \'one tab\' rule for focus?',
-    back: 'Limit active browser tabs/apps to one for your task. Remove distractions; close or hide irrelevant items. Use separate windows if needed.',
+    front: 'What is the \'one tab\' rule for focus?',
+    back: 'Limit active browser tabs/apps to one for your task. Remove distractions; close or hide irrelevant items. Use separate windows if needed',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
     difficulty: 'beginner',
     tags: ['focus', 'monotasking', 'digital-focus']
-  }
+  },
   {
     id: 'fc-foc-025',
-    front: 'Define digital minimalism & its key philosophy.',
+    front: 'Define digital minimalism & its key philosophy',
     back: 'Focus online time on activities supporting your values; happily miss the rest. Intentionally use tech, avoid passive consumption. fc-foc-025',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
@@ -255,7 +255,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-026',
     front: 'How does the attention economy exploit focus? What actions can you take?',
-    back: 'Tech companies profit by capturing your attention. Fight back: Use grayscale; disable notifications; set app limits; block websites; schedule digital time.',
+    back: 'Tech companies profit by capturing your attention. Fight back: Use grayscale; disable notifications; set app limits; block websites; schedule digital time',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -265,7 +265,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-027',
     front: 'Digital declutter: What is it, and how do you do it?',
-    back: '30-day break from optional tech. Define optional tech; Remove for 30 days; Explore offline activities; Reintroduce value-aligned tech and usage rules.',
+    back: '30-day break from optional tech. Define optional tech; Remove for 30 days; Explore offline activities; Reintroduce value-aligned tech and usage rules',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -275,17 +275,17 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-028',
     front: 'Audit digital tools: How to assess impact on your focus?',
-    back: 'List value; Identify best alternative; Note attention cost; Set constraints. Keep only high-value tools with clear usage rules; drop the rest.',
+    back: 'List value; Identify best alternative; Note attention cost; Set constraints. Keep only high-value tools with clear usage rules; drop the rest',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['focus', 'digital-minimalism', 'audit']
-  }
+  },
   {
     id: 'fc-foc-029',
     front: 'What environmental factors boost focus most?',
-    back: 'Declutter; Light (natural preferred); Manage temperature, noise; Ensure ergonomics. Optimize workspace.',
+    back: 'Declutter; Light (natural preferred); Manage temperature, noise; Ensure ergonomics. Optimize workspace',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -295,7 +295,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-030',
     front: 'How does context-dependent memory improve focus via workspace design?',
-    back: 'Associate specific workspaces with focused work only; this environment then triggers focus through context-dependent memory.',
+    back: 'Associate specific workspaces with focused work only; this environment then triggers focus through context-dependent memory',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -305,7 +305,7 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-031',
     front: 'How do music & sound impact focus when creating effective work environments?',
-    back: 'Silence is best for complex tasks; background noise masks distractions. Avoid lyrics for language-based tasks. Familiar instrumentals may aid routine tasks.',
+    back: 'Silence is best for complex tasks; background noise masks distractions. Avoid lyrics for language-based tasks. Familiar instrumentals may aid routine tasks',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -315,17 +315,17 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-032',
     front: 'Design your work environment for better focus. How?',
-    back: 'Use focus cues: headphones; lamp; object. Define work zone with these cues.',
+    back: 'Use focus cues: headphones; lamp; object. Define work zone with these cues',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
     difficulty: 'intermediate',
     tags: ['focus', 'environment', 'open-office']
-  }
+  },
   {
     id: 'fc-foc-033',
     front: 'Focus Ritual: What is it and why does it boost focus?',
-    back: 'Do consistent actions before deep work; train your brain to associate ritual with focus. Lower activation energy; trigger focus automatically.',
+    back: 'Do consistent actions before deep work; train your brain to associate ritual with focus. Lower activation energy; trigger focus automatically',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -355,17 +355,17 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-036',
     front: 'Strengthen focus rituals: How do you use implementation intentions?',
-    back: 'Formulate \'If X, then Y\' intentions; Link triggers (X) to focus ritual actions (Y); Strengthen consistency.',
+    back: 'Formulate \'If X, then Y\' intentions; Link triggers (X) to focus ritual actions (Y); Strengthen consistency',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
     difficulty: 'advanced',
     tags: ['focus', 'rituals', 'implementation-intentions']
-  }
+  },
   {
     id: 'fc-foc-037',
     front: 'Why are breaks crucial for focus, not a sign of weakness?',
-    back: 'Recharge brain\'s limited attention; allow consolidation & PFC recovery. Avoid burnout by taking regular breaks.',
+    back: 'Recharge brain\'s limited attention; allow consolidation & PFC recovery. Avoid burnout by taking regular breaks',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -384,8 +384,8 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-foc-039',
-    front: 'Explain the Pomodoro Technique\'s focus/recovery structure.',
-    back: 'Work for 25 mins, break for 5 mins. After 4 cycles, take a 15-30 min break. Promotes focus, easier starts, & recovery.',
+    front: 'Explain the Pomodoro Technique\'s focus/recovery structure',
+    back: 'Work for 25 mins, break for 5 mins. After 4 cycles, take a 15-30 min break. Promotes focus, easier starts, & recovery',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
@@ -395,10 +395,11 @@ export const focusFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-foc-040',
     front: 'How does sleep affect focus? What\'s the minimum needed?',
-    back: 'Sleep deprivation impairs focus & decision-making. Aim for 7-9 hours; even small deficits accumulate. Prioritize sleep to enhance focus.',
+    back: 'Sleep deprivation impairs focus & decision-making. Aim for 7-9 hours; even small deficits accumulate. Prioritize sleep to enhance focus',
     category: 'Personal Development',
     source: 'Deep Work & Focus',
     pathwayId: 'personal-development',
     difficulty: 'beginner',
     tags: ['focus', 'recovery', 'sleep']
-  };
+  }
+];

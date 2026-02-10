@@ -21,9 +21,10 @@ import {
 } from '@/lib/firebase';
 import { initializeSync, clearSync } from '@/store/firebaseSync';
 
-// Sync interval for periodic backup (5 minutes instead of 30 seconds to reduce server load)
-// This is a safety net for crashes - most syncs happen via debounce, visibility change, or beforeunload
-const PERIODIC_SYNC_INTERVAL = 5 * 60 * 1000; // 5 minutes
+// Sync interval for periodic backup — purely a crash safety net
+// Real syncs happen via: debounce (on store change), visibilitychange (tab switch), beforeunload (close)
+// Set to 30 minutes to avoid disrupting active learning sessions
+const PERIODIC_SYNC_INTERVAL = 30 * 60 * 1000; // 30 minutes
 
 interface AuthContextValue {
   // Auth state
@@ -168,12 +169,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
       immediateSync(uid);
     };
 
-    // Periodic sync every 30 seconds as safety net for crashes
+    // Periodic sync as safety net for crashes — skip if user is actively learning
     periodicSyncRef.current = setInterval(() => {
-      if (document.visibilityState === 'visible') {
-        console.log('[Sync] Periodic sync...');
-        immediateSync(uid);
-      }
+      if (document.visibilityState !== 'visible') return;
+
+      // Skip sync during active lessons/reviews to avoid disrupting user flow
+      const isInLesson = !!document.querySelector('[class*="z-[9999]"]');
+      const isInReview = window.location.pathname.includes('/review');
+      if (isInLesson || isInReview) return;
+
+      immediateSync(uid);
     }, PERIODIC_SYNC_INTERVAL);
 
     window.addEventListener('visibilitychange', handleVisibilityChange);

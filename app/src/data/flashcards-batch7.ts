@@ -14,8 +14,8 @@ import type { SpacedRepetitionCard } from '@/types';
 export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-qt-001',
-    front: 'What is quantitative trading?',
-    back: 'Quantitative trading is an investment approach that uses mathematical models, statistical analysis, and computer algorithms to identify and execute trading opportunities. It relies on data-driven decision making rather than intuition, using historical data to develop and test strategies before deploying capital.',
+    front: 'Define quantitative trading',
+    back: 'Use algorithms & stats to find/execute trades; build & test data-driven strategies. ID: fc-qt-001',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -24,8 +24,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-002',
-    front: 'What is backtesting and why is it critical in quantitative trading?',
-    back: 'Backtesting is the process of testing a trading strategy on historical data to evaluate its performance before risking real capital. It is critical because it helps identify strategy weaknesses, estimate expected returns and risks, optimize parameters, and validate that the strategy logic works as intended across different market conditions.',
+    front: 'Backtesting: Definition and why it matters in quantitative trading?',
+    back: 'Test trading strategies on historical data; Evaluate performance before risking capital. Identify weaknesses; Estimate returns/risks; Optimize parameters; Validate logic',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -34,8 +34,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-003',
-    front: 'What is alpha in quantitative trading?',
-    back: 'Alpha represents the excess return of a trading strategy above a benchmark (often the market return). It measures the value added by the strategy independent of market movements. Positive alpha indicates the strategy outperforms its benchmark on a risk-adjusted basis, representing the "edge" or skill of the quantitative approach.',
+    front: 'Define alpha in quantitative trading',
+    back: 'Measure strategy\'s excess risk-adjusted return above a benchmark. Shows value added beyond market movements; positive alpha is outperformance',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -44,8 +44,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-004',
-    front: 'What is the difference between systematic and discretionary trading?',
-    back: 'Systematic trading follows predefined rules and algorithms with minimal human intervention, executing trades based on quantitative signals. Discretionary trading relies on human judgment and intuition for decision-making. Systematic approaches offer consistency, scalability, and emotional discipline, while discretionary trading can adapt to novel situations but is prone to behavioral biases.',
+    front: 'Systematic vs. Discretionary Trading: Key Difference?',
+    back: 'Systematic: Trade using predefined rules/algorithms. Discretionary: Trade based on human judgement/intuition',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -54,8 +54,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-005',
-    front: 'What is a momentum trading strategy?',
-    back: 'A momentum strategy buys assets that have shown strong recent performance and sells those with weak performance, based on the empirical observation that trends tend to persist. Implementation involves ranking securities by past returns over lookback periods (1-12 months), going long winners and short losers, with regular rebalancing.',
+    front: 'Momentum trading: What strategy does it employ?',
+    back: 'Buy assets trending up; sell assets trending down. Rank assets by past returns (1-12 months), go long winners, short losers; rebalance regularly',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -64,8 +64,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-006',
-    front: 'What is mean reversion in trading strategies?',
-    back: 'Mean reversion is a strategy based on the assumption that prices tend to return to their historical average over time. When prices deviate significantly from their mean (measured by z-scores or Bollinger Bands), the strategy takes contrarian positions expecting prices to revert. It works best in range-bound markets and pairs trading scenarios.',
+    front: 'Mean reversion: How does this trading strategy work?',
+    back: 'Trade assuming prices revert to their average. Use z-scores/Bollinger Bands to identify deviations; take contrarian positions in range-bound markets',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -74,8 +74,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-007',
-    front: 'What is overfitting in the context of strategy development?',
-    back: 'Overfitting occurs when a trading strategy is too closely tailored to historical data, capturing noise rather than genuine market patterns. Symptoms include exceptional backtest results but poor live performance, excessive parameters, and strategies that only work on specific time periods. Prevention involves out-of-sample testing, cross-validation, and keeping models simple.',
+    front: 'Overfitting in trading strategy development: What is it?',
+    back: 'Strategy fits noise, not real patterns; expect great backtests, poor live trades. Prevent via out-of-sample tests; cross-validation',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -84,8 +84,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-008',
-    front: 'What is survivorship bias and how does it affect backtests?',
-    back: 'Survivorship bias occurs when backtests only include securities that survived to the present day, excluding delisted, bankrupt, or merged companies. This inflates historical returns because failed investments are ignored. To avoid it, use point-in-time databases that include all securities that existed during the backtest period.',
+    front: 'Explain survivorship bias and its impact on backtesting accuracy',
+    back: 'Survivorship bias inflates returns; backtests exclude failed entities. Use point-in-time data; include all securities existing during the tested period',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -94,8 +94,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-009',
-    front: 'What is a factor model in quantitative investing?',
-    back: 'A factor model explains asset returns through exposure to common risk factors such as market (beta), size (small vs. large cap), value (cheap vs. expensive), momentum, quality, and volatility. Factor investing systematically captures risk premiums associated with these factors, forming the basis of many quant strategies including smart beta and long-short equity.',
+    front: 'Define factor model for quantitative investing',
+    back: 'Model asset returns using common risk factors like market; size; value; momentum; quality; volatility. Use to capture risk premiums in quant strategies',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -104,8 +104,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-010',
-    front: 'What is look-ahead bias in backtesting?',
-    back: 'Look-ahead bias occurs when a backtest inadvertently uses information that would not have been available at the time of the trade. Examples include using same-day closing prices for signals, incorporating future earnings announcements, or using data that was revised after initial release. It leads to unrealistically optimistic backtest results.',
+    front: 'Backtesting: Define look-ahead bias',
+    back: 'Use future data in your backtest? This inflates performance. Examples: closing prices for same-day signals; incorporate future earnings announcements',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -114,8 +114,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-011',
-    front: 'What is the Sharpe Ratio and how is it calculated?',
-    back: 'The Sharpe Ratio measures risk-adjusted returns by dividing excess return (strategy return minus risk-free rate) by standard deviation of returns. Formula: (Rp - Rf) / \u03c3p. A Sharpe above 1.0 is considered good, above 2.0 is excellent. It allows comparison across strategies with different risk levels but assumes normally distributed returns.',
+    front: 'Define Sharpe Ratio. How do you calculate it?',
+    back: 'Measure risk-adjusted return: (Strategy return - Risk-free rate) / Return std dev. Good > 1.0; Excellent > 2.0. Compare risk levels; assumes normal returns',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -124,8 +124,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-012',
-    front: 'What is maximum drawdown and why is it important?',
-    back: 'Maximum drawdown (MDD) is the largest peak-to-trough decline in portfolio value before a new peak is reached. It measures the worst loss an investor would have experienced. MDD is crucial because it indicates capital at risk, affects investor psychology, and determines leverage limits. A strategy with 50% MDD needs 100% gain to recover.',
+    front: 'Define maximum drawdown (MDD) & why it matters for trading',
+    back: 'MDD: Largest peak-to-trough decline. Use it to gauge capital risk; manage investor psychology; set leverage limits. Big MDD needs huge gains to recover',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -134,8 +134,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-013',
-    front: 'What is the Kelly Criterion for position sizing?',
-    back: 'The Kelly Criterion is a formula for optimal bet sizing that maximizes long-term wealth growth. Formula: f* = (bp - q) / b, where b is odds, p is win probability, q is loss probability. It suggests the fraction of capital to risk on each trade. In practice, traders use "half Kelly" or less to reduce volatility and account for estimation errors.',
+    front: 'Kelly Criterion: What position size maximizes long-term wealth?',
+    back: 'Calculate optimal fraction f* to risk: f* = (bp - q) / b; b=odds, p=win prob, q=loss prob. Adjust down for real-world use',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -144,8 +144,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-014',
-    front: 'What is Value at Risk (VaR)?',
-    back: 'Value at Risk estimates the maximum potential loss over a specified time period at a given confidence level. For example, a 1-day 95% VaR of $1M means there is a 5% chance of losing more than $1M in one day. Methods include historical simulation, parametric (variance-covariance), and Monte Carlo simulation. VaR does not measure tail risk beyond the threshold.',
+    front: 'Define Value at Risk (VaR)',
+    back: 'Estimate max loss over time at confidence level. Example: 1-day 95% VaR of $1M means 5% chance to lose >$1M. Use historical/parametric/Monte Carlo. VaR ignores tail risk',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -154,8 +154,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-015',
-    front: 'What is portfolio volatility and how does diversification affect it?',
-    back: 'Portfolio volatility measures the standard deviation of portfolio returns. Diversification reduces portfolio volatility below the weighted average of individual asset volatilities when assets are not perfectly correlated. The formula includes correlation terms: \u03c3p\u00b2 = \u03a3wi\u00b2\u03c3i\u00b2 + \u03a3\u03a3wiwj\u03c3i\u03c3j\u03c1ij. Adding uncorrelated assets dramatically reduces risk.',
+    front: 'Define portfolio volatility & its relation to diversification',
+    back: 'Volatility is the standard deviation of portfolio returns. Diversify by adding uncorrelated assets to reduce overall risk; formula includes correlation terms',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -164,8 +164,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-016',
-    front: 'What is the Sortino Ratio and how does it differ from Sharpe?',
-    back: 'The Sortino Ratio is a risk-adjusted return measure that only penalizes downside volatility, unlike Sharpe which penalizes all volatility. Formula: (Rp - Rf) / \u03c3d, where \u03c3d is downside deviation. It is more appropriate for strategies with asymmetric returns since upside volatility (gains) should not be considered "risk."',
+    front: 'Define Sortino Ratio. How does it differ from Sharpe Ratio?',
+    back: 'Sortino: risk-adjusted return, penalizes only downside volatility. Sharpe penalizes all volatility. Formula: (Rp - Rf) / σd; Use for asymmetric returns',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -174,8 +174,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-017',
-    front: 'What is a stop-loss and how should it be sized in algorithmic trading?',
-    back: 'A stop-loss is a predefined exit point that limits losses on a position. In algorithmic trading, stop-losses should be based on volatility (e.g., 2x ATR), maximum acceptable loss per trade (e.g., 1-2% of capital), or technical levels. Stops should be wide enough to avoid noise-triggered exits but tight enough to preserve capital.',
+    front: 'Define stop-loss & size in algorithmic trading',
+    back: 'Limit loss; size using volatility (ATR), risk (% capital), or levels. Avoid noise, preserve capital; adjust width accordingly',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -184,8 +184,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-018',
-    front: 'What is correlation risk in portfolio management?',
-    back: 'Correlation risk is the danger that asset correlations increase during market stress, reducing diversification benefits precisely when needed most. During crises, previously uncorrelated assets often move together (correlation goes to 1). Quant traders must stress-test portfolios under high-correlation scenarios and not rely solely on historical correlation estimates.',
+    front: 'Define correlation risk in portfolio management',
+    back: 'Assets\' correlations increase during stress, diminishing diversification; stress-test portfolios; avoid relying solely on historical data. ID: fc-qt-018',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -194,8 +194,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-019',
-    front: 'What is the Calmar Ratio?',
-    back: 'The Calmar Ratio measures risk-adjusted returns by dividing annualized return by maximum drawdown. Formula: CAGR / |Maximum Drawdown|. It focuses on the risk of large losses rather than volatility. A ratio above 1.0 is generally considered good. Unlike Sharpe, it captures tail risk and is particularly relevant for strategies with significant drawdown potential.',
+    front: 'What does the Calmar Ratio measure, and how?',
+    back: 'Divide annualized return by max drawdown (CAGR / |Max DD|); Assess downside risk; Higher ratio is better',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -204,8 +204,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-020',
-    front: 'What is beta neutrality in portfolio construction?',
-    back: 'Beta neutrality means constructing a portfolio with zero market exposure (beta = 0), so returns are independent of market direction. Achieved by balancing long and short positions or using derivatives to hedge market risk. Beta-neutral strategies aim to generate pure alpha without taking systematic market risk.',
+    front: 'Define beta neutrality in portfolio construction',
+    back: 'Zero market exposure (beta=0); isolate alpha generation. Balance long/short positions or hedge with derivatives',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -214,8 +214,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-021',
-    front: 'What is market microstructure?',
-    back: 'Market microstructure studies the process and mechanics of trading: how orders are placed, matched, and executed; how prices are formed; and how information is incorporated into prices. Key concepts include order books, bid-ask spreads, market makers, price discovery, and the impact of trading on prices. Understanding microstructure is essential for execution algorithms.',
+    front: 'Define market microstructure',
+    back: 'Study order placement/matching/execution; price formation; information incorporation. Key: Order books; spreads; market makers; price discovery. Use for execution algorithms',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -224,8 +224,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-022',
-    front: 'What is the bid-ask spread and what does it represent?',
-    back: 'The bid-ask spread is the difference between the highest price buyers will pay (bid) and lowest price sellers will accept (ask). It represents the cost of immediacy and compensates market makers for risk. Spreads are tighter in liquid markets. For traders, the spread is a transaction cost that must be overcome to profit.',
+    front: 'Define bid-ask spread & what it represents in market microstructure',
+    back: 'Spread = Ask - Bid. It represents cost of immediate trade & market maker compensation for risk. Liquid markets have tighter spreads',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -234,8 +234,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-023',
-    front: 'What is slippage in algorithmic trading?',
-    back: 'Slippage is the difference between expected execution price and actual execution price. It occurs due to market movement during order processing, large orders consuming multiple price levels, and latency. Slippage erodes strategy profits and must be estimated realistically in backtests. High-frequency strategies are particularly sensitive to slippage.',
+    front: 'Algorithmic Trading: Define Slippage',
+    back: 'Slippage: Difference between expected and actual execution price. Reduce its impact by optimizing order size and execution speed; estimate it realistically',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -244,8 +244,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-024',
-    front: 'What is a TWAP execution algorithm?',
-    back: 'Time-Weighted Average Price (TWAP) is an execution algorithm that divides a large order into smaller slices executed at regular time intervals throughout a specified period. Goal is to achieve average execution price close to the time-weighted average market price. TWAP is simple and predictable but does not adapt to market conditions or volume patterns.',
+    front: 'What\'s TWAP execution algorithm?',
+    back: 'Divide large order into smaller slices; execute at regular intervals. Aim: Average execution price close to time-weighted average market price',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -254,8 +254,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-025',
-    front: 'What is a VWAP execution algorithm?',
-    back: 'Volume-Weighted Average Price (VWAP) executes orders proportionally to historical volume patterns, trading more during high-volume periods. Goal is to match or beat the volume-weighted average price. VWAP is a common benchmark for institutional trading. It reduces market impact by trading with the market but can be predictable and exploited by other traders.',
+    front: 'VWAP execution algorithm: What does it do?',
+    back: 'Trade proportionally to volume; execute more during high volume. Benchmark/match VWAP; reduce market impact, but it is predictable',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -264,8 +264,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-026',
-    front: 'What is market impact and how is it modeled?',
-    back: 'Market impact is the price movement caused by executing a trade. Large orders push prices against the trader (buying raises prices, selling lowers them). Impact models include linear (impact proportional to size), square-root (impact proportional to sqrt of size), and temporary vs. permanent components. Minimizing market impact is crucial for profitable execution.',
+    front: 'Define market impact & how it\'s modeled',
+    back: 'Price movement from trading; large orders move prices adversely. Model it linearly or with square-root functions; separate temporary and permanent components',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -274,8 +274,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-027',
-    front: 'What is latency in high-frequency trading?',
-    back: 'Latency is the time delay between receiving market data and executing a trade. In HFT, latency is measured in microseconds or nanoseconds. Lower latency provides competitive advantage for capturing fleeting opportunities. Latency reduction involves co-location (placing servers near exchanges), specialized hardware (FPGAs), and optimized code paths.',
+    front: 'HFT: Define latency and its impact',
+    back: 'Latency is the delay between data & trade execution. Reduce it via co-location; specialized hardware; optimized code for competitive edge',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -284,8 +284,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-028',
-    front: 'What is order book imbalance and how is it used?',
-    back: 'Order book imbalance measures the difference between buy and sell orders at various price levels. Calculated as (Bid Volume - Ask Volume) / (Bid Volume + Ask Volume). Imbalance predicts short-term price direction: positive imbalance suggests upward pressure. HFT strategies use imbalance signals for market making and directional trading.',
+    front: 'Order book imbalance: Define & how does it predict price movement?',
+    back: 'Quantify buy/sell order difference: (Bid Vol - Ask Vol)/(Bid Vol + Ask Vol). Use imbalance to predict short-term price direction; HFT use for trading',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -294,8 +294,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-029',
-    front: 'What is co-location in high-frequency trading?',
-    back: 'Co-location is the practice of placing trading servers in the same data center as exchange matching engines. This minimizes network latency to microseconds, providing speed advantage for HFT strategies. Exchanges offer co-location services for fees. Co-location is essential for latency-sensitive strategies like market making and statistical arbitrage.',
+    front: 'What is co-location in high-frequency trading (HFT)?',
+    back: 'Place trading servers near exchange matching engines; Minimize network latency for HFT speed advantage. Exchanges offer co-location services; essential for latency-sensitive strategies',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -304,8 +304,8 @@ export const quantitativeTradingFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-qt-030',
-    front: 'What is an iceberg order and why is it used?',
-    back: 'An iceberg order displays only a small portion of the total order size, hiding the rest below the surface. As visible portions execute, hidden portions are revealed. Purpose is to hide trading intentions and minimize market impact on large orders. Detection of icebergs is a focus of HFT strategies seeking to exploit hidden liquidity.',
+    front: 'Iceberg order: What is it & why use it?',
+    back: 'Show only a small portion of a large order; reveal more as it executes. Hide intentions; minimize market impact of large trades. HFTs exploit iceberg detection',
     category: 'Wealth Building',
     source: 'Quantitative Trading',
     pathwayId: 'wealth-building',
@@ -331,7 +331,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-002',
     front: 'What is "framing" in communication and why is it powerful?',
-    back: 'Framing is the way information is presented that influences interpretation. The same facts can lead to different conclusions based on how they\'re framed. Example: "90% fat-free" vs "10% fat" - same information, but the first frame is more appealing. Frames activate certain mental associations while suppressing others.',
+    back: 'Framing is the way information is presented that influences interpretation. The same facts can lead to different conclusions based on how they\'re framed. Example: "90% fat-free" vs "10% fat" - same information, but the first frame is more appealing. Frames activate certain mental associations while suppressing others',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -351,7 +351,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-004',
     front: 'What is the "Rule of Three" in memorable communication?',
-    back: 'The Rule of Three states that information presented in groups of three is more memorable and persuasive. Examples: "Life, Liberty, and the Pursuit of Happiness"; "Government of the people, by the people, for the people." Three items create a pattern that feels complete and rhythmic without overwhelming the listener.',
+    back: 'The Rule of Three states that information presented in groups of three is more memorable and persuasive. Examples: "Life, Liberty, and the Pursuit of Happiness"; "Government of the people, by the people, for the people." Three items create a pattern that feels complete and rhythmic without overwhelming the listener',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -361,7 +361,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-005',
     front: 'How does loss framing differ from gain framing, and which is typically more powerful?',
-    back: 'Gain framing emphasizes benefits ("Save $100"), while loss framing emphasizes what might be lost ("Don\'t lose $100"). Loss framing is typically 2-3x more powerful due to loss aversion - people feel losses more intensely than equivalent gains. Use loss framing for urgent action, gain framing for building positive associations.',
+    back: 'Gain framing emphasizes benefits ("Save $100"), while loss framing emphasizes what might be lost ("Don\'t lose $100"). Loss framing is typically 2-3x more powerful due to loss aversion - people feel losses more intensely than equivalent gains. Use loss framing for urgent action, gain framing for building positive associations',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -391,7 +391,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-008',
     front: 'Why is "because" such a powerful word in requests, according to Ellen Langer\'s research?',
-    back: 'Langer\'s "copy machine study" showed that adding "because" to a request increased compliance significantly, even when the reason was meaningless ("because I need to make copies"). The word triggers an automatic compliance response - people expect reasons and "because" signals one is coming, satisfying that expectation.',
+    back: 'Langer\'s "copy machine study" showed that adding "because" to a request increased compliance significantly, even when the reason was meaningless ("because I need to make copies"). The word triggers an automatic compliance response - people expect reasons and "because" signals one is coming, satisfying that expectation',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -401,7 +401,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-009',
     front: 'What is the difference between "I" language and "You" language in persuasive communication?',
-    back: '"I" language focuses on the speaker ("I think," "I need"), while "You" language focuses on the listener ("You\'ll benefit," "Your success"). "You" language is more persuasive because it centers the audience\'s interests. However, for taking responsibility or expressing feelings, "I" language is more appropriate and less accusatory.',
+    back: '"I" language focuses on the speaker ("I think," "I need"), while "You" language focuses on the listener ("You\'ll benefit," "Your success"). "You" language is more persuasive because it centers the audience\'s interests. However, for taking responsibility or expressing feelings, "I" language is more appropriate and less accusatory',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -411,7 +411,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-010',
     front: 'What is "semantic satiation" and how should communicators avoid it?',
-    back: 'Semantic satiation occurs when a word is repeated so often it loses meaning and impact. Example: overusing "amazing" until it means nothing. Avoid it by: varying word choice, using specific descriptors, saving powerful words for key moments, and letting actions reinforce words rather than repetition.',
+    back: 'Semantic satiation occurs when a word is repeated so often it loses meaning and impact. Example: overusing "amazing" until it means nothing. Avoid it by: varying word choice, using specific descriptors, saving powerful words for key moments, and letting actions reinforce words rather than repetition',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -421,7 +421,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-011',
     front: "What are Aristotle's three modes of persuasion (rhetorical appeals)?",
-    back: 'Ethos (credibility/character), Pathos (emotional appeal), and Logos (logical argument). Effective communication uses all three: establish trust through expertise and integrity (ethos), connect emotionally (pathos), and provide evidence and reasoning (logos). The balance depends on audience and context.',
+    back: 'Ethos (credibility/character), Pathos (emotional appeal), and Logos (logical argument). Effective communication uses all three: establish trust through expertise and integrity (ethos), connect emotionally (pathos), and provide evidence and reasoning (logos). The balance depends on audience and context',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -441,7 +441,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-013',
     front: 'What is the "identifiable victim effect" in emotional communication?',
-    back: 'People respond more strongly to a single, identified individual than to statistics about many. "One death is a tragedy; a million is a statistic." To leverage this: use specific individuals to represent larger issues, provide names and details, and make the subject relatable before presenting broader data.',
+    back: 'People respond more strongly to a single, identified individual than to statistics about many. "One death is a tragedy; a million is a statistic." To leverage this: use specific individuals to represent larger issues, provide names and details, and make the subject relatable before presenting broader data',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -451,7 +451,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-014',
     front: 'What is anaphora and how does it create rhetorical power?',
-    back: 'Anaphora is the repetition of words or phrases at the beginning of successive clauses. Example: "I have a dream that... I have a dream that..." It creates rhythm, emphasizes key themes, builds emotional intensity, and makes messages memorable. Use for climactic moments and key takeaways.',
+    back: 'Anaphora is the repetition of words or phrases at the beginning of successive clauses. Example: "I have a dream that... I have a dream that..." It creates rhythm, emphasizes key themes, builds emotional intensity, and makes messages memorable. Use for climactic moments and key takeaways',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -461,7 +461,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-015',
     front: 'What is the "transportation" effect in narrative persuasion?',
-    back: 'Transportation is the mental state where listeners become absorbed in a story, reducing their critical evaluation and resistance to persuasion. When "transported," people: experience genuine emotions, form story-consistent beliefs, and are less likely to counter-argue. This makes stories ideal for addressing skeptical audiences.',
+    back: 'Transportation is the mental state where listeners become absorbed in a story, reducing their critical evaluation and resistance to persuasion. When "transported," people: experience genuine emotions, form story-consistent beliefs, and are less likely to counter-argue. This makes stories ideal for addressing skeptical audiences',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -481,7 +481,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-017',
     front: 'What is the optimal structure for a persuasive story according to communication research?',
-    back: 'The persuasive story arc: 1) Relatable character facing a challenge (creates identification), 2) Rising tension/complications (builds engagement), 3) Turning point/insight (delivers message), 4) Resolution showing transformation (models desired outcome), 5) Clear takeaway (crystallizes the lesson). Keep the message implicit within the narrative.',
+    back: 'The persuasive story arc: 1) Relatable character facing a challenge (creates identification), 2) Rising tension/complications (builds engagement), 3) Turning point/insight (delivers message), 4) Resolution showing transformation (models desired outcome), 5) Clear takeaway (crystallizes the lesson). Keep the message implicit within the narrative',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -491,7 +491,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-018',
     front: 'What is the rhetorical device "chiasmus" and why is it memorable?',
-    back: 'Chiasmus is the reversal of grammatical structures in successive phrases: "Ask not what your country can do for you, but what you can do for your country." It creates a satisfying symmetry, forces listeners to think about both elements, and creates a memorable "twist." The reversed structure signals importance.',
+    back: 'Chiasmus is the reversal of grammatical structures in successive phrases: "Ask not what your country can do for you, but what you can do for your country." It creates a satisfying symmetry, forces listeners to think about both elements, and creates a memorable "twist." The reversed structure signals importance',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -511,7 +511,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-020',
     front: 'What is the "peak-end rule" and how should it influence message structure?',
-    back: 'People judge experiences primarily by their peak intensity and ending, not the average. For communication: place your strongest point at either the climax or conclusion, end on a high note even if there were weak moments, and ensure the final impression is the one you want remembered. A strong ending can redeem a rocky middle.',
+    back: 'People judge experiences primarily by their peak intensity and ending, not the average. For communication: place your strongest point at either the climax or conclusion, end on a high note even if there were weak moments, and ensure the final impression is the one you want remembered. A strong ending can redeem a rocky middle',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -541,7 +541,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-023',
     front: 'How does voice pitch affect perceived authority and credibility?',
-    back: 'Lower pitch is associated with authority, competence, and confidence across cultures. Research shows lower-voiced leaders are perceived as more dominant and trustworthy. To deepen voice: breathe from the diaphragm, relax the throat, speak slowly. Avoid "upspeak" (rising pitch at statement ends) as it signals uncertainty.',
+    back: 'Lower pitch is associated with authority, competence, and confidence across cultures. Research shows lower-voiced leaders are perceived as more dominant and trustworthy. To deepen voice: breathe from the diaphragm, relax the throat, speak slowly. Avoid "upspeak" (rising pitch at statement ends) as it signals uncertainty',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -551,7 +551,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-024',
     front: 'What are the key components of active listening?',
-    back: 'Active listening involves: 1) Full attention (eliminate distractions, face the speaker), 2) Nonverbal engagement (eye contact, nodding, open posture), 3) Verbal encouragers ("I see," "go on"), 4) Paraphrasing to confirm understanding, 5) Asking clarifying questions, 6) Withholding judgment, 7) Summarizing key points. It makes speakers feel heard and provides better information.',
+    back: 'Active listening involves: 1) Full attention (eliminate distractions, face the speaker), 2) Nonverbal engagement (eye contact, nodding, open posture), 3) Verbal encouragers ("I see," "go on"), 4) Paraphrasing to confirm understanding, 5) Asking clarifying questions, 6) Withholding judgment, 7) Summarizing key points. It makes speakers feel heard and provides better information',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -561,7 +561,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-025',
     front: 'What is the significance of the "power pose" research by Amy Cuddy?',
-    back: 'Cuddy found that adopting expansive postures ("power poses") for 2 minutes increased testosterone and decreased cortisol, affecting confidence and risk tolerance. While replication studies are mixed, the psychological principle holds: posture affects mood and self-perception. Standing tall and taking up space signals and creates confidence.',
+    back: 'Cuddy found that adopting expansive postures ("power poses") for 2 minutes increased testosterone and decreased cortisol, affecting confidence and risk tolerance. While replication studies are mixed, the psychological principle holds: posture affects mood and self-perception. Standing tall and taking up space signals and creates confidence',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -571,7 +571,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-026',
     front: 'How should speaking pace vary for maximum impact?',
-    back: 'Varying pace creates engagement and emphasis. Speak faster for: excitement, urgency, less important information. Slow down for: key points, complex ideas, emotional moments, conclusions. Pauses are powerful - they create anticipation, allow processing, and signal importance. A monotonous pace, fast or slow, loses attention.',
+    back: 'Varying pace creates engagement and emphasis. Speak faster for: excitement, urgency, less important information. Slow down for: key points, complex ideas, emotional moments, conclusions. Pauses are powerful - they create anticipation, allow processing, and signal importance. A monotonous pace, fast or slow, loses attention',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -581,7 +581,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-027',
     front: 'What does eye contact signal and what is the optimal amount?',
-    back: 'Eye contact signals attention, confidence, honesty, and connection. Too little suggests discomfort, deception, or disinterest; too much feels aggressive or intimidating. Optimal: 60-70% of conversation time, in 3-5 second intervals. In groups, distribute eye contact to include everyone. Cultural norms vary significantly.',
+    back: 'Eye contact signals attention, confidence, honesty, and connection. Too little suggests discomfort, deception, or disinterest; too much feels aggressive or intimidating. Optimal: 60-70% of conversation time, in 3-5 second intervals. In groups, distribute eye contact to include everyone. Cultural norms vary significantly',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -591,7 +591,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-028',
     front: 'What is "paralanguage" and what elements does it include?',
-    back: 'Paralanguage refers to vocal cues beyond words: tone, pitch, volume, pace, rhythm, pauses, sighs, and vocal fillers. These convey emotion, emphasis, and sincerity. "That\'s fine" can mean opposite things depending on paralanguage. Master communicators align paralanguage with message to ensure congruence and authenticity.',
+    back: 'Paralanguage refers to vocal cues beyond words: tone, pitch, volume, pace, rhythm, pauses, sighs, and vocal fillers. These convey emotion, emphasis, and sincerity. "That\'s fine" can mean opposite things depending on paralanguage. Master communicators align paralanguage with message to ensure congruence and authenticity',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -601,7 +601,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-029',
     front: 'What hand gestures enhance communication credibility?',
-    back: 'Visible, open palms signal honesty and openness. Steepling (fingertips touching) projects confidence. Illustrative gestures that match speech content enhance comprehension by 60%. Avoid: pointing (aggressive), hands in pockets (disengaged), crossed arms (defensive), excessive gesturing (distracting), touching face (potentially deceptive).',
+    back: 'Visible, open palms signal honesty and openness. Steepling (fingertips touching) projects confidence. Illustrative gestures that match speech content enhance comprehension by 60%. Avoid: pointing (aggressive), hands in pockets (disengaged), crossed arms (defensive), excessive gesturing (distracting), touching face (potentially deceptive)',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -621,7 +621,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-031',
     front: 'What is the "inverted pyramid" structure for effective written communication?',
-    back: 'The inverted pyramid places the most important information first, followed by supporting details, then background. Benefits: readers get the key message immediately, content can be trimmed from the bottom without losing core meaning, accommodates skimming behavior. Essential for emails, memos, and busy audiences.',
+    back: 'The inverted pyramid places the most important information first, followed by supporting details, then background. Benefits: readers get the key message immediately, content can be trimmed from the bottom without losing core meaning, accommodates skimming behavior. Essential for emails, memos, and busy audiences',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -631,7 +631,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-032',
     front: 'What makes an email subject line effective?',
-    back: 'Effective subject lines are: specific (not "Update" but "Q3 Budget Approved"), action-oriented when needed ("[Action Required]"), front-loaded with key info (important words first), appropriately urgent, and under 50 characters for mobile. They set clear expectations and help recipients prioritize without opening.',
+    back: 'Effective subject lines are: specific (not "Update" but "Q3 Budget Approved"), action-oriented when needed ("[Action Required]"), front-loaded with key info (important words first), appropriately urgent, and under 50 characters for mobile. They set clear expectations and help recipients prioritize without opening',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -641,7 +641,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-033',
     front: 'What is the "BLUF" principle in professional communication?',
-    back: 'BLUF stands for "Bottom Line Up Front" - state your conclusion, request, or key point in the first sentence. Military and business writing principle. Example: "I recommend approving the budget because..." vs "After extensive research considering many factors..." Respects reader time and ensures the main point isn\'t buried.',
+    back: 'BLUF stands for "Bottom Line Up Front" - state your conclusion, request, or key point in the first sentence. Military and business writing principle. Example: "I recommend approving the budget because..." vs "After extensive research considering many factors..." Respects reader time and ensures the main point isn\'t buried',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -651,7 +651,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-034',
     front: 'How should you structure a persuasive presentation according to communication research?',
-    back: 'The proven structure: 1) Hook - capture attention with surprising fact, question, or story, 2) Problem - establish stakes and relevance, 3) Solution - your main message, 4) Evidence - support with data and examples, 5) Objections - acknowledge and address counterarguments, 6) Call to action - specific next step, 7) Memorable close - return to opening theme.',
+    back: 'The proven structure: 1) Hook - capture attention with surprising fact, question, or story, 2) Problem - establish stakes and relevance, 3) Solution - your main message, 4) Evidence - support with data and examples, 5) Objections - acknowledge and address counterarguments, 6) Call to action - specific next step, 7) Memorable close - return to opening theme',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -661,7 +661,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-035',
     front: 'What is the "10-20-30 Rule" for presentations proposed by Guy Kawasaki?',
-    back: 'Maximum 10 slides, maximum 20 minutes, minimum 30-point font. This forces focus on essential content, respects audience attention limits, ensures readability, and leaves time for discussion. The constraints eliminate clutter and verbose slides. Even if you have more time, these limits improve quality.',
+    back: 'Maximum 10 slides, maximum 20 minutes, minimum 30-point font. This forces focus on essential content, respects audience attention limits, ensures readability, and leaves time for discussion. The constraints eliminate clutter and verbose slides. Even if you have more time, these limits improve quality',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -681,7 +681,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-037',
     front: 'How should bullet points be used effectively in presentations?',
-    back: 'Use bullets for: scannable lists, parallel items, key takeaways. Rules: maximum 5-6 bullets per slide, consistent grammatical structure, start with action verbs, keep to one line each, reveal progressively if presenting. Avoid: complete sentences, sub-bullets within sub-bullets, reading bullets verbatim. Bullets are prompts, not scripts.',
+    back: 'Use bullets for: scannable lists, parallel items, key takeaways. Rules: maximum 5-6 bullets per slide, consistent grammatical structure, start with action verbs, keep to one line each, reveal progressively if presenting. Avoid: complete sentences, sub-bullets within sub-bullets, reading bullets verbatim. Bullets are prompts, not scripts',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -691,7 +691,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-038',
     front: 'What is "signposting" in presentations and why is it important?',
-    back: 'Signposting uses verbal cues to guide audiences through your structure: "First... Second... Finally..." "Now let\'s turn to..." "The key point here is..." It helps audiences: follow along, recognize important points, understand relationships between ideas, and stay oriented. Especially critical for complex or lengthy presentations.',
+    back: 'Signposting uses verbal cues to guide audiences through your structure: "First... Second... Finally..." "Now let\'s turn to..." "The key point here is..." It helps audiences: follow along, recognize important points, understand relationships between ideas, and stay oriented. Especially critical for complex or lengthy presentations',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -711,7 +711,7 @@ export const communicationFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-comm-040',
     front: 'What is the "Minto Pyramid Principle" for structuring business communication?',
-    back: 'Barbara Minto\'s principle: start with the answer/recommendation, then group supporting arguments logically, then provide details. Vertically: each level answers "why?" about the level above. Horizontally: ideas at same level are MECE (Mutually Exclusive, Collectively Exhaustive). This creates clear, logical, persuasive documents that busy executives can skim.',
+    back: 'Barbara Minto\'s principle: start with the answer/recommendation, then group supporting arguments logically, then provide details. Vertically: each level answers "why?" about the level above. Horizontally: ideas at same level are MECE (Mutually Exclusive, Collectively Exhaustive). This creates clear, logical, persuasive documents that busy executives can skim',
     category: 'Negotiation',
     source: 'Words That Work / Communication Science',
     pathwayId: 'negotiation',
@@ -727,7 +727,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-001',
     front: 'What is DeFi (Decentralized Finance)?',
-    back: 'DeFi is a financial ecosystem built on blockchain networks that operates without traditional intermediaries like banks. It uses smart contracts to provide financial services including lending, borrowing, trading, and earning interest in a permissionless, transparent, and accessible manner.',
+    back: 'DeFi is a financial ecosystem built on blockchain networks that operates without traditional intermediaries like banks. It uses smart contracts to provide financial services including lending, borrowing, trading, and earning interest in a permissionless, transparent, and accessible manner',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -737,7 +737,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-002',
     front: 'What are the key characteristics that distinguish DeFi from traditional finance?',
-    back: 'Key DeFi characteristics include: 1) Permissionless - anyone can participate without approval, 2) Trustless - smart contracts execute automatically without intermediaries, 3) Transparent - all transactions are publicly verifiable on-chain, 4) Non-custodial - users maintain control of their assets, 5) Composable - protocols can be combined like building blocks.',
+    back: 'Key DeFi characteristics include: 1) Permissionless - anyone can participate without approval, 2) Trustless - smart contracts execute automatically without intermediaries, 3) Transparent - all transactions are publicly verifiable on-chain, 4) Non-custodial - users maintain control of their assets, 5) Composable - protocols can be combined like building blocks',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -747,7 +747,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-003',
     front: 'What is a DEX (Decentralized Exchange) and how does it differ from a CEX?',
-    back: 'A DEX is an exchange that operates via smart contracts without a central authority. Unlike CEXs (Centralized Exchanges) like Coinbase or Binance: DEXs are non-custodial (you keep your keys), permissionless (no KYC required), transparent (on-chain trades), but may have less liquidity and slower execution. CEXs offer better UX and liquidity but require trust in the operator.',
+    back: 'A DEX is an exchange that operates via smart contracts without a central authority. Unlike CEXs (Centralized Exchanges) like Coinbase or Binance: DEXs are non-custodial (you keep your keys), permissionless (no KYC required), transparent (on-chain trades), but may have less liquidity and slower execution. CEXs offer better UX and liquidity but require trust in the operator',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -757,7 +757,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-004',
     front: 'What is an AMM (Automated Market Maker)?',
-    back: 'An AMM is a smart contract protocol that enables decentralized trading without traditional order books. Instead of matching buyers and sellers, AMMs use liquidity pools and mathematical formulas (like x*y=k) to determine asset prices. Users trade against the pool rather than other users, and liquidity providers earn fees for supplying assets.',
+    back: 'An AMM is a smart contract protocol that enables decentralized trading without traditional order books. Instead of matching buyers and sellers, AMMs use liquidity pools and mathematical formulas (like x*y=k) to determine asset prices. Users trade against the pool rather than other users, and liquidity providers earn fees for supplying assets',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -767,7 +767,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-005',
     front: 'What is a liquidity pool in DeFi?',
-    back: 'A liquidity pool is a smart contract containing reserves of two or more tokens that enables trading on a DEX. Liquidity providers (LPs) deposit token pairs in equal value ratios and receive LP tokens representing their share. The pool facilitates trades and collects fees distributed to LPs proportionally.',
+    back: 'A liquidity pool is a smart contract containing reserves of two or more tokens that enables trading on a DEX. Liquidity providers (LPs) deposit token pairs in equal value ratios and receive LP tokens representing their share. The pool facilitates trades and collects fees distributed to LPs proportionally',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -777,7 +777,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-006',
     front: 'How does the constant product formula (x*y=k) work in AMMs?',
-    back: 'The constant product formula maintains that the product of token reserves must remain constant after trades. If a pool has 100 ETH (x) and 100,000 USDC (y), k=10,000,000. When someone buys ETH, they add USDC and remove ETH, but x*y must still equal k. This creates a price curve where larger trades cause more slippage.',
+    back: 'The constant product formula maintains that the product of token reserves must remain constant after trades. If a pool has 100 ETH (x) and 100,000 USDC (y), k=10,000,000. When someone buys ETH, they add USDC and remove ETH, but x*y must still equal k. This creates a price curve where larger trades cause more slippage',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -786,8 +786,8 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-defi-007',
-    front: 'Name three popular DEX protocols and their primary blockchain.',
-    back: '1) Uniswap - Ethereum (pioneered the AMM model, now multichain), 2) PancakeSwap - BNB Chain (Uniswap fork with lower fees), 3) Curve Finance - Ethereum (optimized for stablecoin and similar-asset swaps with minimal slippage). Other notable DEXs include SushiSwap, dYdX, and Jupiter (Solana).',
+    front: 'Name three popular DEX protocols and their primary blockchain',
+    back: '1) Uniswap - Ethereum (pioneered the AMM model, now multichain), 2) PancakeSwap - BNB Chain (Uniswap fork with lower fees), 3) Curve Finance - Ethereum (optimized for stablecoin and similar-asset swaps with minimal slippage). Other notable DEXs include SushiSwap, dYdX, and Jupiter (Solana)',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -797,7 +797,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-008',
     front: 'What is slippage in DeFi trading?',
-    back: 'Slippage is the difference between the expected price of a trade and the actual execution price. In AMMs, slippage occurs because each trade changes the pool ratio. Larger trades relative to pool size cause more slippage. Users typically set a slippage tolerance (e.g., 0.5-1%) to prevent trades from executing at unfavorable prices.',
+    back: 'Slippage is the difference between the expected price of a trade and the actual execution price. In AMMs, slippage occurs because each trade changes the pool ratio. Larger trades relative to pool size cause more slippage. Users typically set a slippage tolerance (e.g., 0.5-1%) to prevent trades from executing at unfavorable prices',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -807,7 +807,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-009',
     front: 'What is TVL (Total Value Locked) and why is it important?',
-    back: 'TVL represents the total USD value of crypto assets deposited in a DeFi protocol or across the DeFi ecosystem. It serves as a key metric indicating protocol adoption, user trust, and available liquidity. Higher TVL generally suggests more liquidity for trading and lending, but should be evaluated alongside other metrics like user count and revenue.',
+    back: 'TVL represents the total USD value of crypto assets deposited in a DeFi protocol or across the DeFi ecosystem. It serves as a key metric indicating protocol adoption, user trust, and available liquidity. Higher TVL generally suggests more liquidity for trading and lending, but should be evaluated alongside other metrics like user count and revenue',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -817,7 +817,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-010',
     front: 'What role do arbitrageurs play in DeFi?',
-    back: 'Arbitrageurs maintain price consistency across markets by exploiting price differences for profit. If ETH is $2000 on Uniswap but $2010 on SushiSwap, arbitrageurs buy on Uniswap and sell on SushiSwap. This activity equalizes prices across DEXs and helps AMM prices track external market prices, benefiting the ecosystem with accurate pricing.',
+    back: 'Arbitrageurs maintain price consistency across markets by exploiting price differences for profit. If ETH is $2000 on Uniswap but $2010 on SushiSwap, arbitrageurs buy on Uniswap and sell on SushiSwap. This activity equalizes prices across DEXs and helps AMM prices track external market prices, benefiting the ecosystem with accurate pricing',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -827,7 +827,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-011',
     front: 'What is yield farming in DeFi?',
-    back: 'Yield farming is a strategy of maximizing returns by moving crypto assets between DeFi protocols to earn the highest yields. Farmers provide liquidity, stake tokens, or lend assets to earn rewards in the form of trading fees, interest, and governance token incentives. Strategies range from simple staking to complex multi-protocol positions.',
+    back: 'Yield farming is a strategy of maximizing returns by moving crypto assets between DeFi protocols to earn the highest yields. Farmers provide liquidity, stake tokens, or lend assets to earn rewards in the form of trading fees, interest, and governance token incentives. Strategies range from simple staking to complex multi-protocol positions',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -837,7 +837,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-012',
     front: 'How do DeFi lending protocols like Aave and Compound work?',
-    back: 'Lending protocols enable permissionless borrowing and lending through liquidity pools. Lenders deposit assets into pools and earn variable interest based on utilization. Borrowers provide collateral (typically 150%+ of loan value) to borrow assets. Interest rates are algorithmically determined by supply/demand. If collateral value drops below threshold, positions are liquidated.',
+    back: 'Lending protocols enable permissionless borrowing and lending through liquidity pools. Lenders deposit assets into pools and earn variable interest based on utilization. Borrowers provide collateral (typically 150%+ of loan value) to borrow assets. Interest rates are algorithmically determined by supply/demand. If collateral value drops below threshold, positions are liquidated',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -847,7 +847,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-013',
     front: 'What is overcollateralization and why is it required in DeFi lending?',
-    back: 'Overcollateralization requires borrowers to deposit collateral worth more than their loan (e.g., $150 collateral for $100 loan). This protects lenders against default risk since there are no credit checks in DeFi. The excess collateral buffer absorbs price volatility, and if ratios fall below minimum thresholds, positions are liquidated to repay lenders.',
+    back: 'Overcollateralization requires borrowers to deposit collateral worth more than their loan (e.g., $150 collateral for $100 loan). This protects lenders against default risk since there are no credit checks in DeFi. The excess collateral buffer absorbs price volatility, and if ratios fall below minimum thresholds, positions are liquidated to repay lenders',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -857,7 +857,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-014',
     front: 'What are the main types of stablecoins in DeFi?',
-    back: '1) Fiat-collateralized: Backed 1:1 by USD reserves (USDC, USDT), 2) Crypto-collateralized: Backed by overcollateralized crypto (DAI backed by ETH), 3) Algorithmic: Maintain peg through supply/demand mechanisms (FRAX partially), 4) Commodity-backed: Backed by gold or other assets (PAXG). Each has different trust assumptions and risk profiles.',
+    back: '1) Fiat-collateralized: Backed 1:1 by USD reserves (USDC, USDT), 2) Crypto-collateralized: Backed by overcollateralized crypto (DAI backed by ETH), 3) Algorithmic: Maintain peg through supply/demand mechanisms (FRAX partially), 4) Commodity-backed: Backed by gold or other assets (PAXG). Each has different trust assumptions and risk profiles',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -867,7 +867,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-015',
     front: 'What is impermanent loss and when does it occur?',
-    back: 'Impermanent loss is the opportunity cost of providing liquidity to an AMM compared to simply holding the assets. It occurs when the price ratio of deposited tokens changes from the time of deposit. The greater the divergence, the greater the loss. Called "impermanent" because it only realizes upon withdrawal; if prices return to original ratio, the loss disappears.',
+    back: 'Impermanent loss is the opportunity cost of providing liquidity to an AMM compared to simply holding the assets. It occurs when the price ratio of deposited tokens changes from the time of deposit. The greater the divergence, the greater the loss. Called "impermanent" because it only realizes upon withdrawal; if prices return to original ratio, the loss disappears',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -876,8 +876,8 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   },
   {
     id: 'fc-defi-016',
-    front: 'Calculate the impermanent loss when one asset doubles in price relative to another.',
-    back: 'When one asset doubles in price (2x), impermanent loss is approximately 5.7%. Example: Deposit 1 ETH + 1000 USDC. If ETH doubles to $2000: Pool rebalances to ~0.707 ETH + 1414 USDC (worth $2828). Holding would be 1 ETH + 1000 USDC (worth $3000). IL = (3000-2828)/3000 = 5.7%. At 5x price change, IL reaches ~25%.',
+    front: 'Calculate the impermanent loss when one asset doubles in price relative to another',
+    back: 'When one asset doubles in price (2x), impermanent loss is approximately 5.7%. Example: Deposit 1 ETH + 1000 USDC. If ETH doubles to $2000: Pool rebalances to ~0.707 ETH + 1414 USDC (worth $2828). Holding would be 1 ETH + 1000 USDC (worth $3000). IL = (3000-2828)/3000 = 5.7%. At 5x price change, IL reaches ~25%',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -887,7 +887,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-017',
     front: 'What is liquidity mining and how does it incentivize participation?',
-    back: 'Liquidity mining rewards users with protocol governance tokens for providing liquidity or using a protocol. These token rewards supplement trading fee income, making participation more attractive especially for new protocols needing to bootstrap liquidity. Critics note it can lead to "mercenary capital" that leaves when rewards decrease.',
+    back: 'Liquidity mining rewards users with protocol governance tokens for providing liquidity or using a protocol. These token rewards supplement trading fee income, making participation more attractive especially for new protocols needing to bootstrap liquidity. Critics note it can lead to "mercenary capital" that leaves when rewards decrease',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -897,7 +897,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-018',
     front: 'What is APY vs APR in DeFi yields?',
-    back: 'APR (Annual Percentage Rate) is the simple annual interest rate without compounding. APY (Annual Percentage Yield) includes compound interest effects. Example: 10% APR compounded daily = ~10.52% APY. DeFi protocols often display APY which appears higher. Always verify compounding frequency and whether advertised rates are sustainable or include temporary incentives.',
+    back: 'APR (Annual Percentage Rate) is the simple annual interest rate without compounding. APY (Annual Percentage Yield) includes compound interest effects. Example: 10% APR compounded daily = ~10.52% APY. DeFi protocols often display APY which appears higher. Always verify compounding frequency and whether advertised rates are sustainable or include temporary incentives',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -907,7 +907,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-019',
     front: 'What are yield aggregators and how do they work?',
-    back: 'Yield aggregators are protocols that automatically optimize yield farming strategies across multiple DeFi protocols. Examples include Yearn Finance and Beefy. They pool user funds, auto-compound rewards, and shift strategies to maximize returns while reducing gas costs per user. Users deposit assets and receive vault tokens representing their share.',
+    back: 'Yield aggregators are protocols that automatically optimize yield farming strategies across multiple DeFi protocols. Examples include Yearn Finance and Beefy. They pool user funds, auto-compound rewards, and shift strategies to maximize returns while reducing gas costs per user. Users deposit assets and receive vault tokens representing their share',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -927,7 +927,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-021',
     front: 'What is a flash loan and how is it possible?',
-    back: 'A flash loan is an uncollateralized loan that must be borrowed and repaid within a single blockchain transaction. If not repaid, the entire transaction reverts as if it never happened, eliminating lender risk. Enabled by blockchain atomicity - either all steps execute or none do. Used for arbitrage, collateral swaps, and self-liquidation.',
+    back: 'A flash loan is an uncollateralized loan that must be borrowed and repaid within a single blockchain transaction. If not repaid, the entire transaction reverts as if it never happened, eliminating lender risk. Enabled by blockchain atomicity - either all steps execute or none do. Used for arbitrage, collateral swaps, and self-liquidation',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -937,7 +937,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-022',
     front: 'What are legitimate use cases for flash loans?',
-    back: '1) Arbitrage across DEXs without capital, 2) Collateral swaps - change loan collateral in one tx, 3) Self-liquidation - avoid liquidation penalties, 4) Yield strategy optimization - rebalance positions efficiently, 5) One-click leverage/deleverage. Flash loans democratize access to capital-intensive strategies previously available only to well-funded traders.',
+    back: '1) Arbitrage across DEXs without capital, 2) Collateral swaps - change loan collateral in one tx, 3) Self-liquidation - avoid liquidation penalties, 4) Yield strategy optimization - rebalance positions efficiently, 5) One-click leverage/deleverage. Flash loans democratize access to capital-intensive strategies previously available only to well-funded traders',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -947,7 +947,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-023',
     front: 'What is a governance token and what rights does it provide?',
-    back: 'Governance tokens grant holders voting rights on protocol decisions including parameter changes, treasury allocation, and protocol upgrades. Examples include UNI (Uniswap), AAVE, and COMP. Voting power is typically proportional to token holdings. Some protocols require token locking (veToken model) for voting rights, aligning long-term incentives.',
+    back: 'Governance tokens grant holders voting rights on protocol decisions including parameter changes, treasury allocation, and protocol upgrades. Examples include UNI (Uniswap), AAVE, and COMP. Voting power is typically proportional to token holdings. Some protocols require token locking (veToken model) for voting rights, aligning long-term incentives',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -957,7 +957,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-024',
     front: 'What is a DAO (Decentralized Autonomous Organization)?',
-    back: 'A DAO is an organization governed by smart contracts and token holder votes rather than traditional management hierarchies. Members propose and vote on decisions using governance tokens. Treasury funds are controlled by smart contracts and released based on passed proposals. DAOs manage DeFi protocols, investment funds, and community projects.',
+    back: 'A DAO is an organization governed by smart contracts and token holder votes rather than traditional management hierarchies. Members propose and vote on decisions using governance tokens. Treasury funds are controlled by smart contracts and released based on passed proposals. DAOs manage DeFi protocols, investment funds, and community projects',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -977,7 +977,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-026',
     front: 'What are the key components of DeFi tokenomics?',
-    back: 'Key tokenomics elements: 1) Total/circulating supply and emission schedule, 2) Distribution (team, investors, community, treasury), 3) Vesting periods for insider tokens, 4) Utility (governance, staking, fee sharing), 5) Burn mechanisms, 6) Inflation/deflation dynamics. Well-designed tokenomics align incentives and create sustainable value accrual.',
+    back: 'Key tokenomics elements: 1) Total/circulating supply and emission schedule, 2) Distribution (team, investors, community, treasury), 3) Vesting periods for insider tokens, 4) Utility (governance, staking, fee sharing), 5) Burn mechanisms, 6) Inflation/deflation dynamics. Well-designed tokenomics align incentives and create sustainable value accrual',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -997,7 +997,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-028',
     front: 'What is DeFi composability (money legos)?',
-    back: 'Composability refers to DeFi protocols being interoperable building blocks that can be combined. Like LEGO bricks, protocols can integrate with each other permissionlessly. Example: Deposit ETH into Lido for stETH, deposit stETH into Aave as collateral, borrow USDC, provide USDC to Curve pool. This creates complex strategies but also systemic risk.',
+    back: 'Composability refers to DeFi protocols being interoperable building blocks that can be combined. Like LEGO bricks, protocols can integrate with each other permissionlessly. Example: Deposit ETH into Lido for stETH, deposit stETH into Aave as collateral, borrow USDC, provide USDC to Curve pool. This creates complex strategies but also systemic risk',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1007,7 +1007,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-029',
     front: 'What is a DEX aggregator and why use one?',
-    back: 'DEX aggregators like 1inch, Paraswap, and Jupiter route trades across multiple DEXs to find optimal execution. They split orders across venues, finding the best prices and minimizing slippage. Benefits include better rates than any single DEX, simplified UX, and gas optimization. They earn through positive slippage or small fees.',
+    back: 'DEX aggregators like 1inch, Paraswap, and Jupiter route trades across multiple DEXs to find optimal execution. They split orders across venues, finding the best prices and minimizing slippage. Benefits include better rates than any single DEX, simplified UX, and gas optimization. They earn through positive slippage or small fees',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1017,7 +1017,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-030',
     front: 'What are synthetic assets in DeFi?',
-    back: 'Synthetic assets are tokenized derivatives that track the price of real-world or crypto assets without requiring ownership of the underlying. Platforms like Synthetix create synths for stocks, commodities, forex. They use overcollateralized debt positions and oracles for price feeds. Enables 24/7 trading of traditional assets and exposure without custody complications.',
+    back: 'Synthetic assets are tokenized derivatives that track the price of real-world or crypto assets without requiring ownership of the underlying. Platforms like Synthetix create synths for stocks, commodities, forex. They use overcollateralized debt positions and oracles for price feeds. Enables 24/7 trading of traditional assets and exposure without custody complications',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1027,7 +1027,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-031',
     front: 'What are the main categories of DeFi risks?',
-    back: '1) Smart contract risk - bugs or vulnerabilities, 2) Economic/design risk - flawed incentives or attack vectors, 3) Oracle risk - price feed manipulation, 4) Governance risk - malicious proposals, 5) Regulatory risk - legal uncertainty, 6) Systemic risk - cascading failures across composable protocols, 7) Counterparty risk - centralized dependencies.',
+    back: '1) Smart contract risk - bugs or vulnerabilities, 2) Economic/design risk - flawed incentives or attack vectors, 3) Oracle risk - price feed manipulation, 4) Governance risk - malicious proposals, 5) Regulatory risk - legal uncertainty, 6) Systemic risk - cascading failures across composable protocols, 7) Counterparty risk - centralized dependencies',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1047,7 +1047,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-033',
     front: 'What is a rug pull and how can you identify potential rug pull risks?',
-    back: 'A rug pull is when developers abandon a project and steal user funds. Warning signs: Anonymous team, unaudited contracts, admin keys that can drain funds, locked liquidity with short timeframes, unrealistic APY promises, copied code without modifications, aggressive marketing over substance, and no clear utility. DYOR includes checking token contract permissions.',
+    back: 'A rug pull is when developers abandon a project and steal user funds. Warning signs: Anonymous team, unaudited contracts, admin keys that can drain funds, locked liquidity with short timeframes, unrealistic APY promises, copied code without modifications, aggressive marketing over substance, and no clear utility. DYOR includes checking token contract permissions',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1057,7 +1057,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-034',
     front: 'What is an oracle attack and how do protocols mitigate this risk?',
-    back: 'Oracle attacks manipulate price feeds to exploit DeFi protocols. Flash loan attacks often manipulate DEX spot prices used as oracles. Mitigations include: Using decentralized oracles like Chainlink, TWAP (time-weighted average prices), multiple oracle sources, circuit breakers for extreme price movements, and avoiding easily manipulated on-chain price sources.',
+    back: 'Oracle attacks manipulate price feeds to exploit DeFi protocols. Flash loan attacks often manipulate DEX spot prices used as oracles. Mitigations include: Using decentralized oracles like Chainlink, TWAP (time-weighted average prices), multiple oracle sources, circuit breakers for extreme price movements, and avoiding easily manipulated on-chain price sources',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1067,7 +1067,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-035',
     front: 'What due diligence steps should you take before using a DeFi protocol?',
-    back: '1) Check audit reports and their scope/age, 2) Research team credibility and track record, 3) Review TVL history and user growth, 4) Examine tokenomics and insider allocations, 5) Read documentation and understand mechanics, 6) Check community sentiment and developer activity, 7) Verify contract addresses from official sources, 8) Start with small amounts.',
+    back: '1) Check audit reports and their scope/age, 2) Research team credibility and track record, 3) Review TVL history and user growth, 4) Examine tokenomics and insider allocations, 5) Read documentation and understand mechanics, 6) Check community sentiment and developer activity, 7) Verify contract addresses from official sources, 8) Start with small amounts',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1077,7 +1077,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-036',
     front: 'What is MEV (Maximal Extractable Value) and how does it affect DeFi users?',
-    back: 'MEV is profit extractable by block producers through transaction ordering, insertion, or censorship. Examples include frontrunning (trading before your large order), sandwich attacks (frontrun + backrun), and liquidation sniping. MEV costs users through worse execution prices. Mitigation includes private mempools (Flashbots), MEV-aware DEXs, and intent-based trading systems.',
+    back: 'MEV is profit extractable by block producers through transaction ordering, insertion, or censorship. Examples include frontrunning (trading before your large order), sandwich attacks (frontrun + backrun), and liquidation sniping. MEV costs users through worse execution prices. Mitigation includes private mempools (Flashbots), MEV-aware DEXs, and intent-based trading systems',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1087,7 +1087,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-037',
     front: 'What is infinite approval risk and how to manage it?',
-    back: 'When interacting with DeFi, you often approve contracts to spend unlimited tokens for convenience. If that contract is compromised, attackers can drain all approved tokens. Mitigations: Use exact approval amounts, regularly revoke unused approvals via tools like Revoke.cash, use separate wallets for different risk levels, and verify contract addresses before approving.',
+    back: 'When interacting with DeFi, you often approve contracts to spend unlimited tokens for convenience. If that contract is compromised, attackers can drain all approved tokens. Mitigations: Use exact approval amounts, regularly revoke unused approvals via tools like Revoke.cash, use separate wallets for different risk levels, and verify contract addresses before approving',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1097,7 +1097,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-038',
     front: 'What is a governance attack and how can protocols defend against it?',
-    back: 'Governance attacks involve acquiring enough voting power to pass malicious proposals (draining treasury, changing parameters). Notable example: Beanstalk flash loan governance attack. Defenses include: Timelock delays on execution, voting escrow requirements, quorum thresholds, guardian/veto mechanisms, flash loan prevention for voting, and gradual execution of large changes.',
+    back: 'Governance attacks involve acquiring enough voting power to pass malicious proposals (draining treasury, changing parameters). Notable example: Beanstalk flash loan governance attack. Defenses include: Timelock delays on execution, voting escrow requirements, quorum thresholds, guardian/veto mechanisms, flash loan prevention for voting, and gradual execution of large changes',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1107,7 +1107,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-039',
     front: 'What is a bridge exploit and why are bridges high-risk?',
-    back: 'Bridges connect different blockchains, locking assets on one chain and minting wrapped versions on another. They\'re high-risk targets because they hold large TVL in smart contracts. Attacks have exploited multisig vulnerabilities, validator compromises, and code bugs. Notable exploits: Ronin ($625M), Wormhole ($320M), Nomad ($190M). Use bridges cautiously and prefer canonical/official bridges.',
+    back: 'Bridges connect different blockchains, locking assets on one chain and minting wrapped versions on another. They\'re high-risk targets because they hold large TVL in smart contracts. Attacks have exploited multisig vulnerabilities, validator compromises, and code bugs. Notable exploits: Ronin ($625M), Wormhole ($320M), Nomad ($190M). Use bridges cautiously and prefer canonical/official bridges',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1117,7 +1117,7 @@ export const defiFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-defi-040',
     front: 'What are best practices for DeFi wallet security?',
-    back: '1) Use hardware wallets for significant holdings, 2) Maintain separate hot wallets for DeFi with limited funds, 3) Never share seed phrases or private keys, 4) Verify transaction details before signing, 5) Use official links only (bookmark sites), 6) Be wary of token approvals, 7) Test with small transactions first, 8) Enable available security features, 9) Keep software updated.',
+    back: '1) Use hardware wallets for significant holdings, 2) Maintain separate hot wallets for DeFi with limited funds, 3) Never share seed phrases or private keys, 4) Verify transaction details before signing, 5) Use official links only (bookmark sites), 6) Be wary of token approvals, 7) Test with small transactions first, 8) Enable available security features, 9) Keep software updated',
     category: 'Blockchain',
     source: 'DeFi Guides',
     pathwayId: 'blockchain',
@@ -1143,7 +1143,7 @@ export const statisticsFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-stats-002',
     front: 'What is the median and when is it preferred over the mean?',
-    back: 'The median is the middle value when data is sorted in order.\n\nFor odd n: middle value\nFor even n: average of two middle values\n\nPreferred when data has outliers or is skewed, as it is resistant to extreme values.',
+    back: 'The median is the middle value when data is sorted in order.\n\nFor odd n: middle value\nFor even n: average of two middle values\n\nPreferred when data has outliers or is skewed, as it is resistant to extreme values',
     category: 'Python & Data Science',
     source: 'Statistics for Data Science',
     pathwayId: 'python-data',
@@ -1203,7 +1203,7 @@ export const statisticsFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-stats-008',
     front: 'What is the coefficient of variation (CV) and when is it useful?',
-    back: 'CV is the ratio of standard deviation to mean, expressed as a percentage.\n\nCV = (\u03c3 / \u03bc) \u00d7 100%\n\nUseful for comparing variability between datasets with different units or vastly different means.',
+    back: 'CV is the ratio of standard deviation to mean, expressed as a percentage.\n\nCV = (\u03c3 / \u03bc) \u00d7 100%\n\nUseful for comparing variability between datasets with different units or vastly different means',
     category: 'Python & Data Science',
     source: 'Statistics for Data Science',
     pathwayId: 'python-data',
@@ -1213,7 +1213,7 @@ export const statisticsFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-stats-009',
     front: 'What are the five-number summary statistics?',
-    back: 'The five-number summary consists of:\n1. Minimum\n2. First Quartile (Q1, 25th percentile)\n3. Median (Q2, 50th percentile)\n4. Third Quartile (Q3, 75th percentile)\n5. Maximum\n\nUsed to create box plots and identify outliers.',
+    back: 'The five-number summary consists of:\n1. Minimum\n2. First Quartile (Q1, 25th percentile)\n3. Median (Q2, 50th percentile)\n4. Third Quartile (Q3, 75th percentile)\n5. Maximum\n\nUsed to create box plots and identify outliers',
     category: 'Python & Data Science',
     source: 'Statistics for Data Science',
     pathwayId: 'python-data',
@@ -1223,7 +1223,7 @@ export const statisticsFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-stats-010',
     front: 'How is the Interquartile Range (IQR) calculated and what is the outlier rule?',
-    back: 'IQR = Q3 - Q1 (range of middle 50% of data)\n\nOutlier detection rule:\n- Lower bound: Q1 - 1.5 \u00d7 IQR\n- Upper bound: Q3 + 1.5 \u00d7 IQR\n\nValues outside these bounds are potential outliers.',
+    back: 'IQR = Q3 - Q1 (range of middle 50% of data)\n\nOutlier detection rule:\n- Lower bound: Q1 - 1.5 \u00d7 IQR\n- Upper bound: Q3 + 1.5 \u00d7 IQR\n\nValues outside these bounds are potential outliers',
     category: 'Python & Data Science',
     source: 'Statistics for Data Science',
     pathwayId: 'python-data',
@@ -1383,7 +1383,7 @@ export const statisticsFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-stats-026',
     front: 'What is the standard error and how does it differ from standard deviation?',
-    back: 'Standard Deviation (\u03c3 or s): Measures spread of individual observations in a sample/population.\n\nStandard Error (SE): Measures precision of a sample statistic (e.g., mean).\n\nSE of mean = \u03c3 / \u221an\n\nKey difference: SE decreases as sample size increases; SD does not.',
+    back: 'Standard Deviation (\u03c3 or s): Measures spread of individual observations in a sample/population.\n\nStandard Error (SE): Measures precision of a sample statistic (e.g., mean).\n\nSE of mean = \u03c3 / \u221an\n\nKey difference: SE decreases as sample size increases; SD does not',
     category: 'Python & Data Science',
     source: 'Statistics for Data Science',
     pathwayId: 'python-data',
@@ -1423,7 +1423,7 @@ export const statisticsFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-stats-030',
     front: 'What is the Law of Large Numbers?',
-    back: 'The Law of Large Numbers states that as sample size increases, the sample mean converges to the population mean.\n\nTwo forms:\n- Weak LLN: Sample mean converges in probability\n- Strong LLN: Sample mean converges almost surely\n\nPractical meaning: Larger samples give more accurate estimates of population parameters.',
+    back: 'The Law of Large Numbers states that as sample size increases, the sample mean converges to the population mean.\n\nTwo forms:\n- Weak LLN: Sample mean converges in probability\n- Strong LLN: Sample mean converges almost surely\n\nPractical meaning: Larger samples give more accurate estimates of population parameters',
     category: 'Python & Data Science',
     source: 'Statistics for Data Science',
     pathwayId: 'python-data',
@@ -1493,7 +1493,7 @@ export const statisticsFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-stats-037',
     front: 'What is p-hacking and why is it problematic?',
-    back: 'P-hacking: Manipulating data analysis to achieve statistically significant results (p < 0.05).\n\nCommon techniques:\n- Testing many hypotheses, reporting only significant ones\n- Stopping data collection when significance reached\n- Selectively removing outliers\n- Trying multiple statistical tests\n\nProblems: Inflates false positive rate, produces non-reproducible results.',
+    back: 'P-hacking: Manipulating data analysis to achieve statistically significant results (p < 0.05).\n\nCommon techniques:\n- Testing many hypotheses, reporting only significant ones\n- Stopping data collection when significance reached\n- Selectively removing outliers\n- Trying multiple statistical tests\n\nProblems: Inflates false positive rate, produces non-reproducible results',
     category: 'Python & Data Science',
     source: 'Statistics for Data Science',
     pathwayId: 'python-data',
@@ -1523,7 +1523,7 @@ export const statisticsFlashcards: SpacedRepetitionCard[] = [
   {
     id: 'fc-stats-040',
     front: 'What is regression to the mean and why does it occur?',
-    back: 'Regression to the Mean: Extreme observations tend to be followed by more average ones.\n\nWhy it occurs:\n- Extreme values often include chance/luck component\n- Subsequent measurements reflect true average more closely\n\nExamples:\n- Extremely tall parents tend to have shorter children\n- Athletes after record-breaking seasons often decline\n\nMistake: Attributing regression to an intervention when none occurred.',
+    back: 'Regression to the Mean: Extreme observations tend to be followed by more average ones.\n\nWhy it occurs:\n- Extreme values often include chance/luck component\n- Subsequent measurements reflect true average more closely\n\nExamples:\n- Extremely tall parents tend to have shorter children\n- Athletes after record-breaking seasons often decline\n\nMistake: Attributing regression to an intervention when none occurred',
     category: 'Python & Data Science',
     source: 'Statistics for Data Science',
     pathwayId: 'python-data',
