@@ -51,6 +51,8 @@ export { default as communicationRhetoricPathway } from './communication-rhetori
 export { default as designThinkingPathway } from './design-thinking';
 export { default as mathematicsPatternsPathway } from './mathematics-patterns';
 export { default as physicsEngineeringPathway } from './physics-engineering';
+export { default as startupsInnovationPathway } from './startups-innovation';
+export { default as relationshipsSocialPathway } from './relationships-social';
 
 // FIRE Movement lessons for Wealth Building module
 export { fireLessons } from './wealth-fire';

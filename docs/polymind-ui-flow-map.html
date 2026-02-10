@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Polymind: Complete UI Flow Map</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #000000;
+  background: #ffffff;
+  font-size: 11pt;
+}
+
+.page {
+  max-width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 20mm;
+  background: #ffffff;
+  page-break-after: always;
+  box-sizing: border-box;
+}
+
+.page:last-child {
+  page-break-after: auto;
+}
+
+.header {
+  border-bottom: 3px solid #000;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 11pt;
+  color: #333;
+  margin-top: 5px;
+}
+
+.screen-number {
+  float: right;
+  font-size: 10pt;
+  color: #666;
+}
+
+.ui-button {
+  border: 2px solid #000;
+  padding: 8px 15px;
+  margin: 5px;
+  background: #fff;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  font-size: 9pt;
+}
+
+.nav-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+  margin-top: 20px;
+}
+
+.nav-table th {
+  background: #f0f0f0;
+  font-weight: bold;
+  padding: 8px;
+  text-align: left;
+  border: 2px solid #000;
+}
+
+.nav-table td {
+  padding: 6px 8px;
+  border: 1px solid #000;
+}
+
+.label {
+  font-size: 9pt;
+  color: #666;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 2px solid #000;
+  text-align: center;
+  font-size: 10pt;
+}
+
+/* Avoid page breaks inside elements */
+.ui-button, .nav-table tr {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.flow-box {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.nav-item {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+div[style*="border: 3px solid"] {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+div[style*="border: 2px solid"] {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+div[style*="border: 1px solid"] {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Sections that should stay together */
+.section-header {
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+/* Force page break before major sections */
+.page-break-before {
+  page-break-before: always;
+  break-before: page;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    margin: 0;
+    padding: 15mm 20mm;
+    page-break-after: always;
+    break-after: page;
+    max-width: 100%;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  /* Ensure no orphans/widows */
+  p, div {
+    orphans: 4;
+    widows: 4;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Keep tables together */
+  .nav-table {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  .nav-table thead {
+    display: table-header-group;
+  }
+
+  .nav-table tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Keep flow boxes together */
+  div[style*="border: 3px solid"],
+  div[style*="border: 2px solid"],
+  div[style*="border: 1px solid"] {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 8px;
+  }
+
+  .flow-box {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .nav-item {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Better spacing for print */
+  .header {
+    margin-bottom: 15px;
+  }
+
+  .footer {
+    margin-top: 20px;
+  }
+
+  /* Optimize spacing between elements */
+  .flow-box {
+    margin-bottom: 10px !important;
+  }
+
+  .nav-item {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Ensure tables have proper spacing */
+  .nav-table {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  /* Reduce excessive whitespace in print */
+  div[style*="margin-top: 15px"] {
+    margin-top: 10px !important;
+  }
+
+  div[style*="margin-bottom: 20px"] {
+    margin-bottom: 12px !important;
+  }
+
+  /* Ensure rows with background colors stay together */
+  tr[style*="background"] {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+</style>
+
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <span class="screen-number">Complete Flow Map</span>
+      <h1>Polymind User Journey Flow</h1>
+      <p class="subtitle">All screens and navigation paths</p>
+    </div>
+
+    <div style="font-size: 9pt; margin: 20px 0;">
+
+      <!-- New User Flow -->
+      <div class="flow-box" style="border: 3px solid #000; padding: 15px; margin-bottom: 20px; background: #fafafa;">
+        <strong class="section-header" style="font-size: 11pt; display: block; margin-bottom: 10px;">🚀 NEW USER FLOW</strong>
+        <div style="text-align: center; margin-top: 10px;">
+          <div class="ui-button">01. Landing Page</div>
+          <span style="font-size: 16pt; margin: 0 5px;">→</span>
+          <div class="ui-button">Sign Up (Guest Mode)</div>
+          <span style="font-size: 16pt; margin: 0 5px;">→</span>
+          <div class="ui-button">02. Dashboard</div>
+          <div style="margin-top: 10px; font-size: 9pt; color: #666;">(Onboarding completes in background, no blocking screens)</div>
+        </div>
+      </div>
+
+      <!-- Returning User Flow -->
+      <div class="flow-box" style="border: 3px solid #000; padding: 15px; margin-bottom: 20px; background: #fafafa;">
+        <strong class="section-header" style="font-size: 11pt; display: block; margin-bottom: 10px;">🔁 RETURNING USER FLOW</strong>
+        <div style="text-align: center; margin-top: 10px;">
+          <div class="ui-button">01. Landing Page</div>
+          <span style="font-size: 16pt; margin: 0 5px;">→</span>
+          <div class="ui-button">Sign In (Google)</div>
+          <span style="font-size: 16pt; margin: 0 5px;">→</span>
+          <div class="ui-button">02. Dashboard</div>
+        </div>
+      </div>
+
+      <!-- Core Learning Loop -->
+      <div class="flow-box" style="border: 3px solid #000; padding: 15px; margin-bottom: 20px; background: #fafafa;">
+        <strong class="section-header" style="font-size: 11pt; display: block; margin-bottom: 10px;">📚 CORE LEARNING LOOP (Primary Usage)</strong>
+        <div style="text-align: center; margin-top: 15px;">
+          <div class="ui-button" style="background: #f0f0f0;">02. Dashboard</div>
+          <div style="margin: 8px 0;">↓</div>
+          <div class="ui-button">03. Module Hub</div>
+          <div style="margin: 8px 0;">↓</div>
+          <div class="ui-button">04. Module Page</div>
+          <div style="margin: 8px 0;">↓</div>
+          <div class="ui-button">05. Lesson Viewer</div>
+          <div style="margin: 8px 0;">↓</div>
+          <div class="ui-button" style="background: #f0f0f0;">02. Dashboard</div>
+          <div style="margin-top: 10px; color: #666; font-size: 8pt;">(Repeat: Complete lessons, earn XP, level up)</div>
+        </div>
+      </div>
+
+      <!-- Alternative Learning Paths -->
+      <div class="flow-box" style="border: 3px solid #000; padding: 15px; margin-bottom: 20px; background: #fafafa;">
+        <strong class="section-header" style="font-size: 11pt; display: block; margin-bottom: 10px;">🎯 ALTERNATIVE LEARNING PATHS</strong>
+
+        <div class="flow-box" style="border: 1px solid #000; padding: 10px; margin: 10px 0; background: #fff;">
+          <strong style="font-size: 10pt;">Path A: Netflix-Style Discovery</strong>
+          <div style="margin-top: 8px; text-align: center;">
+            <div class="ui-button">02. Dashboard</div>
+            <span style="font-size: 14pt;">→</span>
+            <div class="ui-button">06. Learning Pathway</div>
+            <span style="font-size: 14pt;">→</span>
+            <div class="ui-button">05. Lesson Viewer</div>
+          </div>
+        </div>
+
+        <div class="flow-box" style="border: 1px solid #000; padding: 10px; margin: 10px 0; background: #fff;">
+          <strong style="font-size: 10pt;">Path B: Spaced Repetition</strong>
+          <div style="margin-top: 8px; text-align: center;">
+            <div class="ui-button">02. Dashboard</div>
+            <span style="font-size: 14pt;">→</span>
+            <div class="ui-button">07. Spaced Repetition</div>
+            <span style="font-size: 14pt;">→</span>
+            <div class="ui-button">Review Cards</div>
+            <span style="font-size: 14pt;">→</span>
+            <div class="ui-button">02. Dashboard</div>
+          </div>
+        </div>
+
+        <div class="flow-box" style="border: 1px solid #000; padding: 10px; margin: 10px 0; background: #fff;">
+          <strong style="font-size: 10pt;">Path C: Daily Challenge</strong>
+          <div style="margin-top: 8px; text-align: center;">
+            <div class="ui-button">02. Dashboard</div>
+            <span style="font-size: 14pt;">→</span>
+            <div class="ui-button">08. Daily Challenges</div>
+            <span style="font-size: 14pt;">→</span>
+            <div class="ui-button">Submit Response</div>
+            <span style="font-size: 14pt;">→</span>
+            <div class="ui-button">02. Dashboard</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Hub -->
+      <div class="flow-box" style="border: 3px solid #000; padding: 15px; margin-bottom: 20px; background: #fafafa;">
+        <strong class="section-header" style="font-size: 11pt; display: block; margin-bottom: 10px;">🧭 NAVIGATION HUB (From Dashboard)</strong>
+        <div style="text-align: center; margin-top: 15px;">
+          <div class="ui-button" style="background: #f0f0f0; font-size: 10pt;">02. DASHBOARD (Home Base)</div>
+          <div style="margin: 15px 0;">
+            <span style="font-size: 14pt; margin: 0 5px;">↙</span>
+            <span style="font-size: 14pt; margin: 0 5px;">↙</span>
+            <span style="font-size: 14pt; margin: 0 10px;">↓</span>
+            <span style="font-size: 14pt; margin: 0 5px;">↘</span>
+            <span style="font-size: 14pt; margin: 0 5px;">↘</span>
+          </div>
+          <div style="margin-bottom: 10px;">
+            <div class="ui-button">03. Module Hub</div>
+            <div class="ui-button">06. Learning Pathway</div>
+            <div class="ui-button">07. Spaced Rep</div>
+            <div class="ui-button">08. Challenges</div>
+            <div class="ui-button">09. Knowledge Map</div>
+          </div>
+          <div>
+            <div class="ui-button">10. Visual Lab</div>
+            <div class="ui-button">11. Saved Cards</div>
+            <div class="ui-button">12. Settings</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modals & Overlays -->
+      <div class="flow-box" style="border: 3px solid #000; padding: 15px; margin-bottom: 20px; background: #fafafa;">
+        <strong class="section-header" style="font-size: 11pt; display: block; margin-bottom: 10px;">✨ MODALS & OVERLAYS (Triggered Events)</strong>
+        <div style="margin-top: 10px;">
+          <div class="flow-box" style="border: 1px solid #000; padding: 8px; margin: 5px 0; background: #fff;">
+            <strong>15-A. Level Up Modal</strong> → Triggered when XP threshold crossed → Shows new level, unlocks
+          </div>
+          <div class="flow-box" style="border: 1px solid #000; padding: 8px; margin: 5px 0; background: #fff;">
+            <strong>15-B. Achievement Modal</strong> → Triggered when achievement criteria met → Shows trophy, XP reward
+          </div>
+          <div class="flow-box" style="border: 1px solid #000; padding: 8px; margin: 5px 0; background: #fff;">
+            <strong>15-C. Sign In Gate</strong> → Triggered on protected routes if not authenticated → Google sign-in or guest mode
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Screen Summary Table -->
+    <div style="margin-top: 25px;">
+      <h2 class="section-header" style="font-size: 13pt; margin-bottom: 10px;">📋 Complete Screen Inventory</h2>
+      <table class="nav-table">
+        <tr>
+          <th style="width: 8%;">#</th>
+          <th style="width: 22%;">Screen</th>
+          <th style="width: 35%;">Primary Purpose</th>
+          <th style="width: 35%;">Key Actions</th>
+        </tr>
+        <tr style="background: #fffacd;">
+          <td><strong>01</strong></td>
+          <td><strong>Landing Page</strong></td>
+          <td>Marketing & value proposition</td>
+          <td>Start Free, Learn More, view domains</td>
+        </tr>
+        <tr style="background: #ffe4e1;">
+          <td><strong>02</strong></td>
+          <td><strong>Dashboard</strong></td>
+          <td>Home base, daily focus, stats</td>
+          <td>View XP, continue lesson, daily focus items</td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>Module Hub</td>
+          <td>Browse all 76 modules by category</td>
+          <td>Filter by category, select module</td>
+        </tr>
+        <tr>
+          <td>04</td>
+          <td>Module Page</td>
+          <td>View levels & lessons in module</td>
+          <td>Expand level, select lesson, view progress</td>
+        </tr>
+        <tr>
+          <td>05</td>
+          <td>Lesson Viewer</td>
+          <td>Main learning interface</td>
+          <td>Read content, answer quiz, swipe cards, complete</td>
+        </tr>
+        <tr>
+          <td>06</td>
+          <td>Learning Pathway</td>
+          <td>Netflix-style content discovery</td>
+          <td>Browse rows, continue reading, explore categories</td>
+        </tr>
+        <tr>
+          <td>07</td>
+          <td>Spaced Repetition</td>
+          <td>Review flashcards (SM-2 algorithm)</td>
+          <td>Rate cards (Hard/Good/Easy), track retention</td>
+        </tr>
+        <tr>
+          <td>08</td>
+          <td>Daily Challenges</td>
+          <td>Weekly generated reflection prompts</td>
+          <td>Submit responses, earn XP, view completed</td>
+        </tr>
+        <tr>
+          <td>09</td>
+          <td>Knowledge Map</td>
+          <td>Discover connections between concepts</td>
+          <td>View connections, explore relationships</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Visual Lab</td>
+          <td>Browse visual content library</td>
+          <td>Filter by module, full-screen view, explore</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Saved Cards</td>
+          <td>Personal collection of starred cards</td>
+          <td>Filter by module, go to lesson, unsave</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Settings</td>
+          <td>Profile, preferences, data management</td>
+          <td>Sync with Google, export/import data, audio toggle</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td>13</td>
+          <td>Desktop Navbar</td>
+          <td>Persistent navigation (>1024px)</td>
+          <td>Navigate to all sections, view XP, avatar menu</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td>14</td>
+          <td>Mobile Navbar</td>
+          <td>Bottom bar navigation (<768px)</td>
+          <td>Home, Learn, Saved, Settings</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td>15</td>
+          <td>Modals</td>
+          <td>Celebration & auth overlays</td>
+          <td>Level Up, Achievement, Sign In Gate</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td>16</td>
+          <td>Legend</td>
+          <td>Design system reference</td>
+          <td>Color meanings, component guide</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="footer">
+      <p><strong>Polymind UI Flow Documentation</strong> • 16 Screens • February 2026</p>
+      <p style="margin-top: 5px; font-size: 9pt;">Live: https://gyanmarg-963362833537.us-central1.run.app</p>
+    </div>
+  </div>
+
+  <!-- PAGE 2: DETAILED NAVIGATION PATHS -->
+  <div class="page">
+    <div class="header">
+      <h1>Detailed Navigation Paths</h1>
+      <p class="subtitle">Entry points and exit destinations for each screen</p>
+    </div>
+
+    <div style="font-size: 9pt;">
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">01. Landing Page</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Direct URL, Marketing campaigns, Search engines
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Sign up → Dashboard • Learn More → Science page • Explore domains
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">02. Dashboard</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> After sign up/login • Navbar: Home • App default route
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Module Hub (Learn) • Learning Pathway • Spaced Repetition • Challenges • All navbar links
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">03. Module Hub</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Dashboard • Navbar: Learn • Learning Pathway
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Module Page (click module) • Dashboard • Start recommended module
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">04. Module Page</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Module Hub • Learning Pathway • Dashboard module cards
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Lesson Viewer (click lesson) • Module Hub (back) • Continue current lesson
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">05. Lesson Viewer</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Module Page • Learning Pathway • Dashboard Continue • Previous lesson
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Next Lesson • Module Page (close) • Spaced Repetition (review) • Save card → Saved Cards
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">06. Learning Pathway</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Dashboard • Navbar: Learn • Module Hub
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Lesson Viewer • Module Page • Module Hub • Continue reading
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">07. Spaced Repetition</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Dashboard: Review Cards • After lesson completion • Navbar
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Dashboard • Continue session • Category selection
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">08. Daily Challenges</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Dashboard: Daily Challenge • Navbar: Challenges
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Dashboard • Submit response • View completed
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">09. Knowledge Map</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Dashboard: Explore Connections • Navbar
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Related lessons • Dashboard • Connection details
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">10. Visual Lab</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Dashboard: Visual of Day • Navbar: Visuals
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Full screen viewer • Dashboard • Filter by module
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">11. Saved Cards</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Navbar: Saved • Lesson Viewer: Star button
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Original lesson (Go to Lesson) • Dashboard • Unsave card
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item" style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #fafafa;">
+        <strong style="font-size: 10pt;">12. Settings</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Navbar: Settings • Avatar dropdown menu
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Dashboard • Sign out • Export/Import data
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #f0f0f0;">
+        <strong style="font-size: 10pt;">13. Desktop Navbar</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Always visible on desktop (>1024px)
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Home, Learn, Visuals, Challenges, Saved, Settings • Avatar menu • XP details
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #f0f0f0;">
+        <strong style="font-size: 10pt;">14. Mobile Navbar</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Always visible on mobile (<768px)
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Home (Dashboard) • Learn (Pathway) • Saved • Settings
+          </div>
+        </div>
+      </div>
+
+      <div style="border: 2px solid #000; padding: 12px; margin: 12px 0; background: #f0f0f0;">
+        <strong style="font-size: 10pt;">15. Modals</strong>
+        <div style="margin-top: 8px; padding-left: 10px;">
+          <div style="margin: 5px 0;">
+            <strong>Entry:</strong> Level Up: XP threshold crossed • Achievement: Criteria met • Sign In Gate: Protected routes
+          </div>
+          <div style="margin: 5px 0;">
+            <strong>Exit:</strong> Dismiss/Continue to underlying page • Sign in with Google • Guest mode
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <p><strong>Polymind UI Flow Documentation</strong> • Page 2 of 2</p>
+    </div>
+  </div>
+
+</body>
+</html>

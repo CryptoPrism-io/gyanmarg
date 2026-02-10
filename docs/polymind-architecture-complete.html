@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Polymind Architecture Documentation</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #000000;
+  background: #ffffff;
+  font-size: 11pt;
+}
+
+.page {
+  max-width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 20mm;
+  background: #ffffff;
+  page-break-after: always;
+}
+
+.page:last-child {
+  page-break-after: auto;
+}
+
+.header {
+  border-bottom: 3px solid #000;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 20pt;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 11pt;
+  color: #333;
+}
+
+.page-number {
+  float: right;
+  font-size: 9pt;
+  color: #666;
+}
+
+.section {
+  margin: 18px 0;
+}
+
+.section-title {
+  font-size: 14pt;
+  font-weight: bold;
+  margin: 18px 0 10px 0;
+  border-left: 4px solid #000;
+  padding-left: 10px;
+}
+
+.subsection-title {
+  font-size: 12pt;
+  font-weight: bold;
+  margin: 12px 0 6px 0;
+}
+
+.card {
+  border: 2px solid #000;
+  padding: 12px;
+  margin: 12px 0;
+  page-break-inside: avoid;
+}
+
+.card-header {
+  font-size: 11pt;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+ul, ol {
+  margin-left: 18px;
+  margin-top: 6px;
+}
+
+li {
+  margin: 4px 0;
+  font-size: 10pt;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  page-break-inside: avoid;
+  font-size: 10pt;
+}
+
+th {
+  background: #f0f0f0;
+  font-weight: bold;
+  padding: 6px;
+  text-align: left;
+  border: 1px solid #000;
+}
+
+td {
+  padding: 5px 6px;
+  border: 1px solid #000;
+}
+
+.code {
+  background: #f5f5f5;
+  border-left: 3px solid #000;
+  padding: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 8pt;
+  margin: 10px 0;
+  page-break-inside: avoid;
+  white-space: pre-wrap;
+}
+
+.highlight {
+  background: #f0f0f0;
+  border: 1px solid #000;
+  padding: 10px;
+  margin: 12px 0;
+  page-break-inside: avoid;
+}
+
+.highlight-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  font-size: 8pt;
+  font-weight: bold;
+  margin: 0 3px;
+}
+
+.flow-container {
+  text-align: center;
+  margin: 15px 0;
+  page-break-inside: avoid;
+}
+
+.flow-box {
+  display: inline-block;
+  border: 2px solid #000;
+  padding: 8px 12px;
+  margin: 4px;
+  min-width: 120px;
+  vertical-align: middle;
+  font-size: 9pt;
+}
+
+.flow-arrow {
+  display: inline-block;
+  margin: 0 4px;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.footer {
+  margin-top: 25px;
+  padding-top: 12px;
+  border-top: 2px solid #000;
+  text-align: center;
+  font-size: 9pt;
+}
+
+@media print {
+  .page {
+    margin: 0;
+    padding: 15mm;
+    page-break-after: always;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  @page {
+    margin: 0;
+    size: A4;
+  }
+
+  body {
+    margin: 0;
+  }
+}
+</style>
+
+</head>
+<body>
+  <!-- PAGE 1: COVER -->
+  <div class="page">
+    <div class="header" style="text-align: center; border: none; margin-bottom: 35px;">
+      <h1 style="font-size: 28pt; margin-bottom: 12px;">POLYMIND</h1>
+      <p style="font-size: 14pt; font-weight: bold;">Gamified Learning Platform</p>
+      <p style="font-size: 11pt; margin-top: 8px;">Technical Architecture Documentation v1.0</p>
+      <p style="font-size: 10pt; color: #666; margin-top: 6px;">February 2026</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Product Overview</h2>
+      <p>Gamified learning platform transforming 45+ ebooks into interactive experiences using spaced repetition, active recall, and interleaving techniques.</p>
+
+      <table style="margin-top: 12px;">
+        <tr>
+          <th style="width: 28%;">Component</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><strong>Content System</strong></td>
+          <td>76 modules, 2,400+ lessons across 14 knowledge domains</td>
+        </tr>
+        <tr>
+          <td><strong>Learning Science</strong></td>
+          <td>SM-2 spaced repetition algorithm, active recall flashcards</td>
+        </tr>
+        <tr>
+          <td><strong>Gamification</strong></td>
+          <td>XP system (500 XP/level), achievements, streaks, challenges</td>
+        </tr>
+        <tr>
+          <td><strong>Data Persistence</strong></td>
+          <td>5 Zustand stores with localStorage, Firebase sync stub</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Tech Stack</h2>
+
+      <table>
+        <tr>
+          <th style="width: 25%;">Layer</th>
+          <th style="width: 30%;">Technology</th>
+          <th>Purpose</th>
+        </tr>
+        <tr>
+          <td><strong>Frontend</strong></td>
+          <td>React 19</td>
+          <td>UI framework with concurrent features</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>TypeScript (strict)</td>
+          <td>Type safety, developer experience</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Vite 7.2</td>
+          <td>Build tool, dev server, HMR</td>
+        </tr>
+        <tr>
+          <td><strong>Styling</strong></td>
+          <td>TailwindCSS 3.4</td>
+          <td>Utility-first CSS framework</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Framer Motion</td>
+          <td>Animation library for celebrations</td>
+        </tr>
+        <tr>
+          <td><strong>State</strong></td>
+          <td>Zustand 4.5</td>
+          <td>Lightweight state management (5 stores)</td>
+        </tr>
+        <tr>
+          <td><strong>Routing</strong></td>
+          <td>React Router DOM 7.1</td>
+          <td>Client-side routing, protected routes</td>
+        </tr>
+        <tr>
+          <td><strong>Icons</strong></td>
+          <td>Lucide React</td>
+          <td>Icon library (tree-shakeable)</td>
+        </tr>
+        <tr>
+          <td><strong>Sync (Stub)</strong></td>
+          <td>Firebase</td>
+          <td>Future cloud sync functionality</td>
+        </tr>
+        <tr>
+          <td><strong>Deployment</strong></td>
+          <td>GCP Cloud Run</td>
+          <td>Containerized deployment, auto-scaling</td>
+        </tr>
+        <tr>
+          <td><strong>CI/CD</strong></td>
+          <td>GitHub Actions</td>
+          <td>Build, deploy on push to master</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="footer">
+      <p><strong>Live URL:</strong> https://gyanmarg-963362833537.us-central1.run.app</p>
+      <p>© 2026 Polymind • All Rights Reserved</p>
+    </div>
+  </div>
+
+  <!-- PAGE 2: DOCUMENTATION INDEX -->
+  <div class="page">
+    <div class="header">
+      <h1>Documentation Index</h1>
+      <div class="page-number">Page 2</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Architecture Sections</h2>
+
+      <table>
+        <tr>
+          <th style="width: 40%;">Section</th>
+          <th style="width: 15%;">Page</th>
+          <th>Content</th>
+        </tr>
+        <tr>
+          <td><strong>Architecture Overview</strong></td>
+          <td>3</td>
+          <td>High-level system design, component diagram</td>
+        </tr>
+        <tr>
+          <td><strong>Directory Structure</strong></td>
+          <td>4</td>
+          <td>Atomic design, path aliases, file organization</td>
+        </tr>
+        <tr>
+          <td><strong>State Management</strong></td>
+          <td>5</td>
+          <td>5 Zustand stores, persistence strategy</td>
+        </tr>
+        <tr>
+          <td><strong>Content System</strong></td>
+          <td>6-7</td>
+          <td>Module structure, pathway system, image management</td>
+        </tr>
+        <tr>
+          <td><strong>Gamification System</strong></td>
+          <td>8</td>
+          <td>XP, levels, achievements, streaks</td>
+        </tr>
+        <tr>
+          <td><strong>Spaced Repetition</strong></td>
+          <td>9</td>
+          <td>SM-2 algorithm implementation</td>
+        </tr>
+        <tr>
+          <td><strong>Routing System</strong></td>
+          <td>10</td>
+          <td>Public/protected routes, navigation</td>
+        </tr>
+        <tr>
+          <td><strong>Data Models</strong></td>
+          <td>11-12</td>
+          <td>TypeScript interfaces, type definitions</td>
+        </tr>
+        <tr>
+          <td><strong>Component Hierarchy</strong></td>
+          <td>13</td>
+          <td>Atomic design implementation</td>
+        </tr>
+        <tr>
+          <td><strong>Adding New Module</strong></td>
+          <td>14</td>
+          <td>Step-by-step checklist for content creation</td>
+        </tr>
+        <tr>
+          <td><strong>Deployment</strong></td>
+          <td>15</td>
+          <td>Build process, CI/CD pipeline, GCP setup</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Key Metrics</h2>
+
+      <div class="flow-container">
+        <div class="flow-box" style="background: #f0f0f0;">
+          <strong>76</strong><br>Total Modules
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="background: #f0f0f0;">
+          <strong>37</strong><br>Available Now
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="background: #f0f0f0;">
+          <strong>2,400+</strong><br>Total Lessons
+        </div>
+      </div>
+
+      <div class="flow-container">
+        <div class="flow-box" style="background: #f0f0f0;">
+          <strong>14</strong><br>Categories
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="background: #f0f0f0;">
+          <strong>5</strong><br>State Stores
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="background: #f0f0f0;">
+          <strong>16</strong><br>UI Screens
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 3: ARCHITECTURE OVERVIEW -->
+  <div class="page">
+    <div class="header">
+      <h1>Architecture Overview</h1>
+      <div class="page-number">Page 3</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">High-Level Architecture</h2>
+
+      <div class="highlight">
+        <div class="highlight-title">🏗️ System Design Principles</div>
+        <ul>
+          <li><strong>Client-Side First:</strong> Pure React SPA, no backend required (all data in browser)</li>
+          <li><strong>Modular Content:</strong> 76 independent modules, lazy-loaded pathways</li>
+          <li><strong>Progressive Persistence:</strong> localStorage → IndexedDB → Firebase (future)</li>
+          <li><strong>Atomic Design:</strong> Component hierarchy from atoms → organisms</li>
+          <li><strong>Type-Safe:</strong> Strict TypeScript, no implicit any</li>
+        </ul>
+      </div>
+
+      <div class="flow-container">
+        <div class="flow-box">
+          <strong>User</strong><br>Browser
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box">
+          <strong>Vite</strong><br>Dev/Build
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box">
+          <strong>React App</strong><br>5 Stores
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box">
+          <strong>localStorage</strong><br>Persist
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Component Layers</h2>
+
+      <table>
+        <tr>
+          <th>Layer</th>
+          <th>Components</th>
+          <th>Responsibility</th>
+        </tr>
+        <tr>
+          <td><strong>Atoms</strong></td>
+          <td>Button, Badge, ProgressBar, Card</td>
+          <td>Basic UI primitives</td>
+        </tr>
+        <tr>
+          <td><strong>Molecules</strong></td>
+          <td>ModuleCard, LessonCard, AchievementCard</td>
+          <td>Composite UI elements</td>
+        </tr>
+        <tr>
+          <td><strong>Organisms</strong></td>
+          <td>Navbar, ModuleGrid, LessonViewer</td>
+          <td>Complex feature components</td>
+        </tr>
+        <tr>
+          <td><strong>Templates</strong></td>
+          <td>PageLayout</td>
+          <td>Page-level layout structure</td>
+        </tr>
+        <tr>
+          <td><strong>Features</strong></td>
+          <td>Dashboard, ModuleHub, LessonViewer, SpacedRepetition</td>
+          <td>Full features with state</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Data Flow</h2>
+
+      <div class="code">User Action (click lesson)
+  ↓
+Component Event Handler
+  ↓
+Zustand Store Action (progressStore.completeLesson)
+  ↓
+State Update (immutable)
+  ↓
+localStorage Persistence (via middleware)
+  ↓
+React Re-render (subscribers notified)
+  ↓
+UI Update (new state reflected)</div>
+    </div>
+  </div>
+
+  <!-- PAGE 4: DIRECTORY STRUCTURE -->
+  <div class="page">
+    <div class="header">
+      <h1>Directory Structure</h1>
+      <div class="page-number">Page 4</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Project Organization</h2>
+
+      <div class="code">app/
+├── src/
+│   ├── components/
+│   │   ├── atoms/           # Basic UI elements
+│   │   ├── molecules/       # Composite components
+│   │   ├── organisms/       # Complex features
+│   │   └── templates/       # Page layouts
+│   ├── features/            # Main app features
+│   │   ├── dashboard/
+│   │   ├── module-hub/
+│   │   ├── lesson-viewer/
+│   │   ├── spaced-repetition/
+│   │   └── ...
+│   ├── store/               # 5 Zustand stores
+│   │   ├── userStore.ts
+│   │   ├── progressStore.ts
+│   │   ├── spacedRepetitionStore.ts
+│   │   ├── gameStore.ts
+│   │   └── firebaseSync.ts
+│   ├── data/
+│   │   ├── modules.ts       # 76 module configs
+│   │   ├── achievements.ts  # Achievement definitions
+│   │   └── pathways/        # Lesson content
+│   │       ├── index.ts
+│   │       ├── {module}-lessons.ts
+│   │       └── {module}.ts
+│   ├── lib/
+│   │   ├── moduleImages.ts  # Image mappings
+│   │   └── utils.ts
+│   ├── types/
+│   │   └── index.ts         # TypeScript types
+│   ├── hooks/               # Custom React hooks
+│   ├── assets/
+│   │   └── ai-images/
+│   │       ├── modules/     # Module images
+│   │       └── levels/      # Level images
+│   ├── styles/
+│   │   └── index.css        # Tailwind + globals
+│   ├── App.tsx              # Routing setup
+│   └── main.tsx             # React entry point
+├── public/
+├── vite.config.ts
+├── tsconfig.json
+└── package.json</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Path Aliases</h2>
+
+      <table>
+        <tr>
+          <th>Alias</th>
+          <th>Resolves To</th>
+          <th>Usage</th>
+        </tr>
+        <tr>
+          <td><code>@/</code></td>
+          <td><code>src/</code></td>
+          <td>Root imports</td>
+        </tr>
+        <tr>
+          <td><code>@/components</code></td>
+          <td><code>src/components</code></td>
+          <td>Component imports</td>
+        </tr>
+        <tr>
+          <td><code>@/features</code></td>
+          <td><code>src/features</code></td>
+          <td>Feature imports</td>
+        </tr>
+        <tr>
+          <td><code>@/store</code></td>
+          <td><code>src/store</code></td>
+          <td>State imports</td>
+        </tr>
+        <tr>
+          <td><code>@/data</code></td>
+          <td><code>src/data</code></td>
+          <td>Content imports</td>
+        </tr>
+        <tr>
+          <td><code>@/types</code></td>
+          <td><code>src/types</code></td>
+          <td>Type imports</td>
+        </tr>
+      </table>
+
+      <div class="highlight">
+        <div class="highlight-title">📝 Example Import</div>
+        <div class="code">// Before path aliases
+import { ModuleCard } from '../../../components/molecules/ModuleCard';
+
+// With path aliases
+import { ModuleCard } from '@/components/molecules/ModuleCard';</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 5: STATE MANAGEMENT -->
+  <div class="page">
+    <div class="header">
+      <h1>State Management</h1>
+      <div class="page-number">Page 5</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Zustand Store Architecture</h2>
+
+      <p>Polymind uses 5 independent Zustand stores with localStorage persistence via middleware.</p>
+
+      <table>
+        <tr>
+          <th style="width: 25%;">Store</th>
+          <th style="width: 30%;">Key</th>
+          <th>Purpose</th>
+        </tr>
+        <tr>
+          <td><strong>userStore</strong></td>
+          <td><code>gyanmarg-user</code></td>
+          <td>Profile, onboarding status, settings, favoriteModules, pendingAchievement</td>
+        </tr>
+        <tr>
+          <td><strong>progressStore</strong></td>
+          <td><code>gyanmarg-progress</code></td>
+          <td>XP, level, completedLessons, achievements, streaks, bookmarks, starred cards, challenges, pendingLevelUp</td>
+        </tr>
+        <tr>
+          <td><strong>spacedRepetitionStore</strong></td>
+          <td><code>gyanmarg-spaced-repetition</code></td>
+          <td>SM-2 algorithm data: unlockedCards, reviewHistory, easeFactor, intervals</td>
+        </tr>
+        <tr>
+          <td><strong>gameStore</strong></td>
+          <td><code>gyanmarg-games</code></td>
+          <td>Post-lesson mini-game scores, totalGamesPlayed, totalGameXP</td>
+        </tr>
+        <tr>
+          <td><strong>firebaseSync</strong></td>
+          <td>(no storage)</td>
+          <td>Sync trigger stub for future Firebase integration</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Store Patterns</h2>
+
+      <div class="card">
+        <div class="card-header">userStore.ts</div>
+        <div class="code">interface UserState {
+  profile: UserProfile | null;
+  hasCompletedOnboarding: boolean;
+  settings: UserSettings;
+  favoriteModules: string[];
+  pendingAchievement: string | null;
+}
+
+interface UserActions {
+  setProfile: (profile: UserProfile) => void;
+  completeOnboarding: () => void;
+  updateSettings: (settings: Partial&lt;UserSettings&gt;) => void;
+  toggleFavoriteModule: (moduleId: string) => void;
+  setPendingAchievement: (id: string | null) => void;
+}</div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">progressStore.ts</div>
+        <div class="code">interface ProgressState {
+  xp: number;
+  level: number;
+  completedLessons: Set&lt;string&gt;;
+  unlockedAchievements: string[];
+  currentStreak: number;
+  lastActivityDate: string | null;
+  streakFreezes: number;
+  bookmarkedLessons: string[];
+  starredCards: string[];
+  weeklyChallenge: WeeklyChallenge | null;
+  pendingLevelUp: boolean;
+}
+
+interface ProgressActions {
+  addXP: (amount: number) => void;
+  completeLesson: (lessonId: string, xpReward: number) => void;
+  unlockAchievement: (achievementId: string) => void;
+  updateStreak: () => void;
+  useStreakFreeze: () => void;
+  setPendingLevelUp: (pending: boolean) => void;
+}</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Persistence Strategy</h2>
+
+      <div class="highlight">
+        <div class="highlight-title">🔄 Save Flow</div>
+        <ol style="font-size: 10pt;">
+          <li>User action triggers store update</li>
+          <li>Zustand middleware intercepts state change</li>
+          <li>State serialized to JSON</li>
+          <li>Saved to localStorage with key prefix</li>
+          <li>Firebase sync stub called (no-op currently)</li>
+        </ol>
+      </div>
+
+      <div class="highlight">
+        <div class="highlight-title">📥 Load Flow</div>
+        <ol style="font-size: 10pt;">
+          <li>App initializes</li>
+          <li>Each store checks localStorage for saved state</li>
+          <li>If found, deserialize and hydrate store</li>
+          <li>If not found, use default initial state</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 6: CONTENT SYSTEM -->
+  <div class="page">
+    <div class="header">
+      <h1>Content System</h1>
+      <div class="page-number">Page 6</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Module Structure</h2>
+
+      <table>
+        <tr>
+          <th style="width: 25%;">Component</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><strong>Module</strong></td>
+          <td>Top-level content container (76 total, 37 available)</td>
+        </tr>
+        <tr>
+          <td><strong>Level</strong></td>
+          <td>Progress tier within module (typically 8-10 per module)</td>
+        </tr>
+        <tr>
+          <td><strong>Lesson</strong></td>
+          <td>Individual learning unit (~8 per level)</td>
+        </tr>
+        <tr>
+          <td><strong>Card</strong></td>
+          <td>Flashcard for spaced repetition (extracted from lessons)</td>
+        </tr>
+      </table>
+
+      <div class="flow-container">
+        <div class="flow-box">
+          <strong>Module</strong><br>Emotional Intelligence
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <strong>Level 1</strong><br>Self-Awareness
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <strong>Lesson</strong><br>Understanding Emotions
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <strong>Card</strong><br>What is EQ?
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Module Configuration</h2>
+
+      <div class="code">interface ModuleConfig {
+  id: string;                    // 'emotional-intelligence'
+  number: number;                // Display order
+  title: string;                 // 'Emotional Intelligence'
+  subtitle: string;              // 'Self-Awareness'
+  description: string;           // Marketing copy
+  icon: string;                  // Lucide icon name
+  color: string;                 // Tailwind color
+  books: string[];               // Source books
+  skills: string[];              // What you'll learn
+  features: string[];            // Interactive elements
+  route: string;                 // '/modules/emotional-intelligence'
+  isAvailable: boolean;          // Has pathway content?
+  pathway?: PathwayLevel[];      // Lesson structure
+}</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Pathway Structure</h2>
+
+      <div class="code">interface PathwayLevel {
+  id: string;                    // 'eq-level1'
+  title: string;                 // 'Self-Awareness'
+  description: string;
+  icon: string;                  // Emoji
+  color: string;                 // Tailwind color
+  lessons: PathwayLesson[];      // 8 lessons
+  unlockRequirement: number;     // XP needed (0, 500, 1000...)
+}
+
+interface PathwayLesson {
+  id: string;                    // 'eq-001'
+  title: string;
+  type: LessonType;              // intro | concept | exercise | quiz | reflection | challenge
+  duration: number;              // minutes
+  xpReward: number;
+  content: {
+    overview: string;
+    mainContent: string;         // Markdown
+    keyTakeaway: string;
+    actionItem?: string;
+    quiz?: QuizQuestion;         // For quiz type only
+  };
+}</div>
+    </div>
+  </div>
+
+  <!-- PAGE 7: CONTENT SYSTEM (CONTINUED) -->
+  <div class="page">
+    <div class="header">
+      <h1>Content System (Continued)</h1>
+      <div class="page-number">Page 7</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">File Pattern</h2>
+
+      <p>Each module requires <strong>two files</strong> in <code>src/data/pathways/</code>:</p>
+
+      <div class="card">
+        <div class="card-header">1. {module-id}-lessons.ts</div>
+        <p style="margin-top: 6px;">Exports named arrays of lessons per level:</p>
+        <div class="code">// emotional-intelligence-lessons.ts
+export const eqLessonsLevel1: PathwayLesson[] = [ ... ];
+export const eqLessonsLevel2: PathwayLesson[] = [ ... ];
+// ... up to level 10</div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">2. {module-id}.ts</div>
+        <p style="margin-top: 6px;">Imports lessons, exports PathwayLevel array:</p>
+        <div class="code">// emotional-intelligence.ts
+import { eqLessonsLevel1, eqLessonsLevel2, ... } from './emotional-intelligence-lessons';
+
+const emotionalIntelligencePathway: PathwayLevel[] = [
+  {
+    id: 'eq-level1',
+    title: 'Self-Awareness',
+    lessons: eqLessonsLevel1,
+    unlockRequirement: 0,
+    ...
+  },
+  ...
+];
+
+export default emotionalIntelligencePathway;</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Naming Conventions</h2>
+
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Pattern</th>
+          <th>Example</th>
+        </tr>
+        <tr>
+          <td>Module ID</td>
+          <td>kebab-case</td>
+          <td>emotional-intelligence</td>
+        </tr>
+        <tr>
+          <td>Lesson Prefix</td>
+          <td>2-4 char abbrev</td>
+          <td>eq (Emotional Intelligence)</td>
+        </tr>
+        <tr>
+          <td>Level ID</td>
+          <td>{prefix}-level{n}</td>
+          <td>eq-level1</td>
+        </tr>
+        <tr>
+          <td>Lesson ID</td>
+          <td>{prefix}-{nnn}</td>
+          <td>eq-001, eq-042</td>
+        </tr>
+        <tr>
+          <td>Image (Module)</td>
+          <td>module-{id}.webp</td>
+          <td>module-emotional-intelligence.webp</td>
+        </tr>
+        <tr>
+          <td>Image (Level)</td>
+          <td>level-{prefix}-{n}.webp</td>
+          <td>level-eq-1.webp</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Image Management</h2>
+
+      <p><code>lib/moduleImages.ts</code> centralizes all image imports:</p>
+
+      <div class="code">// Module images
+export const moduleImages: Record&lt;string, string&gt; = {
+  'emotional-intelligence': emotionalIntelligenceImg,
+  'design-thinking': designThinkingImg,
+  ...
+};
+
+// Level images
+export const levelImages: Record&lt;string, string&gt; = {
+  'eq-level1': eqLevel1,
+  'eq-level2': eqLevel2,
+  ...
+};
+
+// Fallback logic
+export function getModuleImage(moduleId: string): string {
+  return moduleImages[moduleId] || personalDevelopmentImg;
+}
+
+export function getLevelImage(levelId: string, moduleId: string): string {
+  return levelImages[levelId] || getModuleImage(moduleId);
+}</div>
+    </div>
+  </div>
+
+  <!-- PAGE 8: GAMIFICATION SYSTEM -->
+  <div class="page">
+    <div class="header">
+      <h1>Gamification System</h1>
+      <div class="page-number">Page 8</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">XP & Leveling</h2>
+
+      <table>
+        <tr>
+          <th>Level</th>
+          <th>XP Required</th>
+          <th>Total XP</th>
+          <th>Levels Unlocked</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>Level 1 of all modules</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>500</td>
+          <td>500</td>
+          <td>Level 2 unlocks</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>500</td>
+          <td>1,000</td>
+          <td>Level 3 unlocks</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>500</td>
+          <td>1,500</td>
+          <td>Level 4 unlocks</td>
+        </tr>
+        <tr>
+          <td>...</td>
+          <td>+500 each</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </table>
+
+      <div class="highlight">
+        <div class="highlight-title">📈 XP Sources</div>
+        <ul>
+          <li><strong>Lessons:</strong> 50-150 XP (varies by type and duration)</li>
+          <li><strong>Achievements:</strong> 100-500 XP bonus</li>
+          <li><strong>Daily Challenges:</strong> 50-200 XP</li>
+          <li><strong>Streaks:</strong> Bonus XP multipliers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Achievement System</h2>
+
+      <p>Defined in <code>data/achievements.ts</code> with triggers across the app.</p>
+
+      <div class="code">interface Achievement {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  category: AchievementCategory;
+  xpReward: number;
+  trigger: AchievementTrigger;
+}</div>
+
+      <table>
+        <tr>
+          <th>Category</th>
+          <th>Examples</th>
+          <th>XP Reward</th>
+        </tr>
+        <tr>
+          <td><strong>Milestones</strong></td>
+          <td>First Lesson, 10 Lessons, 100 Lessons</td>
+          <td>100-500</td>
+        </tr>
+        <tr>
+          <td><strong>Mastery</strong></td>
+          <td>Complete Module, Master 5 Modules</td>
+          <td>200-500</td>
+        </tr>
+        <tr>
+          <td><strong>Consistency</strong></td>
+          <td>7-Day Streak, 30-Day Streak</td>
+          <td>150-300</td>
+        </tr>
+        <tr>
+          <td><strong>Exploration</strong></td>
+          <td>Try 5 Categories, Favorite 10 Modules</td>
+          <td>100-200</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Streak System</h2>
+
+      <div class="code">interface StreakState {
+  currentStreak: number;
+  longestStreak: number;
+  lastActivityDate: string | null;
+  streakFreezes: number;        // 1 per week
+  lastFreezeReset: string;
+}
+
+// Streak logic
+function updateStreak() {
+  const today = new Date();
+  const last = new Date(lastActivityDate);
+  const daysDiff = differenceInDays(today, last);
+
+  if (daysDiff === 0) return;   // Same day
+  if (daysDiff === 1) {
+    currentStreak++;             // Consecutive
+  } else if (daysDiff === 2 && streakFreezes > 0) {
+    useStreakFreeze();           // Saved!
+  } else {
+    currentStreak = 1;           // Broken
+  }
+}</div>
+    </div>
+  </div>
+
+  <!-- PAGE 9: SPACED REPETITION -->
+  <div class="page">
+    <div class="header">
+      <h1>Spaced Repetition System</h1>
+      <div class="page-number">Page 9</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">SM-2 Algorithm Implementation</h2>
+
+      <p>Polymind uses the <strong>SM-2 (SuperMemo 2)</strong> spaced repetition algorithm to optimize review timing.</p>
+
+      <div class="code">interface CardState {
+  cardId: string;
+  easeFactor: number;          // 1.3 to 2.5 (default 2.5)
+  interval: number;            // Days until next review
+  repetitions: number;         // Times reviewed correctly
+  nextReview: Date;
+  lastReviewed: Date;
+}
+
+function calculateNextReview(
+  quality: number,             // 0-5 (0=complete blackout, 5=perfect)
+  card: CardState
+): CardState {
+  let { easeFactor, interval, repetitions } = card;
+
+  // Update ease factor
+  easeFactor = Math.max(1.3, easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
+
+  // Update interval
+  if (quality < 3) {
+    // Failed: reset
+    repetitions = 0;
+    interval = 1;
+  } else {
+    // Passed: increase interval
+    repetitions++;
+    if (repetitions === 1) {
+      interval = 1;
+    } else if (repetitions === 2) {
+      interval = 6;
+    } else {
+      interval = Math.round(interval * easeFactor);
+    }
+  }
+
+  return {
+    ...card,
+    easeFactor,
+    interval,
+    repetitions,
+    nextReview: addDays(new Date(), interval),
+    lastReviewed: new Date()
+  };
+}</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Review Flow</h2>
+
+      <div class="flow-container">
+        <div class="flow-box">
+          <strong>1. Fetch</strong><br>Due Cards
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <strong>2. Show</strong><br>Question
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <strong>3. User</strong><br>Answers
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <strong>4. Rate</strong><br>0-5
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <strong>5. Update</strong><br>Schedule
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          <th>Quality</th>
+          <th>Label</th>
+          <th>Meaning</th>
+          <th>Effect</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>Complete Blackout</td>
+          <td>No memory at all</td>
+          <td>Reset to 1 day</td>
+        </tr>
+        <tr>
+          <td>1-2</td>
+          <td>Incorrect</td>
+          <td>Wrong answer</td>
+          <td>Reset to 1 day</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Hard</td>
+          <td>Correct with difficulty</td>
+          <td>Slight increase</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Good</td>
+          <td>Correct with hesitation</td>
+          <td>Normal increase</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Easy</td>
+          <td>Perfect recall</td>
+          <td>Large increase</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Card Unlocking</h2>
+
+      <div class="highlight">
+        <div class="highlight-title">🔓 When Cards Unlock</div>
+        <ul>
+          <li>User completes a lesson with quiz content</li>
+          <li>Quiz questions converted to flashcards</li>
+          <li>Added to <code>unlockedCards</code> in spacedRepetitionStore</li>
+          <li>Initial review scheduled for tomorrow</li>
+          <li>Subsequent reviews follow SM-2 algorithm</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 10: ROUTING SYSTEM -->
+  <div class="page">
+    <div class="header">
+      <h1>Routing System</h1>
+      <div class="page-number">Page 10</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Route Configuration</h2>
+
+      <p>Configured in <code>App.tsx</code> using React Router DOM v7.</p>
+
+      <table>
+        <tr>
+          <th style="width: 35%;">Route</th>
+          <th style="width: 20%;">Access</th>
+          <th>Component/Feature</th>
+        </tr>
+        <tr>
+          <td><code>/</code></td>
+          <td>Public</td>
+          <td>Landing Page (marketing)</td>
+        </tr>
+        <tr>
+          <td><code>/science</code></td>
+          <td>Public</td>
+          <td>Learning science explanation</td>
+        </tr>
+        <tr>
+          <td><code>/books</code></td>
+          <td>Public</td>
+          <td>Source books showcase</td>
+        </tr>
+        <tr>
+          <td><code>/blog</code></td>
+          <td>Public</td>
+          <td>Blog articles list</td>
+        </tr>
+        <tr>
+          <td><code>/blog/:articleId</code></td>
+          <td>Public</td>
+          <td>Individual article</td>
+        </tr>
+        <tr>
+          <td><code>/how-to</code></td>
+          <td>Public</td>
+          <td>Usage guide</td>
+        </tr>
+        <tr>
+          <td><code>/brand-kit</code></td>
+          <td>Public</td>
+          <td>Brand assets</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/dashboard</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Dashboard (home base)</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/modules</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Module Hub</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/modules/:moduleId</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Module Page (level list)</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/modules/:moduleId/lesson/:lessonId</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Lesson Viewer</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/pathway</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Learning Pathway (Netflix-style)</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/review</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Spaced Repetition</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/challenges</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Daily Challenges</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/connections</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Knowledge Map</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/lab</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Visual Lab</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/saved</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Saved Cards</td>
+        </tr>
+        <tr style="background: #f0f0f0;">
+          <td><code>/settings</code></td>
+          <td><strong>Protected</strong></td>
+          <td>Settings</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Protected Route Logic</h2>
+
+      <div class="code">function ProtectedRoute({ children }) {
+  const hasCompletedOnboarding = useUserStore(
+    state => state.hasCompletedOnboarding
+  );
+
+  if (!hasCompletedOnboarding) {
+    return &lt;Navigate to="/" replace /&gt;;
+  }
+
+  return children;
+}
+
+// Usage in App.tsx
+&lt;Route
+  path="/dashboard"
+  element={&lt;ProtectedRoute&gt;&lt;Dashboard /&gt;&lt;/ProtectedRoute&gt;}
+/&gt;</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Navigation Components</h2>
+
+      <table>
+        <tr>
+          <th>Component</th>
+          <th>Breakpoint</th>
+          <th>Links</th>
+        </tr>
+        <tr>
+          <td><strong>DesktopNavbar</strong></td>
+          <td>&gt; 1024px</td>
+          <td>Home, Learn, Visuals, Challenges, Saved, Settings, Avatar, XP display</td>
+        </tr>
+        <tr>
+          <td><strong>MobileNavbar</strong></td>
+          <td>&lt; 768px</td>
+          <td>Home, Learn, Saved, Settings (bottom bar)</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- PAGE 11: DATA MODELS -->
+  <div class="page">
+    <div class="header">
+      <h1>Data Models</h1>
+      <div class="page-number">Page 11</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Core Type Definitions</h2>
+
+      <p>All types defined in <code>src/types/index.ts</code>.</p>
+
+      <div class="code">// Module & Content Types
+export interface ModuleConfig {
+  id: string;
+  number: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: string;
+  color: string;
+  books: string[];
+  skills: string[];
+  features: string[];
+  route: string;
+  isAvailable: boolean;
+  pathway?: PathwayLevel[];
+}
+
+export interface PathwayLevel {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+  lessons: PathwayLesson[];
+  unlockRequirement: number;
+}
+
+export type LessonType =
+  | 'intro'
+  | 'concept'
+  | 'exercise'
+  | 'quiz'
+  | 'reflection'
+  | 'challenge';
+
+export interface PathwayLesson {
+  id: string;
+  title: string;
+  type: LessonType;
+  duration: number;
+  xpReward: number;
+  content: {
+    overview: string;
+    mainContent: string;
+    keyTakeaway: string;
+    actionItem?: string;
+    quiz?: QuizQuestion;
+  };
+}
+
+export interface QuizQuestion {
+  question: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+}</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">User & Progress Types</h2>
+
+      <div class="code">export interface UserProfile {
+  id: string;
+  name: string;
+  email?: string;
+  avatar?: string;
+  createdAt: Date;
+}
+
+export interface UserSettings {
+  theme: 'light' | 'dark';
+  soundEnabled: boolean;
+  notificationsEnabled: boolean;
+  dailyGoalMinutes: number;
+}
+
+export interface Achievement {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  category: AchievementCategory;
+  xpReward: number;
+  trigger: AchievementTrigger;
+}
+
+export type AchievementCategory =
+  | 'milestone'
+  | 'mastery'
+  | 'consistency'
+  | 'exploration';
+
+export interface WeeklyChallenge {
+  id: string;
+  week: string;
+  challenges: Challenge[];
+  completed: string[];
+}</div>
+    </div>
+  </div>
+
+  <!-- PAGE 12: DATA MODELS (CONTINUED) -->
+  <div class="page">
+    <div class="header">
+      <h1>Data Models (Continued)</h1>
+      <div class="page-number">Page 12</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Spaced Repetition Types</h2>
+
+      <div class="code">export interface FlashCard {
+  id: string;
+  lessonId: string;
+  moduleId: string;
+  question: string;
+  answer: string;
+  category: string;
+  createdAt: Date;
+}
+
+export interface CardReviewState {
+  cardId: string;
+  easeFactor: number;
+  interval: number;
+  repetitions: number;
+  nextReview: Date;
+  lastReviewed: Date;
+}
+
+export interface ReviewHistory {
+  cardId: string;
+  timestamp: Date;
+  quality: number;              // 0-5
+  timeSpent: number;            // seconds
+  wasCorrect: boolean;
+}</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Gamification Types</h2>
+
+      <div class="code">export interface Challenge {
+  id: string;
+  title: string;
+  description: string;
+  type: 'reflection' | 'practice' | 'creation';
+  difficulty: 'easy' | 'medium' | 'hard';
+  xpReward: number;
+  estimatedMinutes: number;
+}
+
+export interface MiniGame {
+  id: string;
+  name: string;
+  description: string;
+  type: 'matching' | 'sorting' | 'sequencing';
+}
+
+export interface GameScore {
+  gameId: string;
+  lessonId: string;
+  score: number;
+  maxScore: number;
+  playedAt: Date;
+  xpEarned: number;
+}</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">UI Component Types</h2>
+
+      <div class="code">export interface Notification {
+  id: string;
+  type: 'success' | 'error' | 'info' | 'warning';
+  title: string;
+  message: string;
+  duration?: number;
+}
+
+export interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title?: string;
+  children: React.ReactNode;
+}
+
+export interface CardProps {
+  title: string;
+  description?: string;
+  image?: string;
+  badge?: string;
+  onClick?: () => void;
+  isLocked?: boolean;
+  progress?: number;
+}</div>
+    </div>
+  </div>
+
+  <!-- PAGE 13: COMPONENT HIERARCHY -->
+  <div class="page">
+    <div class="header">
+      <h1>Component Hierarchy</h1>
+      <div class="page-number">Page 13</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Atomic Design Implementation</h2>
+
+      <div class="card">
+        <div class="card-header">🔹 Atoms (Basic Elements)</div>
+        <ul>
+          <li><code>Button.tsx</code> - Primary, secondary, danger variants</li>
+          <li><code>Badge.tsx</code> - Colored labels (XP, level, type)</li>
+          <li><code>ProgressBar.tsx</code> - Linear progress indicator</li>
+          <li><code>Card.tsx</code> - Basic card container</li>
+          <li><code>Icon.tsx</code> - Wrapper for Lucide icons</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">🔸 Molecules (Composite UI)</div>
+        <ul>
+          <li><code>ModuleCard.tsx</code> - Module display with progress</li>
+          <li><code>LessonCard.tsx</code> - Lesson in level accordion</li>
+          <li><code>AchievementCard.tsx</code> - Achievement display</li>
+          <li><code>StatCard.tsx</code> - XP, level, streak display</li>
+          <li><code>FlashCard.tsx</code> - Spaced repetition card with flip</li>
+          <li><code>ChallengeCard.tsx</code> - Weekly challenge display</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">🔶 Organisms (Complex Features)</div>
+        <ul>
+          <li><code>Navbar.tsx</code> - Desktop navigation bar</li>
+          <li><code>MobileNav.tsx</code> - Mobile bottom navigation</li>
+          <li><code>ModuleGrid.tsx</code> - Filterable module grid</li>
+          <li><code>LevelAccordion.tsx</code> - Expandable level list</li>
+          <li><code>LessonViewer.tsx</code> - Main lesson interface</li>
+          <li><code>TinderCardStack.tsx</code> - Swipeable flashcard stack</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">📄 Templates</div>
+        <ul>
+          <li><code>PageLayout.tsx</code> - Common page wrapper with navbar</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">🎯 Features (Full Screens)</div>
+        <ul>
+          <li><code>features/dashboard/</code> - Home dashboard</li>
+          <li><code>features/module-hub/</code> - Module browsing</li>
+          <li><code>features/module-page/</code> - Module detail view</li>
+          <li><code>features/lesson-viewer/</code> - Lesson content</li>
+          <li><code>features/learning-pathway/</code> - Netflix-style discovery</li>
+          <li><code>features/spaced-repetition/</code> - Flashcard review</li>
+          <li><code>features/daily-challenges/</code> - Weekly challenges</li>
+          <li><code>features/knowledge-map/</code> - Concept connections</li>
+          <li><code>features/visual-lab/</code> - Visual content library</li>
+          <li><code>features/saved-cards/</code> - Bookmarked flashcards</li>
+          <li><code>features/settings/</code> - User preferences</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 14: ADDING NEW MODULE -->
+  <div class="page">
+    <div class="header">
+      <h1>Adding a New Module</h1>
+      <div class="page-number">Page 14</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Step-by-Step Checklist</h2>
+
+      <div class="card">
+        <div class="card-header">✅ Step 1: Create Lesson Content</div>
+        <p style="margin-top: 6px;"><strong>File:</strong> <code>src/data/pathways/{module-id}-lessons.ts</code></p>
+        <ul>
+          <li>Export named arrays: <code>{prefix}LessonsLevel1</code>, <code>{prefix}LessonsLevel2</code>, etc.</li>
+          <li>Each level: ~8 lessons (intro, concepts, quiz, exercise, reflection)</li>
+          <li>Lesson IDs: <code>{prefix}-001</code>, <code>{prefix}-002</code>, etc.</li>
+          <li>Properly escape single quotes in content</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">✅ Step 2: Create Pathway Structure</div>
+        <p style="margin-top: 6px;"><strong>File:</strong> <code>src/data/pathways/{module-id}.ts</code></p>
+        <ul>
+          <li>Import lesson arrays from step 1</li>
+          <li>Create <code>PathwayLevel[]</code> array</li>
+          <li>Level IDs: <code>{prefix}-level1</code>, <code>{prefix}-level2</code>, etc.</li>
+          <li>Set XP unlock requirements: 0, 500, 1000, 1500...</li>
+          <li>Export as default</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">✅ Step 3: Update Pathways Index</div>
+        <p style="margin-top: 6px;"><strong>File:</strong> <code>src/data/pathways/index.ts</code></p>
+        <ul>
+          <li>Add export: <code>export { default as {moduleName}Pathway } from './{module-id}';</code></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">✅ Step 4: Update Module Config</div>
+        <p style="margin-top: 6px;"><strong>File:</strong> <code>src/data/modules.ts</code></p>
+        <ul>
+          <li>Import pathway: <code>import { {moduleName}Pathway } from './pathways/{module-id}';</code></li>
+          <li>Find module entry with matching ID</li>
+          <li>Set <code>isAvailable: true</code></li>
+          <li>Add <code>pathway: {moduleName}Pathway</code></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">✅ Step 5: Create Images</div>
+        <p style="margin-top: 6px;"><strong>Directory:</strong> <code>src/assets/ai-images/</code></p>
+        <ul>
+          <li>Module image: <code>modules/module-{module-id}.webp</code></li>
+          <li>Level images: <code>levels/level-{prefix}-1.webp</code>, <code>level-{prefix}-2.webp</code>, etc.</li>
+          <li>Use AI generation script or design manually</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">✅ Step 6: Register Images</div>
+        <p style="margin-top: 6px;"><strong>File:</strong> <code>src/lib/moduleImages.ts</code></p>
+        <ul>
+          <li>Import module image: <code>import {moduleName}Img from '@/assets/ai-images/modules/module-{id}.webp';</code></li>
+          <li>Import level images: <code>import {prefix}Level1 from '@/assets/ai-images/levels/level-{prefix}-1.webp';</code></li>
+          <li>Add to <code>moduleImages</code> record</li>
+          <li>Add all levels to <code>levelImages</code> record</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Verification</h2>
+
+      <div class="highlight">
+        <div class="highlight-title">✓ Module Should Now...</div>
+        <ol style="font-size: 10pt;">
+          <li>Appear in Module Hub (not grayed out)</li>
+          <li>Show correct image</li>
+          <li>Open to level list when clicked</li>
+          <li>Show lessons when level expanded</li>
+          <li>Open lesson viewer when lesson clicked</li>
+          <li>Show level images in lesson viewer</li>
+          <li>Track completion in progress store</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 15: DEPLOYMENT -->
+  <div class="page">
+    <div class="header">
+      <h1>Deployment</h1>
+      <div class="page-number">Page 15</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Build Process</h2>
+
+      <div class="code"># Local build
+npm run build
+
+# Output: app/dist/
+# - index.html
+# - assets/*.js (code-split bundles)
+# - assets/*.css
+# - assets/*.webp (optimized images)</div>
+
+      <table>
+        <tr>
+          <th>Command</th>
+          <th>Purpose</th>
+        </tr>
+        <tr>
+          <td><code>npm run dev</code></td>
+          <td>Start Vite dev server (localhost:5173)</td>
+        </tr>
+        <tr>
+          <td><code>npm run build</code></td>
+          <td>TypeScript check + Vite production build</td>
+        </tr>
+        <tr>
+          <td><code>npm run lint</code></td>
+          <td>Run ESLint</td>
+        </tr>
+        <tr>
+          <td><code>npm run preview</code></td>
+          <td>Preview production build locally</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">CI/CD Pipeline</h2>
+
+      <p><strong>GitHub Actions</strong> workflow triggers on push to <code>master</code>:</p>
+
+      <div class="flow-container">
+        <div class="flow-box">
+          <strong>1. Push</strong><br>to master
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <strong>2. Build</strong><br>npm run build
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <strong>3. Docker</strong><br>Build image
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <strong>4. Deploy</strong><br>GCP Cloud Run
+        </div>
+      </div>
+
+      <div class="code"># .github/workflows/deploy.yml
+name: Deploy to Cloud Run
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: cd app && npm ci && npm run build
+      - uses: google-github-actions/setup-gcloud@v1
+      - run: gcloud builds submit --tag gcr.io/$PROJECT_ID/gyanmarg
+      - run: gcloud run deploy gyanmarg --image gcr.io/$PROJECT_ID/gyanmarg</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">GCP Cloud Run Configuration</h2>
+
+      <table>
+        <tr>
+          <th>Setting</th>
+          <th>Value</th>
+        </tr>
+        <tr>
+          <td>Service Name</td>
+          <td>gyanmarg</td>
+        </tr>
+        <tr>
+          <td>Region</td>
+          <td>us-central1</td>
+        </tr>
+        <tr>
+          <td>Container</td>
+          <td>Nginx serving static files from <code>/app/dist</code></td>
+        </tr>
+        <tr>
+          <td>CPU</td>
+          <td>1 vCPU</td>
+        </tr>
+        <tr>
+          <td>Memory</td>
+          <td>512 MB</td>
+        </tr>
+        <tr>
+          <td>Auto-scaling</td>
+          <td>0-10 instances</td>
+        </tr>
+        <tr>
+          <td>Authentication</td>
+          <td>Allow unauthenticated (public)</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Performance Optimizations</h2>
+
+      <ul>
+        <li><strong>Code Splitting:</strong> Lazy-load routes and features</li>
+        <li><strong>Image Optimization:</strong> WebP format, responsive sizes</li>
+        <li><strong>Tree Shaking:</strong> Remove unused code</li>
+        <li><strong>Caching:</strong> localStorage for state, service worker for assets</li>
+        <li><strong>Bundle Analysis:</strong> Keep main bundle &lt; 200KB gzipped</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <p><strong>Documentation Version:</strong> 1.0 • <strong>Last Updated:</strong> February 2026</p>
+      <p><strong>Live URL:</strong> https://gyanmarg-963362833537.us-central1.run.app</p>
+      <p>© 2026 Polymind • All Rights Reserved</p>
+    </div>
+  </div>
+
+</body>
+</html>

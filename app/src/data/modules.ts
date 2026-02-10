@@ -50,6 +50,8 @@ import { jyotishVastuPathway } from './pathways/jyotish-vastu';
 import { designThinkingPathway } from './pathways/design-thinking';
 import { mathematicsPatternsPathway } from './pathways/mathematics-patterns';
 import { physicsEngineeringPathway } from './pathways/physics-engineering';
+import { startupsInnovationPathway } from './pathways/startups-innovation';
+import { relationshipsSocialPathway } from './pathways/relationships-social';
 
 export interface ModuleConfig {
   id: string;
@@ -479,7 +481,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Lean Methodology', 'Product-Market Fit', 'Fundraising', 'Team Building'],
     features: ['Startup Canvas', 'Pitch Builder', 'Metric Dashboard', 'Investor Prep'],
     route: '/modules/startups-innovation',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: startupsInnovationPathway,
   },
   {
     id: 'relationships-social',
@@ -493,7 +496,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Attachment Theory', 'Active Listening', 'Conflict Resolution', 'Social Intelligence'],
     features: ['Attachment Quiz', 'Conversation Guide', 'Relationship Tracker', 'Social Skills Lab'],
     route: '/modules/relationships-social',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: relationshipsSocialPathway,
   },
   {
     id: 'geopolitics',

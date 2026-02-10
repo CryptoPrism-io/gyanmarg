@@ -42,5 +42,84 @@
     "state": "zustand",
     "imports": "path-aliases",
     "typescript": "strict"
-  }
+  },
+  "skills": [
+    {
+      "name": "ui-test-desktop",
+      "description": "Run Playwright UI tests on desktop viewports (Chrome, Firefox, Safari at 1920x1080)",
+      "path": "skills/ui-test-desktop.md"
+    },
+    {
+      "name": "ui-test-ipad",
+      "description": "Run Playwright UI tests on iPad viewports (Pro landscape/portrait, Mini)",
+      "path": "skills/ui-test-ipad.md"
+    },
+    {
+      "name": "ui-test-mobile",
+      "description": "Run Playwright UI tests on mobile viewports (iPhone, Pixel, Galaxy)",
+      "path": "skills/ui-test-mobile.md"
+    },
+    {
+      "name": "ui-test-all",
+      "description": "Run complete UI test suite across all devices (desktop, iPad, mobile)",
+      "path": "skills/ui-test-all.md"
+    },
+    {
+      "name": "ux-review",
+      "description": "Comprehensive UX review analyzing usability, accessibility, visual design, and user experience",
+      "path": "skills/ux-review.md"
+    },
+    {
+      "name": "ux-audit",
+      "description": "Full UX evaluation with Nielsen's 10 heuristics scoring",
+      "path": "skills/ux-audit.md"
+    },
+    {
+      "name": "shadcn-suggest",
+      "description": "Analyze UI and suggest shadcn/ui components for improvement",
+      "path": "skills/shadcn-suggest.md"
+    },
+    {
+      "name": "mobile-report",
+      "description": "Comprehensive mobile testing report with device-specific screenshots",
+      "path": "skills/mobile-report.md"
+    },
+    {
+      "name": "screenshot-gallery",
+      "description": "Capture screenshots across all 11 viewport configurations",
+      "path": "skills/screenshot-gallery.md"
+    },
+    {
+      "name": "component-audit",
+      "description": "Analyze shadcn/ui component usage and consistency",
+      "path": "skills/component-audit.md"
+    },
+    {
+      "name": "bug-hunt",
+      "description": "Systematic visual bug detection across all viewports",
+      "path": "skills/bug-hunt.md"
+    },
+    {
+      "name": "accessibility-scan",
+      "description": "Deep WCAG 2.1 AA accessibility analysis",
+      "path": "skills/accessibility-scan.md"
+    },
+    {
+      "name": "design-tokens-check",
+      "description": "Verify CSS variable and design token usage consistency",
+      "path": "skills/design-tokens-check.md"
+    },
+    {
+      "name": "visual-regression",
+      "description": "Baseline comparison workflow for visual regression testing",
+      "path": "skills/visual-regression.md"
+    }
+  ],
+  "enabledMcpjsonServers": [
+    "playwright",
+    "github",
+    "filesystem",
+    "context7",
+    "shadcn"
+  ]
 }
