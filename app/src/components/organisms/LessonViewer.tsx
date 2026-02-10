@@ -34,6 +34,7 @@ interface LessonViewerProps {
   nextLesson?: NextLessonInfo | null;
   onNextLesson?: (lesson: PathwayLesson) => void;
   backgroundImage?: string;
+  flashcardCount?: number;
 }
 
 const colorGradients: Record<string, string> = {
@@ -66,6 +67,7 @@ export function LessonViewer({
   nextLesson,
   onNextLesson,
   backgroundImage,
+  flashcardCount,
 }: LessonViewerProps) {
   const [sessionXP, setSessionXP] = useState(0);
   const [timeSpent, setTimeSpent] = useState(0);
@@ -197,6 +199,7 @@ export function LessonViewer({
             onXPEarned={handleXPEarned}
             nextLesson={nextLesson}
             onNextLesson={onNextLesson}
+            flashcardCount={flashcardCount}
           />
         </div>
       </div>

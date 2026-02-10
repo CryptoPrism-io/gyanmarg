@@ -5,11 +5,13 @@ import {
   BookOpen,
   Sparkles,
   ChevronLeft,
+  ChevronRight,
   ArrowRight,
   Zap,
   Heart,
   Star,
   Play,
+  Brain,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useUserStore } from '@/store/userStore';
@@ -18,11 +20,14 @@ import { ModuleLayout } from '@/components/templates';
 import { GlassCard, NetflixLevelCard, GlassLessonRow, NetflixModuleCard, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
 import { ProgressBar } from '@/components/atoms';
 import { LessonViewer } from '@/components/organisms/LessonViewer';
+import { QuickReviseOverlay } from '@/components/organisms/QuickReviseOverlay';
 import { SignInGate } from '@/components/organisms';
 import type { PathwayLevel, PathwayLesson } from '@/types';
 import { modules } from '@/data/modules';
 import { moduleCategories, getCategoriesWithModules, getCategoryForModule } from '@/data/categories';
 import { getModuleImage, getLevelImage } from '@/lib/moduleImages';
+import { allFlashcards } from '@/data/flashcards-index';
+import { getFlashcardCountForLesson, hasFlashcardsForLessons } from '@/data/lesson-flashcard-map';
 
 export function LearningPathway() {
   const { completeLesson, isLessonCompleted, pathwayProgress } = useProgressStore();
@@ -39,6 +44,11 @@ export function LearningPathway() {
   const [activeLevelIndex, setActiveLevelIndex] = useState<number>(0);
   const [showAuthAfterTeaser, setShowAuthAfterTeaser] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [reviseOverlay, setReviseOverlay] = useState<{
+    lessonIds: string[];
+    label: string;
+    color?: string;
+  } | null>(null);
 
   // Refs for category rows to scroll into view (scroll to category, not details)
   const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -173,6 +183,44 @@ export function LearningPathway() {
     () => selectedLevelId ? pathwayLevels.find((l) => l.id === selectedLevelId) : null,
     [selectedLevelId, pathwayLevels]
   );
+
+  // Precompute flashcard counts for the selected level's completed lessons
+  const lessonFlashcardCounts = useMemo(() => {
+    if (!selectedLevel) return new Map<string, number>();
+    const counts = new Map<string, number>();
+    for (const lesson of selectedLevel.lessons) {
+      if (isLessonCompleted(lesson.id)) {
+        const count = getFlashcardCountForLesson(allFlashcards, lesson.id);
+        if (count > 0) counts.set(lesson.id, count);
+      }
+    }
+    return counts;
+  }, [selectedLevel, isLessonCompleted]);
+
+  // Total flashcard count for the selected level
+  const levelFlashcardCount = useMemo(() => {
+    let total = 0;
+    for (const count of lessonFlashcardCounts.values()) {
+      total += count;
+    }
+    return total;
+  }, [lessonFlashcardCounts]);
+
+  // Flashcard count for the active lesson (for "Revision Unlocked!" banner)
+  const activeLessonFlashcardCount = useMemo(() => {
+    if (!activeLesson) return 0;
+    return getFlashcardCountForLesson(allFlashcards, activeLesson.id);
+  }, [activeLesson]);
+
+  // Check if module has any completed lessons with flashcards (for module-level revise)
+  const moduleHasFlashcards = useMemo(() => {
+    if (!selectedModule?.pathway) return false;
+    const completedLessonIds = selectedModule.pathway
+      .flatMap((l) => l.lessons)
+      .filter((l) => isLessonCompleted(l.id))
+      .map((l) => l.id);
+    return hasFlashcardsForLessons(allFlashcards, completedLessonIds);
+  }, [selectedModule, isLessonCompleted]);
 
   const isLevelUnlocked = (_level: PathwayLevel, levelIndex: number): boolean => {
     if (levelIndex === 0) return true;
@@ -315,6 +363,7 @@ export function LearningPathway() {
           nextLesson={getNextLesson ? { lesson: getNextLesson.lesson, levelTitle: getNextLesson.levelTitle } : null}
           onNextLesson={handleNextLesson}
           backgroundImage={lessonBackgroundImage}
+          flashcardCount={activeLessonFlashcardCount}
         />
       </>
     );
@@ -671,6 +720,34 @@ export function LearningPathway() {
                             ))}
                           </div>
                         </div>
+
+                        {/* Revise this Module */}
+                        {moduleHasFlashcards && (
+                          <motion.button
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            onClick={() => {
+                              const completedIds = selectedModule.pathway!
+                                .flatMap((l) => l.lessons)
+                                .filter((l) => isLessonCompleted(l.id))
+                                .map((l) => l.id);
+                              setReviseOverlay({
+                                lessonIds: completedIds,
+                                label: selectedModule.title,
+                                color: selectedModule.color,
+                              });
+                            }}
+                            className="w-full flex items-center gap-3 p-4 rounded-xl border border-lavender/30 bg-lavender/10 hover:bg-lavender/20 transition-all group mt-4"
+                          >
+                            <Brain className="w-5 h-5 text-lavender" />
+                            <div className="text-left flex-1">
+                              <p className="text-sm font-semibold text-lavender">Revise this Module</p>
+                              <p className="text-xs text-text-muted">Review flashcards & earn bonus XP</p>
+                            </div>
+                            <ChevronRight className="w-4 h-4 text-lavender/60 group-hover:text-lavender" />
+                          </motion.button>
+                        )}
                       </div>
                     </motion.div>
                   )}
@@ -749,6 +826,8 @@ export function LearningPathway() {
                               const completed = isLessonCompleted(lesson.id);
                               const globalIndex = calculateGlobalIndex(levelIndex, lessonIndex);
 
+                              const flashcardCount = lessonFlashcardCounts.get(lesson.id) || 0;
+
                               return (
                                 <GlassLessonRow
                                   key={lesson.id}
@@ -760,11 +839,47 @@ export function LearningPathway() {
                                   isLocked={!unlocked}
                                   isCompleted={completed}
                                   onClick={() => unlocked && handleOpenLesson(lesson, globalIndex, levelIndex)}
+                                  hasFlashcards={completed && flashcardCount > 0}
+                                  onRevise={completed && flashcardCount > 0 ? () => {
+                                    setReviseOverlay({
+                                      lessonIds: [lesson.id],
+                                      label: lesson.title,
+                                      color: selectedModule?.color,
+                                    });
+                                  } : undefined}
                                 />
                               );
                             })}
                           </div>
                         </div>
+
+                        {/* Revise this Level */}
+                        {levelFlashcardCount > 0 && (
+                          <motion.button
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            onClick={() => {
+                              const completedLessonIds = selectedLevel.lessons
+                                .filter((l) => isLessonCompleted(l.id))
+                                .map((l) => l.id);
+                              const levelIndex = pathwayLevels.findIndex((l) => l.id === selectedLevel.id);
+                              setReviseOverlay({
+                                lessonIds: completedLessonIds,
+                                label: `Level ${levelIndex + 1}: ${selectedLevel.title}`,
+                                color: selectedModule?.color,
+                              });
+                            }}
+                            className="w-full flex items-center gap-3 p-4 rounded-xl border border-lavender/30 bg-lavender/10 hover:bg-lavender/20 transition-all group mt-4"
+                          >
+                            <Brain className="w-5 h-5 text-lavender" />
+                            <div className="text-left flex-1">
+                              <p className="text-sm font-semibold text-lavender">Revise this Level</p>
+                              <p className="text-xs text-text-muted">{levelFlashcardCount} flashcards — earn bonus XP</p>
+                            </div>
+                            <ChevronRight className="w-4 h-4 text-lavender/60 group-hover:text-lavender" />
+                          </motion.button>
+                        )}
 
                         {/* Continue Learning CTA */}
                         {!isLevelCompleted(selectedLevel) && (
@@ -849,6 +964,16 @@ export function LearningPathway() {
           isOpen={true}
           onClose={handleAuthGateClose}
           onSignIn={handleAuthSuccess}
+        />
+      )}
+
+      {/* Quick Revise Overlay */}
+      {reviseOverlay && (
+        <QuickReviseOverlay
+          lessonIds={reviseOverlay.lessonIds}
+          reviseLabel={reviseOverlay.label}
+          moduleColor={reviseOverlay.color}
+          onClose={() => setReviseOverlay(null)}
         />
       )}
     </>

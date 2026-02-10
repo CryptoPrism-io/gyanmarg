@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Sparkles, RotateCcw, ChevronRight } from 'lucide-react';
+import { CheckCircle2, Sparkles, RotateCcw, ChevronRight, Brain } from 'lucide-react';
 import { TinderCard } from '@/components/molecules/TinderCard';
 import { FloatingXP } from '@/components/atoms/FloatingXP';
 import { QuickGamePicker } from '@/components/games/QuickGamePicker';
@@ -23,6 +23,7 @@ interface TinderCardStackProps {
   onXPEarned?: (amount: number) => void;
   nextLesson?: NextLessonInfo | null;
   onNextLesson?: (lesson: PathwayLesson) => void;
+  flashcardCount?: number;
 }
 
 const colorGradients: Record<string, string> = {
@@ -84,6 +85,7 @@ export function TinderCardStack({
   onXPEarned,
   nextLesson,
   onNextLesson,
+  flashcardCount = 0,
 }: TinderCardStackProps) {
   const gradient = colorGradients[moduleColor] || colorGradients.orange;
   const { playXpGain, playSuccess, playClick } = useSoundEffects();
@@ -293,6 +295,24 @@ export function TinderCardStack({
                     <span>+{totalXP} XP this session</span>
                   </div>
 
+                  {/* Revision Available banner */}
+                  {flashcardCount > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="mt-3 py-2.5 px-4 rounded-xl border border-lavender/30 bg-lavender/10 flex items-center gap-3"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-lavender/20 flex items-center justify-center shrink-0">
+                        <Brain className="w-4 h-4 text-lavender" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-lavender">Revision Available</p>
+                        <p className="text-xs text-text-muted">{flashcardCount} flashcards to revise & earn XP</p>
+                      </div>
+                    </motion.div>
+                  )}
+
                   {/* Next lesson with countdown bar */}
                   {nextLesson && onNextLesson && (
                     <motion.div
@@ -372,6 +392,24 @@ export function TinderCardStack({
                     >
                       includes +{gameBonusXP} game bonus
                     </motion.p>
+                  )}
+
+                  {/* Revision Unlocked banner */}
+                  {flashcardCount > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.45 }}
+                      className="relative mt-3 py-2.5 px-4 rounded-xl border border-lavender/30 bg-lavender/10 flex items-center gap-3"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-lavender/20 flex items-center justify-center shrink-0">
+                        <Brain className="w-4 h-4 text-lavender" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-lavender">Revision Unlocked!</p>
+                        <p className="text-xs text-text-muted">{flashcardCount} flashcards — come back to revise & earn XP</p>
+                      </div>
+                    </motion.div>
                   )}
 
                   {/* Netflix-style next lesson countdown */}

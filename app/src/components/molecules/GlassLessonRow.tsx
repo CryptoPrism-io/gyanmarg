@@ -13,6 +13,8 @@ interface GlassLessonRowProps {
   isInProgress?: boolean;
   progressPercent?: number;
   onClick: () => void;
+  hasFlashcards?: boolean;
+  onRevise?: () => void;
 }
 
 const typeConfig: Record<LessonType, {
@@ -77,6 +79,8 @@ export function GlassLessonRow({
   isInProgress = false,
   progressPercent = 0,
   onClick,
+  hasFlashcards = false,
+  onRevise,
 }: GlassLessonRowProps) {
   const config = typeConfig[type];
   const TypeIcon = config.icon;
@@ -147,6 +151,18 @@ export function GlassLessonRow({
 
       {/* Status / Action */}
       <div className="flex items-center gap-2 flex-shrink-0">
+        {isCompleted && hasFlashcards && onRevise && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onRevise();
+            }}
+            className="w-8 h-8 flex items-center justify-center rounded-lg bg-lavender/15 border border-lavender/20 hover:bg-lavender/25 transition-colors"
+            aria-label="Revise flashcards"
+          >
+            <Brain className="w-3.5 h-3.5 text-lavender" />
+          </button>
+        )}
         {isLocked ? (
           <Lock className="w-4 h-4 text-text-muted" />
         ) : (

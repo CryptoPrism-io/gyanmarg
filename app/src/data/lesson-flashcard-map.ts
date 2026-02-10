@@ -314,6 +314,32 @@ export function getFlashcardCountForLesson(
   return allCards.filter(card => isFlashcardUnlockedByLesson(card, lessonId)).length;
 }
 
+/**
+ * Get all flashcards that match any of the given lesson IDs
+ * Used by QuickReviseOverlay to gather cards for a revision session
+ */
+export function getFlashcardsForLessonIds(
+  allCards: SpacedRepetitionCard[],
+  lessonIds: string[]
+): SpacedRepetitionCard[] {
+  if (lessonIds.length === 0) return [];
+  return allCards.filter(card =>
+    lessonIds.some(lessonId => isFlashcardUnlockedByLesson(card, lessonId))
+  );
+}
+
+/**
+ * Check if any of the given lesson IDs have associated flashcards
+ */
+export function hasFlashcardsForLessons(
+  allCards: SpacedRepetitionCard[],
+  lessonIds: string[]
+): boolean {
+  return lessonIds.some(lessonId =>
+    allCards.some(card => isFlashcardUnlockedByLesson(card, lessonId))
+  );
+}
+
 // Legacy exports for backwards compatibility
 export function getUnlockedFlashcardSources(completedLessonIds: string[]): Set<string> {
   const sources = new Set<string>();
