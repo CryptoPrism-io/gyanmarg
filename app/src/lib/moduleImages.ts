@@ -528,6 +528,42 @@ import levelCr08 from '@/assets/ai-images/levels/level-cr-08-debate.webp';
 import levelCr09 from '@/assets/ai-images/levels/level-cr-09-influence.webp';
 import levelCr10 from '@/assets/ai-images/levels/level-cr-10-playbook.webp';
 
+// ============================================
+// Level images - Mathematics & Patterns (8)
+// ============================================
+import levelMath01 from '@/assets/ai-images/levels/level-math-01-foundations.webp';
+import levelMath02 from '@/assets/ai-images/levels/level-math-02-geometry.webp';
+import levelMath03 from '@/assets/ai-images/levels/level-math-03-nature.webp';
+import levelMath04 from '@/assets/ai-images/levels/level-math-04-sacred.webp';
+import levelMath05 from '@/assets/ai-images/levels/level-math-05-algebra.webp';
+import levelMath06 from '@/assets/ai-images/levels/level-math-06-probability.webp';
+import levelMath07 from '@/assets/ai-images/levels/level-math-07-calculus.webp';
+import levelMath08 from '@/assets/ai-images/levels/level-math-08-beauty.webp';
+
+// ============================================
+// Level images - Physics & Engineering (8)
+// ============================================
+import levelPhys01 from '@/assets/ai-images/levels/level-phys-01-mechanics.webp';
+import levelPhys02 from '@/assets/ai-images/levels/level-phys-02-thermodynamics.webp';
+import levelPhys03 from '@/assets/ai-images/levels/level-phys-03-waves.webp';
+import levelPhys04 from '@/assets/ai-images/levels/level-phys-04-electromagnetism.webp';
+import levelPhys05 from '@/assets/ai-images/levels/level-phys-05-modern.webp';
+import levelPhys06 from '@/assets/ai-images/levels/level-phys-06-engineering.webp';
+import levelPhys07 from '@/assets/ai-images/levels/level-phys-07-applied.webp';
+import levelPhys08 from '@/assets/ai-images/levels/level-phys-08-cosmos.webp';
+
+// ============================================
+// Level images - Design Thinking (8)
+// ============================================
+import levelDt01 from '@/assets/ai-images/levels/level-dt-01-foundations.webp';
+import levelDt02 from '@/assets/ai-images/levels/level-dt-02-research.webp';
+import levelDt03 from '@/assets/ai-images/levels/level-dt-03-definition.webp';
+import levelDt04 from '@/assets/ai-images/levels/level-dt-04-ideation.webp';
+import levelDt05 from '@/assets/ai-images/levels/level-dt-05-prototyping.webp';
+import levelDt06 from '@/assets/ai-images/levels/level-dt-06-testing.webp';
+import levelDt07 from '@/assets/ai-images/levels/level-dt-07-advanced.webp';
+import levelDt08 from '@/assets/ai-images/levels/level-dt-08-leadership.webp';
+
 // Module ID to image mapping
 export const moduleImages: Record<string, string> = {
   // Original 16 modules
@@ -994,6 +1030,36 @@ export const levelImages: Record<string, string> = {
   'cr-level8': levelCr08,
   'cr-level9': levelCr09,
   'cr-level10': levelCr10,
+
+  // Mathematics & Patterns
+  'math-level1': levelMath01,
+  'math-level2': levelMath02,
+  'math-level3': levelMath03,
+  'math-level4': levelMath04,
+  'math-level5': levelMath05,
+  'math-level6': levelMath06,
+  'math-level7': levelMath07,
+  'math-level8': levelMath08,
+
+  // Physics & Engineering
+  'phys-level1': levelPhys01,
+  'phys-level2': levelPhys02,
+  'phys-level3': levelPhys03,
+  'phys-level4': levelPhys04,
+  'phys-level5': levelPhys05,
+  'phys-level6': levelPhys06,
+  'phys-level7': levelPhys07,
+  'phys-level8': levelPhys08,
+
+  // Design Thinking
+  'dt-level1': levelDt01,
+  'dt-level2': levelDt02,
+  'dt-level3': levelDt03,
+  'dt-level4': levelDt04,
+  'dt-level5': levelDt05,
+  'dt-level6': levelDt06,
+  'dt-level7': levelDt07,
+  'dt-level8': levelDt08,
 };
 
 // Helper to get module image with fallback

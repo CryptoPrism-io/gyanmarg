@@ -656,6 +656,42 @@ PROMPTS = {
         "level-ae-10-leadership.webp": "Crown with amber leadership wisdom radiating across timeline in ink wash, leadership lessons across empires, purple great leaders silhouettes, zen timeless command, history teaches.",
 
         # ============================================
+        # Mathematics & Patterns - 8 Levels
+        # ============================================
+        "level-math-01-foundations.webp": "Sumi-e mathematical symbols emerging from cosmic void, amber golden ratio spiral, number systems awakening, purple infinity symbol, zen numerical foundations, sacred mathematics.",
+        "level-math-02-geometry.webp": "Compass drawing perfect amber circle in ink wash, Euclidean geometry, purple geometric shapes harmonizing, zen spatial reasoning, sacred forms.",
+        "level-math-03-nature.webp": "Fibonacci spiral in nautilus shell with amber golden ratio in sumi-e, patterns in nature, purple fractal ferns, zen mathematical beauty in life.",
+        "level-math-04-sacred.webp": "Flower of Life mandala radiating amber sacred geometry in ink wash, Platonic solids floating, purple divine proportions, zen cosmic order.",
+        "level-math-05-algebra.webp": "Algebraic equations balancing on amber zen scale in sumi-e, variables and logic, purple function curves, zen problem solving beauty.",
+        "level-math-06-probability.webp": "Dice suspended in amber probability cloud in ink wash, bell curve emerging, purple random patterns, zen understanding chance.",
+        "level-math-07-calculus.webp": "Ink brush curve with amber tangent line showing rate of change in sumi-e, calculus mastery, purple integral area beneath, zen mathematics of motion.",
+        "level-math-08-beauty.webp": "Möbius strip with amber infinite loop in ink wash, topological wonder, purple Gödel's theorems, zen mathematical transcendence, eternal truth.",
+
+        # ============================================
+        # Physics & Engineering - 8 Levels
+        # ============================================
+        "level-phys-01-mechanics.webp": "Newton's apple falling with amber force vectors in sumi-e, classical mechanics, purple energy flows, zen laws of motion.",
+        "level-phys-02-thermodynamics.webp": "Heat engine cycle with amber energy flow in ink wash, thermodynamic laws, purple entropy increasing, zen order and chaos.",
+        "level-phys-03-waves.webp": "Sound wave ripples with amber oscillation in sumi-e, wave mechanics, purple resonance patterns, zen vibration and harmony.",
+        "level-phys-04-electromagnetism.webp": "Lightning bolt with amber electric field lines in ink wash, electromagnetic force, purple magnetic flux, zen unified field.",
+        "level-phys-05-modern.webp": "Warped spacetime grid with amber E=mc² light in sumi-e, relativity, purple quantum superposition, zen modern physics revolution.",
+        "level-phys-06-engineering.webp": "Bridge structure with amber stress lines in ink wash, engineering fundamentals, purple material strength, zen building with physics.",
+        "level-phys-07-applied.webp": "Flowing fluid with amber pressure gradients in sumi-e, applied engineering, purple heat transfer, zen practical mastery.",
+        "level-phys-08-cosmos.webp": "Black hole warping amber spacetime in ink wash, cutting edge physics, purple quantum field, zen universe's mysteries.",
+
+        # ============================================
+        # Design Thinking - 8 Levels
+        # ============================================
+        "level-dt-01-foundations.webp": "Human silhouette at center of amber empathy circles in sumi-e, design thinking foundations, purple user-centered approach, zen creative problem solving.",
+        "level-dt-02-research.webp": "Magnifying glass revealing amber user insights in ink wash, empathy and research, purple observation patterns, zen deep understanding.",
+        "level-dt-03-definition.webp": "Crosshairs focusing on amber problem core in sumi-e, problem definition, purple point-of-view clarity, zen framing the challenge.",
+        "level-dt-04-ideation.webp": "Explosion of amber creative lightbulbs in ink wash, ideation mastery, purple brainstorming energy, zen divergent thinking.",
+        "level-dt-05-prototyping.webp": "Hands shaping amber clay prototype in sumi-e, rapid prototyping, purple iteration spirals, zen build to think.",
+        "level-dt-06-testing.webp": "User silhouette giving amber feedback loops in ink wash, testing and validation, purple learning cycles, zen fail forward.",
+        "level-dt-07-advanced.webp": "Five-day sprint timeline with amber checkpoints in sumi-e, design sprint mastery, purple collaborative energy, zen structured innovation.",
+        "level-dt-08-leadership.webp": "Design culture tree with amber creative roots in ink wash, design leadership, purple team empowerment, zen building creative organizations.",
+
+        # ============================================
         # Communication & Rhetoric - 10 Levels
         # ============================================
         "level-cr-01-persuasion.webp": "Rippling amber waves of influence emanating from speaker in sumi-e, foundations of persuasion, purple Aristotle's three appeals, zen art of convincing, ethos pathos logos.",
