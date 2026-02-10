@@ -48,6 +48,8 @@ import { yogaPhilosophyPathway } from './pathways/yoga-philosophy';
 import { sanskritMantrasPathway } from './pathways/sanskrit-mantras';
 import { jyotishVastuPathway } from './pathways/jyotish-vastu';
 import { designThinkingPathway } from './pathways/design-thinking';
+import { mathematicsPatternsPathway } from './pathways/mathematics-patterns';
+import { physicsEngineeringPathway } from './pathways/physics-engineering';
 
 export interface ModuleConfig {
   id: string;
@@ -349,7 +351,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Classical Mechanics', 'Thermodynamics', 'Electromagnetism', 'Quantum Basics'],
     features: ['Physics Simulator', 'Problem Solver', 'Concept Visualizer', 'Lab Experiments'],
     route: '/modules/physics-engineering',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: physicsEngineeringPathway,
   },
   {
     id: 'writing-storytelling',
@@ -548,7 +551,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Pattern Recognition', 'Sacred Geometry', 'Mathematical Thinking', 'Number Theory'],
     features: ['Pattern Explorer', 'Geometry Visualizer', 'Math Puzzles', 'Fractal Generator'],
     route: '/modules/mathematics-patterns',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: mathematicsPatternsPathway,
   },
   // ============================================
   // NEW COMING SOON MODULES (34-70)
