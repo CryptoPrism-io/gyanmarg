@@ -53,6 +53,12 @@ import { physicsEngineeringPathway } from './pathways/physics-engineering';
 import { startupsInnovationPathway } from './pathways/startups-innovation';
 import { relationshipsSocialPathway } from './pathways/relationships-social';
 
+// Relationships & Society modules
+import { datingAttractionPathway } from './pathways/dating-attraction';
+import { networkingPathway } from './pathways/networking';
+import { parentingPathway } from './pathways/parenting';
+import { socialIntelligencePathway } from './pathways/social-intelligence';
+
 export interface ModuleConfig {
   id: string;
   number: number;
@@ -1000,7 +1006,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Attraction Principles', 'Social Confidence', 'Communication', 'Relationship Building'],
     features: ['Conversation Guide', 'Confidence Tracker', 'Date Planner', 'Reflection Journal'],
     route: '/modules/dating-attraction',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: datingAttractionPathway,
   },
   {
     id: 'networking',
@@ -1014,7 +1021,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Networking Strategy', 'Relationship Building', 'Follow-Up Systems', 'Value Exchange'],
     features: ['Contact Manager', 'Relationship Tracker', 'Event Planner', 'Follow-Up Reminders'],
     route: '/modules/networking',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: networkingPathway,
   },
   {
     id: 'parenting',
@@ -1028,7 +1036,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Child Psychology', 'Development Stages', 'Positive Discipline', 'Family Communication'],
     features: ['Age Guide', 'Behavior Tracker', 'Milestone Checker', 'Family Calendar'],
     route: '/modules/parenting',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: parentingPathway,
   },
   {
     id: 'social-intelligence',
@@ -1042,7 +1051,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Social Awareness', 'Charisma', 'Reading People', 'Situational Awareness'],
     features: ['Cue Decoder', 'Charisma Exercises', 'Social Scenarios', 'Body Language Guide'],
     route: '/modules/social-intelligence',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: socialIntelligencePathway,
   },
   // Ancient Wisdom
   {

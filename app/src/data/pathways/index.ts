@@ -54,6 +54,12 @@ export { default as physicsEngineeringPathway } from './physics-engineering';
 export { default as startupsInnovationPathway } from './startups-innovation';
 export { default as relationshipsSocialPathway } from './relationships-social';
 
+// Relationships & Society modules
+export { default as datingAttractionPathway } from './dating-attraction';
+export { default as networkingPathway } from './networking';
+export { default as parentingPathway } from './parenting';
+export { default as socialIntelligencePathway } from './social-intelligence';
+
 // FIRE Movement lessons for Wealth Building module
 export { fireLessons } from './wealth-fire';
 

@@ -564,6 +564,62 @@ import levelDt06 from '@/assets/ai-images/levels/level-dt-06-testing.webp';
 import levelDt07 from '@/assets/ai-images/levels/level-dt-07-advanced.webp';
 import levelDt08 from '@/assets/ai-images/levels/level-dt-08-leadership.webp';
 
+// ============================================
+// Level images - Dating & Attraction (10)
+// ============================================
+import levelDa01 from '@/assets/ai-images/levels/level-da-1.webp';
+import levelDa02 from '@/assets/ai-images/levels/level-da-2.webp';
+import levelDa03 from '@/assets/ai-images/levels/level-da-3.webp';
+import levelDa04 from '@/assets/ai-images/levels/level-da-4.webp';
+import levelDa05 from '@/assets/ai-images/levels/level-da-5.webp';
+import levelDa06 from '@/assets/ai-images/levels/level-da-6.webp';
+import levelDa07 from '@/assets/ai-images/levels/level-da-7.webp';
+import levelDa08 from '@/assets/ai-images/levels/level-da-8.webp';
+import levelDa09 from '@/assets/ai-images/levels/level-da-9.webp';
+import levelDa10 from '@/assets/ai-images/levels/level-da-10.webp';
+
+// ============================================
+// Level images - Networking (10)
+// ============================================
+import levelNet01 from '@/assets/ai-images/levels/level-net-1.webp';
+import levelNet02 from '@/assets/ai-images/levels/level-net-2.webp';
+import levelNet03 from '@/assets/ai-images/levels/level-net-3.webp';
+import levelNet04 from '@/assets/ai-images/levels/level-net-4.webp';
+import levelNet05 from '@/assets/ai-images/levels/level-net-5.webp';
+import levelNet06 from '@/assets/ai-images/levels/level-net-6.webp';
+import levelNet07 from '@/assets/ai-images/levels/level-net-7.webp';
+import levelNet08 from '@/assets/ai-images/levels/level-net-8.webp';
+import levelNet09 from '@/assets/ai-images/levels/level-net-9.webp';
+import levelNet10 from '@/assets/ai-images/levels/level-net-10.webp';
+
+// ============================================
+// Level images - Parenting (10)
+// ============================================
+import levelPar01 from '@/assets/ai-images/levels/level-par-1.webp';
+import levelPar02 from '@/assets/ai-images/levels/level-par-2.webp';
+import levelPar03 from '@/assets/ai-images/levels/level-par-3.webp';
+import levelPar04 from '@/assets/ai-images/levels/level-par-4.webp';
+import levelPar05 from '@/assets/ai-images/levels/level-par-5.webp';
+import levelPar06 from '@/assets/ai-images/levels/level-par-6.webp';
+import levelPar07 from '@/assets/ai-images/levels/level-par-7.webp';
+import levelPar08 from '@/assets/ai-images/levels/level-par-8.webp';
+import levelPar09 from '@/assets/ai-images/levels/level-par-9.webp';
+import levelPar10 from '@/assets/ai-images/levels/level-par-10.webp';
+
+// ============================================
+// Level images - Social Intelligence (10)
+// ============================================
+import levelSi01 from '@/assets/ai-images/levels/level-si-1.webp';
+import levelSi02 from '@/assets/ai-images/levels/level-si-2.webp';
+import levelSi03 from '@/assets/ai-images/levels/level-si-3.webp';
+import levelSi04 from '@/assets/ai-images/levels/level-si-4.webp';
+import levelSi05 from '@/assets/ai-images/levels/level-si-5.webp';
+import levelSi06 from '@/assets/ai-images/levels/level-si-6.webp';
+import levelSi07 from '@/assets/ai-images/levels/level-si-7.webp';
+import levelSi08 from '@/assets/ai-images/levels/level-si-8.webp';
+import levelSi09 from '@/assets/ai-images/levels/level-si-9.webp';
+import levelSi10 from '@/assets/ai-images/levels/level-si-10.webp';
+
 // Module ID to image mapping
 export const moduleImages: Record<string, string> = {
   // Original 16 modules
@@ -1060,6 +1116,54 @@ export const levelImages: Record<string, string> = {
   'dt-level6': levelDt06,
   'dt-level7': levelDt07,
   'dt-level8': levelDt08,
+
+  // Dating & Attraction
+  'da-level1': levelDa01,
+  'da-level2': levelDa02,
+  'da-level3': levelDa03,
+  'da-level4': levelDa04,
+  'da-level5': levelDa05,
+  'da-level6': levelDa06,
+  'da-level7': levelDa07,
+  'da-level8': levelDa08,
+  'da-level9': levelDa09,
+  'da-level10': levelDa10,
+
+  // Networking
+  'net-level1': levelNet01,
+  'net-level2': levelNet02,
+  'net-level3': levelNet03,
+  'net-level4': levelNet04,
+  'net-level5': levelNet05,
+  'net-level6': levelNet06,
+  'net-level7': levelNet07,
+  'net-level8': levelNet08,
+  'net-level9': levelNet09,
+  'net-level10': levelNet10,
+
+  // Parenting
+  'par-level1': levelPar01,
+  'par-level2': levelPar02,
+  'par-level3': levelPar03,
+  'par-level4': levelPar04,
+  'par-level5': levelPar05,
+  'par-level6': levelPar06,
+  'par-level7': levelPar07,
+  'par-level8': levelPar08,
+  'par-level9': levelPar09,
+  'par-level10': levelPar10,
+
+  // Social Intelligence
+  'si-level1': levelSi01,
+  'si-level2': levelSi02,
+  'si-level3': levelSi03,
+  'si-level4': levelSi04,
+  'si-level5': levelSi05,
+  'si-level6': levelSi06,
+  'si-level7': levelSi07,
+  'si-level8': levelSi08,
+  'si-level9': levelSi09,
+  'si-level10': levelSi10,
 };
 
 // Helper to get module image with fallback
