@@ -75,5 +75,49 @@ export { blockchainAdvanced2026Lessons } from './blockchain-advanced-2026';
 // Advanced FBI Negotiation lessons
 export { fbiFAdvancedNegotiationLessons } from './negotiation-fbi-advanced';
 
+// Level 1 expansion — Finance & Markets
+export { default as financeInvestingPathway } from './finance-investing';
+export { default as optionsTradingPathway } from './options-trading';
+export { default as macroEconomicsPathway } from './macro-economics';
+export { default as cryptoTradingPathway } from './crypto-trading';
+
+// Level 1 expansion — Science & Universe
+export { default as astronomyPathway } from './astronomy';
+export { default as biologyEvolutionPathway } from './biology-evolution';
+export { default as earthSciencesPathway } from './earth-sciences';
+
+// Level 1 expansion — Technology & Code
+export { default as webDevelopmentPathway } from './web-development';
+export { default as cloudDevopsPathway } from './cloud-devops';
+export { default as cybersecurityPathway } from './cybersecurity';
+
+// Level 1 expansion — Creative Arts
+export { default as writingStorytellingPathway } from './writing-storytelling';
+export { default as musicSoundPathway } from './music-sound';
+export { default as creativeWritingPathway } from './creative-writing';
+export { default as contentCreationPathway } from './content-creation';
+export { default as worldBuildingPathway } from './world-building';
+
+// Level 1 expansion — Strategy & Systems
+export { default as strategicThinkingPathway } from './strategic-thinking';
+export { default as systemsComplexityPathway } from './systems-complexity';
+export { default as mentalModelsPathway } from './mental-models';
+export { default as firstPrinciplesPathway } from './first-principles';
+export { default as decisionMakingPathway } from './decision-making';
+export { default as riskManagementPathway } from './risk-management';
+
+// Level 1 expansion — History & Culture
+export { default as historyCivilizationsPathway } from './history-civilizations';
+export { default as westernPhilosophyPathway } from './western-philosophy';
+export { default as geopoliticsPathway } from './geopolitics';
+export { default as modernHistoryPathway } from './modern-history';
+export { default as culturalAnthropologyPathway } from './cultural-anthropology';
+
+// Level 1 expansion — Practical Mastery
+export { default as metaLearningPathway } from './meta-learning';
+export { default as leadershipPathway } from './leadership';
+export { default as problemSolvingPathway } from './problem-solving';
+export { default as productivitySystemsPathway } from './productivity-systems';
+
 // Re-export types
 export type { PathwayLevel, PathwayLesson, LessonContent } from '@/types';

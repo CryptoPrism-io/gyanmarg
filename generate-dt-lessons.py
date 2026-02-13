@@ -2,19 +2,37 @@
 """Generate Design Thinking lessons for levels 3-8 using Gemini AI"""
 
 import os
-import google.generativeai as genai
 from pathlib import Path
 
-# Configure Gemini API
+try:
+    from google import genai
+    from google.genai import types
+except ImportError:
+    print("ERROR: google-genai not installed (new SDK)")
+    print("Install with: pip install google-genai")
+    print("Note: This replaces the old 'google-generativeai' package")
+    exit(1)
+
+# Load .env if available
+try:
+    from dotenv import load_dotenv
+    env_path = Path(__file__).parent / 'app' / '.env'
+    if env_path.exists():
+        load_dotenv(env_path)
+except ImportError:
+    pass
+
+# Configure Gemini API (new SDK)
 API_KEY = os.getenv('GEMINI_API_KEY')
 if not API_KEY:
     print("❌ Error: GEMINI_API_KEY environment variable not set")
-    print("   Get your API key from: https://makersuite.google.com/app/apikey")
+    print("   Get your API key from: https://aistudio.google.com/apikey")
     print("   Then set it: export GEMINI_API_KEY='your-key-here'")
     exit(1)
 
-genai.configure(api_key=API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+# Use new SDK client + gemini-2.0-flash (cheaper & faster than 1.5-flash)
+client = genai.Client(api_key=API_KEY)
+MODEL_NAME = 'gemini-2.0-flash'
 
 # Level structures
 LEVELS = {
@@ -218,7 +236,10 @@ def generate_lesson(level_num, level_data, lesson_data):
     print(f"  Generating {lesson_data['id']}: {lesson_data['title']}...", end=' ')
 
     try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model=MODEL_NAME,
+            contents=[prompt],
+        )
         content = response.text.strip()
 
         # Clean up the response
@@ -271,7 +292,7 @@ def main():
     print("🤖 Design Thinking Lesson Generator")
     print("="*60)
     print(f"Generating 48 lessons for levels 3-8...")
-    print(f"Using model: gemini-1.5-flash")
+    print(f"Using model: {MODEL_NAME}")
     print()
 
     # Generate lessons

@@ -783,6 +783,14 @@ BHARAT_PREFIXES = (
 
 
 def generate_image(client, prompt: str, output_path: Path, retries: int = 3, aspect_ratio: str = "16:9", style: str = None) -> bool:
+    # Input validation — avoid 400 errors (wasted tokens)
+    if not prompt or not prompt.strip():
+        print(f"SKIP (empty prompt)")
+        return False
+    if len(prompt) > 10000:
+        print(f"WARN: prompt is {len(prompt)} chars, truncating to 10000")
+        prompt = prompt[:10000]
+
     for attempt in range(retries):
         try:
             chosen_style = style or STYLE
@@ -826,13 +834,18 @@ def generate_image(client, prompt: str, output_path: Path, retries: int = 3, asp
                 print(f"No image data")
 
         except Exception as e:
-            if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
+            err_str = str(e)
+            if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
                 if attempt < retries - 1:
                     wait = 30 * (attempt + 1)
                     print(f"rate limit, waiting {wait}s...", end=" ", flush=True)
                     time.sleep(wait)
                 else:
                     print(f"Rate limited")
+            elif "400" in err_str or "INVALID_ARGUMENT" in err_str:
+                # Don't retry 400 errors — they'll fail again and waste tokens
+                print(f"Bad request (400): {err_str[:100]}")
+                return False
             else:
                 print(f"Error: {e}")
                 if attempt < retries - 1:

@@ -59,6 +59,50 @@ import { networkingPathway } from './pathways/networking';
 import { parentingPathway } from './pathways/parenting';
 import { socialIntelligencePathway } from './pathways/social-intelligence';
 
+// Level 1 expansion — Finance & Markets
+import financeInvestingPathway from './pathways/finance-investing';
+import optionsTradingPathway from './pathways/options-trading';
+import macroEconomicsPathway from './pathways/macro-economics';
+import cryptoTradingPathway from './pathways/crypto-trading';
+
+// Level 1 expansion — Science & Universe
+import astronomyPathway from './pathways/astronomy';
+import biologyEvolutionPathway from './pathways/biology-evolution';
+import earthSciencesPathway from './pathways/earth-sciences';
+
+// Level 1 expansion — Technology & Code
+import webDevelopmentPathway from './pathways/web-development';
+import cloudDevopsPathway from './pathways/cloud-devops';
+import cybersecurityPathway from './pathways/cybersecurity';
+
+// Level 1 expansion — Creative Arts
+import writingStorytellingPathway from './pathways/writing-storytelling';
+import musicSoundPathway from './pathways/music-sound';
+import creativeWritingPathway from './pathways/creative-writing';
+import contentCreationPathway from './pathways/content-creation';
+import worldBuildingPathway from './pathways/world-building';
+
+// Level 1 expansion — Strategy & Systems
+import strategicThinkingPathway from './pathways/strategic-thinking';
+import systemsComplexityPathway from './pathways/systems-complexity';
+import mentalModelsPathway from './pathways/mental-models';
+import firstPrinciplesPathway from './pathways/first-principles';
+import decisionMakingPathway from './pathways/decision-making';
+import riskManagementPathway from './pathways/risk-management';
+
+// Level 1 expansion — History & Culture
+import historyCivilizationsPathway from './pathways/history-civilizations';
+import westernPhilosophyPathway from './pathways/western-philosophy';
+import geopoliticsPathway from './pathways/geopolitics';
+import modernHistoryPathway from './pathways/modern-history';
+import culturalAnthropologyPathway from './pathways/cultural-anthropology';
+
+// Level 1 expansion — Practical Mastery
+import metaLearningPathway from './pathways/meta-learning';
+import leadershipPathway from './pathways/leadership';
+import problemSolvingPathway from './pathways/problem-solving';
+import productivitySystemsPathway from './pathways/productivity-systems';
+
 export interface ModuleConfig {
   id: string;
   number: number;
@@ -331,7 +375,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Portfolio Management', 'Technical Analysis', 'Options Trading', 'Macro Analysis'],
     features: ['Portfolio Simulator', 'Chart Analysis', 'Options Calculator', 'Market Scanner'],
     route: '/modules/finance-investing',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: financeInvestingPathway,
   },
   {
     id: 'astronomy',
@@ -345,7 +390,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Stellar Evolution', 'Cosmology', 'Planetary Science', 'Space Exploration'],
     features: ['Star Map', 'Cosmic Timeline', 'Planet Explorer', 'Telescope Guide'],
     route: '/modules/astronomy',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: astronomyPathway,
   },
   {
     id: 'physics-engineering',
@@ -374,7 +420,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Story Structure', 'Character Development', 'Copywriting', 'Editing'],
     features: ['Writing Prompts', 'Story Builder', 'Grammar Checker', 'Publishing Guide'],
     route: '/modules/writing-storytelling',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: writingStorytellingPathway,
   },
   {
     id: 'music-sound',
@@ -388,7 +435,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Music Theory', 'Sound Design', 'Music Production', 'Acoustic Science'],
     features: ['Piano Trainer', 'Ear Training', 'Beat Maker', 'Mixing Console'],
     route: '/modules/music-sound',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: musicSoundPathway,
   },
   {
     id: 'strategic-thinking',
@@ -402,7 +450,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Game Theory', 'Competitive Analysis', 'Strategic Planning', 'Decision Trees'],
     features: ['Strategy Simulator', 'Game Theory Puzzles', 'Scenario Planner', 'Competition Map'],
     route: '/modules/strategic-thinking',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: strategicThinkingPathway,
   },
   {
     id: 'systems-complexity',
@@ -416,7 +465,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Systems Thinking', 'Network Analysis', 'Feedback Loops', 'Emergence'],
     features: ['System Mapper', 'Network Visualizer', 'Simulation Lab', 'Causal Diagrams'],
     route: '/modules/systems-complexity',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: systemsComplexityPathway,
   },
   {
     id: 'history-civilizations',
@@ -430,7 +480,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Historical Analysis', 'Pattern Recognition', 'Civilizational Cycles', 'Geopolitical History'],
     features: ['Timeline Explorer', 'Civilization Builder', 'Historical Maps', 'Era Comparison'],
     route: '/modules/history-civilizations',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: historyCivilizationsPathway,
   },
   {
     id: 'western-philosophy',
@@ -444,7 +495,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Logic', 'Ethics', 'Metaphysics', 'Epistemology'],
     features: ['Philosopher Profiles', 'Argument Analyzer', 'Thought Experiments', 'Philosophy Quiz'],
     route: '/modules/western-philosophy',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: westernPhilosophyPathway,
   },
   {
     id: 'design-thinking',
@@ -473,7 +525,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Security Fundamentals', 'Threat Modeling', 'Cryptography Basics', 'Privacy Protection'],
     features: ['Security Audit', 'Threat Simulator', 'Password Manager', 'Privacy Checker'],
     route: '/modules/cybersecurity',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: cybersecurityPathway,
   },
   {
     id: 'startups-innovation',
@@ -517,7 +570,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Geopolitical Analysis', 'Economic Warfare', 'International Relations', 'Risk Assessment'],
     features: ['World Map Analysis', 'Power Index', 'Trade Flow Visualizer', 'Conflict Tracker'],
     route: '/modules/geopolitics',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: geopoliticsPathway,
   },
   {
     id: 'communication-rhetoric',
@@ -596,7 +650,8 @@ export const modules: ModuleConfig[] = [
     skills: ['HTML/CSS', 'JavaScript', 'React Basics', 'Responsive Design'],
     features: ['Code Playground', 'Project Builder', 'Layout Challenges', 'Deploy Guide'],
     route: '/modules/web-development',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: webDevelopmentPathway,
   },
   {
     id: 'cloud-devops',
@@ -610,7 +665,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Cloud Basics', 'Docker Containers', 'CI/CD Pipelines', 'Database Basics'],
     features: ['Cloud Visualizer', 'Container Playground', 'Pipeline Builder', 'SQL Practice'],
     route: '/modules/cloud-devops',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: cloudDevopsPathway,
   },
   // Wealth & Power
   {
@@ -686,7 +742,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Options Mechanics', 'Greeks', 'Strategy Building', 'Risk Management'],
     features: ['Options Calculator', 'Strategy Builder', 'P&L Visualizer', 'Greeks Dashboard'],
     route: '/modules/options-trading',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: optionsTradingPathway,
   },
   {
     id: 'macro-economics',
@@ -700,7 +757,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Monetary Policy', 'Economic Indicators', 'Market Cycles', 'Global Macro'],
     features: ['Economic Calendar', 'Indicator Dashboard', 'Cycle Analyzer', 'Policy Tracker'],
     route: '/modules/macro-economics',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: macroEconomicsPathway,
   },
   {
     id: 'crypto-trading',
@@ -714,7 +772,8 @@ export const modules: ModuleConfig[] = [
     skills: ['On-Chain Analysis', 'DeFi Protocols', 'Crypto Risk Management', 'Market Cycles'],
     features: ['On-Chain Dashboard', 'DeFi Tracker', 'Portfolio Manager', 'Cycle Indicators'],
     route: '/modules/crypto-trading',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: cryptoTradingPathway,
   },
   // Spirit & Body
   {
@@ -745,7 +804,8 @@ export const modules: ModuleConfig[] = [
     skills: ['First Principles', 'Inversion', 'Second-Order Thinking', 'Probabilistic Thinking'],
     features: ['Model Library', 'Decision Journal', 'Application Exercises', 'Model Combos'],
     route: '/modules/mental-models',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: mentalModelsPathway,
   },
   {
     id: 'first-principles',
@@ -759,7 +819,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Assumption Breaking', 'Root Cause Analysis', 'Fundamental Reasoning', 'Innovation Thinking'],
     features: ['Assumption Mapper', 'Problem Decomposer', 'Truth Finder', 'Innovation Lab'],
     route: '/modules/first-principles',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: firstPrinciplesPathway,
   },
   {
     id: 'meta-learning',
@@ -773,7 +834,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Deliberate Practice', 'Memory Techniques', 'Skill Acquisition', 'Learning Strategies'],
     features: ['Learning Planner', 'Skill Tracker', 'Memory Palace Builder', 'Progress Dashboard'],
     route: '/modules/meta-learning',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: metaLearningPathway,
   },
   // Science & Universe
   {
@@ -788,7 +850,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Evolutionary Biology', 'Genetics', 'Natural Selection', 'Molecular Biology'],
     features: ['Evolution Simulator', 'Gene Explorer', 'Species Tree', 'Mutation Lab'],
     route: '/modules/biology-evolution',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: biologyEvolutionPathway,
   },
   {
     id: 'quantum-mechanics',
@@ -817,7 +880,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Geology', 'Climate Science', 'Plate Tectonics', 'Earth Systems'],
     features: ['Earth Explorer', 'Climate Simulator', 'Geological Timeline', 'Ecosystem Map'],
     route: '/modules/earth-sciences',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: earthSciencesPathway,
   },
   // Creative Arts
   {
@@ -832,7 +896,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Story Structure', 'Character Development', 'Dialogue', 'World-Building'],
     features: ['Writing Prompts', 'Character Builder', 'Plot Mapper', 'Daily Word Count'],
     route: '/modules/creative-writing',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: creativeWritingPathway,
   },
   {
     id: 'content-creation',
@@ -846,7 +911,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Content Strategy', 'Audience Building', 'Viral Mechanics', 'Distribution'],
     features: ['Content Calendar', 'Headline Analyzer', 'Engagement Tracker', 'Platform Guide'],
     route: '/modules/content-creation',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: contentCreationPathway,
   },
   {
     id: 'world-building',
@@ -860,7 +926,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Lore Design', 'Magic Systems', 'Culture Building', 'Geography Design'],
     features: ['World Canvas', 'Culture Generator', 'Map Maker', 'Lore Database'],
     route: '/modules/world-building',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: worldBuildingPathway,
   },
   // Strategy & Systems
   {
@@ -890,7 +957,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Decision Frameworks', 'Bias Mitigation', 'Probabilistic Thinking', 'Pre-Mortems'],
     features: ['Decision Journal', 'Bias Checker', 'Probability Trainer', 'Outcome Tracker'],
     route: '/modules/decision-making',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: decisionMakingPathway,
   },
   {
     id: 'risk-management',
@@ -904,7 +972,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Risk Assessment', 'Hedging', 'Tail Risk Management', 'Portfolio Theory'],
     features: ['Risk Calculator', 'Scenario Planner', 'Hedge Builder', 'Stress Tester'],
     route: '/modules/risk-management',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: riskManagementPathway,
   },
   // History & Culture
   {
@@ -934,7 +1003,8 @@ export const modules: ModuleConfig[] = [
     skills: ['World Wars', 'Cold War Dynamics', 'Globalization', 'Modern Conflicts'],
     features: ['Event Timeline', 'Cause & Effect Map', 'Document Library', 'Era Comparison'],
     route: '/modules/modern-history',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: modernHistoryPathway,
   },
   {
     id: 'cultural-anthropology',
@@ -948,7 +1018,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Cultural Analysis', 'Ritual Understanding', 'Social Structures', 'Cross-Cultural Comparison'],
     features: ['Culture Explorer', 'Ritual Database', 'Social Map', 'Field Notes'],
     route: '/modules/cultural-anthropology',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: culturalAnthropologyPathway,
   },
   // Practical Mastery
   {
@@ -963,7 +1034,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Team Building', 'Executive Presence', 'Vision Setting', 'Accountability'],
     features: ['Leadership Assessment', 'Team Dashboard', 'Feedback Tracker', 'Vision Builder'],
     route: '/modules/leadership',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: leadershipPathway,
   },
   {
     id: 'problem-solving',
@@ -977,7 +1049,8 @@ export const modules: ModuleConfig[] = [
     skills: ['Root Cause Analysis', '5 Whys', 'Debugging', 'Systematic Thinking'],
     features: ['Problem Mapper', '5 Whys Tool', 'Solution Tree', 'Troubleshooting Guide'],
     route: '/modules/problem-solving',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: problemSolvingPathway,
   },
   {
     id: 'productivity-systems',
@@ -991,7 +1064,8 @@ export const modules: ModuleConfig[] = [
     skills: ['GTD', 'Time Blocking', 'Energy Management', 'Task Prioritization'],
     features: ['System Builder', 'Time Tracker', 'Energy Dashboard', 'Weekly Review'],
     route: '/modules/productivity-systems',
-    isAvailable: false,
+    isAvailable: true,
+    pathway: productivitySystemsPathway,
   },
   // Relationships & Society
   {

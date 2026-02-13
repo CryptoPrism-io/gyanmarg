@@ -15,6 +15,8 @@ import {
   LogOut,
   Settings as SettingsIcon,
   Info,
+  RotateCw,
+  ExternalLink,
 } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import { useProgressStore } from '@/store/progressStore';
@@ -24,6 +26,8 @@ import { ModuleLayout, Section } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { Button } from '@/components/atoms';
 import { BADGES } from '@/data/badges';
+import { APP_VERSION, BUILD_DATE } from '@/lib/version';
+import { Link } from 'react-router-dom';
 
 // Storage keys for all stores
 const STORAGE_KEYS = {
@@ -63,6 +67,7 @@ export function Settings() {
   const [importError, setImportError] = useState<string | null>(null);
   const [pendingImportData, setPendingImportData] = useState<ExportData | null>(null);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Store data for display
@@ -201,6 +206,30 @@ export function Settings() {
     localStorage.removeItem('gyanmarg-last-reset-date');
     setShowResetConfirm(false);
     window.location.reload();
+  };
+
+  // Hard refresh - unregister service workers, clear caches, reload
+  const handleHardRefresh = async () => {
+    setIsRefreshing(true);
+    try {
+      // Unregister all service workers
+      if ('serviceWorker' in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations.map(reg => reg.unregister()));
+      }
+
+      // Clear all caches
+      if ('caches' in window) {
+        const cacheNames = await caches.keys();
+        await Promise.all(cacheNames.map(name => caches.delete(name)));
+      }
+
+      // Hard reload the page
+      window.location.reload();
+    } catch (error) {
+      console.error('Hard refresh failed:', error);
+      setIsRefreshing(false);
+    }
   };
 
   return (
@@ -534,24 +563,81 @@ export function Settings() {
           </motion.div>
         </Section>
 
-        {/* About */}
-        <Section title="About">
+        {/* App Version & Updates */}
+        <Section title="App Version">
           <motion.div variants={itemVariants}>
             <GlassCard>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sunrise to-golden flex items-center justify-center">
-                  <Info className="w-5 h-5 text-base" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sunrise to-golden flex items-center justify-center">
+                    <Info className="w-5 h-5 text-base" />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-semibold text-text-primary">Polymind</h3>
+                    <p className="text-xs text-text-muted">Your mind, unlimited.</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-display font-semibold text-text-primary">Polymind</h3>
-                  <p className="text-xs text-text-muted">Your mind, unlimited.</p>
+                <div className="text-right">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-golden/10 border border-golden/30">
+                    <span className="text-xs font-mono font-semibold text-golden">v{APP_VERSION}</span>
+                  </div>
+                  <p className="text-[10px] text-text-muted mt-1">{BUILD_DATE}</p>
                 </div>
               </div>
-              <p className="text-sm text-text-secondary mb-3">
+
+              <p className="text-sm text-text-secondary mb-4">
                 Build your Polymind using spaced repetition, active recall, and cross-domain connections
                 to retain knowledge from 1000+ bestselling authors.
               </p>
-              <p className="text-xs text-text-muted">Version 1.0.0</p>
+
+              {/* Update Controls */}
+              <div className="space-y-3 pt-4 border-t border-white/[0.06]">
+                <div className="flex items-center gap-2 mb-2">
+                  <RotateCw className="w-4 h-4 text-sky" />
+                  <h4 className="text-sm font-medium text-text-primary">Updates</h4>
+                </div>
+                <p className="text-xs text-text-muted mb-3">
+                  Check for the latest version and clear cached data for a fresh experience.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Button
+                    variant="glass"
+                    size="sm"
+                    onClick={handleHardRefresh}
+                    disabled={isRefreshing}
+                    className="gap-2 flex-1"
+                  >
+                    {isRefreshing ? (
+                      <>
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                        >
+                          <RotateCw className="w-4 h-4" />
+                        </motion.div>
+                        Refreshing...
+                      </>
+                    ) : (
+                      <>
+                        <RotateCw className="w-4 h-4" />
+                        Check for Updates
+                      </>
+                    )}
+                  </Button>
+
+                  <Link to="/changelog" className="flex-1">
+                    <Button variant="glass" size="sm" className="gap-2 w-full">
+                      <ExternalLink className="w-4 h-4" />
+                      View Changelog
+                    </Button>
+                  </Link>
+                </div>
+
+                <p className="text-[10px] text-text-muted mt-2">
+                  This will unregister service workers, clear caches, and reload the app.
+                </p>
+              </div>
             </GlassCard>
           </motion.div>
         </Section>

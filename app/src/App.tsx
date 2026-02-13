@@ -50,6 +50,14 @@ const BlogPage = lazy(() => import('@/features/blog/BlogPage').then(m => ({ defa
 const BlogArticlePage = lazy(() => import('@/features/blog/BlogArticlePage').then(m => ({ default: m.BlogArticlePage })));
 const HowToPage = lazy(() => import('@/features/how-to/HowToPage').then(m => ({ default: m.HowToPage })));
 const BrandKitPage = lazy(() => import('@/features/brand-kit/BrandKitPage').then(m => ({ default: m.BrandKitPage })));
+const ChangelogPage = lazy(() => import('@/features/changelog/ChangelogPage').then(m => ({ default: m.ChangelogPage })));
+
+// Experimental Features
+const ReelReader = lazy(() => import('@/features/experimental/ReelReader').then(m => ({ default: m.ReelReader })));
+const LabHub = lazy(() => import('@/features/experimental/LabHub'));
+const StoryMode = lazy(() => import('@/features/experimental/StoryMode'));
+const KnowledgeCards = lazy(() => import('@/features/experimental/KnowledgeCards'));
+const MindMapExplorer = lazy(() => import('@/features/experimental/MindMapExplorer'));
 
 // Loading fallback for lazy components
 function PageLoader() {
@@ -307,9 +315,73 @@ function AppRoutes() {
         }
       />
 
-      {/* Visual Lab */}
+      {/* Lab Hub - Experimental Learning Modes */}
       <Route
         path="/lab"
+        element={
+          <ProtectedRoute>
+            <PageLayout>
+              <PageTransition>
+                <Suspense fallback={<PageLoader />}>
+                  <LabHub />
+                </Suspense>
+              </PageTransition>
+            </PageLayout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Experimental Story Mode - Full-screen, no PageLayout */}
+      <Route
+        path="/lab/story/:moduleId/:lessonId"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={<PageLoader />}>
+              <StoryMode />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Experimental Knowledge Cards - Full-screen, no PageLayout */}
+      <Route
+        path="/lab/cards/:moduleId/:lessonId"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={<PageLoader />}>
+              <KnowledgeCards />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Experimental Mind Map Explorer - Full-screen, no PageLayout */}
+      <Route
+        path="/lab/map/:moduleId/:lessonId"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={<PageLoader />}>
+              <MindMapExplorer />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Experimental Reel Reader - Full-screen, no PageLayout */}
+      <Route
+        path="/lab/reels/:moduleId/:lessonId"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={<PageLoader />}>
+              <ReelReader />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Visual Lab - Legacy route, now accessible via dedicated path */}
+      <Route
+        path="/visualizations"
         element={
           <ProtectedRoute>
             <PageLayout>
@@ -322,7 +394,6 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
-
 
       {/* Saved Cards */}
       <Route
@@ -408,6 +479,16 @@ function AppRoutes() {
           <PageTransition>
             <Suspense fallback={<PageLoader />}>
               <BrandKitPage />
+            </Suspense>
+          </PageTransition>
+        }
+      />
+      <Route
+        path="/changelog"
+        element={
+          <PageTransition>
+            <Suspense fallback={<PageLoader />}>
+              <ChangelogPage />
             </Suspense>
           </PageTransition>
         }

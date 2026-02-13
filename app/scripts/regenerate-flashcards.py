@@ -7,7 +7,9 @@ Target Format:
 - Back: <200 chars (2 lines max, concise answer)
 
 Usage:
-    python regenerate-flashcards.py [--dry-run] [--limit N]
+    python regenerate-flashcards.py [--dry-run] [--limit N] [--batch]
+
+    --batch   Use Gemini Batch API (50% cheaper, async processing)
 
 Environment:
     Requires GEMINI_API_KEY environment variable
@@ -58,8 +60,11 @@ SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR.parent / 'src' / 'data'
 
 # Cost estimation (Gemini 2.0 Flash pricing as of Feb 2026)
-COST_PER_1M_INPUT_TOKENS = 0.075  # $0.075 per 1M input tokens
-COST_PER_1M_OUTPUT_TOKENS = 0.30  # $0.30 per 1M output tokens
+# Batch API is 50% cheaper than real-time
+COST_PER_1M_INPUT_TOKENS = 0.075       # $0.075 per 1M input tokens (real-time)
+COST_PER_1M_OUTPUT_TOKENS = 0.30       # $0.30 per 1M output tokens (real-time)
+BATCH_COST_PER_1M_INPUT_TOKENS = 0.0375   # 50% discount for batch
+BATCH_COST_PER_1M_OUTPUT_TOKENS = 0.15     # 50% discount for batch
 EST_TOKENS_PER_CARD = 150  # Rough estimate for input + output
 
 
@@ -160,13 +165,30 @@ def parse_flashcard_file(file_path: Path) -> Dict[str, Any]:
     }
 
 
-def regenerate_card(card: Dict[str, Any], dry_run: bool = False) -> Dict[str, str]:
-    """Regenerate a single card using Gemini API."""
+def validate_card(card: Dict[str, Any]) -> bool:
+    """Validate card data before sending to API to avoid 400 errors (wasted tokens)."""
+    if not card.get('id') or not card.get('front') or not card.get('back'):
+        return False
+    if not card.get('category') or not card.get('difficulty'):
+        return False
+    # Skip cards that are already within limits
+    if len(card['front']) <= 80 and len(card['back']) <= 200:
+        return False  # Already concise enough — skip API call to save cost
+    return True
+
+
+def regenerate_card(card: Dict[str, Any], dry_run: bool = False, max_retries: int = 2) -> Dict[str, str]:
+    """Regenerate a single card using Gemini API with retry + validation."""
     if dry_run:
         return {
             'front': card['front'][:80],
             'back': card['back'][:200]
         }
+
+    # Validate input before making API call (prevents 400 errors)
+    if not card.get('front') or not card.get('back'):
+        print(f"  ⚠️  Skipping {card['id']}: empty front/back")
+        return {'front': card['front'][:80], 'back': card['back'][:200]}
 
     prompt = PROMPT_TEMPLATE.format(
         id=card['id'],
@@ -177,44 +199,65 @@ def regenerate_card(card: Dict[str, Any], dry_run: bool = False) -> Dict[str, st
         back=card['back']
     )
 
-    try:
-        # Use new SDK pattern for text generation
-        contents = [
-            types.Content(
-                role="user",
-                parts=[types.Part.from_text(text=prompt)],
-            ),
-        ]
+    for attempt in range(max_retries):
+        try:
+            contents = [
+                types.Content(
+                    role="user",
+                    parts=[types.Part.from_text(text=prompt)],
+                ),
+            ]
 
-        response = client.models.generate_content(
-            model=MODEL_NAME,
-            contents=contents,
-        )
-        result_text = response.text.strip()
+            response = client.models.generate_content(
+                model=MODEL_NAME,
+                contents=contents,
+            )
+            result_text = response.text.strip()
 
-        # Extract JSON from markdown code blocks if present
-        if '```json' in result_text:
-            result_text = re.search(r'```json\s*(\{.*?\})\s*```', result_text, re.DOTALL).group(1)
-        elif '```' in result_text:
-            result_text = re.search(r'```\s*(\{.*?\})\s*```', result_text, re.DOTALL).group(1)
+            # Extract JSON from markdown code blocks if present
+            if '```json' in result_text:
+                result_text = re.search(r'```json\s*(\{.*?\})\s*```', result_text, re.DOTALL).group(1)
+            elif '```' in result_text:
+                result_text = re.search(r'```\s*(\{.*?\})\s*```', result_text, re.DOTALL).group(1)
 
-        result = json.loads(result_text)
+            result = json.loads(result_text)
 
-        # Validate lengths
-        if len(result['front']) > 80:
-            print(f"  ⚠️  Front too long ({len(result['front'])} chars): {card['id']}")
-        if len(result['back']) > 200:
-            print(f"  ⚠️  Back too long ({len(result['back'])} chars): {card['id']}")
+            # Validate output has required fields
+            if 'front' not in result or 'back' not in result:
+                raise ValueError("Missing front/back in response")
 
-        return result
+            # Validate lengths
+            if len(result['front']) > 80:
+                print(f"  ⚠️  Front too long ({len(result['front'])} chars): {card['id']}")
+            if len(result['back']) > 200:
+                print(f"  ⚠️  Back too long ({len(result['back'])} chars): {card['id']}")
 
-    except Exception as e:
-        print(f"  ❌ Error regenerating {card['id']}: {e}")
-        # Fallback: truncate original
-        return {
-            'front': card['front'][:80],
-            'back': card['back'][:200]
-        }
+            return result
+
+        except json.JSONDecodeError as e:
+            if attempt < max_retries - 1:
+                print(f"  ⚠️  JSON parse error, retrying...", end=' ')
+                time.sleep(2)
+                continue
+            print(f"  ❌ JSON error for {card['id']}: {e}")
+        except Exception as e:
+            err_str = str(e)
+            if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
+                wait = 30 * (attempt + 1)
+                print(f"  ⏳ Rate limited, waiting {wait}s...", end=' ')
+                time.sleep(wait)
+                continue
+            if attempt < max_retries - 1:
+                print(f"  ⚠️  Error, retrying...", end=' ')
+                time.sleep(3)
+                continue
+            print(f"  ❌ Error regenerating {card['id']}: {e}")
+
+    # Fallback: truncate original
+    return {
+        'front': card['front'][:80],
+        'back': card['back'][:200]
+    }
 
 
 def escape_for_typescript(text: str) -> str:
@@ -271,11 +314,15 @@ def regenerate_batch_file(file_data: Dict[str, Any], dry_run: bool = False, limi
     return new_content
 
 
-def estimate_cost(total_cards: int) -> float:
-    """Estimate API cost in USD."""
+def estimate_cost(total_cards: int, use_batch: bool = False) -> float:
+    """Estimate API cost in USD. Batch API is 50% cheaper."""
     total_tokens = total_cards * EST_TOKENS_PER_CARD
-    input_cost = (total_tokens * 0.6) / 1_000_000 * COST_PER_1M_INPUT_TOKENS
-    output_cost = (total_tokens * 0.4) / 1_000_000 * COST_PER_1M_OUTPUT_TOKENS
+    if use_batch:
+        input_cost = (total_tokens * 0.6) / 1_000_000 * BATCH_COST_PER_1M_INPUT_TOKENS
+        output_cost = (total_tokens * 0.4) / 1_000_000 * BATCH_COST_PER_1M_OUTPUT_TOKENS
+    else:
+        input_cost = (total_tokens * 0.6) / 1_000_000 * COST_PER_1M_INPUT_TOKENS
+        output_cost = (total_tokens * 0.4) / 1_000_000 * COST_PER_1M_OUTPUT_TOKENS
     return input_cost + output_cost
 
 
@@ -285,6 +332,9 @@ def main():
     parser.add_argument('--limit', type=int, help='Limit cards per file (for testing)')
     parser.add_argument('--files', nargs='+', help='Specific batch files to process (e.g., batch-1.ts)')
     parser.add_argument('--yes', '-y', action='store_true', help='Skip confirmation prompt')
+    parser.add_argument('--batch', action='store_true', help='Use Batch API (50%% cheaper, recommended for bulk)')
+    parser.add_argument('--skip-concise', action='store_true', default=True,
+                        help='Skip cards already within size limits (default: True)')
     args = parser.parse_args()
 
     # Find all batch files
@@ -317,12 +367,25 @@ def main():
             print(f"❌ Error parsing {batch_file.name}: {e}")
             continue
 
-    print(f"📊 Total cards to regenerate: {total_cards}")
+    # Count cards that actually need regeneration (skip already concise ones)
+    skipped = 0
+    if args.skip_concise:
+        for fd in all_file_data:
+            for card in fd['cards']:
+                if not validate_card(card):
+                    skipped += 1
+        print(f"📊 Total cards: {total_cards + skipped} ({skipped} already concise, {total_cards} need regeneration)")
+    else:
+        print(f"📊 Total cards to regenerate: {total_cards}")
 
     # Cost estimation
     if not args.dry_run:
-        estimated_cost = estimate_cost(total_cards)
-        print(f"💰 Estimated API cost: ${estimated_cost:.4f}")
+        estimated_cost = estimate_cost(total_cards, use_batch=args.batch)
+        mode = "Batch API (50% off)" if args.batch else "Real-time API"
+        print(f"💰 Estimated API cost: ${estimated_cost:.4f} ({mode})")
+        if not args.batch:
+            batch_cost = estimate_cost(total_cards, use_batch=True)
+            print(f"💡 Tip: Use --batch to save ${estimated_cost - batch_cost:.4f} (50% off)")
         print(f"⏱️  Estimated time: {total_cards * 4.5 / 60:.1f} minutes (rate limited)")
 
         if not args.yes:
