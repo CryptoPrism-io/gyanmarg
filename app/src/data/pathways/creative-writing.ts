@@ -1,5 +1,8 @@
 import type { PathwayLevel } from "@/types";
-import { cwLessonsLevel1 } from "./creative-writing-lessons";
+import {
+  cwLessonsLevel1, cwLessonsLevel2, cwLessonsLevel3, cwLessonsLevel4, cwLessonsLevel5,
+  cwLessonsLevel6, cwLessonsLevel7, cwLessonsLevel8, cwLessonsLevel9, cwLessonsLevel10,
+} from "./creative-writing-lessons";
 
 const creativeWritingPathway: PathwayLevel[] = [
   {
@@ -10,6 +13,87 @@ const creativeWritingPathway: PathwayLevel[] = [
     color: "from-rose-500 to-red-500",
     lessons: cwLessonsLevel1,
     unlockRequirement: 0,
+  },
+  {
+    id: "cw-level2",
+    title: "Deep Character Work",
+    description: "Create multidimensional characters with rich inner lives, believable motivations, and transformative arcs.",
+    icon: "🎭",
+    color: "from-amber-500 to-orange-500",
+    lessons: cwLessonsLevel2,
+    unlockRequirement: 500,
+  },
+  {
+    id: "cw-level3",
+    title: "Setting & Atmosphere",
+    description: "Build vivid, sensory-rich settings that shape mood, reveal character, and drive narrative tension.",
+    icon: "🌄",
+    color: "from-teal-500 to-emerald-500",
+    lessons: cwLessonsLevel3,
+    unlockRequirement: 1000,
+  },
+  {
+    id: "cw-level4",
+    title: "Advanced Plot Architecture",
+    description: "Design complex narrative structures with subplots, nonlinear timelines, and satisfying resolutions.",
+    icon: "🏗️",
+    color: "from-blue-500 to-indigo-500",
+    lessons: cwLessonsLevel4,
+    unlockRequirement: 1500,
+  },
+  {
+    id: "cw-level5",
+    title: "Prose Style & Language",
+    description: "Develop a distinctive prose voice through sentence craft, rhythm, imagery, and tonal precision.",
+    icon: "🖋️",
+    color: "from-purple-500 to-violet-500",
+    lessons: cwLessonsLevel5,
+    unlockRequirement: 2000,
+  },
+  {
+    id: "cw-level6",
+    title: "Emotion & Theme",
+    description: "Weave emotional resonance and thematic depth into your fiction without being heavy-handed.",
+    icon: "💎",
+    color: "from-pink-500 to-rose-500",
+    lessons: cwLessonsLevel6,
+    unlockRequirement: 2500,
+  },
+  {
+    id: "cw-level7",
+    title: "Genre Fiction Mastery",
+    description: "Master the conventions and reader expectations of major fiction genres while finding your unique angle.",
+    icon: "📚",
+    color: "from-orange-500 to-red-500",
+    lessons: cwLessonsLevel7,
+    unlockRequirement: 3000,
+  },
+  {
+    id: "cw-level8",
+    title: "Short Fiction Craft",
+    description: "Write powerful short stories with economy, precision, and impact in limited space.",
+    icon: "✂️",
+    color: "from-cyan-500 to-blue-500",
+    lessons: cwLessonsLevel8,
+    unlockRequirement: 3500,
+  },
+  {
+    id: "cw-level9",
+    title: "The Novel Journey",
+    description: "Plan, draft, and revise a novel from concept to completed manuscript with sustainable creative habits.",
+    icon: "📝",
+    color: "from-emerald-500 to-green-500",
+    lessons: cwLessonsLevel9,
+    unlockRequirement: 4000,
+  },
+  {
+    id: "cw-level10",
+    title: "The Writing Career",
+    description: "Build a sustainable writing career through publishing, platform-building, and lifelong craft development.",
+    icon: "🏆",
+    color: "from-yellow-500 to-amber-500",
+    lessons: cwLessonsLevel10,
+    unlockRequirement: 4500,
   },
 ];
 

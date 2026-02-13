@@ -760,6 +760,76 @@ PROMPTS = {
         "level-myth-08-archetypes.webp": "Jungian archetypes as amber masks floating in collective unconscious in ink wash, archetypal psychology, purple shadow anima animus, zen understanding the psyche, inner mythology.",
         "level-myth-09-modern.webp": "Modern superhero silhouette with amber mythological roots in sumi-e, modern mythology, purple Star Wars Marvel narrative, zen contemporary myth-making, stories we live by.",
         "level-myth-10-personal.webp": "Person writing their own amber life story as mythological quest in ink wash, personal mythology, purple self as hero, zen crafting your narrative, living mythically.",
+
+        # ============================================
+        # Writing & Storytelling - 10 Levels
+        # ============================================
+        "level-ws-01-narrative.webp": "Open book with amber ink flowing into story rivers in sumi-e, narrative craft foundations, purple plot threads weaving, zen storytelling beginnings, writer's first step.",
+        "level-ws-02-character.webp": "Ink brush figure stepping out of page into amber light, character mastery, purple personality facets radiating, zen bringing characters to life, soul on paper.",
+        "level-ws-03-plot.webp": "Architectural blueprint of story structure in sumi-e, amber dramatic arc rising, plot architecture, purple tension threads, zen narrative engineering, story skeleton.",
+        "level-ws-04-voice.webp": "Calligraphy brush creating unique amber fingerprint of words, voice and style, purple tonal waves, zen finding your sound, distinctive prose.",
+        "level-ws-05-dialogue.webp": "Two ink brush figures facing each other with amber speech wisps between, dialogue and subtext, purple unspoken meaning, zen conversation craft, words beneath words.",
+        "level-ws-06-setting.webp": "Miniature world unfolding from open book in ink wash, amber atmospheric light, world and setting, purple sensory details, zen place as character, immersive environment.",
+        "level-ws-07-editing.webp": "Ink brush cutting and reshaping text into refined amber form, editing and revision, purple deleted words dissolving, zen sculpting prose, the art of rewriting.",
+        "level-ws-08-genre.webp": "Multiple doorways in sumi-e each leading to different amber worlds, genre and form, purple stylistic variety, zen versatile storytelling, many paths one writer.",
+        "level-ws-09-publishing.webp": "Manuscript transforming into amber beacon reaching many readers, publishing and platform, purple audience connections, zen reaching the world, story meets reader.",
+        "level-ws-10-life.webp": "Writer at desk with amber creative flame burning eternal, the writer's life, purple daily ritual glow, zen lifelong craft, sustained creative fire.",
+
+        # ============================================
+        # Music & Sound - 10 Levels
+        # ============================================
+        "level-mus-01-theory.webp": "Musical staff with amber notes emerging from ink brush, music theory foundations, purple harmonic resonance, zen understanding sound, first notes of mastery.",
+        "level-mus-02-melody.webp": "Single melodic line soaring upward in amber light in sumi-e, melody and composition, purple creative flow, zen melodic intuition, songwriting spark.",
+        "level-mus-03-rhythm.webp": "Drum and wave patterns in ink wash with amber rhythmic pulses, rhythm and groove, purple percussive energy, zen finding the beat, body in motion.",
+        "level-mus-04-harmony.webp": "Multiple amber tones blending into rich chords in sumi-e, harmony deep dive, purple interval colors, zen consonance and dissonance, layered beauty.",
+        "level-mus-05-arrangement.webp": "Orchestra instruments arranged in mandala pattern with amber conductor light, arrangement and orchestration, purple instrumental voices, zen sonic architecture.",
+        "level-mus-06-synthesis.webp": "Synthesizer knobs and waveforms in ink brush with amber electronic glow, sound design and synthesis, purple frequency spectrum, zen crafting new sounds.",
+        "level-mus-07-recording.webp": "Microphone capturing amber sound waves in studio setting in sumi-e, recording techniques, purple acoustic reflections, zen capturing performance, sonic truth.",
+        "level-mus-08-mixing.webp": "Mixing console faders as zen garden rakes in amber light, mixing and mastering, purple audio layers blending, zen sonic balance, polished sound.",
+        "level-mus-09-business.webp": "Musical note transforming into amber currency and audience connections, music business and marketing, purple industry networks, zen sustainable career, art meets commerce.",
+        "level-mus-10-complete.webp": "Complete musician silhouette with all instruments as amber aura in sumi-e, the complete musician, purple mastery glow, zen lifelong musicianship, total artistry.",
+
+        # ============================================
+        # Creative Writing - 10 Levels
+        # ============================================
+        "level-cw-01-fiction.webp": "Quill pen touching blank page with amber story sparks in sumi-e, fiction fundamentals, purple imagination igniting, zen first words, beginning the craft.",
+        "level-cw-02-character.webp": "Ink brush portrait revealing amber depth layers beneath surface, deep character work, purple psychological complexity, zen understanding humanity, character as soul.",
+        "level-cw-03-setting.webp": "Atmospheric landscape in ink wash with amber mood lighting, setting and atmosphere, purple sensory fog, zen place as emotion, world breathing.",
+        "level-cw-04-plot.webp": "Complex story web in sumi-e with amber structural nodes glowing, advanced plot architecture, purple narrative tension, zen sophisticated structure, story engineering.",
+        "level-cw-05-prose.webp": "Words flowing like water calligraphy with amber linguistic beauty, prose style and language, purple lyrical rhythm, zen sentence craft, every word matters.",
+        "level-cw-06-emotion.webp": "Heart radiating amber thematic resonance through ink brush waves, emotion and theme, purple meaning layers, zen feeling as message, stories that move.",
+        "level-cw-07-genre.webp": "Multiple genre symbols merging in amber fusion light in sumi-e, genre fiction mastery, purple creative boundaries expanding, zen versatile imagination, many worlds.",
+        "level-cw-08-short.webp": "Compressed diamond of amber narrative in minimal ink strokes, short fiction craft, purple precision artistry, zen brevity as power, small but mighty.",
+        "level-cw-09-novel.webp": "Vast amber novel landscape unfolding from single seed in ink wash, the novel journey, purple epic scope, zen long-form endurance, marathon of words.",
+        "level-cw-10-career.webp": "Writer's path stretching to amber horizon with published works lining road, the writing career, purple professional growth, zen sustaining the dream, lifelong creation.",
+
+        # ============================================
+        # Content Creation - 10 Levels
+        # ============================================
+        "level-content-01-foundations.webp": "Multiple digital screens emanating amber creative light in sumi-e, digital creator foundations, purple platform possibilities, zen content begins, finding your voice online.",
+        "level-content-02-video.webp": "Camera lens focusing amber light into cinematic frame in ink wash, video production mastery, purple visual storytelling, zen moving pictures, compelling footage.",
+        "level-content-03-writing.webp": "Keyboard with amber words rising as digital calligraphy in sumi-e, writing for the internet, purple viral potential, zen digital prose, words that spread.",
+        "level-content-04-brand.webp": "Personal brand logo radiating amber design harmony in ink brush, visual design and brand, purple aesthetic cohesion, zen visual identity, looking professional.",
+        "level-content-05-growth.webp": "Amber audience wave growing exponentially in sumi-e graph, growth and distribution, purple reach expanding, zen strategic amplification, content finding its people.",
+        "level-content-06-podcast.webp": "Podcast microphone with amber sound waves reaching listeners in ink wash, podcasting and audio, purple intimate connection, zen voice as bond, audio mastery.",
+        "level-content-07-newsletter.webp": "Email envelope opening to reveal amber knowledge light in sumi-e, newsletter and email, purple subscriber loyalty, zen direct connection, words in inbox.",
+        "level-content-08-monetize.webp": "Content streams flowing into amber revenue rivers in ink brush, monetization deep dive, purple income diversification, zen sustainable earning, value exchange.",
+        "level-content-09-team.webp": "Single creator multiplying into amber team network in sumi-e, team and scale, purple delegation flows, zen growing beyond yourself, systems of creation.",
+        "level-content-10-legacy.webp": "Creator's body of work as amber constellation in night sky ink wash, creator legacy, purple lasting impact, zen digital immortality, content that endures.",
+
+        # ============================================
+        # World Building - 10 Levels
+        # ============================================
+        "level-world-01-universe.webp": "Hands shaping miniature amber universe from cosmic clay in sumi-e, universe architecture foundations, purple planetary formations, zen creation from nothing, building reality.",
+        "level-world-02-geography.webp": "Fantastical continent map with amber topographic detail in ink wash, deep geography and ecology, purple ecosystem connections, zen landscape design, living terrain.",
+        "level-world-03-cultures.webp": "Diverse cultural symbols interweaving in amber tapestry in sumi-e, cultures and societies, purple social threads, zen civilization building, people and customs.",
+        "level-world-04-magic.webp": "Magical runes and technological gears merging in amber energy in ink brush, magic and technology, purple power systems, zen rule-based wonder, systematic enchantment.",
+        "level-world-05-history.webp": "Timeline spiral descending into amber historical depth in sumi-e, history and timeline, purple era layers, zen temporal architecture, ages of the world.",
+        "level-world-06-language.webp": "Alien script characters floating with amber linguistic beauty in ink wash, languages and communication, purple phonetic patterns, zen constructed tongues, words of other worlds.",
+        "level-world-07-economics.webp": "Market bazaar with amber trade goods flowing between realms in sumi-e, economics and trade, purple commerce networks, zen resource flow, wealth of worlds.",
+        "level-world-08-conflict.webp": "Faction banners clashing with amber power dynamics in ink brush, conflict and power, purple political tension, zen controlled chaos, war and diplomacy.",
+        "level-world-09-narrative.webp": "World elements weaving into amber story threads in sumi-e, narrative integration, purple seamless world-story fusion, zen show don't tell, world serves story.",
+        "level-world-10-master.webp": "Complete world floating as amber jewel in creator's palm in ink wash, master world builder, purple total mastery glow, zen ultimate creation, world complete.",
     },
 }
 

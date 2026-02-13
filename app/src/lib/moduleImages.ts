@@ -620,6 +620,71 @@ import levelSi08 from '@/assets/ai-images/levels/level-si-8.webp';
 import levelSi09 from '@/assets/ai-images/levels/level-si-9.webp';
 import levelSi10 from '@/assets/ai-images/levels/level-si-10.webp';
 
+// Level images - Writing & Storytelling (10)
+// ============================================
+import levelWs01 from '@/assets/ai-images/levels/level-ws-01-narrative.webp';
+import levelWs02 from '@/assets/ai-images/levels/level-ws-02-character.webp';
+import levelWs03 from '@/assets/ai-images/levels/level-ws-03-plot.webp';
+import levelWs04 from '@/assets/ai-images/levels/level-ws-04-voice.webp';
+import levelWs05 from '@/assets/ai-images/levels/level-ws-05-dialogue.webp';
+import levelWs06 from '@/assets/ai-images/levels/level-ws-06-setting.webp';
+import levelWs07 from '@/assets/ai-images/levels/level-ws-07-editing.webp';
+import levelWs08 from '@/assets/ai-images/levels/level-ws-08-genre.webp';
+import levelWs09 from '@/assets/ai-images/levels/level-ws-09-publishing.webp';
+import levelWs10 from '@/assets/ai-images/levels/level-ws-10-life.webp';
+
+// Level images - Music & Sound (10)
+// ============================================
+import levelMus01 from '@/assets/ai-images/levels/level-mus-01-theory.webp';
+import levelMus02 from '@/assets/ai-images/levels/level-mus-02-melody.webp';
+import levelMus03 from '@/assets/ai-images/levels/level-mus-03-rhythm.webp';
+import levelMus04 from '@/assets/ai-images/levels/level-mus-04-harmony.webp';
+import levelMus05 from '@/assets/ai-images/levels/level-mus-05-arrangement.webp';
+import levelMus06 from '@/assets/ai-images/levels/level-mus-06-synthesis.webp';
+import levelMus07 from '@/assets/ai-images/levels/level-mus-07-recording.webp';
+import levelMus08 from '@/assets/ai-images/levels/level-mus-08-mixing.webp';
+import levelMus09 from '@/assets/ai-images/levels/level-mus-09-business.webp';
+import levelMus10 from '@/assets/ai-images/levels/level-mus-10-complete.webp';
+
+// Level images - Creative Writing (10)
+// ============================================
+import levelCw01 from '@/assets/ai-images/levels/level-cw-01-fiction.webp';
+import levelCw02 from '@/assets/ai-images/levels/level-cw-02-character.webp';
+import levelCw03 from '@/assets/ai-images/levels/level-cw-03-setting.webp';
+import levelCw04 from '@/assets/ai-images/levels/level-cw-04-plot.webp';
+import levelCw05 from '@/assets/ai-images/levels/level-cw-05-prose.webp';
+import levelCw06 from '@/assets/ai-images/levels/level-cw-06-emotion.webp';
+import levelCw07 from '@/assets/ai-images/levels/level-cw-07-genre.webp';
+import levelCw08 from '@/assets/ai-images/levels/level-cw-08-short.webp';
+import levelCw09 from '@/assets/ai-images/levels/level-cw-09-novel.webp';
+import levelCw10 from '@/assets/ai-images/levels/level-cw-10-career.webp';
+
+// Level images - Content Creation (10)
+// ============================================
+import levelContent01 from '@/assets/ai-images/levels/level-content-01-foundations.webp';
+import levelContent02 from '@/assets/ai-images/levels/level-content-02-video.webp';
+import levelContent03 from '@/assets/ai-images/levels/level-content-03-writing.webp';
+import levelContent04 from '@/assets/ai-images/levels/level-content-04-brand.webp';
+import levelContent05 from '@/assets/ai-images/levels/level-content-05-growth.webp';
+import levelContent06 from '@/assets/ai-images/levels/level-content-06-podcast.webp';
+import levelContent07 from '@/assets/ai-images/levels/level-content-07-newsletter.webp';
+import levelContent08 from '@/assets/ai-images/levels/level-content-08-monetize.webp';
+import levelContent09 from '@/assets/ai-images/levels/level-content-09-team.webp';
+import levelContent10 from '@/assets/ai-images/levels/level-content-10-legacy.webp';
+
+// Level images - World Building (10)
+// ============================================
+import levelWorld01 from '@/assets/ai-images/levels/level-world-01-universe.webp';
+import levelWorld02 from '@/assets/ai-images/levels/level-world-02-geography.webp';
+import levelWorld03 from '@/assets/ai-images/levels/level-world-03-cultures.webp';
+import levelWorld04 from '@/assets/ai-images/levels/level-world-04-magic.webp';
+import levelWorld05 from '@/assets/ai-images/levels/level-world-05-history.webp';
+import levelWorld06 from '@/assets/ai-images/levels/level-world-06-language.webp';
+import levelWorld07 from '@/assets/ai-images/levels/level-world-07-economics.webp';
+import levelWorld08 from '@/assets/ai-images/levels/level-world-08-conflict.webp';
+import levelWorld09 from '@/assets/ai-images/levels/level-world-09-narrative.webp';
+import levelWorld10 from '@/assets/ai-images/levels/level-world-10-master.webp';
+
 // Module ID to image mapping
 export const moduleImages: Record<string, string> = {
   // Original 16 modules
@@ -1164,6 +1229,66 @@ export const levelImages: Record<string, string> = {
   'si-level8': levelSi08,
   'si-level9': levelSi09,
   'si-level10': levelSi10,
+
+  // Writing & Storytelling
+  'ws-level1': levelWs01,
+  'ws-level2': levelWs02,
+  'ws-level3': levelWs03,
+  'ws-level4': levelWs04,
+  'ws-level5': levelWs05,
+  'ws-level6': levelWs06,
+  'ws-level7': levelWs07,
+  'ws-level8': levelWs08,
+  'ws-level9': levelWs09,
+  'ws-level10': levelWs10,
+
+  // Music & Sound
+  'mus-level1': levelMus01,
+  'mus-level2': levelMus02,
+  'mus-level3': levelMus03,
+  'mus-level4': levelMus04,
+  'mus-level5': levelMus05,
+  'mus-level6': levelMus06,
+  'mus-level7': levelMus07,
+  'mus-level8': levelMus08,
+  'mus-level9': levelMus09,
+  'mus-level10': levelMus10,
+
+  // Creative Writing
+  'cw-level1': levelCw01,
+  'cw-level2': levelCw02,
+  'cw-level3': levelCw03,
+  'cw-level4': levelCw04,
+  'cw-level5': levelCw05,
+  'cw-level6': levelCw06,
+  'cw-level7': levelCw07,
+  'cw-level8': levelCw08,
+  'cw-level9': levelCw09,
+  'cw-level10': levelCw10,
+
+  // Content Creation
+  'content-level1': levelContent01,
+  'content-level2': levelContent02,
+  'content-level3': levelContent03,
+  'content-level4': levelContent04,
+  'content-level5': levelContent05,
+  'content-level6': levelContent06,
+  'content-level7': levelContent07,
+  'content-level8': levelContent08,
+  'content-level9': levelContent09,
+  'content-level10': levelContent10,
+
+  // World Building
+  'world-level1': levelWorld01,
+  'world-level2': levelWorld02,
+  'world-level3': levelWorld03,
+  'world-level4': levelWorld04,
+  'world-level5': levelWorld05,
+  'world-level6': levelWorld06,
+  'world-level7': levelWorld07,
+  'world-level8': levelWorld08,
+  'world-level9': levelWorld09,
+  'world-level10': levelWorld10,
 };
 
 // Helper to get module image with fallback

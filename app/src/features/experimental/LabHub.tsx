@@ -78,13 +78,13 @@ const experiments: ExperimentCard[] = [
     description: 'Vertical TikTok-style content consumption for mobile-first learning',
     icon: <Smartphone className="w-8 h-8" />,
     gradient: 'from-green-500 to-emerald-600',
-    route: '/lab/reels/emotional-intelligence/eq-001',
+    route: '/lab/reels/yoga-philosophy/yoga-001',
     status: 'new',
     features: [
       'Vertical swipe navigation',
-      'Full-screen immersion',
-      'Auto-playing micro-lessons',
-      'Gesture-based interactions',
+      'Full-screen immersive images',
+      'Markdown tables & rich text',
+      'Smart content chunking',
       'Mobile-optimized UI',
     ],
   },
@@ -190,7 +190,7 @@ export default function LabHub() {
                 {/* Try Button */}
                 <div className="flex items-center justify-between pt-4 border-t border-border">
                   <span className="text-sm text-text-muted">
-                    Sample: EQ Module, Lesson 1
+                    Sample lesson demo
                   </span>
                   <button className="px-4 py-2 bg-golden/10 hover:bg-golden/20 text-golden rounded-lg transition font-medium">
                     Try It →

@@ -2,11 +2,13 @@ import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  X, CheckCircle2, Sparkles, Award, ChevronUp, Zap,
+  X, CheckCircle2, Sparkles, ChevronUp, Zap,
   Lightbulb, Target, Flame, BookOpen, Brain, Trophy,
+  Table2, ImageIcon,
 } from 'lucide-react';
 import { modules } from '@/data/modules';
 import { useProgressStore } from '@/store/progressStore';
+import { moduleImages, levelImages } from '@/lib/moduleImages';
 import type { PathwayLesson, QuizQuestion } from '@/types';
 
 // ============================================================================
@@ -14,21 +16,27 @@ import type { PathwayLesson, QuizQuestion } from '@/types';
 // ============================================================================
 type CardType =
   | 'hook' | 'concept' | 'list' | 'quote' | 'insight'
+  | 'table' | 'image'
   | 'quiz' | 'milestone' | 'takeaway' | 'action' | 'complete';
 
 interface ReelCard {
   id: string;
   type: CardType;
   heading?: string;
+  subHeading?: string;
   body?: string;
   items?: string[];
+  tableHeaders?: string[];
+  tableRows?: string[][];
+  imageSrc?: string;
+  imageCaption?: string;
   quiz?: QuizQuestion;
   milestoneMsg?: string;
   milestonePct?: number;
 }
 
 // ============================================================================
-// Visual styles per card type — each card feels DIFFERENT
+// Visual styles per card type
 // ============================================================================
 const cardGradients: Record<CardType, string> = {
   hook:      'from-amber-600/20 via-orange-500/8 to-transparent',
@@ -36,6 +44,8 @@ const cardGradients: Record<CardType, string> = {
   list:      'from-teal-600/12 via-cyan-500/5 to-transparent',
   quote:     'from-violet-600/15 via-purple-500/5 to-transparent',
   insight:   'from-rose-600/12 via-pink-500/5 to-transparent',
+  table:     'from-indigo-600/12 via-blue-500/5 to-transparent',
+  image:     'from-transparent to-transparent',
   quiz:      'from-amber-600/15 via-yellow-500/5 to-transparent',
   milestone: 'from-orange-600/25 via-red-500/10 to-transparent',
   takeaway:  'from-amber-500/20 via-yellow-500/10 to-transparent',
@@ -49,6 +59,8 @@ const cardGlows: Record<CardType, string> = {
   list:      'rgba(20,184,166,0.08)',
   quote:     'rgba(167,139,250,0.10)',
   insight:   'rgba(251,113,133,0.08)',
+  table:     'rgba(99,102,241,0.08)',
+  image:     'rgba(0,0,0,0)',
   quiz:      'rgba(245,158,11,0.10)',
   milestone: 'rgba(249,115,22,0.15)',
   takeaway:  'rgba(245,158,11,0.12)',
@@ -62,6 +74,8 @@ const cardPills: Record<CardType, { label: string; emoji: string; color: string 
   list:      { label: 'Key Points',  emoji: '\uD83D\uDCCB', color: 'bg-teal-500/15 text-teal-400 border-teal-500/25' },
   quote:     { label: 'Wisdom',      emoji: '\uD83D\uDCAC', color: 'bg-violet-500/15 text-violet-400 border-violet-500/25' },
   insight:   { label: 'Insight',     emoji: '\uD83D\uDCA1', color: 'bg-rose-500/15 text-rose-400 border-rose-500/25' },
+  table:     { label: 'Reference',   emoji: '\uD83D\uDCCA', color: 'bg-indigo-500/15 text-indigo-400 border-indigo-500/25' },
+  image:     { label: 'Visual',      emoji: '\uD83C\uDFA8', color: 'bg-purple-500/15 text-purple-400 border-purple-500/25' },
   quiz:      { label: 'Quick Check', emoji: '\uD83E\uDDE0', color: 'bg-amber-500/15 text-amber-400 border-amber-500/25' },
   milestone: { label: 'Progress',    emoji: '\uD83D\uDD25', color: 'bg-orange-500/15 text-orange-400 border-orange-500/25' },
   takeaway:  { label: 'Takeaway',    emoji: '\uD83C\uDFAF', color: 'bg-amber-500/15 text-amber-400 border-amber-500/25' },
@@ -70,9 +84,31 @@ const cardPills: Record<CardType, { label: string; emoji: string; color: string 
 };
 
 // ============================================================================
-// Smart content parser — breaks lesson into bite-sized visual cards
+// Inline text formatting — **bold**, *italic*, `code`, -- em dash
 // ============================================================================
-function buildCards(lesson: PathwayLesson): ReelCard[] {
+function fmt(text: string): React.ReactNode {
+  const parts: React.ReactNode[] = [];
+  // Match **bold**, *italic*, `code`, or -- em dash
+  const regex = /(\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`|--)/g;
+  let last = 0;
+  let match;
+  let k = 0;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > last) parts.push(text.slice(last, match.index));
+    if (match[2]) parts.push(<strong key={k++} className="text-white font-semibold">{match[2]}</strong>);
+    else if (match[3]) parts.push(<em key={k++} className="italic text-amber-300/70">{match[3]}</em>);
+    else if (match[4]) parts.push(<code key={k++} className="px-1 py-0.5 rounded bg-white/10 text-amber-300 text-[13px] font-mono">{match[4]}</code>);
+    else if (match[0] === '--') parts.push('\u2014');
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts.length === 1 ? parts[0] : <>{parts}</>;
+}
+
+// ============================================================================
+// Smart content parser
+// ============================================================================
+function buildCards(lesson: PathwayLesson, levelImg?: string, moduleImg?: string): ReelCard[] {
   const cards: ReelCard[] = [];
   let n = 0;
 
@@ -80,8 +116,20 @@ function buildCards(lesson: PathwayLesson): ReelCard[] {
   cards.push({ id: `${lesson.id}-hook`, type: 'hook', heading: lesson.title, body: lesson.content.overview });
   n++;
 
-  // 2. Parse mainContent
-  const raw = lesson.content.mainContent;
+  // 2. Image card right after hook (if we have a level image)
+  if (levelImg) {
+    cards.push({
+      id: `${lesson.id}-img0`, type: 'image',
+      imageSrc: levelImg, imageCaption: lesson.title,
+    });
+    n++;
+  }
+
+  // 3. Parse mainContent
+  let raw = lesson.content.mainContent;
+  // Strip leading # Title line (we already show title in hook)
+  raw = raw.replace(/^#\s+[^\n]+\n+/, '');
+
   const sections = raw.split(/(?=^## )/gm).filter(Boolean);
 
   for (const section of sections) {
@@ -90,123 +138,184 @@ function buildCards(lesson: PathwayLesson): ReelCard[] {
     const body = lines.slice(1).join('\n').trim();
     if (!body) continue;
 
-    const blocks = body.split(/\n\n+/).filter(s => s.trim());
+    // Split by ### sub-headings first, then by paragraphs
+    const subSections = body.split(/(?=^### )/gm).filter(Boolean);
 
-    for (const block of blocks) {
-      const trimmed = block.trim();
+    for (const sub of subSections) {
+      const subLines = sub.trim().split('\n');
+      let subHeading: string | undefined;
+      let subBody: string;
 
-      // Blockquote → QuoteCard
-      if (trimmed.startsWith('> ')) {
-        const qt = trimmed.replace(/^>\s*/gm, '').replace(/^["\u201C]|["\u201D]$/g, '').trim();
-        cards.push({ id: `${lesson.id}-c${n++}`, type: 'quote', body: qt, heading });
-        continue;
+      if (subLines[0].startsWith('### ')) {
+        subHeading = subLines[0].replace(/^###\s*/, '').trim();
+        subBody = subLines.slice(1).join('\n').trim();
+      } else {
+        subBody = sub.trim();
       }
 
-      // Bullets / numbered list → ListCard (max 4 items per card)
-      if (/^[-*\u2022]\s/.test(trimmed) || /^\d+[.)]\s/.test(trimmed)) {
-        const items = trimmed.split('\n')
-          .map(l => l.replace(/^[-*\u2022]\s+/, '').replace(/^\d+[.)]\s+/, '').trim())
-          .filter(Boolean);
-        for (let i = 0; i < items.length; i += 4) {
-          cards.push({
-            id: `${lesson.id}-c${n++}`,
-            type: 'list',
-            heading: i === 0 ? heading : undefined,
-            items: items.slice(i, i + 4),
-          });
-        }
-        continue;
-      }
+      if (!subBody) continue;
 
-      const wordCount = trimmed.split(/\s+/).length;
+      // Split into blocks by double newline
+      const blocks = subBody.split(/\n\n+/).filter(s => s.trim());
 
-      // Short → InsightCard (big centered text)
-      if (wordCount < 25) {
-        cards.push({ id: `${lesson.id}-c${n++}`, type: 'insight', heading, body: trimmed });
-        continue;
-      }
+      for (const block of blocks) {
+        const trimmed = block.trim();
 
-      // Long → split into ~50 word concept cards
-      if (wordCount > 55) {
-        const sentences = trimmed.match(/[^.!?]+[.!?]+/g) || [trimmed];
-        let current = '';
-        let first = true;
-        for (const sentence of sentences) {
-          if (current && (current + ' ' + sentence).split(/\s+/).length > 50) {
-            cards.push({ id: `${lesson.id}-c${n++}`, type: 'concept', heading: first ? heading : undefined, body: current.trim() });
-            first = false;
-            current = sentence.trim();
-          } else {
-            current = current ? current + ' ' + sentence.trim() : sentence.trim();
+        // Markdown table detection
+        if (trimmed.includes('|') && /\|[-:]+\|/.test(trimmed)) {
+          const tableLines = trimmed.split('\n').filter(l => l.trim().startsWith('|'));
+          if (tableLines.length >= 2) {
+            const parseRow = (line: string) =>
+              line.split('|').map(c => c.trim()).filter(Boolean);
+            const headers = parseRow(tableLines[0]);
+            // Skip separator row
+            const dataRows = tableLines.slice(2).map(parseRow);
+            if (headers.length > 0 && dataRows.length > 0) {
+              cards.push({
+                id: `${lesson.id}-c${n++}`, type: 'table',
+                heading, subHeading,
+                tableHeaders: headers, tableRows: dataRows,
+              });
+              subHeading = undefined; // consumed
+              continue;
+            }
           }
         }
-        if (current.trim()) {
-          cards.push({ id: `${lesson.id}-c${n++}`, type: 'concept', heading: first ? heading : undefined, body: current.trim() });
-        }
-        continue;
-      }
 
-      // Default → ConceptCard
-      cards.push({ id: `${lesson.id}-c${n++}`, type: 'concept', heading, body: trimmed });
+        // Blockquote → QuoteCard
+        if (trimmed.startsWith('> ')) {
+          const qt = trimmed.replace(/^>\s*/gm, '').replace(/^["\u201C]|["\u201D]$/g, '').trim();
+          cards.push({ id: `${lesson.id}-c${n++}`, type: 'quote', body: qt, heading });
+          continue;
+        }
+
+        // Bullets / numbered list → ListCard (max 4 items per card)
+        if (/^[-*\u2022]\s/.test(trimmed) || /^\d+[.)]\s/.test(trimmed)) {
+          const items = trimmed.split('\n')
+            .map(l => l.replace(/^[-*\u2022]\s+/, '').replace(/^\d+[.)]\s+/, '').trim())
+            .filter(Boolean);
+          for (let i = 0; i < items.length; i += 4) {
+            cards.push({
+              id: `${lesson.id}-c${n++}`, type: 'list',
+              heading: i === 0 ? heading : undefined,
+              subHeading: i === 0 ? subHeading : undefined,
+              items: items.slice(i, i + 4),
+            });
+          }
+          subHeading = undefined;
+          continue;
+        }
+
+        // Bold-prefixed list pattern: **Label:** followed by bullets
+        // e.g. "**Default Human OS:**\n- item\n- item"
+        if (/^\*\*[^*]+\*\*:?\s*\n[-*]/.test(trimmed)) {
+          const bLines = trimmed.split('\n');
+          const label = bLines[0].replace(/^\*\*/, '').replace(/\*\*:?\s*$/, '').trim();
+          const items = bLines.slice(1)
+            .map(l => l.replace(/^[-*\u2022]\s+/, '').trim())
+            .filter(Boolean);
+          cards.push({
+            id: `${lesson.id}-c${n++}`, type: 'list',
+            heading: label,
+            subHeading,
+            items: items.slice(0, 5),
+          });
+          subHeading = undefined;
+          continue;
+        }
+
+        const wordCount = trimmed.split(/\s+/).length;
+
+        // Short → InsightCard
+        if (wordCount < 25) {
+          cards.push({ id: `${lesson.id}-c${n++}`, type: 'insight', heading, subHeading, body: trimmed });
+          subHeading = undefined;
+          continue;
+        }
+
+        // Long → split into ~50 word concept cards
+        if (wordCount > 55) {
+          const sentences = trimmed.match(/[^.!?]+[.!?]+/g) || [trimmed];
+          let current = '';
+          let first = true;
+          for (const sentence of sentences) {
+            if (current && (current + ' ' + sentence).split(/\s+/).length > 50) {
+              cards.push({
+                id: `${lesson.id}-c${n++}`, type: 'concept',
+                heading: first ? heading : undefined,
+                subHeading: first ? subHeading : undefined,
+                body: current.trim(),
+              });
+              first = false;
+              current = sentence.trim();
+            } else {
+              current = current ? current + ' ' + sentence.trim() : sentence.trim();
+            }
+          }
+          if (current.trim()) {
+            cards.push({
+              id: `${lesson.id}-c${n++}`, type: 'concept',
+              heading: first ? heading : undefined,
+              subHeading: first ? subHeading : undefined,
+              body: current.trim(),
+            });
+          }
+          subHeading = undefined;
+          continue;
+        }
+
+        // Default → ConceptCard
+        cards.push({
+          id: `${lesson.id}-c${n++}`, type: 'concept',
+          heading, subHeading, body: trimmed,
+        });
+        subHeading = undefined;
+      }
     }
   }
 
-  // 3. Inject milestone celebration cards
+  // 4. Inject milestones
   const total = cards.length;
   const milestones = [
-    { at: Math.floor(total * 0.33), msg: 'Warming up!', pct: 33 },
-    { at: Math.floor(total * 0.66), msg: "You're crushing it!", pct: 66 },
+    { at: Math.floor(total * 0.35), msg: 'Warming up!', pct: 35 },
+    { at: Math.floor(total * 0.7), msg: "You're crushing it!", pct: 70 },
   ];
   let offset = 0;
   for (const ms of milestones) {
     if (ms.at > 1 && ms.at < total) {
+      // Also insert an image card before the milestone if we have one
+      if (moduleImg && offset === 0) {
+        cards.splice(ms.at + offset, 0, {
+          id: `${lesson.id}-img1`, type: 'image',
+          imageSrc: moduleImg, imageCaption: 'Keep going!',
+        });
+        offset++;
+      }
       cards.splice(ms.at + offset, 0, {
-        id: `${lesson.id}-ms${offset}`,
-        type: 'milestone',
-        milestoneMsg: ms.msg,
-        milestonePct: ms.pct,
+        id: `${lesson.id}-ms${offset}`, type: 'milestone',
+        milestoneMsg: ms.msg, milestonePct: ms.pct,
       });
       offset++;
     }
   }
 
-  // 4. Quiz
+  // 5. Quiz
   if (lesson.content.quiz) {
     cards.push({ id: `${lesson.id}-quiz`, type: 'quiz', quiz: lesson.content.quiz });
   }
 
-  // 5. Takeaway
+  // 6. Takeaway
   cards.push({ id: `${lesson.id}-takeaway`, type: 'takeaway', body: lesson.content.keyTakeaway });
 
-  // 6. Action
+  // 7. Action
   if (lesson.content.actionItem) {
     cards.push({ id: `${lesson.id}-action`, type: 'action', body: lesson.content.actionItem });
   }
 
-  // 7. Complete
+  // 8. Complete
   cards.push({ id: `${lesson.id}-complete`, type: 'complete' });
 
   return cards;
-}
-
-// ============================================================================
-// Inline text formatting (**bold**, *italic*, `code`)
-// ============================================================================
-function fmt(text: string): React.ReactNode {
-  const parts: React.ReactNode[] = [];
-  const regex = /(\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`)/g;
-  let last = 0;
-  let match;
-  let k = 0;
-  while ((match = regex.exec(text)) !== null) {
-    if (match.index > last) parts.push(text.slice(last, match.index));
-    if (match[2]) parts.push(<strong key={k++} className="text-white font-semibold">{match[2]}</strong>);
-    else if (match[3]) parts.push(<em key={k++} className="italic text-white/50">{match[3]}</em>);
-    else if (match[4]) parts.push(<code key={k++} className="px-1 py-0.5 rounded bg-white/10 text-amber-300 text-[13px] font-mono">{match[4]}</code>);
-    last = match.index + match[0].length;
-  }
-  if (last < text.length) parts.push(text.slice(last));
-  return parts.length === 1 ? parts[0] : <>{parts}</>;
 }
 
 // ============================================================================
@@ -227,16 +336,25 @@ export function ReelReader() {
   const isTransitioning = useRef(false);
 
   const mod = useMemo(() => modules.find((m) => m.id === moduleId), [moduleId]);
-  const lesson = useMemo<PathwayLesson | null>(() => {
-    if (!mod?.pathway) return null;
+
+  // Find the lesson AND its level
+  const { lesson, levelId } = useMemo(() => {
+    if (!mod?.pathway) return { lesson: null, levelId: null };
     for (const level of mod.pathway) {
       const found = level.lessons.find((l) => l.id === lessonId);
-      if (found) return found;
+      if (found) return { lesson: found, levelId: level.id };
     }
-    return null;
+    return { lesson: null, levelId: null };
   }, [mod, lessonId]);
 
-  const cards = useMemo(() => (lesson ? buildCards(lesson) : []), [lesson]);
+  // Get images
+  const levelImg = levelId ? levelImages[levelId] : undefined;
+  const moduleImg = moduleId ? moduleImages[moduleId] : undefined;
+
+  const cards = useMemo(
+    () => (lesson ? buildCards(lesson, levelImg, moduleImg) : []),
+    [lesson, levelImg, moduleImg]
+  );
   const card = cards[currentIndex];
   const isCompleted = lesson ? isLessonCompleted(lesson.id) : false;
   const progress = cards.length > 0 ? ((currentIndex + 1) / cards.length) * 100 : 0;
@@ -318,7 +436,6 @@ export function ReelReader() {
     return () => window.removeEventListener('wheel', h);
   }, [goNext, goPrev]);
 
-  // Not found
   if (!mod || !lesson || !card) {
     return (
       <div className="min-h-screen bg-[#0A0A0B] flex items-center justify-center">
@@ -358,7 +475,6 @@ export function ReelReader() {
 
       {/* Top bar */}
       <div className="absolute top-2 left-0 right-0 z-50 flex items-center justify-between px-4">
-        {/* Card type pill */}
         <motion.div
           key={card.type}
           initial={{ opacity: 0, x: -10 }}
@@ -368,7 +484,6 @@ export function ReelReader() {
           <span>{pill.emoji}</span>
           <span>{pill.label}</span>
         </motion.div>
-
         <div className="flex items-center gap-3">
           <span className="text-[11px] text-white/30 tabular-nums">{currentIndex + 1}/{cards.length}</span>
           <button
@@ -382,7 +497,7 @@ export function ReelReader() {
 
       {/* Right pip indicators */}
       <div className="absolute right-2 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-[3px]">
-        {cards.map((c, i) => (
+        {cards.map((_, i) => (
           <button
             key={i}
             onClick={() => { setDirection(i > currentIndex ? 'up' : 'down'); setCurrentIndex(i); }}
@@ -406,31 +521,34 @@ export function ReelReader() {
           className="absolute inset-0"
           style={{ willChange: 'transform' }}
         >
-          <div className={`relative w-full h-full bg-gradient-to-b ${cardGradients[card.type]} to-transparent`}>
-            {/* Ambient glow */}
-            <div
-              className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] opacity-60 pointer-events-none"
-              style={{ background: `radial-gradient(ellipse, ${cardGlows[card.type]}, transparent 70%)` }}
-            />
-
-            {/* Content */}
-            <div className="relative z-10 flex items-center justify-center h-full px-6 pt-12 pb-24 overflow-y-auto">
-              <div className="max-w-lg w-full">
-                {card.type === 'hook' && <HookSlide lesson={lesson} />}
-                {card.type === 'concept' && <ConceptSlide heading={card.heading} body={card.body!} />}
-                {card.type === 'list' && <ListSlide heading={card.heading} items={card.items!} />}
-                {card.type === 'quote' && <QuoteSlide body={card.body!} />}
-                {card.type === 'insight' && <InsightSlide heading={card.heading} body={card.body!} />}
-                {card.type === 'quiz' && card.quiz && (
-                  <QuizSlide quiz={card.quiz} selected={selectedAnswer} onSelect={setSelectedAnswer} submitted={quizSubmitted} />
-                )}
-                {card.type === 'milestone' && <MilestoneSlide msg={card.milestoneMsg!} pct={card.milestonePct!} />}
-                {card.type === 'takeaway' && <TakeawaySlide body={card.body!} />}
-                {card.type === 'action' && <ActionSlide body={card.body!} />}
-                {card.type === 'complete' && <CompleteSlide lesson={lesson} isCompleted={isCompleted} onComplete={handleComplete} />}
+          {/* Image cards get special full-bleed treatment */}
+          {card.type === 'image' ? (
+            <ImageSlide src={card.imageSrc!} caption={card.imageCaption} />
+          ) : (
+            <div className={`relative w-full h-full bg-gradient-to-b ${cardGradients[card.type]} to-transparent`}>
+              <div
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[120px] opacity-60 pointer-events-none"
+                style={{ background: `radial-gradient(ellipse, ${cardGlows[card.type]}, transparent 70%)` }}
+              />
+              <div className="relative z-10 flex items-center justify-center h-full px-6 pt-12 pb-24 overflow-y-auto">
+                <div className="max-w-lg w-full">
+                  {card.type === 'hook' && <HookSlide lesson={lesson} levelImg={levelImg} />}
+                  {card.type === 'concept' && <ConceptSlide heading={card.heading} subHeading={card.subHeading} body={card.body!} />}
+                  {card.type === 'list' && <ListSlide heading={card.heading} subHeading={card.subHeading} items={card.items!} />}
+                  {card.type === 'quote' && <QuoteSlide body={card.body!} />}
+                  {card.type === 'insight' && <InsightSlide heading={card.heading} subHeading={card.subHeading} body={card.body!} />}
+                  {card.type === 'table' && <TableSlide heading={card.heading} subHeading={card.subHeading} headers={card.tableHeaders!} rows={card.tableRows!} />}
+                  {card.type === 'quiz' && card.quiz && (
+                    <QuizSlide quiz={card.quiz} selected={selectedAnswer} onSelect={setSelectedAnswer} submitted={quizSubmitted} />
+                  )}
+                  {card.type === 'milestone' && <MilestoneSlide msg={card.milestoneMsg!} pct={card.milestonePct!} />}
+                  {card.type === 'takeaway' && <TakeawaySlide body={card.body!} />}
+                  {card.type === 'action' && <ActionSlide body={card.body!} />}
+                  {card.type === 'complete' && <CompleteSlide lesson={lesson} isCompleted={isCompleted} onComplete={handleComplete} />}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </motion.div>
       </AnimatePresence>
 
@@ -445,7 +563,6 @@ export function ReelReader() {
               </div>
               <span className="text-[10px] text-white/20">{lesson.duration}m</span>
             </div>
-
             {currentIndex < cards.length - 1 && card.type !== 'complete' && (
               <motion.button
                 onClick={goNext}
@@ -457,7 +574,6 @@ export function ReelReader() {
                 <span>Swipe</span>
               </motion.button>
             )}
-
             {card.type === 'complete' && (
               <motion.button
                 initial={{ scale: 0.9, opacity: 0 }}
@@ -478,69 +594,113 @@ export function ReelReader() {
 }
 
 // ============================================================================
-// HOOK SLIDE — First card, big title, grab attention
+// HOOK SLIDE — Level image background, title, grab attention
 // ============================================================================
-function HookSlide({ lesson }: { lesson: PathwayLesson }) {
+function HookSlide({ lesson, levelImg }: { lesson: PathwayLesson; levelImg?: string }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[65vh] text-center">
-      <motion.div
-        initial={{ scale: 0, rotate: -20 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{ type: 'spring', damping: 12, delay: 0.1 }}
-        className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500/30 to-orange-500/20 border border-amber-500/40 flex items-center justify-center mb-8"
-      >
-        <Sparkles className="w-8 h-8 text-amber-400" />
-      </motion.div>
+    <div className="flex flex-col items-center justify-center min-h-[65vh] text-center relative">
+      {/* Level image as subtle bg */}
+      {levelImg && (
+        <div className="absolute inset-0 -mx-6 -mt-12 -mb-24 overflow-hidden rounded-3xl opacity-20">
+          <img src={levelImg} alt="" className="w-full h-full object-cover blur-sm scale-110" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-transparent to-[#0A0A0B]" />
+        </div>
+      )}
 
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="text-[28px] md:text-4xl font-bold text-white mb-5 leading-[1.2] tracking-tight"
-      >
-        {lesson.title}
-      </motion.h1>
+      <div className="relative z-10">
+        <motion.div
+          initial={{ scale: 0, rotate: -20 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ type: 'spring', damping: 12, delay: 0.1 }}
+          className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500/30 to-orange-500/20 border border-amber-500/40 flex items-center justify-center mb-8 mx-auto"
+        >
+          <Sparkles className="w-8 h-8 text-amber-400" />
+        </motion.div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.35 }}
-        className="text-[15px] text-white/50 max-w-sm leading-relaxed mb-8"
-      >
-        {lesson.content.overview}
-      </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-[28px] md:text-4xl font-bold text-white mb-5 leading-[1.2] tracking-tight"
+        >
+          {lesson.title}
+        </motion.h1>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.45 }}
-        className="flex items-center gap-2.5"
-      >
-        <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/30 text-xs capitalize">
-          {lesson.type}
-        </span>
-        <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold">
-          +{lesson.xpReward} XP
-        </span>
-      </motion.div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.35 }}
+          className="text-[15px] text-white/50 max-w-sm leading-relaxed mb-8 mx-auto"
+        >
+          {lesson.content.overview}
+        </motion.p>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4, y: [0, -6, 0] }}
-        transition={{ delay: 1.2, duration: 1.5, repeat: Infinity }}
-        className="mt-14 flex flex-col items-center gap-1"
-      >
-        <ChevronUp className="w-5 h-5 text-white/40" />
-        <span className="text-[10px] text-white/25 tracking-wider uppercase">Swipe up to begin</span>
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.45 }}
+          className="flex items-center gap-2.5 justify-center"
+        >
+          <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/30 text-xs capitalize">
+            {lesson.type}
+          </span>
+          <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold">
+            +{lesson.xpReward} XP
+          </span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4, y: [0, -6, 0] }}
+          transition={{ delay: 1.2, duration: 1.5, repeat: Infinity }}
+          className="mt-14 flex flex-col items-center gap-1"
+        >
+          <ChevronUp className="w-5 h-5 text-white/40" />
+          <span className="text-[10px] text-white/25 tracking-wider uppercase">Swipe up to begin</span>
+        </motion.div>
+      </div>
     </div>
   );
 }
 
 // ============================================================================
-// CONCEPT SLIDE — Clean paragraph with section heading
+// IMAGE SLIDE — Full-bleed image with caption
 // ============================================================================
-function ConceptSlide({ heading, body }: { heading?: string; body: string }) {
+function ImageSlide({ src, caption }: { src: string; caption?: string }) {
+  return (
+    <div className="relative w-full h-full bg-[#0A0A0B]">
+      <motion.img
+        initial={{ opacity: 0, scale: 1.05 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        src={src}
+        alt={caption || ''}
+        className="w-full h-full object-cover"
+      />
+      {/* Gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B] via-transparent to-[#0A0A0B]/60" />
+      {caption && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="absolute bottom-28 left-6 right-12"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <ImageIcon className="w-3.5 h-3.5 text-white/40" />
+            <span className="text-[10px] text-white/30 uppercase tracking-widest">Visual</span>
+          </div>
+          <p className="text-lg font-semibold text-white/80">{caption}</p>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+// ============================================================================
+// CONCEPT SLIDE — Clean paragraph with section + sub-heading
+// ============================================================================
+function ConceptSlide({ heading, subHeading, body }: { heading?: string; subHeading?: string; body: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -549,12 +709,15 @@ function ConceptSlide({ heading, body }: { heading?: string; body: string }) {
       className="flex flex-col justify-center min-h-[50vh] py-6"
     >
       {heading && (
-        <div className="flex items-center gap-2.5 mb-5">
+        <div className="flex items-center gap-2.5 mb-3">
           <div className="w-8 h-8 rounded-lg bg-sky-500/15 flex items-center justify-center">
             <BookOpen className="w-4 h-4 text-sky-400" />
           </div>
           <h2 className="text-sm font-semibold text-sky-400 uppercase tracking-wider">{heading}</h2>
         </div>
+      )}
+      {subHeading && (
+        <h3 className="text-lg font-bold text-white/90 mb-3">{fmt(subHeading)}</h3>
       )}
       <p className="text-[17px] leading-[1.75] text-white/75">{fmt(body)}</p>
     </motion.div>
@@ -562,23 +725,22 @@ function ConceptSlide({ heading, body }: { heading?: string; body: string }) {
 }
 
 // ============================================================================
-// LIST SLIDE — Clean items with accent markers
+// LIST SLIDE — Items with accent markers
 // ============================================================================
-function ListSlide({ heading, items }: { heading?: string; items: string[] }) {
+function ListSlide({ heading, subHeading, items }: { heading?: string; subHeading?: string; items: string[] }) {
   const accents = ['bg-teal-400', 'bg-cyan-400', 'bg-emerald-400', 'bg-sky-400'];
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex flex-col justify-center min-h-[50vh] py-6"
-    >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col justify-center min-h-[50vh] py-6">
       {heading && (
-        <div className="flex items-center gap-2.5 mb-6">
+        <div className="flex items-center gap-2.5 mb-4">
           <span className="text-lg">{'\uD83D\uDCCB'}</span>
           <h2 className="text-sm font-semibold text-teal-400 uppercase tracking-wider">{heading}</h2>
         </div>
       )}
-      <div className="space-y-3">
+      {subHeading && (
+        <h3 className="text-base font-bold text-white/80 mb-3">{fmt(subHeading)}</h3>
+      )}
+      <div className="space-y-2.5">
         {items.map((item, i) => (
           <motion.div
             key={i}
@@ -597,7 +759,7 @@ function ListSlide({ heading, items }: { heading?: string; items: string[] }) {
 }
 
 // ============================================================================
-// QUOTE SLIDE — Big centered quote
+// QUOTE SLIDE — Big centered quote with decorative mark
 // ============================================================================
 function QuoteSlide({ body }: { body: string }) {
   return (
@@ -610,9 +772,7 @@ function QuoteSlide({ body }: { body: string }) {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 0.15, y: 0 }}
         className="text-[80px] leading-none text-violet-400 font-serif mb-2"
-      >
-        {'\u201C'}
-      </motion.span>
+      >{'\u201C'}</motion.span>
       <p className="text-xl md:text-2xl leading-relaxed text-white/80 italic max-w-md -mt-8">
         {fmt(body)}
       </p>
@@ -624,7 +784,7 @@ function QuoteSlide({ body }: { body: string }) {
 // ============================================================================
 // INSIGHT SLIDE — Short wisdom, big text, centered
 // ============================================================================
-function InsightSlide({ heading, body }: { heading?: string; body: string }) {
+function InsightSlide({ heading, subHeading, body }: { heading?: string; subHeading?: string; body: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -639,14 +799,64 @@ function InsightSlide({ heading, body }: { heading?: string; body: string }) {
       >
         <Lightbulb className="w-6 h-6 text-rose-400" />
       </motion.div>
-
       {heading && (
-        <p className="text-xs font-semibold text-rose-400/70 uppercase tracking-widest mb-4">{heading}</p>
+        <p className="text-xs font-semibold text-rose-400/70 uppercase tracking-widest mb-2">{heading}</p>
       )}
-
+      {subHeading && (
+        <p className="text-sm font-bold text-white/60 mb-4">{fmt(subHeading)}</p>
+      )}
       <p className="text-xl md:text-2xl leading-relaxed text-white/85 font-medium max-w-md">
         {fmt(body)}
       </p>
+    </motion.div>
+  );
+}
+
+// ============================================================================
+// TABLE SLIDE — Styled markdown table
+// ============================================================================
+function TableSlide({ heading, subHeading, headers, rows }: {
+  heading?: string; subHeading?: string; headers: string[]; rows: string[][];
+}) {
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col justify-center min-h-[45vh] py-6">
+      {heading && (
+        <div className="flex items-center gap-2.5 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-indigo-500/15 flex items-center justify-center">
+            <Table2 className="w-4 h-4 text-indigo-400" />
+          </div>
+          <h2 className="text-sm font-semibold text-indigo-400 uppercase tracking-wider">{heading}</h2>
+        </div>
+      )}
+      {subHeading && (
+        <h3 className="text-base font-bold text-white/80 mb-3">{fmt(subHeading)}</h3>
+      )}
+      <div className="rounded-xl border border-white/10 overflow-hidden">
+        {/* Header row */}
+        <div className="flex bg-white/[0.06]">
+          {headers.map((h, i) => (
+            <div key={i} className="flex-1 px-3 py-2.5 text-[12px] font-bold text-white/60 uppercase tracking-wider">
+              {fmt(h)}
+            </div>
+          ))}
+        </div>
+        {/* Data rows */}
+        {rows.map((row, ri) => (
+          <motion.div
+            key={ri}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.05 * ri }}
+            className={`flex ${ri % 2 === 0 ? 'bg-white/[0.02]' : 'bg-transparent'} border-t border-white/[0.05]`}
+          >
+            {row.map((cell, ci) => (
+              <div key={ci} className="flex-1 px-3 py-2.5 text-[14px] text-white/70 leading-relaxed">
+                {fmt(cell)}
+              </div>
+            ))}
+          </motion.div>
+        ))}
+      </div>
     </motion.div>
   );
 }
@@ -668,9 +878,7 @@ function QuizSlide({
         </div>
         <h2 className="text-sm font-semibold text-amber-400 uppercase tracking-wider">Quick Check</h2>
       </div>
-
       <p className="text-lg font-medium text-white mb-6 leading-relaxed">{quiz.question}</p>
-
       <div className="space-y-2">
         {quiz.options.map((opt, i) => {
           const isSel = selected === i;
@@ -680,9 +888,7 @@ function QuizSlide({
             if (isRight) cls = 'bg-emerald-500/15 border-emerald-500/40';
             else if (isSel) cls = 'bg-red-500/15 border-red-500/40';
             else cls = 'bg-white/[0.02] border-white/5 opacity-40';
-          } else if (isSel) {
-            cls = 'bg-amber-500/15 border-amber-500/40';
-          }
+          } else if (isSel) cls = 'bg-amber-500/15 border-amber-500/40';
           return (
             <motion.button
               key={i}
@@ -707,7 +913,6 @@ function QuizSlide({
           );
         })}
       </div>
-
       {submitted && (
         <motion.div
           initial={{ opacity: 0, y: 6 }}
@@ -725,15 +930,11 @@ function QuizSlide({
 }
 
 // ============================================================================
-// MILESTONE SLIDE — Celebration card, keeps user hooked
+// MILESTONE SLIDE
 // ============================================================================
 function MilestoneSlide({ msg, pct }: { msg: string; pct: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className="flex flex-col items-center justify-center min-h-[60vh] text-center"
-    >
+    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center justify-center min-h-[60vh] text-center">
       <motion.div
         initial={{ scale: 0, rotate: -30 }}
         animate={{ scale: 1, rotate: 0 }}
@@ -742,39 +943,14 @@ function MilestoneSlide({ msg, pct }: { msg: string; pct: number }) {
       >
         <Flame className="w-10 h-10 text-orange-400" />
       </motion.div>
-
-      <motion.h2
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="text-2xl font-bold text-white mb-2"
-      >
-        {msg}
-      </motion.h2>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="mt-4 w-48"
-      >
+      <motion.h2 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-2xl font-bold text-white mb-2">{msg}</motion.h2>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="mt-4 w-48">
         <div className="h-2 rounded-full bg-white/10 overflow-hidden">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: `${pct}%` }}
-            transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
-            className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-400"
-          />
+          <motion.div initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }} className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-400" />
         </div>
         <p className="text-xs text-white/30 mt-2">{pct}% through this lesson</p>
       </motion.div>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="text-sm text-white/30 mt-6"
-      >
+      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="text-sm text-white/30 mt-6">
         Keep swiping {'\u2191'}
       </motion.p>
     </motion.div>
@@ -786,30 +962,12 @@ function MilestoneSlide({ msg, pct }: { msg: string; pct: number }) {
 // ============================================================================
 function TakeawaySlide({ body }: { body: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex flex-col items-center justify-center min-h-[55vh] text-center px-2"
-    >
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: 'spring', delay: 0.1 }}
-        className="w-14 h-14 rounded-full bg-amber-500/20 border-2 border-amber-500/35 flex items-center justify-center mb-6"
-      >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center min-h-[55vh] text-center px-2">
+      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', delay: 0.1 }} className="w-14 h-14 rounded-full bg-amber-500/20 border-2 border-amber-500/35 flex items-center justify-center mb-6">
         <Target className="w-7 h-7 text-amber-400" />
       </motion.div>
-
       <h2 className="text-xs font-semibold text-amber-400/70 uppercase tracking-widest mb-5">Key Takeaway</h2>
-
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15 }}
-        className="text-xl leading-relaxed text-white/85 font-medium max-w-md"
-      >
-        {fmt(body)}
-      </motion.p>
+      <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="text-xl leading-relaxed text-white/85 font-medium max-w-md">{fmt(body)}</motion.p>
     </motion.div>
   );
 }
@@ -819,11 +977,7 @@ function TakeawaySlide({ body }: { body: string }) {
 // ============================================================================
 function ActionSlide({ body }: { body: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="flex flex-col justify-center min-h-[50vh] py-6"
-    >
+    <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col justify-center min-h-[50vh] py-6">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
           <Zap className="w-5 h-5 text-emerald-400" />
@@ -833,7 +987,6 @@ function ActionSlide({ body }: { body: string }) {
           <p className="text-[10px] text-emerald-400/40 mt-0.5">Try this after the lesson</p>
         </div>
       </div>
-
       <div className="p-4 rounded-2xl bg-emerald-500/[0.06] border border-emerald-500/15">
         <p className="text-[16px] leading-[1.7] text-white/75">{fmt(body)}</p>
       </div>
@@ -844,54 +997,22 @@ function ActionSlide({ body }: { body: string }) {
 // ============================================================================
 // COMPLETE SLIDE
 // ============================================================================
-function CompleteSlide({
-  lesson, isCompleted, onComplete,
-}: {
-  lesson: PathwayLesson; isCompleted: boolean; onComplete: () => void;
-}) {
+function CompleteSlide({ lesson, isCompleted, onComplete }: { lesson: PathwayLesson; isCompleted: boolean; onComplete: () => void }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className="flex flex-col items-center justify-center min-h-[65vh] text-center"
-    >
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: 'spring', damping: 10, delay: 0.1 }}
-        className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-500/30 to-yellow-500/20 border-[3px] border-amber-400 flex items-center justify-center mb-6"
-      >
+    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center justify-center min-h-[65vh] text-center">
+      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', damping: 10, delay: 0.1 }} className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-500/30 to-yellow-500/20 border-[3px] border-amber-400 flex items-center justify-center mb-6">
         <Trophy className="w-10 h-10 text-amber-400" />
       </motion.div>
-
-      <motion.h1
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="text-3xl font-bold text-white mb-3 tracking-tight"
-      >
+      <motion.h1 initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-3xl font-bold text-white mb-3 tracking-tight">
         {isCompleted ? 'Already Done!' : 'Lesson Complete!'}
       </motion.h1>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.3 }}
-        className="px-5 py-2.5 rounded-2xl bg-amber-500/15 border-2 border-amber-500/30 mb-5"
-      >
+      <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }} className="px-5 py-2.5 rounded-2xl bg-amber-500/15 border-2 border-amber-500/30 mb-5">
         <span className="text-2xl font-bold text-amber-400">+{lesson.xpReward}</span>
         <span className="text-sm text-amber-400/50 ml-1">XP</span>
       </motion.div>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-        className="text-sm text-white/30 max-w-xs mb-8"
-      >
+      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="text-sm text-white/30 max-w-xs mb-8">
         {isCompleted ? 'You already earned XP for this lesson.' : 'Tap below to claim your reward.'}
       </motion.p>
-
       <motion.button
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

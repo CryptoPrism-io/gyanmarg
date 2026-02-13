@@ -1,5 +1,8 @@
 import type { PathwayLevel } from "@/types";
-import { wsLessonsLevel1 } from "./writing-storytelling-lessons";
+import {
+  wsLessonsLevel1, wsLessonsLevel2, wsLessonsLevel3, wsLessonsLevel4, wsLessonsLevel5,
+  wsLessonsLevel6, wsLessonsLevel7, wsLessonsLevel8, wsLessonsLevel9, wsLessonsLevel10,
+} from "./writing-storytelling-lessons";
 
 const writingStorytellingPathway: PathwayLevel[] = [
   {
@@ -10,6 +13,87 @@ const writingStorytellingPathway: PathwayLevel[] = [
     color: "from-rose-500 to-pink-500",
     lessons: wsLessonsLevel1,
     unlockRequirement: 0,
+  },
+  {
+    id: "ws-level2",
+    title: "Character Mastery",
+    description: "Build unforgettable characters with psychological depth, authentic arcs, and compelling contradictions.",
+    icon: "🎭",
+    color: "from-amber-500 to-orange-500",
+    lessons: wsLessonsLevel2,
+    unlockRequirement: 500,
+  },
+  {
+    id: "ws-level3",
+    title: "Plot Architecture",
+    description: "Design plots that grip readers from first page to last using advanced structural techniques.",
+    icon: "📐",
+    color: "from-blue-500 to-indigo-500",
+    lessons: wsLessonsLevel3,
+    unlockRequirement: 1000,
+  },
+  {
+    id: "ws-level4",
+    title: "Voice & Style",
+    description: "Develop a distinctive authorial voice through sentence rhythm, word choice, and tonal control.",
+    icon: "🎨",
+    color: "from-purple-500 to-violet-500",
+    lessons: wsLessonsLevel4,
+    unlockRequirement: 1500,
+  },
+  {
+    id: "ws-level5",
+    title: "Dialogue & Subtext",
+    description: "Write dialogue that crackles with tension, reveals character, and drives story forward.",
+    icon: "💬",
+    color: "from-teal-500 to-cyan-500",
+    lessons: wsLessonsLevel5,
+    unlockRequirement: 2000,
+  },
+  {
+    id: "ws-level6",
+    title: "World & Setting",
+    description: "Create immersive settings that become characters themselves and ground your narrative in place.",
+    icon: "🌍",
+    color: "from-emerald-500 to-green-500",
+    lessons: wsLessonsLevel6,
+    unlockRequirement: 2500,
+  },
+  {
+    id: "ws-level7",
+    title: "Editing & Revision",
+    description: "Transform rough drafts into polished prose through systematic revision and self-editing techniques.",
+    icon: "✂️",
+    color: "from-red-500 to-rose-500",
+    lessons: wsLessonsLevel7,
+    unlockRequirement: 3000,
+  },
+  {
+    id: "ws-level8",
+    title: "Genre & Form",
+    description: "Master genre conventions and innovate within literary, commercial, and hybrid forms.",
+    icon: "📚",
+    color: "from-sky-500 to-blue-500",
+    lessons: wsLessonsLevel8,
+    unlockRequirement: 3500,
+  },
+  {
+    id: "ws-level9",
+    title: "Publishing & Platform",
+    description: "Navigate the modern publishing landscape from queries to self-publishing to building an audience.",
+    icon: "🚀",
+    color: "from-orange-500 to-amber-500",
+    lessons: wsLessonsLevel9,
+    unlockRequirement: 4000,
+  },
+  {
+    id: "ws-level10",
+    title: "The Writer\'s Life",
+    description: "Sustain a lifelong creative practice with resilience, discipline, and artistic growth.",
+    icon: "🏆",
+    color: "from-yellow-500 to-amber-500",
+    lessons: wsLessonsLevel10,
+    unlockRequirement: 4500,
   },
 ];
 

@@ -1,5 +1,8 @@
 import type { PathwayLevel } from "@/types";
-import { musLessonsLevel1 } from "./music-sound-lessons";
+import {
+  musLessonsLevel1, musLessonsLevel2, musLessonsLevel3, musLessonsLevel4, musLessonsLevel5,
+  musLessonsLevel6, musLessonsLevel7, musLessonsLevel8, musLessonsLevel9, musLessonsLevel10,
+} from "./music-sound-lessons";
 
 const musicSoundPathway: PathwayLevel[] = [
   {
@@ -10,6 +13,87 @@ const musicSoundPathway: PathwayLevel[] = [
     color: "from-violet-500 to-purple-500",
     lessons: musLessonsLevel1,
     unlockRequirement: 0,
+  },
+  {
+    id: "mus-level2",
+    title: "Melody & Composition",
+    description: "Write memorable melodies and understand the building blocks of musical composition.",
+    icon: "🎼",
+    color: "from-pink-500 to-rose-500",
+    lessons: musLessonsLevel2,
+    unlockRequirement: 500,
+  },
+  {
+    id: "mus-level3",
+    title: "Rhythm & Groove",
+    description: "Master rhythmic complexity from polyrhythms to groove theory and percussion programming.",
+    icon: "🥁",
+    color: "from-orange-500 to-red-500",
+    lessons: musLessonsLevel3,
+    unlockRequirement: 1000,
+  },
+  {
+    id: "mus-level4",
+    title: "Harmony Deep Dive",
+    description: "Explore advanced chord voicings, jazz harmony, modal interchange, and harmonic storytelling.",
+    icon: "🎹",
+    color: "from-blue-500 to-indigo-500",
+    lessons: musLessonsLevel4,
+    unlockRequirement: 1500,
+  },
+  {
+    id: "mus-level5",
+    title: "Arrangement & Orchestration",
+    description: "Arrange music across instruments and ensembles, from band to orchestra to electronic.",
+    icon: "🎻",
+    color: "from-teal-500 to-cyan-500",
+    lessons: musLessonsLevel5,
+    unlockRequirement: 2000,
+  },
+  {
+    id: "mus-level6",
+    title: "Sound Design & Synthesis",
+    description: "Create original sounds from scratch using synthesis, sampling, and audio manipulation.",
+    icon: "🔊",
+    color: "from-emerald-500 to-green-500",
+    lessons: musLessonsLevel6,
+    unlockRequirement: 2500,
+  },
+  {
+    id: "mus-level7",
+    title: "Recording Techniques",
+    description: "Capture professional-quality recordings with microphone placement, signal flow, and session management.",
+    icon: "🎙️",
+    color: "from-amber-500 to-yellow-500",
+    lessons: musLessonsLevel7,
+    unlockRequirement: 3000,
+  },
+  {
+    id: "mus-level8",
+    title: "Mixing & Mastering",
+    description: "Transform raw tracks into polished, release-ready productions with professional mixing and mastering.",
+    icon: "🎚️",
+    color: "from-red-500 to-orange-500",
+    lessons: musLessonsLevel8,
+    unlockRequirement: 3500,
+  },
+  {
+    id: "mus-level9",
+    title: "Music Business & Marketing",
+    description: "Navigate the modern music industry from distribution to branding to revenue streams.",
+    icon: "💼",
+    color: "from-sky-500 to-blue-500",
+    lessons: musLessonsLevel9,
+    unlockRequirement: 4000,
+  },
+  {
+    id: "mus-level10",
+    title: "The Complete Musician",
+    description: "Integrate all skills into a sustainable creative practice and artistic identity.",
+    icon: "🏆",
+    color: "from-yellow-500 to-amber-500",
+    lessons: musLessonsLevel10,
+    unlockRequirement: 4500,
   },
 ];
 

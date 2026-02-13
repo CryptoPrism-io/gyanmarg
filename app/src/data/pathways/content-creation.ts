@@ -1,5 +1,8 @@
 import type { PathwayLevel } from "@/types";
-import { contentLessonsLevel1 } from "./content-creation-lessons";
+import {
+  contentLessonsLevel1, contentLessonsLevel2, contentLessonsLevel3, contentLessonsLevel4, contentLessonsLevel5,
+  contentLessonsLevel6, contentLessonsLevel7, contentLessonsLevel8, contentLessonsLevel9, contentLessonsLevel10,
+} from "./content-creation-lessons";
 
 const contentCreationPathway: PathwayLevel[] = [
   {
@@ -10,6 +13,87 @@ const contentCreationPathway: PathwayLevel[] = [
     color: "from-red-500 to-orange-500",
     lessons: contentLessonsLevel1,
     unlockRequirement: 0,
+  },
+  {
+    id: "content-level2",
+    title: "Video Production Mastery",
+    description: "Create compelling video content from scripting and shooting to editing and publishing.",
+    icon: "🎬",
+    color: "from-violet-500 to-purple-500",
+    lessons: contentLessonsLevel2,
+    unlockRequirement: 500,
+  },
+  {
+    id: "content-level3",
+    title: "Writing for the Internet",
+    description: "Master digital copywriting, blog posts, threads, and long-form content that converts.",
+    icon: "✍️",
+    color: "from-blue-500 to-indigo-500",
+    lessons: contentLessonsLevel3,
+    unlockRequirement: 1000,
+  },
+  {
+    id: "content-level4",
+    title: "Visual Design & Brand",
+    description: "Build a cohesive visual identity with thumbnails, graphics, color psychology, and brand systems.",
+    icon: "🎨",
+    color: "from-pink-500 to-rose-500",
+    lessons: contentLessonsLevel4,
+    unlockRequirement: 1500,
+  },
+  {
+    id: "content-level5",
+    title: "Growth & Distribution",
+    description: "Scale your audience through algorithms, SEO, collaborations, and cross-platform strategy.",
+    icon: "📈",
+    color: "from-emerald-500 to-green-500",
+    lessons: contentLessonsLevel5,
+    unlockRequirement: 2000,
+  },
+  {
+    id: "content-level6",
+    title: "Podcasting & Audio",
+    description: "Launch and grow a podcast with professional audio, compelling interviews, and loyal listeners.",
+    icon: "🎙️",
+    color: "from-amber-500 to-orange-500",
+    lessons: contentLessonsLevel6,
+    unlockRequirement: 2500,
+  },
+  {
+    id: "content-level7",
+    title: "Newsletter & Email",
+    description: "Build a newsletter empire with list growth, segmentation, automation, and reader retention.",
+    icon: "📧",
+    color: "from-teal-500 to-cyan-500",
+    lessons: contentLessonsLevel7,
+    unlockRequirement: 3000,
+  },
+  {
+    id: "content-level8",
+    title: "Monetization Deep Dive",
+    description: "Maximize revenue with sponsorships, digital products, courses, memberships, and licensing.",
+    icon: "💰",
+    color: "from-yellow-500 to-amber-500",
+    lessons: contentLessonsLevel8,
+    unlockRequirement: 3500,
+  },
+  {
+    id: "content-level9",
+    title: "Team & Scale",
+    description: "Build a content team, delegate effectively, and create systems for sustainable scaling.",
+    icon: "🏢",
+    color: "from-sky-500 to-blue-500",
+    lessons: contentLessonsLevel9,
+    unlockRequirement: 4000,
+  },
+  {
+    id: "content-level10",
+    title: "Creator Legacy",
+    description: "Build a lasting creative brand, diversify beyond platforms, and create generational impact.",
+    icon: "🏆",
+    color: "from-orange-500 to-red-500",
+    lessons: contentLessonsLevel10,
+    unlockRequirement: 4500,
   },
 ];
 
