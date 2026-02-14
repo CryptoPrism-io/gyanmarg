@@ -1,15 +1,7 @@
-import { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
-import {
-  X,
-  Clock,
-  Sparkles,
-  Flame,
-} from 'lucide-react';
-import { Badge } from '@/components/atoms';
+import { createPortal } from 'react-dom';
+import { X } from 'lucide-react';
 import { TinderCardStack } from '@/components/organisms/TinderCardStack';
-import { useProgressStore } from '@/store/progressStore';
 import type { PathwayLesson } from '@/types';
 
 interface NextLessonInfo {
@@ -37,21 +29,6 @@ interface LessonViewerProps {
   flashcardCount?: number;
 }
 
-const colorGradients: Record<string, string> = {
-  blue: 'from-sky to-lavender',
-  emerald: 'from-sage to-sage-light',
-  purple: 'from-lavender to-lavender-light',
-  amber: 'from-golden to-sunrise',
-  cyan: 'from-sky to-sage',
-  rose: 'from-coral to-blush',
-  yellow: 'from-golden to-sunrise',
-  green: 'from-sage to-golden',
-  orange: 'from-sunrise to-golden',
-  teal: 'from-sky to-sage',
-  indigo: 'from-lavender to-sky',
-  violet: 'from-lavender to-blush',
-};
-
 export function LessonViewer({
   lesson,
   onComplete,
@@ -59,48 +36,13 @@ export function LessonViewer({
   isComplete,
   moduleColor = 'orange',
   moduleId,
-  lessonNumber = 1,
-  totalLessons = 10,
-  currentStreak = 0,
   moduleName,
   levelName,
   nextLesson,
   onNextLesson,
-  backgroundImage,
   flashcardCount,
+  backgroundImage,
 }: LessonViewerProps) {
-  const [sessionXP, setSessionXP] = useState(0);
-  const [timeSpent, setTimeSpent] = useState(0);
-  const addMicroXP = useProgressStore((s) => s.addMicroXP);
-
-  const gradient = colorGradients[moduleColor] || colorGradients.orange;
-
-  // Reset state when lesson changes
-  useEffect(() => {
-    setSessionXP(0);
-    setTimeSpent(0);
-  }, [lesson.id]);
-
-  // Track reading time
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeSpent(prev => prev + 1);
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [lesson.id]);
-
-  // Format time spent
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return mins > 0 ? `${mins}m ${secs}s` : `${secs}s`;
-  };
-
-  // Handle XP earned from card swipes
-  const handleXPEarned = (amount: number) => {
-    setSessionXP(prev => prev + amount);
-    addMicroXP(amount);
-  };
 
   const content = (
     <motion.div
@@ -109,79 +51,25 @@ export function LessonViewer({
       exit={{ opacity: 0 }}
       className="fixed inset-0 bg-base z-[9999] flex flex-col"
     >
-      {/* Background Image */}
-      {backgroundImage && (
-        <>
-          <div
-            className="absolute inset-0 z-0 opacity-20 blur-sm"
-            style={{
-              backgroundImage: `url(${backgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center top',
-            }}
-          />
-          <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/60 via-background/85 to-background" />
-        </>
-      )}
-
-      {/* Header */}
+      {/* Header — close + breadcrumb + title only */}
       <div className="relative z-10 flex-shrink-0 border-b border-white/10">
-        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={onClose}
-              className="w-10 h-10 rounded-xl bg-surface/50 hover:bg-surface flex items-center justify-center transition-colors"
-              aria-label="Close lesson viewer"
-            >
-              <X className="w-5 h-5 text-text-muted" />
-            </button>
-            <div>
-              <div className="flex items-center gap-2 mb-0.5">
-                <Badge variant="outline" size="sm" className="text-text-muted border-white/20">
-                  {lessonNumber} of {totalLessons}
-                </Badge>
-                <Badge variant="outline" size="sm" className={`border-transparent bg-gradient-to-r ${gradient} text-base`}>
-                  {lesson.type}
-                </Badge>
-              </div>
-              {moduleName && levelName && (
-                <p className="text-xs text-text-muted mb-0.5">
-                  {moduleName} → {levelName}
-                </p>
-              )}
-              <h1 className="text-lg font-display font-bold text-text-primary line-clamp-1">
-                {lesson.title}
-              </h1>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {/* Reading Stats */}
-            <div className="hidden md:flex items-center gap-4 text-sm text-text-muted">
-              <div className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4" />
-                <span>{formatTime(timeSpent)}</span>
-              </div>
-              {currentStreak > 0 && (
-                <div className="flex items-center gap-1.5 text-sunrise">
-                  <Flame className="w-4 h-4" />
-                  <span className="font-medium">{currentStreak}</span>
-                </div>
-              )}
-            </div>
-
-            {/* Session XP Display */}
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-golden/10 border border-golden/30">
-              <Sparkles className="w-4 h-4 text-golden" />
-              <motion.span
-                key={sessionXP}
-                initial={{ scale: 1.2 }}
-                animate={{ scale: 1 }}
-                className="text-sm font-semibold text-golden"
-              >
-                +{sessionXP} XP
-              </motion.span>
-            </div>
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-4">
+          <button
+            onClick={onClose}
+            className="w-12 h-12 rounded-xl bg-surface/50 hover:bg-surface flex items-center justify-center transition-colors shrink-0"
+            aria-label="Close lesson viewer"
+          >
+            <X className="w-6 h-6 text-text-muted" />
+          </button>
+          <div className="min-w-0">
+            {moduleName && levelName && (
+              <p className="text-xs text-text-muted mb-0.5 truncate">
+                {moduleName} → {levelName}
+              </p>
+            )}
+            <h1 className="text-lg font-display font-bold text-text-primary line-clamp-1">
+              {lesson.title}
+            </h1>
           </div>
         </div>
       </div>
@@ -196,33 +84,11 @@ export function LessonViewer({
             isComplete={isComplete}
             moduleColor={moduleColor}
             moduleId={moduleId}
-            onXPEarned={handleXPEarned}
             nextLesson={nextLesson}
             onNextLesson={onNextLesson}
             flashcardCount={flashcardCount}
+            heroImage={backgroundImage}
           />
-        </div>
-      </div>
-
-      {/* Mobile Bottom Bar */}
-      <div className="relative z-10 md:hidden flex-shrink-0 border-t border-white/10 p-3 bg-base/80 backdrop-blur-xl">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 text-sm text-text-muted">
-            <span>{formatTime(timeSpent)}</span>
-            {currentStreak > 0 && (
-              <>
-                <span>•</span>
-                <span className="text-sunrise flex items-center gap-1">
-                  <Flame className="w-3.5 h-3.5" />
-                  {currentStreak}
-                </span>
-              </>
-            )}
-          </div>
-          <div className="flex items-center gap-1.5 text-golden">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span className="text-sm font-semibold">+{sessionXP} XP</span>
-          </div>
         </div>
       </div>
     </motion.div>

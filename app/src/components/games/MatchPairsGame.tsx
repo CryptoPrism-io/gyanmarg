@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, Sparkles, Link2, HelpCircle } from 'lucide-react';
+import { CheckCircle2, Sparkles, HelpCircle } from 'lucide-react';
 import { HINT_COST } from '@/types/game';
 import type { GameComponentProps } from '@/types/game';
 import { calculateGameScore } from '@/lib/gameScoring';
@@ -14,7 +14,7 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled;
 }
 
-export function MatchPairsGame({ content, quickPlay, onComplete, lessonTitle, onUseHint, hintsRemaining }: GameComponentProps) {
+export function MatchPairsGame({ content, quickPlay, onComplete, onUseHint, hintsRemaining }: GameComponentProps) {
   const allPairs = content.matchPairs ?? [];
   const pairs = useMemo(() => {
     const count = quickPlay ? 4 : Math.min(6, allPairs.length);
@@ -103,39 +103,23 @@ export function MatchPairsGame({ content, quickPlay, onComplete, lessonTitle, on
 
   return (
     <div className="flex flex-col h-full">
-      {/* Header bar */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-lavender/15 border border-lavender/20 flex items-center justify-center">
-            <Link2 className="w-4 h-4 text-lavender" />
-          </div>
-          <div>
-            <p className="text-xs text-text-muted leading-none">Match Pairs</p>
-            <p className="text-[11px] text-text-muted/60 truncate max-w-[150px]">{lessonTitle}</p>
-          </div>
+      {/* Minimal counter + hint */}
+      <div className="flex items-center justify-between mb-3">
+        <div className="px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/[0.08]">
+          <span className="text-xs font-medium text-text-muted">{matchedPairs.size}/{pairs.length}</span>
         </div>
-        <div className="flex items-center gap-2">
-          {onUseHint && (hintsRemaining ?? 0) > 0 && matchedPairs.size < pairs.length && (
-            <motion.button
-              onClick={handleHint}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-lavender/10 border border-lavender/20 text-xs text-lavender hover:bg-lavender/15 transition-colors"
-            >
-              <HelpCircle className="w-3 h-3" />
-              Hint ({HINT_COST} XP)
-            </motion.button>
-          )}
-          <div className="px-2.5 py-1 rounded-full bg-sage/10 border border-sage/20">
-            <span className="text-xs font-semibold text-sage">{matchedPairs.size}/{pairs.length}</span>
-          </div>
-        </div>
+        {onUseHint && (hintsRemaining ?? 0) > 0 && matchedPairs.size < pairs.length && (
+          <motion.button
+            onClick={handleHint}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-lavender/10 border border-lavender/20 text-xs text-lavender hover:bg-lavender/15 transition-colors"
+          >
+            <HelpCircle className="w-3 h-3" />
+            Hint ({HINT_COST} XP)
+          </motion.button>
+        )}
       </div>
-
-      {/* Instruction */}
-      <p className="text-xs text-text-muted text-center mb-3 opacity-60">
-        Tap a term, then tap its matching definition
-      </p>
 
       {/* Two columns */}
       <div className="flex-1 grid grid-cols-2 gap-2.5 overflow-y-auto pb-2">

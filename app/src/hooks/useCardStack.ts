@@ -28,9 +28,53 @@ interface UseCardStackReturn {
   progress: number;
 }
 
+// Max characters per card — keeps content bite-sized
+const MAX_CARD_CHARS = 480;
+
+// Further split a long body into paragraph-sized chunks
+function splitLongBody(header: string | undefined, body: string): { header?: string; body: string }[] {
+  if (body.length <= MAX_CARD_CHARS) return [{ header, body }];
+
+  const paragraphs = body.split(/\n\n+/).filter(p => p.trim());
+  const chunks: { header?: string; body: string }[] = [];
+  let current = '';
+  let isFirst = true;
+
+  for (const para of paragraphs) {
+    // If adding this paragraph would exceed the limit, flush current
+    if (current && (current.length + para.length + 2) > MAX_CARD_CHARS) {
+      chunks.push({ header: isFirst ? header : undefined, body: current.trim() });
+      current = '';
+      isFirst = false;
+    }
+    // If a single paragraph is still too long, split by sentences
+    if (para.length > MAX_CARD_CHARS && !current) {
+      const sentences = para.match(/[^.!?]+[.!?]+/g) || [para];
+      let sentBuf = '';
+      for (const s of sentences) {
+        if (sentBuf && (sentBuf.length + s.length) > MAX_CARD_CHARS) {
+          chunks.push({ header: isFirst ? header : undefined, body: sentBuf.trim() });
+          sentBuf = '';
+          isFirst = false;
+        }
+        sentBuf += s;
+      }
+      if (sentBuf.trim()) current = sentBuf;
+    } else {
+      current += (current ? '\n\n' : '') + para;
+    }
+  }
+
+  if (current.trim()) {
+    chunks.push({ header: isFirst ? header : undefined, body: current.trim() });
+  }
+
+  return chunks;
+}
+
 // Split content by headers or into chunks of 2-3 paragraphs
 function splitByHeaders(content: string): { header?: string; body: string }[] {
-  const sections: { header?: string; body: string }[] = [];
+  const rawSections: { header?: string; body: string }[] = [];
   const lines = content.split('\n');
   let currentSection: { header?: string; body: string[] } = { body: [] };
 
@@ -44,7 +88,7 @@ function splitByHeaders(content: string): { header?: string; body: string }[] {
     if (headerMatch || boldHeaderMatch) {
       // Save previous section if it has content
       if (currentSection.body.length > 0) {
-        sections.push({
+        rawSections.push({
           header: currentSection.header,
           body: currentSection.body.join('\n').trim(),
         });
@@ -61,23 +105,29 @@ function splitByHeaders(content: string): { header?: string; body: string }[] {
 
   // Add last section
   if (currentSection.body.length > 0) {
-    sections.push({
+    rawSections.push({
       header: currentSection.header,
       body: currentSection.body.join('\n').trim(),
     });
   }
 
   // If no sections were created (no headers found), split by paragraph groups
-  if (sections.length === 0 && content.trim()) {
+  if (rawSections.length === 0 && content.trim()) {
     const paragraphs = content.split(/\n\n+/).filter(p => p.trim());
     const chunkSize = 2;
 
     for (let i = 0; i < paragraphs.length; i += chunkSize) {
       const chunk = paragraphs.slice(i, i + chunkSize);
-      sections.push({
+      rawSections.push({
         body: chunk.join('\n\n'),
       });
     }
+  }
+
+  // Break any oversized sections into bite-sized cards
+  const sections: { header?: string; body: string }[] = [];
+  for (const s of rawSections) {
+    sections.push(...splitLongBody(s.header, s.body));
   }
 
   return sections;
@@ -100,6 +150,7 @@ function parseContentToCards(lesson: PathwayLesson): CardContent[] {
 
   // 2. Split main content by headers or 2-3 paragraphs
   const sections = splitByHeaders(lesson.content.mainContent);
+  const fallbackTitles = ['The Basics', 'Going Deeper', 'Key Details', 'The Big Picture', 'Putting It Together', 'What Matters', 'In Practice', 'The Takeaway'];
   sections.forEach((section, i) => {
     // Skip very short sections
     if (section.body.length < 20) return;
@@ -107,7 +158,7 @@ function parseContentToCards(lesson: PathwayLesson): CardContent[] {
     cards.push({
       id: `${lesson.id}-content-${cardIndex++}`,
       type: 'content',
-      title: section.header || `Part ${i + 1}`,
+      title: section.header || fallbackTitles[i % fallbackTitles.length],
       content: section.body,
       xpReward: 2,
     });

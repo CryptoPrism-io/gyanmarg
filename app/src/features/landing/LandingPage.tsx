@@ -154,10 +154,10 @@ const thePlan = [
 
 // Guide Authority Stats
 const authorityStats = [
-  { value: 1000, suffix: '+', label: 'Authors' },
-  { value: 10, suffix: 'K+', label: 'Polyminds' },
-  { value: 50, suffix: '+', label: 'Domains' },
-  { value: 92, suffix: '%', label: 'Retention' },
+  { value: 1000, suffix: '+', label: 'Authors', detail: 'Bestselling books distilled' },
+  { value: 10, suffix: 'K+', label: 'Polyminds', detail: 'Active learners building knowledge' },
+  { value: 50, suffix: '+', label: 'Domains', detail: 'From psychology to AI' },
+  { value: 92, suffix: '%', label: 'Retention', detail: 'Via spaced repetition science' },
 ];
 
 // Success Transformations (Testimonials with transformation focus)
@@ -434,7 +434,7 @@ export function LandingPage() {
           style={{ width: '100vh', height: '28px' }}
         >
           <div
-            className="inline-flex items-center text-[15px] font-medium tracking-wider opacity-50 whitespace-nowrap"
+            className="inline-flex items-center text-[15px] font-medium tracking-wider opacity-[0.08] whitespace-nowrap"
             style={{
               animation: 'marqueeScrollLeft 33s linear infinite',
               transform: `translateX(${-scrollY * 0.3}px)`,
@@ -477,7 +477,7 @@ export function LandingPage() {
           style={{ width: '100vh', height: '28px' }}
         >
           <div
-            className="inline-flex items-center text-[15px] font-medium tracking-wider opacity-50 whitespace-nowrap flex-row-reverse"
+            className="inline-flex items-center text-[15px] font-medium tracking-wider opacity-[0.08] whitespace-nowrap flex-row-reverse"
             style={{
               animation: 'marqueeScrollRight 33s linear infinite',
               transform: `translateX(${scrollY * 0.3}px)`,
@@ -516,23 +516,23 @@ export function LandingPage() {
       {/* ===== HERO: Character's Desire + Direct CTA ===== */}
       <section className="pt-32 md:pt-40 pb-16 px-6 relative overflow-hidden z-10">
         {/* Hero Background Image */}
-        <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
           <img
             src={heroMain}
             alt=""
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-transparent to-[#0A0A0B]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#0A0A0B]/60 to-[#0A0A0B]" />
         </div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
           {/* Problem-aware badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-coral/10 border border-coral/20 rounded-full mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full mb-8"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-coral animate-pulse" />
-            <span className="text-xs md:text-sm text-coral font-medium">Stop reading into the void</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+            <span className="text-xs md:text-sm text-amber-400 font-medium">Remember everything you read</span>
           </motion.div>
 
           {/* Hero Headline: Dramatic Zen Typography */}
@@ -563,7 +563,7 @@ export function LandingPage() {
             </span>
             <span className="block text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] text-white/90 tracking-tight mt-2">
               the Ideas That{' '}
-              <span className="font-light italic text-white/70">Matter</span>
+              <span className="text-white/70">Matter</span>
             </span>
           </motion.h1>
 
@@ -584,25 +584,25 @@ export function LandingPage() {
             </p>
           </motion.div>
 
-          {/* CTAs: Direct + Transitional */}
+          {/* CTA: Single strong primary action */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col items-center gap-3"
           >
             <Link
               to="/dashboard"
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-400 text-black font-semibold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition shadow-lg shadow-amber-500/20"
+              className="px-10 py-4 bg-gradient-to-r from-amber-500 to-amber-400 text-black text-lg font-semibold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition"
               style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 32px rgba(245,158,11,0.3)' }}
             >
               Build Your Polymind — Free
               <ArrowRight size={20} />
             </Link>
-            <button className="w-full sm:w-auto px-8 py-4 border border-gray-700 rounded-xl flex items-center justify-center gap-2 hover:border-gray-500 hover:bg-white/5 transition">
-              <Play size={18} className="text-amber-500" />
-              <span>See How It Works</span>
-            </button>
+            <a href="#solution" className="text-sm text-gray-500 hover:text-amber-400 transition flex items-center gap-1.5">
+              <Play size={14} />
+              See how it works
+            </a>
           </motion.div>
 
           {/* Social Proof Teaser */}
@@ -687,9 +687,9 @@ export function LandingPage() {
       </section>
 
       {/* ===== THE GUIDE: Authority + Empathy ===== */}
-      <section id="what" className="py-20 px-6 relative z-10">
+      <section id="what" className="py-16 px-6 relative z-10">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <span className="inline-block px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-xs text-amber-500 font-medium tracking-wider mb-6">
               THE POLYMIND SYSTEM
             </span>
@@ -708,7 +708,7 @@ export function LandingPage() {
           </div>
 
           {/* Authority Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
             {authorityStats.map((stat, i) => (
               <motion.div
                 key={i}
@@ -716,12 +716,13 @@ export function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center p-6 glass-light rounded-xl"
+                className="text-center p-5 glass-light rounded-xl"
               >
-                <div className="font-mono text-3xl md:text-4xl font-bold text-amber-500 mb-2">
+                <div className="font-mono text-3xl font-bold text-amber-500 mb-1">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
+                <div className="text-sm font-medium text-gray-300 mb-0.5">{stat.label}</div>
+                <div className="text-[11px] text-gray-500 leading-tight">{stat.detail}</div>
               </motion.div>
             ))}
           </div>
@@ -796,7 +797,7 @@ export function LandingPage() {
       {/* ===== THE PLAN: 3 Simple Steps ===== */}
       <section id="solution" className="py-20 px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <span className="inline-block px-4 py-2 bg-sage/10 border border-sage/20 rounded-full text-xs text-sage font-medium tracking-wider mb-6">
               HOW IT WORKS
             </span>
@@ -869,22 +870,28 @@ export function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="group"
+                className="group cursor-pointer"
               >
-                <div className="bg-[#111113] border border-white/5 rounded-xl overflow-hidden transition-all duration-300 hover:border-amber-500/30 hover:shadow-lg hover:shadow-amber-500/5">
-                  <div className="aspect-[4/3] overflow-hidden bg-[#0a0a0b]">
-                    <img
-                      src={domain.image}
-                      alt={domain.title}
-                      className="w-full h-full object-cover scale-110 transition-transform duration-500 group-hover:scale-125"
-                      loading="lazy"
-                    />
+                <Link to="/dashboard" className="block">
+                  <div className="bg-[#111113] border border-white/5 rounded-xl overflow-hidden transition-all duration-300 hover:border-amber-500/30 hover:shadow-lg hover:shadow-amber-500/5">
+                    <div className="aspect-[4/3] overflow-hidden bg-[#0a0a0b] relative">
+                      <img
+                        src={domain.image}
+                        alt={domain.title}
+                        className="w-full h-full object-cover scale-110 transition-transform duration-500 group-hover:scale-125"
+                        loading="lazy"
+                      />
+                      {/* Hover overlay with explore affordance */}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span className="text-xs font-medium text-white bg-amber-500/80 px-3 py-1.5 rounded-full">Explore</span>
+                      </div>
+                    </div>
+                    <div className="p-3">
+                      <h3 className="font-medium text-white text-sm group-hover:text-amber-400 transition-colors">{domain.title}</h3>
+                      <p className="text-sm text-gray-400 mt-0.5">{domain.subtitle}</p>
+                    </div>
                   </div>
-                  <div className="p-3">
-                    <h3 className="font-medium text-white text-sm">{domain.title}</h3>
-                    <p className="text-xs text-gray-500 mt-0.5">{domain.subtitle}</p>
-                  </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -1000,14 +1007,14 @@ export function LandingPage() {
       {/* ===== FINAL CTA ===== */}
       <section className="py-24 px-6 relative overflow-hidden z-10">
         {/* CTA Background Image */}
-        <div className="absolute inset-0 opacity-30 pointer-events-none">
+        <div className="absolute inset-0 opacity-15 pointer-events-none">
           <img
             src={ctaSectionBg}
             alt=""
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-transparent to-[#111113]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/50 to-[#111113]" />
         </div>
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-5xl font-serif mb-6">

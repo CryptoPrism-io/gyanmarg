@@ -239,7 +239,7 @@ function AppRoutes() {
       />
 
       <Route
-        path="/pathway"
+        path="/pathway/:moduleId?/:levelId?/:lessonId?"
         element={
           <ProtectedRoute>
             <PageLayout>

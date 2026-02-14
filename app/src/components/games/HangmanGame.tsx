@@ -165,8 +165,8 @@ export function HangmanGame({ content, quickPlay, onComplete, onUseHint, hintsRe
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
-        <div className="px-3 py-1 rounded-full bg-elevated/60 border border-white/[0.06]">
-          <span className="text-xs text-text-muted">Word <span className="text-text-primary font-semibold">{wordIndex + 1}</span>/{words.length}</span>
+        <div className="px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/[0.08]">
+          <span className="text-xs font-medium text-text-muted">{wordIndex + 1}/{words.length}</span>
         </div>
         <div className="flex items-center gap-2">
           {onUseHint && (hintsRemaining ?? 0) > 0 && !showResult && !isWordSolved && !isFailed && (

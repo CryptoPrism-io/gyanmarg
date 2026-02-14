@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Sparkles, Grid3X3, HelpCircle } from 'lucide-react';
+import { ArrowRight, Sparkles, HelpCircle } from 'lucide-react';
 import { HINT_COST } from '@/types/game';
 import type { GameComponentProps } from '@/types/game';
 import { calculateGameScore } from '@/lib/gameScoring';
@@ -134,13 +134,10 @@ export function CrosswordGame({ content, quickPlay, onComplete, onUseHint, hints
 
   return (
     <div className="flex flex-col h-full">
-      {/* Header */}
+      {/* Minimal counter + hint */}
       <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-lavender/15 border border-lavender/20 flex items-center justify-center">
-            <Grid3X3 className="w-4 h-4 text-lavender" />
-          </div>
-          <p className="text-xs text-text-muted">Crossword</p>
+        <div className="px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/[0.08]">
+          <span className="text-xs font-medium text-text-muted">{filledCount}/{grid.size}</span>
         </div>
         <div className="flex items-center gap-2">
           {onUseHint && (hintsRemaining ?? 0) > 0 && !submitted && (
@@ -154,9 +151,6 @@ export function CrosswordGame({ content, quickPlay, onComplete, onUseHint, hints
               Hint ({HINT_COST} XP)
             </motion.button>
           )}
-          <div className="px-2.5 py-1 rounded-full bg-elevated/60 border border-white/[0.06]">
-            <span className="text-xs text-text-muted">{filledCount}/{grid.size}</span>
-          </div>
         </div>
       </div>
 

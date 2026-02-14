@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Zap } from 'lucide-react';
+import { Sparkles, Zap, SkipForward } from 'lucide-react';
 import { useLessonQuickGameData } from '@/hooks/useGameData';
 import { useProgressStore } from '@/store/progressStore';
 import { useGameStore } from '@/store/gameStore';
@@ -97,23 +97,27 @@ export function QuickGamePicker({ lesson, onFinish }: QuickGamePickerProps) {
   };
 
   return (
-    <div className="py-4">
-      <div className="text-center mb-5">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-          className="text-3xl mb-2"
-        >
-          {info.icon}
-        </motion.div>
-        <h3 className="text-base font-display font-bold text-text-primary">Quick {info.label}</h3>
-        <p className="text-xs text-text-muted mt-1">Reinforce what you just learned</p>
+    <div className="py-2 flex flex-col">
+      {/* Compact header — icon + label only */}
+      <div className="flex items-center justify-center gap-2 mb-3">
+        <span className="text-xl">{info.icon}</span>
+        <h3 className="text-sm font-display font-bold text-text-primary">Quick {info.label}</h3>
       </div>
+
+      {/* Game content */}
       {bestGameType === 'apply-it' && <ApplyItGame {...gameProps} />}
       {bestGameType === 'match-pairs' && <MatchPairsGame {...gameProps} />}
       {bestGameType === 'hangman' && <HangmanGame {...gameProps} />}
       {bestGameType === 'crossword' && <CrosswordGame {...gameProps} />}
+
+      {/* Skip — bottom, de-emphasized text link */}
+      <button
+        onClick={() => onFinish(0)}
+        className="mt-4 self-center inline-flex items-center gap-1.5 text-xs text-text-muted/60 hover:text-text-secondary transition-colors py-2"
+      >
+        <SkipForward className="w-3 h-3" />
+        Skip
+      </button>
     </div>
   );
 }

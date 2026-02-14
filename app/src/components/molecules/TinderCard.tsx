@@ -12,6 +12,11 @@ import {
   CheckCircle2,
   X,
   Star,
+  Compass,
+  Gem,
+  Microscope,
+  Lightbulb,
+  Rocket,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import type { CardContent } from '@/hooks/useCardStack';
@@ -28,6 +33,7 @@ interface TinderCardProps {
   currentCardNumber: number;
   lessonId?: string;
   moduleId?: string;
+  heroImage?: string;
 }
 
 const SWIPE_THRESHOLD = 100;
@@ -41,12 +47,23 @@ const iconMap = {
   FileText,
 };
 
-const cardGradients: Record<CardContent['type'], string> = {
-  overview: 'from-sunrise/20 to-golden/10',
-  content: 'from-elevated/80 to-surface/60',
-  quiz: 'from-lavender/20 to-lavender/5',
-  takeaway: 'from-sage/20 to-sage/5',
-  action: 'from-golden/20 to-sunrise/5',
+// Rotating visual themes for content cards so each feels different
+const contentThemes = [
+  { accent: 'bg-sky/15 border-sky/25', accentText: 'text-sky', icon: Compass, label: 'Explore' },
+  { accent: 'bg-lavender/15 border-lavender/25', accentText: 'text-lavender', icon: Gem, label: 'Deep Dive' },
+  { accent: 'bg-sage/15 border-sage/25', accentText: 'text-sage', icon: Microscope, label: 'Discover' },
+  { accent: 'bg-golden/15 border-golden/25', accentText: 'text-golden', icon: Lightbulb, label: 'Insight' },
+  { accent: 'bg-blush/15 border-blush/25', accentText: 'text-blush', icon: Lightbulb, label: 'Unpack' },
+  { accent: 'bg-coral/15 border-coral/25', accentText: 'text-coral', icon: Rocket, label: 'Focus' },
+];
+
+// Solid opaque backgrounds per card type — no transparency, no bleed-through
+const cardBackgrounds: Record<CardContent['type'], string> = {
+  overview: 'bg-[#1A1610]',
+  content: 'bg-elevated',
+  quiz: 'bg-[#18161E]',
+  takeaway: 'bg-[#151A15]',
+  action: 'bg-[#1A1610]',
 };
 
 // Stack positioning for page-like effect (x-axis offset - left to right natural flow)
@@ -73,37 +90,36 @@ function QuizCardContent({ quiz, onAnswer: _onAnswer }: QuizCardContentProps) {
   const handleSubmit = () => {
     if (selectedAnswer === null) return;
     setShowResult(true);
-    // Don't call onAnswer here - let user swipe to continue
   };
 
   const isCorrect = selectedAnswer === quiz.correct;
 
   return (
-    <div className="space-y-4">
-      <p className="text-text-primary font-medium text-lg leading-relaxed">
+    <div className="flex flex-col h-full">
+      <p className="text-text-primary font-medium text-base leading-[1.5] mb-4">
         {quiz.question}
       </p>
 
-      <div className="space-y-2">
+      <div className="space-y-2 flex-1">
         {quiz.options.map((option, idx) => (
           <button
             key={idx}
             onClick={() => handleSelect(idx)}
             disabled={showResult}
-            className={`w-full p-3 rounded-xl text-left transition-all border-2 flex items-center gap-3 ${
+            className={`w-full py-2.5 px-3 rounded-lg text-left transition-all border flex items-center gap-2.5 ${
               showResult
                 ? idx === quiz.correct
-                  ? 'bg-sage/20 border-sage'
+                  ? 'bg-sage/15 border-sage/40'
                   : idx === selectedAnswer
-                    ? 'bg-coral/20 border-coral'
-                    : 'bg-surface/30 border-white/10'
+                    ? 'bg-coral/15 border-coral/40'
+                    : 'bg-surface/30 border-white/[0.06]'
                 : selectedAnswer === idx
-                  ? 'bg-lavender/20 border-lavender'
-                  : 'bg-surface/30 border-white/10 hover:border-white/30'
+                  ? 'bg-lavender/15 border-lavender/40'
+                  : 'bg-surface/30 border-white/[0.06] hover:border-white/20'
             }`}
           >
             <div
-              className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm shrink-0 ${
+              className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs shrink-0 ${
                 showResult
                   ? idx === quiz.correct
                     ? 'bg-sage text-base'
@@ -116,24 +132,24 @@ function QuizCardContent({ quiz, onAnswer: _onAnswer }: QuizCardContentProps) {
               }`}
             >
               {showResult && idx === quiz.correct ? (
-                <CheckCircle2 className="w-4 h-4" />
+                <CheckCircle2 className="w-3.5 h-3.5" />
               ) : showResult && idx === selectedAnswer && idx !== quiz.correct ? (
-                <X className="w-4 h-4" />
+                <X className="w-3.5 h-3.5" />
               ) : (
                 String.fromCharCode(65 + idx)
               )}
             </div>
-            <span className="text-sm text-text-primary flex-1">{option}</span>
+            <span className="text-sm leading-[1.5] text-text-primary flex-1">{option}</span>
           </button>
         ))}
       </div>
 
       {selectedAnswer !== null && !showResult && (
         <motion.button
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           onClick={handleSubmit}
-          className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-lavender to-lavender-light text-base font-semibold transition-all hover:opacity-90"
+          className="mt-3 mx-auto px-8 py-2 rounded-full bg-lavender/90 text-sm font-semibold text-white transition-all hover:bg-lavender shadow-lg shadow-lavender/20"
         >
           Check Answer
         </motion.button>
@@ -141,19 +157,19 @@ function QuizCardContent({ quiz, onAnswer: _onAnswer }: QuizCardContentProps) {
 
       {showResult && (
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`p-4 rounded-xl ${
+          className={`mt-3 p-3 rounded-xl ${
             isCorrect
-              ? 'bg-sage/10 border border-sage/30'
-              : 'bg-coral/10 border border-coral/30'
+              ? 'bg-sage/8 border border-sage/25'
+              : 'bg-coral/8 border border-coral/25'
           }`}
         >
-          <p className={`font-semibold mb-1 ${isCorrect ? 'text-sage' : 'text-coral'}`}>
+          <p className={`font-semibold text-sm mb-0.5 ${isCorrect ? 'text-sage' : 'text-coral'}`}>
             {isCorrect ? 'Correct!' : 'Not quite!'}
           </p>
-          <p className="text-text-secondary text-sm">{quiz.explanation}</p>
-          <p className="text-text-muted text-xs mt-2">
+          <p className="text-text-secondary text-xs leading-[1.5]">{quiz.explanation}</p>
+          <p className="text-text-muted text-[10px] uppercase tracking-[0.05em] mt-2">
             Swipe right to continue →
           </p>
         </motion.div>
@@ -171,6 +187,7 @@ export function TinderCard({
   currentCardNumber,
   lessonId,
   moduleId,
+  heroImage,
 }: TinderCardProps) {
   const [quizAnswered, setQuizAnswered] = useState(false);
   const [quizCorrect, setQuizCorrect] = useState(false);
@@ -207,11 +224,25 @@ export function TinderCard({
   // Get stack style
   const style = stackStyles[Math.min(stackIndex, 2)] || stackStyles[2];
 
-  // Get card-specific gradient
-  const cardGradient = cardGradients[card.type];
+  // For content cards, rotate through visual themes
+  const contentTheme = card.type === 'content'
+    ? contentThemes[currentCardNumber % contentThemes.length]
+    : null;
 
   // Get icon component
-  const IconComponent = card.icon ? iconMap[card.icon as keyof typeof iconMap] : FileText;
+  const IconComponent = contentTheme?.icon
+    ?? (card.icon ? iconMap[card.icon as keyof typeof iconMap] : FileText);
+
+  // Card type display label
+  const typeLabel = contentTheme?.label
+    ?? (card.type === 'overview' ? 'Overview'
+      : card.type === 'takeaway' ? 'Key Takeaway'
+      : card.type === 'action' ? 'Try This'
+      : card.type === 'quiz' ? 'Quick Check'
+      : card.type);
+
+  // Solid opaque background
+  const cardBg = cardBackgrounds[card.type];
 
   const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const { offset, velocity } = info;
@@ -274,73 +305,150 @@ export function TinderCard({
           filter: { type: 'tween', duration: 0.3 }  // Tween for blur to avoid negative values
         }}
         className={`
-          relative w-full max-w-md mx-4 h-[420px] rounded-2xl border border-white/10
-          bg-gradient-to-br ${cardGradient}
-          backdrop-blur-sm shadow-xl cursor-grab active:cursor-grabbing
+          relative w-full max-w-md mx-4 h-[500px] rounded-2xl border border-white/10
+          ${cardBg}
+          shadow-xl cursor-grab active:cursor-grabbing
           touch-none select-none flex flex-col
         `}
       >
         {/* Card Header */}
         <div className="flex items-center justify-between p-4 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-              <IconComponent className="w-5 h-5 text-text-primary" />
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${
+              contentTheme
+                ? contentTheme.accent
+                : card.type === 'overview' ? 'bg-golden/15 border-golden/25'
+                : card.type === 'takeaway' ? 'bg-sage/15 border-sage/25'
+                : card.type === 'action' ? 'bg-sunrise/15 border-sunrise/25'
+                : card.type === 'quiz' ? 'bg-lavender/15 border-lavender/25'
+                : 'bg-white/10 border-white/10'
+            }`}>
+              <IconComponent className={`w-5 h-5 ${
+                contentTheme
+                  ? contentTheme.accentText
+                  : card.type === 'overview' ? 'text-golden'
+                  : card.type === 'takeaway' ? 'text-sage'
+                  : card.type === 'action' ? 'text-sunrise'
+                  : card.type === 'quiz' ? 'text-lavender'
+                  : 'text-text-primary'
+              }`} />
             </div>
             <div>
-              <p className="text-xs text-text-muted uppercase tracking-wide">
-                {card.type}
+              <p className={`text-[12px] font-mono font-semibold uppercase tracking-[0.05em] ${
+                contentTheme
+                  ? contentTheme.accentText
+                  : card.type === 'overview' ? 'text-golden'
+                  : card.type === 'takeaway' ? 'text-sage'
+                  : card.type === 'action' ? 'text-sunrise'
+                  : card.type === 'quiz' ? 'text-lavender'
+                  : 'text-text-muted'
+              }`}>
+                {typeLabel}
               </p>
-              <h3 className="font-display font-semibold text-text-primary">
+              <h3 className="font-display font-semibold text-text-primary text-[15px] leading-snug">
                 {card.title}
               </h3>
             </div>
           </div>
-          <div className="text-xs text-text-muted px-2 py-1 rounded-full bg-white/5">
-            {currentCardNumber}/{totalCards}
-          </div>
         </div>
 
         {/* Card Content */}
-        <div className="p-5 flex-1 overflow-y-auto">
+        <div className="px-6 py-5 flex-1 overflow-y-auto">
           {card.type === 'quiz' && card.quiz ? (
             <QuizCardContent quiz={card.quiz} onAnswer={handleQuizAnswer} />
-          ) : (
-            <div className="prose prose-invert prose-sm">
-              {card.type === 'content' ? (
-                <RichMarkdown content={card.content} />
+          ) : card.type === 'overview' ? (
+            <div className="flex flex-col h-full -mx-6 -mt-5">
+              {/* Hero image with gradient fade */}
+              {heroImage ? (
+                <div className="relative w-full flex-shrink-0" style={{ height: '45%' }}>
+                  <img
+                    src={heroImage}
+                    alt={card.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1610] via-[#1A1610]/30 to-transparent" />
+                </div>
               ) : (
-                <p className="text-text-secondary leading-relaxed text-base">
+                <div className="relative w-full flex-shrink-0 flex items-center justify-center bg-gradient-to-b from-golden/10 to-transparent" style={{ height: '35%' }}>
+                  <div className="w-16 h-16 rounded-2xl bg-golden/15 border border-golden/25 flex items-center justify-center">
+                    <Rocket className="w-8 h-8 text-golden" />
+                  </div>
+                </div>
+              )}
+              {/* Content below image */}
+              <div className="flex-1 flex flex-col justify-center px-6 pb-2">
+                <h2 className="font-display font-bold text-xl text-text-primary leading-snug mb-3">
+                  {card.title}
+                </h2>
+                <p className="text-text-secondary leading-[1.6] text-sm">
                   {card.content}
                 </p>
-              )}
+                <p className="text-golden text-[11px] uppercase tracking-[0.08em] font-semibold mt-4">
+                  Swipe right to begin
+                </p>
+              </div>
+            </div>
+          ) : card.type === 'takeaway' ? (
+            <div className="flex flex-col h-full justify-center">
+              <div className="p-4 rounded-xl bg-sage/8 border border-sage/20">
+                <div className="flex items-center gap-2 mb-3">
+                  <Gem className="w-4 h-4 text-sage" />
+                  <span className="text-[12px] font-semibold text-sage uppercase tracking-[0.05em]">Remember This</span>
+                </div>
+                <p className="text-text-primary leading-[1.5] text-base font-medium">
+                  {card.content}
+                </p>
+              </div>
+            </div>
+          ) : card.type === 'action' ? (
+            <div className="flex flex-col h-full justify-center">
+              <div className="p-4 rounded-xl bg-sunrise/8 border border-sunrise/20">
+                <div className="flex items-center gap-2 mb-3">
+                  <Zap className="w-4 h-4 text-sunrise" />
+                  <span className="text-[12px] font-semibold text-sunrise uppercase tracking-[0.05em]">Your Move</span>
+                </div>
+                <p className="text-text-primary leading-[1.5] text-base">
+                  {card.content}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="prose prose-invert prose-sm prose-p:leading-[1.5]">
+              <RichMarkdown content={card.content} />
             </div>
           )}
         </div>
 
-        {/* XP Badge + Star */}
-        <div className="absolute top-4 right-4 flex items-center gap-1.5">
-          {lessonId && moduleId && (
+        {/* Footer — progress bar, counter, star */}
+        <div className="flex items-center gap-3 px-4 py-3 border-t border-white/[0.06]">
+          <div className="flex-1 h-1 rounded-full bg-white/[0.06] overflow-hidden">
+            <motion.div
+              className="h-full rounded-full bg-gradient-to-r from-golden/80 to-golden"
+              initial={{ width: 0 }}
+              animate={{ width: `${(currentCardNumber / totalCards) * 100}%` }}
+              transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+            />
+          </div>
+          <span className="text-[10px] font-mono text-text-muted/60 tracking-wide flex-shrink-0">
+            {Math.round((currentCardNumber / totalCards) * 100)}%
+          </span>
+          {lessonId && moduleId ? (
             <motion.button
               onClick={handleToggleStar}
               whileTap={{ scale: 0.85 }}
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors flex-shrink-0 ${
                 isStarred
-                  ? 'bg-golden/25 border border-golden/40'
-                  : 'bg-white/5 border border-white/10 hover:bg-white/10'
+                  ? 'bg-golden/20 border border-golden/30'
+                  : 'bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08]'
               }`}
             >
               <Star
                 className={`w-4 h-4 transition-colors ${
-                  isStarred ? 'text-golden fill-golden' : 'text-text-muted'
+                  isStarred ? 'text-golden fill-golden' : 'text-text-muted/50'
                 }`}
               />
             </motion.button>
-          )}
-          <div className="px-2 py-1 rounded-full bg-golden/20 border border-golden/30">
-            <span className="text-xs font-semibold text-golden">
-              +{card.type === 'quiz' ? '1-5' : card.xpReward} XP
-            </span>
-          </div>
+          ) : <div className="w-8 flex-shrink-0" />}
         </div>
 
         {/* Swipe Indicators (only on top card) */}
@@ -366,15 +474,6 @@ export function TinderCard({
               </div>
             </motion.div>
           </>
-        )}
-
-        {/* Swipe hint */}
-        {isTop && canSwipe && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-text-muted text-xs flex items-center gap-2">
-            <span>← revisit</span>
-            <span className="w-8 h-0.5 bg-white/20 rounded" />
-            <span>continue →</span>
-          </div>
         )}
       </motion.div>
     </motion.div>

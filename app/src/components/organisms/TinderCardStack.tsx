@@ -4,6 +4,7 @@ import { CheckCircle2, Sparkles, RotateCcw, ChevronRight, Brain } from 'lucide-r
 import { TinderCard } from '@/components/molecules/TinderCard';
 import { FloatingXP } from '@/components/atoms/FloatingXP';
 import { QuickGamePicker } from '@/components/games/QuickGamePicker';
+import { useProgressStore } from '@/store/progressStore';
 
 import { useCardStack } from '@/hooks/useCardStack';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
@@ -20,10 +21,10 @@ interface TinderCardStackProps {
   isComplete: boolean;
   moduleColor?: string;
   moduleId?: string;
-  onXPEarned?: (amount: number) => void;
   nextLesson?: NextLessonInfo | null;
   onNextLesson?: (lesson: PathwayLesson) => void;
   flashcardCount?: number;
+  heroImage?: string;
 }
 
 const colorGradients: Record<string, string> = {
@@ -82,10 +83,10 @@ export function TinderCardStack({
   isComplete: lessonComplete,
   moduleColor = 'orange',
   moduleId,
-  onXPEarned,
   nextLesson,
   onNextLesson,
   flashcardCount = 0,
+  heroImage,
 }: TinderCardStackProps) {
   const gradient = colorGradients[moduleColor] || colorGradients.orange;
   const { playXpGain, playSuccess, playClick } = useSoundEffects();
@@ -96,6 +97,9 @@ export function TinderCardStack({
   const autoCompletedRef = useRef(false);
   const [cardReady, setCardReady] = useState(false);
   const CARD_COOLDOWN = 1.5; // seconds before next card is allowed
+
+  // Absorb XP tracking — call addMicroXP directly
+  const addMicroXP = useProgressStore((s) => s.addMicroXP);
 
   // Floating XP animation state
   const [floatingXP, setFloatingXP] = useState<{ amount: number; show: boolean }>({
@@ -111,11 +115,11 @@ export function TinderCardStack({
     swipeCard,
     undoSwipe,
     isComplete,
-    progress,
+    progress: _progress,
   } = useCardStack({
     lesson,
     onXPEarned: (amount) => {
-      onXPEarned?.(amount);
+      addMicroXP(amount);
     },
   });
 
@@ -206,31 +210,9 @@ export function TinderCardStack({
   const combinedXP = totalXP + gameBonusXP;
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-[60vh] py-8">
-      {/* Progress Bar — hidden during quick game and completion */}
-      {!isComplete && (
-        <div className="w-full max-w-md mx-4 mb-6">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-text-muted">
-              {currentIndex} of {cards.length} cards
-            </span>
-            <span className="text-sm font-semibold text-golden">
-              +{totalXP} XP earned
-            </span>
-          </div>
-          <div className="h-2 bg-surface rounded-full overflow-hidden">
-            <motion.div
-              className={`h-full bg-gradient-to-r ${gradient}`}
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.3 }}
-            />
-          </div>
-        </div>
-      )}
-
+    <div className="relative flex flex-col items-center justify-center min-h-[70vh] py-4">
       {/* Card Stack Area */}
-      <div className="relative w-full h-[55vh] max-h-[600px]">
+      <div className="relative w-full h-[65vh] max-h-[700px]">
         {/* Floating XP Animation */}
         <FloatingXP
           amount={floatingXP.amount}
@@ -253,6 +235,7 @@ export function TinderCardStack({
                 currentCardNumber={currentIndex + 1}
                 lessonId={lesson.id}
                 moduleId={moduleId}
+                heroImage={card.type === 'overview' ? heroImage : undefined}
               />
             ))}
         </AnimatePresence>
@@ -464,54 +447,47 @@ export function TinderCardStack({
             </div>
           </motion.div>
         )}
+
+        {/* Bottom Controls — attached to card bottom edge */}
+        {!isComplete && (
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-10 flex items-center gap-4">
+            {/* Undo button */}
+            <button
+              onClick={handleUndo}
+              disabled={currentIndex === 0}
+              className={`w-11 h-11 rounded-full flex items-center justify-center transition-all shadow-lg ${
+                currentIndex === 0
+                  ? 'bg-surface text-text-muted cursor-not-allowed'
+                  : 'bg-elevated hover:bg-surface text-text-primary border border-white/10'
+              }`}
+            >
+              <RotateCcw className="w-5 h-5" />
+            </button>
+
+            {/* Next card button with cooldown indicator */}
+            <button
+              onClick={() => handleSwipe('right')}
+              disabled={!cardReady}
+              className={`relative w-13 h-13 rounded-full border flex items-center justify-center transition-all overflow-hidden shadow-lg ${
+                cardReady
+                  ? 'bg-sage/90 border-sage/60 hover:scale-105 cursor-pointer'
+                  : 'bg-elevated border-white/10 cursor-not-allowed'
+              }`}
+            >
+              {/* Cooldown progress line */}
+              {!cardReady && (
+                <motion.div
+                  className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-golden to-sunrise"
+                  initial={{ width: '0%' }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: CARD_COOLDOWN, ease: 'linear' }}
+                />
+              )}
+              <ChevronRight className={`w-7 h-7 ${cardReady ? 'text-white' : 'text-white/20'}`} />
+            </button>
+          </div>
+        )}
       </div>
-
-      {/* Bottom Controls */}
-      {!isComplete && (
-        <div className="flex items-center justify-center gap-4 mt-6">
-          {/* Undo button */}
-          <button
-            onClick={handleUndo}
-            disabled={currentIndex === 0}
-            className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
-              currentIndex === 0
-                ? 'bg-surface/30 text-text-muted cursor-not-allowed'
-                : 'bg-surface hover:bg-elevated text-text-primary'
-            }`}
-          >
-            <RotateCcw className="w-5 h-5" />
-          </button>
-
-          {/* Next card button with cooldown indicator */}
-          <button
-            onClick={() => handleSwipe('right')}
-            disabled={!cardReady}
-            className={`relative w-14 h-14 rounded-full border flex items-center justify-center transition-all overflow-hidden ${
-              cardReady
-                ? 'bg-gradient-to-r from-sage/20 to-sage/30 border-sage/50 hover:scale-105 cursor-pointer'
-                : 'bg-surface/30 border-white/10 cursor-not-allowed'
-            }`}
-          >
-            {/* Cooldown progress line - circular bottom sweep */}
-            {!cardReady && (
-              <motion.div
-                className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-golden to-sunrise"
-                initial={{ width: '0%' }}
-                animate={{ width: '100%' }}
-                transition={{ duration: CARD_COOLDOWN, ease: 'linear' }}
-              />
-            )}
-            <ChevronRight className={`w-7 h-7 ${cardReady ? 'text-sage' : 'text-white/20'}`} />
-          </button>
-        </div>
-      )}
-
-      {/* Swipe instructions */}
-      {!isComplete && (
-        <p className="text-text-muted text-sm mt-4 text-center">
-          Swipe cards to continue • Tap buttons for quick navigation
-        </p>
-      )}
     </div>
   );
 }

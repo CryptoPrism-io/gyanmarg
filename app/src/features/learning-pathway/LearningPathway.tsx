@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Trophy,
@@ -9,9 +10,9 @@ import {
   ArrowRight,
   Zap,
   Heart,
-  Star,
   Play,
   Brain,
+  CheckCircle2,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useUserStore } from '@/store/userStore';
@@ -36,10 +37,14 @@ export function LearningPathway() {
   const toggleFavoriteModule = useUserStore((s) => s.toggleFavoriteModule);
   const isFavoriteModule = useUserStore((s) => s.isFavoriteModule);
 
-  const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null);
+  // URL params for deep linking: /pathway/:moduleId/:levelId/:lessonId
+  const { moduleId: urlModuleId, levelId: urlLevelId, lessonId: urlLessonId } = useParams();
+  const navigate = useNavigate();
+
+  const [selectedModuleId, _setSelectedModuleId] = useState<string | null>(urlModuleId || null);
   const [selectedComingSoonModuleId, setSelectedComingSoonModuleId] = useState<string | null>(null);
-  const [selectedLevelId, setSelectedLevelId] = useState<string | null>(null);
-  const [activeLesson, setActiveLesson] = useState<PathwayLesson | null>(null);
+  const [selectedLevelId, _setSelectedLevelId] = useState<string | null>(urlLevelId || null);
+  const [activeLesson, _setActiveLesson] = useState<PathwayLesson | null>(null);
   const [activeLessonIndex, setActiveLessonIndex] = useState<number>(0);
   const [activeLevelIndex, setActiveLevelIndex] = useState<number>(0);
   const [showAuthAfterTeaser, setShowAuthAfterTeaser] = useState(false);
@@ -50,8 +55,53 @@ export function LearningPathway() {
     color?: string;
   } | null>(null);
 
+  // URL-synced setters — update state AND push URL
+  const setSelectedModuleId = useCallback((id: string | null) => {
+    _setSelectedModuleId(id);
+    _setSelectedLevelId(null);
+    _setActiveLesson(null);
+    if (id) {
+      navigate(`/pathway/${id}`, { replace: true });
+    } else {
+      navigate('/pathway', { replace: true });
+    }
+  }, [navigate]);
+
+  const setSelectedLevelId = useCallback((id: string | null) => {
+    _setSelectedLevelId(id);
+    _setActiveLesson(null);
+    if (id && selectedModuleId) {
+      navigate(`/pathway/${selectedModuleId}/${id}`, { replace: true });
+    } else if (selectedModuleId) {
+      navigate(`/pathway/${selectedModuleId}`, { replace: true });
+    }
+  }, [navigate, selectedModuleId]);
+
+  const setActiveLesson = useCallback((lesson: PathwayLesson | null) => {
+    _setActiveLesson(lesson);
+    if (lesson && selectedModuleId && selectedLevelId) {
+      navigate(`/pathway/${selectedModuleId}/${selectedLevelId}/${lesson.id}`, { replace: true });
+    } else if (selectedModuleId && selectedLevelId) {
+      navigate(`/pathway/${selectedModuleId}/${selectedLevelId}`, { replace: true });
+    }
+  }, [navigate, selectedModuleId, selectedLevelId]);
+
+  // Hydrate state from URL on mount
+  useEffect(() => {
+    if (urlModuleId && !selectedModuleId) {
+      _setSelectedModuleId(urlModuleId);
+    }
+    if (urlLevelId && !selectedLevelId) {
+      _setSelectedLevelId(urlLevelId);
+    }
+    // Lesson hydration happens after pathwayLevels are available (see below)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Refs for category rows to scroll into view (scroll to category, not details)
   const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const levelDetailRef = useRef<HTMLDivElement | null>(null);
+  const pendingScrollToLevel = useRef(false);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
 
   // Favorite modules (ordered by when favorited — newest first)
@@ -62,22 +112,25 @@ export function LearningPathway() {
     [favoriteModules]
   );
 
-  // Latest Release module — Emotional Intelligence (#34)
-  const latestReleaseModule = useMemo(
-    () => modules.find((m) => m.id === 'emotional-intelligence'),
-    []
-  );
-
-  // Continue Reading — find the first incomplete lesson in any module with progress
-  const continueReading = useMemo(() => {
+  // In-progress modules — started but not fully completed
+  const inProgressModules = useMemo(() => {
+    const results: {
+      module: typeof modules[number];
+      level: PathwayLevel;
+      lesson: PathwayLesson;
+      levelIndex: number;
+      lessonIndex: number;
+      globalIndex: number;
+      progress: number;
+      completedLessons: number;
+      totalLessons: number;
+    }[] = [];
     const availableModules = modules.filter((m) => m.isAvailable && m.pathway);
     for (const mod of availableModules) {
       if (!mod.pathway) continue;
-      // Check if this module has any completed lessons (user has started it)
-      const hasProgress = mod.pathway.some((level) =>
-        level.lessons.some((lesson) => isLessonCompleted(lesson.id))
-      );
-      if (!hasProgress) continue;
+      const totalLessons = mod.pathway.reduce((acc, l) => acc + l.lessons.length, 0);
+      const completedCount = mod.pathway.flatMap((l) => l.lessons).filter((l) => isLessonCompleted(l.id)).length;
+      if (completedCount === 0 || completedCount === totalLessons) continue;
 
       // Find first incomplete lesson
       for (let lvlIdx = 0; lvlIdx < mod.pathway.length; lvlIdx++) {
@@ -85,27 +138,48 @@ export function LearningPathway() {
         for (let lessonIdx = 0; lessonIdx < level.lessons.length; lessonIdx++) {
           const lesson = level.lessons[lessonIdx];
           if (!isLessonCompleted(lesson.id)) {
-            const totalLessons = mod.pathway.reduce((acc, l) => acc + l.lessons.length, 0);
-            const completedLessons = mod.pathway.flatMap((l) => l.lessons).filter((l) => isLessonCompleted(l.id)).length;
             let globalIdx = 0;
             for (let i = 0; i < lvlIdx; i++) globalIdx += mod.pathway[i].lessons.length;
             globalIdx += lessonIdx;
-            return {
+            results.push({
               module: mod,
               level,
               lesson,
               levelIndex: lvlIdx,
               lessonIndex: lessonIdx,
               globalIndex: globalIdx,
-              progress: Math.round((completedLessons / totalLessons) * 100),
-              completedLessons,
+              progress: Math.round((completedCount / totalLessons) * 100),
+              completedLessons: completedCount,
               totalLessons,
-            };
+            });
+            break; // found the next lesson for this module
           }
         }
+        if (results.length > 0 && results[results.length - 1].module.id === mod.id) break;
       }
     }
-    return null;
+    // Sort by progress descending (most progressed first)
+    return results.sort((a, b) => b.progress - a.progress);
+  }, [isLessonCompleted]);
+
+  // Fully completed modules
+  const completedModulesData = useMemo(() => {
+    const results: {
+      module: typeof modules[number];
+      totalLessons: number;
+    }[] = [];
+    const availableModules = modules.filter((m) => m.isAvailable && m.pathway);
+    for (const mod of availableModules) {
+      if (!mod.pathway) continue;
+      const totalLessons = mod.pathway.reduce((acc, l) => acc + l.lessons.length, 0);
+      const allDone = mod.pathway.every((level) =>
+        level.lessons.every((lesson) => isLessonCompleted(lesson.id))
+      );
+      if (allDone && totalLessons > 0) {
+        results.push({ module: mod, totalLessons });
+      }
+    }
+    return results;
   }, [isLessonCompleted]);
 
   // Categorized modules for Netflix-style display
@@ -150,16 +224,9 @@ export function LearningPathway() {
     [selectedComingSoonModuleId]
   );
 
-  // Show auth gate after 1 second teaser when lesson opens
+  // DEV: Auth gate disabled for content QA
   useEffect(() => {
-    if (activeLesson && !isAuthenticated) {
-      const timer = setTimeout(() => {
-        setShowAuthAfterTeaser(true);
-      }, 1000);
-      return () => clearTimeout(timer);
-    } else {
-      setShowAuthAfterTeaser(false);
-    }
+    setShowAuthAfterTeaser(false);
   }, [activeLesson, isAuthenticated]);
 
   const handleAuthGateClose = () => {
@@ -178,11 +245,43 @@ export function LearningPathway() {
   );
   const pathwayLevels: PathwayLevel[] = selectedModule?.pathway || [];
 
+  // Hydrate lesson from URL on initial load
+  const urlLessonHydrated = useRef(false);
+  useEffect(() => {
+    if (urlLessonId && pathwayLevels.length > 0 && !urlLessonHydrated.current) {
+      urlLessonHydrated.current = true;
+      for (let lvlIdx = 0; lvlIdx < pathwayLevels.length; lvlIdx++) {
+        const level = pathwayLevels[lvlIdx];
+        const lessonIdx = level.lessons.findIndex(l => l.id === urlLessonId);
+        if (lessonIdx !== -1) {
+          _setSelectedLevelId(level.id);
+          _setActiveLesson(level.lessons[lessonIdx]);
+          setActiveLevelIndex(lvlIdx);
+          // Calculate global index
+          let gi = 0;
+          for (let i = 0; i < lvlIdx; i++) gi += pathwayLevels[i].lessons.length;
+          setActiveLessonIndex(gi + lessonIdx);
+          break;
+        }
+      }
+    }
+  }, [urlLessonId, pathwayLevels]);
+
   // Get selected level
   const selectedLevel = useMemo(
     () => selectedLevelId ? pathwayLevels.find((l) => l.id === selectedLevelId) : null,
     [selectedLevelId, pathwayLevels]
   );
+
+  // Scroll to level detail when returning from lesson viewer
+  useEffect(() => {
+    if (pendingScrollToLevel.current && !activeLesson && selectedLevel) {
+      pendingScrollToLevel.current = false;
+      setTimeout(() => {
+        levelDetailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    }
+  }, [activeLesson, selectedLevel]);
 
   // Precompute flashcard counts for the selected level's completed lessons
   const lessonFlashcardCounts = useMemo(() => {
@@ -222,22 +321,18 @@ export function LearningPathway() {
     return hasFlashcardsForLessons(allFlashcards, completedLessonIds);
   }, [selectedModule, isLessonCompleted]);
 
-  const isLevelUnlocked = (_level: PathwayLevel, levelIndex: number): boolean => {
-    if (levelIndex === 0) return true;
-    const previousLevel = pathwayLevels[levelIndex - 1];
-    return previousLevel.lessons.every((l) => isLessonCompleted(l.id));
+  // DEV: All unlocked for content QA
+  const isLevelUnlocked = (_level: PathwayLevel, _levelIndex: number): boolean => {
+    return true;
   };
 
   const isLessonUnlocked = (
     _lesson: PathwayLesson,
-    lessonIndex: number,
-    level: PathwayLevel,
-    levelIndex: number
+    _lessonIndex: number,
+    _level: PathwayLevel,
+    _levelIndex: number
   ): boolean => {
-    if (!isLevelUnlocked(level, levelIndex)) return false;
-    if (lessonIndex === 0) return true;
-    const previousLesson = level.lessons[lessonIndex - 1];
-    return isLessonCompleted(previousLesson.id);
+    return true;
   };
 
   const getLevelProgress = (level: PathwayLevel): number => {
@@ -291,9 +386,15 @@ export function LearningPathway() {
 
   // Handle opening a lesson
   const handleOpenLesson = (lesson: PathwayLesson, globalIndex: number, levelIdx: number) => {
-    setActiveLesson(lesson);
+    const level = pathwayLevels[levelIdx];
+    _setSelectedLevelId(level?.id || null);
     setActiveLessonIndex(globalIndex);
     setActiveLevelIndex(levelIdx);
+    // Navigate with full path
+    if (selectedModuleId && level) {
+      navigate(`/pathway/${selectedModuleId}/${level.id}/${lesson.id}`, { replace: true });
+    }
+    _setActiveLesson(lesson);
   };
 
   // Find the next lesson in the pathway
@@ -321,10 +422,15 @@ export function LearningPathway() {
 
   const handleNextLesson = (lesson: PathwayLesson) => {
     if (getNextLesson) {
+      const nextLevel = pathwayLevels[getNextLesson.levelIndex];
       const globalIdx = calculateGlobalIndex(getNextLesson.levelIndex, getNextLesson.lessonIndex);
-      setActiveLesson(lesson);
+      _setSelectedLevelId(nextLevel?.id || null);
       setActiveLessonIndex(globalIdx);
       setActiveLevelIndex(getNextLesson.levelIndex);
+      if (selectedModuleId && nextLevel) {
+        navigate(`/pathway/${selectedModuleId}/${nextLevel.id}/${lesson.id}`, { replace: true });
+      }
+      _setActiveLesson(lesson);
     }
   };
 
@@ -350,7 +456,7 @@ export function LearningPathway() {
         <LessonViewer
           lesson={activeLesson}
           onComplete={handleCompleteLesson}
-          onClose={() => setActiveLesson(null)}
+          onClose={() => { pendingScrollToLevel.current = true; setActiveLesson(null); }}
           isComplete={isLessonCompleted(activeLesson.id)}
           moduleColor={selectedModule.color}
           moduleId={selectedModule.id}
@@ -394,8 +500,8 @@ export function LearningPathway() {
           onCategorySelect={setActiveCategory}
         />
 
-        {/* Continue Reading Section — shows the next unfinished lesson */}
-        {continueReading && !activeCategory && (
+        {/* Continue Reading Section — all in-progress modules */}
+        {inProgressModules.length > 0 && !activeCategory && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -404,51 +510,48 @@ export function LearningPathway() {
             <div className="flex items-center gap-3 mb-3 px-1">
               <Play className="w-5 h-5 text-lavender fill-lavender" />
               <h2 className="text-base font-semibold text-lavender">Continue Reading</h2>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-lavender/15 text-lavender">
+                {inProgressModules.length} in progress
+              </span>
             </div>
-            <button
-              onClick={() => {
-                setSelectedModuleId(continueReading.module.id);
-                setSelectedComingSoonModuleId(null);
-                setSelectedLevelId(null);
-                handleOpenLesson(
-                  continueReading.lesson,
-                  continueReading.globalIndex,
-                  continueReading.levelIndex
-                );
-              }}
-              className="w-full text-left rounded-2xl border border-lavender/20 bg-lavender/[0.04] hover:bg-lavender/[0.08] transition-all overflow-hidden group"
-            >
-              <div className="flex items-center gap-4 p-4">
-                <img
-                  src={getModuleImage(continueReading.module.id)}
-                  alt={continueReading.module.title}
-                  className="w-14 h-14 rounded-xl object-cover border border-lavender/20 flex-shrink-0"
-                />
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs text-text-muted mb-0.5 truncate">
-                    {continueReading.module.title} &middot; {continueReading.level.title.replace(/^Level \d+: /, '')}
-                  </p>
-                  <p className="text-sm font-semibold text-text-primary group-hover:text-lavender transition-colors truncate">
-                    {continueReading.lesson.title}
-                  </p>
-                  <div className="flex items-center gap-3 mt-1.5">
-                    <div className="flex-1 h-1.5 rounded-full bg-white/[0.06] overflow-hidden max-w-[120px]">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-lavender to-sky"
-                        style={{ width: `${continueReading.progress}%` }}
-                      />
+            <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide snap-x snap-mandatory">
+              {inProgressModules.map((item) => (
+                <button
+                  key={item.module.id}
+                  onClick={() => {
+                    setSelectedModuleId(item.module.id);
+                    setSelectedComingSoonModuleId(null);
+                    setSelectedLevelId(null);
+                    handleOpenLesson(item.lesson, item.globalIndex, item.levelIndex);
+                  }}
+                  className="flex-shrink-0 w-52 snap-start text-left rounded-2xl border border-lavender/15 bg-lavender/[0.03] hover:bg-lavender/[0.07] transition-all overflow-hidden group"
+                >
+                  <div className="flex items-center gap-3 p-3">
+                    <img
+                      src={getModuleImage(item.module.id)}
+                      alt={item.module.title}
+                      className="w-10 h-10 rounded-lg object-cover border border-lavender/20 flex-shrink-0"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-semibold text-text-primary group-hover:text-lavender transition-colors truncate">
+                        {item.module.title}
+                      </p>
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <div className="flex-1 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+                          <div
+                            className="h-full rounded-full bg-gradient-to-r from-lavender to-sky"
+                            style={{ width: `${item.progress}%` }}
+                          />
+                        </div>
+                        <span className="text-[10px] text-lavender font-medium">
+                          {item.progress}%
+                        </span>
+                      </div>
                     </div>
-                    <span className="text-[10px] text-text-muted">
-                      {continueReading.completedLessons}/{continueReading.totalLessons} lessons
-                    </span>
-                    <span className="text-[10px] text-golden">
-                      {continueReading.lesson.duration} min
-                    </span>
                   </div>
-                </div>
-                <ArrowRight className="w-5 h-5 text-lavender/50 group-hover:text-lavender transition-colors flex-shrink-0" />
-              </div>
-            </button>
+                </button>
+              ))}
+            </div>
           </motion.div>
         )}
 
@@ -483,47 +586,6 @@ export function LearningPathway() {
                   onClick={() => handleFavoriteModuleClick(mod.id)}
                 />
               ))}
-            </div>
-          </motion.div>
-        )}
-
-        {/* Latest Release Section */}
-        {latestReleaseModule && !activeCategory && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mb-8 scroll-mt-20 overflow-x-hidden"
-          >
-            <div className="flex items-center gap-3 mb-3 px-1">
-              <Star className="w-5 h-5 text-golden fill-golden" />
-              <h2 className="text-base font-semibold text-golden">Latest Release</h2>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-golden/20 text-golden font-semibold">
-                NEW
-              </span>
-            </div>
-            <div className="flex gap-2.5 md:gap-4 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide snap-x snap-mandatory">
-              <NetflixModuleCard
-                id={latestReleaseModule.id}
-                title={latestReleaseModule.title}
-                subtitle={latestReleaseModule.subtitle}
-                image={getModuleImage(latestReleaseModule.id)}
-                progress={getModuleProgress(latestReleaseModule.id)}
-                lessonsCount={getModuleLessonsCount(latestReleaseModule.id)}
-                xpTotal={getModuleTotalXP(latestReleaseModule.id)}
-                isActive={selectedModuleId === latestReleaseModule.id}
-                isFavorite={isFavoriteModule(latestReleaseModule.id)}
-                onToggleFavorite={() => toggleFavoriteModule(latestReleaseModule.id)}
-                onClick={() => {
-                  if (selectedModuleId === latestReleaseModule.id) {
-                    setSelectedModuleId(null);
-                  } else {
-                    setSelectedModuleId(latestReleaseModule.id);
-                    setSelectedComingSoonModuleId(null);
-                    setSelectedLevelId(null);
-                  }
-                }}
-              />
             </div>
           </motion.div>
         )}
@@ -755,12 +817,13 @@ export function LearningPathway() {
                   {/* Selected Level - Lessons View (when level is selected) */}
                   {showDetailsHere && selectedModule && selectedLevel && (
                     <motion.div
+                      ref={levelDetailRef}
                       key={`level-${selectedLevel.id}`}
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="relative rounded-3xl border border-golden/20 overflow-hidden mb-6"
+                      className="relative rounded-3xl border border-golden/20 overflow-hidden mb-6 scroll-mt-20"
                     >
                       {/* Level Image Background */}
                       <div
@@ -929,6 +992,53 @@ export function LearningPathway() {
               {modules.filter(m => m.isAvailable).length} available modules • {modules.filter(m => !m.isAvailable).length} coming soon
             </p>
           </GlassCard>
+        )}
+
+        {/* Completed Modules Section */}
+        {completedModulesData.length > 0 && !activeCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-6 mb-6"
+          >
+            <div className="flex items-center gap-3 mb-3 px-1">
+              <CheckCircle2 className="w-5 h-5 text-sage" />
+              <h2 className="text-base font-semibold text-sage">Completed</h2>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-sage/15 text-sage">
+                {completedModulesData.length} {completedModulesData.length === 1 ? 'module' : 'modules'}
+              </span>
+            </div>
+            <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide snap-x snap-mandatory">
+              {completedModulesData.map(({ module: mod, totalLessons }) => (
+                <button
+                  key={mod.id}
+                  onClick={() => {
+                    setSelectedModuleId(mod.id);
+                    setSelectedComingSoonModuleId(null);
+                    setSelectedLevelId(null);
+                  }}
+                  className="flex-shrink-0 w-48 snap-start text-left rounded-2xl border border-sage/15 bg-sage/[0.03] hover:bg-sage/[0.07] transition-all overflow-hidden group"
+                >
+                  <div className="flex items-center gap-3 p-3">
+                    <img
+                      src={getModuleImage(mod.id)}
+                      alt={mod.title}
+                      className="w-10 h-10 rounded-lg object-cover border border-sage/20 flex-shrink-0"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-semibold text-text-primary group-hover:text-sage transition-colors truncate">
+                        {mod.title}
+                      </p>
+                      <div className="flex items-center gap-1.5 mt-1">
+                        <CheckCircle2 className="w-3 h-3 text-sage flex-shrink-0" />
+                        <span className="text-[10px] text-sage">{totalLessons} lessons</span>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
         )}
 
         {/* Overall Stats */}
