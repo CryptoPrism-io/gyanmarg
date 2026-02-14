@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Lock, Check } from 'lucide-react';
+import { Lock, Check, Sparkles } from 'lucide-react';
 
 interface NetflixLevelCardProps {
   title: string;
@@ -10,6 +10,7 @@ interface NetflixLevelCardProps {
   progress: number;
   isLocked?: boolean;
   isCompleted?: boolean;
+  hasVizReward?: boolean;
   onClick: () => void;
 }
 
@@ -22,6 +23,7 @@ export function NetflixLevelCard({
   progress,
   isLocked = false,
   isCompleted = false,
+  hasVizReward = false,
   onClick,
 }: NetflixLevelCardProps) {
   // Strip "Level X:" prefix from title if present
@@ -70,6 +72,14 @@ export function NetflixLevelCard({
         {isCompleted && !isLocked && (
           <div className="absolute top-2 right-2 w-5 h-5 bg-gradient-to-br from-sage to-sage-dark rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(34,197,94,0.4)]">
             <Check className="w-3 h-3 text-background" />
+          </div>
+        )}
+
+        {/* Viz reward indicator */}
+        {hasVizReward && !isLocked && !isCompleted && (
+          <div className="absolute top-2 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-lavender/20 backdrop-blur-sm border border-lavender/30">
+            <Sparkles className="w-2.5 h-2.5 text-lavender" />
+            <span className="text-[8px] font-semibold text-lavender">Viz</span>
           </div>
         )}
       </div>

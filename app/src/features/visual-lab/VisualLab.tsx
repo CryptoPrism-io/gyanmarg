@@ -1,7 +1,10 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, ChevronLeft, ChevronRight, Lightbulb, Filter, BookOpen, X, Search, ChevronDown, Star, Lock, Unlock, Coins } from 'lucide-react';
+import { Sparkles, ChevronLeft, ChevronRight, Lightbulb, Filter, BookOpen, X, Search, ChevronDown, Star, Lock, Unlock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useProgressStore } from '@/store/progressStore';
+import { vizLevelMap } from '@/data/vizLevelMap';
+import { getModuleById } from '@/data/modules';
 import {
   HabitLoopDiagram,
   ForgettingCurveDiagram,
@@ -1552,46 +1555,50 @@ const FREE_STARTER_VISUALS = [
   'growth-mindset',
 ];
 
-const UNLOCK_COST = 500;
-
 export function VisualLab() {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState('all');
   const [activeBook, setActiveBook] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
   const [bookDropdownOpen, setBookDropdownOpen] = useState(false);
-  const [unlockError, setUnlockError] = useState<string | null>(null);
   const categoryRef = useRef<HTMLDivElement>(null);
   const bookRef = useRef<HTMLDivElement>(null);
 
-  // Progress store for XP and unlocking
+  // Progress store for unlocking
   const {
     userProgress,
     unlockedVisualizations,
-    unlockVisualization,
     isVisualizationUnlocked,
     getUnlockedVisualizationsCount,
   } = useProgressStore();
 
-  // Check if visualization is unlocked (free starters or purchased)
+  // Check if visualization is unlocked (free starters or earned via level completion)
   const isVizUnlocked = (vizId: string) => {
     return FREE_STARTER_VISUALS.includes(vizId) || isVisualizationUnlocked(vizId);
   };
 
-  // Handle unlock attempt
-  const handleUnlock = (vizId: string) => {
-    if (userProgress.xp < UNLOCK_COST) {
-      setUnlockError(`Not enough XP! You need ${UNLOCK_COST} XP to unlock. (Current: ${userProgress.xp} XP)`);
-      setTimeout(() => setUnlockError(null), 3000);
-      return;
-    }
-
-    const success = unlockVisualization(vizId);
-    if (!success) {
-      setUnlockError('Failed to unlock. Please try again.');
-      setTimeout(() => setUnlockError(null), 3000);
-    }
+  // Get unlock info for a locked viz
+  const getVizUnlockInfo = (vizId: string) => {
+    const mapping = vizLevelMap[vizId];
+    if (!mapping) return null;
+    const mod = getModuleById(mapping.moduleId);
+    if (!mod?.pathway) return null;
+    const level = mod.pathway.find(l => l.id === mapping.levelId);
+    if (!level) return null;
+    const completedCount = level.lessons.filter(l =>
+      userProgress.lessonsCompleted.includes(l.id)
+    ).length;
+    return {
+      moduleName: mod.title,
+      levelName: level.title,
+      moduleId: mod.id,
+      levelId: level.id,
+      completed: completedCount,
+      total: level.lessons.length,
+      percentage: level.lessons.length > 0 ? Math.round((completedCount / level.lessons.length) * 100) : 0,
+    };
   };
 
   // Favorites state with localStorage persistence
@@ -1708,19 +1715,11 @@ export function VisualLab() {
       icon={<Sparkles className="w-5 h-5" />}
       headerGradient="aurora"
       rightContent={
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-lavender/10 border border-lavender/20">
-            <Unlock className="w-4 h-4 text-lavender" />
-            <span className="text-lavender font-medium text-sm">
-              {totalUnlocked}/{totalVisuals}
-            </span>
-          </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-golden/10 border border-golden/20">
-            <Coins className="w-4 h-4 text-golden" />
-            <span className="text-golden font-semibold text-sm">
-              {userProgress.xp} XP
-            </span>
-          </div>
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-lavender/10 border border-lavender/20">
+          <Unlock className="w-4 h-4 text-lavender" />
+          <span className="text-lavender font-medium text-sm">
+            {totalUnlocked}/{totalVisuals}
+          </span>
         </div>
       }
     >
@@ -1972,20 +1971,6 @@ export function VisualLab() {
           </motion.div>
         )}
 
-        {/* Unlock error notification */}
-        <AnimatePresence>
-          {unlockError && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-3 rounded-xl bg-coral/20 border border-coral/40 text-coral text-sm font-medium shadow-lg"
-            >
-              {unlockError}
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* Main visualization card */}
         {activeViz && ActiveComponent ? (
           <motion.div variants={itemVariants}>
@@ -2099,41 +2084,57 @@ export function VisualLab() {
                       </div>
                     </>
                   ) : (
-                    /* Locked state - show unlock button */
-                    <div className="flex flex-col items-center justify-center py-12">
-                      <div className="w-20 h-20 rounded-2xl bg-surface/50 border border-white/10 flex items-center justify-center mb-6">
-                        <Lock className="w-10 h-10 text-text-muted" />
-                      </div>
-                      <h3 className="text-lg font-display font-semibold text-text-primary mb-2">
-                        This visualization is locked
-                      </h3>
-                      <p className="text-sm text-text-muted mb-6 text-center max-w-sm">
-                        Spend {UNLOCK_COST} XP to unlock this interactive visualization and add it to your collection.
-                      </p>
-                      <button
-                        onClick={() => handleUnlock(activeViz.id)}
-                        disabled={userProgress.xp < UNLOCK_COST}
-                        className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
-                          userProgress.xp >= UNLOCK_COST
-                            ? 'bg-gradient-to-r from-golden to-sunrise text-base hover:opacity-90 hover:scale-105'
-                            : 'bg-surface/50 text-text-muted cursor-not-allowed'
-                        }`}
-                      >
-                        <Coins className="w-5 h-5" />
-                        <span>Unlock for {UNLOCK_COST} XP</span>
-                      </button>
-                      {userProgress.xp < UNLOCK_COST && (
-                        <p className="text-xs text-coral mt-3">
-                          You need {UNLOCK_COST - userProgress.xp} more XP to unlock
-                        </p>
-                      )}
+                    /* Locked state - show level completion requirement */
+                    (() => {
+                      const info = getVizUnlockInfo(activeViz.id);
+                      return (
+                        <div className="flex flex-col items-center justify-center py-12">
+                          <div className="w-20 h-20 rounded-2xl bg-surface/50 border border-white/10 flex items-center justify-center mb-6">
+                            <Lock className="w-10 h-10 text-text-muted" />
+                          </div>
+                          <h3 className="text-lg font-display font-semibold text-text-primary mb-2">
+                            Complete the level to unlock
+                          </h3>
+                          {info ? (
+                            <>
+                              <p className="text-sm text-text-muted mb-2 text-center max-w-sm">
+                                Finish <span className="text-sunrise font-medium">{info.levelName}</span> in{' '}
+                                <span className="text-lavender font-medium">{info.moduleName}</span> to earn this visualization.
+                              </p>
+                              <div className="w-full max-w-xs mb-4">
+                                <div className="flex justify-between text-xs text-text-muted mb-1">
+                                  <span>{info.completed}/{info.total} lessons</span>
+                                  <span>{info.percentage}%</span>
+                                </div>
+                                <div className="h-2 bg-surface rounded-full overflow-hidden">
+                                  <div
+                                    className="h-full bg-gradient-to-r from-sunrise to-golden rounded-full transition-all duration-500"
+                                    style={{ width: `${info.percentage}%` }}
+                                  />
+                                </div>
+                              </div>
+                              <button
+                                onClick={() => navigate(`/pathway/${info.moduleId}/${info.levelId}`)}
+                                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-golden to-sunrise text-base hover:opacity-90 hover:scale-105 transition-all"
+                              >
+                                <BookOpen className="w-5 h-5" />
+                                <span>{info.completed > 0 ? 'Continue Learning' : 'Start Learning'}</span>
+                              </button>
+                            </>
+                          ) : (
+                            <p className="text-sm text-text-muted mb-6 text-center max-w-sm">
+                              Complete the related lessons to unlock this interactive visualization.
+                            </p>
+                          )}
 
-                      {/* Source (still shown even when locked) */}
-                      <div className="mt-8 flex items-center justify-center gap-2 text-xs text-text-muted">
-                        <Lightbulb className="w-3.5 h-3.5" />
-                        <span>Source: {activeViz.source}</span>
-                      </div>
-                    </div>
+                          {/* Source (still shown even when locked) */}
+                          <div className="mt-8 flex items-center justify-center gap-2 text-xs text-text-muted">
+                            <Lightbulb className="w-3.5 h-3.5" />
+                            <span>Source: {activeViz.source}</span>
+                          </div>
+                        </div>
+                      );
+                    })()
                   )}
                 </motion.div>
               </AnimatePresence>
@@ -2221,7 +2222,10 @@ export function VisualLab() {
                       {viz.title}
                     </div>
                     <p className="text-[10px] text-text-muted line-clamp-1">
-                      {unlocked ? viz.source : `🔒 ${UNLOCK_COST} XP to unlock`}
+                      {unlocked ? viz.source : (() => {
+                        const info = getVizUnlockInfo(viz.id);
+                        return info ? `🔒 ${info.completed}/${info.total} lessons` : '🔒 Locked';
+                      })()}
                     </p>
                   </motion.button>
                 );

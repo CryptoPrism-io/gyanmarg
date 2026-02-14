@@ -18,6 +18,7 @@ import { useProgressStore } from '@/store/progressStore';
 import { useUserStore } from '@/store/userStore';
 import { useAuthGate } from '@/hooks/useAuthGate';
 import { ModuleLayout } from '@/components/templates';
+import { getVizForLevel } from '@/data/vizLevelMap';
 import { GlassCard, NetflixLevelCard, GlassLessonRow, NetflixModuleCard, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
 import { ProgressBar } from '@/components/atoms';
 import { LessonViewer } from '@/components/organisms/LessonViewer';
@@ -761,6 +762,7 @@ export function LearningPathway() {
                                   progress={progress}
                                   isLocked={!unlocked}
                                   isCompleted={completed}
+                                  hasVizReward={!!getVizForLevel(level.id)}
                                   onClick={() => setSelectedLevelId(level.id)}
                                 />
                               );

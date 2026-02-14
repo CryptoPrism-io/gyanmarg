@@ -8,7 +8,8 @@
 
 type CelebrationEvent =
   | { type: 'achievement'; payload: { id: string; name: string; xpReward: number } }
-  | { type: 'levelUp'; payload: { newLevel: number } };
+  | { type: 'levelUp'; payload: { newLevel: number } }
+  | { type: 'vizUnlock'; payload: { vizId: string; moduleId: string; levelId: string } };
 
 type CelebrationCallback = (event: CelebrationEvent) => void;
 

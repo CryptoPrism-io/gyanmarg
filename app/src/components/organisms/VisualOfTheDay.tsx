@@ -344,7 +344,7 @@ export function VisualOfTheDay() {
           <span className="text-xs text-text-muted">Today's concept</span>
         </div>
         <Link
-          to="/lab"
+          to="/visualizations"
           className="flex items-center gap-1 text-xs text-lavender hover:text-sunrise transition-colors"
         >
           <span>Explore all 100+</span>

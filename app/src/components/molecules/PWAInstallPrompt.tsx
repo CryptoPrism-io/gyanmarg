@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, X, Smartphone, Monitor, Share, Plus } from 'lucide-react';
+import { useIsOnboarded } from '@/store/userStore';
+import { useProgressStore } from '@/store/progressStore';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -12,6 +14,11 @@ export function PWAInstallPrompt() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [showIOSInstructions, setShowIOSInstructions] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
+
+  // Only show PWA prompt to engaged users (onboarded + 3+ lessons completed)
+  const isOnboarded = useIsOnboarded();
+  const lessonsCompleted = useProgressStore((s) => s.userProgress?.lessonsCompleted?.length ?? 0);
+  const isEngagedUser = isOnboarded && lessonsCompleted >= 3;
 
   // Detect if already installed
   useEffect(() => {
@@ -69,6 +76,8 @@ export function PWAInstallPrompt() {
     setShowIOSInstructions(true);
   };
 
+  // Don't show until user is engaged (onboarded + 3 lessons done)
+  if (!isEngagedUser) return null;
   if (isInstalled) return null;
 
   return (

@@ -7,6 +7,8 @@ import { triggerSync } from '@/store/firebaseSync';
 import { analytics } from '@/lib/analytics';
 import type { Badge } from '@/data/badges';
 import { BADGES, checkBadgeUnlock } from '@/data/badges';
+import { vizLevelMap } from '@/data/vizLevelMap';
+import { getModuleById } from '@/data/modules';
 
 // Starred cards — saved from lesson card flow
 export interface StarredCard {
@@ -51,6 +53,9 @@ interface ProgressState {
 
   // Level-up tracking
   pendingLevelUp: number | null;
+
+  // Pending viz unlock (shown as capstone reward after level completion)
+  pendingVizUnlock: { vizId: string; moduleId: string; levelId: string } | null;
 
   // XP & Level Actions
   addXP: (amount: number) => void;
@@ -117,11 +122,11 @@ interface ProgressState {
   // Hint XP deduction (for game hints — never levels down)
   deductXP: (amount: number) => boolean;
 
-  // Visualization Unlocking
+  // Visualization Unlocking (level-completion based)
   unlockedVisualizations: string[];
-  unlockVisualization: (vizId: string) => boolean;
   isVisualizationUnlocked: (vizId: string) => boolean;
   getUnlockedVisualizationsCount: () => number;
+  clearPendingVizUnlock: () => void;
 
   // Reset
   resetProgress: () => void;
@@ -171,7 +176,8 @@ export const useProgressStore = create<ProgressState>()(
       challengeCompletions: [],
       starredCards: [],
       unlockedBadges: [], // Users start with no badges
-      unlockedVisualizations: [], // Users start with no unlocked visualizations
+      unlockedVisualizations: [], // Populated by level completions
+      pendingVizUnlock: null,
       longestStreak: 0,
       streakFreezes: 1,
       lastFreezeUsed: null,
@@ -313,6 +319,39 @@ export const useProgressStore = create<ProgressState>()(
 
         // Check for badge unlocks after lesson completion
         get().checkAndUnlockBadges();
+
+        // Check if this lesson completion finishes a level with a mapped visualization
+        const updatedState = get();
+        const allCompletedLessons = updatedState.userProgress.lessonsCompleted;
+
+        // Look through all modules to find which level this lesson belongs to
+        for (const [vizId, mapping] of Object.entries(vizLevelMap)) {
+          // Skip already unlocked
+          if (updatedState.unlockedVisualizations.includes(vizId)) continue;
+
+          const mod = getModuleById(mapping.moduleId);
+          if (!mod?.pathway) continue;
+
+          const level = mod.pathway.find(l => l.id === mapping.levelId);
+          if (!level) continue;
+
+          // Check if this lesson is in this level AND the level is now fully complete
+          const lessonInThisLevel = level.lessons.some(l => l.id === lessonId);
+          if (!lessonInThisLevel) continue;
+
+          const levelComplete = level.lessons.every(l => allCompletedLessons.includes(l.id));
+          if (levelComplete) {
+            // Unlock the visualization!
+            set((state) => ({
+              unlockedVisualizations: [...state.unlockedVisualizations, vizId],
+              pendingVizUnlock: { vizId, moduleId: mapping.moduleId, levelId: mapping.levelId },
+            }));
+
+            analytics.track('viz_unlocked', { viz_id: vizId, level_id: mapping.levelId, module_id: mapping.moduleId });
+            triggerSync();
+            break; // Only one viz unlock per lesson completion
+          }
+        }
       },
 
       isLessonCompleted: (lessonId) => {
@@ -773,48 +812,17 @@ export const useProgressStore = create<ProgressState>()(
         return true;
       },
 
-      // Visualization unlocking - costs 500 XP per visualization
-      unlockVisualization: (vizId: string) => {
-        const state = get();
-        const UNLOCK_COST = 500;
-
-        // Already unlocked
-        if (state.unlockedVisualizations.includes(vizId)) {
-          return true;
-        }
-
-        // Check if user has enough XP
-        if (state.userProgress.xp < UNLOCK_COST) {
-          return false;
-        }
-
-        // Deduct XP and unlock
-        set((state) => {
-          const newXP = state.userProgress.xp - UNLOCK_COST;
-          const newLevel = Math.floor(newXP / 500) + 1;
-
-          // Trigger Firebase sync
-          triggerSync();
-
-          return {
-            userProgress: {
-              ...state.userProgress,
-              xp: newXP,
-              level: newLevel,
-            },
-            unlockedVisualizations: [...state.unlockedVisualizations, vizId],
-          };
-        });
-
-        return true;
-      },
-
+      // Visualization unlocking — driven by level completion, not XP spending
       isVisualizationUnlocked: (vizId: string) => {
         return get().unlockedVisualizations.includes(vizId);
       },
 
       getUnlockedVisualizationsCount: () => {
         return get().unlockedVisualizations.length;
+      },
+
+      clearPendingVizUnlock: () => {
+        set({ pendingVizUnlock: null });
       },
 
       resetProgress: () =>
@@ -833,6 +841,7 @@ export const useProgressStore = create<ProgressState>()(
           lastFreezeUsed: null,
           freezeRefreshDate: new Date().toISOString().split('T')[0],
           pendingLevelUp: null,
+          pendingVizUnlock: null,
         }),
     }),
     {
@@ -843,6 +852,7 @@ export const useProgressStore = create<ProgressState>()(
 
 // Selector hooks
 export const usePendingLevelUp = () => useProgressStore(state => state.pendingLevelUp);
+export const usePendingVizUnlock = () => useProgressStore(state => state.pendingVizUnlock);
 export const useWeeklyChallenge = () => useProgressStore(state => state.weeklyChallenge);
 export const useStreakInfo = () => useProgressStore(state => ({
   currentStreak: state.userProgress.currentStreak,

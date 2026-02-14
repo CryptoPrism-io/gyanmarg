@@ -16,13 +16,13 @@ import { celebrationQueue, type CelebrationEvent } from '@/lib/celebrationQueue'
 
 // Store
 import { useUserStore, usePendingAchievement, useIsOnboarded } from '@/store/userStore';
-import { useProgressStore, usePendingLevelUp } from '@/store/progressStore';
+import { useProgressStore, usePendingLevelUp, usePendingVizUnlock } from '@/store/progressStore';
 
 // Auth
 import { AuthProvider } from '@/contexts/AuthContext';
 
 // Celebration Components
-import { AchievementUnlock, LevelUpModal } from '@/components/organisms';
+import { AchievementUnlock, LevelUpModal, VizUnlockModal } from '@/components/organisms';
 import DailyRewardModal from '@/components/organisms/DailyRewardModal';
 
 // PWA Install Prompt
@@ -74,17 +74,25 @@ function PageLoader() {
 function CelebrationModals() {
   const pendingAchievement = usePendingAchievement();
   const pendingLevelUp = usePendingLevelUp();
+  const pendingVizUnlock = usePendingVizUnlock();
   const clearPendingAchievement = useUserStore((s) => s.clearPendingAchievement);
   const clearPendingLevelUp = useProgressStore((s) => s.clearPendingLevelUp);
+  const clearPendingVizUnlock = useProgressStore((s) => s.clearPendingVizUnlock);
 
   const [showAchievement, setShowAchievement] = useState(false);
   const [showLevelUp, setShowLevelUp] = useState(false);
+  const [showVizUnlock, setShowVizUnlock] = useState(false);
   const [currentAchievement, setCurrentAchievement] = useState<{
     id: string;
     name: string;
     xpReward: number;
   } | null>(null);
   const [currentLevel, setCurrentLevel] = useState<number>(1);
+  const [currentVizUnlock, setCurrentVizUnlock] = useState<{
+    vizId: string;
+    moduleId: string;
+    levelId: string;
+  } | null>(null);
 
   // Daily reward state
   const [showDailyReward, setShowDailyReward] = useState(false);
@@ -120,6 +128,9 @@ function CelebrationModals() {
       } else if (event.type === 'levelUp') {
         setCurrentLevel(event.payload.newLevel);
         setShowLevelUp(true);
+      } else if (event.type === 'vizUnlock') {
+        setCurrentVizUnlock(event.payload);
+        setShowVizUnlock(true);
       }
     });
 
@@ -150,6 +161,17 @@ function CelebrationModals() {
     }
   }, [pendingLevelUp, clearPendingLevelUp]);
 
+  // Handle pending viz unlock — enqueue as celebration
+  useEffect(() => {
+    if (pendingVizUnlock) {
+      celebrationQueue.enqueue({
+        type: 'vizUnlock',
+        payload: pendingVizUnlock,
+      });
+      clearPendingVizUnlock();
+    }
+  }, [pendingVizUnlock, clearPendingVizUnlock]);
+
   const handleAchievementClose = () => {
     setShowAchievement(false);
     celebrationQueue.onCelebrationClosed();
@@ -157,6 +179,11 @@ function CelebrationModals() {
 
   const handleLevelUpClose = () => {
     setShowLevelUp(false);
+    celebrationQueue.onCelebrationClosed();
+  };
+
+  const handleVizUnlockClose = () => {
+    setShowVizUnlock(false);
     celebrationQueue.onCelebrationClosed();
   };
 
@@ -177,6 +204,11 @@ function CelebrationModals() {
         isOpen={showLevelUp}
         onClose={handleLevelUpClose}
         newLevel={currentLevel}
+      />
+      <VizUnlockModal
+        isOpen={showVizUnlock}
+        onClose={handleVizUnlockClose}
+        vizUnlock={currentVizUnlock}
       />
     </>
   );

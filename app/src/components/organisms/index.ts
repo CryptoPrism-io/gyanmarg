@@ -4,6 +4,7 @@ export { Modal, ConfirmDialog } from './Modal';
 export { DeepWorkTimer } from './DeepWorkTimer';
 export { AchievementUnlock } from './AchievementUnlock';
 export { LevelUpModal } from './LevelUpModal';
+export { VizUnlockModal } from './VizUnlockModal';
 export { TodaysFocus } from './TodaysFocus';
 export { LocalLeaderboard } from './LocalLeaderboard';
 export { LessonViewer } from './LessonViewer';
