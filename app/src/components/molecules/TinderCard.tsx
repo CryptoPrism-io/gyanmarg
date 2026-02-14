@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import {
   BookOpen,
   Brain,
@@ -17,11 +18,13 @@ import {
   Microscope,
   Lightbulb,
   Rocket,
+  FlaskConical,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import type { CardContent } from '@/hooks/useCardStack';
 import type { QuizQuestion } from '@/types';
 import { RichMarkdown } from '@/components/molecules/RichMarkdown';
+import { VizCardRenderer } from '@/components/molecules/VizCardRenderer';
 
 interface TinderCardProps {
   card: CardContent;
@@ -64,6 +67,7 @@ const cardBackgrounds: Record<CardContent['type'], string> = {
   quiz: 'bg-[#18161E]',
   takeaway: 'bg-[#151A15]',
   action: 'bg-[#1A1610]',
+  visualization: 'bg-[#161020]',
 };
 
 // Stack positioning for page-like effect (x-axis offset - left to right natural flow)
@@ -192,6 +196,7 @@ export function TinderCard({
   const [quizAnswered, setQuizAnswered] = useState(false);
   const [quizCorrect, setQuizCorrect] = useState(false);
   const constraintsRef = useRef(null);
+  const navigate = useNavigate();
 
   // Starred cards
   const isCardStarred = useProgressStore((s) => s.isCardStarred);
@@ -239,6 +244,7 @@ export function TinderCard({
       : card.type === 'takeaway' ? 'Key Takeaway'
       : card.type === 'action' ? 'Try This'
       : card.type === 'quiz' ? 'Quick Check'
+      : card.type === 'visualization' ? 'Reward'
       : card.type);
 
   // Solid opaque background
@@ -305,14 +311,14 @@ export function TinderCard({
           filter: { type: 'tween', duration: 0.3 }  // Tween for blur to avoid negative values
         }}
         className={`
-          relative w-full max-w-md mx-4 h-[500px] rounded-2xl border border-white/10
+          relative w-full max-w-md mx-4 ${card.type === 'visualization' ? 'h-full' : 'h-[500px]'} rounded-2xl border border-white/10
           ${cardBg}
           shadow-xl cursor-grab active:cursor-grabbing
           touch-none select-none flex flex-col
         `}
       >
-        {/* Card Header */}
-        <div className="flex items-center justify-between p-4 border-b border-white/10">
+        {/* Card Header — hidden for visualization cards */}
+        <div className={`flex items-center justify-between p-4 border-b border-white/10 ${card.type === 'visualization' ? 'hidden' : ''}`}>
           <div className="flex items-center gap-3">
             <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${
               contentTheme
@@ -321,6 +327,7 @@ export function TinderCard({
                 : card.type === 'takeaway' ? 'bg-sage/15 border-sage/25'
                 : card.type === 'action' ? 'bg-sunrise/15 border-sunrise/25'
                 : card.type === 'quiz' ? 'bg-lavender/15 border-lavender/25'
+                : card.type === 'visualization' ? 'bg-lavender/15 border-lavender/25'
                 : 'bg-white/10 border-white/10'
             }`}>
               <IconComponent className={`w-5 h-5 ${
@@ -330,6 +337,7 @@ export function TinderCard({
                   : card.type === 'takeaway' ? 'text-sage'
                   : card.type === 'action' ? 'text-sunrise'
                   : card.type === 'quiz' ? 'text-lavender'
+                  : card.type === 'visualization' ? 'text-lavender'
                   : 'text-text-primary'
               }`} />
             </div>
@@ -341,6 +349,7 @@ export function TinderCard({
                   : card.type === 'takeaway' ? 'text-sage'
                   : card.type === 'action' ? 'text-sunrise'
                   : card.type === 'quiz' ? 'text-lavender'
+                  : card.type === 'visualization' ? 'text-lavender'
                   : 'text-text-muted'
               }`}>
                 {typeLabel}
@@ -353,7 +362,7 @@ export function TinderCard({
         </div>
 
         {/* Card Content */}
-        <div className="px-6 py-5 flex-1 overflow-y-auto">
+        <div className={`flex-1 overflow-y-auto ${card.type === 'visualization' ? 'p-0' : 'px-6 py-5'}`}>
           {card.type === 'quiz' && card.quiz ? (
             <QuizCardContent quiz={card.quiz} onAnswer={handleQuizAnswer} />
           ) : card.type === 'overview' ? (
@@ -412,6 +421,37 @@ export function TinderCard({
                 </p>
               </div>
             </div>
+          ) : card.type === 'visualization' && card.vizId ? (
+            <div className="w-full h-full flex flex-col">
+              <div className="flex-1 overflow-hidden">
+                <VizCardRenderer vizId={card.vizId} />
+              </div>
+              {/* Action buttons */}
+              <div className="flex gap-3 px-4 py-4 border-t border-white/10">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSwipe('right');
+                  }}
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-golden/15 border border-golden/25 text-golden text-sm font-medium hover:bg-golden/25 transition-colors"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                  Continue
+                </motion.button>
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/visualizations?viz=${card.vizId}`);
+                  }}
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-lavender/15 border border-lavender/25 text-lavender text-sm font-medium hover:bg-lavender/25 transition-colors"
+                >
+                  <FlaskConical className="w-4 h-4" />
+                  Visual Lab
+                </motion.button>
+              </div>
+            </div>
           ) : (
             <div className="prose prose-invert prose-sm prose-p:leading-[1.5]">
               <RichMarkdown content={card.content} />
@@ -419,8 +459,8 @@ export function TinderCard({
           )}
         </div>
 
-        {/* Footer — progress bar, counter, star */}
-        <div className="flex items-center gap-3 px-4 py-3 border-t border-white/[0.06]">
+        {/* Footer — progress bar, counter, star — hidden for visualization cards */}
+        <div className={`flex items-center gap-3 px-4 py-3 border-t border-white/[0.06] ${card.type === 'visualization' ? 'hidden' : ''}`}>
           <div className="flex-1 h-1 rounded-full bg-white/[0.06] overflow-hidden">
             <motion.div
               className="h-full rounded-full bg-gradient-to-r from-golden/80 to-golden"

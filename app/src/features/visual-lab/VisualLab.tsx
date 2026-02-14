@@ -1,7 +1,7 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, ChevronLeft, ChevronRight, Lightbulb, Filter, BookOpen, X, Search, ChevronDown, Star, Lock, Unlock } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useProgressStore } from '@/store/progressStore';
 import { vizLevelMap } from '@/data/vizLevelMap';
 import { getModuleById } from '@/data/modules';
@@ -1557,6 +1557,7 @@ const FREE_STARTER_VISUALS = [
 
 export function VisualLab() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState('all');
   const [activeBook, setActiveBook] = useState('all');
@@ -1670,6 +1671,26 @@ export function VisualLab() {
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeCategory, activeBook, searchQuery, favorites, unlockedVisualizations]);
+
+  // Deep-link: navigate to specific viz via ?viz= query param
+  useEffect(() => {
+    const vizParam = searchParams.get('viz');
+    if (vizParam) {
+      const index = filteredVisualizations.findIndex(v => v.id === vizParam);
+      if (index !== -1) {
+        setActiveIndex(index);
+      } else {
+        // Viz not in current filter — reset to 'all' and try again
+        setActiveCategory('all');
+        setActiveBook('all');
+        setSearchQuery('');
+        const globalIndex = visualizations.findIndex(v => v.id === vizParam);
+        if (globalIndex !== -1) {
+          setActiveIndex(globalIndex);
+        }
+      }
+    }
+  }, [searchParams]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const goToPrev = () => {
     setActiveIndex((prev) => (prev === 0 ? filteredVisualizations.length - 1 : prev - 1));

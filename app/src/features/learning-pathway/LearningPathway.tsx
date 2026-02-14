@@ -322,18 +322,24 @@ export function LearningPathway() {
     return hasFlashcardsForLessons(allFlashcards, completedLessonIds);
   }, [selectedModule, isLessonCompleted]);
 
-  // DEV: All unlocked for content QA
+  // All levels are visible so users can browse before committing
   const isLevelUnlocked = (_level: PathwayLevel, _levelIndex: number): boolean => {
     return true;
   };
 
+  // Sequential lesson unlock: first lesson of each level is free,
+  // subsequent lessons require the previous lesson to be completed
   const isLessonUnlocked = (
     _lesson: PathwayLesson,
-    _lessonIndex: number,
-    _level: PathwayLevel,
+    lessonIndex: number,
+    level: PathwayLevel,
     _levelIndex: number
   ): boolean => {
-    return true;
+    // First lesson of every level is always unlocked
+    if (lessonIndex === 0) return true;
+    // Subsequent lessons require the previous lesson to be completed
+    const previousLesson = level.lessons[lessonIndex - 1];
+    return isLessonCompleted(previousLesson.id);
   };
 
   const getLevelProgress = (level: PathwayLevel): number => {
