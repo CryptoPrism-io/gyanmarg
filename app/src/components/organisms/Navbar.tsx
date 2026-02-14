@@ -3,11 +3,9 @@ import { motion } from 'framer-motion';
 import {
   LayoutDashboard,
   BookOpen,
-  Zap,
   Flame,
-  Settings,
-  Eye,
-  Star,
+  RotateCcw,
+  User,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
@@ -17,10 +15,8 @@ import { PolymindLogo } from '@/components/brand';
 const navItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
   { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
-  { id: 'visual-lab', path: '/lab', label: 'Visuals', icon: Eye },
-  { id: 'challenges', path: '/challenges', label: 'Challenges', icon: Zap },
-  { id: 'saved', path: '/saved', label: '', icon: Star, iconOnly: true },
-  { id: 'settings', path: '/settings', label: '', icon: Settings, iconOnly: true },
+  { id: 'review', path: '/review', label: 'Review', icon: RotateCcw },
+  { id: 'profile', path: '/profile', label: 'Profile', icon: User },
 ];
 
 export function Navbar() {
@@ -55,19 +51,18 @@ export function Navbar() {
               const isActive =
                 location.pathname === item.path ||
                 location.pathname.startsWith(`${item.path}/`);
-              const isIconOnly = 'iconOnly' in item && item.iconOnly;
               return (
                 <Link
                   key={item.id}
                   to={item.path}
-                  title={item.label || item.id}
+                  title={item.label}
                   className="relative"
                 >
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`
-                      flex items-center gap-2 ${isIconOnly ? 'px-2.5' : 'px-4'} py-2 rounded-xl text-sm font-medium
+                      flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium
                       transition-all duration-200
                       ${isActive
                         ? 'bg-sunrise/10 text-sunrise'
@@ -76,7 +71,7 @@ export function Navbar() {
                     `}
                   >
                     <Icon className="w-4 h-4" />
-                    {!isIconOnly && <span className="hidden lg:inline">{item.label}</span>}
+                    <span className="hidden lg:inline">{item.label}</span>
                   </motion.div>
                   {isActive && (
                     <motion.div
@@ -137,12 +132,12 @@ export function Navbar() {
   );
 }
 
-// Mobile Bottom Navigation
+// Mobile Bottom Navigation — mirrors desktop 4-tab structure
 const mobileNavItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
   { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
-  { id: 'saved', path: '/saved', label: 'Saved', icon: Star },
-  { id: 'settings', path: '/settings', label: '', icon: Settings },
+  { id: 'review', path: '/review', label: 'Review', icon: RotateCcw },
+  { id: 'profile', path: '/profile', label: 'Profile', icon: User },
 ];
 
 export function MobileNav() {

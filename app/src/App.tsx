@@ -39,10 +39,8 @@ const Dashboard = lazy(() => import('@/features/dashboard/Dashboard').then(m => 
 const LearningPathway = lazy(() => import('@/features/learning-pathway/LearningPathway').then(m => ({ default: m.LearningPathway })));
 const SpacedRepetition = lazy(() => import('@/features/spaced-repetition/SpacedRepetition').then(m => ({ default: m.SpacedRepetition })));
 const DailyChallenges = lazy(() => import('@/features/daily-challenges/DailyChallenges').then(m => ({ default: m.DailyChallenges })));
-const KnowledgeMap = lazy(() => import('@/features/knowledge-map/KnowledgeMap').then(m => ({ default: m.KnowledgeMap })));
-const Settings = lazy(() => import('@/features/settings/Settings').then(m => ({ default: m.Settings })));
 const VisualLab = lazy(() => import('@/features/visual-lab/VisualLab').then(m => ({ default: m.VisualLab })));
-const SavedCards = lazy(() => import('@/features/saved-cards/SavedCards').then(m => ({ default: m.SavedCards })));
+const Profile = lazy(() => import('@/features/profile/Profile').then(m => ({ default: m.Profile })));
 
 const LearningSciencePage = lazy(() => import('@/features/science/LearningSciencePage').then(m => ({ default: m.LearningSciencePage })));
 const BookListPage = lazy(() => import('@/features/books/BookListPage').then(m => ({ default: m.BookListPage })));
@@ -269,6 +267,7 @@ function AppRoutes() {
       />
 
 
+      {/* Challenges — still accessible but not in main nav */}
       <Route
         path="/challenges"
         element={
@@ -284,14 +283,15 @@ function AppRoutes() {
         }
       />
 
+      {/* Profile — unified badge showcase, saved cards, settings */}
       <Route
-        path="/connections"
+        path="/profile"
         element={
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
                 <Suspense fallback={<PageLoader />}>
-                  <KnowledgeMap />
+                  <Profile />
                 </Suspense>
               </PageTransition>
             </PageLayout>
@@ -299,21 +299,9 @@ function AppRoutes() {
         }
       />
 
-      {/* Settings */}
-      <Route
-        path="/settings"
-        element={
-          <ProtectedRoute>
-            <PageLayout>
-              <PageTransition>
-                <Suspense fallback={<PageLoader />}>
-                  <Settings />
-                </Suspense>
-              </PageTransition>
-            </PageLayout>
-          </ProtectedRoute>
-        }
-      />
+      {/* Legacy redirects */}
+      <Route path="/settings" element={<Navigate to="/profile" replace />} />
+      <Route path="/saved" element={<Navigate to="/profile" replace />} />
 
       {/* Lab Hub - Experimental Learning Modes */}
       <Route
@@ -395,21 +383,8 @@ function AppRoutes() {
         }
       />
 
-      {/* Saved Cards */}
-      <Route
-        path="/saved"
-        element={
-          <ProtectedRoute>
-            <PageLayout>
-              <PageTransition>
-                <Suspense fallback={<PageLoader />}>
-                  <SavedCards />
-                </Suspense>
-              </PageTransition>
-            </PageLayout>
-          </ProtectedRoute>
-        }
-      />
+      {/* Connections — legacy, redirect to learn */}
+      <Route path="/connections" element={<Navigate to="/pathway" replace />} />
 
 
       {/* Landing Page */}
