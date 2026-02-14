@@ -2002,6 +2002,40 @@ Stoic response: "I did excellent work (virtue). Promotion was preferred but exte
         explanation: 'Negative visualization is a brief, structured exercise where you imagine losing something you value in order to increase present gratitude and reduce shock if loss actually occurs. It is not anxiety amplification or risk avoidance, but preparation and appreciation.'
       }
     }
+  },
+  {
+    id: 'stoic-viz-level2',
+    title: 'Reward: Dichotomy of Control Visualization',
+    type: 'challenge',
+    duration: 5,
+    xpReward: 150,
+    content: {
+      overview: 'You have completed Level 2! As your reward, explore an interactive visualization of the Stoic Dichotomy of Control.',
+      mainContent: `## Level Complete — Visualization Unlocked!
+
+Congratulations on mastering the Dichotomy of Control.
+
+You have earned an **interactive visualization** that brings this concept to life.
+
+### What You Will Explore
+
+The **Dichotomy of Control** visualization lets you:
+
+- **Drag events** between "In Your Control" and "Not In Your Control" zones
+- See how Stoic philosophers would categorize each situation
+- Practice distinguishing between internals and externals in real-time
+- Build muscle memory for the most fundamental Stoic skill
+
+### Why This Matters
+
+Epictetus taught that **all human suffering** comes from confusing what is ours to control with what is not. This visualization makes that distinction visceral and intuitive.
+
+> "Make the best use of what is in your power, and take the rest as it happens." — Epictetus
+
+Swipe to complete this lesson, then visit the **Visual Lab** to explore your reward.`,
+      keyTakeaway: 'You have unlocked the Dichotomy of Control interactive visualization. Visit the Visual Lab from the home screen to explore it.',
+      actionItem: 'Open the Visual Lab and spend 5 minutes with the Dichotomy of Control visualization. Try categorizing events from your own life.'
+    }
   }
 ];
 

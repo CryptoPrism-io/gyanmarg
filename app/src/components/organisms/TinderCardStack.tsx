@@ -96,7 +96,7 @@ export function TinderCardStack({
   const [countdown, setCountdown] = useState(COUNTDOWN_SECONDS);
   const autoCompletedRef = useRef(false);
   const [cardReady, setCardReady] = useState(false);
-  const CARD_COOLDOWN = 1.5; // seconds before next card is allowed
+  const CARD_COOLDOWN = 0.3; // seconds — just enough for swipe animation
 
   // Absorb XP tracking — call addMicroXP directly
   const addMicroXP = useProgressStore((s) => s.addMicroXP);

@@ -7,15 +7,14 @@ import { triggerSync } from '@/store/firebaseSync';
 import { analytics } from '@/lib/analytics';
 import type { Badge } from '@/data/badges';
 import { BADGES, checkBadgeUnlock } from '@/data/badges';
-import { vizLevelMap } from '@/data/vizLevelMap';
-import { getModuleById } from '@/data/modules';
+import { getVizForLevel } from '@/data/vizLevelMap';
 
 // Starred cards — saved from lesson card flow
 export interface StarredCard {
   cardId: string;        // unique card ID from useCardStack
   lessonId: string;      // parent lesson
   moduleId: string;      // parent module
-  cardType: 'overview' | 'content' | 'quiz' | 'takeaway' | 'action';
+  cardType: 'overview' | 'content' | 'quiz' | 'takeaway' | 'action' | 'visualization';
   title: string;
   content: string;       // card text/markdown content
   starredAt: string;     // ISO timestamp
@@ -320,36 +319,17 @@ export const useProgressStore = create<ProgressState>()(
         // Check for badge unlocks after lesson completion
         get().checkAndUnlockBadges();
 
-        // Check if this lesson completion finishes a level with a mapped visualization
-        const updatedState = get();
-        const allCompletedLessons = updatedState.userProgress.lessonsCompleted;
-
-        // Look through all modules to find which level this lesson belongs to
-        for (const [vizId, mapping] of Object.entries(vizLevelMap)) {
-          // Skip already unlocked
-          if (updatedState.unlockedVisualizations.includes(vizId)) continue;
-
-          const mod = getModuleById(mapping.moduleId);
-          if (!mod?.pathway) continue;
-
-          const level = mod.pathway.find(l => l.id === mapping.levelId);
-          if (!level) continue;
-
-          // Check if this lesson is in this level AND the level is now fully complete
-          const lessonInThisLevel = level.lessons.some(l => l.id === lessonId);
-          if (!lessonInThisLevel) continue;
-
-          const levelComplete = level.lessons.every(l => allCompletedLessons.includes(l.id));
-          if (levelComplete) {
-            // Unlock the visualization!
+        // Check if this is a viz-reward lesson (ID contains '-viz-')
+        if (lessonId.includes('-viz-')) {
+          const levelId = lessonId.replace('-viz-', '-');
+          const vizInfo = getVizForLevel(levelId);
+          if (vizInfo && !get().unlockedVisualizations.includes(vizInfo.vizId)) {
             set((state) => ({
-              unlockedVisualizations: [...state.unlockedVisualizations, vizId],
-              pendingVizUnlock: { vizId, moduleId: mapping.moduleId, levelId: mapping.levelId },
+              unlockedVisualizations: [...state.unlockedVisualizations, vizInfo.vizId],
+              pendingVizUnlock: { vizId: vizInfo.vizId, moduleId: vizInfo.mapping.moduleId, levelId: vizInfo.mapping.levelId },
             }));
-
-            analytics.track('viz_unlocked', { viz_id: vizId, level_id: mapping.levelId, module_id: mapping.moduleId });
+            analytics.track('viz_unlocked', { viz_id: vizInfo.vizId, level_id: levelId, module_id: vizInfo.mapping.moduleId });
             triggerSync();
-            break; // Only one viz unlock per lesson completion
           }
         }
       },

@@ -1,7 +1,8 @@
 import { useState, useCallback, useMemo } from 'react';
 import type { PathwayLesson, QuizQuestion } from '@/types';
+import { getVizForLevel } from '@/data/vizLevelMap';
 
-export type CardType = 'overview' | 'content' | 'quiz' | 'takeaway' | 'action';
+export type CardType = 'overview' | 'content' | 'quiz' | 'takeaway' | 'action' | 'visualization';
 
 export interface CardContent {
   id: string;
@@ -11,6 +12,7 @@ export interface CardContent {
   xpReward: number;
   icon?: string;
   quiz?: QuizQuestion;
+  vizId?: string;
 }
 
 interface UseCardStackProps {
@@ -197,6 +199,23 @@ function parseContentToCards(lesson: PathwayLesson): CardContent[] {
       xpReward: 2,
       icon: 'Zap',
     });
+  }
+
+  // 6. Visualization card — if this is a viz-reward lesson (ID contains '-viz-')
+  if (lesson.id.includes('-viz-')) {
+    // Extract level ID: e.g. 'stoic-viz-level2' → 'stoic-level2'
+    const levelId = lesson.id.replace('-viz-', '-');
+    const vizInfo = getVizForLevel(levelId);
+    if (vizInfo) {
+      cards.push({
+        id: `${lesson.id}-viz-${cardIndex++}`,
+        type: 'visualization',
+        title: 'Interactive Visualization',
+        content: 'Explore this concept with an interactive visualization',
+        xpReward: 10,
+        vizId: vizInfo.vizId,
+      });
+    }
   }
 
   return cards;
