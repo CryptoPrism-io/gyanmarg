@@ -9,3 +9,4 @@ export { LocalLeaderboard } from './LocalLeaderboard';
 export { LessonViewer } from './LessonViewer';
 export { VisualOfTheDay } from './VisualOfTheDay';
 export { SignInGate } from './SignInGate';
+export { SearchModal } from './SearchModal';

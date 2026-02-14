@@ -11,6 +11,7 @@ import { useProgressStore } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
 import { UserAvatar, GoogleSignInButton } from '@/components/molecules';
 import { PolymindLogo } from '@/components/brand';
+import { SearchModal } from '@/components/organisms/SearchModal';
 
 const navItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
@@ -85,8 +86,11 @@ export function Navbar() {
             })}
           </div>
 
-          {/* XP & Streak Display */}
+          {/* Search + XP & Streak */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Search */}
+            <SearchModal />
+
             {/* Streak */}
             {(userProgress?.currentStreak ?? 0) > 0 && (
               <motion.div
