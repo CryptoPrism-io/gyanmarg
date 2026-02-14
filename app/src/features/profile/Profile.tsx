@@ -271,9 +271,6 @@ export function Profile() {
   const shareCardRef = useRef<HTMLDivElement>(null);
   const [isSharing, setIsSharing] = useState(false);
 
-  // Badge filtering
-  const [badgeFilter, setBadgeFilter] = useState<'all' | 'unlocked' | 'locked'>('all');
-
   // Saved cards filtering
   const [filterModule, setFilterModule] = useState<string | null>(null);
   const modulesWithCards = useMemo(() => {
@@ -557,12 +554,33 @@ export function Profile() {
   };
 
   // ================================================================
-  // SUB-VIEW: Badges
+  // SUB-VIEW: Badges — Trophy Room
   // ================================================================
   if (activeView === 'badges') {
+    // Category config for skill trees
+    const skillTrees: { key: string; label: string; icon: string; color: string; borderColor: string; categories: string[] }[] = [
+      { key: 'streak', label: 'Streak Milestones', icon: '🔥', color: 'text-coral', borderColor: 'border-coral/20', categories: ['streak'] },
+      { key: 'mastery', label: 'Content Mastery', icon: '📚', color: 'text-sage', borderColor: 'border-sage/20', categories: ['module', 'lesson'] },
+      { key: 'xp', label: 'XP Milestones', icon: '⭐', color: 'text-golden', borderColor: 'border-golden/20', categories: ['xp'] },
+      { key: 'review', label: 'Review Mastery', icon: '🃏', color: 'text-lavender', borderColor: 'border-lavender/20', categories: ['review'] },
+    ];
+
+    // Hall of Fame: most recent unlocked badges (up to 3), prioritize highest tier
+    const hallOfFame = [...unlockedBadges]
+      .sort((a, b) => {
+        const tierOrder = { diamond: 5, platinum: 4, gold: 3, silver: 2, bronze: 1 };
+        const tierDiff = tierOrder[b.tier] - tierOrder[a.tier];
+        if (tierDiff !== 0) return tierDiff;
+        return new Date(b.unlockedAt || 0).getTime() - new Date(a.unlockedAt || 0).getTime();
+      })
+      .slice(0, 3);
+
+    // Overall progress
+    const totalProgress = Math.round((unlockedBadges.length / BADGES.length) * 100);
+
     return (
       <ModuleLayout
-        title="Badges"
+        title="Trophy Room"
         subtitle={`${unlockedBadges.length} of ${BADGES.length} earned`}
         icon={<Award className="w-5 h-5" />}
         headerGradient="sunset"
@@ -572,61 +590,128 @@ export function Profile() {
           </button>
         }
       >
-        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-4">
-          {/* Filter */}
-          <motion.div variants={itemVariants} className="flex gap-2">
-            {[
-              { key: 'all' as const, label: `All (${BADGES.length})`, activeClass: 'bg-golden/20 text-golden border-golden/30' },
-              { key: 'unlocked' as const, label: `Earned (${unlockedBadges.length})`, activeClass: 'bg-sage/20 text-sage border-sage/30' },
-              { key: 'locked' as const, label: `Locked (${BADGES.length - unlockedBadges.length})`, activeClass: 'bg-white/10 text-white border-white/20' },
-            ].map(({ key, label, activeClass }) => (
-              <button
-                key={key}
-                onClick={() => setBadgeFilter(key)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all border ${
-                  badgeFilter === key ? activeClass : 'bg-surface/50 text-white/60 border-white/10 hover:bg-white/5'
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </motion.div>
+        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
 
-          {/* Badge Grid */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {BADGES.filter(badge => {
-              const isUnlocked = unlockedBadges.some(b => b.id === badge.id);
-              if (badgeFilter === 'unlocked') return isUnlocked;
-              if (badgeFilter === 'locked') return !isUnlocked;
-              return true;
-            })
-            .sort((a, b) => {
-              const aU = unlockedBadges.some(ub => ub.id === a.id);
-              const bU = unlockedBadges.some(ub => ub.id === b.id);
-              if (aU !== bU) return bU ? 1 : -1;
-              return a.requirement.value - b.requirement.value;
-            })
-            .map(badge => {
-              const unlocked = unlockedBadges.find(b => b.id === badge.id);
-              return (
-                <BadgeCard
-                  key={badge.id}
-                  badge={unlocked || badge}
-                  unlocked={!!unlocked}
-                  progress={!unlocked ? getBadgeProgress(badge.id) : undefined}
-                  size="md"
-                  showProgress={true}
-                />
-              );
-            })}
-          </motion.div>
-
-          {badgeFilter === 'unlocked' && unlockedBadges.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-white/40 mb-2">No badges earned yet</p>
-              <p className="text-sm text-white/30">Complete lessons and maintain streaks to earn badges!</p>
+          {/* === OVERALL PROGRESS BAR === */}
+          <motion.div variants={itemVariants}>
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs text-text-muted font-medium">Collection Progress</span>
+              <span className="text-xs font-bold text-golden">{totalProgress}%</span>
             </div>
+            <div className="h-2 rounded-full bg-white/[0.06] overflow-hidden">
+              <motion.div
+                className="h-full rounded-full bg-gradient-to-r from-amber-600 via-golden to-sunrise"
+                initial={{ width: 0 }}
+                animate={{ width: `${totalProgress}%` }}
+                transition={{ type: 'spring', stiffness: 60, damping: 20, delay: 0.2 }}
+              />
+            </div>
+            <div className="flex justify-between mt-1.5">
+              {['bronze', 'silver', 'gold', 'platinum', 'diamond'].map((tier) => {
+                const tierBadges = BADGES.filter(b => b.tier === tier);
+                const tierUnlocked = tierBadges.filter(b => unlockedBadges.some(ub => ub.id === b.id));
+                const tierColors: Record<string, string> = {
+                  bronze: 'text-amber-600', silver: 'text-slate-400', gold: 'text-yellow-400',
+                  platinum: 'text-cyan-300', diamond: 'text-purple-400',
+                };
+                return (
+                  <span key={tier} className={`text-[9px] font-medium ${tierColors[tier]}`}>
+                    {tierUnlocked.length}/{tierBadges.length} {tier}
+                  </span>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* === HALL OF FAME === */}
+          {hallOfFame.length > 0 && (
+            <motion.div variants={itemVariants} className="space-y-2.5">
+              <h3 className="text-sm font-display font-semibold text-text-primary flex items-center gap-2 px-1">
+                <span className="text-base">🏆</span>
+                Hall of Fame
+              </h3>
+              <div className="space-y-2">
+                {hallOfFame.map((badge) => (
+                  <BadgeCard
+                    key={badge.id}
+                    badge={badge}
+                    unlocked={true}
+                    size="hero"
+                  />
+                ))}
+              </div>
+            </motion.div>
           )}
+
+          {/* === SKILL TREES === */}
+          {skillTrees.map((tree) => {
+            const treeBadges = BADGES
+              .filter(b => tree.categories.includes(b.category))
+              .sort((a, b) => a.requirement.value - b.requirement.value);
+
+            if (treeBadges.length === 0) return null;
+
+            const treeUnlocked = treeBadges.filter(b => unlockedBadges.some(ub => ub.id === b.id)).length;
+            const treeTotal = treeBadges.length;
+
+            return (
+              <motion.div key={tree.key} variants={itemVariants} className="space-y-2">
+                {/* Tree Header */}
+                <div className="flex items-center justify-between px-1">
+                  <h3 className="text-sm font-display font-semibold text-text-primary flex items-center gap-2">
+                    <span className="text-base">{tree.icon}</span>
+                    {tree.label}
+                  </h3>
+                  <span className={`text-[11px] font-bold ${tree.color}`}>
+                    {treeUnlocked}/{treeTotal}
+                  </span>
+                </div>
+
+                {/* Badges as a progression path */}
+                <div className={`rounded-xl border ${tree.borderColor} bg-white/[0.01] p-3 space-y-1.5`}>
+                  {treeBadges.map((badge, idx) => {
+                    const unlocked = unlockedBadges.find(b => b.id === badge.id);
+                    const isNextToEarn = !unlocked && (idx === 0 || unlockedBadges.some(ub => ub.id === treeBadges[idx - 1]?.id));
+
+                    return (
+                      <div key={badge.id} className="relative">
+                        {/* Connector line between badges */}
+                        {idx > 0 && (
+                          <div className={`absolute -top-1.5 left-[22px] w-px h-1.5 ${
+                            unlocked ? 'bg-white/15' : 'bg-white/[0.04]'
+                          }`} />
+                        )}
+                        <div className={isNextToEarn ? 'relative' : ''}>
+                          {/* Pulse ring for "next to earn" badge */}
+                          {isNextToEarn && (
+                            <div className="absolute -inset-px rounded-xl ring-1 ring-golden/30 animate-pulse pointer-events-none" />
+                          )}
+                          <BadgeCard
+                            badge={unlocked || badge}
+                            unlocked={!!unlocked}
+                            progress={!unlocked ? getBadgeProgress(badge.id) : undefined}
+                            size="sm"
+                            showProgress={true}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            );
+          })}
+
+          {/* Empty state */}
+          {unlockedBadges.length === 0 && (
+            <motion.div variants={itemVariants} className="text-center py-8">
+              <div className="text-4xl mb-3">🎯</div>
+              <p className="text-sm text-white/40 mb-1">Your trophy room is empty</p>
+              <p className="text-xs text-white/25">Complete lessons and maintain streaks to start earning badges</p>
+            </motion.div>
+          )}
+
+          <div className="h-4" />
         </motion.div>
       </ModuleLayout>
     );
