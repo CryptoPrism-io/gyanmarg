@@ -685,6 +685,380 @@ import levelWorld08 from '@/assets/ai-images/levels/level-world-08-conflict.webp
 import levelWorld09 from '@/assets/ai-images/levels/level-world-09-narrative.webp';
 import levelWorld10 from '@/assets/ai-images/levels/level-world-10-master.webp';
 
+// ============================================
+// Level images - Finance & Investing (10)
+// ============================================
+import levelFi01 from '@/assets/ai-images/levels/level-fi-01-foundations.webp';
+import levelFi02 from '@/assets/ai-images/levels/level-fi-02-assets.webp';
+import levelFi03 from '@/assets/ai-images/levels/level-fi-03-fundamental.webp';
+import levelFi04 from '@/assets/ai-images/levels/level-fi-04-portfolio.webp';
+import levelFi05 from '@/assets/ai-images/levels/level-fi-05-valuation.webp';
+import levelFi06 from '@/assets/ai-images/levels/level-fi-06-behavioral.webp';
+import levelFi07 from '@/assets/ai-images/levels/level-fi-07-bonds.webp';
+import levelFi08 from '@/assets/ai-images/levels/level-fi-08-global.webp';
+import levelFi09 from '@/assets/ai-images/levels/level-fi-09-advanced.webp';
+import levelFi10 from '@/assets/ai-images/levels/level-fi-10-mastery.webp';
+
+// ============================================
+// Level images - Astronomy (10)
+// ============================================
+import levelAstro01 from '@/assets/ai-images/levels/level-astro-01-cosmic.webp';
+import levelAstro02 from '@/assets/ai-images/levels/level-astro-02-galaxies.webp';
+import levelAstro03 from '@/assets/ai-images/levels/level-astro-03-cosmology.webp';
+import levelAstro04 from '@/assets/ai-images/levels/level-astro-04-dark.webp';
+import levelAstro05 from '@/assets/ai-images/levels/level-astro-05-exploration.webp';
+import levelAstro06 from '@/assets/ai-images/levels/level-astro-06-missions.webp';
+import levelAstro07 from '@/assets/ai-images/levels/level-astro-07-exoplanets.webp';
+import levelAstro08 from '@/assets/ai-images/levels/level-astro-08-astrophysics.webp';
+import levelAstro09 from '@/assets/ai-images/levels/level-astro-09-telescopes.webp';
+import levelAstro10 from '@/assets/ai-images/levels/level-astro-10-future.webp';
+
+// ============================================
+// Level images - Strategic Thinking (10)
+// ============================================
+import levelStrat01 from '@/assets/ai-images/levels/level-strat-01-fundamentals.webp';
+import levelStrat02 from '@/assets/ai-images/levels/level-strat-02-competitive.webp';
+import levelStrat03 from '@/assets/ai-images/levels/level-strat-03-frameworks.webp';
+import levelStrat04 from '@/assets/ai-images/levels/level-strat-04-positioning.webp';
+import levelStrat05 from '@/assets/ai-images/levels/level-strat-05-execution.webp';
+import levelStrat06 from '@/assets/ai-images/levels/level-strat-06-military.webp';
+import levelStrat07 from '@/assets/ai-images/levels/level-strat-07-innovation.webp';
+import levelStrat08 from '@/assets/ai-images/levels/level-strat-08-geopolitical.webp';
+import levelStrat09 from '@/assets/ai-images/levels/level-strat-09-leadership.webp';
+import levelStrat10 from '@/assets/ai-images/levels/level-strat-10-grand.webp';
+
+// ============================================
+// Level images - Systems & Complexity (10)
+// ============================================
+import levelSys01 from '@/assets/ai-images/levels/level-sys-01-fundamentals.webp';
+import levelSys02 from '@/assets/ai-images/levels/level-sys-02-feedback.webp';
+import levelSys03 from '@/assets/ai-images/levels/level-sys-03-emergence.webp';
+import levelSys04 from '@/assets/ai-images/levels/level-sys-04-network.webp';
+import levelSys05 from '@/assets/ai-images/levels/level-sys-05-adaptive.webp';
+import levelSys06 from '@/assets/ai-images/levels/level-sys-06-modeling.webp';
+import levelSys07 from '@/assets/ai-images/levels/level-sys-07-human.webp';
+import levelSys08 from '@/assets/ai-images/levels/level-sys-08-chaos.webp';
+import levelSys09 from '@/assets/ai-images/levels/level-sys-09-practice.webp';
+import levelSys10 from '@/assets/ai-images/levels/level-sys-10-meta.webp';
+
+// ============================================
+// Level images - History & Civilizations (10)
+// ============================================
+import levelHist01 from '@/assets/ai-images/levels/level-hist-01-foundations.webp';
+import levelHist02 from '@/assets/ai-images/levels/level-hist-02-mesopotamia.webp';
+import levelHist03 from '@/assets/ai-images/levels/level-hist-03-classical.webp';
+import levelHist04 from '@/assets/ai-images/levels/level-hist-04-asian.webp';
+import levelHist05 from '@/assets/ai-images/levels/level-hist-05-medieval.webp';
+import levelHist06 from '@/assets/ai-images/levels/level-hist-06-renaissance.webp';
+import levelHist07 from '@/assets/ai-images/levels/level-hist-07-revolutions.webp';
+import levelHist08 from '@/assets/ai-images/levels/level-hist-08-empires.webp';
+import levelHist09 from '@/assets/ai-images/levels/level-hist-09-patterns.webp';
+import levelHist10 from '@/assets/ai-images/levels/level-hist-10-global.webp';
+
+// ============================================
+// Level images - Western Philosophy (10)
+// ============================================
+import levelWphil01 from '@/assets/ai-images/levels/level-wphil-01-ancient.webp';
+import levelWphil02 from '@/assets/ai-images/levels/level-wphil-02-plato.webp';
+import levelWphil03 from '@/assets/ai-images/levels/level-wphil-03-medieval.webp';
+import levelWphil04 from '@/assets/ai-images/levels/level-wphil-04-rationalism.webp';
+import levelWphil05 from '@/assets/ai-images/levels/level-wphil-05-kant.webp';
+import levelWphil06 from '@/assets/ai-images/levels/level-wphil-06-ethics.webp';
+import levelWphil07 from '@/assets/ai-images/levels/level-wphil-07-existential.webp';
+import levelWphil08 from '@/assets/ai-images/levels/level-wphil-08-analytic.webp';
+import levelWphil09 from '@/assets/ai-images/levels/level-wphil-09-mind.webp';
+import levelWphil10 from '@/assets/ai-images/levels/level-wphil-10-contemporary.webp';
+
+// ============================================
+// Level images - Cybersecurity (10)
+// ============================================
+import levelCyber01 from '@/assets/ai-images/levels/level-cyber-01-fundamentals.webp';
+import levelCyber02 from '@/assets/ai-images/levels/level-cyber-02-network.webp';
+import levelCyber03 from '@/assets/ai-images/levels/level-cyber-03-crypto.webp';
+import levelCyber04 from '@/assets/ai-images/levels/level-cyber-04-webapp.webp';
+import levelCyber05 from '@/assets/ai-images/levels/level-cyber-05-endpoint.webp';
+import levelCyber06 from '@/assets/ai-images/levels/level-cyber-06-identity.webp';
+import levelCyber07 from '@/assets/ai-images/levels/level-cyber-07-threat.webp';
+import levelCyber08 from '@/assets/ai-images/levels/level-cyber-08-pentest.webp';
+import levelCyber09 from '@/assets/ai-images/levels/level-cyber-09-secops.webp';
+import levelCyber10 from '@/assets/ai-images/levels/level-cyber-10-architecture.webp';
+
+// ============================================
+// Level images - Startups & Innovation (8)
+// ============================================
+import levelStartup01 from '@/assets/ai-images/levels/level-startup-01-mindset.webp';
+import levelStartup02 from '@/assets/ai-images/levels/level-startup-02-ideation.webp';
+import levelStartup03 from '@/assets/ai-images/levels/level-startup-03-lean.webp';
+import levelStartup04 from '@/assets/ai-images/levels/level-startup-04-pmf.webp';
+import levelStartup05 from '@/assets/ai-images/levels/level-startup-05-team.webp';
+import levelStartup06 from '@/assets/ai-images/levels/level-startup-06-funding.webp';
+import levelStartup07 from '@/assets/ai-images/levels/level-startup-07-growth.webp';
+import levelStartup08 from '@/assets/ai-images/levels/level-startup-08-leadership.webp';
+
+// ============================================
+// Level images - Relationships & Social (8)
+// ============================================
+import levelRel01 from '@/assets/ai-images/levels/level-rel-01-connection.webp';
+import levelRel02 from '@/assets/ai-images/levels/level-rel-02-attachment.webp';
+import levelRel03 from '@/assets/ai-images/levels/level-rel-03-communication.webp';
+import levelRel04 from '@/assets/ai-images/levels/level-rel-04-eq.webp';
+import levelRel05 from '@/assets/ai-images/levels/level-rel-05-conflict.webp';
+import levelRel06 from '@/assets/ai-images/levels/level-rel-06-friendship.webp';
+import levelRel07 from '@/assets/ai-images/levels/level-rel-07-romantic.webp';
+import levelRel08 from '@/assets/ai-images/levels/level-rel-08-social.webp';
+
+// ============================================
+// Level images - Geopolitics (10)
+// ============================================
+import levelGeo01 from '@/assets/ai-images/levels/level-geo-01-power.webp';
+import levelGeo02 from '@/assets/ai-images/levels/level-geo-02-great-power.webp';
+import levelGeo03 from '@/assets/ai-images/levels/level-geo-03-energy.webp';
+import levelGeo04 from '@/assets/ai-images/levels/level-geo-04-flashpoints.webp';
+import levelGeo05 from '@/assets/ai-images/levels/level-geo-05-economic.webp';
+import levelGeo06 from '@/assets/ai-images/levels/level-geo-06-military.webp';
+import levelGeo07 from '@/assets/ai-images/levels/level-geo-07-intelligence.webp';
+import levelGeo08 from '@/assets/ai-images/levels/level-geo-08-institutions.webp';
+import levelGeo09 from '@/assets/ai-images/levels/level-geo-09-demographic.webp';
+import levelGeo10 from '@/assets/ai-images/levels/level-geo-10-future.webp';
+
+// ============================================
+// Level images - Web Development (10)
+// ============================================
+import levelWebdev01 from '@/assets/ai-images/levels/level-webdev-01-foundations.webp';
+import levelWebdev02 from '@/assets/ai-images/levels/level-webdev-02-css.webp';
+import levelWebdev03 from '@/assets/ai-images/levels/level-webdev-03-javascript.webp';
+import levelWebdev04 from '@/assets/ai-images/levels/level-webdev-04-react.webp';
+import levelWebdev05 from '@/assets/ai-images/levels/level-webdev-05-backend.webp';
+import levelWebdev06 from '@/assets/ai-images/levels/level-webdev-06-database.webp';
+import levelWebdev07 from '@/assets/ai-images/levels/level-webdev-07-typescript.webp';
+import levelWebdev08 from '@/assets/ai-images/levels/level-webdev-08-devops.webp';
+import levelWebdev09 from '@/assets/ai-images/levels/level-webdev-09-advanced.webp';
+import levelWebdev10 from '@/assets/ai-images/levels/level-webdev-10-fullstack.webp';
+
+// ============================================
+// Level images - Cloud & DevOps (10)
+// ============================================
+import levelDevops01 from '@/assets/ai-images/levels/level-devops-01-essentials.webp';
+import levelDevops02 from '@/assets/ai-images/levels/level-devops-02-platform.webp';
+import levelDevops03 from '@/assets/ai-images/levels/level-devops-03-containers.webp';
+import levelDevops04 from '@/assets/ai-images/levels/level-devops-04-kubernetes.webp';
+import levelDevops05 from '@/assets/ai-images/levels/level-devops-05-cicd.webp';
+import levelDevops06 from '@/assets/ai-images/levels/level-devops-06-iac.webp';
+import levelDevops07 from '@/assets/ai-images/levels/level-devops-07-monitoring.webp';
+import levelDevops08 from '@/assets/ai-images/levels/level-devops-08-security.webp';
+import levelDevops09 from '@/assets/ai-images/levels/level-devops-09-architecture.webp';
+import levelDevops10 from '@/assets/ai-images/levels/level-devops-10-culture.webp';
+
+// ============================================
+// Level images - Options Trading (10)
+// ============================================
+import levelOpt01 from '@/assets/ai-images/levels/level-opt-01-fundamentals.webp';
+import levelOpt02 from '@/assets/ai-images/levels/level-opt-02-greeks.webp';
+import levelOpt03 from '@/assets/ai-images/levels/level-opt-03-volatility.webp';
+import levelOpt04 from '@/assets/ai-images/levels/level-opt-04-verticals.webp';
+import levelOpt05 from '@/assets/ai-images/levels/level-opt-05-income.webp';
+import levelOpt06 from '@/assets/ai-images/levels/level-opt-06-multileg.webp';
+import levelOpt07 from '@/assets/ai-images/levels/level-opt-07-risk.webp';
+import levelOpt08 from '@/assets/ai-images/levels/level-opt-08-technical.webp';
+import levelOpt09 from '@/assets/ai-images/levels/level-opt-09-advanced-vol.webp';
+import levelOpt10 from '@/assets/ai-images/levels/level-opt-10-mastery.webp';
+
+// ============================================
+// Level images - Macro Economics (10)
+// ============================================
+import levelMacro01 from '@/assets/ai-images/levels/level-macro-01-fundamentals.webp';
+import levelMacro02 from '@/assets/ai-images/levels/level-macro-02-monetary.webp';
+import levelMacro03 from '@/assets/ai-images/levels/level-macro-03-fiscal.webp';
+import levelMacro04 from '@/assets/ai-images/levels/level-macro-04-inflation.webp';
+import levelMacro05 from '@/assets/ai-images/levels/level-macro-05-currency.webp';
+import levelMacro06 from '@/assets/ai-images/levels/level-macro-06-cycles.webp';
+import levelMacro07 from '@/assets/ai-images/levels/level-macro-07-trade.webp';
+import levelMacro08 from '@/assets/ai-images/levels/level-macro-08-markets.webp';
+import levelMacro09 from '@/assets/ai-images/levels/level-macro-09-schools.webp';
+import levelMacro10 from '@/assets/ai-images/levels/level-macro-10-strategy.webp';
+
+// ============================================
+// Level images - Crypto Trading (10)
+// ============================================
+import levelCrypto01 from '@/assets/ai-images/levels/level-crypto-01-fundamentals.webp';
+import levelCrypto02 from '@/assets/ai-images/levels/level-crypto-02-blockchain.webp';
+import levelCrypto03 from '@/assets/ai-images/levels/level-crypto-03-defi.webp';
+import levelCrypto04 from '@/assets/ai-images/levels/level-crypto-04-technical.webp';
+import levelCrypto05 from '@/assets/ai-images/levels/level-crypto-05-onchain.webp';
+import levelCrypto06 from '@/assets/ai-images/levels/level-crypto-06-cycles.webp';
+import levelCrypto07 from '@/assets/ai-images/levels/level-crypto-07-altcoins.webp';
+import levelCrypto08 from '@/assets/ai-images/levels/level-crypto-08-strategies.webp';
+import levelCrypto09 from '@/assets/ai-images/levels/level-crypto-09-risk.webp';
+import levelCrypto10 from '@/assets/ai-images/levels/level-crypto-10-mastery.webp';
+
+// ============================================
+// Level images - Mental Models (10)
+// ============================================
+import levelMm01 from '@/assets/ai-images/levels/level-mm-01-core.webp';
+import levelMm02 from '@/assets/ai-images/levels/level-mm-02-physics.webp';
+import levelMm03 from '@/assets/ai-images/levels/level-mm-03-biology.webp';
+import levelMm04 from '@/assets/ai-images/levels/level-mm-04-economics.webp';
+import levelMm05 from '@/assets/ai-images/levels/level-mm-05-psychology.webp';
+import levelMm06 from '@/assets/ai-images/levels/level-mm-06-math.webp';
+import levelMm07 from '@/assets/ai-images/levels/level-mm-07-systems.webp';
+import levelMm08 from '@/assets/ai-images/levels/level-mm-08-strategy.webp';
+import levelMm09 from '@/assets/ai-images/levels/level-mm-09-integration.webp';
+import levelMm10 from '@/assets/ai-images/levels/level-mm-10-mastery.webp';
+
+// ============================================
+// Level images - First Principles (10)
+// ============================================
+import levelFp01 from '@/assets/ai-images/levels/level-fp-01-fundamentals.webp';
+import levelFp02 from '@/assets/ai-images/levels/level-fp-02-decomposition.webp';
+import levelFp03 from '@/assets/ai-images/levels/level-fp-03-scientific.webp';
+import levelFp04 from '@/assets/ai-images/levels/level-fp-04-analogical.webp';
+import levelFp05 from '@/assets/ai-images/levels/level-fp-05-cost.webp';
+import levelFp06 from '@/assets/ai-images/levels/level-fp-06-technology.webp';
+import levelFp07 from '@/assets/ai-images/levels/level-fp-07-business.webp';
+import levelFp08 from '@/assets/ai-images/levels/level-fp-08-creative.webp';
+import levelFp09 from '@/assets/ai-images/levels/level-fp-09-complex.webp';
+import levelFp10 from '@/assets/ai-images/levels/level-fp-10-mastery.webp';
+
+// ============================================
+// Level images - Meta-Learning (10)
+// ============================================
+import levelMlearn01 from '@/assets/ai-images/levels/level-mlearn-01-foundations.webp';
+import levelMlearn02 from '@/assets/ai-images/levels/level-mlearn-02-memory.webp';
+import levelMlearn03 from '@/assets/ai-images/levels/level-mlearn-03-deliberate.webp';
+import levelMlearn04 from '@/assets/ai-images/levels/level-mlearn-04-reading.webp';
+import levelMlearn05 from '@/assets/ai-images/levels/level-mlearn-05-focus.webp';
+import levelMlearn06 from '@/assets/ai-images/levels/level-mlearn-06-skills.webp';
+import levelMlearn07 from '@/assets/ai-images/levels/level-mlearn-07-cognitive.webp';
+import levelMlearn08 from '@/assets/ai-images/levels/level-mlearn-08-systems.webp';
+import levelMlearn09 from '@/assets/ai-images/levels/level-mlearn-09-teaching.webp';
+import levelMlearn10 from '@/assets/ai-images/levels/level-mlearn-10-lifelong.webp';
+
+// ============================================
+// Level images - Biology & Evolution (10)
+// ============================================
+import levelBio01 from '@/assets/ai-images/levels/level-bio-01-life.webp';
+import levelBio02 from '@/assets/ai-images/levels/level-bio-02-cell.webp';
+import levelBio03 from '@/assets/ai-images/levels/level-bio-03-evolution.webp';
+import levelBio04 from '@/assets/ai-images/levels/level-bio-04-human.webp';
+import levelBio05 from '@/assets/ai-images/levels/level-bio-05-ecosystems.webp';
+import levelBio06 from '@/assets/ai-images/levels/level-bio-06-molecular.webp';
+import levelBio07 from '@/assets/ai-images/levels/level-bio-07-micro.webp';
+import levelBio08 from '@/assets/ai-images/levels/level-bio-08-neuro.webp';
+import levelBio09 from '@/assets/ai-images/levels/level-bio-09-biotech.webp';
+import levelBio10 from '@/assets/ai-images/levels/level-bio-10-future.webp';
+
+// ============================================
+// Level images - Earth Sciences (10)
+// ============================================
+import levelEarth01 from '@/assets/ai-images/levels/level-earth-01-dynamic.webp';
+import levelEarth02 from '@/assets/ai-images/levels/level-earth-02-tectonics.webp';
+import levelEarth03 from '@/assets/ai-images/levels/level-earth-03-atmosphere.webp';
+import levelEarth04 from '@/assets/ai-images/levels/level-earth-04-oceans.webp';
+import levelEarth05 from '@/assets/ai-images/levels/level-earth-05-climate.webp';
+import levelEarth06 from '@/assets/ai-images/levels/level-earth-06-disasters.webp';
+import levelEarth07 from '@/assets/ai-images/levels/level-earth-07-resources.webp';
+import levelEarth08 from '@/assets/ai-images/levels/level-earth-08-environment.webp';
+import levelEarth09 from '@/assets/ai-images/levels/level-earth-09-ice-ages.webp';
+import levelEarth10 from '@/assets/ai-images/levels/level-earth-10-future.webp';
+
+// ============================================
+// Level images - Decision Making (10)
+// ============================================
+import levelDecide01 from '@/assets/ai-images/levels/level-decide-01-fundamentals.webp';
+import levelDecide02 from '@/assets/ai-images/levels/level-decide-02-biases.webp';
+import levelDecide03 from '@/assets/ai-images/levels/level-decide-03-probabilistic.webp';
+import levelDecide04 from '@/assets/ai-images/levels/level-decide-04-frameworks.webp';
+import levelDecide05 from '@/assets/ai-images/levels/level-decide-05-group.webp';
+import levelDecide06 from '@/assets/ai-images/levels/level-decide-06-uncertainty.webp';
+import levelDecide07 from '@/assets/ai-images/levels/level-decide-07-emotional.webp';
+import levelDecide08 from '@/assets/ai-images/levels/level-decide-08-strategic.webp';
+import levelDecide09 from '@/assets/ai-images/levels/level-decide-09-systems.webp';
+import levelDecide10 from '@/assets/ai-images/levels/level-decide-10-mastery.webp';
+
+// ============================================
+// Level images - Risk Management (10)
+// ============================================
+import levelRisk01 from '@/assets/ai-images/levels/level-risk-01-fundamentals.webp';
+import levelRisk02 from '@/assets/ai-images/levels/level-risk-02-identification.webp';
+import levelRisk03 from '@/assets/ai-images/levels/level-risk-03-financial.webp';
+import levelRisk04 from '@/assets/ai-images/levels/level-risk-04-operational.webp';
+import levelRisk05 from '@/assets/ai-images/levels/level-risk-05-portfolio.webp';
+import levelRisk06 from '@/assets/ai-images/levels/level-risk-06-behavioral.webp';
+import levelRisk07 from '@/assets/ai-images/levels/level-risk-07-black-swan.webp';
+import levelRisk08 from '@/assets/ai-images/levels/level-risk-08-systemic.webp';
+import levelRisk09 from '@/assets/ai-images/levels/level-risk-09-communication.webp';
+import levelRisk10 from '@/assets/ai-images/levels/level-risk-10-mastery.webp';
+
+// ============================================
+// Level images - Modern History (10)
+// ============================================
+import levelModhist01 from '@/assets/ai-images/levels/level-modhist-01-wars.webp';
+import levelModhist02 from '@/assets/ai-images/levels/level-modhist-02-wwii.webp';
+import levelModhist03 from '@/assets/ai-images/levels/level-modhist-03-coldwar.webp';
+import levelModhist04 from '@/assets/ai-images/levels/level-modhist-04-decolonization.webp';
+import levelModhist05 from '@/assets/ai-images/levels/level-modhist-05-social.webp';
+import levelModhist06 from '@/assets/ai-images/levels/level-modhist-06-economic.webp';
+import levelModhist07 from '@/assets/ai-images/levels/level-modhist-07-technology.webp';
+import levelModhist08 from '@/assets/ai-images/levels/level-modhist-08-postcold.webp';
+import levelModhist09 from '@/assets/ai-images/levels/level-modhist-09-contemporary.webp';
+import levelModhist10 from '@/assets/ai-images/levels/level-modhist-10-lessons.webp';
+
+// ============================================
+// Level images - Cultural Anthropology (10)
+// ============================================
+import levelAnthro01 from '@/assets/ai-images/levels/level-anthro-01-foundations.webp';
+import levelAnthro02 from '@/assets/ai-images/levels/level-anthro-02-kinship.webp';
+import levelAnthro03 from '@/assets/ai-images/levels/level-anthro-03-religion.webp';
+import levelAnthro04 from '@/assets/ai-images/levels/level-anthro-04-economic.webp';
+import levelAnthro05 from '@/assets/ai-images/levels/level-anthro-05-language.webp';
+import levelAnthro06 from '@/assets/ai-images/levels/level-anthro-06-political.webp';
+import levelAnthro07 from '@/assets/ai-images/levels/level-anthro-07-medical.webp';
+import levelAnthro08 from '@/assets/ai-images/levels/level-anthro-08-urban.webp';
+import levelAnthro09 from '@/assets/ai-images/levels/level-anthro-09-applied.webp';
+import levelAnthro10 from '@/assets/ai-images/levels/level-anthro-10-debates.webp';
+
+// ============================================
+// Level images - Leadership (10)
+// ============================================
+import levelLead01 from '@/assets/ai-images/levels/level-lead-01-fundamentals.webp';
+import levelLead02 from '@/assets/ai-images/levels/level-lead-02-eq.webp';
+import levelLead03 from '@/assets/ai-images/levels/level-lead-03-communication.webp';
+import levelLead04 from '@/assets/ai-images/levels/level-lead-04-team.webp';
+import levelLead05 from '@/assets/ai-images/levels/level-lead-05-strategic.webp';
+import levelLead06 from '@/assets/ai-images/levels/level-lead-06-change.webp';
+import levelLead07 from '@/assets/ai-images/levels/level-lead-07-crisis.webp';
+import levelLead08 from '@/assets/ai-images/levels/level-lead-08-power.webp';
+import levelLead09 from '@/assets/ai-images/levels/level-lead-09-coaching.webp';
+import levelLead10 from '@/assets/ai-images/levels/level-lead-10-legacy.webp';
+
+// ============================================
+// Level images - Problem Solving (10)
+// ============================================
+import levelSolve01 from '@/assets/ai-images/levels/level-solve-01-core.webp';
+import levelSolve02 from '@/assets/ai-images/levels/level-solve-02-root.webp';
+import levelSolve03 from '@/assets/ai-images/levels/level-solve-03-creative.webp';
+import levelSolve04 from '@/assets/ai-images/levels/level-solve-04-analytical.webp';
+import levelSolve05 from '@/assets/ai-images/levels/level-solve-05-design.webp';
+import levelSolve06 from '@/assets/ai-images/levels/level-solve-06-systems.webp';
+import levelSolve07 from '@/assets/ai-images/levels/level-solve-07-technical.webp';
+import levelSolve08 from '@/assets/ai-images/levels/level-solve-08-collaborative.webp';
+import levelSolve09 from '@/assets/ai-images/levels/level-solve-09-complex.webp';
+import levelSolve10 from '@/assets/ai-images/levels/level-solve-10-mastery.webp';
+
+// ============================================
+// Level images - Productivity Systems (10)
+// ============================================
+import levelProd01 from '@/assets/ai-images/levels/level-prod-01-core.webp';
+import levelProd02 from '@/assets/ai-images/levels/level-prod-02-gtd.webp';
+import levelProd03 from '@/assets/ai-images/levels/level-prod-03-time.webp';
+import levelProd04 from '@/assets/ai-images/levels/level-prod-04-energy.webp';
+import levelProd05 from '@/assets/ai-images/levels/level-prod-05-digital.webp';
+import levelProd06 from '@/assets/ai-images/levels/level-prod-06-goals.webp';
+import levelProd07 from '@/assets/ai-images/levels/level-prod-07-deep.webp';
+import levelProd08 from '@/assets/ai-images/levels/level-prod-08-habits.webp';
+import levelProd09 from '@/assets/ai-images/levels/level-prod-09-projects.webp';
+import levelProd10 from '@/assets/ai-images/levels/level-prod-10-philosophy.webp';
+
 // Module ID to image mapping
 export const moduleImages: Record<string, string> = {
   // Original 16 modules
@@ -1289,6 +1663,326 @@ export const levelImages: Record<string, string> = {
   'world-level8': levelWorld08,
   'world-level9': levelWorld09,
   'world-level10': levelWorld10,
+
+  // Finance & Investing (10)
+  'fi-level1': levelFi01,
+  'fi-level2': levelFi02,
+  'fi-level3': levelFi03,
+  'fi-level4': levelFi04,
+  'fi-level5': levelFi05,
+  'fi-level6': levelFi06,
+  'fi-level7': levelFi07,
+  'fi-level8': levelFi08,
+  'fi-level9': levelFi09,
+  'fi-level10': levelFi10,
+
+  // Astronomy (10)
+  'astro-level1': levelAstro01,
+  'astro-level2': levelAstro02,
+  'astro-level3': levelAstro03,
+  'astro-level4': levelAstro04,
+  'astro-level5': levelAstro05,
+  'astro-level6': levelAstro06,
+  'astro-level7': levelAstro07,
+  'astro-level8': levelAstro08,
+  'astro-level9': levelAstro09,
+  'astro-level10': levelAstro10,
+
+  // Strategic Thinking (10)
+  'strat-level1': levelStrat01,
+  'strat-level2': levelStrat02,
+  'strat-level3': levelStrat03,
+  'strat-level4': levelStrat04,
+  'strat-level5': levelStrat05,
+  'strat-level6': levelStrat06,
+  'strat-level7': levelStrat07,
+  'strat-level8': levelStrat08,
+  'strat-level9': levelStrat09,
+  'strat-level10': levelStrat10,
+
+  // Systems & Complexity (10)
+  'sys-level1': levelSys01,
+  'sys-level2': levelSys02,
+  'sys-level3': levelSys03,
+  'sys-level4': levelSys04,
+  'sys-level5': levelSys05,
+  'sys-level6': levelSys06,
+  'sys-level7': levelSys07,
+  'sys-level8': levelSys08,
+  'sys-level9': levelSys09,
+  'sys-level10': levelSys10,
+
+  // History & Civilizations (10)
+  'hist-level1': levelHist01,
+  'hist-level2': levelHist02,
+  'hist-level3': levelHist03,
+  'hist-level4': levelHist04,
+  'hist-level5': levelHist05,
+  'hist-level6': levelHist06,
+  'hist-level7': levelHist07,
+  'hist-level8': levelHist08,
+  'hist-level9': levelHist09,
+  'hist-level10': levelHist10,
+
+  // Western Philosophy (10)
+  'wphil-level1': levelWphil01,
+  'wphil-level2': levelWphil02,
+  'wphil-level3': levelWphil03,
+  'wphil-level4': levelWphil04,
+  'wphil-level5': levelWphil05,
+  'wphil-level6': levelWphil06,
+  'wphil-level7': levelWphil07,
+  'wphil-level8': levelWphil08,
+  'wphil-level9': levelWphil09,
+  'wphil-level10': levelWphil10,
+
+  // Cybersecurity (10)
+  'cyber-level1': levelCyber01,
+  'cyber-level2': levelCyber02,
+  'cyber-level3': levelCyber03,
+  'cyber-level4': levelCyber04,
+  'cyber-level5': levelCyber05,
+  'cyber-level6': levelCyber06,
+  'cyber-level7': levelCyber07,
+  'cyber-level8': levelCyber08,
+  'cyber-level9': levelCyber09,
+  'cyber-level10': levelCyber10,
+
+  // Startups & Innovation (8)
+  'startup-level1': levelStartup01,
+  'startup-level2': levelStartup02,
+  'startup-level3': levelStartup03,
+  'startup-level4': levelStartup04,
+  'startup-level5': levelStartup05,
+  'startup-level6': levelStartup06,
+  'startup-level7': levelStartup07,
+  'startup-level8': levelStartup08,
+
+  // Relationships & Social (8)
+  'rel-level1': levelRel01,
+  'rel-level2': levelRel02,
+  'rel-level3': levelRel03,
+  'rel-level4': levelRel04,
+  'rel-level5': levelRel05,
+  'rel-level6': levelRel06,
+  'rel-level7': levelRel07,
+  'rel-level8': levelRel08,
+
+  // Geopolitics (10)
+  'geo-level1': levelGeo01,
+  'geo-level2': levelGeo02,
+  'geo-level3': levelGeo03,
+  'geo-level4': levelGeo04,
+  'geo-level5': levelGeo05,
+  'geo-level6': levelGeo06,
+  'geo-level7': levelGeo07,
+  'geo-level8': levelGeo08,
+  'geo-level9': levelGeo09,
+  'geo-level10': levelGeo10,
+
+  // Web Development (10)
+  'webdev-level1': levelWebdev01,
+  'webdev-level2': levelWebdev02,
+  'webdev-level3': levelWebdev03,
+  'webdev-level4': levelWebdev04,
+  'webdev-level5': levelWebdev05,
+  'webdev-level6': levelWebdev06,
+  'webdev-level7': levelWebdev07,
+  'webdev-level8': levelWebdev08,
+  'webdev-level9': levelWebdev09,
+  'webdev-level10': levelWebdev10,
+
+  // Cloud & DevOps (10)
+  'devops-level1': levelDevops01,
+  'devops-level2': levelDevops02,
+  'devops-level3': levelDevops03,
+  'devops-level4': levelDevops04,
+  'devops-level5': levelDevops05,
+  'devops-level6': levelDevops06,
+  'devops-level7': levelDevops07,
+  'devops-level8': levelDevops08,
+  'devops-level9': levelDevops09,
+  'devops-level10': levelDevops10,
+
+  // Options Trading (10)
+  'opt-level1': levelOpt01,
+  'opt-level2': levelOpt02,
+  'opt-level3': levelOpt03,
+  'opt-level4': levelOpt04,
+  'opt-level5': levelOpt05,
+  'opt-level6': levelOpt06,
+  'opt-level7': levelOpt07,
+  'opt-level8': levelOpt08,
+  'opt-level9': levelOpt09,
+  'opt-level10': levelOpt10,
+
+  // Macro Economics (10)
+  'macro-level1': levelMacro01,
+  'macro-level2': levelMacro02,
+  'macro-level3': levelMacro03,
+  'macro-level4': levelMacro04,
+  'macro-level5': levelMacro05,
+  'macro-level6': levelMacro06,
+  'macro-level7': levelMacro07,
+  'macro-level8': levelMacro08,
+  'macro-level9': levelMacro09,
+  'macro-level10': levelMacro10,
+
+  // Crypto Trading (10)
+  'crypto-level1': levelCrypto01,
+  'crypto-level2': levelCrypto02,
+  'crypto-level3': levelCrypto03,
+  'crypto-level4': levelCrypto04,
+  'crypto-level5': levelCrypto05,
+  'crypto-level6': levelCrypto06,
+  'crypto-level7': levelCrypto07,
+  'crypto-level8': levelCrypto08,
+  'crypto-level9': levelCrypto09,
+  'crypto-level10': levelCrypto10,
+
+  // Mental Models (10)
+  'mm-level1': levelMm01,
+  'mm-level2': levelMm02,
+  'mm-level3': levelMm03,
+  'mm-level4': levelMm04,
+  'mm-level5': levelMm05,
+  'mm-level6': levelMm06,
+  'mm-level7': levelMm07,
+  'mm-level8': levelMm08,
+  'mm-level9': levelMm09,
+  'mm-level10': levelMm10,
+
+  // First Principles (10)
+  'fp-level1': levelFp01,
+  'fp-level2': levelFp02,
+  'fp-level3': levelFp03,
+  'fp-level4': levelFp04,
+  'fp-level5': levelFp05,
+  'fp-level6': levelFp06,
+  'fp-level7': levelFp07,
+  'fp-level8': levelFp08,
+  'fp-level9': levelFp09,
+  'fp-level10': levelFp10,
+
+  // Meta-Learning (10)
+  'mlearn-level1': levelMlearn01,
+  'mlearn-level2': levelMlearn02,
+  'mlearn-level3': levelMlearn03,
+  'mlearn-level4': levelMlearn04,
+  'mlearn-level5': levelMlearn05,
+  'mlearn-level6': levelMlearn06,
+  'mlearn-level7': levelMlearn07,
+  'mlearn-level8': levelMlearn08,
+  'mlearn-level9': levelMlearn09,
+  'mlearn-level10': levelMlearn10,
+
+  // Biology & Evolution (10)
+  'bio-level1': levelBio01,
+  'bio-level2': levelBio02,
+  'bio-level3': levelBio03,
+  'bio-level4': levelBio04,
+  'bio-level5': levelBio05,
+  'bio-level6': levelBio06,
+  'bio-level7': levelBio07,
+  'bio-level8': levelBio08,
+  'bio-level9': levelBio09,
+  'bio-level10': levelBio10,
+
+  // Earth Sciences (10)
+  'earth-level1': levelEarth01,
+  'earth-level2': levelEarth02,
+  'earth-level3': levelEarth03,
+  'earth-level4': levelEarth04,
+  'earth-level5': levelEarth05,
+  'earth-level6': levelEarth06,
+  'earth-level7': levelEarth07,
+  'earth-level8': levelEarth08,
+  'earth-level9': levelEarth09,
+  'earth-level10': levelEarth10,
+
+  // Decision Making (10)
+  'decide-level1': levelDecide01,
+  'decide-level2': levelDecide02,
+  'decide-level3': levelDecide03,
+  'decide-level4': levelDecide04,
+  'decide-level5': levelDecide05,
+  'decide-level6': levelDecide06,
+  'decide-level7': levelDecide07,
+  'decide-level8': levelDecide08,
+  'decide-level9': levelDecide09,
+  'decide-level10': levelDecide10,
+
+  // Risk Management (10)
+  'risk-level1': levelRisk01,
+  'risk-level2': levelRisk02,
+  'risk-level3': levelRisk03,
+  'risk-level4': levelRisk04,
+  'risk-level5': levelRisk05,
+  'risk-level6': levelRisk06,
+  'risk-level7': levelRisk07,
+  'risk-level8': levelRisk08,
+  'risk-level9': levelRisk09,
+  'risk-level10': levelRisk10,
+
+  // Modern History (10)
+  'modhist-level1': levelModhist01,
+  'modhist-level2': levelModhist02,
+  'modhist-level3': levelModhist03,
+  'modhist-level4': levelModhist04,
+  'modhist-level5': levelModhist05,
+  'modhist-level6': levelModhist06,
+  'modhist-level7': levelModhist07,
+  'modhist-level8': levelModhist08,
+  'modhist-level9': levelModhist09,
+  'modhist-level10': levelModhist10,
+
+  // Cultural Anthropology (10)
+  'anthro-level1': levelAnthro01,
+  'anthro-level2': levelAnthro02,
+  'anthro-level3': levelAnthro03,
+  'anthro-level4': levelAnthro04,
+  'anthro-level5': levelAnthro05,
+  'anthro-level6': levelAnthro06,
+  'anthro-level7': levelAnthro07,
+  'anthro-level8': levelAnthro08,
+  'anthro-level9': levelAnthro09,
+  'anthro-level10': levelAnthro10,
+
+  // Leadership (10)
+  'lead-level1': levelLead01,
+  'lead-level2': levelLead02,
+  'lead-level3': levelLead03,
+  'lead-level4': levelLead04,
+  'lead-level5': levelLead05,
+  'lead-level6': levelLead06,
+  'lead-level7': levelLead07,
+  'lead-level8': levelLead08,
+  'lead-level9': levelLead09,
+  'lead-level10': levelLead10,
+
+  // Problem Solving (10)
+  'solve-level1': levelSolve01,
+  'solve-level2': levelSolve02,
+  'solve-level3': levelSolve03,
+  'solve-level4': levelSolve04,
+  'solve-level5': levelSolve05,
+  'solve-level6': levelSolve06,
+  'solve-level7': levelSolve07,
+  'solve-level8': levelSolve08,
+  'solve-level9': levelSolve09,
+  'solve-level10': levelSolve10,
+
+  // Productivity Systems (10)
+  'prod-level1': levelProd01,
+  'prod-level2': levelProd02,
+  'prod-level3': levelProd03,
+  'prod-level4': levelProd04,
+  'prod-level5': levelProd05,
+  'prod-level6': levelProd06,
+  'prod-level7': levelProd07,
+  'prod-level8': levelProd08,
+  'prod-level9': levelProd09,
+  'prod-level10': levelProd10,
 };
 
 // Helper to get module image with fallback
