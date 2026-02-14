@@ -97,12 +97,13 @@ jobs:
       - name: Install dependencies
         working-directory: ./app
         run: |
-          npm ci || npm install
-          npm ls rollup || true
+          npm ci
+          npm install @rollup/rollup-linux-x64-gnu --no-save 2>/dev/null || true
 
       - name: Build
         working-directory: ./app
         env:
+          NODE_OPTIONS: --max-old-space-size=4096
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
           VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
           VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
