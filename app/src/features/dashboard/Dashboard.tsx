@@ -22,6 +22,7 @@ import { useUserStore } from '@/store/userStore';
 import { ModuleLayout, Section } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { ProgressBar, XPBadge } from '@/components/atoms';
+import { VisualOfTheDay } from '@/components/organisms';
 import { getDailyQuote, getPastQuotes, formatQuoteDate } from '@/data/quotes';
 
 const itemVariants = {
@@ -234,6 +235,11 @@ export function Dashboard() {
           )}
         </motion.div>
       </Section>
+
+      {/* Daily Visual Concept */}
+      <div className="mt-2 mb-2">
+        <VisualOfTheDay />
+      </div>
 
       {/* Compact Stats Row */}
       <Section>

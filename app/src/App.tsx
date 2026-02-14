@@ -15,7 +15,7 @@ import { analytics } from '@/lib/analytics';
 import { celebrationQueue, type CelebrationEvent } from '@/lib/celebrationQueue';
 
 // Store
-import { useUserStore, usePendingAchievement } from '@/store/userStore';
+import { useUserStore, usePendingAchievement, useIsOnboarded } from '@/store/userStore';
 import { useProgressStore, usePendingLevelUp } from '@/store/progressStore';
 
 // Auth
@@ -41,6 +41,7 @@ const SpacedRepetition = lazy(() => import('@/features/spaced-repetition/SpacedR
 const DailyChallenges = lazy(() => import('@/features/daily-challenges/DailyChallenges').then(m => ({ default: m.DailyChallenges })));
 const VisualLab = lazy(() => import('@/features/visual-lab/VisualLab').then(m => ({ default: m.VisualLab })));
 const Profile = lazy(() => import('@/features/profile/Profile').then(m => ({ default: m.Profile })));
+const Onboarding = lazy(() => import('@/features/onboarding/Onboarding').then(m => ({ default: m.Onboarding })));
 
 const LearningSciencePage = lazy(() => import('@/features/science/LearningSciencePage').then(m => ({ default: m.LearningSciencePage })));
 const BookListPage = lazy(() => import('@/features/books/BookListPage').then(m => ({ default: m.BookListPage })));
@@ -205,8 +206,12 @@ function PageTransition({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Protected route wrapper - auth checked at action level, no onboarding gate
+// Protected route wrapper - redirects to onboarding if not completed
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const isOnboarded = useIsOnboarded();
+  if (!isOnboarded) {
+    return <Navigate to="/onboarding" replace />;
+  }
   return <>{children}</>;
 }
 
@@ -214,10 +219,14 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 function AppRoutes() {
   return (
     <Routes>
-      {/* Onboarding removed — redirect to dashboard */}
+      {/* Onboarding flow for new users */}
       <Route
         path="/onboarding"
-        element={<Navigate to="/dashboard" replace />}
+        element={
+          <Suspense fallback={<PageLoader />}>
+            <Onboarding />
+          </Suspense>
+        }
       />
 
       {/* Main App Routes - Lazy loaded */}

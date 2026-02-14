@@ -1,5 +1,6 @@
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import html2canvas from 'html2canvas';
 import {
   User,
   Trophy,
@@ -22,6 +23,7 @@ import {
   ExternalLink,
   Info,
   ChevronRight,
+  Share2,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useUserStore } from '@/store/userStore';
@@ -179,6 +181,49 @@ export function Profile() {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Share card
+  const shareCardRef = useRef<HTMLDivElement>(null);
+  const [isSharing, setIsSharing] = useState(false);
+
+  const handleShareCard = useCallback(async () => {
+    if (!shareCardRef.current) return;
+    setIsSharing(true);
+    try {
+      const canvas = await html2canvas(shareCardRef.current, {
+        backgroundColor: '#0A0A0B',
+        scale: 2,
+        useCORS: true,
+        logging: false,
+      });
+      const blob = await new Promise<Blob | null>((resolve) =>
+        canvas.toBlob(resolve, 'image/png')
+      );
+      if (!blob) return;
+
+      // Try native share first, fallback to download
+      if (navigator.share && navigator.canShare?.({ files: [new File([blob], 'polymind-stats.png', { type: 'image/png' })] })) {
+        await navigator.share({
+          title: 'My Polymind Stats',
+          text: `Level ${userProgress.level} with ${userProgress.xp.toLocaleString()} XP on Polymind!`,
+          files: [new File([blob], 'polymind-stats.png', { type: 'image/png' })],
+        });
+      } else {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'polymind-stats.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+    } catch {
+      // User cancelled share or error
+    } finally {
+      setIsSharing(false);
+    }
+  }, [userProgress]);
 
   // Badge filtering
   const [badgeFilter, setBadgeFilter] = useState<'all' | 'unlocked' | 'locked'>('all');
@@ -375,8 +420,81 @@ export function Profile() {
                 </div>
               ))}
             </div>
+
+            {/* Share button */}
+            <button
+              onClick={handleShareCard}
+              disabled={isSharing}
+              className="mt-3 w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-golden/20 bg-golden/5 hover:bg-golden/10 text-golden text-xs font-medium transition-all disabled:opacity-50"
+            >
+              <Share2 className="w-3.5 h-3.5" />
+              {isSharing ? 'Generating...' : 'Share My Stats'}
+            </button>
           </GlassCard>
         </motion.div>
+
+        {/* Hidden shareable card for html2canvas */}
+        <div className="fixed -left-[9999px] top-0" aria-hidden="true">
+          <div
+            ref={shareCardRef}
+            style={{
+              width: 400,
+              padding: 32,
+              background: 'linear-gradient(135deg, #0A0A0B 0%, #1a1a2e 50%, #16213e 100%)',
+              fontFamily: 'Outfit, Inter, sans-serif',
+              color: '#fff',
+            }}
+          >
+            {/* Brand */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
+              <div style={{
+                width: 36, height: 36, borderRadius: 10,
+                background: 'linear-gradient(135deg, #F59E0B, #EF4444)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 18,
+              }}>
+                P
+              </div>
+              <div>
+                <div style={{ fontSize: 18, fontWeight: 700, letterSpacing: 2 }}>POLYMIND</div>
+                <div style={{ fontSize: 10, color: '#F59E0B', fontWeight: 500 }}>BUILD YOUR MIND</div>
+              </div>
+            </div>
+
+            {/* User */}
+            <div style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>
+              {profile?.name || 'Learner'}
+            </div>
+            <div style={{ fontSize: 13, color: '#a3a3a3', marginBottom: 20 }}>
+              Level {userProgress.level}
+            </div>
+
+            {/* Stats grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20 }}>
+              {[
+                { value: userProgress.xp.toLocaleString(), label: 'Total XP', color: '#F7C948' },
+                { value: `${longestStreak || userProgress.currentStreak}`, label: 'Best Streak', color: '#EF4444' },
+                { value: `${userProgress.lessonsCompleted.length}`, label: 'Lessons Done', color: '#22C55E' },
+                { value: `${unlockedBadges.length}`, label: 'Badges Earned', color: '#F59E0B' },
+              ].map((s) => (
+                <div key={s.label} style={{
+                  background: 'rgba(255,255,255,0.05)',
+                  borderRadius: 12,
+                  padding: '12px 16px',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                }}>
+                  <div style={{ fontSize: 24, fontWeight: 800, color: s.color }}>{s.value}</div>
+                  <div style={{ fontSize: 11, color: '#a3a3a3', marginTop: 2 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Footer */}
+            <div style={{ fontSize: 10, color: '#666', textAlign: 'center' as const }}>
+              polymind.app
+            </div>
+          </div>
+        </div>
 
         {/* Tab Navigation */}
         <motion.div variants={itemVariants} className="flex gap-1 p-1 bg-elevated/50 rounded-xl border border-white/[0.06]">

@@ -80,7 +80,7 @@ export const useUserStore = create<UserState>()(
   persist(
     (set, get) => ({
       profile: null,
-      isOnboarded: true,
+      isOnboarded: false,
       onboardingProgress: null,
       settings: defaultSettings,
       notificationPermission: 'default',
