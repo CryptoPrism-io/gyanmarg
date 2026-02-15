@@ -125,6 +125,9 @@ import { universalFlashcards } from './flashcards-batch18-universal';
 // Batch 19: Premium — Gemini-crafted retention flashcards from deep lesson analysis
 import { premiumFlashcards } from './flashcards-batch19-premium';
 
+// Gemini All: Comprehensive Gemini-generated flashcards for all 76 modules (35 cards each)
+import { geminiFlashcards } from './flashcards-gemini-all';
+
 /**
  * Cap: max 50 cards per module (pathwayId).
  * Priority: Premium (batch19) > Universal (batch18) > earlier batches.
@@ -157,11 +160,15 @@ function capPerModule(cards: SpacedRepetitionCard[]): SpacedRepetitionCard[] {
     if (cards.length <= MAX_CARDS_PER_MODULE) {
       result.push(...cards);
     } else {
-      // Sort: premium first (batch19 IDs), then by difficulty for variety
+      // Sort: Gemini-all first (best), then premium (batch19), then universal, then legacy
       const sorted = cards.sort((a, b) => {
-        // Premium cards first (batch19 prefix)
-        const aPremium = a.id.startsWith('premium-') ? 0 : 1;
-        const bPremium = b.id.startsWith('premium-') ? 0 : 1;
+        // Gemini-all cards first (gem- prefix) — highest quality
+        const aGem = a.id.startsWith('gem-') ? 0 : 1;
+        const bGem = b.id.startsWith('gem-') ? 0 : 1;
+        if (aGem !== bGem) return aGem - bGem;
+        // Then premium cards (fc- prefix from batch19)
+        const aPremium = a.id.startsWith('fc-') ? 0 : 1;
+        const bPremium = b.id.startsWith('fc-') ? 0 : 1;
         if (aPremium !== bPremium) return aPremium - bPremium;
         // Then universal cards (batch18)
         const aUniv = a.id.startsWith('univ-') ? 0 : 1;
@@ -268,6 +275,8 @@ export const allFlashcards: SpacedRepetitionCard[] = capPerModule([
   ...universalFlashcards,
   // Batch 19: Premium (Gemini-crafted)
   ...premiumFlashcards,
+  // Gemini All: Comprehensive 76-module coverage (highest priority)
+  ...geminiFlashcards,
 ]);
 
 /**

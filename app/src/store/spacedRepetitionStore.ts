@@ -174,7 +174,7 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
        * Enforces MAX_CARDS_PER_MODULE cap, preserving cards with review history.
        */
       resyncCards: (completedLessonIds: string[]) => {
-        const CURRENT_RESYNC_VERSION = 4; // v4: 50-card-per-module cap
+        const CURRENT_RESYNC_VERSION = 5; // v5: Gemini-generated cards (2418 across 76 modules)
         const MAX_CARDS_PER_MODULE = 50;
         const state = get();
 
