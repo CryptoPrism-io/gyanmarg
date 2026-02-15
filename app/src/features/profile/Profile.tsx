@@ -42,6 +42,7 @@ import { useAuth } from '@/hooks';
 import { GoogleSignInButton, BadgeCard, GlassCard, RichMarkdown } from '@/components/molecules';
 import { ModuleLayout } from '@/components/templates';
 import { Button } from '@/components/atoms';
+import { ShareableAchievementCard } from '@/components/organisms';
 import { BADGES } from '@/data/badges';
 import { achievements } from '@/data/achievements';
 import { modules } from '@/data/modules';
@@ -278,6 +279,9 @@ export function Profile() {
 
   // Saved cards filtering
   const [filterModule, setFilterModule] = useState<string | null>(null);
+
+  // Shareable achievement modal
+  const [shareableBadge, setShareableBadge] = useState<(typeof BADGES)[number] | null>(null);
   const modulesWithCards = useMemo(() => {
     const ids = [...new Set(starredCards.map((c) => c.moduleId))];
     return ids.map((id) => modules.find((m) => m.id === id)).filter((m): m is typeof modules[number] => !!m);
@@ -637,12 +641,21 @@ export function Profile() {
               </h3>
               <div className="space-y-2">
                 {hallOfFame.map((badge) => (
-                  <BadgeCard
-                    key={badge.id}
-                    badge={badge}
-                    unlocked={true}
-                    size="hero"
-                  />
+                  <div key={badge.id} className="relative group">
+                    <BadgeCard
+                      badge={badge}
+                      unlocked={true}
+                      size="hero"
+                    />
+                    {/* Share button overlay */}
+                    <button
+                      onClick={() => setShareableBadge(badge)}
+                      className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity z-10 w-8 h-8 rounded-lg bg-golden/20 border border-golden/30 flex items-center justify-center hover:bg-golden/30"
+                      title="Share this achievement"
+                    >
+                      <Share2 className="w-4 h-4 text-golden" />
+                    </button>
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -1369,6 +1382,60 @@ export function Profile() {
         {/* Bottom spacer for mobile nav */}
         <div className="h-4" />
       </motion.div>
+
+      {/* Shareable Achievement Modal */}
+      {shareableBadge && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setShareableBadge(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+        >
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-md rounded-2xl bg-surface border border-white/[0.08] p-5 max-h-[90vh] overflow-y-auto"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-bold text-text-primary">Share Achievement</h2>
+              <button
+                onClick={() => setShareableBadge(null)}
+                className="w-8 h-8 rounded-lg bg-white/[0.06] hover:bg-white/[0.1] flex items-center justify-center transition-colors"
+              >
+                <span className="text-text-muted">×</span>
+              </button>
+            </div>
+
+            {/* Get badge color info and XP based on tier */}
+            {(() => {
+              const tierConfig: Record<string, { badge: string; text: string; xp: number }> = {
+                bronze: { badge: 'from-amber-700 to-amber-600', text: 'text-amber-500', xp: 50 },
+                silver: { badge: 'from-slate-500 to-slate-400', text: 'text-slate-300', xp: 100 },
+                gold: { badge: 'from-yellow-600 to-yellow-500', text: 'text-yellow-400', xp: 200 },
+                platinum: { badge: 'from-cyan-500 to-blue-400', text: 'text-cyan-300', xp: 500 },
+                diamond: { badge: 'from-purple-600 to-pink-500', text: 'text-purple-300', xp: 1000 },
+              };
+
+              const config = tierConfig[shareableBadge.tier] || tierConfig.bronze;
+
+              return (
+                <ShareableAchievementCard
+                  achievementName={shareableBadge.name}
+                  achievementDescription={shareableBadge.description}
+                  userName={user?.displayName || 'Learner'}
+                  unlockedDate={shareableBadge.unlockedAt || new Date().toISOString()}
+                  xpReward={config.xp}
+                  badgeColor={config.badge}
+                  textColor={config.text}
+                />
+              );
+            })()}
+          </motion.div>
+        </motion.div>
+      )}
     </ModuleLayout>
   );
 }
