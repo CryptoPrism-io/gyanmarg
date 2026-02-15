@@ -13,3 +13,4 @@ export { SignInGate } from './SignInGate';
 export { SearchModal } from './SearchModal';
 export { ResumeCard } from './ResumeCard';
 export { ShareableAchievementCard } from './ShareableAchievementCard';
+export { Leaderboard } from './Leaderboard';

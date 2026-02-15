@@ -22,7 +22,7 @@ import { useUserStore } from '@/store/userStore';
 import { ModuleLayout, Section } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { ProgressBar, XPBadge } from '@/components/atoms';
-import { VisualOfTheDay, ResumeCard } from '@/components/organisms';
+import { VisualOfTheDay, ResumeCard, Leaderboard } from '@/components/organisms';
 import { getDailyQuote, getPastQuotes, formatQuoteDate } from '@/data/quotes';
 
 const itemVariants = {
@@ -247,6 +247,18 @@ export function Dashboard() {
       <div className="mt-2 mb-2">
         <VisualOfTheDay />
       </div>
+
+      {/* Leaderboard — Social Competition */}
+      <Section title="Global Leaderboard" subtitle="See where you stand">
+        <Leaderboard
+          currentUserName={userName || undefined}
+          currentUserXP={userProgress.xp}
+          currentUserStreak={userProgress.currentStreak}
+          currentUserLessons={userProgress.lessonsCompleted.length}
+          maxEntries={10}
+          variant="compact"
+        />
+      </Section>
 
       {/* Compact Stats Row */}
       <Section>
