@@ -22,7 +22,7 @@ import { useUserStore } from '@/store/userStore';
 import { ModuleLayout, Section } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { ProgressBar, XPBadge } from '@/components/atoms';
-import { VisualOfTheDay } from '@/components/organisms';
+import { VisualOfTheDay, ResumeCard } from '@/components/organisms';
 import { getDailyQuote, getPastQuotes, formatQuoteDate } from '@/data/quotes';
 
 const itemVariants = {
@@ -133,6 +133,13 @@ export function Dashboard() {
       <div className="mb-4">
         <DailyQuote />
       </div>
+
+      {/* Resume Card — Continue where you left off (friction removal) */}
+      {lastViewedLesson && !lastViewedLesson.completed && (
+        <div className="mb-6">
+          <ResumeCard bookmark={lastViewedLesson} />
+        </div>
+      )}
 
       {/* Today's Path — the core daily loop */}
       <Section title="Today's Path" subtitle="Complete these to maintain your streak">

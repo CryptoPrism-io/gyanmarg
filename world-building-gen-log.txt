@@ -1,0 +1,132 @@
+World Building Lesson Generator (Levels 2-10)
+============================================================
+Model: gemini-2.5-flash
+Levels: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+Total lessons: 72
+  Level 2: Geography & Physical World (8 lessons)
+  Level 3: History & Timeline (8 lessons)
+  Level 4: Societies & Cultures (8 lessons)
+  Level 5: Magic Systems & Technology (8 lessons)
+  Level 6: Languages & Communication (8 lessons)
+  Level 7: Economics & Trade (8 lessons)
+  Level 8: Conflict & Power (8 lessons)
+  Level 9: Narrative Integration (8 lessons)
+  Level 10: Master World Builder (8 lessons)
+
+
+============================================================
+Level 2: Geography & Physical World
+============================================================
+  Generating world-009: Geography as Destiny... OK
+  Generating world-010: Terrain & Landforms -- Mountains to Oceans... OK
+  Generating world-011: Climate Systems & Weather Patterns... OK
+  Generating world-012: Flora, Fauna & Ecosystems... OK
+  Generating world-013: Natural Resources & Their Influence... OK
+  Generating world-014: Map Making -- From Sketch to World Atlas... OK
+  Generating world-015: Build Your World Map Exercise... OK
+  Generating world-016: Design a Complete Biome... OK
+
+============================================================
+Level 3: History & Timeline
+============================================================
+  Generating world-017: Every World Has a Past... OK
+  Generating world-018: Creating Timelines & Ages... OK
+  Generating world-019: Pivotal Events -- Wars, Discoveries, Catastrophes... OK
+  Generating world-020: Myths, Legends & Origin Stories... OK
+  Generating world-021: Archaeological Traces & Ruins... OK
+  Generating world-022: Unreliable History & Conflicting Accounts... OK
+  Generating world-023: Timeline Construction Workshop... OK
+  Generating world-024: Write Your World's Origin Myth... OK
+
+============================================================
+Level 4: Societies & Cultures
+============================================================
+  Generating world-025: Culture is the Heart of Your World... OK
+  Generating world-026: Religion, Belief & Cosmology... OK
+  Generating world-027: Social Hierarchies & Class Systems... OK
+  Generating world-028: Customs, Rituals & Daily Life... OK
+  Generating world-029: Races, Species & Cultural Diversity... OK
+  Generating world-030: Art, Music & Cultural Expression... OK
+  Generating world-031: Cultural Profile Exercise... OK
+  Generating world-032: Design a Complete Civilization... OK
+
+============================================================
+Level 5: Magic Systems & Technology
+============================================================
+  Generating world-033: Rules Make Magic Magical... OK
+  Generating world-034: Hard vs. Soft Magic Systems... OK
+  Generating world-035: Costs, Limits & Consequences... OK
+  Generating world-036: Technology Levels & Progression... OK
+  Generating world-037: Magic-Technology Interaction... OK
+  Generating world-038: Supernatural Ecology -- How Magic Shapes the World... OK
+  Generating world-039: Magic System Design Workshop... OK
+  Generating world-040: Build Your Magic System... OK
+
+============================================================
+Level 6: Languages & Communication
+============================================================
+  Generating world-041: Words Shape Worlds... OK
+  Generating world-042: Naming Conventions & Phonetics... OK
+  Generating world-043: Constructed Languages -- Conlang Basics... OK
+  Generating world-044: Writing Systems & Literacy... OK
+  Generating world-045: Language & Power -- Who Speaks What... OK
+  Generating world-046: Communication Technology & Networks... OK
+  Generating world-047: Naming System Workshop... OK
+  Generating world-048: Build Your World's Language... OK
+
+============================================================
+Level 7: Economics & Trade
+============================================================
+  Generating world-049: Money Makes Worlds Go Round... OK
+  Generating world-050: Currency & Value Systems... OK
+  Generating world-051: Trade Routes & Networks... OK
+  Generating world-052: Guilds, Markets & Economic Structures... OK
+  Generating world-053: Scarcity, Abundance & Conflict... OK
+  Generating world-054: Technology's Impact on Economy... OK
+  Generating world-055: Economic System Exercise... OK
+  Generating world-056: Design Your World's Economy... OK
+
+============================================================
+Level 8: Conflict & Power
+============================================================
+  Generating world-057: Power Shapes Everything... OK
+  Generating world-058: Government Systems & Political Structure... OK
+  Generating world-059: Factions, Alliances & Rivalries... OK
+  Generating world-060: War & Military in World Building... OK
+  Generating world-061: Law, Justice & Social Control... OK
+  Generating world-062: Revolution, Reform & Change... OK
+  Generating world-063: Political Map Exercise... OK
+  Generating world-064: Design Your Power Structure... OK
+
+============================================================
+Level 9: Narrative Integration
+============================================================
+  Generating world-065: Show, Don't Lecture... OK
+  Generating world-066: Iceberg Theory in Practice... OK
+  Generating world-067: Exposition Through Character... OK
+  Generating world-068: Environmental Storytelling... OK
+  Generating world-069: Reader Discovery & Mystery... OK
+  Generating world-070: World-Building for Different Media... OK
+  Generating world-071: Info-Dump Revision Exercise... OK
+  Generating world-072: Write a World-Revealing Scene... OK
+
+============================================================
+Level 10: Master World Builder
+============================================================
+  Generating world-073: The Complete World Builder... OK
+  Generating world-074: The World Bible -- Your Master Document... OK
+  Generating world-075: Consistency & Continuity Management... OK
+  Generating world-076: Collaborative World Building... OK
+  Generating world-077: Transmedia World Building... OK
+  Generating world-078: Your World-Building Philosophy... OK
+  Generating world-079: World Bible Assembly... OK
+  Generating world-080: Present Your Complete World... OK
+
+============================================================
+DONE! Generated 72 lessons.
+Updated: C:\Users\44776\Downloads\Ebooks-Courses\Ebooks\Gyanmarg\app\src\data\pathways\world-building-lessons.ts
+
+Next steps:
+  1. Run: python app/scripts/fix-backticks-v5.py
+  2. Run: cd app && npx tsc -p tsconfig.app.json --noEmit
+  3. Update world-building.ts to import all 10 levels
