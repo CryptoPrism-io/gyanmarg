@@ -22,7 +22,7 @@ import { useUserStore } from '@/store/userStore';
 import { ModuleLayout, Section } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { ProgressBar, XPBadge } from '@/components/atoms';
-import { VisualOfTheDay, ResumeCard, QuickReviewCard, Leaderboard } from '@/components/organisms';
+import { VisualOfTheDay, ResumeCard, QuickReviewCard, DailyPowerMeter, Leaderboard } from '@/components/organisms';
 import { getDailyQuote, getPastQuotes, formatQuoteDate } from '@/data/quotes';
 
 const itemVariants = {
@@ -143,7 +143,12 @@ export function Dashboard() {
 
       {/* Today's Path — the core daily loop */}
       <Section title="Today's Path" subtitle="Complete these to maintain your streak">
-        <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08 } } }} className="space-y-2">
+        <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08 } } }} className="space-y-3">
+          {/* Daily Power Meter — Meta-gamification */}
+          <motion.div variants={itemVariants}>
+            <DailyPowerMeter />
+          </motion.div>
+
           {/* Step 1: Continue or start a lesson */}
           <motion.div variants={itemVariants}>
             <button
