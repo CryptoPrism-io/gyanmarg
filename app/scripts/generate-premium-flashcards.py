@@ -85,6 +85,12 @@ MODULES = [
     {"id": "game-theory",           "prefix": "gtprem",  "category": "Strategy & Systems",  "name": "Game Theory",                "cards": 16},
     {"id": "world-building",        "prefix": "wbprem",  "category": "Creative Arts",       "name": "World Building",             "cards": 15},
     {"id": "creative-writing",      "prefix": "cwprem",  "category": "Creative Arts",       "name": "Creative Writing",           "cards": 15},
+    # Missing 5 (Spirit & Body + Synthesis)
+    {"id": "body-longevity",        "prefix": "body",    "category": "Spirit & Body",       "name": "Body & Longevity",           "cards": 16, "lesson_file": "body"},
+    {"id": "spirituality-sadhana",  "prefix": "spirit",  "category": "Spirit & Body",       "name": "Spirituality & Sadhana",     "cards": 16, "lesson_file": "spirituality"},
+    {"id": "shiva-shakti",          "prefix": "shakti",  "category": "Eastern Wisdom",      "name": "Shiva-Shakti Philosophy",    "cards": 16, "lesson_file": "shiva"},
+    {"id": "temple-science",        "prefix": "temple",  "category": "Eastern Wisdom",      "name": "Temple Science",             "cards": 16, "lesson_file": "temple"},
+    {"id": "polymath-mastery",      "prefix": "poly",    "category": "Synthesis & Mastery", "name": "Polymath Mastery",           "cards": 16, "lesson_file": "polymath"},
 ]
 
 # ============================================================
@@ -136,9 +142,13 @@ Remember: Output ONLY the JSON array, no code fences, no explanation."""
 # HELPERS
 # ============================================================
 
-def read_lesson_file(module_id: str) -> str | None:
+def read_lesson_file(module_id: str, lesson_file_override: str | None = None) -> str | None:
     """Read the lesson file for a module and return its content."""
-    lesson_file = PATHWAYS_DIR / f"{module_id}-lessons.ts"
+    if lesson_file_override:
+        lesson_file = PATHWAYS_DIR / f"{lesson_file_override}.ts"
+    else:
+        lesson_file = PATHWAYS_DIR / f"{module_id}-lessons.ts"
+
     if not lesson_file.exists():
         print(f"  WARNING: Lesson file not found: {lesson_file}")
         return None
@@ -336,6 +346,7 @@ def main():
         prefix = module["prefix"]
         category = module["category"]
         num_cards = module["cards"]
+        lesson_file_override = module.get("lesson_file")
 
         print(f"[{i+1}/{len(modules)}] {module_name} ({module_id})")
 
@@ -345,7 +356,7 @@ def main():
             continue
 
         # Read lesson content
-        content = read_lesson_file(module_id)
+        content = read_lesson_file(module_id, lesson_file_override)
         if not content:
             fail_count += 1
             continue
