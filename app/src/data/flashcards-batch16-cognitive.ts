@@ -8,7 +8,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Brain rewires via new connections; Enables learning, adaptation, & development',
     category: 'Psychology',
     source: 'The Brain That Changes Itself - Norman Doidge',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'beginner',
     tags: ['cognitive-science', 'neuroplasticity', 'brain-change']
   },
@@ -18,7 +18,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Wire together; Strengthen synaptic connections via repeated co-activation',
     category: 'Psychology',
     source: 'The Brain That Changes Itself - Norman Doidge',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'neuroplasticity', 'habits']
   },
@@ -28,7 +28,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Critical periods are high-plasticity learning windows; Adult brains retain plasticity. Adults learn via focused practice, which re-engages plasticity',
     category: 'Psychology',
     source: 'The Brain That Changes Itself - Norman Doidge',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'neuroplasticity', 'learning']
   },
@@ -38,7 +38,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Practice expands brain areas; inactivity shrinks them. Maintain skill with consistent practice to prevent reallocation',
     category: 'Psychology',
     source: 'The Brain That Changes Itself - Norman Doidge',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'advanced',
     tags: ['cognitive-science', 'neuroplasticity', 'skill-development']
   },
@@ -48,7 +48,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'BDNF supports neuron growth & plasticity. Increase it with: exercise; new skills; social interaction; sleep; fasting; reduce sugar. Low BDNF links to depression',
     category: 'Psychology',
     source: 'Spark: The Revolutionary New Science of Exercise and the Brain - John Ratey',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'neuroplasticity', 'BDNF']
   },
@@ -58,7 +58,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Temporarily hold and manipulate info for reasoning/learning.  Capacity: Miller\'s Law (7±2 items)',
     category: 'Psychology',
     source: 'Cognitive Psychology Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'beginner',
     tags: ['cognitive-science', 'working-memory', 'cognitive-limits']
   },
@@ -68,7 +68,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Short-term memory stores passively; working memory manipulates info. Working memory has executive control; better predicts success',
     category: 'Psychology',
     source: 'Baddeley\'s Working Memory Model',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'working-memory', 'memory-systems']
   },
@@ -78,7 +78,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Group info into meaningful units.  Remember 408-555-1234 (3 chunks) instead of 4085551234 (10 digits). Use LTM; expand working memory',
     category: 'Psychology',
     source: 'Cognitive Psychology Research - George Miller',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'beginner',
     tags: ['cognitive-science', 'working-memory', 'chunking']
   },
@@ -88,7 +88,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Mixed results. N-back improves task performance; transfer is limited. Improve domain knowledge; focus attention; use aids; prioritize health',
     category: 'Psychology',
     source: 'Cognitive Training Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'advanced',
     tags: ['cognitive-science', 'working-memory', 'cognitive-training']
   },
@@ -98,7 +98,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Anxiety depletes working memory with intrusive thoughts, reducing task capacity. It creates a vicious cycle of poor performance, increased anxiety',
     category: 'Psychology',
     source: 'Cognitive Psychology Research - Sian Beilock',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'working-memory', 'anxiety']
   },
@@ -108,7 +108,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Limit working memory overload for learning; Minimize extraneous, manage intrinsic, maximize germane load. Overload stops learning',
     category: 'Psychology',
     source: 'Cognitive Load Theory - John Sweller',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'cognitive-load', 'learning']
   },
@@ -118,7 +118,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Integrate separated info sources to reduce cognitive load. Use labels on diagrams; sync audio/visuals; eliminate unnecessary separations',
     category: 'Psychology',
     source: 'Cognitive Load Theory - John Sweller',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'cognitive-load', 'instructional-design']
   },
@@ -128,7 +128,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Identical info across modalities overloads working memory; brain processes duplicates.  Present info in one modality; use complementary content',
     category: 'Psychology',
     source: 'Cognitive Load Theory - John Sweller',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'cognitive-load', 'learning-efficiency']
   },
@@ -138,7 +138,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Experts suffer from expertise reversal; remove scaffolding as expertise grows. Novices benefit from guidance; experts learn better via independent problem-solving',
     category: 'Psychology',
     source: 'Cognitive Load Theory Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'advanced',
     tags: ['cognitive-science', 'cognitive-load', 'expertise']
   },
@@ -148,7 +148,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Novices learn best from worked examples; they reduce cognitive load. As expertise grows, fade support: full examples; partial examples; independent problem-solving',
     category: 'Psychology',
     source: 'Cognitive Load Theory - John Sweller',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'cognitive-load', 'learning-strategies']
   },
@@ -158,7 +158,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Control focus with top-down (goal-directed) attention; mitigate distractions by managing bottom-up (stimulus-driven) attention. These systems compete',
     category: 'Psychology',
     source: 'Attention and Cognitive Neuroscience Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'attention', 'focus']
   },
@@ -168,7 +168,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Fail to see unexpected objects due to focused attention. Shows attention is a limited resource; miss what isn\'t focused on',
     category: 'Psychology',
     source: 'The Invisible Gorilla - Chabris and Simons',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'beginner',
     tags: ['cognitive-science', 'attention', 'perception']
   },
@@ -178,7 +178,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'We rapidly switch tasks, don\'t do them simultaneously. Switching incurs cognitive costs; impacts productivity. Single-task for knowledge work',
     category: 'Psychology',
     source: 'Deep Work - Cal Newport',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'beginner',
     tags: ['cognitive-science', 'attention', 'multitasking']
   },
@@ -188,7 +188,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Thoughts linger from Task A when switching; reduces performance on Task B (Leroy). Reduce residue: complete tasks, write down thoughts, create boundaries',
     category: 'Psychology',
     source: 'Research by Sophie Leroy',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'attention', 'productivity']
   },
@@ -198,7 +198,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Focus lasts 20-50 mins; ultradian rhythms exist. Boost focus via sleep, interest, expertise, time of day, and physical state; take breaks',
     category: 'Psychology',
     source: 'Cognitive Psychology and Chronobiology Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'attention', 'focus-duration']
   },
@@ -208,7 +208,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Experts store chunked patterns; match situations to stored knowledge. Quickly recognize features; choose appropriate responses; like chess masters seeing board positions',
     category: 'Psychology',
     source: 'Expert Performance Research - K. Anders Ericsson',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'pattern-recognition', 'expertise']
   },
@@ -218,7 +218,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'RPD: Experts recognize situations based on past experience & immediately know what to do. Simulate actions mentally; if it works, proceed',
     category: 'Psychology',
     source: 'Sources of Power - Gary Klein',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'advanced',
     tags: ['cognitive-science', 'pattern-recognition', 'decision-making']
   },
@@ -228,7 +228,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Apophenia: See patterns in random data.  Brains evolved to find patterns for survival; this biases us towards false positives',
     category: 'Psychology',
     source: 'Cognitive Psychology and Decision-Making Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'pattern-recognition', 'cognitive-bias']
   },
@@ -238,7 +238,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Transfer knowledge from source to target domain based on structural similarities. Solve new problems; gain insight',
     category: 'Psychology',
     source: 'Range - David Epstein',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'pattern-recognition', 'analogical-thinking']
   },
@@ -248,7 +248,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Prefer familiar things after repeated exposure. Brains process them easier, making them seem safer/more trustworthy; linked to fluency heuristic',
     category: 'Psychology',
     source: 'Social Psychology Research - Robert Zajonc',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'pattern-recognition', 'cognitive-bias']
   },
@@ -258,7 +258,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'DMN activates when unfocused; Enables daydreaming, self-reflection, and mind-wandering. Study rest-state brain function',
     category: 'Psychology',
     source: 'Neuroscience Research - Marcus Raichle',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'default-mode-network', 'brain-function']
   },
@@ -268,7 +268,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'DMN links distant ideas; incubation helps. Step away, let DMN work unconsciously; breakthroughs happen during unstructured time. Alternate focus/downtime',
     category: 'Psychology',
     source: 'Creativity and Cognitive Neuroscience Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'default-mode-network', 'creativity']
   },
@@ -278,7 +278,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Hyperactive DMN links to rumination in depression. Reduce activity with mindfulness, activation, reframing, exercise. Goal: Flexible DMN use; don\'t suppress',
     category: 'Psychology',
     source: 'Clinical Neuroscience Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'advanced',
     tags: ['cognitive-science', 'default-mode-network', 'mental-health']
   },
@@ -288,7 +288,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Reduce DMN activity & boost DMN-attention connectivity. Focus quiets; open monitoring alters processing; regular practice builds mind-wandering control',
     category: 'Psychology',
     source: 'Neuroscience of Meditation Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'default-mode-network', 'meditation']
   },
@@ -298,7 +298,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Triggers default mode network; Enables introspection, idea generation, & problem-solving. Boost creativity and cognitive flexibility.; Embrace boredom, it unlocks potential!',
     category: 'Psychology',
     source: 'Boredom and Creativity Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'default-mode-network', 'creativity']
   },
@@ -308,7 +308,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Brain replays/transfers memories; hippocampus to neocortex. SWS: facts; REM: skills/emotions. Sleep prunes/strengthens connections for efficient recall',
     category: 'Psychology',
     source: 'Why We Sleep - Matthew Walker',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'sleep', 'memory-consolidation']
   },
@@ -318,7 +318,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Memory formation suffers; hippocampal activity drops. Attention, working memory, and creative problem-solving also decline',
     category: 'Psychology',
     source: 'Why We Sleep - Matthew Walker',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'sleep', 'sleep-deprivation']
   },
@@ -328,7 +328,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Study before sleep; space learning with sleep; nap after learning; avoid all-nighters; prioritize full sleep. Sleep consolidates',
     category: 'Psychology',
     source: 'Sleep and Learning Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'sleep', 'learning-strategies']
   },
@@ -338,7 +338,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'REM forms remote associations by suppressing logic and activating associative areas; solve problems more creatively after REM. Protect morning REM; avoid early alarms; consider problems before sleep',
     category: 'Psychology',
     source: 'Why We Sleep - Matthew Walker',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'advanced',
     tags: ['cognitive-science', 'sleep', 'creativity']
   },
@@ -348,7 +348,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Glymphatic system clears brain waste during sleep; prevents neurodegenerative disease. Optimize sleep to activate it!',
     category: 'Psychology',
     source: 'Neuroscience Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'advanced',
     tags: ['cognitive-science', 'sleep', 'brain-health']
   },
@@ -358,7 +358,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Flow: complete absorption; time disappears. Brain: hypofrontality; boost dopamine/norepinephrine; shift alpha/theta; reduced DMN',
     category: 'Psychology',
     source: 'Flow - Mihaly Csikszentmihalyi',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'flow-state', 'peak-performance']
   },
@@ -368,7 +368,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Need: Clear goals; immediate feedback; challenge matches skill; concentration; control; loss of self-awareness; altered time sense. Focus intently!',
     category: 'Psychology',
     source: 'Flow - Mihaly Csikszentmihalyi',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'flow-state', 'productivity']
   },
@@ -378,7 +378,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Boost productivity 5x (McKinsey): Remove doubt/distraction; enhance pattern recognition/creativity/learning; distort time. Protect flow sessions',
     category: 'Psychology',
     source: 'The Rise of Superman - Steven Kotler',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'flow-state', 'productivity']
   },
@@ -388,7 +388,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Deactivate prefrontal cortex during flow; reduce self-criticism/monitoring. This enables effortless, automatic action and distorts time perception',
     category: 'Psychology',
     source: 'Flow Neuroscience Research - Arne Dietrich',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'advanced',
     tags: ['cognitive-science', 'flow-state', 'neuroscience']
   },
@@ -398,7 +398,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Minimize disruptions; document mental state before interruption; use flow-state cues; avoid frustration; design longer work blocks',
     category: 'Psychology',
     source: 'The Rise of Superman - Steven Kotler',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'flow-state', 'productivity']
   },
@@ -408,7 +408,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Dopamine doesn\'t cause pleasure directly; it signals motivational salience & drives action. Learn; adapt; optimize behavior',
     category: 'Psychology',
     source: 'The Molecule of More - Daniel Lieberman',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'dopamine', 'motivation']
   },
@@ -418,7 +418,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Receptor downregulation requires more stimulation for the same effect; addiction patterns arise. Reset baseline to regain motivation',
     category: 'Psychology',
     source: 'Dopamine Nation - Anna Lembke',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'dopamine', 'motivation']
   },
@@ -428,7 +428,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Unpredictable rewards trigger larger dopamine releases; exploit this in casinos/apps. Resist: Predictable schedules; batch checks',
     category: 'Psychology',
     source: 'Hooked - Nir Eyal',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'dopamine', 'behavior-design']
   },
@@ -438,7 +438,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Milestones; Celebrate wins; Visualize process; Add novelty; Vary rewards; Connect to purpose.  Maintain moderate dopamine, avoid spikes',
     category: 'Psychology',
     source: 'Dopamine and Motivation Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'dopamine', 'motivation-strategies']
   },
@@ -448,7 +448,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Dopamine regulates willingness to exert effort; High dopamine = effort feels less costly & rewards more valuable. Boost dopamine with exercise, sunlight, sleep; avoid depletion',
     category: 'Psychology',
     source: 'Neuroscience of Motivation Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'advanced',
     tags: ['cognitive-science', 'dopamine', 'effort']
   },
@@ -458,7 +458,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Exercise! Boosts attention, speed, executive function; increases BDNF, neurogenesis, blood flow; reduces inflammation',
     category: 'Psychology',
     source: 'Spark - John Ratey',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'beginner',
     tags: ['cognitive-science', 'cognitive-enhancement', 'exercise']
   },
@@ -468,7 +468,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Build new neural pathways & cognitive reserve. Complex skills (music, languages) are best; Ensure appropriate difficulty',
     category: 'Psychology',
     source: 'Cognitive Reserve Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'cognitive-enhancement', 'learning']
   },
@@ -478,7 +478,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Offloading: Use tools to reduce mental load & free working memory. Capture all; use reliable systems; trust/review tools',
     category: 'Psychology',
     source: 'Getting Things Done - David Allen',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'beginner',
     tags: ['cognitive-science', 'cognitive-enhancement', 'productivity']
   },
@@ -488,7 +488,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Socializing uses complex cognitive skills; boost mood & performance.  Engage regularly for better cognition; avoid loneliness & cognitive decline',
     category: 'Psychology',
     source: 'Social Neuroscience Research',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'cognitive-enhancement', 'social-connection']
   },
@@ -498,7 +498,7 @@ export const cognitiveScienceFlashcards: SpacedRepetitionCard[] = [
     back: 'Prioritize sleep; tackle hard tasks during alertness peak. Schedule exercise; use afternoon for admin; take breaks; personalize!',
     category: 'Psychology',
     source: 'When - Daniel Pink',
-    pathwayId: 'psychology',
+    pathwayId: 'brain',
     difficulty: 'intermediate',
     tags: ['cognitive-science', 'cognitive-enhancement', 'productivity']
   }

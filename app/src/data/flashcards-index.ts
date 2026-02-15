@@ -119,6 +119,9 @@ import { conflictResolutionFlashcards } from './flashcards-batch17-conflict';
 import { innovationThinkingFlashcards } from './flashcards-batch17-innovation';
 import { interviewSkillsFlashcards } from './flashcards-batch17-interview';
 
+// Batch 18: Universal — Auto-extracted from all lesson quizzes (871 cards, 61 categories)
+import { universalFlashcards } from './flashcards-batch18-universal';
+
 /**
  * All flashcards combined - use this for spaced repetition
  */
@@ -206,6 +209,8 @@ export const allFlashcards: SpacedRepetitionCard[] = [
   ...conflictResolutionFlashcards,
   ...innovationThinkingFlashcards,
   ...interviewSkillsFlashcards,
+  // Batch 18: Universal
+  ...universalFlashcards,
 ];
 
 /**
@@ -308,6 +313,53 @@ export const flashcardsByCategory = {
   creativity: creativityFlashcards,
   memoryLearning: memoryLearningFlashcards,
   healthWellness: healthWellnessFlashcards,
+  // Batch 18: Universal categories
+  emotionalIntelligenceMod: universalFlashcards.filter(c => c.pathwayId === 'emotional-intelligence'),
+  bharatWisdom: universalFlashcards.filter(c =>
+    ['bhagavad-gita', 'ramayana-mahabharata', 'upanishads', 'shiv-sutras',
+     'sanskrit-mantras', 'jyotish-vastu', 'vedic-wisdom', 'ayurveda',
+     'yoga-philosophy', 'mythology'].includes(c.pathwayId!)
+  ),
+  financeMarkets: universalFlashcards.filter(c =>
+    ['finance-investing', 'technical-analysis', 'options-trading',
+     'macro-economics', 'crypto-trading'].includes(c.pathwayId!)
+  ),
+  techCode: universalFlashcards.filter(c =>
+    ['web-development', 'cloud-devops', 'cybersecurity'].includes(c.pathwayId!)
+  ),
+  scienceUniverse: universalFlashcards.filter(c =>
+    ['astronomy', 'biology-evolution', 'quantum-mechanics', 'earth-sciences',
+     'physics-engineering', 'mathematics-patterns'].includes(c.pathwayId!)
+  ),
+  creativeArts: universalFlashcards.filter(c =>
+    ['writing-storytelling', 'music-sound', 'creative-writing',
+     'content-creation', 'world-building'].includes(c.pathwayId!)
+  ),
+  strategySystems: universalFlashcards.filter(c =>
+    ['strategic-thinking', 'systems-complexity', 'game-theory',
+     'decision-making', 'risk-management', 'design-thinking'].includes(c.pathwayId!)
+  ),
+  historyCulture: universalFlashcards.filter(c =>
+    ['history-civilizations', 'geopolitics', 'ancient-empires',
+     'modern-history', 'cultural-anthropology'].includes(c.pathwayId!)
+  ),
+  relationshipsSociety: universalFlashcards.filter(c =>
+    ['relationships-social', 'communication-rhetoric', 'dating-attraction',
+     'networking', 'parenting', 'social-intelligence'].includes(c.pathwayId!)
+  ),
+  salesBusiness: universalFlashcards.filter(c =>
+    ['sales-mastery', 'personal-branding', 'entrepreneurship-101',
+     'startups-innovation'].includes(c.pathwayId!)
+  ),
+  leadershipProductivity: universalFlashcards.filter(c =>
+    ['leadership', 'problem-solving', 'productivity-systems'].includes(c.pathwayId!)
+  ),
+  stoicismWisdom: universalFlashcards.filter(c =>
+    ['stoicism', 'western-philosophy'].includes(c.pathwayId!)
+  ),
+  easternPhilosophy: universalFlashcards.filter(c =>
+    ['eastern-philosophy'].includes(c.pathwayId!)
+  ),
 };
 
 /**

@@ -253,13 +253,86 @@ export const sourceToLessonPatterns: Record<string, string[]> = {
 // ============================================
 
 /**
+ * Prefix-to-pathwayId mapping for universal fallback unlock.
+ * If a lesson prefix matches a flashcard's pathwayId, the card is unlocked.
+ */
+const lessonPrefixToPathwayId: Record<string, string[]> = {
+  'eq-': ['emotional-intelligence'],
+  'brain-': ['brain'],
+  'body-': ['body'],
+  'spirit-': ['spirituality'],
+  'stoic-': ['stoicism'],
+  'east-': ['eastern-philosophy'],
+  'gita-': ['bhagavad-gita'],
+  'vedic-': ['vedic-wisdom'],
+  'epic-': ['ramayana-mahabharata'],
+  'upan-': ['upanishads'],
+  'shiv-': ['shiv-sutras'],
+  'sans-': ['sanskrit-mantras'],
+  'jyot-': ['jyotish-vastu'],
+  'shiva-': ['shiva-shakti'],
+  'temple-': ['temple-science'],
+  'yoga-': ['yoga-philosophy'],
+  'ayur-': ['ayurveda'],
+  'myth-': ['mythology'],
+  'sm-': ['sales-mastery'],
+  'ent-': ['entrepreneurship-101'],
+  'pb-': ['personal-branding'],
+  'fi-': ['finance-investing'],
+  'ta-': ['technical-analysis'],
+  'opt-': ['options-trading'],
+  'macro-': ['macro-economics'],
+  'crypto-': ['crypto-trading'],
+  'cyber-': ['cybersecurity'],
+  'webdev-': ['web-development'],
+  'devops-': ['cloud-devops'],
+  'astro-': ['astronomy'],
+  'bio-': ['biology-evolution'],
+  'qm-': ['quantum-mechanics'],
+  'earth-': ['earth-sciences'],
+  'ws-': ['writing-storytelling'],
+  'mus-': ['music-sound'],
+  'cw-': ['creative-writing'],
+  'content-': ['content-creation'],
+  'world-': ['world-building'],
+  'strat-': ['strategic-thinking'],
+  'sys-': ['systems-complexity'],
+  'gt-': ['game-theory'],
+  'decide-': ['decision-making'],
+  'risk-': ['risk-management'],
+  'hist-': ['history-civilizations'],
+  'wphil-': ['western-philosophy'],
+  'geo-': ['geopolitics'],
+  'ae-': ['ancient-empires'],
+  'modhist-': ['modern-history'],
+  'anthro-': ['cultural-anthropology'],
+  'dt-': ['design-thinking'],
+  'startup-': ['startups-innovation'],
+  'rel-': ['relationships-social'],
+  'cr-': ['communication-rhetoric'],
+  'da-': ['dating-attraction'],
+  'net-': ['networking'],
+  'par-': ['parenting'],
+  'si-': ['social-intelligence'],
+  'poly-': ['polymath-mastery'],
+  'mm-': ['mental-models'],
+  'fp-': ['first-principles'],
+  'mlearn-': ['meta-learning'],
+  'phys-': ['physics-engineering'],
+  'lead-': ['leadership'],
+  'solve-': ['problem-solving'],
+  'prod-': ['productivity-systems'],
+  'math-': ['mathematics-patterns'],
+};
+
+/**
  * Check if a flashcard should be unlocked based on a completed lesson
  */
 export function isFlashcardUnlockedByLesson(
   card: SpacedRepetitionCard,
   lessonId: string
 ): boolean {
-  // 1. Check direct lesson-to-tags mapping
+  // 1. Check direct lesson-to-tags mapping (most specific)
   const lessonTags = lessonToFlashcardTags[lessonId];
   if (lessonTags && card.tags) {
     const cardTagsLower = card.tags.map(t => t.toLowerCase());
@@ -270,12 +343,10 @@ export function isFlashcardUnlockedByLesson(
     }
   }
 
-  // 2. Check pattern matching for lesson ID in flashcard ID
-  // e.g., flashcard 'ah-001' matches lesson containing 'habits'
   const lessonIdLower = lessonId.toLowerCase();
   const cardIdLower = card.id.toLowerCase();
 
-  // Direct ID prefix matching
+  // 2. Legacy direct ID prefix matching (backward compat)
   if (lessonIdLower.includes('habits') && cardIdLower.startsWith('ah-')) return true;
   if (lessonIdLower.includes('dw-') && cardIdLower.startsWith('dw-')) return true;
   if (lessonIdLower.includes('fs-') && cardIdLower.startsWith('fs-')) return true;
@@ -285,6 +356,17 @@ export function isFlashcardUnlockedByLesson(
   if (lessonIdLower.includes('ai-') && cardIdLower.startsWith('ai-')) return true;
   if (lessonIdLower.includes('blockchain') && cardIdLower.startsWith('bc-')) return true;
   if (lessonIdLower.includes('wealth') && cardIdLower.startsWith('wb-')) return true;
+
+  // 3. Prefix-based fallback: lesson prefix → pathwayId match
+  if (card.pathwayId) {
+    for (const [prefix, pathwayIds] of Object.entries(lessonPrefixToPathwayId)) {
+      if (lessonIdLower.startsWith(prefix)) {
+        if (pathwayIds.includes(card.pathwayId)) {
+          return true;
+        }
+      }
+    }
+  }
 
   return false;
 }
