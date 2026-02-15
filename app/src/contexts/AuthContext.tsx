@@ -20,6 +20,7 @@ import {
   type FirebaseAuthUser,
 } from '@/lib/firebase';
 import { initializeSync, clearSync } from '@/store/firebaseSync';
+import { requestNotificationPermission } from '@/lib/notifications';
 
 // Sync interval for periodic backup — purely a crash safety net
 // Real syncs happen via: debounce (on store change), visibilitychange (tab switch), beforeunload (close)
@@ -122,6 +123,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
             } else {
               setLastSyncAt(new Date());
             }
+
+            // Request notification permission after successful sync
+            await requestNotificationPermission();
 
             // Reload to apply hydrated data to Zustand stores
             // This reload is now safe because hasAutoSynced persists in localStorage
@@ -246,6 +250,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
       } else {
         setLastSyncAt(new Date());
       }
+
+      // Request notification permission after successful sign-in
+      await requestNotificationPermission();
 
       // If merged or hydrated from cloud, reload to apply data to Zustand stores
       if (syncResult.merged || syncResult.hydrated) {

@@ -31,6 +31,8 @@ import {
   Settings,
   Bookmark,
   MapPin,
+  Bell,
+  Clock,
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserStore } from '@/store/userStore';
@@ -254,6 +256,9 @@ export function Profile() {
   const isLessonCompleted = useProgressStore((s) => s.isLessonCompleted);
   const resetUser = useUserStore((s) => s.resetUser);
   const resetProgress = useProgressStore((s) => s.resetProgress);
+  const notificationSchedule = useProgressStore((s) => s.notificationSchedule);
+  const toggleNotifications = useProgressStore((s) => s.toggleNotifications);
+  const setNotificationTime = useProgressStore((s) => s.setNotificationTime);
 
   // Auth
   const { user, signOut, isSyncing, syncNow, lastSyncAt, syncError, isConfigured } = useAuth();
@@ -897,6 +902,56 @@ export function Profile() {
                   </motion.div>
                 )}
               </AnimatePresence>
+            </GlassCard>
+          </motion.div>
+
+          {/* Notification Preferences */}
+          <motion.div variants={itemVariants}>
+            <GlassCard>
+              <h3 className="text-sm font-medium text-text-primary mb-3 flex items-center gap-2">
+                <Bell className="w-4 h-4 text-coral" />
+                Notification Preferences
+              </h3>
+              <div className="space-y-4">
+                {/* Enable/Disable Toggle */}
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <p className="text-xs font-medium text-text-primary">Daily Streak Reminder</p>
+                    <p className="text-[11px] text-text-muted mt-0.5">Get daily notifications to keep your streak alive</p>
+                  </div>
+                  <button
+                    onClick={() => toggleNotifications(!notificationSchedule.enabled)}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      notificationSchedule.enabled ? 'bg-sage' : 'bg-white/[0.1]'
+                    }`}
+                  >
+                    <span
+                      className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
+                        notificationSchedule.enabled ? 'translate-x-5' : 'translate-x-0.5'
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                {/* Time Picker */}
+                {notificationSchedule.enabled && (
+                  <div className="border-t border-white/[0.06] pt-4">
+                    <label className="flex items-center gap-2 mb-2">
+                      <Clock className="w-3.5 h-3.5 text-text-muted" />
+                      <span className="text-xs font-medium text-text-primary">Preferred Time</span>
+                    </label>
+                    <input
+                      type="time"
+                      value={notificationSchedule.scheduledTime}
+                      onChange={(e) => setNotificationTime(e.target.value)}
+                      className="w-full px-3 py-2 rounded-lg bg-white/[0.05] border border-white/[0.1] text-text-primary text-sm focus:outline-none focus:border-sage/50 transition-colors"
+                    />
+                    <p className="text-[11px] text-text-muted mt-2">
+                      You'll receive a reminder at {notificationSchedule.scheduledTime} in your timezone ({notificationSchedule.timezone})
+                    </p>
+                  </div>
+                )}
+              </div>
             </GlassCard>
           </motion.div>
 

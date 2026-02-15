@@ -111,17 +111,34 @@ self.addEventListener('push', (event) => {
   );
 });
 
-// Handle notification clicks
+// Handle notification clicks (both push notifications and in-app notifications)
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
 
+  // Handle old-style push notifications (from push service)
   if (event.action === 'explore') {
+    event.waitUntil(clients.openWindow('/dashboard'));
+  }
+  // Handle streak reminder notifications
+  else if (event.action === 'continue') {
+    event.waitUntil(clients.openWindow('/dashboard'));
+  }
+  // Handle dismiss action (just close, don't navigate)
+  else if (event.action === 'dismiss') {
+    // Already closed above
+  }
+  // Default: open dashboard
+  else {
     event.waitUntil(
-      clients.openWindow('/dashboard')
+      clients.openWindow(event.notification.data?.url || '/')
     );
-  } else {
-    event.waitUntil(
-      clients.openWindow('/')
-    );
+  }
+});
+
+// Handle messages from main thread (e.g., send notification)
+self.addEventListener('message', (event) => {
+  if (event.data.type === 'SEND_NOTIFICATION') {
+    const { title, options } = event.data;
+    self.registration.showNotification(title, options);
   }
 });

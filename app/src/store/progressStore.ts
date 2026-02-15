@@ -8,6 +8,8 @@ import { analytics } from '@/lib/analytics';
 import type { Badge } from '@/data/badges';
 import { BADGES, checkBadgeUnlock } from '@/data/badges';
 import { getVizForLevel } from '@/data/vizLevelMap';
+import type { NotificationSchedule } from '@/lib/notifications';
+import { getDefaultSchedule } from '@/lib/notifications';
 
 // Starred cards — saved from lesson card flow
 export interface StarredCard {
@@ -49,6 +51,9 @@ interface ProgressState {
   streakFreezes: number;
   lastFreezeUsed: string | null;
   freezeRefreshDate: string;
+
+  // Notifications
+  notificationSchedule: NotificationSchedule;
 
   // Level-up tracking
   pendingLevelUp: number | null;
@@ -97,6 +102,11 @@ interface ProgressState {
 
   // Flashcard review tracking
   incrementReviewCount: () => void;
+
+  // Notification Actions
+  updateNotificationSchedule: (schedule: Partial<NotificationSchedule>) => void;
+  toggleNotifications: (enabled: boolean) => void;
+  setNotificationTime: (time: string) => void;
 
   // Challenge Actions (reward-based progressive system)
   completeChallenge: (challengeId: string, response: string, xpReward: number) => void;
@@ -181,6 +191,7 @@ export const useProgressStore = create<ProgressState>()(
       streakFreezes: 1,
       lastFreezeUsed: null,
       freezeRefreshDate: new Date().toISOString().split('T')[0],
+      notificationSchedule: getDefaultSchedule(),
       pendingLevelUp: null,
 
       addXP: (amount) => {
@@ -616,6 +627,22 @@ export const useProgressStore = create<ProgressState>()(
           };
         }),
 
+      // Notification Actions
+      updateNotificationSchedule: (schedule) =>
+        set((state) => ({
+          notificationSchedule: { ...state.notificationSchedule, ...schedule },
+        })),
+
+      toggleNotifications: (enabled) =>
+        set((state) => ({
+          notificationSchedule: { ...state.notificationSchedule, enabled },
+        })),
+
+      setNotificationTime: (time) =>
+        set((state) => ({
+          notificationSchedule: { ...state.notificationSchedule, scheduledTime: time },
+        })),
+
       // Challenge completion with user action response
       completeChallenge: (challengeId: string, response: string, xpReward: number) => {
         const state = get();
@@ -820,6 +847,7 @@ export const useProgressStore = create<ProgressState>()(
           streakFreezes: 1,
           lastFreezeUsed: null,
           freezeRefreshDate: new Date().toISOString().split('T')[0],
+          notificationSchedule: getDefaultSchedule(),
           pendingLevelUp: null,
           pendingVizUnlock: null,
         }),
