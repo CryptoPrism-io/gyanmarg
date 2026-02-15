@@ -126,9 +126,61 @@ import { universalFlashcards } from './flashcards-batch18-universal';
 import { premiumFlashcards } from './flashcards-batch19-premium';
 
 /**
- * All flashcards combined - use this for spaced repetition
+ * Cap: max 50 cards per module (pathwayId).
+ * Priority: Premium (batch19) > Universal (batch18) > earlier batches.
+ * Within each tier: balanced difficulty (beginner → intermediate → advanced).
  */
-export const allFlashcards: SpacedRepetitionCard[] = [
+const MAX_CARDS_PER_MODULE = 50;
+
+function capPerModule(cards: SpacedRepetitionCard[]): SpacedRepetitionCard[] {
+  // Deduplicate by ID first
+  const seen = new Set<string>();
+  const deduped = cards.filter(c => {
+    if (seen.has(c.id)) return false;
+    seen.add(c.id);
+    return true;
+  });
+
+  // Group by pathwayId
+  const grouped: Record<string, SpacedRepetitionCard[]> = {};
+  deduped.forEach(card => {
+    const pid = card.pathwayId || 'unknown';
+    if (!grouped[pid]) grouped[pid] = [];
+    grouped[pid].push(card);
+  });
+
+  // For each group, select best 50
+  const result: SpacedRepetitionCard[] = [];
+  const diffOrder: Record<string, number> = { beginner: 0, intermediate: 1, advanced: 2 };
+
+  for (const cards of Object.values(grouped)) {
+    if (cards.length <= MAX_CARDS_PER_MODULE) {
+      result.push(...cards);
+    } else {
+      // Sort: premium first (batch19 IDs), then by difficulty for variety
+      const sorted = cards.sort((a, b) => {
+        // Premium cards first (batch19 prefix)
+        const aPremium = a.id.startsWith('premium-') ? 0 : 1;
+        const bPremium = b.id.startsWith('premium-') ? 0 : 1;
+        if (aPremium !== bPremium) return aPremium - bPremium;
+        // Then universal cards (batch18)
+        const aUniv = a.id.startsWith('univ-') ? 0 : 1;
+        const bUniv = b.id.startsWith('univ-') ? 0 : 1;
+        if (aUniv !== bUniv) return aUniv - bUniv;
+        // Then by difficulty for balance
+        return (diffOrder[a.difficulty] || 1) - (diffOrder[b.difficulty] || 1);
+      });
+      result.push(...sorted.slice(0, MAX_CARDS_PER_MODULE));
+    }
+  }
+
+  return result;
+}
+
+/**
+ * All flashcards combined — capped at 50 per module for optimal review sessions
+ */
+export const allFlashcards: SpacedRepetitionCard[] = capPerModule([
   // Main
   ...mainFlashcards,
   // Batch 2
@@ -216,7 +268,7 @@ export const allFlashcards: SpacedRepetitionCard[] = [
   ...universalFlashcards,
   // Batch 19: Premium (Gemini-crafted)
   ...premiumFlashcards,
-];
+]);
 
 /**
  * Flashcards by category for filtered views

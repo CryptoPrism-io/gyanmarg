@@ -110,24 +110,54 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
 
       /**
        * Sync unlocked cards based on completed modules.
-       * Rule: Complete ALL lessons in a module → unlock ALL flashcards for it.
-       * Uses the same completion logic as the Learn page.
+       * Rule: Complete ALL lessons in a module → unlock up to MAX_CARDS_PER_MODULE flashcards.
+       * Prioritizes: beginner → intermediate → advanced for balanced learning.
        */
       syncUnlockedCards: (completedLessonIds: string[]) => {
         if (completedLessonIds.length === 0) return;
 
+        const MAX_CARDS_PER_MODULE = 50;
         const state = get();
         const existingCardIds = new Set(state.unlockedCards.map(c => c.id));
+
+        // Count existing cards per pathwayId
+        const existingCountByPathway: Record<string, number> = {};
+        state.unlockedCards.forEach(c => {
+          const pid = c.pathwayId || '';
+          existingCountByPathway[pid] = (existingCountByPathway[pid] || 0) + 1;
+        });
 
         // Get all pathwayIds for fully completed modules
         const unlockedPids = getUnlockedPathwayIds(completedLessonIds);
         if (unlockedPids.size === 0) return;
 
-        // Find new cards to unlock (cards whose pathwayId matches a completed module)
-        const newCardsToUnlock = allFlashcards.filter(card => {
+        // Find candidate cards (matching completed modules, not already unlocked)
+        const candidateCards = allFlashcards.filter(card => {
           if (existingCardIds.has(card.id)) return false;
           return card.pathwayId ? unlockedPids.has(card.pathwayId) : false;
         });
+
+        // Group candidates by pathwayId and cap each at MAX_CARDS_PER_MODULE
+        const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
+        const grouped: Record<string, typeof candidateCards> = {};
+        candidateCards.forEach(card => {
+          const pid = card.pathwayId || 'unknown';
+          if (!grouped[pid]) grouped[pid] = [];
+          grouped[pid].push(card);
+        });
+
+        const newCardsToUnlock: typeof candidateCards = [];
+        for (const [pid, cards] of Object.entries(grouped)) {
+          const existingCount = existingCountByPathway[pid] || 0;
+          const slotsAvailable = Math.max(0, MAX_CARDS_PER_MODULE - existingCount);
+          if (slotsAvailable === 0) continue;
+
+          // Sort by difficulty (beginner first) for balanced learning
+          const sorted = cards.sort((a, b) =>
+            (difficultyOrder[a.difficulty] || 1) - (difficultyOrder[b.difficulty] || 1)
+          );
+          newCardsToUnlock.push(...sorted.slice(0, slotsAvailable));
+        }
 
         if (newCardsToUnlock.length > 0) {
           const initializedNewCards = newCardsToUnlock.map(initializeCard);
@@ -141,16 +171,16 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
       /**
        * Re-evaluate all unlocked cards against current matching logic.
        * Removes cards that were unlocked by previous overly-broad matching.
-       * Preserves review progress for legitimately unlocked cards.
+       * Enforces MAX_CARDS_PER_MODULE cap, preserving cards with review history.
        */
       resyncCards: (completedLessonIds: string[]) => {
-        const CURRENT_RESYNC_VERSION = 3; // v3: module-completion-only unlock rule
+        const CURRENT_RESYNC_VERSION = 4; // v4: 50-card-per-module cap
+        const MAX_CARDS_PER_MODULE = 50;
         const state = get();
 
         if (state._lastResyncVersion === CURRENT_RESYNC_VERSION) return;
 
         if (completedLessonIds.length === 0) {
-          // No lessons completed = no cards should be unlocked
           if (state.unlockedCards.length > 0) {
             set({ unlockedCards: [], _lastResyncVersion: CURRENT_RESYNC_VERSION });
           }
@@ -163,12 +193,40 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
           card.pathwayId ? unlockedPids.has(card.pathwayId) : false
         );
 
-        const removed = state.unlockedCards.length - validCards.length;
-        if (removed > 0) {
-          console.log(`[SpacedRepetition] Resync: removed ${removed} incorrectly unlocked cards`);
+        // Enforce per-module cap: keep cards with review history first, then by difficulty
+        const grouped: Record<string, typeof validCards> = {};
+        validCards.forEach(card => {
+          const pid = card.pathwayId || 'unknown';
+          if (!grouped[pid]) grouped[pid] = [];
+          grouped[pid].push(card);
+        });
+
+        const cappedCards: typeof validCards = [];
+        for (const [pid, cards] of Object.entries(grouped)) {
+          if (cards.length <= MAX_CARDS_PER_MODULE) {
+            cappedCards.push(...cards);
+          } else {
+            // Prioritize: reviewed cards first (preserve progress), then beginner→advanced
+            const sorted = cards.sort((a, b) => {
+              // Cards with review history come first
+              const aReviewed = (a.repetitions || 0) > 0 ? 0 : 1;
+              const bReviewed = (b.repetitions || 0) > 0 ? 0 : 1;
+              if (aReviewed !== bReviewed) return aReviewed - bReviewed;
+              // Then by difficulty
+              const diffOrder = { beginner: 0, intermediate: 1, advanced: 2 };
+              return (diffOrder[a.difficulty] || 1) - (diffOrder[b.difficulty] || 1);
+            });
+            cappedCards.push(...sorted.slice(0, MAX_CARDS_PER_MODULE));
+            console.log(`[SpacedRepetition] Capped ${pid}: ${cards.length} → ${MAX_CARDS_PER_MODULE} cards`);
+          }
         }
 
-        set({ unlockedCards: validCards, _lastResyncVersion: CURRENT_RESYNC_VERSION });
+        const removed = state.unlockedCards.length - cappedCards.length;
+        if (removed > 0) {
+          console.log(`[SpacedRepetition] Resync v4: removed ${removed} cards (cap + validation)`);
+        }
+
+        set({ unlockedCards: cappedCards, _lastResyncVersion: CURRENT_RESYNC_VERSION });
       },
 
       reviewCard: (cardId: string, rating: ReviewRating) => {
