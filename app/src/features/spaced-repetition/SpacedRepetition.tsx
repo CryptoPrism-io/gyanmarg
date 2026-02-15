@@ -53,6 +53,7 @@ export function SpacedRepetition() {
   const navigate = useNavigate();
   const { addXP, unlockAchievement, hasAchievement, incrementReviewCount, userProgress } = useProgressStore();
   const syncUnlockedCards = useSpacedRepetitionStore((s) => s.syncUnlockedCards);
+  const resyncCards = useSpacedRepetitionStore((s) => s.resyncCards);
   const getDueCards = useSpacedRepetitionStore((s) => s.getDueCards);
   const reviewCard = useSpacedRepetitionStore((s) => s.reviewCard);
   const getCardStats = useSpacedRepetitionStore((s) => s.getCardStats);
@@ -84,8 +85,11 @@ export function SpacedRepetition() {
   const handleAuthSuccess = () => setShowAuthGate(false);
 
   useEffect(() => {
+    // First, clean up any incorrectly unlocked cards from previous broad matching
+    resyncCards(userProgress.lessonsCompleted);
+    // Then sync new cards based on completed lessons
     syncUnlockedCards(userProgress.lessonsCompleted);
-  }, [syncUnlockedCards, userProgress.lessonsCompleted]);
+  }, [resyncCards, syncUnlockedCards, userProgress.lessonsCompleted]);
 
   const cardStats = useMemo(() => getCardStats(), [getCardStats, unlockedCards]);
   const categoryStats = useMemo(
@@ -444,13 +448,10 @@ export function SpacedRepetition() {
                   const category = getCategoryById(stat.categoryId);
                   if (!category) return null;
 
-                  // Find a matching module to link to
-                  const matchingPathway = category.pathwayIds[0];
-
                   return (
                     <button
                       key={category.id}
-                      onClick={() => navigate(`/pathway/${matchingPathway}`)}
+                      onClick={() => navigate(`/modules/${category.id}`)}
                       className="flex items-center gap-2 px-3 py-2 rounded-xl border border-white/[0.04] bg-white/[0.01] hover:bg-white/[0.03] transition-colors group"
                     >
                       <span className="text-sm grayscale opacity-40 group-hover:opacity-60 transition-opacity">{category.icon}</span>

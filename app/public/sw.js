@@ -40,6 +40,12 @@ self.addEventListener('fetch', (event) => {
   // Skip chrome-extension and other non-http requests
   if (!event.request.url.startsWith('http')) return;
 
+  // Skip Vite dev server requests (HMR, source files, websockets)
+  const url = new URL(event.request.url);
+  if (url.pathname.startsWith('/src/') || url.pathname.startsWith('/node_modules/') ||
+      url.pathname.startsWith('/@') || url.pathname.includes('?t=') ||
+      url.pathname.endsWith('.ts') || url.pathname.endsWith('.tsx')) return;
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
@@ -76,6 +82,8 @@ self.addEventListener('fetch', (event) => {
         if (event.request.mode === 'navigate') {
           return caches.match('/index.html');
         }
+        // Return a proper error response instead of undefined
+        return new Response('Network error', { status: 408, statusText: 'Request Timeout' });
       });
     })
   );

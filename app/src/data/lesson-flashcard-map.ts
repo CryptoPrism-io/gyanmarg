@@ -1,453 +1,222 @@
 /**
- * Granular Lesson to Flashcard Mapping
+ * Module Completion → Flashcard Unlock Map
  *
- * Maps individual lesson IDs to specific flashcard tags/patterns.
- * When a user completes a lesson, only flashcards matching that lesson's
- * specific tags are unlocked - not the entire topic.
+ * Simple rule: Complete ALL lessons in ALL levels of a module
+ * to unlock ALL flashcards for that module.
  *
- * This creates true progressive unlock: complete a lesson about "1% Rule"
- * and only 1% Rule flashcards unlock, not all Atomic Habits cards.
+ * Uses the SAME completion logic as the Learn page:
+ * every level → every lesson must be in completedLessonIds.
+ *
+ * Matches flashcards by moduleId AND common pathwayId variants
+ * (e.g., module 'brain-neuroscience' also matches cards with pathwayId 'brain').
  */
 
 import type { SpacedRepetitionCard } from '@/types';
+import { modules } from './modules';
 
 // ============================================
-// DIRECT LESSON ID TO FLASHCARD TAGS MAPPING
+// BUILD MODULE DATA AT IMPORT TIME
 // ============================================
 
-// Maps lesson IDs to the flashcard tags they unlock
-// More specific = higher priority
-export const lessonToFlashcardTags: Record<string, string[]> = {
-  // ============================================
-  // PERSONAL DEVELOPMENT - ATOMIC HABITS
-  // ============================================
-  'pd-intro': ['atomic-habits', 'habits'],
-  'mm-habits-001': ['compound-effect', '1%', 'marginal-gains', 'plateau'],
-  'mm-habits-002': ['identity', 'identity-based', 'behavior-change'],
-  'mm-habits-003': ['habit-loop', 'cue', 'craving', 'response', 'reward'],
-  'mm-habits-004': ['four-laws', 'obvious', 'attractive', 'easy', 'satisfying'],
-  'mm-habits-005': ['environment', 'environment-design', 'cue-design'],
-  'mm-habits-006': ['temptation', 'temptation-bundling', 'attractive'],
-  'mm-habits-007': ['two-minute', 'easy', 'starting', 'gateway-habit'],
-  'mm-habits-008': ['habit-stacking', 'stacking', 'implementation'],
-  'mm-habits-009': ['reward', 'satisfying', 'immediate-reward'],
-  'mm-habits-010': ['tracking', 'habit-tracking', 'measurement'],
-  'mm-habits-011': ['breaking-habits', 'inversion', 'bad-habits'],
-  'mm-habits-012': ['automation', 'commitment-device', 'one-time'],
-  'mm-habits-013': ['mastery', 'boredom', 'deliberate-practice'],
-  'mm-habits-014': ['systems', 'goals-vs-systems', 'atomic-habits'],
+interface ModuleLessonData {
+  moduleId: string;
+  allLessonIds: string[];
+  /** pathwayId values that flashcards might use for this module */
+  matchPathwayIds: Set<string>;
+}
 
-  // ============================================
-  // PERSONAL DEVELOPMENT - DEEP WORK
-  // ============================================
-  'dw-001': ['deep-work', 'shallow-work', 'focus'],
-  'dw-002': ['attention-residue', 'task-switching', 'focus'],
-  'dw-003': ['deep-work-philosophy', 'monastic', 'bimodal', 'rhythmic'],
-  'dw-004': ['rituals', 'routines', 'deep-work-ritual'],
-  'dw-005': ['grand-gestures', 'environment', 'commitment'],
-  'dw-006': ['collaboration', 'hub-and-spoke', 'serendipity'],
-  'dw-007': ['4dx', 'execution', 'lead-measures', 'lag-measures'],
-  'dw-008': ['downtime', 'rest', 'attention-restoration'],
-  'dw-009': ['productive-meditation', 'walking', 'deep-thinking'],
-  'dw-010': ['memory', 'memory-training', 'attention'],
-  'dw-011': ['schedule', 'time-blocking', 'planning'],
-  'dw-012': ['shallow-work', 'email', 'meetings', 'batching'],
-  'dw-013': ['fixed-schedule', 'constraints', 'productivity'],
-  'dw-014': ['digital-minimalism', 'social-media', 'tools'],
-  'dw-015': ['craftsman', 'rare-valuable-skills', 'career-capital'],
+const moduleData: ModuleLessonData[] = [];
 
-  // ============================================
-  // PERSONAL DEVELOPMENT - FUTURE SELF
-  // ============================================
-  'fs-001': ['future-self', 'temporal-self', 'continuity'],
-  'fs-002': ['present-bias', 'delayed-gratification', 'time-preference'],
-  'fs-003': ['identity-gap', 'psychological-distance', 'future-self'],
-  'fs-004': ['visualization', 'future-visualization', 'mental-simulation'],
-  'fs-005': ['commitment-devices', 'precommitment', 'ulysses'],
-  'fs-006': ['implementation-intentions', 'if-then', 'planning'],
-  'fs-007': ['temptation', 'self-control', 'willpower'],
-  'fs-008': ['goal-setting', 'smart-goals', 'future-planning'],
+/** Reverse map: lessonId → which module it belongs to */
+const lessonToModule: Record<string, string> = {};
 
-  // ============================================
-  // PSYCHOLOGY - THINKING FAST AND SLOW
-  // ============================================
-  'tfs-001': ['system1', 'system2', 'dual-process', 'kahneman'],
-  'tfs-002': ['heuristics', 'cognitive-shortcuts', 'intuition'],
-  'tfs-003': ['anchoring', 'anchoring-bias', 'adjustment'],
-  'tfs-004': ['availability', 'availability-heuristic', 'memory-bias'],
-  'tfs-005': ['representativeness', 'base-rate', 'stereotyping'],
-  'tfs-006': ['overconfidence', 'planning-fallacy', 'optimism-bias'],
-  'tfs-007': ['loss-aversion', 'prospect-theory', 'framing'],
-  'tfs-008': ['endowment-effect', 'status-quo', 'ownership'],
-  'tfs-009': ['sunk-cost', 'sunk-cost-fallacy', 'escalation'],
-  'tfs-010': ['priming', 'unconscious', 'behavioral-priming'],
+for (const mod of modules) {
+  if (!mod.pathway || mod.pathway.length === 0) continue;
 
-  // ============================================
-  // PSYCHOLOGY - COGNITIVE BIAS
-  // ============================================
-  'bias-001': ['confirmation-bias', 'selective-perception'],
-  'bias-002': ['dunning-kruger', 'competence', 'metacognition'],
-  'bias-003': ['hindsight-bias', 'knew-it-all-along', 'memory'],
-  'bias-004': ['fundamental-attribution', 'attribution-error', 'behavior'],
-  'bias-005': ['halo-effect', 'first-impressions', 'judgment'],
-  'bias-006': ['bandwagon', 'social-proof', 'conformity'],
-  'bias-007': ['negativity-bias', 'threat-detection', 'pessimism'],
-  'bias-008': ['recency-bias', 'recency-effect', 'memory'],
+  const allLessonIds: string[] = [];
+  for (const level of mod.pathway) {
+    for (const lesson of level.lessons) {
+      allLessonIds.push(lesson.id);
+      lessonToModule[lesson.id] = mod.id;
+    }
+  }
 
-  // ============================================
-  // NEGOTIATION - NEVER SPLIT THE DIFFERENCE
-  // ============================================
-  'neg-001': ['mirroring', 'rapport', 'fbi-negotiation'],
-  'neg-002': ['labeling', 'emotional-labeling', 'empathy'],
-  'neg-003': ['tactical-empathy', 'perspective-taking', 'understanding'],
-  'neg-004': ['accusation-audit', 'preemptive', 'objections'],
-  'neg-005': ['calibrated-questions', 'how-questions', 'what-questions'],
-  'neg-006': ['no-oriented', 'no-questions', 'autonomy'],
-  'neg-007': ['black-swan', 'unknown-unknowns', 'leverage'],
-  'neg-008': ['ackerman', 'bargaining', 'price-negotiation'],
-  'neg-009': ['deadlines', 'time-pressure', 'urgency'],
-  'neg-010': ['late-night-dj', 'voice-tone', 'delivery'],
+  if (allLessonIds.length === 0) continue;
 
-  // ============================================
-  // WEALTH BUILDING
-  // ============================================
-  'wealth-001': ['compound-interest', 'wealth-compound', 'time-value'],
-  'wealth-002': ['value-investing', 'intrinsic-value', 'margin-safety'],
-  'wealth-003': ['diversification', 'portfolio', 'risk-management'],
-  'wealth-004': ['index-funds', 'passive-investing', 'low-cost'],
-  'wealth-005': ['dollar-cost-averaging', 'dca', 'systematic-investing'],
-  'wealth-006': ['fire', 'financial-independence', 'early-retirement'],
-  'wealth-007': ['asset-allocation', 'rebalancing', 'portfolio-management'],
-  'wealth-008': ['tax-strategy', 'tax-efficiency', 'tax-loss-harvesting'],
+  // Build pathwayId match set:
+  // - The module id itself (e.g., 'brain-neuroscience')
+  // - Common shortened forms derived from lesson prefixes
+  const matchPathwayIds = new Set<string>();
+  matchPathwayIds.add(mod.id);
 
-  // ============================================
-  // AI & MACHINE LEARNING
-  // ============================================
-  'ai-001': ['neural-networks', 'deep-learning', 'architecture'],
-  'ai-002': ['machine-learning', 'supervised', 'unsupervised'],
-  'ai-003': ['transformers', 'attention', 'gpt'],
-  'ai-004': ['training', 'backpropagation', 'optimization'],
-  'ai-005': ['nlp', 'language-models', 'text-processing'],
-  'ai-006': ['computer-vision', 'cnn', 'image-recognition'],
-  'ai-007': ['reinforcement-learning', 'rl', 'reward-signal'],
-  'ai-008': ['ai-ethics', 'bias', 'fairness', 'alignment'],
+  // Extract unique lesson prefixes (everything before the last dash+number)
+  // e.g., 'brain-025' → 'brain', 'shiva-020' → 'shiva', 'temple-science-15' → 'temple-science'
+  for (const lessonId of allLessonIds) {
+    const match = lessonId.match(/^(.+?)-\d+$/);
+    if (match) {
+      matchPathwayIds.add(match[1]);
+    }
+  }
 
-  // ============================================
-  // BLOCKCHAIN & WEB3
-  // ============================================
-  'blockchain-001': ['blockchain', 'distributed-ledger', 'consensus'],
-  'blockchain-002': ['bitcoin', 'cryptocurrency', 'digital-gold'],
-  'blockchain-003': ['ethereum', 'smart-contracts', 'evm'],
-  'blockchain-004': ['defi', 'decentralized-finance', 'yield'],
-  'blockchain-005': ['nft', 'digital-ownership', 'tokens'],
-  'blockchain-006': ['dao', 'governance', 'decentralized-organization'],
-  'blockchain-007': ['web3', 'decentralization', 'ownership'],
-  'blockchain-008': ['staking', 'proof-of-stake', 'validation'],
-
-  // ============================================
-  // BRUCE LEE PHILOSOPHY
-  // ============================================
-  'bruce-001': ['be-water', 'adaptability', 'formlessness'],
-  'bruce-002': ['jkd', 'jeet-kune-do', 'no-style'],
-  'bruce-003': ['self-expression', 'authenticity', 'individuality'],
-  'bruce-004': ['simplicity', 'directness', 'economy-motion'],
-  'bruce-005': ['flow', 'natural', 'effortless'],
-  'bruce-006': ['continuous-learning', 'growth', 'evolution'],
-  'bruce-007': ['mind-body', 'integration', 'wholeness'],
-  'bruce-008': ['warrior-philosophy', 'courage', 'action'],
-
-  // ============================================
-  // EMOTIONAL INTELLIGENCE
-  // ============================================
-  'eq-001': ['self-awareness', 'emotional-awareness', 'introspection'],
-  'eq-002': ['self-regulation', 'emotional-control', 'impulse-control'],
-  'eq-003': ['motivation', 'intrinsic-motivation', 'drive'],
-  'eq-004': ['empathy', 'perspective-taking', 'emotional-reading'],
-  'eq-005': ['social-skills', 'relationship-management', 'influence'],
-  'eq-006': ['emotional-triggers', 'amygdala-hijack', 'reactions'],
-  'eq-007': ['active-listening', 'communication', 'understanding'],
-  'eq-008': ['conflict-resolution', 'difficult-conversations', 'mediation'],
-
-  // ============================================
-  // PRODUCTIVITY & TIME MANAGEMENT
-  // ============================================
-  'productivity-001': ['time-blocking', 'calendar', 'scheduling'],
-  'productivity-002': ['pomodoro', 'focus-sessions', 'breaks'],
-  'productivity-003': ['eisenhower', 'urgent-important', 'prioritization'],
-  'productivity-004': ['gtd', 'getting-things-done', 'capture'],
-  'productivity-005': ['batching', 'task-batching', 'context-switching'],
-  'productivity-006': ['energy-management', 'ultradian', 'peak-performance'],
-  'productivity-007': ['automation', 'delegation', 'leverage'],
-  'productivity-008': ['procrastination', 'resistance', 'starting'],
-
-  // ============================================
-  // MEANING & PURPOSE (Man's Search for Meaning)
-  // ============================================
-  'meaning-001': ['logotherapy', 'meaning', 'purpose'],
-  'meaning-002': ['suffering', 'attitude', 'choice'],
-  'meaning-003': ['will-to-meaning', 'frankl', 'existential'],
-  'meaning-004': ['tragic-optimism', 'hope', 'resilience'],
-  'meaning-005': ['responsibility', 'freedom', 'choice'],
-  'meaning-006': ['self-transcendence', 'beyond-self', 'service'],
-
-  // ============================================
-  // VALUES (The Subtle Art)
-  // ============================================
-  'values-001': ['values', 'priorities', 'what-matters'],
-  'values-002': ['responsibility', 'fault-vs-responsibility', 'ownership'],
-  'values-003': ['uncertainty', 'not-knowing', 'humility'],
-  'values-004': ['failure', 'growth', 'learning'],
-  'values-005': ['rejection', 'boundaries', 'saying-no'],
-  'values-006': ['mortality', 'death', 'memento-mori'],
-
-  // ============================================
-  // MENTAL MODELS
-  // ============================================
-  'mental-models-001': ['first-principles', 'reasoning', 'fundamentals'],
-  'mental-models-002': ['inversion', 'avoiding-stupidity', 'negative-thinking'],
-  'mental-models-003': ['second-order', 'consequences', 'long-term'],
-  'mental-models-004': ['circle-competence', 'expertise', 'boundaries'],
-  'mental-models-005': ['occams-razor', 'simplicity', 'parsimony'],
-  'mental-models-006': ['hanlon-razor', 'malice-vs-stupidity', 'attribution'],
-  'mental-models-007': ['map-territory', 'models', 'reality'],
-  'mental-models-008': ['thought-experiment', 'mental-simulation', 'hypothetical'],
-
-  // ============================================
-  // LEARNING SCIENCE
-  // ============================================
-  'learning-001': ['spaced-repetition', 'forgetting-curve', 'retention'],
-  'learning-002': ['active-recall', 'retrieval-practice', 'testing-effect'],
-  'learning-003': ['interleaving', 'mixed-practice', 'variety'],
-  'learning-004': ['elaboration', 'connections', 'meaning-making'],
-  'learning-005': ['concrete-examples', 'abstraction', 'transfer'],
-  'learning-006': ['dual-coding', 'visual-verbal', 'multimodal'],
-  'learning-007': ['desirable-difficulties', 'struggle', 'challenge'],
-  'learning-008': ['metacognition', 'learning-to-learn', 'self-awareness'],
-};
+  moduleData.push({ moduleId: mod.id, allLessonIds, matchPathwayIds });
+}
 
 // ============================================
-// FALLBACK: SOURCE-BASED MAPPING
-// For flashcards without specific tag matches
-// ============================================
-
-export const sourceToLessonPatterns: Record<string, string[]> = {
-  'Atomic Habits': ['mm-habits', 'pd-', 'atomic', 'habits'],
-  'Deep Work': ['dw-', 'deep-work', 'focus'],
-  'Future Self': ['fs-', 'future-self'],
-  "Man's Search for Meaning": ['meaning-', 'frankl', 'logotherapy'],
-  'The Subtle Art': ['values-', 'subtle-art'],
-  'Thinking Fast and Slow': ['tfs-', 'kahneman', 'psychology'],
-  'Never Split the Difference': ['neg-', 'negotiation', 'fbi'],
-  'Bruce Lee': ['bruce-', 'bl-', 'jkd'],
-  'Emotional Intelligence': ['eq-', 'emotional'],
-  'Mental Models': ['mental-models', 'models'],
-  'Productivity': ['productivity-', 'prod-'],
-  'AI': ['ai-', 'ml-', 'machine-learning'],
-  'Blockchain': ['blockchain-', 'crypto-', 'defi-', 'web3'],
-  'Wealth Building': ['wealth-', 'investing-', 'finance-'],
-  'Learning Science': ['learning-', 'learn-'],
-};
-
-// ============================================
-// HELPER FUNCTIONS
+// PUBLIC API
 // ============================================
 
 /**
- * Prefix-to-pathwayId mapping for universal fallback unlock.
- * If a lesson prefix matches a flashcard's pathwayId, the card is unlocked.
+ * Check if a module is fully completed (ALL lessons done).
+ * Same logic as Learn page's completedModulesData.
  */
-const lessonPrefixToPathwayId: Record<string, string[]> = {
-  'eq-': ['emotional-intelligence'],
-  'brain-': ['brain'],
-  'body-': ['body'],
-  'spirit-': ['spirituality'],
-  'stoic-': ['stoicism'],
-  'east-': ['eastern-philosophy'],
-  'gita-': ['bhagavad-gita'],
-  'vedic-': ['vedic-wisdom'],
-  'epic-': ['ramayana-mahabharata'],
-  'upan-': ['upanishads'],
-  'shiv-': ['shiv-sutras'],
-  'sans-': ['sanskrit-mantras'],
-  'jyot-': ['jyotish-vastu'],
-  'shiva-': ['shiva-shakti'],
-  'temple-': ['temple-science'],
-  'yoga-': ['yoga-philosophy'],
-  'ayur-': ['ayurveda'],
-  'myth-': ['mythology'],
-  'sm-': ['sales-mastery'],
-  'ent-': ['entrepreneurship-101'],
-  'pb-': ['personal-branding'],
-  'fi-': ['finance-investing'],
-  'ta-': ['technical-analysis'],
-  'opt-': ['options-trading'],
-  'macro-': ['macro-economics'],
-  'crypto-': ['crypto-trading'],
-  'cyber-': ['cybersecurity'],
-  'webdev-': ['web-development'],
-  'devops-': ['cloud-devops'],
-  'astro-': ['astronomy'],
-  'bio-': ['biology-evolution'],
-  'qm-': ['quantum-mechanics'],
-  'earth-': ['earth-sciences'],
-  'ws-': ['writing-storytelling'],
-  'mus-': ['music-sound'],
-  'cw-': ['creative-writing'],
-  'content-': ['content-creation'],
-  'world-': ['world-building'],
-  'strat-': ['strategic-thinking'],
-  'sys-': ['systems-complexity'],
-  'gt-': ['game-theory'],
-  'decide-': ['decision-making'],
-  'risk-': ['risk-management'],
-  'hist-': ['history-civilizations'],
-  'wphil-': ['western-philosophy'],
-  'geo-': ['geopolitics'],
-  'ae-': ['ancient-empires'],
-  'modhist-': ['modern-history'],
-  'anthro-': ['cultural-anthropology'],
-  'dt-': ['design-thinking'],
-  'startup-': ['startups-innovation'],
-  'rel-': ['relationships-social'],
-  'cr-': ['communication-rhetoric'],
-  'da-': ['dating-attraction'],
-  'net-': ['networking'],
-  'par-': ['parenting'],
-  'si-': ['social-intelligence'],
-  'poly-': ['polymath-mastery'],
-  'mm-': ['mental-models'],
-  'fp-': ['first-principles'],
-  'mlearn-': ['meta-learning'],
-  'phys-': ['physics-engineering'],
-  'lead-': ['leadership'],
-  'solve-': ['problem-solving'],
-  'prod-': ['productivity-systems'],
-  'math-': ['mathematics-patterns'],
-};
+function isModuleCompleted(data: ModuleLessonData, completedSet: Set<string>): boolean {
+  return data.allLessonIds.every(id => completedSet.has(id));
+}
 
 /**
- * Check if a flashcard should be unlocked based on a completed lesson
+ * Get the set of completed module IDs from completed lesson IDs.
+ * A module is complete when ALL its lessons are done.
+ */
+export function getCompletedModuleIds(completedLessonIds: string[]): Set<string> {
+  if (completedLessonIds.length === 0) return new Set();
+
+  const completedSet = new Set(completedLessonIds);
+  const completed = new Set<string>();
+
+  for (const data of moduleData) {
+    if (isModuleCompleted(data, completedSet)) {
+      completed.add(data.moduleId);
+    }
+  }
+
+  return completed;
+}
+
+/**
+ * Get all pathwayIds that should be unlocked (for flashcard matching).
+ * Returns the union of all matchPathwayIds for completed modules.
+ */
+export function getUnlockedPathwayIds(completedLessonIds: string[]): Set<string> {
+  if (completedLessonIds.length === 0) return new Set();
+
+  const completedSet = new Set(completedLessonIds);
+  const unlocked = new Set<string>();
+
+  for (const data of moduleData) {
+    if (isModuleCompleted(data, completedSet)) {
+      for (const pid of data.matchPathwayIds) {
+        unlocked.add(pid);
+      }
+    }
+  }
+
+  return unlocked;
+}
+
+/**
+ * Check if a flashcard should be unlocked based on a completed lesson.
+ * Only returns true if:
+ *  1. The lesson belongs to a module
+ *  2. ALL lessons in that module are completed
+ *  3. The card's pathwayId matches the module
+ *
+ * NOTE: This function is called per-card per-lesson which is expensive.
+ * Prefer getUnlockedFlashcards() for bulk operations.
  */
 export function isFlashcardUnlockedByLesson(
   card: SpacedRepetitionCard,
   lessonId: string
 ): boolean {
-  // 1. Check direct lesson-to-tags mapping (most specific)
-  const lessonTags = lessonToFlashcardTags[lessonId];
-  if (lessonTags && card.tags) {
-    const cardTagsLower = card.tags.map(t => t.toLowerCase());
-    for (const tag of lessonTags) {
-      if (cardTagsLower.some(ct => ct.includes(tag.toLowerCase()))) {
-        return true;
-      }
-    }
-  }
+  // This is a simplified single-lesson check used by resync.
+  // It returns true if the card's pathwayId matches the module that this lesson belongs to.
+  const modId = lessonToModule[lessonId];
+  if (!modId) return false;
 
-  const lessonIdLower = lessonId.toLowerCase();
-  const cardIdLower = card.id.toLowerCase();
+  const data = moduleData.find(d => d.moduleId === modId);
+  if (!data) return false;
 
-  // 2. Legacy direct ID prefix matching (backward compat)
-  if (lessonIdLower.includes('habits') && cardIdLower.startsWith('ah-')) return true;
-  if (lessonIdLower.includes('dw-') && cardIdLower.startsWith('dw-')) return true;
-  if (lessonIdLower.includes('fs-') && cardIdLower.startsWith('fs-')) return true;
-  if (lessonIdLower.includes('neg-') && cardIdLower.startsWith('neg-')) return true;
-  if (lessonIdLower.includes('tfs-') && cardIdLower.startsWith('tfs-')) return true;
-  if (lessonIdLower.includes('bruce') && cardIdLower.startsWith('bl-')) return true;
-  if (lessonIdLower.includes('ai-') && cardIdLower.startsWith('ai-')) return true;
-  if (lessonIdLower.includes('blockchain') && cardIdLower.startsWith('bc-')) return true;
-  if (lessonIdLower.includes('wealth') && cardIdLower.startsWith('wb-')) return true;
-
-  // 3. Prefix-based fallback: lesson prefix → pathwayId match
-  if (card.pathwayId) {
-    for (const [prefix, pathwayIds] of Object.entries(lessonPrefixToPathwayId)) {
-      if (lessonIdLower.startsWith(prefix)) {
-        if (pathwayIds.includes(card.pathwayId)) {
-          return true;
-        }
-      }
-    }
-  }
-
-  return false;
+  return card.pathwayId ? data.matchPathwayIds.has(card.pathwayId) : false;
 }
 
 /**
- * Get all flashcards that should be unlocked by a list of completed lessons
+ * Get all flashcards that should be unlocked given completed lessons.
+ * Only unlocks cards for FULLY COMPLETED modules.
  */
 export function getUnlockedFlashcards(
   allCards: SpacedRepetitionCard[],
   completedLessonIds: string[]
 ): SpacedRepetitionCard[] {
-  if (completedLessonIds.length === 0) return [];
+  const unlockedPids = getUnlockedPathwayIds(completedLessonIds);
+  if (unlockedPids.size === 0) return [];
 
   return allCards.filter(card =>
-    completedLessonIds.some(lessonId => isFlashcardUnlockedByLesson(card, lessonId))
+    card.pathwayId && unlockedPids.has(card.pathwayId)
   );
 }
 
 /**
- * Get flashcard count that would be unlocked by a specific lesson
- * Useful for showing "Complete this lesson to unlock X flashcards"
+ * Get flashcard count that would be unlocked by completing a module.
+ * Only > 0 if this is the LAST remaining lesson needed to complete the module.
  */
 export function getFlashcardCountForLesson(
   allCards: SpacedRepetitionCard[],
-  lessonId: string
+  lessonId: string,
+  completedLessonIds?: string[]
 ): number {
-  return allCards.filter(card => isFlashcardUnlockedByLesson(card, lessonId)).length;
+  const modId = lessonToModule[lessonId];
+  if (!modId) return 0;
+
+  const data = moduleData.find(d => d.moduleId === modId);
+  if (!data) return 0;
+
+  // Check if completing this lesson would complete the module
+  if (completedLessonIds) {
+    const completedSet = new Set(completedLessonIds);
+    completedSet.add(lessonId);
+    const allDone = data.allLessonIds.every(id => completedSet.has(id));
+    if (!allDone) return 0;
+  }
+
+  return allCards.filter(card =>
+    card.pathwayId && data.matchPathwayIds.has(card.pathwayId)
+  ).length;
 }
 
 /**
- * Get all flashcards that match any of the given lesson IDs
- * Used by QuickReviseOverlay to gather cards for a revision session
+ * Check if a lesson is the final lesson of a module's last level.
+ */
+export function isModuleCompletionLesson(lessonId: string): boolean {
+  for (const data of moduleData) {
+    if (data.allLessonIds[data.allLessonIds.length - 1] === lessonId) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Get the module ID for a lesson.
+ */
+export function getModuleForLesson(lessonId: string): string | null {
+  return lessonToModule[lessonId] || null;
+}
+
+/**
+ * Get all flashcards for completed modules (used by QuickReviseOverlay).
  */
 export function getFlashcardsForLessonIds(
   allCards: SpacedRepetitionCard[],
   lessonIds: string[]
 ): SpacedRepetitionCard[] {
-  if (lessonIds.length === 0) return [];
-  return allCards.filter(card =>
-    lessonIds.some(lessonId => isFlashcardUnlockedByLesson(card, lessonId))
-  );
+  return getUnlockedFlashcards(allCards, lessonIds);
 }
 
 /**
- * Check if any of the given lesson IDs have associated flashcards
+ * Check if completing any given lessons would have flashcard impact.
  */
 export function hasFlashcardsForLessons(
-  allCards: SpacedRepetitionCard[],
+  _allCards: SpacedRepetitionCard[],
   lessonIds: string[]
 ): boolean {
-  return lessonIds.some(lessonId =>
-    allCards.some(card => isFlashcardUnlockedByLesson(card, lessonId))
-  );
-}
-
-// Legacy exports for backwards compatibility
-export function getUnlockedFlashcardSources(completedLessonIds: string[]): Set<string> {
-  const sources = new Set<string>();
-  for (const lessonId of completedLessonIds) {
-    // Add sources based on lesson patterns
-    for (const [source, patterns] of Object.entries(sourceToLessonPatterns)) {
-      if (patterns.some(p => lessonId.toLowerCase().includes(p.toLowerCase()))) {
-        sources.add(source);
-      }
-    }
-  }
-  return sources;
-}
-
-export function isFlashcardUnlocked(
-  flashcardSource: string,
-  unlockedSources: Set<string>
-): boolean {
-  if (unlockedSources.has(flashcardSource)) return true;
-  for (const unlocked of unlockedSources) {
-    if (
-      flashcardSource.toLowerCase().includes(unlocked.toLowerCase()) ||
-      unlocked.toLowerCase().includes(flashcardSource.toLowerCase())
-    ) {
-      return true;
-    }
-  }
-  return false;
+  return lessonIds.some(id => id in lessonToModule);
 }

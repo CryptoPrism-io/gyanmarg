@@ -2,8 +2,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { FlashcardWithScheduling, ReviewRating, ReviewHistoryEntry, SpacedRepetitionCard } from '@/types';
 import { allFlashcards } from '@/data/flashcards-index';
-import { reviewCategories, getCategoryForPathwayId } from '@/data/review-categories';
-import { isFlashcardUnlockedByLesson } from '@/data/lesson-flashcard-map';
+import { reviewCategories } from '@/data/review-categories';
+import { getUnlockedPathwayIds } from '@/data/lesson-flashcard-map';
 import { triggerSync } from '@/store/firebaseSync';
 
 interface CategoryStats {
@@ -21,9 +21,11 @@ interface SpacedRepetitionState {
   reviewHistory: ReviewHistoryEntry[];
   lastReviewDate: string | null;
   totalReviews: number;
+  _lastResyncVersion?: number;
 
   // Actions
   syncUnlockedCards: (completedLessonIds: string[]) => void;
+  resyncCards: (completedLessonIds: string[]) => void;
   reviewCard: (cardId: string, rating: ReviewRating) => void;
   getDueCards: (categoryId?: string) => FlashcardWithScheduling[];
   getCardsByCategory: (categoryId: string) => FlashcardWithScheduling[];
@@ -88,31 +90,14 @@ function getNextReviewDate(interval: number): string {
 }
 
 /**
- * Check if a flashcard belongs to a category
+ * Check if a flashcard belongs to a category (exact pathwayId matching)
  */
 function cardBelongsToCategory(card: FlashcardWithScheduling, categoryId: string): boolean {
   const category = reviewCategories.find(c => c.id === categoryId);
   if (!category) return false;
 
-  // Check if card's pathwayId matches any of the category's pathwayIds
-  const cardPathway = card.pathwayId?.toLowerCase() || '';
-  const cardCategory = card.category?.toLowerCase() || '';
-
-  return category.pathwayIds.some(p => {
-    const pLower = p.toLowerCase();
-    return cardPathway.includes(pLower) ||
-           pLower.includes(cardPathway) ||
-           cardCategory.includes(pLower) ||
-           pLower.includes(cardCategory);
-  });
-}
-
-/**
- * Get category ID for a flashcard
- */
-function getCardCategoryId(card: SpacedRepetitionCard): string | null {
-  const category = getCategoryForPathwayId(card.pathwayId || '');
-  return category?.id || null;
+  const cardPathway = card.pathwayId || '';
+  return category.pathwayIds.includes(cardPathway);
 }
 
 export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
@@ -124,9 +109,9 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
       totalReviews: 0,
 
       /**
-       * Sync unlocked cards based on completed lessons
-       * GRANULAR: Each lesson only unlocks its specific flashcards (5-15 cards per lesson)
-       * Uses tag-based matching from lesson-flashcard-map.ts
+       * Sync unlocked cards based on completed modules.
+       * Rule: Complete ALL lessons in a module → unlock ALL flashcards for it.
+       * Uses the same completion logic as the Learn page.
        */
       syncUnlockedCards: (completedLessonIds: string[]) => {
         if (completedLessonIds.length === 0) return;
@@ -134,15 +119,14 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
         const state = get();
         const existingCardIds = new Set(state.unlockedCards.map(c => c.id));
 
-        // Find flashcards that match ANY completed lesson's tags
-        // Each lesson only unlocks ~5-15 related cards, not the whole category
+        // Get all pathwayIds for fully completed modules
+        const unlockedPids = getUnlockedPathwayIds(completedLessonIds);
+        if (unlockedPids.size === 0) return;
+
+        // Find new cards to unlock (cards whose pathwayId matches a completed module)
         const newCardsToUnlock = allFlashcards.filter(card => {
           if (existingCardIds.has(card.id)) return false;
-
-          // Check if any completed lesson unlocks this specific card
-          return completedLessonIds.some(lessonId =>
-            isFlashcardUnlockedByLesson(card, lessonId)
-          );
+          return card.pathwayId ? unlockedPids.has(card.pathwayId) : false;
         });
 
         if (newCardsToUnlock.length > 0) {
@@ -152,6 +136,39 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
           }));
           triggerSync();
         }
+      },
+
+      /**
+       * Re-evaluate all unlocked cards against current matching logic.
+       * Removes cards that were unlocked by previous overly-broad matching.
+       * Preserves review progress for legitimately unlocked cards.
+       */
+      resyncCards: (completedLessonIds: string[]) => {
+        const CURRENT_RESYNC_VERSION = 3; // v3: module-completion-only unlock rule
+        const state = get();
+
+        if (state._lastResyncVersion === CURRENT_RESYNC_VERSION) return;
+
+        if (completedLessonIds.length === 0) {
+          // No lessons completed = no cards should be unlocked
+          if (state.unlockedCards.length > 0) {
+            set({ unlockedCards: [], _lastResyncVersion: CURRENT_RESYNC_VERSION });
+          }
+          return;
+        }
+
+        // Re-evaluate: keep only cards for fully completed modules
+        const unlockedPids = getUnlockedPathwayIds(completedLessonIds);
+        const validCards = state.unlockedCards.filter(card =>
+          card.pathwayId ? unlockedPids.has(card.pathwayId) : false
+        );
+
+        const removed = state.unlockedCards.length - validCards.length;
+        if (removed > 0) {
+          console.log(`[SpacedRepetition] Resync: removed ${removed} incorrectly unlocked cards`);
+        }
+
+        set({ unlockedCards: validCards, _lastResyncVersion: CURRENT_RESYNC_VERSION });
       },
 
       reviewCard: (cardId: string, rating: ReviewRating) => {
@@ -310,13 +327,6 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
             cardBelongsToCategory(card, category.id)
           );
 
-          // Count potential cards (all flashcards in this category)
-          const potentialCards = allFlashcards.filter(card => {
-            const cardCategoryId = getCardCategoryId(card);
-            return cardCategoryId === category.id;
-          });
-
-          // Category is "unlocked" if ANY cards from it are unlocked
           const isUnlocked = categoryCards.length > 0;
 
           return {
@@ -326,7 +336,6 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
             mastered: categoryCards.filter(c => c.interval > 21).length,
             learning: categoryCards.filter(c => c.repetitions > 0 && c.interval <= 21).length,
             isUnlocked,
-            potentialTotal: potentialCards.length,
           };
         });
       },
@@ -342,6 +351,7 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
         reviewHistory: state.reviewHistory.slice(-1000),
         lastReviewDate: state.lastReviewDate,
         totalReviews: state.totalReviews,
+        _lastResyncVersion: state._lastResyncVersion,
       }),
     }
   )

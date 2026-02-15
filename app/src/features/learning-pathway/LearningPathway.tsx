@@ -13,6 +13,7 @@ import {
   Play,
   Brain,
   CheckCircle2,
+  RotateCcw,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useUserStore } from '@/store/userStore';
@@ -1018,32 +1019,46 @@ export function LearningPathway() {
             </div>
             <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide snap-x snap-mandatory">
               {completedModulesData.map(({ module: mod, totalLessons }) => (
-                <button
+                <div
                   key={mod.id}
-                  onClick={() => {
-                    setSelectedModuleId(mod.id);
-                    setSelectedComingSoonModuleId(null);
-                    setSelectedLevelId(null);
-                  }}
-                  className="flex-shrink-0 w-48 snap-start text-left rounded-2xl border border-sage/15 bg-sage/[0.03] hover:bg-sage/[0.07] transition-all overflow-hidden group"
+                  className="flex-shrink-0 w-48 snap-start text-left rounded-2xl border border-sage/15 bg-sage/[0.03] overflow-hidden"
                 >
-                  <div className="flex items-center gap-3 p-3">
-                    <img
-                      src={getModuleImage(mod.id)}
-                      alt={mod.title}
-                      className="w-10 h-10 rounded-lg object-cover border border-sage/20 flex-shrink-0"
-                    />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-xs font-semibold text-text-primary group-hover:text-sage transition-colors truncate">
-                        {mod.title}
-                      </p>
-                      <div className="flex items-center gap-1.5 mt-1">
-                        <CheckCircle2 className="w-3 h-3 text-sage flex-shrink-0" />
-                        <span className="text-[10px] text-sage">{totalLessons} lessons</span>
+                  <button
+                    onClick={() => {
+                      setSelectedModuleId(mod.id);
+                      setSelectedComingSoonModuleId(null);
+                      setSelectedLevelId(null);
+                    }}
+                    className="w-full text-left hover:bg-sage/[0.07] transition-all group"
+                  >
+                    <div className="flex items-center gap-3 p-3 pb-2">
+                      <img
+                        src={getModuleImage(mod.id)}
+                        alt={mod.title}
+                        className="w-10 h-10 rounded-lg object-cover border border-sage/20 flex-shrink-0"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs font-semibold text-text-primary group-hover:text-sage transition-colors truncate">
+                          {mod.title}
+                        </p>
+                        <div className="flex items-center gap-1.5 mt-1">
+                          <CheckCircle2 className="w-3 h-3 text-sage flex-shrink-0" />
+                          <span className="text-[10px] text-sage">{totalLessons} lessons</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </button>
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/review');
+                    }}
+                    className="w-full flex items-center justify-center gap-1.5 px-3 py-1.5 text-[10px] font-medium text-amber bg-amber/10 hover:bg-amber/20 transition-colors border-t border-sage/10"
+                  >
+                    <RotateCcw className="w-3 h-3" />
+                    Review Flashcards
+                  </button>
+                </div>
               ))}
             </div>
           </motion.div>

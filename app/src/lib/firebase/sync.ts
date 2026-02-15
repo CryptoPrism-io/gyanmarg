@@ -141,17 +141,20 @@ export function hydrateFromFirestore(firestoreData: FirestoreUserDocument): void
  * Strategy: localStorage wins (more recent local changes take precedence)
  */
 function mergeData(local: LocalStorageData, remote: FirestoreUserDocument): LocalStorageData {
-  // For now, we use a simple "local wins" strategy
-  // In the future, this could be more sophisticated with timestamps per field
+  // Strategy: "best of both" — take max for numbers, union for arrays, remote wins for non-empty fields local doesn't have
+  const localXP = local.progress.userProgress.xp || 0;
+  const remoteXP = remote.progress.userProgress.xp || 0;
+  const localLevel = local.progress.userProgress.level || 1;
+  const remoteLevel = remote.progress.userProgress.level || 1;
+
   return {
     user: local.user.isOnboarded ? local.user : remote.user,
     progress: {
+      // Remote as base, then overlay local non-default fields
       ...remote.progress,
-      ...local.progress,
-      // Merge completed lessons (union)
       userProgress: {
         ...remote.progress.userProgress,
-        ...local.progress.userProgress,
+        // Union merge for arrays
         lessonsCompleted: Array.from(new Set([
           ...remote.progress.userProgress.lessonsCompleted,
           ...local.progress.userProgress.lessonsCompleted,
@@ -160,44 +163,62 @@ function mergeData(local: LocalStorageData, remote: FirestoreUserDocument): Loca
           ...remote.progress.userProgress.achievements,
           ...local.progress.userProgress.achievements,
         ])),
-        // Take the higher XP/level
-        xp: Math.max(remote.progress.userProgress.xp, local.progress.userProgress.xp),
-        level: Math.max(remote.progress.userProgress.level, local.progress.userProgress.level),
-        currentStreak: Math.max(remote.progress.userProgress.currentStreak, local.progress.userProgress.currentStreak),
+        // Always take the higher value
+        xp: Math.max(remoteXP, localXP),
+        level: Math.max(remoteLevel, localLevel),
+        habitsCompleted: Math.max(remote.progress.userProgress.habitsCompleted || 0, local.progress.userProgress.habitsCompleted || 0),
+        deepWorkMinutes: Math.max(remote.progress.userProgress.deepWorkMinutes || 0, local.progress.userProgress.deepWorkMinutes || 0),
+        currentStreak: Math.max(remote.progress.userProgress.currentStreak || 0, local.progress.userProgress.currentStreak || 0),
+        // Keep whichever lastActivityDate is more recent
+        lastActivityDate: (local.progress.userProgress.lastActivityDate || '') > (remote.progress.userProgress.lastActivityDate || '')
+          ? local.progress.userProgress.lastActivityDate
+          : remote.progress.userProgress.lastActivityDate,
       },
       pathwayProgress: {
         ...remote.progress.pathwayProgress,
-        ...local.progress.pathwayProgress,
         completedLessons: Array.from(new Set([
           ...remote.progress.pathwayProgress.completedLessons,
           ...local.progress.pathwayProgress.completedLessons,
         ])),
-        totalXP: Math.max(remote.progress.pathwayProgress.totalXP, local.progress.pathwayProgress.totalXP),
+        totalXP: Math.max(remote.progress.pathwayProgress.totalXP || 0, local.progress.pathwayProgress.totalXP || 0),
+        streakDays: Math.max(remote.progress.pathwayProgress.streakDays || 0, local.progress.pathwayProgress.streakDays || 0),
+        currentLesson: local.progress.pathwayProgress.currentLesson || remote.progress.pathwayProgress.currentLesson,
       },
+      // Merge bookmarks (union by lessonId)
+      bookmarks: (() => {
+        const localBookmarks = local.progress.bookmarks || [];
+        const remoteBookmarks = remote.progress.bookmarks || [];
+        const seen = new Set(localBookmarks.map(b => b.lessonId));
+        return [...localBookmarks, ...remoteBookmarks.filter(b => !seen.has(b.lessonId))];
+      })(),
       // Merge challenge completions
       challengeCompletions: [
         ...remote.progress.challengeCompletions,
-        ...local.progress.challengeCompletions.filter(
+        ...(local.progress.challengeCompletions || []).filter(
           lc => !remote.progress.challengeCompletions.some(rc => rc.challengeId === lc.challengeId)
         ),
       ],
       // Take highest streak values
-      longestStreak: Math.max(remote.progress.longestStreak, local.progress.longestStreak),
+      longestStreak: Math.max(remote.progress.longestStreak || 0, local.progress.longestStreak || 0),
+      // Keep weekly challenge from whichever side has one
+      weeklyChallenge: local.progress.weeklyChallenge || remote.progress.weeklyChallenge,
+      lastViewedLesson: local.progress.lastViewedLesson || remote.progress.lastViewedLesson,
+      streakFreezes: Math.max(remote.progress.streakFreezes || 0, local.progress.streakFreezes || 0),
+      lastFreezeUsed: local.progress.lastFreezeUsed || remote.progress.lastFreezeUsed,
+      freezeRefreshDate: local.progress.freezeRefreshDate || remote.progress.freezeRefreshDate,
     },
     habits: {
-      // Merge habits by ID
       habits: mergeById(remote.habits.habits, local.habits.habits),
       completions: mergeHabitCompletions(remote.habits.completions, local.habits.completions),
     },
     spacedRepetition: {
-      // Merge unlocked cards by ID, prefer local scheduling data
       unlockedCards: mergeById(remote.spacedRepetition.unlockedCards, local.spacedRepetition.unlockedCards),
       reviewHistory: [
         ...remote.spacedRepetition.reviewHistory,
         ...local.spacedRepetition.reviewHistory,
-      ].slice(-1000), // Keep last 1000 entries
+      ].slice(-1000),
       lastReviewDate: local.spacedRepetition.lastReviewDate || remote.spacedRepetition.lastReviewDate,
-      totalReviews: Math.max(remote.spacedRepetition.totalReviews, local.spacedRepetition.totalReviews),
+      totalReviews: Math.max(remote.spacedRepetition.totalReviews || 0, local.spacedRepetition.totalReviews || 0),
     },
   };
 }

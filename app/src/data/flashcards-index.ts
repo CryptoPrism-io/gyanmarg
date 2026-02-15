@@ -122,6 +122,9 @@ import { interviewSkillsFlashcards } from './flashcards-batch17-interview';
 // Batch 18: Universal — Auto-extracted from all lesson quizzes (871 cards, 61 categories)
 import { universalFlashcards } from './flashcards-batch18-universal';
 
+// Batch 19: Premium — Gemini-crafted retention flashcards from deep lesson analysis
+import { premiumFlashcards } from './flashcards-batch19-premium';
+
 /**
  * All flashcards combined - use this for spaced repetition
  */
@@ -211,6 +214,8 @@ export const allFlashcards: SpacedRepetitionCard[] = [
   ...interviewSkillsFlashcards,
   // Batch 18: Universal
   ...universalFlashcards,
+  // Batch 19: Premium (Gemini-crafted)
+  ...premiumFlashcards,
 ];
 
 /**

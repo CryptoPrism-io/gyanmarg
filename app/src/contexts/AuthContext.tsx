@@ -278,7 +278,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }, []);
 
-  // Manual sync
+  // Manual sync — pulls from Firestore, merges, then pushes back
   const syncNow = useCallback(async () => {
     if (!user) return;
 
@@ -286,12 +286,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setSyncError(null);
 
     try {
-      await syncToFirestore(user.uid, {
-        email: user.email || '',
-        displayName: user.displayName || '',
-        photoURL: user.photoURL,
-      });
-      setLastSyncAt(new Date());
+      // Full round-trip: pull from cloud → merge → hydrate → push back
+      const syncResult = await syncOnLogin(user);
+
+      if (syncResult.error) {
+        setSyncError(syncResult.error);
+      } else {
+        setLastSyncAt(new Date());
+      }
+
+      // Reload to apply hydrated/merged data to Zustand stores
+      if (syncResult.merged || syncResult.hydrated) {
+        window.location.reload();
+      }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Sync failed';
       setSyncError(errorMessage);
