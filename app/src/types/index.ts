@@ -196,6 +196,7 @@ export interface UserSettings {
   notifications: boolean;
   soundEnabled: boolean;
   dailyReminder: string | null;
+  microLearningMode?: boolean; // Quick bite-sized lessons (2-5 min)
 }
 
 // Onboarding Types

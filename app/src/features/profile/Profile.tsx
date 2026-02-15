@@ -260,6 +260,8 @@ export function Profile() {
   const notificationSchedule = useProgressStore((s) => s.notificationSchedule);
   const toggleNotifications = useProgressStore((s) => s.toggleNotifications);
   const setNotificationTime = useProgressStore((s) => s.setNotificationTime);
+  const settings = useUserStore((s) => s.settings);
+  const updateSettings = useUserStore((s) => s.updateSettings);
 
   // Auth
   const { user, signOut, isSyncing, syncNow, lastSyncAt, syncError, isConfigured } = useAuth();
@@ -915,6 +917,49 @@ export function Profile() {
                   </motion.div>
                 )}
               </AnimatePresence>
+            </GlassCard>
+          </motion.div>
+
+          {/* Learning Preferences */}
+          <motion.div variants={itemVariants}>
+            <GlassCard>
+              <h3 className="text-sm font-medium text-text-primary mb-4 flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-lavender" />
+                Learning Preferences
+              </h3>
+              <div className="space-y-4">
+                {/* Micro-Learning Mode Toggle */}
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <p className="text-xs font-medium text-text-primary">Express Learning Mode</p>
+                    <p className="text-[11px] text-text-muted mt-0.5">Bite-sized lessons (2-5 min) instead of full sessions</p>
+                  </div>
+                  <button
+                    onClick={() =>
+                      updateSettings({
+                        microLearningMode: !settings.microLearningMode,
+                      })
+                    }
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      settings.microLearningMode ? 'bg-lavender' : 'bg-white/[0.1]'
+                    }`}
+                  >
+                    <span
+                      className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
+                        settings.microLearningMode ? 'translate-x-5' : 'translate-x-0.5'
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                {settings.microLearningMode && (
+                  <div className="p-3 rounded-lg bg-lavender/[0.06] border border-lavender/20">
+                    <p className="text-[11px] text-lavender">
+                      ⚡ Express Mode active: See shorter versions of lessons optimized for quick learning
+                    </p>
+                  </div>
+                )}
+              </div>
             </GlassCard>
           </motion.div>
 
