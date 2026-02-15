@@ -12,5 +12,6 @@ export { VisualOfTheDay } from './VisualOfTheDay';
 export { SignInGate } from './SignInGate';
 export { SearchModal } from './SearchModal';
 export { ResumeCard } from './ResumeCard';
+export { QuickReviewCard } from './QuickReviewCard';
 export { ShareableAchievementCard } from './ShareableAchievementCard';
 export { Leaderboard } from './Leaderboard';

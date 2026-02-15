@@ -22,7 +22,7 @@ import { useUserStore } from '@/store/userStore';
 import { ModuleLayout, Section } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { ProgressBar, XPBadge } from '@/components/atoms';
-import { VisualOfTheDay, ResumeCard, Leaderboard } from '@/components/organisms';
+import { VisualOfTheDay, ResumeCard, QuickReviewCard, Leaderboard } from '@/components/organisms';
 import { getDailyQuote, getPastQuotes, formatQuoteDate } from '@/data/quotes';
 
 const itemVariants = {
@@ -170,33 +170,35 @@ export function Dashboard() {
             </button>
           </motion.div>
 
-          {/* Step 2: Review flashcards */}
-          <motion.div variants={itemVariants}>
-            <button
-              onClick={() => navigate('/review')}
-              className="w-full flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-gradient-to-r from-lavender/10 to-lavender/5 border border-lavender/20 hover:border-lavender/30 transition-all group"
-            >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-lavender/15 border border-lavender/20 flex items-center justify-center">
-                <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-lavender" />
-              </div>
-              <div className="flex-1 text-left">
-                <p className="text-sm sm:text-base font-semibold text-text-primary">Review Flashcards</p>
-                <p className="text-[11px] sm:text-xs text-text-muted">
-                  {dueCards.length > 0
-                    ? `${dueCards.length} card${dueCards.length !== 1 ? 's' : ''} due for review`
-                    : 'All caught up! Check back later.'}
-                </p>
-              </div>
-              {dueCards.length > 0 && (
-                <span className="text-xs font-semibold text-lavender bg-lavender/10 px-2.5 py-0.5 rounded-full">
-                  {dueCards.length}
-                </span>
-              )}
-              <ChevronRight className="w-4 h-4 text-text-muted group-hover:translate-x-1 transition-transform" />
-            </button>
-          </motion.div>
+          {/* Step 2: Quick Review (teaser card + 5-card burst) */}
+          {dueCards.length > 0 && (
+            <motion.div variants={itemVariants}>
+              <QuickReviewCard />
+            </motion.div>
+          )}
 
-          {/* Step 3: Weekly quest progress */}
+          {/* Step 3: Review flashcards (fallback button) */}
+          {dueCards.length === 0 && (
+            <motion.div variants={itemVariants}>
+              <button
+                onClick={() => navigate('/review')}
+                className="w-full flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-gradient-to-r from-lavender/10 to-lavender/5 border border-lavender/20 hover:border-lavender/30 transition-all group"
+              >
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-lavender/15 border border-lavender/20 flex items-center justify-center">
+                  <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-lavender" />
+                </div>
+                <div className="flex-1 text-left">
+                  <p className="text-sm sm:text-base font-semibold text-text-primary">Review Flashcards</p>
+                  <p className="text-[11px] sm:text-xs text-text-muted">
+                    All caught up! Check back later.
+                  </p>
+                </div>
+                <ChevronRight className="w-4 h-4 text-text-muted group-hover:translate-x-1 transition-transform" />
+              </button>
+            </motion.div>
+          )}
+
+          {/* Step 4: Weekly quest progress */}
           {weeklyChallenge && !weeklyChallenge.completed && (
             <motion.div variants={itemVariants}>
               <GlassCard className="!p-3 sm:!p-4">
