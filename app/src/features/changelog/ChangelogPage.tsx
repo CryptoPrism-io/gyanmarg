@@ -15,6 +15,23 @@ interface ChangelogEntry {
 
 const CHANGELOG: ChangelogEntry[] = [
   {
+    version: '2.5.0',
+    date: '2026-02-15',
+    type: 'major',
+    title: 'Premium Flashcards & Engagement Redesign',
+    changes: [
+      '2,418 AI-generated premium flashcards across all 76 modules (Gemini 2.5 Flash)',
+      'Smart card cap: 50 best cards per module with priority selection (gem > fc > univ)',
+      'Trophy Room redesign — skill trees, Hall of Fame, mastery progression paths',
+      'Profile page redesign — dynamic titles, category journey map, shareable stats',
+      'Review Hub 10x — mastery rings, heat-glow due indicators, command center layout',
+      'Daily Power Meter and Quick Review Card on dashboard for habit-building',
+      'Express Learning Mode — bite-sized lessons (2-5 min) toggle in Settings',
+      'Sequential lesson locking with full-height visualization cards',
+      'All 76 modules fully available with 4,716 lessons across 598 levels',
+    ],
+  },
+  {
     version: '2.4.0',
     date: '2026-02-13',
     type: 'content',

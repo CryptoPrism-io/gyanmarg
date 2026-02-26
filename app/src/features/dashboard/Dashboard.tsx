@@ -125,7 +125,7 @@ export function Dashboard() {
   return (
     <ModuleLayout
       title={`${greeting}${userName ? `, ${userName}` : ''}`}
-      subtitle="Your daily learning path"
+      subtitle="Your reading desk"
       icon={<Sparkles className="w-5 h-5" />}
       headerGradient="sunrise"
     >
@@ -142,7 +142,7 @@ export function Dashboard() {
       )}
 
       {/* Today's Path — the core daily loop */}
-      <Section title="Today's Path" subtitle="Complete these to maintain your streak">
+      <Section title="Continue Reading" subtitle="Pick up where you left off">
         <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08 } } }} className="space-y-3">
           {/* Daily Power Meter — Meta-gamification */}
           <motion.div variants={itemVariants}>
@@ -160,12 +160,12 @@ export function Dashboard() {
               </div>
               <div className="flex-1 text-left">
                 <p className="text-sm sm:text-base font-semibold text-text-primary">
-                  {lastViewedLesson && !lastViewedLesson.completed ? 'Continue Lesson' : 'Start a Lesson'}
+                  {lastViewedLesson && !lastViewedLesson.completed ? 'Continue Reading' : 'Start Reading'}
                 </p>
                 <p className="text-[11px] sm:text-xs text-text-muted">
                   {lastViewedLesson && !lastViewedLesson.completed
                     ? 'Resume where you left off'
-                    : 'Pick up where you left off or explore something new'}
+                    : 'Explore a new domain or continue your journey'}
                 </p>
               </div>
               <div className="flex items-center gap-1.5">
@@ -193,7 +193,7 @@ export function Dashboard() {
                   <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-lavender" />
                 </div>
                 <div className="flex-1 text-left">
-                  <p className="text-sm sm:text-base font-semibold text-text-primary">Review Flashcards</p>
+                  <p className="text-sm sm:text-base font-semibold text-text-primary">Quick Revisit</p>
                   <p className="text-[11px] sm:text-xs text-text-muted">
                     All caught up! Check back later.
                   </p>
@@ -256,7 +256,7 @@ export function Dashboard() {
       </div>
 
       {/* Leaderboard — Social Competition */}
-      <Section title="Global Leaderboard" subtitle="See where you stand">
+      <Section title="Fellow Readers" subtitle="See what others are exploring">
         <Leaderboard
           currentUserName={userName || undefined}
           currentUserXP={userProgress.xp}
@@ -300,7 +300,7 @@ export function Dashboard() {
                 <BookOpen className="w-3.5 h-3.5" />
               </div>
               <p className="text-sm font-display font-bold text-text-primary">{userProgress?.lessonsCompleted?.length ?? 0}</p>
-              <p className="text-[9px] text-text-muted">Lessons</p>
+              <p className="text-[9px] text-text-muted">Reads</p>
             </div>
           </div>
         </GlassCard>

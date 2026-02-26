@@ -586,8 +586,8 @@ export function Settings() {
               </div>
 
               <p className="text-sm text-text-secondary mb-4">
-                Build your Polymind using spaced repetition, active recall, and cross-domain connections
-                to retain knowledge from 1000+ bestselling authors.
+                Read across 76 domains of human knowledge — from ancient wisdom to cutting-edge science.
+                1000+ bestselling authors distilled into immersive reading journeys.
               </p>
 
               {/* Update Controls */}

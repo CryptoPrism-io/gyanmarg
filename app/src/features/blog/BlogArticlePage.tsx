@@ -132,9 +132,9 @@ export function BlogArticlePage() {
             transition={{ delay: 0.5 }}
             className="mt-16 p-10 glass-accent rounded-2xl text-center"
           >
-            <h3 className="text-2xl font-medium mb-4 tracking-tight">Ready to Build Your Polymind?</h3>
+            <h3 className="text-2xl font-medium mb-4 tracking-tight">Ready to Explore More?</h3>
             <p className="text-gray-500 mb-8 font-light text-lg">
-              Stop forgetting what you read. Start building knowledge that lasts.
+              76 worlds of knowledge await. Start reading across every domain.
             </p>
             <Link
               to="/dashboard"

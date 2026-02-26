@@ -134,46 +134,46 @@ function useInstallPrompt() {
 const thePlan = [
   {
     step: 1,
-    title: 'Choose Your Domains',
-    description: "Psychology, AI, Wealth, Philosophy, Health — pick any of 50+ knowledge domains. We've already built the decks for you.",
+    title: 'Pick a World',
+    description: 'Psychology, Quantum Physics, Ancient Wisdom, Creative Writing — 76 curated domains await. Start anywhere your curiosity leads.',
     icon: Target,
   },
   {
     step: 2,
-    title: 'Swipe to Learn',
-    description: "Read a concept. Quiz yourself instantly. Know it? You won't see it for a month. Struggle? You'll see it tomorrow.",
+    title: 'Read Immersively',
+    description: 'Beautiful lessons distilled from the world\'s best authors. Not summaries. Not flashcards. Real depth, at your own pace.',
     icon: BookOpen,
   },
   {
     step: 3,
-    title: 'Build Unshakeable Expertise',
-    description: 'The system adapts to your brain. Concepts you struggle with appear more often. Your Polymind becomes permanent.',
+    title: 'Become a Polymath',
+    description: 'As you explore more worlds, your Polymind grows. See connections between Stoic philosophy and AI, between neuroscience and leadership.',
     icon: Brain,
   },
 ];
 
 // Guide Authority Stats
 const authorityStats = [
+  { value: 76, suffix: '', label: 'Domains', detail: 'From philosophy to quantum physics' },
+  { value: 4700, suffix: '+', label: 'Lessons', detail: 'Immersive reading journeys' },
   { value: 1000, suffix: '+', label: 'Authors', detail: 'Bestselling books distilled' },
-  { value: 10, suffix: 'K+', label: 'Polyminds', detail: 'Active learners building knowledge' },
-  { value: 50, suffix: '+', label: 'Domains', detail: 'From psychology to AI' },
-  { value: 92, suffix: '%', label: 'Retention', detail: 'Via spaced repetition science' },
+  { value: 14, suffix: '', label: 'Categories', detail: 'Every corner of human knowledge' },
 ];
 
 // Success Transformations (Testimonials with transformation focus)
 const transformations = [
   {
-    before: "I read 30+ books a year but couldn't recall key insights when I needed them.",
-    after: "Now I reference Kahneman, Dalio, and Seneca in the same conversation. It's all in my Polymind.",
+    before: 'I only read business books. Same authors, same ideas, stuck in my lane.',
+    after: 'Yesterday I read about Stoic philosophy. Today, quantum mechanics. Tomorrow, Vedic wisdom. My thinking has completely transformed.',
     name: 'Arjun Kumar',
     role: 'Software Engineer @ Google',
     initials: 'AK',
     color: '#F59E0B',
-    metric: '180-day streak',
+    metric: '42 domains explored',
   },
   {
-    before: "Learning felt like pouring water into a leaky bucket.",
-    after: "Built a Polymind I can actually access. The gamification makes me want to come back daily.",
+    before: 'I wanted to learn broadly but didn\'t know where to start with each topic.',
+    after: 'Polymind gives me curated paths through every domain. I\'ve read more in 3 months than the past 3 years.',
     name: 'Priya Sharma',
     role: 'Product Manager @ Stripe',
     initials: 'PS',
@@ -182,28 +182,28 @@ const transformations = [
     featured: true,
   },
   {
-    before: "I'd highlight books, take notes, then never look at them again.",
-    after: "My Polymind connects psychology to negotiation to AI. I finally think like a polymath.",
+    before: 'I\'d buy books on new topics but never finish them. Too dense, too slow.',
+    after: 'The bite-sized lessons are perfect. I can explore game theory in the morning and neuroscience at lunch.',
     name: 'Rahul Verma',
     role: 'Founder @ TechStartup',
     initials: 'RV',
     color: '#22C55E',
-    metric: '2000+ XP earned',
+    metric: '500+ lessons read',
   },
 ];
 
 // Failure Stakes (What happens if they don't act)
 const failureStakes = [
-  { icon: XCircle, text: 'Keep forgetting 90% of what you read within weeks' },
-  { icon: Clock, text: 'Waste hours reading books that don\'t stick' },
-  { icon: TrendingUp, text: 'Watch others advance while you stay stuck' },
+  { icon: XCircle, text: 'Stuck reading the same types of books, same narrow topics' },
+  { icon: Clock, text: 'Life is too short to read 1000+ books cover to cover' },
+  { icon: TrendingUp, text: 'Missing connections that only cross-domain thinking reveals' },
 ];
 
 // Success Benefits (The transformation)
 const successBenefits = [
-  { icon: CheckCircle2, text: 'Recall insights from 1000+ authors on demand' },
-  { icon: Sparkles, text: 'Build unshakeable expertise across 50+ domains' },
-  { icon: Trophy, text: 'Never create flashcards again — we build every deck for you' },
+  { icon: CheckCircle2, text: 'Explore 76 domains — from ancient wisdom to cutting-edge science' },
+  { icon: Sparkles, text: 'Read the essence of 1000+ authors in immersive, bite-sized lessons' },
+  { icon: Trophy, text: 'See patterns across fields that specialists miss entirely' },
 ];
 
 // Knowledge Domains with AI images
@@ -532,7 +532,7 @@ export function LandingPage() {
             className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-            <span className="text-xs md:text-sm text-amber-400 font-medium">Remember everything you read</span>
+            <span className="text-xs md:text-sm text-amber-400 font-medium">76 worlds of knowledge await</span>
           </motion.div>
 
           {/* Hero Headline: Dramatic Zen Typography */}
@@ -543,10 +543,10 @@ export function LandingPage() {
             className="relative mb-8"
           >
             <span className="block text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] text-white/90 tracking-tight">
-              Finally{' '}
+              Read{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 bg-clip-text text-transparent">
-                  Retain
+                  Everything
                 </span>
                 {/* Brush stroke underline */}
                 <svg className="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 100 12" preserveAspectRatio="none">
@@ -562,8 +562,8 @@ export function LandingPage() {
               </span>
             </span>
             <span className="block text-4xl md:text-6xl lg:text-7xl font-serif leading-[1.1] text-white/90 tracking-tight mt-2">
-              the Ideas That{' '}
-              <span className="text-white/70">Matter</span>
+              Under the{' '}
+              <span className="text-white/70">Sun</span>
             </span>
           </motion.h1>
 
@@ -575,12 +575,12 @@ export function LandingPage() {
             className="max-w-2xl mx-auto mb-10"
           >
             <p className="text-lg md:text-xl text-gray-400 leading-relaxed tracking-wide">
-              <span className="inline-block">1000+ bestselling authors.</span>
+              <span className="inline-block">76 curated domains.</span>
               <span className="inline-block mx-2 text-amber-500/50">·</span>
-              <span className="inline-block">The world's most powerful ideas.</span>
+              <span className="inline-block">4,700+ immersive lessons.</span>
             </p>
             <p className="text-lg md:text-xl text-white mt-3 font-light">
-              One system to <span className="font-medium text-amber-500">install them permanently</span>.
+              The entire spectrum of human wisdom, in <span className="font-medium text-amber-500">one beautiful reader</span>.
             </p>
           </motion.div>
 
@@ -596,7 +596,7 @@ export function LandingPage() {
               className="px-10 py-4 bg-gradient-to-r from-amber-500 to-amber-400 text-black text-lg font-semibold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition"
               style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 32px rgba(245,158,11,0.3)' }}
             >
-              Build Your Polymind — Free
+              Enter the Library — Free
               <ArrowRight size={20} />
             </Link>
             <a href="#solution" className="text-sm text-gray-500 hover:text-amber-400 transition flex items-center gap-1.5">
@@ -613,7 +613,7 @@ export function LandingPage() {
             className="text-gray-400 text-sm mt-8 flex items-center justify-center gap-2"
           >
             <Users size={16} className="text-amber-500/70" />
-            <span>Join <span className="text-amber-500/90 font-medium">10,000+</span> Polyminds who never forget what they learn</span>
+            <span>Join <span className="text-amber-500/90 font-medium">10,000+</span> curious minds exploring every domain of knowledge</span>
           </motion.p>
         </div>
       </section>
@@ -622,8 +622,8 @@ export function LandingPage() {
       <section id="problem" className="py-20 px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <span className="inline-block px-4 py-2 bg-coral/10 border border-coral/20 rounded-full text-xs text-coral font-medium tracking-wider mb-6">
-              THE PROBLEM
+            <span className="inline-block px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-xs text-amber-400 font-medium tracking-wider mb-6">
+              THE OPPORTUNITY
             </span>
 
             {/* Problem Visual */}
@@ -642,18 +642,17 @@ export function LandingPage() {
             </motion.div>
 
             <h2 className="text-3xl md:text-4xl font-serif mb-4">
-              <span className="block text-white/90">You Read Great Books.</span>
+              <span className="block text-white/90">The World's Best Ideas Are</span>
               <span className="block mt-2">
-                <span className="text-coral">Then Forget </span>
+                <span className="text-amber-400">Scattered Across </span>
                 <span className="relative inline-block">
-                  <span className="text-6xl md:text-7xl font-bold text-coral/90">90%</span>
-                  <span className="absolute -top-1 -right-4 text-xs text-coral/60 font-mono">*</span>
+                  <span className="text-6xl md:text-7xl font-bold text-amber-500/90">1000+</span>
                 </span>
-                <span className="text-coral"> Within Weeks.</span>
+                <span className="text-amber-400"> Books.</span>
               </span>
             </h2>
             <p className="text-gray-400 text-lg max-w-xl mx-auto">
-              Sound familiar? You're not alone. Most people lose the knowledge they work hard to gain.
+              Life is too short to read them all. We distilled the wisdom of 1000+ bestselling authors into immersive, bite-sized reading journeys — across every domain imaginable.
             </p>
           </div>
 
@@ -666,9 +665,9 @@ export function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-light border border-coral/20 rounded-xl p-6 text-center"
+                className="glass-light border border-amber-500/20 rounded-xl p-6 text-center"
               >
-                <stake.icon className="w-8 h-8 text-coral mx-auto mb-4" />
+                <stake.icon className="w-8 h-8 text-amber-400 mx-auto mb-4" />
                 <p className="text-gray-400">{stake.text}</p>
               </motion.div>
             ))}
@@ -678,10 +677,10 @@ export function LandingPage() {
           <div className="glass border border-white/10 rounded-2xl p-8 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 via-transparent to-amber-500/5" />
             <p className="text-xl md:text-2xl text-gray-200 font-serif italic mb-4 relative">
-              "I used to highlight books, take notes, tell myself I'd review them...
-              <span className="text-amber-500/80"> then never look at them again.</span>"
+              "I wanted to understand psychology, philosophy, AI, history — everything.
+              <span className="text-amber-500/80"> Polymind made it actually possible.</span>"
             </p>
-            <p className="text-gray-400 relative">— Every knowledge seeker ever</p>
+            <p className="text-gray-400 relative">— The curious mind's dream</p>
           </div>
         </div>
       </section>
@@ -691,19 +690,19 @@ export function LandingPage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-8">
             <span className="inline-block px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-xs text-amber-500 font-medium tracking-wider mb-6">
-              THE POLYMIND SYSTEM
+              THE INFINITE LIBRARY
             </span>
             <h2 className="text-3xl md:text-4xl font-serif mb-4">
-              <span className="font-light text-white/80">Built on the Science of</span>
+              <span className="font-light text-white/80">76 Worlds.</span>
               <span className="block mt-1 relative">
                 <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent font-semibold">
-                  Permanent Memory
+                  One Reader.
                 </span>
                 <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
               </span>
             </h2>
             <p className="text-gray-400 text-lg max-w-xl mx-auto">
-              We distill the world's best books into active-recall decks — so you get the learning without the tedious card-making.
+              Every domain of human knowledge, curated into immersive reading journeys. From Stoic philosophy to quantum physics — explore it all.
             </p>
           </div>
 
@@ -742,9 +741,9 @@ export function LandingPage() {
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-400 flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-[#111113]">
                   <Brain size={20} className="text-black" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Adaptive Spaced Repetition</h3>
+                <h3 className="text-xl font-semibold mb-3">Immersive Reading</h3>
                 <p className="text-gray-400 leading-relaxed text-sm">
-                  Built on the same algorithms medical students use to memorize anatomy. We applied it to business, philosophy, and life wisdom.
+                  Deep, beautifully crafted lessons from the world's best authors. Not summaries. Not bullet points. Real depth, real understanding.
                 </p>
               </div>
             </motion.div>
@@ -763,9 +762,9 @@ export function LandingPage() {
                 <div className="w-12 h-12 rounded-xl bg-[#252528] flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-[#1A1A1D] shadow-lg">
                   <Target size={20} className="text-amber-500" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Active Recall</h3>
+                <h3 className="text-xl font-semibold mb-3">Cross-Domain Discovery</h3>
                 <p className="text-gray-400 leading-relaxed text-sm">
-                  Quizzes force retrieval from memory. The struggle strengthens neural pathways — making knowledge stick.
+                  Jump from Stoic philosophy to AI ethics to Vedic wisdom. See patterns that only polymaths see — connections across every field.
                 </p>
               </div>
             </motion.div>
@@ -784,9 +783,9 @@ export function LandingPage() {
                 <div className="w-12 h-12 rounded-xl bg-[#252528] flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-[#1A1A1D] shadow-lg">
                   <Trophy size={20} className="text-lavender" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Gamification</h3>
+                <h3 className="text-xl font-semibold mb-3">Your Pace, Your Path</h3>
                 <p className="text-gray-400 leading-relaxed text-sm">
-                  XP, levels, streaks, and achievements make learning addictive. You'll actually want to come back.
+                  Five-minute reads or hour-long deep dives. 76 domains to explore. The library adapts to your curiosity, not the other way around.
                 </p>
               </div>
             </motion.div>
@@ -799,12 +798,12 @@ export function LandingPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <span className="inline-block px-4 py-2 bg-sage/10 border border-sage/20 rounded-full text-xs text-sage font-medium tracking-wider mb-6">
-              HOW IT WORKS
+              YOUR JOURNEY
             </span>
             <h2 className="text-3xl md:text-4xl font-serif mb-4">
               <span className="text-7xl md:text-8xl font-bold text-sage/20 block -mb-8 md:-mb-10">3</span>
-              <span className="relative z-10 block">Steps to Building</span>
-              <span className="relative z-10 block text-sage font-medium">Your Polymind</span>
+              <span className="relative z-10 block">Steps to Knowing</span>
+              <span className="relative z-10 block text-sage font-medium">Everything</span>
             </h2>
           </div>
 
@@ -838,7 +837,7 @@ export function LandingPage() {
               to="/dashboard"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sage to-sage-light text-black font-semibold rounded-xl hover:opacity-90 transition"
             >
-              Start Building — Free
+              Start Exploring — Free
               <ArrowRight size={20} />
             </Link>
           </div>
@@ -850,14 +849,14 @@ export function LandingPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-2 bg-lavender/10 border border-lavender/20 rounded-full text-xs text-lavender font-medium tracking-wider mb-6">
-              50+ KNOWLEDGE DOMAINS
+              76 KNOWLEDGE DOMAINS
             </span>
             <h2 className="text-3xl md:text-4xl font-serif">
-              <span className="text-white/80">Learn from </span>
-              <span className="text-lavender">1000+ Authors</span>
+              <span className="text-white/80">Explore the </span>
+              <span className="text-lavender">Infinite Library</span>
             </h2>
             <p className="text-gray-400 mt-3 max-w-xl mx-auto">
-              Don't just read summaries. <span className="text-amber-500/80">Install them.</span> We turn bestsellers into interactive active-recall decks.
+              From the Bhagavad Gita to Game Theory. From Neuroscience to Creative Writing. <span className="text-amber-500/80">Every corner of human wisdom</span>, curated for the curious mind.
             </p>
           </div>
 
@@ -908,12 +907,12 @@ export function LandingPage() {
             <h2 className="text-3xl md:text-4xl font-serif mb-4">
               <span className="block">
                 <span className="text-gray-500 font-light">From</span>
-                <span className="mx-2 italic">Forgetful Reader</span>
+                <span className="mx-2 italic">Narrow Reader</span>
               </span>
               <span className="block mt-1">
                 <span className="text-gray-500 font-light">To</span>
                 <span className="ml-2 bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent font-semibold">
-                  Knowledge Powerhouse
+                  Renaissance Polymath
                 </span>
               </span>
             </h2>
@@ -1018,23 +1017,23 @@ export function LandingPage() {
         </div>
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-5xl font-serif mb-6">
-            <span className="block text-white/60 font-light line-through decoration-coral/40 decoration-2">Stop Forgetting.</span>
+            <span className="block text-white/60 font-light">The world's knowledge is waiting.</span>
             <span className="block mt-2 relative">
               <span className="text-4xl md:text-6xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 bg-clip-text text-transparent font-semibold">
-                Build Your Polymind.
+                Step Into the Library.
               </span>
             </span>
           </h2>
           <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
-            Every day you wait is another book you'll forget.
-            Join 10,000+ Polyminds who've transformed how they learn.
+            76 worlds of wisdom. 4,700+ immersive lessons.
+            Join 10,000+ curious minds who read everything.
           </p>
           <Link
             to="/dashboard"
             className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-amber-500 to-amber-400 text-black font-semibold rounded-xl hover:opacity-90 transition"
             style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 32px rgba(245,158,11,0.3)' }}
           >
-            Build Your Polymind — Free
+            Enter the Library — Free
             <ArrowRight size={20} />
           </Link>
           <p className="text-sm mt-6 text-gray-400">
@@ -1063,8 +1062,8 @@ export function LandingPage() {
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
               </Link>
               <p className="text-sm text-gray-400 leading-relaxed">
-                Your mind, unlimited.<br />
-                1000+ authors. Unforgettable knowledge.
+                Read everything. Know everything.<br />
+                76 worlds of wisdom await.
               </p>
             </div>
 
@@ -1073,8 +1072,8 @@ export function LandingPage() {
               <h4 className="font-medium text-sm mb-4 text-white">Product</h4>
               <ul className="space-y-3 text-sm text-gray-400">
                 <li><Link to="/dashboard" className="hover:text-white transition">Dashboard</Link></li>
-                <li><Link to="/pathway" className="hover:text-white transition">Learning Pathway</Link></li>
-                <li><Link to="/review" className="hover:text-white transition">Flashcards</Link></li>
+                <li><Link to="/pathway" className="hover:text-white transition">Library</Link></li>
+                <li><Link to="/review" className="hover:text-white transition">Quick Review</Link></li>
                 <li><Link to="/dashboard" className="hover:text-white transition">Get Started</Link></li>
               </ul>
             </div>

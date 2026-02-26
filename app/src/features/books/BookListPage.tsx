@@ -206,7 +206,7 @@ export function BookListPage() {
           >
             <span className="text-6xl md:text-7xl font-bold text-amber-500/20 block -mb-4">1000+</span>
             <span className="block text-white/90">World-Class Authors</span>
-            <span className="block text-gray-500 font-light text-2xl md:text-3xl mt-2">One Unforgettable System</span>
+            <span className="block text-gray-500 font-light text-2xl md:text-3xl mt-2">One Infinite Library</span>
           </motion.h1>
 
           {/* Stats */}
@@ -359,8 +359,8 @@ export function BookListPage() {
           </div>
           <h3 className="text-xl font-semibold mb-2">More Books Being Added</h3>
           <p className="text-gray-400 max-w-md mx-auto">
-            Our team is constantly extracting concepts and creating flashcards from
-            new bestsellers. Check back regularly for updates.
+            Our team is constantly curating new domains and crafting immersive reading
+            journeys from new bestsellers. Check back regularly for updates.
           </p>
         </div>
       </section>
@@ -369,16 +369,16 @@ export function BookListPage() {
       <section className="py-20 px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-serif mb-4">
-            Ready to Master These Books?
+            Ready to Explore These Ideas?
           </h2>
           <p className="text-gray-400 mb-8">
-            Start building your Polymind and never forget what you read.
+            Step into the library and read across every domain of knowledge.
           </p>
           <Link
             to="/dashboard"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-400 text-black font-semibold rounded-xl hover:opacity-90 transition"
           >
-            Build Your Polymind — Free
+            Enter the Library — Free
             <Sparkles size={20} />
           </Link>
         </div>

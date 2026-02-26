@@ -15,8 +15,8 @@ import { SearchModal } from '@/components/organisms/SearchModal';
 
 const navItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
-  { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
-  { id: 'review', path: '/review', label: 'Review', icon: RotateCcw },
+  { id: 'pathway', path: '/pathway', label: 'Library', icon: BookOpen },
+  { id: 'review', path: '/review', label: 'Revisit', icon: RotateCcw },
   { id: 'profile', path: '/profile', label: 'Profile', icon: User },
 ];
 
@@ -139,8 +139,8 @@ export function Navbar() {
 // Mobile Bottom Navigation — mirrors desktop 4-tab structure
 const mobileNavItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
-  { id: 'pathway', path: '/pathway', label: 'Learn', icon: BookOpen },
-  { id: 'review', path: '/review', label: 'Review', icon: RotateCcw },
+  { id: 'pathway', path: '/pathway', label: 'Library', icon: BookOpen },
+  { id: 'review', path: '/review', label: 'Revisit', icon: RotateCcw },
   { id: 'profile', path: '/profile', label: 'Profile', icon: User },
 ];
 

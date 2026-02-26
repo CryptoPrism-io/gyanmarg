@@ -486,8 +486,8 @@ export function LearningPathway() {
   return (
     <>
       <ModuleLayout
-        title="Learning Pathway"
-        subtitle="Master knowledge through structured learning"
+        title="Library"
+        subtitle="Explore 76 worlds of knowledge"
         icon={<BookOpen className="w-5 h-5" />}
         headerGradient="aurora"
         rightContent={

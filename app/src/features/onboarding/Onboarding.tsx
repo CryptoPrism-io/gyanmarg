@@ -229,8 +229,8 @@ export function Onboarding() {
                     <BookOpen className="w-5 h-5 text-sunrise" />
                   </div>
                   <p className="text-sunrise text-sm leading-relaxed">
-                    1000+ bestselling authors across 50+ domains —
-                    all retained forever using proven learning science.
+                    1000+ bestselling authors across 76 domains —
+                    curated into immersive reading journeys for the curious mind.
                   </p>
                 </div>
               </GlassCard>
@@ -249,7 +249,7 @@ export function Onboarding() {
               >
                 <img
                   src={imgForgetting}
-                  alt="Memory fading visualization"
+                  alt="Knowledge across domains"
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -261,26 +261,26 @@ export function Onboarding() {
               </div>
 
               <div className="space-y-3">
-                <GlassCard className="border-coral/30 p-4">
+                <GlassCard className="border-amber-500/30 p-4">
                   <p className="text-base text-text-primary leading-relaxed">
-                    You've probably read <span className="text-coral font-semibold">dozens of books</span>.
-                    Maybe even hundreds.
+                    There are <span className="text-amber-400 font-semibold">thousands of brilliant books</span> across
+                    every domain of human knowledge.
                   </p>
                 </GlassCard>
 
                 <GlassCard className="border-white/10 p-4">
                   <div className="flex items-center gap-4">
-                    <div className="text-4xl font-bold text-coral">90%</div>
+                    <div className="text-4xl font-bold text-amber-400">76</div>
                     <p className="text-text-secondary text-sm">
-                      of what we read is <span className="text-coral">forgotten within 7 days</span> —
-                      unless we do something different.
+                      worlds of wisdom — from <span className="text-amber-400">ancient philosophy to quantum physics</span> —
+                      curated and waiting for you.
                     </p>
                   </div>
                 </GlassCard>
               </div>
 
               <p className="text-center text-text-muted text-sm">
-                This isn't your fault. It's how human memory works.
+                Life is too short to read them all. We distilled the best for you.
               </p>
             </div>
           )}
@@ -304,23 +304,22 @@ export function Onboarding() {
 
               <div className="text-center">
                 <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  But there's a breakthrough...
+                  Now imagine having it all...
                 </h1>
               </div>
 
               <div className="space-y-3">
                 <GlassCard className="border-lavender/30 p-4">
                   <p className="text-base text-text-primary leading-relaxed">
-                    In 1885, psychologist Hermann Ebbinghaus discovered the
-                    <span className="text-lavender font-semibold"> "Forgetting Curve"</span> —
-                    memory decays predictably over time.
+                    What if you could read across <span className="text-lavender font-semibold">every domain of human knowledge</span> —
+                    psychology, science, philosophy, history, and more?
                   </p>
                 </GlassCard>
 
                 <GlassCard className="border-sage/30 p-4">
                   <p className="text-base text-text-primary leading-relaxed">
-                    But here's the key: <span className="text-sage font-semibold">review at the right moment</span>,
-                    and the curve flattens. Each review makes the memory stronger.
+                    Polymind curates <span className="text-sage font-semibold">the best ideas from 1000+ authors</span>
+                    into immersive, bite-sized reading journeys across 76 domains.
                   </p>
                 </GlassCard>
 
@@ -330,9 +329,9 @@ export function Onboarding() {
                       <Brain className="w-5 h-5 text-sunrise" />
                     </div>
                     <div>
-                      <p className="font-semibold text-sunrise text-sm">Spaced Repetition</p>
+                      <p className="font-semibold text-sunrise text-sm">Immersive Reading</p>
                       <p className="text-text-secondary text-xs mt-0.5">
-                        Used by medical students & memory champions.
+                        Deep lessons crafted from bestselling books.
                       </p>
                     </div>
                   </div>
@@ -363,33 +362,33 @@ export function Onboarding() {
                   This is the Polymind way
                 </h1>
                 <p className="text-text-secondary mt-1 text-sm">
-                  Four forces that make knowledge permanent
+                  The four pillars of becoming a polymath
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-2">
                 <GlassCard className="border-lavender/30 p-3">
                   <Brain className="w-6 h-6 text-lavender mb-1" />
-                  <p className="font-semibold text-text-primary text-xs">Spaced Repetition</p>
-                  <p className="text-[10px] text-text-muted mt-0.5">Review at the perfect moment</p>
+                  <p className="font-semibold text-text-primary text-xs">Immersive Reading</p>
+                  <p className="text-[10px] text-text-muted mt-0.5">Deep lessons from 1000+ authors</p>
                 </GlassCard>
 
                 <GlassCard className="border-sunrise/30 p-3">
                   <Target className="w-6 h-6 text-sunrise mb-1" />
-                  <p className="font-semibold text-text-primary text-xs">Active Recall</p>
-                  <p className="text-[10px] text-text-muted mt-0.5">Quiz yourself, don't just re-read</p>
+                  <p className="font-semibold text-text-primary text-xs">76 Domains</p>
+                  <p className="text-[10px] text-text-muted mt-0.5">Every corner of human knowledge</p>
                 </GlassCard>
 
                 <GlassCard className="border-sage/30 p-3">
                   <Network className="w-6 h-6 text-sage mb-1" />
-                  <p className="font-semibold text-text-primary text-xs">Cross-Domain Links</p>
-                  <p className="text-[10px] text-text-muted mt-0.5">Connect ideas across fields</p>
+                  <p className="font-semibold text-text-primary text-xs">Cross-Domain Discovery</p>
+                  <p className="text-[10px] text-text-muted mt-0.5">See patterns across all fields</p>
                 </GlassCard>
 
                 <GlassCard className="border-golden/30 p-3">
                   <Zap className="w-6 h-6 text-golden mb-1" />
-                  <p className="font-semibold text-text-primary text-xs">Gamification</p>
-                  <p className="text-[10px] text-text-muted mt-0.5">XP, streaks & achievements</p>
+                  <p className="font-semibold text-text-primary text-xs">Your Pace</p>
+                  <p className="text-[10px] text-text-muted mt-0.5">5-min reads or deep dives</p>
                 </GlassCard>
               </div>
 
@@ -397,7 +396,7 @@ export function Onboarding() {
                 <div className="flex items-center gap-3">
                   <TrendingUp className="w-8 h-8 text-sunrise shrink-0" />
                   <p className="text-text-primary text-sm">
-                    Retain <span className="text-sunrise font-bold">92%</span> of what you learn — vs 10% from passive reading.
+                    Explore <span className="text-sunrise font-bold">76 domains</span> of wisdom — from ancient philosophy to cutting-edge science.
                   </p>
                 </div>
               </GlassCard>
@@ -409,10 +408,10 @@ export function Onboarding() {
             <div className="space-y-6">
               <div className="text-center">
                 <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  Why are you building your Polymind?
+                  What brings you to the library?
                 </h1>
                 <p className="text-text-secondary mt-2">
-                  This shapes your personalized learning journey
+                  This shapes your personalized reading journey
                 </p>
               </div>
 

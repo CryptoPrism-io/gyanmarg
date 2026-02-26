@@ -71,9 +71,9 @@ const TYPOGRAPHY = [
 
 const TAGLINES = [
   { type: 'Primary', text: 'Your Mind, Unlimited' },
-  { type: 'Secondary', text: 'Finally Retain the Ideas That Matter' },
-  { type: 'Descriptive', text: '1000+ authors. 50+ domains. One system to make knowledge unforgettable.' },
-  { type: 'Mission', text: 'Helping curious minds build permanent knowledge across every domain.' },
+  { type: 'Secondary', text: 'Read Everything Under the Sun' },
+  { type: 'Descriptive', text: '1000+ authors. 76 domains. The world\'s knowledge in one beautiful reader.' },
+  { type: 'Mission', text: 'Helping curious minds explore every domain of human knowledge.' },
 ];
 
 const BANNER_SIZES = [

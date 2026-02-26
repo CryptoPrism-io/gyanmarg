@@ -1424,6 +1424,15 @@ export function Profile() {
           </Link>
         </motion.div>
 
+        {/* Version & Changelog */}
+        <motion.div variants={itemVariants} className="flex items-center justify-center gap-3 pt-2">
+          <Link to="/changelog" className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] transition-colors">
+            <span className="text-[11px] font-mono text-text-muted">v{APP_VERSION}</span>
+            <span className="text-[11px] text-text-muted/60">·</span>
+            <span className="text-[11px] text-golden/80">What's new</span>
+          </Link>
+        </motion.div>
+
         {/* Bottom spacer for mobile nav */}
         <div className="h-4" />
       </motion.div>
