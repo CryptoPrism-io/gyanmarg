@@ -60,7 +60,7 @@ export function HowToPage() {
             className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full mb-8"
           >
             <Lightbulb size={16} className="text-amber-500" />
-            <span className="text-xs text-amber-500 font-medium tracking-wider">HOW IT WORKS</span>
+            <span className="text-xs text-amber-500 font-medium tracking-wider">YOUR GUIDE</span>
           </motion.div>
 
           <motion.h1
@@ -69,7 +69,7 @@ export function HowToPage() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-serif mb-6"
           >
-            Master Polymind
+            Navigate the Library
             <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
               in 5 Minutes
             </span>
@@ -81,7 +81,7 @@ export function HowToPage() {
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-400 max-w-xl mx-auto"
           >
-            Interactive guides to help you get the most out of your learning journey.
+            Interactive guides to help you explore 76 worlds of knowledge.
             Try the demos below — they're fully functional!
           </motion.p>
         </div>
@@ -90,14 +90,14 @@ export function HowToPage() {
       {/* Section 1: Swipe-Based Lessons */}
       <Section
         number={1}
-        title="Lessons That Stick"
-        subtitle="Swipe-based learning makes studying intuitive"
+        title="Immersive Reading"
+        subtitle="Swipe through curated lessons from the world's best authors"
         icon={BookOpen}
         color="sunrise"
       >
         <p className="text-gray-400 mb-6">
-          Each lesson is broken into digestible cards. Swipe right to continue, left to revisit.
-          The cards flow naturally: overview → content → quiz → takeaway.
+          Each reading journey is broken into beautiful, swipeable cards. Swipe right to continue, left to revisit.
+          The flow is natural: overview → deep content → quiz → key takeaway.
         </p>
         <p className="text-gray-400 mb-8">
           <strong className="text-white">Try it yourself:</strong> Swipe through the demo below or use the buttons.
@@ -108,14 +108,14 @@ export function HowToPage() {
       {/* Section 2: Flashcard Mastery */}
       <Section
         number={2}
-        title="Flashcard Mastery"
-        subtitle="Spaced repetition that actually works"
+        title="Quick Revisit"
+        subtitle="Revisit concepts at the perfect moment"
         icon={Brain}
         color="lavender"
       >
         <p className="text-gray-400 mb-6">
-          After completing lessons, concepts become flashcards. The SM-2 algorithm schedules
-          reviews at optimal intervals based on how easily you recall each card.
+          As you read, key concepts are saved for revisiting later. The system schedules
+          revisits at optimal intervals so ideas stay fresh without any effort from you.
         </p>
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <div>
@@ -153,14 +153,14 @@ export function HowToPage() {
       {/* Section 3: Gamification */}
       <Section
         number={3}
-        title="XP, Levels & Achievements"
-        subtitle="Progress you can see and feel"
+        title="Track Your Journey"
+        subtitle="See how much of the library you've explored"
         icon={Trophy}
         color="golden"
       >
         <p className="text-gray-400 mb-8">
-          Every action earns XP. Complete lessons, review flashcards, maintain streaks.
-          Watch your level grow as you build your Polymind.
+          Every reading session earns XP. Explore new domains, revisit concepts, maintain your streak.
+          Watch your journey grow as you explore more of the library.
         </p>
         <div className="grid md:grid-cols-3 gap-6">
           <GamificationCard
@@ -190,14 +190,14 @@ export function HowToPage() {
       {/* Section 4: Streaks & Habits */}
       <Section
         number={4}
-        title="Build Habits"
-        subtitle="Consistency beats intensity"
+        title="Daily Reading"
+        subtitle="A few minutes every day compounds into vast knowledge"
         icon={Flame}
         color="coral"
       >
         <p className="text-gray-400 mb-8">
-          Your streak tracks consecutive days of learning. 10 minutes daily beats
-          2 hours once a week. The streak becomes something to protect.
+          Your streak tracks consecutive days of reading. 10 minutes daily beats
+          2 hours once a week. The reading habit becomes something to protect.
         </p>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="glass rounded-2xl p-6 border border-coral/20">
@@ -240,14 +240,14 @@ export function HowToPage() {
       {/* Section 5: Daily Challenges */}
       <Section
         number={5}
-        title="Daily Challenges"
-        subtitle="Fresh goals every day"
+        title="Weekly Explorations"
+        subtitle="Fresh goals to expand your horizons"
         icon={Target}
         color="sunrise"
       >
         <p className="text-gray-400 mb-8">
-          Each day brings new challenges to complete. They add variety to your routine
-          and reward you with bonus XP.
+          Each week brings fresh exploration challenges. Discover new domains, read across
+          categories, and earn bonus XP for broadening your horizons.
         </p>
         <BlogEmbed
           type="Challenge"
@@ -330,16 +330,16 @@ export function HowToPage() {
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <ProTip
-                  title="Review at the same time daily"
-                  description="Consistency builds habit. Pick a time and stick to it."
+                  title="Read at the same time daily"
+                  description="Consistency builds the reading habit. Pick a time and stick to it."
                 />
                 <ProTip
                   title="Be honest with ratings"
                   description="The algorithm works best when you rate accurately."
                 />
                 <ProTip
-                  title="Start with 2-3 domains"
-                  description="Focus creates depth. Expand later as habits solidify."
+                  title="Start with 2-3 worlds"
+                  description="Explore a few domains deeply, then expand to new worlds."
                 />
                 <ProTip
                   title="Look for connections"
@@ -364,11 +364,11 @@ export function HowToPage() {
               <Sparkles className="w-8 h-8 text-black" />
             </div>
             <h2 className="text-2xl md:text-3xl font-serif mb-4">
-              Ready to Start Learning?
+              Ready to Explore?
             </h2>
             <p className="text-gray-400 mb-8">
               You've seen how it works. Now experience it yourself.
-              Your unforgettable mind is waiting.
+              76 worlds of knowledge await.
             </p>
             <Link
               to="/dashboard"
@@ -392,7 +392,7 @@ export function HowToPage() {
           </Link>
           <div className="flex gap-6 text-sm text-gray-500">
             <Link to="/blog" className="hover:text-white transition">Blog</Link>
-            <Link to="/science" className="hover:text-white transition">Learning Science</Link>
+            <Link to="/science" className="hover:text-white transition">The Science</Link>
             <Link to="/books" className="hover:text-white transition">Book List</Link>
           </div>
         </div>

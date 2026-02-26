@@ -24,87 +24,87 @@ void _forgettingCurveData;
 
 // Map technique images
 const techniqueImages: Record<string, string> = {
-  'spaced-repetition': imgSpacedRepetition,
-  'active-recall': imgVisualLearning,
-  'interleaving': imgBreakthrough,
-  'gamification': imgGamification,
+  'cross-domain': imgBreakthrough,
+  'immersive-reading': imgSpacedRepetition,
+  'neuroplasticity': imgVisualLearning,
+  'curiosity-driven': imgGamification,
 };
 
 const techniques = [
   {
-    id: 'spaced-repetition',
-    icon: Brain,
-    title: 'Spaced Repetition',
-    subtitle: 'Review at the perfect moment',
-    color: 'amber',
-    description: 'The SM-2 algorithm calculates exactly when you\'re about to forget something and schedules a review right before that happens. Each successful review extends the interval.',
-    stats: [
-      { value: '200%', label: 'Retention boost' },
-      { value: '70%', label: 'Med students use it' },
-    ],
-    howItWorks: [
-      'Learn a concept for the first time',
-      'Review after 1 day',
-      'If correct, review after 3 days',
-      'Then 7 days, 14 days, 30 days...',
-      'Intervals grow exponentially',
-    ],
-  },
-  {
-    id: 'active-recall',
-    icon: Target,
-    title: 'Active Recall',
-    subtitle: 'Test yourself, don\'t just re-read',
-    color: 'sage',
-    description: 'Being asked a question and trying to remember the answer is far more effective than passive reading. The struggle to retrieve information strengthens neural pathways.',
-    stats: [
-      { value: '50%', label: 'More effective than re-reading' },
-      { value: '2x', label: 'Stronger memory traces' },
-    ],
-    howItWorks: [
-      'Read or learn new material',
-      'Close the book / hide notes',
-      'Ask yourself: "What did I just learn?"',
-      'Struggle to recall the answer',
-      'Check and correct if needed',
-    ],
-  },
-  {
-    id: 'interleaving',
+    id: 'cross-domain',
     icon: Shuffle,
-    title: 'Interleaving',
-    subtitle: 'Mix topics for deeper learning',
-    color: 'lavender',
-    description: 'Instead of studying one topic exhaustively before moving on, mixing different topics creates stronger, more flexible knowledge that transfers better to new situations.',
+    title: 'Cross-Domain Reading',
+    subtitle: 'The polymath advantage',
+    color: 'amber',
+    description: 'Reading across multiple domains creates richer neural networks. When you connect Stoic philosophy to AI ethics, or neuroscience to leadership, your brain builds stronger, more flexible knowledge structures.',
     stats: [
       { value: '43%', label: 'Better problem solving' },
-      { value: '3x', label: 'Better transfer' },
+      { value: '3x', label: 'Better knowledge transfer' },
     ],
     howItWorks: [
-      'Study psychology for 20 minutes',
-      'Switch to AI concepts',
-      'Then philosophy',
+      'Read psychology for 20 minutes',
+      'Switch to AI or science concepts',
+      'Then explore philosophy or history',
       'Return to psychology with fresh eyes',
-      'Connections form naturally',
+      'Connections form naturally across domains',
     ],
   },
   {
-    id: 'gamification',
-    icon: Trophy,
-    title: 'Gamification',
-    subtitle: 'Make learning addictive',
-    color: 'coral',
-    description: 'XP, streaks, levels, and achievements tap into our brain\'s reward system. The dopamine hit from progress makes you actually want to come back and learn more.',
+    id: 'immersive-reading',
+    icon: Brain,
+    title: 'Immersive Reading',
+    subtitle: 'Depth, not summaries',
+    color: 'sage',
+    description: 'Unlike book summaries that strip away nuance, immersive reading preserves the depth of ideas. Each lesson feels like reading the best chapters of the best books — distilled, not diluted.',
     stats: [
-      { value: '89%', label: 'Higher engagement' },
-      { value: '5x', label: 'More consistent' },
+      { value: '76', label: 'Domains to explore' },
+      { value: '4700+', label: 'Immersive lessons' },
     ],
     howItWorks: [
-      'Earn XP for each lesson completed',
-      'Build daily streaks',
-      'Level up as you progress',
-      'Unlock achievements',
-      'Compete with yourself',
+      'Choose a domain that interests you',
+      'Read curated lessons from top authors',
+      'Engage with quizzes that test understanding',
+      'See key takeaways crystallized',
+      'Move to a new domain or go deeper',
+    ],
+  },
+  {
+    id: 'neuroplasticity',
+    icon: Target,
+    title: 'Neuroplasticity',
+    subtitle: 'Your brain grows by reading',
+    color: 'lavender',
+    description: 'Every time you explore a new domain, your brain physically rewires. Neuroscience shows that diverse intellectual stimulation increases gray matter density and creates new neural pathways that enhance all thinking.',
+    stats: [
+      { value: '14', label: 'Knowledge categories' },
+      { value: '1000+', label: 'Authors distilled' },
+    ],
+    howItWorks: [
+      'New domains activate new brain regions',
+      'Diverse reading builds cognitive flexibility',
+      'Cross-domain patterns strengthen connections',
+      'Regular reading compounds brain growth',
+      'Over time, thinking becomes richer and faster',
+    ],
+  },
+  {
+    id: 'curiosity-driven',
+    icon: Trophy,
+    title: 'Curiosity-Driven Learning',
+    subtitle: 'Follow your interests',
+    color: 'coral',
+    description: 'Research shows that curiosity activates the brain\'s reward system and enhances memory formation. When you read what genuinely interests you — across any domain — you absorb and retain far more.',
+    stats: [
+      { value: '89%', label: 'Higher engagement' },
+      { value: '5x', label: 'More consistent readers' },
+    ],
+    howItWorks: [
+      'Browse 76 domains freely',
+      'Start wherever curiosity leads',
+      'Read at your own pace — no pressure',
+      'Track your exploration journey',
+      'Celebrate breadth of knowledge',
     ],
   },
 ];
@@ -206,11 +206,10 @@ export function LearningSciencePage() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6"
           >
-            <span className="block text-white/90">Why You Forget</span>
+            <span className="block text-white/90">Why Reading Broadly</span>
             <span className="block mt-2">
-              <span className="text-gray-500 font-light">&</span>
-              <span className="ml-3 bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
-                How to Remember Forever
+              <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+                Makes You Smarter
               </span>
             </span>
           </motion.h1>
@@ -221,9 +220,9 @@ export function LearningSciencePage() {
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-400 max-w-2xl mx-auto"
           >
-            The techniques behind Polymind aren't new. They're backed by
-            <span className="text-white"> 140+ years of cognitive science research</span>.
-            Here's how they work.
+            The neuroscience behind polymathic thinking — and why
+            <span className="text-white"> reading across every domain</span> is
+            the most powerful way to grow your mind.
           </motion.p>
         </div>
       </section>
@@ -232,8 +231,8 @@ export function LearningSciencePage() {
       <section className="py-20 px-6 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <span className="inline-block px-4 py-2 bg-coral/10 border border-coral/20 rounded-full text-xs text-coral font-medium tracking-wider mb-6">
-              THE PROBLEM
+            <span className="inline-block px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-xs text-amber-400 font-medium tracking-wider mb-6">
+              THE BRAIN SCIENCE
             </span>
 
             {/* Forgetting Image */}
@@ -241,18 +240,18 @@ export function LearningSciencePage() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="w-full max-w-sm mx-auto aspect-video rounded-2xl overflow-hidden border border-coral/20 mb-8"
+              className="w-full max-w-sm mx-auto aspect-video rounded-2xl overflow-hidden border border-amber-500/20 mb-8"
             >
               <img src={imgForgetting} alt="Memory fading" className="w-full h-full object-cover" />
             </motion.div>
 
             <h2 className="text-3xl md:text-4xl font-serif mb-4">
-              <span className="block">The Ebbinghaus</span>
-              <span className="block text-coral">Forgetting Curve</span>
+              <span className="block">Your Brain on</span>
+              <span className="block text-amber-400">Cross-Domain Reading</span>
             </h2>
             <p className="text-gray-400 max-w-xl mx-auto">
-              In 1885, German psychologist Hermann Ebbinghaus discovered that memory
-              decays predictably over time — unless you intervene.
+              Neuroscience research reveals that reading across multiple domains
+              builds richer, more connected knowledge networks than narrow expertise.
             </p>
           </div>
 
@@ -332,15 +331,15 @@ export function LearningSciencePage() {
             <div className="flex items-center justify-center gap-8 mt-6 pt-6 border-t border-white/10">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-400" />
-                <span className="text-sm text-gray-400">Without review</span>
+                <span className="text-sm text-gray-400">Narrow reading (one domain)</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-sage" />
-                <span className="text-sm text-gray-400">With spaced reviews</span>
+                <span className="text-sm text-gray-400">Cross-domain reading</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-amber-500" />
-                <span className="text-sm text-gray-400">Review points</span>
+                <span className="text-sm text-gray-400">Domain connections</span>
               </div>
             </div>
           </div>
@@ -349,18 +348,18 @@ export function LearningSciencePage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="glass-light border border-coral/20 rounded-2xl p-6">
               <TrendingDown className="w-8 h-8 text-coral mb-4" />
-              <h3 className="text-xl font-semibold text-coral mb-2">Without Intervention</h3>
+              <h3 className="text-xl font-semibold text-coral mb-2">Narrow Reading</h3>
               <p className="text-gray-400">
-                You forget <span className="text-coral font-semibold">90% of what you learn within 7 days</span>.
-                All that reading, all those highlights — gone.
+                Reading only in your field creates <span className="text-coral font-semibold">isolated knowledge silos</span>.
+                Ideas don't connect. Thinking becomes rigid and predictable.
               </p>
             </div>
             <div className="glass-light border border-sage/20 rounded-2xl p-6">
               <TrendingUp className="w-8 h-8 text-sage mb-4" />
-              <h3 className="text-xl font-semibold text-sage mb-2">With Spaced Repetition</h3>
+              <h3 className="text-xl font-semibold text-sage mb-2">Cross-Domain Reading</h3>
               <p className="text-gray-400">
-                Strategic reviews at the right moments can boost retention to
-                <span className="text-sage font-semibold"> 90%+ permanently</span>.
+                Reading across <span className="text-sage font-semibold">76 domains creates rich neural networks</span>.
+                Ideas compound. Thinking becomes flexible and creative.
               </p>
             </div>
           </div>
@@ -372,14 +371,14 @@ export function LearningSciencePage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-xs text-amber-500 font-medium tracking-wider mb-6">
-              THE SOLUTION
+              THE FOUR PILLARS
             </span>
             <h2 className="text-3xl md:text-4xl font-serif mb-4">
               <span className="text-6xl md:text-7xl font-bold text-amber-500/20 block -mb-6">4</span>
-              <span className="relative z-10 block">Evidence-Based Techniques</span>
+              <span className="relative z-10 block">Pillars of Polymathic Reading</span>
             </h2>
             <p className="text-gray-400 max-w-xl mx-auto">
-              Polymind combines four proven learning methods into one system.
+              Why the greatest thinkers in history read across every domain.
             </p>
           </div>
 
@@ -460,14 +459,14 @@ export function LearningSciencePage() {
             THE POLYMIND WAY
           </span>
           <h2 className="text-3xl md:text-4xl font-serif mb-6">
-            <span className="block font-light text-white/80">All Four Techniques</span>
+            <span className="block font-light text-white/80">All Four Pillars</span>
             <span className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent font-semibold">
               Working Together
             </span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto mb-12">
-            Most apps use one technique. Polymind weaves all four into a seamless experience
-            that makes learning both effective and enjoyable.
+            Most reading apps focus on one domain or one method. Polymind opens all 76 worlds
+            and lets you explore them with science-backed reading principles.
           </p>
 
           <div className="glass-accent border border-amber-500/20 rounded-2xl p-8">
@@ -491,8 +490,8 @@ export function LearningSciencePage() {
               <span>Combined into one powerful system</span>
             </div>
 
-            <div className="text-4xl md:text-5xl font-bold text-amber-500 mb-2">92%</div>
-            <p className="text-gray-400">Average retention rate for Polymind users</p>
+            <div className="text-4xl md:text-5xl font-bold text-amber-500 mb-2">76</div>
+            <p className="text-gray-400">Domains of human knowledge — all in one reader</p>
           </div>
         </div>
       </section>
@@ -501,16 +500,16 @@ export function LearningSciencePage() {
       <section className="py-20 px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-serif mb-6">
-            Ready to Never Forget?
+            Ready to Read Everything?
           </h2>
           <p className="text-gray-400 mb-8">
-            Start building your Polymind with science-backed learning.
+            Step into the library. 76 worlds of knowledge await.
           </p>
           <Link
             to="/dashboard"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-400 text-black font-semibold rounded-xl hover:opacity-90 transition"
           >
-            Build Your Polymind — Free
+            Enter the Library — Free
             <ArrowRight size={20} />
           </Link>
         </div>
@@ -526,7 +525,7 @@ export function LearningSciencePage() {
                 <span className="polymind-brand-text font-display text-lg font-bold tracking-wider">POLYMIND</span>
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
               </Link>
-              <p className="text-sm text-gray-500">Your mind, unlimited.</p>
+              <p className="text-sm text-gray-500">Read everything. Know everything.</p>
             </div>
             <div className="flex gap-12">
               <div>

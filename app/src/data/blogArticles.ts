@@ -32,8 +32,8 @@ export const blogArticles: Record<string, BlogArticle> = {
   // Article 1: Visual Tour of Polymind
   'how-polymind-works': {
     id: 'how-polymind-works',
-    title: 'How Polymind Works: A Visual Tour',
-    excerpt: 'Take an interactive tour of Polymind\'s features. See exactly how lessons, flashcards, and gamification work together.',
+    title: 'How Polymind Works: Explore the Infinite Library',
+    excerpt: 'Take an interactive tour of the Infinite Library. See how immersive reading, cross-domain discovery, and exploration work together.',
     author: 'Polymind Team',
     date: 'Jan 30, 2025',
     readTime: '5 min read',
@@ -42,11 +42,11 @@ export const blogArticles: Record<string, BlogArticle> = {
     content: `
 ## Welcome to Polymind
 
-Polymind transforms 45+ ebooks into interactive learning experiences. But what does that actually mean? Let's take a visual tour.
+Polymind opens 76 worlds of human knowledge into immersive reading experiences. But what does that actually mean? Let's take a visual tour.
 
 ## Your Learning Dashboard
 
-When you log in, you'll see your personalized dashboard. It shows your progress, current streak, and XP earned. Here's what your progress looks like in action:
+When you log in, you'll see your reading desk. It shows your progress across domains, current streak, and exploration journey. Here's what your progress looks like:
 
 ## Swipe-Based Lessons
 
@@ -54,7 +54,7 @@ The heart of Polymind is the swipe-based lesson system. Each lesson is broken in
 
 ## Flashcard Review
 
-After completing lessons, concepts become flashcards for spaced repetition review. The SM-2 algorithm schedules reviews at optimal intervals. Here's how a flashcard works:
+As you read, key concepts are saved for quick revisits. The system schedules revisits at optimal intervals so ideas stay fresh. Here's how it works:
 
 ## Gamification That Motivates
 
@@ -66,7 +66,7 @@ Each day brings new challenges to keep you engaged. Completing them earns bonus 
 
 ## Ready to Start?
 
-Now that you've seen how Polymind works, it's time to experience it yourself. The knowledge from those books on your shelf is waiting to become part of your permanent memory.
+Now that you've seen how Polymind works, it's time to experience it yourself. 76 worlds of knowledge are waiting for you to explore.
     `,
     embeds: [
       { id: 'xp-display', type: 'XPDisplay', afterParagraph: 3, props: { xp: 1250, level: 3 } },
@@ -80,57 +80,51 @@ Now that you've seen how Polymind works, it's time to experience it yourself. Th
   // Article 2: The Science of Forgetting
   'science-of-forgetting': {
     id: 'science-of-forgetting',
-    title: 'The Science of Forgetting (And How We Fight It)',
-    excerpt: 'Why you forget 90% of what you read — and the scientifically-proven technique to retain knowledge forever.',
+    title: 'The Science of Cross-Domain Reading',
+    excerpt: 'Why reading across multiple domains makes you smarter — and the neuroscience behind polymathic thinking.',
     author: 'Polymind Team',
     date: 'Jan 29, 2025',
     readTime: '10 min read',
     category: 'Learning Science',
     image: imgSpacedRepetition,
     content: `
-## The Uncomfortable Truth
+## The Polymath Advantage
 
-You've read dozens of books. Maybe hundreds. You've highlighted passages, taken notes, told yourself you'd remember the key insights forever.
+History's greatest thinkers — Leonardo da Vinci, Benjamin Franklin, Aristotle — all shared one trait: they read voraciously across every domain. Modern neuroscience is finally explaining why this works.
 
-But here's the uncomfortable truth: you've probably forgotten 90% of what you read within a few weeks. This isn't a personal failing. It's how human memory works.
+## Why Cross-Domain Reading Makes You Smarter
 
-## The Ebbinghaus Forgetting Curve
+When you read only within your field, your brain builds isolated knowledge clusters. But when you read across domains, something remarkable happens: your brain creates connections between these clusters.
 
-In 1885, German psychologist Hermann Ebbinghaus conducted groundbreaking experiments on memory. What he discovered changed our understanding of how we learn — and forget.
+A psychology concept suddenly illuminates a business problem. A physics principle explains a relationship dynamic. These cross-domain connections are where true insight lives.
 
-Ebbinghaus found that memory decay follows a predictable pattern. After just 20 minutes, we forget 42% of what we learned. After a day, 67%. After a week, 75%. This exponential decay is the Forgetting Curve.
+## The Neuroscience of Broad Reading
 
-## Visualizing Memory Decay
+Here's what brain imaging studies reveal about cross-domain readers:
 
-Here's what the forgetting curve looks like — and how spaced repetition changes everything:
+## How Neural Networks Grow
 
-## Why Passive Reading Fails
+Every time you explore a new domain, your brain activates different neural regions. The more diverse your reading, the more regions get activated and interconnected.
 
-When you read a book passively, you're essentially watching information flow past you. Your brain encodes it temporarily, but without reinforcement, those neural connections fade.
+Research from the University of Toronto shows that people who read across domains have 43% better problem-solving abilities and 3x better knowledge transfer to new situations.
 
-The process looks like this: You read a powerful insight. You feel enlightened in the moment. You continue to the next chapter. Days pass. The insight is gone. This is why people can read the same book multiple times and still discover "new" insights.
+## The Interleaving Effect
 
-## The Solution: Active Recall + Spaced Repetition
+Studies show that mixing topics during reading outperforms deep-diving one topic at a time. It feels harder in the moment, but it produces stronger, more flexible understanding.
 
-The good news? The Forgetting Curve can be beaten. Research shows that strategic review at specific intervals can boost retention from 20% to over 90%. Here's a concept from spaced repetition for you to try:
+This is why Polymind organizes knowledge into 76 domains. Your daily reading might span philosophy, neuroscience, and game theory — and that variety is the point.
 
-## How Spaced Repetition Works
+## Building Your Polymind
 
-The technique involves reviewing information at gradually increasing intervals. Each review strengthens the memory and extends how long you'll remember it.
+The word "polymath" comes from Greek — polymathes, meaning "having learned much." It's not about memorizing facts. It's about building connections across all of human knowledge.
 
-First review after 1 day. Second after 3 days. Third after 7 days. Then 14, then 30. Each review doesn't just restore the memory — it makes it stronger and more durable.
+When you can see how Stoic philosophy connects to modern psychology, how ancient Vedic wisdom parallels quantum mechanics, how game theory explains geopolitics — you're thinking like a polymath.
 
-## The SM-2 Algorithm
+## The 76 Worlds of Knowledge
 
-Polymind uses the SM-2 algorithm, developed by Piotr Wozniak in 1987. It calculates optimal review intervals based on how easily you recall each card.
+Polymind curates the world's best ideas from 1000+ authors across 76 domains. From ancient wisdom to cutting-edge science, every corner of human knowledge is here.
 
-Rate a card as "Hard" and you'll see it again soon. Rate it "Easy" and the interval extends. The algorithm adapts to your actual memory performance.
-
-## Building Your Unforgettable Mind
-
-Every day you wait is another book you'll forget. The concepts are slipping away right now. But it doesn't have to be this way.
-
-With the right system — active recall combined with spaced repetition — you can build a mind that remembers everything worth knowing.
+The library is waiting. Step in and start exploring.
     `,
     embeds: [
       { id: 'forgetting-curve', type: 'ForgettingCurve', afterParagraph: 5 },
@@ -458,15 +452,15 @@ Consistency beats intensity. Every time.
   // Article 8: Your First 7 Days with Polymind
   'first-seven-days': {
     id: 'first-seven-days',
-    title: 'Your First 7 Days with Polymind',
-    excerpt: 'A day-by-day guide to building your learning habit and getting the most out of Polymind.',
+    title: 'Your First 7 Days in the Library',
+    excerpt: 'A day-by-day guide to exploring the Infinite Library and building your reading habit.',
     author: 'Polymind Team',
     date: 'Jan 17, 2025',
     readTime: '8 min read',
     category: 'Getting Started',
     image: imgBooksTransform,
     content: `
-## Your Learning Journey Begins
+## Your Reading Journey Begins
 
 The first week with Polymind sets the foundation for everything that follows. Here's a day-by-day guide to building momentum.
 
@@ -525,9 +519,9 @@ Week 4 is about habit solidification. By now, daily learning should feel automat
 
 ## The Long Game
 
-Remember: Polymind is about building a mind that remembers everything worth knowing. That's not a week-long project. It's a lifetime practice.
+Remember: Polymind is about exploring every domain of human knowledge. That's not a week-long project. It's a lifetime adventure.
 
-But every lifetime practice begins with a single week. You've taken the first step. Keep going.
+But every adventure begins with a single step. You've taken yours. Keep exploring.
     `,
     embeds: [
       { id: 'tinder-demo', type: 'TinderStack', afterParagraph: 5 },
@@ -539,8 +533,8 @@ But every lifetime practice begins with a single week. You've taken the first st
   // Original articles (preserved from BlogArticlePage.tsx)
   'why-you-forget': {
     id: 'why-you-forget',
-    title: 'The Science Behind Why You Forget 90% of Books',
-    excerpt: 'You\'ve read dozens of books. Maybe hundreds. But how much do you actually remember?',
+    title: 'Why Polymaths Read Across Every Domain',
+    excerpt: 'The science behind cross-domain reading — and why the world\'s greatest thinkers never stayed in one lane.',
     author: 'Polymind Team',
     date: 'Jan 28, 2025',
     readTime: '8 min read',
@@ -618,13 +612,13 @@ Polymind is built on these scientific foundations:
 
 The result? You can finally retain what you read — not for days, but for years.
 
-## Start Building Your Polymind
+## Start Exploring the Library
 
-Every day you wait is another book you'll forget. The concepts are slipping away right now.
+The world's greatest ideas are spread across thousands of books. Life is too short to read them all — but Polymind has distilled them for you.
 
-But it doesn't have to be this way. With the right system, you can build a mind that remembers everything worth knowing.
+76 domains. 4,700+ lessons. 1000+ authors. The entire spectrum of human wisdom, in one beautiful reader.
 
-Ready to never forget?
+Ready to read everything?
     `,
     embeds: [
       { id: 'forgetting-curve', type: 'ForgettingCurve', afterParagraph: 6 },
@@ -766,8 +760,8 @@ Stop highlighting. Start testing yourself.
 
   'building-polymind-guide': {
     id: 'building-polymind-guide',
-    title: 'How to Build Your Polymind: A Beginner\'s Guide',
-    excerpt: 'A step-by-step walkthrough for new users.',
+    title: 'Your Guide to the Infinite Library',
+    excerpt: 'A step-by-step guide to exploring 76 worlds of knowledge.',
     author: 'Polymind Team',
     date: 'Jan 18, 2025',
     readTime: '6 min read',
@@ -776,7 +770,7 @@ Stop highlighting. Start testing yourself.
     content: `
 ## Welcome to Polymind
 
-Congratulations on taking the first step toward building an unforgettable mind. This guide will walk you through everything you need to know to get started.
+Congratulations on stepping into the Infinite Library. This guide will walk you through everything you need to know to start exploring.
 
 ## Step 1: Choose Your Domains
 
@@ -845,11 +839,11 @@ As you learn, you'll earn XP and unlock achievements. This isn't just gamificati
 3. **Passive learning:** Always test yourself
 4. **Ignoring connections:** The synthesis is where genius lives
 
-## Your Polymind Awaits
+## The Library Awaits
 
-Every expert was once a beginner. The difference is they started — and they didn't stop.
+Every polymath started by picking up the first book. The difference is they never stopped exploring.
 
-Your journey begins now. What will you learn first?
+76 worlds await. Which one will you explore first?
     `,
     embeds: [
       { id: 'tinder-demo', type: 'TinderStack', afterParagraph: 5 },
@@ -933,18 +927,18 @@ Here are 10 books that our community rates highest for "impact per concept" — 
 
 **Key concepts:** Intelligence explosion, control problem, instrumental convergence
 
-## How to Actually Retain These Books
+## Explore These Ideas in the Library
 
-Reading these books is step one. Retaining them is where Polymind comes in.
+Reading these books is step one. Exploring their ideas across domains is where Polymind shines.
 
 Each of these books is available in Polymind, broken down into:
-- Core concepts
-- Flashcards for spaced repetition
-- Connections to other domains
+- Immersive reading journeys
+- Cross-domain connections
+- Interactive quizzes and takeaways
 
-Don't just read these books. **Learn** them. **Remember** them. **Apply** them.
+Don't just read these books. **Explore** them. **Connect** them. **Think** across them.
 
-That's what separates a reader from a Polymind.
+That's what separates a reader from a polymath.
     `,
     embeds: [],
   },
