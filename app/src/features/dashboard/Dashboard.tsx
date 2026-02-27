@@ -2,9 +2,6 @@ import { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  Trophy,
-  Flame,
-  Star,
   Sparkles,
   History,
   ChevronDown,
@@ -18,11 +15,10 @@ import { AnimatePresence } from 'framer-motion';
 import { useAuthContext } from '@/contexts/AuthContext';
 import { useProgressStore } from '@/store/progressStore';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
-import { useUserStore } from '@/store/userStore';
 import { ModuleLayout, Section } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
-import { ProgressBar, XPBadge } from '@/components/atoms';
-import { VisualOfTheDay, ResumeCard, QuickReviewCard, DailyPowerMeter, Leaderboard } from '@/components/organisms';
+import { ProgressBar } from '@/components/atoms';
+import { VisualOfTheDay, ResumeCard, QuickReviewCard, DailyPowerMeter } from '@/components/organisms';
 import { getDailyQuote, getPastQuotes, formatQuoteDate } from '@/data/quotes';
 
 const itemVariants = {
@@ -95,14 +91,11 @@ export function Dashboard() {
   const navigate = useNavigate();
   const { user } = useAuthContext();
   const userName = user?.displayName || null;
-  const userProgress = useProgressStore((s) => s.userProgress);
-  const getLevelProgress = useProgressStore((s) => s.getLevelProgress);
   const generateWeeklyChallenge = useProgressStore((s) => s.generateWeeklyChallenge);
   const updateStreak = useProgressStore((s) => s.updateStreak);
   const refreshStreakFreeze = useProgressStore((s) => s.refreshStreakFreeze);
   const weeklyChallenge = useProgressStore((s) => s.weeklyChallenge);
   const lastViewedLesson = useProgressStore((s) => s.lastViewedLesson);
-  const consecutiveLogins = useUserStore((s) => s.consecutiveLogins);
 
   // Flashcard data
   const getDueCards = useSpacedRepetitionStore((s) => s.getDueCards);
@@ -255,56 +248,6 @@ export function Dashboard() {
         <VisualOfTheDay />
       </div>
 
-      {/* Leaderboard — Social Competition */}
-      <Section title="Fellow Readers" subtitle="See what others are exploring">
-        <Leaderboard
-          currentUserName={userName || undefined}
-          currentUserXP={userProgress.xp}
-          currentUserStreak={userProgress.currentStreak}
-          currentUserLessons={userProgress.lessonsCompleted.length}
-          maxEntries={10}
-          variant="compact"
-        />
-      </Section>
-
-      {/* Compact Stats Row */}
-      <Section>
-        <GlassCard className="!p-3 sm:!p-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-sunrise" />
-              <span className="text-xs sm:text-sm font-semibold text-text-primary">Level {userProgress?.level ?? 1}</span>
-            </div>
-            <XPBadge xp={userProgress?.xp ?? 0} />
-          </div>
-          <ProgressBar value={getLevelProgress()} variant="xp" size="sm" glow={getLevelProgress() > 50} animated />
-
-          {/* Inline stats */}
-          <div className="grid grid-cols-3 gap-3 mt-3 pt-3 border-t border-white/[0.06]">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-golden mb-0.5">
-                <Trophy className="w-3.5 h-3.5" />
-              </div>
-              <p className="text-sm font-display font-bold text-text-primary">{(userProgress?.xp ?? 0).toLocaleString()}</p>
-              <p className="text-[9px] text-text-muted">Total XP</p>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-coral mb-0.5">
-                <Flame className="w-3.5 h-3.5" />
-              </div>
-              <p className="text-sm font-display font-bold text-text-primary">{consecutiveLogins ?? 0}</p>
-              <p className="text-[9px] text-text-muted">Day Streak</p>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-sage mb-0.5">
-                <BookOpen className="w-3.5 h-3.5" />
-              </div>
-              <p className="text-sm font-display font-bold text-text-primary">{userProgress?.lessonsCompleted?.length ?? 0}</p>
-              <p className="text-[9px] text-text-muted">Reads</p>
-            </div>
-          </div>
-        </GlassCard>
-      </Section>
     </ModuleLayout>
   );
 }
