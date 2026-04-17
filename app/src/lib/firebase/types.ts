@@ -55,6 +55,7 @@ export interface FirestoreUserDocument {
     freeModules?: string[];
     purchasedModules?: string[];
     hasLifetimeAccess?: boolean;
+    trialStartDate?: string | null;
   };
 
   // From progressStore

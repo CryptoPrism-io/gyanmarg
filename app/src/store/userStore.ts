@@ -31,6 +31,9 @@ interface UserState {
   // Favorite modules
   favoriteModules: string[];
 
+  // Free trial
+  trialStartDate: string | null; // ISO date string when trial started, null = not started
+
   // Daily login tracking
   lastLoginDate: string | null; // ISO date string (YYYY-MM-DD)
   consecutiveLogins: number;
@@ -71,6 +74,11 @@ interface UserState {
   // Daily login actions
   checkDailyLogin: () => { isNewDay: boolean; reward: number | null; streak: number };
   claimDailyReward: () => void;
+
+  // Free trial actions
+  startTrial: () => void;
+  isTrialActive: () => boolean;
+  isTrialExpired: () => boolean;
 }
 
 const defaultSettings: UserSettings = {
@@ -104,6 +112,7 @@ export const useUserStore = create<UserState>()(
       purchasedModules: [],
       hasLifetimeAccess: false,
       favoriteModules: [],
+      trialStartDate: null,
       lastLoginDate: null,
       consecutiveLogins: 0,
       dailyRewardClaimed: false,
@@ -271,6 +280,26 @@ export const useUserStore = create<UserState>()(
 
       claimDailyReward: () => {
         set({ dailyRewardClaimed: true });
+      },
+
+      // Free trial actions
+      startTrial: () => {
+        set({ trialStartDate: new Date().toISOString() });
+        triggerSync();
+      },
+
+      isTrialActive: () => {
+        const { trialStartDate } = get();
+        if (!trialStartDate) return false;
+        const daysElapsed = Math.floor((Date.now() - new Date(trialStartDate).getTime()) / (1000 * 60 * 60 * 24));
+        return daysElapsed < 60;
+      },
+
+      isTrialExpired: () => {
+        const { trialStartDate } = get();
+        if (!trialStartDate) return false;
+        const daysElapsed = Math.floor((Date.now() - new Date(trialStartDate).getTime()) / (1000 * 60 * 60 * 24));
+        return daysElapsed >= 60;
       },
     }),
     {

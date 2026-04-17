@@ -14,27 +14,30 @@ export interface PaywallState {
  *
  * Access rules:
  * - hasLifetimeAccess → full access to everything
+ * - isTrialActive() → 60-day free trial, full access
  * - freeModules → modules chosen during onboarding, always free
  * - purchasedModules → individually bought at ₹99
- * - lesson index 0 (first lesson) → always free regardless of module access
+ * - lesson index < 3 (first 3 lessons) → always free regardless of module access
  */
 export function usePaywall(): PaywallState {
   const freeModules = useUserStore(state => state.freeModules);
   const purchasedModules = useUserStore(state => state.purchasedModules);
   const hasLifetimeAccess = useUserStore(state => state.hasLifetimeAccess);
+  const isTrialActive = useUserStore(state => state.isTrialActive);
 
   const [paywallModuleId, setPaywallModuleId] = useState<string | null>(null);
 
   function canAccessModule(moduleId: string): boolean {
     return (
       hasLifetimeAccess ||
+      isTrialActive() ||
       freeModules.includes(moduleId) ||
       purchasedModules.includes(moduleId)
     );
   }
 
   function canAccessLesson(moduleId: string, lessonIndex: number): boolean {
-    return lessonIndex === 0 || canAccessModule(moduleId);
+    return lessonIndex < 3 || canAccessModule(moduleId); // first 3 lessons always free
   }
 
   function showPaywall(moduleId: string | null = null): void {
