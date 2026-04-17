@@ -38,7 +38,7 @@ import { useProgressStore } from '@/store/progressStore';
 import type { StarredCard } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
 import { GoogleSignInButton, BadgeCard, GlassCard, RichMarkdown } from '@/components/molecules';
-import { ModuleLayout } from '@/components/templates';
+// ModuleLayout removed — using editorial layout directly
 import { Button } from '@/components/atoms';
 import { ShareableAchievementCard } from '@/components/organisms';
 import { BADGES } from '@/data/badges';
@@ -592,13 +592,6 @@ export function Profile() {
     { id: 'settings' as const, label: 'Settings', icon: Settings },
   ];
 
-  const tabTitle: Record<ProfileView, string> = {
-    main: profile?.name || user?.displayName || 'Profile',
-    badges: 'Trophy Room',
-    saved: 'Saved Cards',
-    settings: 'Settings',
-  };
-
   const tabSubtitle: Record<ProfileView, string> = {
     main: learnerTitle.title,
     badges: `${unlockedBadges.length} of ${BADGES.length} earned`,
@@ -607,26 +600,34 @@ export function Profile() {
   };
 
   return (
-    <ModuleLayout
-      title={tabTitle[activeView]}
-      subtitle={tabSubtitle[activeView]}
-      icon={<User className="w-5 h-5" />}
-      headerGradient="sunset"
-    >
-      {/* ── PERSISTENT TAB BAR ── */}
-      <div className="grid grid-cols-4 rounded-xl overflow-hidden border border-white/[0.08] bg-white/[0.02] mb-5">
+    <div className="pb-28">
+      {/* Editorial Profile Header */}
+      <div className="px-6 pt-8 pb-4 max-w-3xl mx-auto">
+        <h1 className="text-4xl font-serif tracking-tight leading-none">
+          {profile?.name || user?.displayName || 'Reader'}
+        </h1>
+        <p className="text-[11px] uppercase tracking-[0.3em] font-semibold text-[var(--color-text-muted)] mt-2">
+          {tabSubtitle[activeView]}
+        </p>
+      </div>
+
+      <div className="max-w-3xl mx-auto px-6">
+      {/* ── EDITORIAL TAB BAR ── */}
+      <div className="flex gap-6 mb-8 border-b border-[var(--color-border)]">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveView(tab.id)}
-            className={`flex flex-col items-center gap-1 py-2.5 text-[11px] font-medium transition-all border-b-2 ${
+            className={`relative pb-3 text-[10px] uppercase tracking-[0.2em] font-semibold transition-colors ${
               activeView === tab.id
-                ? 'border-golden text-golden bg-golden/[0.08]'
-                : 'border-transparent text-text-muted hover:text-text-secondary'
+                ? 'text-[var(--color-accent)]'
+                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
             }`}
           >
-            <tab.icon className="w-4 h-4" />
             {tab.label}
+            {activeView === tab.id && (
+              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--color-accent)]" />
+            )}
           </button>
         ))}
       </div>
@@ -1099,6 +1100,35 @@ export function Profile() {
                 </GlassCard>
               </motion.div>
 
+              {/* Appearance */}
+              <motion.div variants={itemVariants}>
+                <GlassCard>
+                  <h3 className="text-sm font-medium text-text-primary mb-4 flex items-center gap-2">
+                    <Settings className="w-4 h-4 text-golden" />
+                    Appearance
+                  </h3>
+                  <div className="flex gap-2">
+                    {([
+                      { value: 'dark' as const, label: 'Dark' },
+                      { value: 'light' as const, label: 'Light' },
+                      { value: 'system' as const, label: 'System' },
+                    ]).map((opt) => (
+                      <button
+                        key={opt.value}
+                        onClick={() => updateSettings({ theme: opt.value })}
+                        className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-semibold transition-all border ${
+                          settings.theme === opt.value
+                            ? 'bg-golden/15 border-golden/30 text-golden'
+                            : 'bg-white/[0.03] border-white/[0.08] text-text-muted hover:bg-white/[0.06]'
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                </GlassCard>
+              </motion.div>
+
               {/* Learning Preferences */}
               <motion.div variants={itemVariants}>
                 <GlassCard>
@@ -1311,7 +1341,8 @@ export function Profile() {
           </motion.div>
         </motion.div>
       )}
-    </ModuleLayout>
+      </div>
+    </div>
   );
 }
 

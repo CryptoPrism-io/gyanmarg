@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Brain,
   RotateCcw,
   Check,
   Sparkles,
@@ -19,7 +18,7 @@ import { useSoundEffects } from '@/hooks';
 import { useAuthGate } from '@/hooks/useAuthGate';
 import { ModuleLayout } from '@/components/templates';
 import { SignInGate } from '@/components/organisms';
-import { FlashCard, RatingButtons } from '@/components/molecules/FlashCard';
+import { RatingButtons } from '@/components/molecules/FlashCard';
 import { Button } from '@/components/atoms';
 import { getCategoryById } from '@/data/review-categories';
 import type { ReviewRating } from '@/types';
@@ -60,14 +59,12 @@ export function SpacedRepetition() {
   const getCategoryStats = useSpacedRepetitionStore((s) => s.getCategoryStats);
   const unlockedCards = useSpacedRepetitionStore((s) => s.unlockedCards);
   const totalReviews = useSpacedRepetitionStore((s) => s.totalReviews);
-  const { playCardFlip, playCorrect, playXpGain } = useSoundEffects();
+  const { playCorrect, playXpGain } = useSoundEffects();
   const { isAuthenticated } = useAuthGate();
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showAuthGate, setShowAuthGate] = useState(!isAuthenticated);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [showRating, setShowRating] = useState(false);
   const [reviewed, setReviewed] = useState<string[]>([]);
   const [sessionComplete, setSessionComplete] = useState(false);
   const [sessionXP, setSessionXP] = useState(0);
@@ -106,13 +103,6 @@ export function SpacedRepetition() {
 
   const currentCategoryConfig = selectedCategory ? getCategoryById(selectedCategory) : null;
   const xpPerCard = currentCategoryConfig?.xpPerCard || 20;
-  const handleFlip = (flipped: boolean) => {
-    setIsFlipped(flipped);
-    if (flipped) {
-      setShowRating(true);
-      playCardFlip();
-    }
-  };
 
   const handleRate = (rating: 'hard' | 'good' | 'easy') => {
     if (!currentCard) return;
@@ -137,8 +127,6 @@ export function SpacedRepetition() {
 
     if (currentIndex < sessionCards.length - 1) {
       setCurrentIndex((prev) => prev + 1);
-      setIsFlipped(false);
-      setShowRating(false);
     } else {
       setSessionComplete(true);
     }
@@ -146,8 +134,6 @@ export function SpacedRepetition() {
 
   const resetSession = () => {
     setCurrentIndex(0);
-    setIsFlipped(false);
-    setShowRating(false);
     setReviewed([]);
     setSessionComplete(false);
     setSessionXP(0);
@@ -176,25 +162,22 @@ export function SpacedRepetition() {
     });
 
     return (
-      <ModuleLayout
-        title="Review"
-        subtitle="Strengthen your knowledge"
-        icon={<Brain className="w-5 h-5" />}
-        headerGradient="aurora"
-        rightContent={
-          totalDue > 0 ? (
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-coral/15 border border-coral/20">
-              <Flame className="w-3.5 h-3.5 text-coral" />
-              <span className="text-xs font-bold text-coral">{totalDue} due</span>
-            </div>
+      <div className="pb-28">
+        {/* Editorial Review Header */}
+        <div className="px-6 pt-6 pb-4 max-w-3xl mx-auto flex items-baseline justify-between">
+          <div>
+            <h1 className="text-2xl font-serif italic tracking-tight">Revisit</h1>
+            <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--color-text-muted)] mt-1">
+              Strengthen your knowledge
+            </p>
+          </div>
+          {totalDue > 0 ? (
+            <span className="text-[10px] uppercase tracking-[0.15em] font-bold text-[var(--color-coral)]">{totalDue} due</span>
           ) : (
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sage/15 border border-sage/20">
-              <Check className="w-3.5 h-3.5 text-sage" />
-              <span className="text-xs font-bold text-sage">Caught up</span>
-            </div>
-          )
-        }
-      >
+            <span className="text-[10px] uppercase tracking-[0.15em] font-bold text-[var(--color-sage)]">Caught up</span>
+          )}
+        </div>
+        <div className="max-w-3xl mx-auto px-6">
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-5">
 
           {/* === COMMAND CENTER HERO === */}
@@ -466,7 +449,8 @@ export function SpacedRepetition() {
 
           <div className="h-4" />
         </motion.div>
-      </ModuleLayout>
+        </div>
+      </div>
     );
   }
 
@@ -643,81 +627,54 @@ export function SpacedRepetition() {
   }
 
   // ========================================
-  // ACTIVE REVIEW
+  // ACTIVE REVIEW — Reels-style vertical scroll
   // ========================================
   return (
     <>
-      <ModuleLayout
-        title={categoryConfig?.name || 'Review'}
-        icon={<span className="text-xl">{categoryConfig?.icon}</span>}
-        headerGradient="aurora"
-        rightContent={
-          <button onClick={backToHub} className="w-9 h-9 rounded-xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/[0.1] transition-colors">
-            <ChevronLeft className="w-4 h-4 text-text-muted" />
+      <div className="fixed inset-0 bg-base z-[9999] flex flex-col">
+        {/* Compact header */}
+        <div className="shrink-0 border-b border-white/[0.06] px-4 py-3 flex items-center gap-3">
+          <button onClick={backToHub} className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center hover:bg-white/[0.1] transition-colors">
+            <ChevronLeft className="w-5 h-5 text-text-muted" />
           </button>
-        }
-      >
-        {/* Progress strip */}
-        <div className="mb-5">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-display font-bold text-text-primary">
-                {reviewed.length + 1} / {sessionCards.length}
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-display font-bold text-text-primary truncate">{categoryConfig?.name || 'Review'}</p>
+            <div className="flex items-center gap-3 mt-0.5">
+              <span className="text-[10px] text-text-muted">{reviewed.length}/{sessionCards.length} reviewed</span>
+              <span className="text-[10px] font-bold text-golden flex items-center gap-1">
+                <Zap className="w-3 h-3" />+{sessionXP}
               </span>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Zap className="w-3.5 h-3.5 text-golden" />
-              <span className="text-xs font-bold text-golden">+{sessionXP}</span>
-            </div>
-          </div>
-          {/* Step dots */}
-          <div className="flex gap-1">
-            {sessionCards.map((_, i) => (
-              <div
-                key={i}
-                className={`h-1 rounded-full flex-1 transition-all duration-300 ${
-                  i < reviewed.length
-                    ? 'bg-sage'
-                    : i === reviewed.length
-                    ? `${categoryColor.text.replace('text-', 'bg-')} opacity-70`
-                    : 'bg-white/[0.06]'
-                }`}
-              />
-            ))}
           </div>
         </div>
 
-        {/* Card */}
-        {currentCard && (
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentCard.id}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.25 }}
-              className="max-w-lg mx-auto"
-            >
-              <FlashCard
-                front={currentCard.front}
-                back={currentCard.back}
-                category={currentCard.category}
-                onFlip={handleFlip}
-              />
+        {/* Thin scroll progress line */}
+        <div className="shrink-0 h-[2px] bg-white/[0.06]">
+          <motion.div
+            className="h-full bg-sage/60"
+            animate={{ width: `${sessionCards.length > 0 ? (reviewed.length / sessionCards.length) * 100 : 0}%` }}
+            transition={{ duration: 0.3 }}
+          />
+        </div>
 
-              {showRating && (
-                <RatingButtons onRate={handleRate} />
-              )}
+        {/* Reels scroll container */}
+        <div className="flex-1 overflow-y-auto snap-y snap-mandatory" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
 
-              {!isFlipped && (
-                <p className="text-center text-xs text-text-muted/40 mt-3">
-                  Tap card to reveal answer
-                </p>
-              )}
-            </motion.div>
-          </AnimatePresence>
-        )}
-      </ModuleLayout>
+          {sessionCards.map((card) => (
+            <ReelsFlashcardSlide
+              key={card.id}
+              card={card}
+              isReviewed={reviewed.includes(card.id)}
+              onRate={(rating) => {
+                if (reviewed.includes(card.id)) return;
+                handleRate(rating);
+              }}
+              categoryColor={categoryColor}
+              xpPerCard={xpPerCard}
+            />
+          ))}
+        </div>
+      </div>
 
       {showAuthGate && (
         <SignInGate
@@ -727,6 +684,114 @@ export function SpacedRepetition() {
         />
       )}
     </>
+  );
+}
+
+// === REELS FLASHCARD SLIDE ===
+function ReelsFlashcardSlide({
+  card,
+  isReviewed,
+  onRate,
+  categoryColor,
+  xpPerCard,
+}: {
+  card: { id: string; front: string; back: string; category?: string };
+  isReviewed: boolean;
+  onRate: (rating: 'hard' | 'good' | 'easy') => void;
+  categoryColor: { bg: string; border: string; text: string; ring: string };
+  xpPerCard: number;
+}) {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const { playCardFlip } = useSoundEffects();
+
+  // Reset flip state when card changes
+  useEffect(() => {
+    setIsFlipped(false);
+  }, [card.id]);
+
+  const handleFlip = () => {
+    if (isReviewed) return;
+    const newFlipped = !isFlipped;
+    setIsFlipped(newFlipped);
+    if (newFlipped) playCardFlip();
+  };
+
+  return (
+    <div className="snap-start h-full w-full shrink-0 flex flex-col items-center justify-center px-5 py-6">
+      {/* Card container — full-screen feel */}
+      <div className="w-full max-w-lg flex-1 flex flex-col gap-4">
+        {/* Category badge */}
+        {card.category && (
+          <div className="flex items-center gap-2 shrink-0">
+            <span className={`text-[10px] font-bold uppercase tracking-widest ${categoryColor.text} ${categoryColor.bg} ${categoryColor.border} border px-2.5 py-1 rounded-lg`}>
+              {card.category}
+            </span>
+            {isReviewed && <Check className="w-4 h-4 text-sage" />}
+          </div>
+        )}
+
+        {/* Flashcard — tap to flip */}
+        <button
+          onClick={handleFlip}
+          className="flex-1 w-full text-left rounded-2xl border border-white/[0.08] overflow-hidden transition-all relative"
+          disabled={isReviewed}
+        >
+          <AnimatePresence mode="wait">
+            {!isFlipped ? (
+              <motion.div
+                key="front"
+                initial={{ rotateY: -90, opacity: 0 }}
+                animate={{ rotateY: 0, opacity: 1 }}
+                exit={{ rotateY: 90, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="h-full flex flex-col p-6 bg-gradient-to-br from-white/[0.04] via-surface to-white/[0.02]"
+              >
+                <div className="flex-1 flex items-center justify-center">
+                  <p className="text-xl font-display font-semibold text-text-primary text-center leading-relaxed px-2">
+                    {card.front}
+                  </p>
+                </div>
+                <div className="shrink-0 flex items-center justify-center gap-2 text-text-muted/40 text-xs pt-4 border-t border-white/[0.04]">
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Tap to reveal</span>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="back"
+                initial={{ rotateY: -90, opacity: 0 }}
+                animate={{ rotateY: 0, opacity: 1 }}
+                exit={{ rotateY: 90, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="h-full flex flex-col p-6 bg-gradient-to-br from-sage/[0.06] via-surface to-lavender/[0.04]"
+              >
+                <div className="flex items-center gap-2 mb-3 shrink-0">
+                  <Sparkles className="w-3.5 h-3.5 text-sage" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-sage/70">Answer</span>
+                </div>
+                <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-sage/20 scrollbar-track-transparent">
+                  <p className="text-base text-text-secondary text-center leading-relaxed px-2">{card.back}</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </button>
+
+        {/* Rating buttons — appear after flip */}
+        {isFlipped && !isReviewed && (
+          <div className="shrink-0">
+            <RatingButtons onRate={onRate} />
+          </div>
+        )}
+
+        {/* Reviewed state */}
+        {isReviewed && (
+          <div className="shrink-0 text-center">
+            <span className="text-xs text-sage font-semibold">Reviewed +{xpPerCard} XP</span>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 
