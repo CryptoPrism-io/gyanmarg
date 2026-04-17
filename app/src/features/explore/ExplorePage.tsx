@@ -496,9 +496,6 @@ export function ExplorePage() {
             setShowRealPaywall(false);
             handleClose();
           }}
-          onPurchaseModule={(_id) => {
-            // Not applicable for viz page — module purchase not relevant here
-          }}
         />
       )}
 

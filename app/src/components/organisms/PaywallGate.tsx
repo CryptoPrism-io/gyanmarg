@@ -2,13 +2,21 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Lock, Shield, Star } from 'lucide-react';
 
-interface PaywallGateProps {
-  moduleId: string | null;     // null = generic lifetime upsell only
-  moduleName?: string;         // display name for the specific module
-  onClose: () => void;
-  onPurchaseModule?: (moduleId: string) => void;   // ₹99 single module
-  onPurchaseLifetime?: () => void;                  // ₹999 lifetime
-}
+type PaywallGateProps =
+  | {
+      moduleId: string;          // specific module — both purchase callbacks required
+      moduleName?: string;
+      onClose: () => void;
+      onPurchaseModule: (moduleId: string) => void;  // ₹99 single module
+      onPurchaseLifetime: () => void;                 // ₹999 lifetime
+    }
+  | {
+      moduleId: null;            // generic lifetime upsell only — no per-module callback
+      moduleName?: string;
+      onClose: () => void;
+      onPurchaseModule?: never;
+      onPurchaseLifetime: () => void;                 // ₹999 lifetime
+    };
 
 export function PaywallGate({
   moduleId,
@@ -26,9 +34,7 @@ export function PaywallGate({
   }
 
   function handlePurchaseLifetime() {
-    if (onPurchaseLifetime) {
-      onPurchaseLifetime();
-    }
+    onPurchaseLifetime();
   }
 
   return (

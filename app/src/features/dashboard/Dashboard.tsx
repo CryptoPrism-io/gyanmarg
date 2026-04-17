@@ -26,7 +26,6 @@ export function Dashboard() {
 
   const hasLifetimeAccess = useUserStore((s) => s.hasLifetimeAccess);
   const purchasedModules = useUserStore((s) => s.purchasedModules);
-  const purchaseModule = useUserStore((s) => s.purchaseModule);
   const activateLifetime = useUserStore((s) => s.activateLifetime);
   const showUpgradeBanner = !hasLifetimeAccess && purchasedModules.length === 0;
 
@@ -254,11 +253,6 @@ export function Dashboard() {
         <PaywallGate
           moduleId={null}
           onClose={() => setIsPaywallOpen(false)}
-          onPurchaseModule={(id) => {
-            // TODO: wire Razorpay before go-live
-            purchaseModule(id);
-            setIsPaywallOpen(false);
-          }}
           onPurchaseLifetime={() => {
             // TODO: wire Razorpay before go-live
             activateLifetime();
