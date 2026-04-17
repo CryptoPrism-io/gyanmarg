@@ -5,109 +5,30 @@ import {
   Sparkles,
   ChevronRight,
   ChevronLeft,
-  Clock,
-  Check,
   ArrowRight,
-  Target,
   BookOpen,
-  Zap,
-  Brain,
-  Heart,
-  TrendingUp,
-  Network,
+  Check,
 } from 'lucide-react';
 import { useUserStore, useOnboardingProgress } from '@/store/userStore';
 import { OnboardingLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { Button } from '@/components/atoms';
+import { Icon } from '@/components/atoms/Icon';
+import { modules } from '@/data/modules';
+import { moduleCategories } from '@/data/categories';
 
-// Import AI-generated images (WebP for better performance)
-import imgForgetting from '@/assets/ai-images/onboarding/onboarding-01-forgetting.webp';
-import imgBreakthrough from '@/assets/ai-images/onboarding/onboarding-02-breakthrough.webp';
-import imgPolymind from '@/assets/ai-images/onboarding/onboarding-03-polymind.webp';
-
-// Why are you building your Polymind?
-const goals = [
-  { id: 'career', label: 'Advance My Career', desc: 'Get promoted, lead better, earn more', icon: Target, color: 'sunrise' },
-  { id: 'curiosity', label: 'Intellectual Curiosity', desc: 'I love learning across many fields', icon: Brain, color: 'lavender' },
-  { id: 'mastery', label: 'Personal Mastery', desc: 'Optimize mind, body, and habits', icon: Sparkles, color: 'sage' },
-  { id: 'skills', label: 'Build Specific Skills', desc: 'AI, coding, investing, writing', icon: Zap, color: 'golden' },
-  { id: 'wisdom', label: 'Seek Deeper Wisdom', desc: 'Philosophy, psychology, meaning', icon: Heart, color: 'coral' },
-];
-
-const learningStyles = [
-  { id: 'reader', label: 'Deep Reader', desc: 'I like to read and reflect deeply', color: 'lavender' },
-  { id: 'doer', label: 'Learn by Doing', desc: 'I prefer hands-on exercises', color: 'sunrise' },
-  { id: 'visual', label: 'Visual Learner', desc: 'I learn best with visuals', color: 'sage' },
-  { id: 'quick', label: 'Quick Bites', desc: 'Short lessons, frequent review', color: 'golden' },
-];
-
-const timeCommitments = [
-  { id: 5, label: '5 min/day', desc: 'Micro-learning', color: 'sage' },
-  { id: 15, label: '15 min/day', desc: 'Quick sessions', color: 'sunrise' },
-  { id: 30, label: '30 min/day', desc: 'Solid practice', color: 'lavender' },
-  { id: 60, label: '60+ min/day', desc: 'Deep immersion', color: 'golden' },
-];
-
-// Knowledge Domains - pick 3-5 to start building your Polymind
-const knowledgeDomains = [
-  { id: 'psychology', label: '🧠 Psychology', desc: 'Kahneman, Cialdini, Ariely', color: 'lavender' },
-  { id: 'ai', label: '🤖 AI & Technology', desc: 'Machine learning, future of tech', color: 'sunrise' },
-  { id: 'wealth', label: '💰 Wealth & Investing', desc: 'Buffett, Dalio, Graham', color: 'golden' },
-  { id: 'productivity', label: '⚡ Productivity', desc: 'Deep work, habits, focus', color: 'sage' },
-  { id: 'health', label: '💪 Health & Longevity', desc: 'Attia, Huberman, biohacking', color: 'coral' },
-  { id: 'leadership', label: '👥 Leadership', desc: 'Management, influence, teams', color: 'sunrise' },
-  { id: 'philosophy', label: '🧘 Philosophy', desc: 'Stoicism, meaning, wisdom', color: 'lavender' },
-  { id: 'writing', label: '✍️ Writing & Communication', desc: 'Storytelling, persuasion', color: 'golden' },
-  { id: 'science', label: '🔬 Science', desc: 'Physics, biology, neuroscience', color: 'sage' },
-  { id: 'creativity', label: '🎨 Creativity', desc: 'Innovation, design thinking', color: 'coral' },
-];
-
-const colorStyles = {
-  sunrise: {
-    bg: 'bg-sunrise/10',
-    border: 'border-sunrise/30',
-    text: 'text-sunrise',
-    activeBg: 'bg-sunrise/20',
-    activeBorder: 'border-sunrise/50',
-  },
-  golden: {
-    bg: 'bg-golden/10',
-    border: 'border-golden/30',
-    text: 'text-golden',
-    activeBg: 'bg-golden/20',
-    activeBorder: 'border-golden/50',
-  },
-  coral: {
-    bg: 'bg-coral/10',
-    border: 'border-coral/30',
-    text: 'text-coral',
-    activeBg: 'bg-coral/20',
-    activeBorder: 'border-coral/50',
-  },
-  sage: {
-    bg: 'bg-sage/10',
-    border: 'border-sage/30',
-    text: 'text-sage',
-    activeBg: 'bg-sage/20',
-    activeBorder: 'border-sage/50',
-  },
-  lavender: {
-    bg: 'bg-lavender/10',
-    border: 'border-lavender/30',
-    text: 'text-lavender',
-    activeBg: 'bg-lavender/20',
-    activeBorder: 'border-lavender/50',
-  },
-};
-
-interface UserData {
-  name: string;
-  primaryGoal: string;
-  learningStyle: string;
-  dailyTime: number;
-  selectedDomains: string[];
+// Build a lookup: moduleId → category name + emoji icon
+const moduleCategoryMap = new Map<string, { name: string; icon: string }>();
+for (const cat of moduleCategories) {
+  for (const moduleId of cat.moduleIds) {
+    moduleCategoryMap.set(moduleId, { name: cat.name, icon: cat.icon });
+  }
 }
+
+// Only show available modules in the picker
+const availableModules = modules.filter((m) => m.isAvailable);
+
+const TOTAL_STEPS = 3;
 
 export function Onboarding() {
   const navigate = useNavigate();
@@ -116,28 +37,23 @@ export function Onboarding() {
   const savedProgress = useOnboardingProgress();
 
   const [step, setStep] = useState(savedProgress?.currentStep ?? 0);
-  const [userData, setUserData] = useState<UserData>({
-    name: savedProgress?.data?.name ?? '',
-    primaryGoal: savedProgress?.data?.primaryGoal ?? '',
-    learningStyle: savedProgress?.data?.learningStyle ?? '',
-    dailyTime: savedProgress?.data?.dailyTime ?? 15,
-    selectedDomains: savedProgress?.data?.selectedDomains ?? [],
-  });
-
-  const totalSteps = 8; // Added 3 educational story slides
+  const [name, setName] = useState<string>(savedProgress?.data?.name ?? '');
+  const [selectedModuleIds, setSelectedModuleIds] = useState<string[]>(
+    savedProgress?.data?.freeModules ?? []
+  );
 
   // Persist progress on step/data change
   useEffect(() => {
-    setOnboardingStep(step, userData);
-  }, [step, userData, setOnboardingStep]);
+    setOnboardingStep(step, { name, freeModules: selectedModuleIds });
+  }, [step, name, selectedModuleIds, setOnboardingStep]);
 
   const handleNext = () => {
-    if (step < totalSteps - 1) {
+    if (step < TOTAL_STEPS - 1) {
       setStep(step + 1);
     } else {
       completeOnboarding({
-        ...userData,
-        freeModules: [], // Will be set in the new onboarding flow (Task A2)
+        name,
+        freeModules: selectedModuleIds,
         completed: true,
         completedAt: new Date().toISOString(),
       });
@@ -149,38 +65,76 @@ export function Onboarding() {
     if (step > 0) setStep(step - 1);
   };
 
-  const canProceed = () => {
+  const canProceed = (): boolean => {
     switch (step) {
       case 0:
-        return userData.name.trim().length > 0;
-      case 1: // Story: The Problem
-      case 2: // Story: The Science
-      case 3: // Story: The Polymind Way
-        return true; // Educational slides always proceed
-      case 4:
-        return userData.primaryGoal !== '';
-      case 5:
-        return userData.learningStyle !== '';
-      case 6:
-        return userData.dailyTime > 0;
-      case 7:
-        return userData.selectedDomains.length >= 3; // Must pick at least 3 domains
+        return name.trim().length > 0;
+      case 1:
+        return selectedModuleIds.length === 2;
+      case 2:
+        return true;
       default:
         return true;
     }
   };
 
-  const toggleDomain = (id: string) => {
-    setUserData((prev) => ({
-      ...prev,
-      selectedDomains: prev.selectedDomains.includes(id)
-        ? prev.selectedDomains.filter((d) => d !== id)
-        : [...prev.selectedDomains, id],
-    }));
+  const toggleModule = (id: string) => {
+    setSelectedModuleIds((prev) => {
+      if (prev.includes(id)) {
+        return prev.filter((m) => m !== id);
+      }
+      if (prev.length >= 2) return prev; // Cap at 2
+      return [...prev, id];
+    });
   };
 
-  const renderStep = () => {
-    return (
+  // Group available modules by category for display
+  const groupedModules = moduleCategories
+    .map((cat) => ({
+      category: cat,
+      items: availableModules.filter((m) => cat.moduleIds.includes(m.id)),
+    }))
+    .filter((g) => g.items.length > 0);
+
+  // Get selected module configs for step 3 display
+  const selectedModules = selectedModuleIds
+    .map((id) => availableModules.find((m) => m.id === id))
+    .filter(Boolean) as typeof availableModules;
+
+  return (
+    <OnboardingLayout
+      step={step}
+      totalSteps={TOTAL_STEPS}
+      footer={
+        <div className="flex gap-3">
+          {step > 0 && (
+            <Button variant="glass" onClick={handleBack} className="px-6">
+              <ChevronLeft className="w-5 h-5 mr-1" />
+              Back
+            </Button>
+          )}
+          <Button
+            variant="primary"
+            onClick={handleNext}
+            disabled={!canProceed()}
+            className="flex-1"
+            glow={canProceed()}
+          >
+            {step === TOTAL_STEPS - 1 ? (
+              <>
+                Enter the Library
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </>
+            ) : (
+              <>
+                Continue
+                <ChevronRight className="w-5 h-5 ml-1" />
+              </>
+            )}
+          </Button>
+        </div>
+      }
+    >
       <AnimatePresence mode="wait">
         <motion.div
           key={step}
@@ -189,6 +143,7 @@ export function Onboarding() {
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
         >
+          {/* ===== STEP 1: Welcome + Name ===== */}
           {step === 0 && (
             <div className="space-y-8">
               <div className="text-center">
@@ -214,10 +169,11 @@ export function Onboarding() {
                 </label>
                 <input
                   type="text"
-                  value={userData.name}
-                  onChange={(e) =>
-                    setUserData({ ...userData, name: e.target.value })
-                  }
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && canProceed()) handleNext();
+                  }}
                   className="w-full glass border border-white/10 rounded-xl px-5 py-4 text-text-primary text-lg placeholder-text-muted focus:border-sunrise/50 focus:ring-2 focus:ring-sunrise/20 transition-all bg-transparent"
                   placeholder="Enter your name"
                   autoFocus
@@ -238,400 +194,157 @@ export function Onboarding() {
             </div>
           )}
 
-          {/* ===== STORY SLIDE 1: The Problem ===== */}
+          {/* ===== STEP 2: Pick 2 Free Modules ===== */}
           {step === 1 && (
-            <div className="space-y-6">
-              {/* AI Generated Image */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="w-full aspect-video rounded-2xl overflow-hidden border border-coral/20"
-              >
-                <img
-                  src={imgForgetting}
-                  alt="Knowledge across domains"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-
+            <div className="space-y-5">
               <div className="text-center">
                 <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  Here's the hard truth...
+                  Choose 2 free modules
                 </h1>
+                <p className="text-text-secondary mt-2 text-sm">
+                  You'll have full access to these — forever free
+                </p>
+                <div className="mt-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sunrise/10 border border-sunrise/20">
+                  <span className={`text-sm font-semibold ${selectedModuleIds.length === 2 ? 'text-sunrise' : 'text-text-muted'}`}>
+                    {selectedModuleIds.length}/2 selected
+                  </span>
+                  {selectedModuleIds.length === 2 && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="w-4 h-4 rounded-full bg-sunrise/20 border border-sunrise/40 flex items-center justify-center"
+                    >
+                      <Check className="w-2.5 h-2.5 text-sunrise" />
+                    </motion.div>
+                  )}
+                </div>
               </div>
 
-              <div className="space-y-3">
-                <GlassCard className="border-amber-500/30 p-4">
-                  <p className="text-base text-text-primary leading-relaxed">
-                    There are <span className="text-amber-400 font-semibold">thousands of brilliant books</span> across
-                    every domain of human knowledge.
-                  </p>
-                </GlassCard>
+              {/* Scrollable module list grouped by category */}
+              <div className="space-y-4 max-h-[380px] overflow-y-auto pr-1 scrollbar-thin">
+                {groupedModules.map(({ category, items }) => (
+                  <div key={category.id}>
+                    <div className="flex items-center gap-1.5 mb-2 px-1">
+                      <span className="text-base">{category.icon}</span>
+                      <span className="text-xs font-semibold text-text-muted uppercase tracking-wider">
+                        {category.name}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      {items.map((mod) => {
+                        const isSelected = selectedModuleIds.includes(mod.id);
+                        const isDisabled =
+                          !isSelected && selectedModuleIds.length >= 2;
 
-                <GlassCard className="border-white/10 p-4">
-                  <div className="flex items-center gap-4">
-                    <div className="text-4xl font-bold text-amber-400">76</div>
-                    <p className="text-text-secondary text-sm">
-                      worlds of wisdom — from <span className="text-amber-400">ancient philosophy to quantum physics</span> —
-                      curated and waiting for you.
-                    </p>
+                        return (
+                          <motion.button
+                            key={mod.id}
+                            whileTap={isDisabled ? {} : { scale: 0.97 }}
+                            onClick={() => !isDisabled && toggleModule(mod.id)}
+                            className={`
+                              relative p-3 rounded-xl text-left transition-all border backdrop-blur-sm
+                              ${isSelected
+                                ? 'bg-sunrise/15 border-sunrise/50 ring-1 ring-sunrise/30'
+                                : isDisabled
+                                  ? 'glass-light border-white/5 opacity-40 cursor-not-allowed'
+                                  : 'glass-light border-white/10 hover:border-white/25 cursor-pointer'
+                              }
+                            `}
+                          >
+                            <div className="flex items-start gap-2">
+                              <div className={`
+                                w-8 h-8 rounded-lg flex items-center justify-center shrink-0
+                                ${isSelected ? 'bg-sunrise/20 border border-sunrise/40' : 'bg-white/5 border border-white/10'}
+                              `}>
+                                <Icon
+                                  name={mod.icon}
+                                  size={16}
+                                  className={isSelected ? 'text-sunrise' : 'text-text-muted'}
+                                />
+                              </div>
+                              <div className="min-w-0">
+                                <p className={`text-xs font-semibold leading-tight ${isSelected ? 'text-sunrise' : 'text-text-primary'}`}>
+                                  {mod.title}
+                                </p>
+                                <p className="text-[10px] text-text-muted mt-0.5 leading-tight">
+                                  {mod.subtitle}
+                                </p>
+                              </div>
+                            </div>
+                            {isSelected && (
+                              <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-sunrise flex items-center justify-center"
+                              >
+                                <Check className="w-2.5 h-2.5 text-base" />
+                              </motion.div>
+                            )}
+                          </motion.button>
+                        );
+                      })}
+                    </div>
                   </div>
-                </GlassCard>
+                ))}
               </div>
-
-              <p className="text-center text-text-muted text-sm">
-                Life is too short to read them all. We distilled the best for you.
-              </p>
             </div>
           )}
 
-          {/* ===== STORY SLIDE 2: The Science ===== */}
+          {/* ===== STEP 3: You're Ready ===== */}
           {step === 2 && (
-            <div className="space-y-6">
-              {/* AI Generated Image */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="w-full aspect-video rounded-2xl overflow-hidden border border-lavender/20"
-              >
-                <img
-                  src={imgBreakthrough}
-                  alt="Neural breakthrough visualization"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-
+            <div className="space-y-8">
               <div className="text-center">
-                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  Now imagine having it all...
-                </h1>
-              </div>
-
-              <div className="space-y-3">
-                <GlassCard className="border-lavender/30 p-4">
-                  <p className="text-base text-text-primary leading-relaxed">
-                    What if you could read across <span className="text-lavender font-semibold">every domain of human knowledge</span> —
-                    psychology, science, philosophy, history, and more?
-                  </p>
-                </GlassCard>
-
-                <GlassCard className="border-sage/30 p-4">
-                  <p className="text-base text-text-primary leading-relaxed">
-                    Polymind curates <span className="text-sage font-semibold">the best ideas from 1000+ authors</span>
-                    into immersive, bite-sized reading journeys across 76 domains.
-                  </p>
-                </GlassCard>
-
-                <GlassCard className="border-sunrise/30 p-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-sunrise/20 flex items-center justify-center shrink-0">
-                      <Brain className="w-5 h-5 text-sunrise" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-sunrise text-sm">Immersive Reading</p>
-                      <p className="text-text-secondary text-xs mt-0.5">
-                        Deep lessons crafted from bestselling books.
-                      </p>
-                    </div>
-                  </div>
-                </GlassCard>
-              </div>
-            </div>
-          )}
-
-          {/* ===== STORY SLIDE 3: The Polymind Way ===== */}
-          {step === 3 && (
-            <div className="space-y-6">
-              {/* AI Generated Image */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="w-full aspect-video rounded-2xl overflow-hidden border border-sunrise/20"
-              >
-                <img
-                  src={imgPolymind}
-                  alt="Polymind transformation visualization"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-
-              <div className="text-center">
-                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  This is the Polymind way
-                </h1>
-                <p className="text-text-secondary mt-1 text-sm">
-                  The four pillars of becoming a polymath
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2">
-                <GlassCard className="border-lavender/30 p-3">
-                  <Brain className="w-6 h-6 text-lavender mb-1" />
-                  <p className="font-semibold text-text-primary text-xs">Immersive Reading</p>
-                  <p className="text-[10px] text-text-muted mt-0.5">Deep lessons from 1000+ authors</p>
-                </GlassCard>
-
-                <GlassCard className="border-sunrise/30 p-3">
-                  <Target className="w-6 h-6 text-sunrise mb-1" />
-                  <p className="font-semibold text-text-primary text-xs">76 Domains</p>
-                  <p className="text-[10px] text-text-muted mt-0.5">Every corner of human knowledge</p>
-                </GlassCard>
-
-                <GlassCard className="border-sage/30 p-3">
-                  <Network className="w-6 h-6 text-sage mb-1" />
-                  <p className="font-semibold text-text-primary text-xs">Cross-Domain Discovery</p>
-                  <p className="text-[10px] text-text-muted mt-0.5">See patterns across all fields</p>
-                </GlassCard>
-
-                <GlassCard className="border-golden/30 p-3">
-                  <Zap className="w-6 h-6 text-golden mb-1" />
-                  <p className="font-semibold text-text-primary text-xs">Your Pace</p>
-                  <p className="text-[10px] text-text-muted mt-0.5">5-min reads or deep dives</p>
-                </GlassCard>
-              </div>
-
-              <GlassCard className="border-sunrise/30 p-3">
-                <div className="flex items-center gap-3">
-                  <TrendingUp className="w-8 h-8 text-sunrise shrink-0" />
-                  <p className="text-text-primary text-sm">
-                    Explore <span className="text-sunrise font-bold">76 domains</span> of wisdom — from ancient philosophy to cutting-edge science.
-                  </p>
-                </div>
-              </GlassCard>
-            </div>
-          )}
-
-          {/* ===== STEP 4: Primary Goal ===== */}
-          {step === 4 && (
-            <div className="space-y-6">
-              <div className="text-center">
-                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  What brings you to the library?
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 280, delay: 0.15 }}
+                  className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-sage to-cyan-500 flex items-center justify-center"
+                >
+                  <span className="text-4xl">📚</span>
+                </motion.div>
+                <h1 className="text-3xl font-display font-bold text-text-primary tracking-tight">
+                  You're all set, {name.trim()}!
                 </h1>
                 <p className="text-text-secondary mt-2">
-                  This shapes your personalized reading journey
+                  Your free modules are ready to explore
                 </p>
               </div>
 
+              {/* Show the 2 selected modules */}
               <div className="space-y-3">
-                {goals.map((goal) => {
-                  const Icon = goal.icon;
-                  const colors = colorStyles[goal.color as keyof typeof colorStyles];
-                  const isSelected = userData.primaryGoal === goal.id;
-
+                {selectedModules.map((mod, i) => {
+                  const catInfo = moduleCategoryMap.get(mod.id);
                   return (
-                    <motion.button
-                      key={goal.id}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() =>
-                        setUserData({ ...userData, primaryGoal: goal.id })
-                      }
-                      className={`w-full p-4 rounded-xl flex items-center gap-4 transition-all border backdrop-blur-sm ${
-                        isSelected
-                          ? `${colors.activeBg} ${colors.activeBorder}`
-                          : `glass-light border-white/10 hover:border-white/20`
-                      }`}
+                    <motion.div
+                      key={mod.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 + i * 0.1 }}
+                      className="flex items-center gap-4 p-4 rounded-xl bg-sunrise/10 border border-sunrise/25"
                     >
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${colors.bg} border ${colors.border}`}>
-                        <Icon className={`w-6 h-6 ${colors.text}`} />
+                      <div className="w-12 h-12 rounded-xl bg-sunrise/20 border border-sunrise/30 flex items-center justify-center shrink-0">
+                        <Icon name={mod.icon} size={22} className="text-sunrise" />
                       </div>
-                      <div className="text-left flex-1">
-                        <p className={`font-medium ${isSelected ? colors.text : 'text-text-primary'}`}>
-                          {goal.label}
+                      <div>
+                        <p className="font-semibold text-text-primary">{mod.title}</p>
+                        <p className="text-sm text-text-muted mt-0.5">
+                          {catInfo ? `${catInfo.icon} ${catInfo.name}` : mod.subtitle}
                         </p>
-                        <p className="text-sm text-text-muted mt-0.5">{goal.desc}</p>
                       </div>
-                      {isSelected && (
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className={`w-6 h-6 rounded-full ${colors.bg} border ${colors.border} flex items-center justify-center`}
-                        >
-                          <Check className={`w-4 h-4 ${colors.text}`} />
-                        </motion.div>
-                      )}
-                    </motion.button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {step === 5 && (
-            <div className="space-y-6">
-              <div className="text-center">
-                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  How do you learn best?
-                </h1>
-                <p className="text-text-secondary mt-2">
-                  We'll adapt the content to your style
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                {learningStyles.map((style) => {
-                  const colors = colorStyles[style.color as keyof typeof colorStyles];
-                  const isSelected = userData.learningStyle === style.id;
-
-                  return (
-                    <motion.button
-                      key={style.id}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() =>
-                        setUserData({ ...userData, learningStyle: style.id })
-                      }
-                      className={`p-5 rounded-xl text-left transition-all border backdrop-blur-sm ${
-                        isSelected
-                          ? `${colors.activeBg} ${colors.activeBorder}`
-                          : `glass-light border-white/10 hover:border-white/20`
-                      }`}
-                    >
-                      <p className={`font-medium ${isSelected ? colors.text : 'text-text-primary'}`}>
-                        {style.label}
-                      </p>
-                      <p className="text-xs text-text-muted mt-1">{style.desc}</p>
-                      {isSelected && (
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className={`mt-3 w-5 h-5 rounded-full ${colors.bg} border ${colors.border} flex items-center justify-center`}
-                        >
-                          <Check className={`w-3 h-3 ${colors.text}`} />
-                        </motion.div>
-                      )}
-                    </motion.button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {step === 6 && (
-            <div className="space-y-6">
-              <div className="text-center">
-                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  How much time can you commit?
-                </h1>
-                <p className="text-text-secondary mt-2">Consistency beats intensity</p>
-              </div>
-
-              <div className="space-y-3">
-                {timeCommitments.map((time) => {
-                  const colors = colorStyles[time.color as keyof typeof colorStyles];
-                  const isSelected = userData.dailyTime === time.id;
-
-                  return (
-                    <motion.button
-                      key={time.id}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() =>
-                        setUserData({ ...userData, dailyTime: time.id })
-                      }
-                      className={`w-full p-4 rounded-xl flex items-center justify-between transition-all border backdrop-blur-sm ${
-                        isSelected
-                          ? `${colors.activeBg} ${colors.activeBorder}`
-                          : `glass-light border-white/10 hover:border-white/20`
-                      }`}
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${colors.bg} border ${colors.border}`}>
-                          <Clock className={`w-5 h-5 ${colors.text}`} />
-                        </div>
-                        <div className="text-left">
-                          <p className={`font-medium ${isSelected ? colors.text : 'text-text-primary'}`}>
-                            {time.label}
-                          </p>
-                          <p className="text-sm text-text-muted">{time.desc}</p>
-                        </div>
+                      <div className="ml-auto w-6 h-6 rounded-full bg-sunrise flex items-center justify-center shrink-0">
+                        <Check className="w-3.5 h-3.5 text-base" />
                       </div>
-                      {isSelected && (
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className={`w-6 h-6 rounded-full ${colors.bg} border ${colors.border} flex items-center justify-center`}
-                        >
-                          <Check className={`w-4 h-4 ${colors.text}`} />
-                        </motion.div>
-                      )}
-                    </motion.button>
+                    </motion.div>
                   );
                 })}
               </div>
 
-              <GlassCard className="border-sage/20">
+              <GlassCard className="border-amber-500/20">
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-sage/10 border border-sage/20 flex items-center justify-center shrink-0">
-                    <Zap className="w-5 h-5 text-sage" />
-                  </div>
-                  <p className="text-sage text-sm leading-relaxed">
-                    Consistency beats intensity. Even 5 minutes daily builds
-                    a powerful Polymind over time.
-                  </p>
-                </div>
-              </GlassCard>
-            </div>
-          )}
-
-          {step === 7 && (
-            <div className="space-y-6">
-              <div className="text-center">
-                <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
-                  Pick your starting domains
-                </h1>
-                <p className="text-text-secondary mt-2">
-                  Choose at least 3 — we'll build your Polymind from here
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                {knowledgeDomains.map((domain) => {
-                  const colors = colorStyles[domain.color as keyof typeof colorStyles];
-                  const isSelected = userData.selectedDomains.includes(domain.id);
-
-                  return (
-                    <motion.button
-                      key={domain.id}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => toggleDomain(domain.id)}
-                      className={`p-4 rounded-xl text-left transition-all border backdrop-blur-sm ${
-                        isSelected
-                          ? `${colors.activeBg} ${colors.activeBorder}`
-                          : `glass-light border-white/10 hover:border-white/20`
-                      }`}
-                    >
-                      <p className={`font-medium text-base ${isSelected ? colors.text : 'text-text-primary'}`}>
-                        {domain.label}
-                      </p>
-                      <p className="text-xs text-text-muted mt-1">{domain.desc}</p>
-                      {isSelected && (
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className={`mt-2 w-5 h-5 rounded-full ${colors.bg} border ${colors.border} flex items-center justify-center`}
-                        >
-                          <Check className={`w-3 h-3 ${colors.text}`} />
-                        </motion.div>
-                      )}
-                    </motion.button>
-                  );
-                })}
-              </div>
-
-              <GlassCard className="border-lavender/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-lavender/10 border border-lavender/20 flex items-center justify-center shrink-0">
-                    <Brain className="w-5 h-5 text-lavender" />
-                  </div>
-                  <p className="text-lavender text-sm leading-relaxed">
-                    Your Polymind connects knowledge across domains —
-                    that's where the real insights emerge.
+                  <div className="text-2xl shrink-0">🎯</div>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    You can unlock more modules as you progress. The Infinite Library has
+                    <span className="text-amber-400 font-semibold"> 76 worlds of knowledge</span> waiting for you.
                   </p>
                 </div>
               </GlassCard>
@@ -639,48 +352,6 @@ export function Onboarding() {
           )}
         </motion.div>
       </AnimatePresence>
-    );
-  };
-
-  return (
-    <OnboardingLayout
-      step={step}
-      totalSteps={totalSteps}
-      footer={
-        <div className="flex gap-3">
-          {step > 0 && (
-            <Button
-              variant="glass"
-              onClick={handleBack}
-              className="px-6"
-            >
-              <ChevronLeft className="w-5 h-5 mr-1" />
-              Back
-            </Button>
-          )}
-          <Button
-            variant="primary"
-            onClick={handleNext}
-            disabled={!canProceed()}
-            className="flex-1"
-            glow={canProceed()}
-          >
-            {step === totalSteps - 1 ? (
-              <>
-                Build My Polymind
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </>
-            ) : (
-              <>
-                Continue
-                <ChevronRight className="w-5 h-5 ml-1" />
-              </>
-            )}
-          </Button>
-        </div>
-      }
-    >
-      {renderStep()}
     </OnboardingLayout>
   );
 }
