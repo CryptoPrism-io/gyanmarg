@@ -522,7 +522,28 @@ function AppRoutes() {
 }
 
 // Main App
+function useThemeSync() {
+  const theme = useUserStore((s) => s.settings.theme);
+  useEffect(() => {
+    const resolved = theme === 'system'
+      ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+      : theme;
+    document.documentElement.setAttribute('data-theme', resolved);
+
+    // Also update Tailwind bg classes on body
+    if (resolved === 'light') {
+      document.body.style.background = '#FAF9F6';
+      document.body.style.color = '#1A1A1A';
+    } else {
+      document.body.style.background = '#141312';
+      document.body.style.color = '#E6E1DF';
+    }
+  }, [theme]);
+}
+
 function App() {
+  useThemeSync();
+
   return (
     <BrowserRouter>
       <AuthProvider>

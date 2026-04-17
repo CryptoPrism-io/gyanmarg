@@ -29,11 +29,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Outfit', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)'],
+        display: ['var(--font-display)'],
+        sans: ['var(--font-sans)'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       colors: {
+        // White → resolves to CSS var; flips to dark ink in light mode
+        // This makes ALL bg-white/[0.06], border-white/10, text-white etc. theme-aware
+        white: 'rgb(var(--color-ink-rgb) / <alpha-value>)',
+
         // Primary - Sunrise
         sunrise: {
           DEFAULT: '#FF9B71',
@@ -68,21 +73,21 @@ export default {
           DEFAULT: '#6EC6FF',
           muted: 'rgba(110, 198, 255, 0.12)',
         },
-        // Backgrounds
-        base: '#0F0D0B',
-        elevated: '#1A1714',
-        surface: '#252119',
-        overlay: '#2F2820',
-        highlight: '#3D3429',
+        // Backgrounds — RGB channel vars for theme switching + opacity support
+        base: 'rgb(var(--bg-base-rgb) / <alpha-value>)',
+        elevated: 'rgb(var(--bg-elevated-rgb) / <alpha-value>)',
+        surface: 'rgb(var(--bg-surface-rgb) / <alpha-value>)',
+        overlay: 'rgb(var(--bg-overlay-rgb) / <alpha-value>)',
+        highlight: 'rgb(var(--bg-highlight-rgb) / <alpha-value>)',
         // Legacy compatibility - renamed to avoid text-primary/text-secondary conflicts
         // Use bg-base, bg-elevated instead
         card: 'var(--color-bg-elevated)',
         border: 'var(--color-border-default)',
-        // Text
-        'text-primary': '#FAF7F2',
-        'text-secondary': '#C4BBB0',
-        muted: '#8A8078',
-        disabled: '#5A544C',
+        // Text — use CSS vars for theme switching
+        'text-primary': 'var(--color-text-primary)',
+        'text-secondary': 'var(--color-text-secondary)',
+        muted: 'var(--color-text-muted)',
+        disabled: 'var(--color-text-disabled)',
         // Accent legacy
         accent: {
           DEFAULT: 'var(--color-sunrise)',
@@ -219,11 +224,11 @@ export default {
         'gradient-card': 'linear-gradient(180deg, rgba(250, 247, 242, 0.03) 0%, rgba(250, 247, 242, 0) 100%)',
         'glow-top': 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 155, 113, 0.08) 0%, transparent 100%)',
       },
-      // Explicit text colors to ensure correct light text on dark background
+      // Text colors from CSS vars for theme switching
       textColor: {
-        'text-primary': '#FAF7F2',
-        'text-secondary': '#C4BBB0',
-        'text-muted': '#8A8078',
+        'text-primary': 'var(--color-text-primary)',
+        'text-secondary': 'var(--color-text-secondary)',
+        'text-muted': 'var(--color-text-muted)',
       },
     },
   },

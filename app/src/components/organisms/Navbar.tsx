@@ -1,23 +1,16 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import {
-  LayoutDashboard,
-  BookOpen,
-  Flame,
-  RotateCcw,
-  User,
-} from 'lucide-react';
+import { Icon } from '@/components/atoms/Icon';
 import { useProgressStore } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
 import { UserAvatar, GoogleSignInButton } from '@/components/molecules';
-import { PolymindLogo } from '@/components/brand';
 import { SearchModal } from '@/components/organisms/SearchModal';
 
 const navItems = [
-  { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
-  { id: 'pathway', path: '/pathway', label: 'Library', icon: BookOpen },
-  { id: 'review', path: '/review', label: 'Revisit', icon: RotateCcw },
-  { id: 'profile', path: '/profile', label: 'Profile', icon: User },
+  { id: 'dashboard', path: '/dashboard', label: 'Index', icon: 'grid_view' },
+  { id: 'pathway', path: '/pathway', label: 'Archive', icon: 'auto_stories' },
+  { id: 'review', path: '/review', label: 'Reflect', icon: 'history_edu' },
+  { id: 'profile', path: '/profile', label: 'Profile', icon: 'person' },
 ];
 
 export function Navbar() {
@@ -27,28 +20,17 @@ export function Navbar() {
 
   return (
     <nav className="glass-nav sticky top-0 z-50">
-      <div className="max-w-5xl mx-auto px-3 sm:px-4">
-        <div className="flex items-center justify-between h-12 sm:h-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <Link to="/dashboard" className="flex items-center gap-2 sm:gap-3 group">
-            <motion.div
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <PolymindLogo size="sm" variant="simple" />
-            </motion.div>
-            <div className="hidden sm:flex items-center gap-2">
-              <span className="polymind-brand-text font-display font-bold tracking-wider text-lg">
-                POLYMIND
-              </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
-            </div>
+          <Link to="/dashboard" className="flex items-center gap-2 group">
+            <Icon name="auto_awesome" size={20} filled className="text-[var(--color-accent)]" />
+            <span className="font-serif italic text-lg tracking-tight">Polymind</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
-              const Icon = item.icon;
               const isActive =
                 location.pathname === item.path ||
                 location.pathname.startsWith(`${item.path}/`);
@@ -59,25 +41,22 @@ export function Navbar() {
                   title={item.label}
                   className="relative"
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                  <div
                     className={`
-                      flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium
-                      transition-all duration-200
+                      flex items-center gap-2 px-4 py-2 text-sm transition-colors
                       ${isActive
-                        ? 'bg-sunrise/10 text-sunrise'
-                        : 'text-text-muted hover:text-text-primary hover:bg-glass-light'
+                        ? 'text-[var(--color-accent)]'
+                        : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
                       }
                     `}
                   >
-                    <Icon className="w-4 h-4" />
-                    <span className="hidden lg:inline">{item.label}</span>
-                  </motion.div>
+                    <Icon name={item.icon} size={18} filled={isActive} weight={isActive ? 400 : 200} />
+                    <span className="hidden lg:inline text-[11px] uppercase tracking-[0.15em] font-semibold">{item.label}</span>
+                  </div>
                   {isActive && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute -bottom-[1px] left-2 right-2 h-0.5 bg-gradient-to-r from-sunrise to-golden rounded-full"
+                      className="absolute bottom-0 left-3 right-3 h-[2px] bg-[var(--color-accent)]"
                       transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                     />
                   )}
@@ -86,35 +65,19 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Search + XP & Streak */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Search */}
+          {/* Search + XP */}
+          <div className="flex items-center gap-3">
             <SearchModal />
 
-            {/* Streak */}
-            {(userProgress?.currentStreak ?? 0) > 0 && (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-coral/10 border border-coral/20"
-              >
-                <Flame className="w-4 h-4 sm:w-5 sm:h-5 text-coral" />
-                <span className="text-xs sm:text-sm font-semibold text-coral">
-                  {userProgress.currentStreak}
-                </span>
-              </motion.div>
-            )}
-
-            {/* XP Badge */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl bg-golden/10 border border-golden/20 shadow-[0_0_12px_rgba(247,201,72,0.15)]"
-            >
-              <span className="text-xs sm:text-sm font-semibold text-golden">
+            {/* XP Badge — editorial style */}
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs font-bold tabular-nums text-[var(--color-accent)]">
                 {(userProgress?.xp ?? 0).toLocaleString()}
               </span>
-              <span className="text-[10px] sm:text-xs text-golden/70 font-medium">XP</span>
-            </motion.div>
+              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[var(--color-text-muted)]">XP</span>
+            </div>
+
+            <Icon name="search" size={20} className="text-[var(--color-text-primary)] cursor-pointer" />
 
             {/* User Avatar or Sign In Button */}
             {isConfigured && (
@@ -136,26 +99,14 @@ export function Navbar() {
   );
 }
 
-// Mobile Bottom Navigation — mirrors desktop 4-tab structure
-const mobileNavItems = [
-  { id: 'dashboard', path: '/dashboard', label: 'Home', icon: LayoutDashboard },
-  { id: 'pathway', path: '/pathway', label: 'Library', icon: BookOpen },
-  { id: 'review', path: '/review', label: 'Revisit', icon: RotateCcw },
-  { id: 'profile', path: '/profile', label: 'Profile', icon: User },
-];
-
+// Mobile Bottom Navigation — Editorial style
 export function MobileNav() {
   const location = useLocation();
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 safe-area-bottom">
-      {/* Blur background */}
-      <div className="absolute inset-0 bg-base/95 backdrop-blur-xl border-t border-white/[0.08]" />
-
-      {/* Nav content - taller for easier tapping */}
-      <div className="relative flex justify-around items-center h-20 px-1">
-        {mobileNavItems.map((item) => {
-          const Icon = item.icon;
+      <div className="glass-nav px-6 pb-8 pt-3 flex justify-between items-center">
+        {navItems.map((item) => {
           const isActive =
             location.pathname === item.path ||
             location.pathname.startsWith(`${item.path}/`);
@@ -164,46 +115,26 @@ export function MobileNav() {
             <Link
               key={item.id}
               to={item.path}
-              className="relative flex flex-col items-center justify-center py-2 px-4 min-w-[60px] active:scale-95 transition-transform"
+              className={`flex flex-col items-center gap-1 transition-colors ${
+                isActive ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-muted)]'
+              }`}
             >
-              <motion.div
-                whileTap={{ scale: 0.9 }}
-                className={`
-                  flex flex-col items-center justify-center gap-1.5
-                  transition-colors duration-200
-                  ${isActive ? 'text-sunrise' : 'text-text-muted'}
-                `}
-              >
-                <div className="relative">
-                  <Icon className={`w-6 h-6 ${isActive ? '' : 'opacity-60'}`} />
-                  {isActive && (
-                    <motion.div
-                      layoutId="mobile-nav-glow"
-                      className="absolute -inset-3 bg-sunrise/20 rounded-full blur-lg"
-                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                    />
-                  )}
-                </div>
-                {item.label && (
-                  <span
-                    className={`
-                      text-xs font-medium
-                      ${isActive ? 'text-sunrise' : 'text-text-muted opacity-60'}
-                    `}
-                  >
-                    {item.label}
-                  </span>
-                )}
-              </motion.div>
-
-              {/* Active indicator */}
               {isActive && (
                 <motion.div
                   layoutId="mobile-nav-indicator"
-                  className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-1 bg-gradient-to-r from-sunrise to-golden rounded-full"
+                  className="w-6 h-[2px] bg-[var(--color-accent)] mb-0.5"
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                 />
               )}
+              <Icon
+                name={item.icon}
+                size={22}
+                filled={isActive}
+                weight={isActive ? 400 : 200}
+              />
+              <span className="text-[9px] uppercase tracking-[0.2em] font-semibold">
+                {item.label}
+              </span>
             </Link>
           );
         })}
