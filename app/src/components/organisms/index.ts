@@ -16,3 +16,4 @@ export { QuickReviewCard } from './QuickReviewCard';
 export { DailyPowerMeter } from './DailyPowerMeter';
 export { ShareableAchievementCard } from './ShareableAchievementCard';
 export { Leaderboard } from './Leaderboard';
+export { PaywallGate } from './PaywallGate';
