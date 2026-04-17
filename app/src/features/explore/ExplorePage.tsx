@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, X, ChevronRight } from 'lucide-react';
+import { PaywallGate as RealPaywallGate } from '@/components/organisms/PaywallGate';
+import { useUserStore } from '@/store/userStore';
 import {
   HabitLoopDiagram,
   ForgettingCurveDiagram,
@@ -293,40 +295,16 @@ const vizList: VizEntry[] = [
   { id: 'purpose-pyramid', title: 'The Purpose Pyramid', description: 'Self-transcending purpose is more sustainable than self-serving motivation.', source: 'Peak Performance by Brad Stulberg', category: 'philosophy', component: PurposePyramid, color: '#EF4444' },
 ];
 
-// ─── PaywallGate placeholder ──────────────────────────────────────────────────
-
-function PaywallGate({ onClose }: { onClose: () => void }) {
-  return (
-    <div className="flex flex-col items-center justify-center gap-4 p-8 text-center">
-      <div className="w-14 h-14 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
-        <Lock className="w-6 h-6 text-amber-400" />
-      </div>
-      <div>
-        <h3 className="text-lg font-semibold text-white mb-1">Pro Visualization</h3>
-        <p className="text-sm text-gray-400 max-w-xs">
-          Upgrade to Pro to unlock all 119 interactive visualizations.
-        </p>
-      </div>
-      <div className="w-full max-w-xs p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
-        <p className="text-amber-400 font-medium text-sm">Upgrade to Pro</p>
-        <p className="text-xs text-gray-500 mt-1">Full access coming soon</p>
-      </div>
-      <button
-        onClick={onClose}
-        className="text-xs text-gray-500 hover:text-gray-300 transition-colors mt-1"
-      >
-        Maybe later
-      </button>
-    </div>
-  );
-}
-
 // ─── Main Component ────────────────────────────────────────────────────────────
 
 export function ExplorePage() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedViz, setSelectedViz] = useState<VizEntry | null>(null);
-  const [showPaywall, setShowPaywall] = useState(false);
+  const [showVizPaywall, setShowVizPaywall] = useState(false);
+  // showRealPaywall: true when user clicks "See Plans" inside the inline viz preview
+  const [showRealPaywall, setShowRealPaywall] = useState(false);
+
+  const activateLifetime = useUserStore((s) => s.activateLifetime);
 
   // Derive ordered categories from actual viz data (preserving insertion order)
   const categories = useMemo(() => {
@@ -343,16 +321,17 @@ export function ExplorePage() {
   const handleOpen = (viz: VizEntry) => {
     if (FREE_VIZ_IDS.has(viz.id)) {
       setSelectedViz(viz);
-      setShowPaywall(false);
+      setShowVizPaywall(false);
     } else {
       setSelectedViz(viz);
-      setShowPaywall(true);
+      setShowVizPaywall(true);
     }
   };
 
   const handleClose = () => {
     setSelectedViz(null);
-    setShowPaywall(false);
+    setShowVizPaywall(false);
+    setShowRealPaywall(false);
   };
 
   const ActiveComponent = selectedViz?.component ?? null;
@@ -506,6 +485,20 @@ export function ExplorePage() {
         )}
       </div>
 
+      {/* ── Real PaywallGate (lifetime upsell triggered from viz inline preview) */}
+      {showRealPaywall && (
+        <RealPaywallGate
+          moduleId={null}
+          onClose={() => setShowRealPaywall(false)}
+          onPurchaseLifetime={() => {
+            // TODO: wire Razorpay before go-live
+            activateLifetime();
+            setShowRealPaywall(false);
+            handleClose();
+          }}
+        />
+      )}
+
       {/* ── Viz Modal ─────────────────────────────────────────────────────── */}
       <AnimatePresence>
         {selectedViz && (
@@ -545,10 +538,22 @@ export function ExplorePage() {
 
               {/* Modal body */}
               <div className="p-5">
-                {showPaywall ? (
-                  <PaywallGate onClose={handleClose} />
-                ) : (
-                  ActiveComponent && <ActiveComponent />
+                {!showVizPaywall && ActiveComponent && <ActiveComponent />}
+                {showVizPaywall && (
+                  <div className="flex flex-col items-center justify-center gap-3 py-6 text-center">
+                    <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                      <Lock className="w-5 h-5 text-amber-400" />
+                    </div>
+                    <p className="text-sm text-gray-400">
+                      Unlock lifetime access to all 119 visualizations for ₹999.
+                    </p>
+                    <button
+                      onClick={() => setShowRealPaywall(true)}
+                      className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black text-sm font-semibold transition-colors"
+                    >
+                      See Plans
+                    </button>
+                  </div>
                 )}
               </div>
             </motion.div>

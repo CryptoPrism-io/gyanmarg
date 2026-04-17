@@ -49,6 +49,10 @@ const HowToPage = lazy(() => import('@/features/how-to/HowToPage').then(m => ({ 
 const BrandKitPage = lazy(() => import('@/features/brand-kit/BrandKitPage').then(m => ({ default: m.BrandKitPage })));
 const ChangelogPage = lazy(() => import('@/features/changelog/ChangelogPage').then(m => ({ default: m.ChangelogPage })));
 
+// Legal Pages
+const PrivacyPolicy = lazy(() => import('@/features/legal/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
+const TermsOfService = lazy(() => import('@/features/legal/TermsOfService').then(m => ({ default: m.TermsOfService })));
+
 // Explore Page
 const ExplorePage = lazy(() => import('@/features/explore/ExplorePage').then(m => ({ default: m.ExplorePage })));
 
@@ -496,6 +500,28 @@ function AppRoutes() {
           <PageTransition>
             <Suspense fallback={<PageLoader />}>
               <ChangelogPage />
+            </Suspense>
+          </PageTransition>
+        }
+      />
+
+      {/* Legal Pages */}
+      <Route
+        path="/privacy"
+        element={
+          <PageTransition>
+            <Suspense fallback={<PageLoader />}>
+              <PrivacyPolicy />
+            </Suspense>
+          </PageTransition>
+        }
+      />
+      <Route
+        path="/terms"
+        element={
+          <PageTransition>
+            <Suspense fallback={<PageLoader />}>
+              <TermsOfService />
             </Suspense>
           </PageTransition>
         }

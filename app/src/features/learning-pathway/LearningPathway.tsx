@@ -14,10 +14,13 @@ import {
   Brain,
   CheckCircle2,
   RotateCcw,
+  Lock,
 } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useUserStore } from '@/store/userStore';
 import { useAuthGate } from '@/hooks/useAuthGate';
+import { usePaywall } from '@/hooks/usePaywall';
+import { PaywallGate } from '@/components/organisms/PaywallGate';
 // ModuleLayout removed — using editorial layout directly
 import { getVizForLevel } from '@/data/vizLevelMap';
 import { GlassCard, NetflixLevelCard, GlassLessonRow, NetflixModuleCard, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
@@ -53,6 +56,10 @@ export function LearningPathway() {
   const favoriteModules = useUserStore((s) => s.favoriteModules);
   const toggleFavoriteModule = useUserStore((s) => s.toggleFavoriteModule);
   const isFavoriteModule = useUserStore((s) => s.isFavoriteModule);
+  const purchaseModule = useUserStore((s) => s.purchaseModule);
+  const activateLifetime = useUserStore((s) => s.activateLifetime);
+
+  const { canAccessLesson, showPaywall, closePaywall, paywallModuleId } = usePaywall();
 
   // URL params for deep linking: /pathway/:moduleId/:levelId/:lessonId
   const { moduleId: urlModuleId, levelId: urlLevelId, lessonId: urlLessonId } = useParams();
@@ -409,7 +416,14 @@ export function LearningPathway() {
 
   // Handle opening a lesson
   const handleOpenLesson = (lesson: PathwayLesson, globalIndex: number, levelIdx: number) => {
+    // Paywall check: first lesson (globalIndex 0 within level) is always free;
+    // subsequent lessons require module access
     const level = pathwayLevels[levelIdx];
+    const lessonIndexWithinLevel = level ? level.lessons.findIndex(l => l.id === lesson.id) : 0;
+    if (selectedModuleId && !canAccessLesson(selectedModuleId, lessonIndexWithinLevel)) {
+      showPaywall(selectedModuleId);
+      return;
+    }
     _setSelectedLevelId(level?.id || null);
     setActiveLessonIndex(globalIndex);
     setActiveLevelIndex(levelIdx);
@@ -921,29 +935,41 @@ export function LearningPathway() {
                               const unlocked = isLessonUnlocked(lesson, lessonIndex, selectedLevel, levelIndex);
                               const completed = isLessonCompleted(lesson.id);
                               const globalIndex = calculateGlobalIndex(levelIndex, lessonIndex);
+                              // Paywall: lesson is sequentially unlocked but behind a paywall
+                              const paywallLocked = selectedModuleId
+                                ? !canAccessLesson(selectedModuleId, lessonIndex)
+                                : false;
 
                               const flashcardCount = lessonFlashcardCounts.get(lesson.id) || 0;
 
                               return (
-                                <GlassLessonRow
-                                  key={lesson.id}
-                                  title={lesson.title}
-                                  type={lesson.type}
-                                  duration={lesson.duration}
-                                  xpReward={lesson.xpReward}
-                                  lessonNumber={lessonIndex + 1}
-                                  isLocked={!unlocked}
-                                  isCompleted={completed}
-                                  onClick={() => unlocked && handleOpenLesson(lesson, globalIndex, levelIndex)}
-                                  hasFlashcards={completed && flashcardCount > 0}
-                                  onRevise={completed && flashcardCount > 0 ? () => {
-                                    setReviseOverlay({
-                                      lessonIds: [lesson.id],
-                                      label: lesson.title,
-                                      color: selectedModule?.color,
-                                    });
-                                  } : undefined}
-                                />
+                                <div key={lesson.id} className="relative">
+                                  <GlassLessonRow
+                                    title={lesson.title}
+                                    type={lesson.type}
+                                    duration={lesson.duration}
+                                    xpReward={lesson.xpReward}
+                                    lessonNumber={lessonIndex + 1}
+                                    isLocked={!unlocked}
+                                    isCompleted={completed}
+                                    onClick={() => unlocked && handleOpenLesson(lesson, globalIndex, levelIndex)}
+                                    hasFlashcards={completed && flashcardCount > 0}
+                                    onRevise={completed && flashcardCount > 0 ? () => {
+                                      setReviseOverlay({
+                                        lessonIds: [lesson.id],
+                                        label: lesson.title,
+                                        color: selectedModule?.color,
+                                      });
+                                    } : undefined}
+                                  />
+                                  {/* Amber paywall lock badge for lessons requiring purchase */}
+                                  {paywallLocked && (
+                                    <div className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center gap-1 px-2 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 pointer-events-none">
+                                      <Lock className="w-3 h-3 text-amber-400" />
+                                      <span className="text-[10px] font-semibold text-amber-400">₹99</span>
+                                    </div>
+                                  )}
+                                </div>
                               );
                             })}
                           </div>
@@ -1132,6 +1158,29 @@ export function LearningPathway() {
           reviseLabel={reviseOverlay.label}
           moduleColor={reviseOverlay.color}
           onClose={() => setReviseOverlay(null)}
+        />
+      )}
+
+      {/* Paywall Gate */}
+      {paywallModuleId !== null && (
+        <PaywallGate
+          moduleId={paywallModuleId}
+          moduleName={
+            paywallModuleId
+              ? modules.find(m => m.id === paywallModuleId)?.title
+              : undefined
+          }
+          onClose={closePaywall}
+          onPurchaseModule={(id) => {
+            // TODO: wire Razorpay before go-live
+            purchaseModule(id);
+            closePaywall();
+          }}
+          onPurchaseLifetime={() => {
+            // TODO: wire Razorpay before go-live
+            activateLifetime();
+            closePaywall();
+          }}
         />
       )}
     </>

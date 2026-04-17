@@ -24,6 +24,10 @@ interface UserState {
   // Free modules (picked during onboarding, always accessible)
   freeModules: string[];
 
+  // Payment state
+  purchasedModules: string[];  // module IDs bought individually for ₹99
+  hasLifetimeAccess: boolean;  // true if user paid ₹999 lifetime
+
   // Favorite modules
   favoriteModules: string[];
 
@@ -52,6 +56,10 @@ interface UserState {
   // Achievement notification
   setPendingAchievement: (achievement: { id: string; name: string; xpReward: number } | null) => void;
   clearPendingAchievement: () => void;
+
+  // Payment actions
+  purchaseModule: (moduleId: string) => void;
+  activateLifetime: () => void;
 
   // Free modules selector
   isFreeModule: (id: string) => boolean;
@@ -93,6 +101,8 @@ export const useUserStore = create<UserState>()(
       reviewReminder: null,
       pendingAchievement: null,
       freeModules: [],
+      purchasedModules: [],
+      hasLifetimeAccess: false,
       favoriteModules: [],
       lastLoginDate: null,
       consecutiveLogins: 0,
@@ -141,6 +151,8 @@ export const useUserStore = create<UserState>()(
           reviewReminder: null,
           pendingAchievement: null,
           freeModules: [],
+          purchasedModules: [],
+          hasLifetimeAccess: false,
           favoriteModules: [],
         }),
 
@@ -171,6 +183,21 @@ export const useUserStore = create<UserState>()(
 
       clearPendingAchievement: () =>
         set({ pendingAchievement: null }),
+
+      // Payment actions
+      purchaseModule: (moduleId) => {
+        set((state) => ({
+          purchasedModules: state.purchasedModules.includes(moduleId)
+            ? state.purchasedModules
+            : [...state.purchasedModules, moduleId],
+        }));
+        triggerSync();
+      },
+
+      activateLifetime: () => {
+        set({ hasLifetimeAccess: true });
+        triggerSync();
+      },
 
       // Free modules selector
       isFreeModule: (id) =>

@@ -53,6 +53,8 @@ export interface FirestoreUserDocument {
     isOnboarded: boolean;
     settings: UserSettings;
     freeModules?: string[];
+    purchasedModules?: string[];
+    hasLifetimeAccess?: boolean;
   };
 
   // From progressStore

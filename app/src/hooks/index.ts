@@ -8,3 +8,5 @@ export type { ReviewGateStatus, WarningLevel } from './useReviewGate';
 export { useAuth } from './useAuth';
 export { useAuthGate } from './useAuthGate';
 export { useGameData, useLevelGameData, useModuleGameData, useLessonQuickGameData } from './useGameData';
+export { usePaywall } from './usePaywall';
+export type { PaywallState } from './usePaywall';
