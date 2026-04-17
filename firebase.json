@@ -1,4 +1,20 @@
 {
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "auth": {
+    "providers": {
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Polymind",
+        "supportEmail": "yogesh.sahu@trinetryinfotech.com",
+        "authorizedRedirectUris": [
+          "https://gyanmarg-963362833537.us-central1.run.app",
+          "https://ai-polymind.web.app",
+          "http://localhost:5173"
+        ]
+      }
+    }
+  },
   "hosting": {
     "site": "ai-polymind",
     "public": "app/dist",
