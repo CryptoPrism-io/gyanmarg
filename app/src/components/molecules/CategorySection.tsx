@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Icon } from '@/components/atoms/Icon';
 import type { ModuleCategory } from '@/types';
 import type { ModuleConfig } from '@/data/modules';
 import { NetflixModuleCard } from './NetflixModuleCard';
@@ -20,25 +20,6 @@ interface CategorySectionProps {
   onToggleFavorite?: (moduleId: string) => void;
 }
 
-// Direct hex color mapping for category headers (avoids Tailwind purging issues)
-const colorMap: Record<string, { hex: string; badge: string }> = {
-  purple: { hex: '#c084fc', badge: 'bg-purple-500/20' },
-  blue: { hex: '#60a5fa', badge: 'bg-blue-500/20' },
-  emerald: { hex: '#34d399', badge: 'bg-emerald-500/20' },
-  green: { hex: '#4ade80', badge: 'bg-green-500/20' },
-  amber: { hex: '#fbbf24', badge: 'bg-amber-500/20' },
-  indigo: { hex: '#818cf8', badge: 'bg-indigo-500/20' },
-  cyan: { hex: '#22d3ee', badge: 'bg-cyan-500/20' },
-  rose: { hex: '#fb7185', badge: 'bg-rose-500/20' },
-  slate: { hex: '#94a3b8', badge: 'bg-slate-500/20' },
-  orange: { hex: '#fb923c', badge: 'bg-orange-500/20' },
-  teal: { hex: '#2dd4bf', badge: 'bg-teal-500/20' },
-  pink: { hex: '#f472b6', badge: 'bg-pink-500/20' },
-  yellow: { hex: '#facc15', badge: 'bg-yellow-500/20' },
-  red: { hex: '#f87171', badge: 'bg-red-500/20' },
-  violet: { hex: '#a78bfa', badge: 'bg-violet-500/20' },
-};
-
 export function CategorySection({
   category,
   modules,
@@ -51,10 +32,7 @@ export function CategorySection({
   isFavoriteModule,
   onToggleFavorite,
 }: CategorySectionProps) {
-  const colors = colorMap[category.color] || colorMap.purple;
   const availableCount = modules.filter(m => m.isAvailable).length;
-  const comingSoonCount = modules.filter(m => !m.isAvailable).length;
-
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -82,8 +60,7 @@ export function CategorySection({
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const cardWidth = 160; // approximate card width + gap
-      const scrollAmount = direction === 'left' ? -cardWidth * 2 : cardWidth * 2;
+      const scrollAmount = direction === 'left' ? -320 : 320;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
@@ -91,63 +68,43 @@ export function CategorySection({
   return (
     <motion.div
       id={`category-${category.id}`}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="mb-8 scroll-mt-20 overflow-x-hidden"
+      className="mb-12 scroll-mt-20 overflow-x-hidden"
     >
-      {/* Category Header */}
-      <div className="flex items-center gap-3 mb-3 px-1">
-        <span className="text-xl">{category.icon}</span>
-        <h2 className="text-base font-semibold" style={{ color: colors.hex }}>
-          {category.name}
-        </h2>
-        <span className={`text-[10px] px-2 py-0.5 rounded-full ${colors.badge}`} style={{ color: colors.hex }}>
+      {/* Editorial Category Header */}
+      <div className="flex items-baseline gap-3 mb-4 px-1">
+        <h2 className="text-lg font-serif tracking-tight">{category.name}</h2>
+        <span className="text-[10px] uppercase tracking-[0.15em] font-semibold text-[var(--color-text-muted)]">
           {availableCount} available
         </span>
-        {comingSoonCount > 0 && (
-          <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-text-muted">
-            +{comingSoonCount} coming
-          </span>
-        )}
       </div>
 
-      {/* Module Shelf with Gradient Overlays */}
+      {/* Module Shelf */}
       <div className="relative group/shelf">
-        {/* Left Gradient Fade - Bright Amber */}
-        <div
-          className={`absolute left-0 top-0 bottom-2 w-8 md:w-12 z-10 pointer-events-none transition-opacity duration-300 ${canScrollLeft ? 'opacity-30 group-hover/shelf:opacity-60' : 'opacity-0'}`}
-          style={{ background: 'linear-gradient(to right, rgba(245,158,11,0.22) 0%, rgba(245,158,11,0.18) 21%, rgba(245,158,11,0.14) 33%, rgba(245,158,11,0.09) 51%, rgba(245,158,11,0.05) 67%, rgba(245,158,11,0.02) 88%, rgba(245,158,11,0.005) 94%, transparent 100%)' }}
-        />
-
-        {/* Right Gradient Fade - Bright Amber */}
-        <div
-          className={`absolute right-0 top-0 bottom-2 w-8 md:w-12 z-10 pointer-events-none transition-opacity duration-300 ${canScrollRight ? 'opacity-30 group-hover/shelf:opacity-60' : 'opacity-0'}`}
-          style={{ background: 'linear-gradient(to left, rgba(245,158,11,0.22) 0%, rgba(245,158,11,0.18) 21%, rgba(245,158,11,0.14) 33%, rgba(245,158,11,0.09) 51%, rgba(245,158,11,0.05) 67%, rgba(245,158,11,0.02) 88%, rgba(245,158,11,0.005) 94%, transparent 100%)' }}
-        />
-
-        {/* Left Arrow - Desktop only */}
-        <button
-          onClick={() => scroll('left')}
-          className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-8 h-16 bg-amber-500/30 hover:bg-amber-500/50 rounded-r-lg transition-all duration-300 ${canScrollLeft ? 'opacity-0 group-hover/shelf:opacity-100' : 'opacity-0 pointer-events-none'}`}
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="w-5 h-5 text-amber-400" />
-        </button>
-
-        {/* Right Arrow - Desktop only */}
-        <button
-          onClick={() => scroll('right')}
-          className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-8 h-16 bg-amber-500/30 hover:bg-amber-500/50 rounded-l-lg transition-all duration-300 ${canScrollRight ? 'opacity-0 group-hover/shelf:opacity-100' : 'opacity-0 pointer-events-none'}`}
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="w-5 h-5 text-amber-400" />
-        </button>
+        {/* Scroll arrows — desktop only */}
+        {canScrollLeft && (
+          <button
+            onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-8 h-16 bg-[rgb(var(--bg-base-rgb)/0.8)] hover:bg-[rgb(var(--bg-base-rgb)/0.95)] transition-all opacity-0 group-hover/shelf:opacity-100"
+          >
+            <Icon name="chevron_left" size={20} />
+          </button>
+        )}
+        {canScrollRight && (
+          <button
+            onClick={() => scroll('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-8 h-16 bg-[rgb(var(--bg-base-rgb)/0.8)] hover:bg-[rgb(var(--bg-base-rgb)/0.95)] transition-all opacity-0 group-hover/shelf:opacity-100"
+          >
+            <Icon name="chevron_right" size={20} />
+          </button>
+        )}
 
         {/* Scrollable Module Cards */}
         <div
           ref={scrollRef}
-          className="flex gap-2.5 md:gap-4 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide snap-x snap-mandatory"
+          className="flex gap-3 md:gap-4 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide snap-x snap-mandatory"
         >
           {modules.map((mod) =>
             mod.isAvailable ? (
@@ -161,7 +118,7 @@ export function CategorySection({
                 lessonsCount={getModuleLessonsCount(mod.id)}
                 xpTotal={getModuleTotalXP(mod.id)}
                 isActive={selectedModuleId === mod.id}
-                isFavorite={isFavoriteModule?.(mod.id)}
+                isFavorite={isFavoriteModule?.(mod.id) ?? false}
                 onToggleFavorite={onToggleFavorite ? () => onToggleFavorite(mod.id) : undefined}
                 onClick={() => onModuleSelect(mod.id)}
               />

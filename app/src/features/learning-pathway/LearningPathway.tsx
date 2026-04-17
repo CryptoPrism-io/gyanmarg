@@ -1,8 +1,8 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+// Legacy Lucide imports — kept for sub-components that still use them
 import {
-  Trophy,
   BookOpen,
   Sparkles,
   ChevronLeft,
@@ -18,7 +18,7 @@ import {
 import { useProgressStore } from '@/store/progressStore';
 import { useUserStore } from '@/store/userStore';
 import { useAuthGate } from '@/hooks/useAuthGate';
-import { ModuleLayout } from '@/components/templates';
+// ModuleLayout removed — using editorial layout directly
 import { getVizForLevel } from '@/data/vizLevelMap';
 import { GlassCard, NetflixLevelCard, GlassLessonRow, NetflixModuleCard, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
 import { ProgressBar } from '@/components/atoms';
@@ -29,10 +29,25 @@ import type { PathwayLevel, PathwayLesson } from '@/types';
 import { modules } from '@/data/modules';
 import { moduleCategories, getCategoriesWithModules, getCategoryForModule } from '@/data/categories';
 import { getModuleImage, getLevelImage } from '@/lib/moduleImages';
-import { allFlashcards } from '@/data/flashcards-index';
 import { getFlashcardCountForLesson, hasFlashcardsForLessons } from '@/data/lesson-flashcard-map';
+import type { SpacedRepetitionCard } from '@/types';
+
+// Lazy flashcard loader — avoids 4.2 MB eager import
+let _flashcardsCache: SpacedRepetitionCard[] | null = null;
+function useFlashcards(): SpacedRepetitionCard[] {
+  const [cards, setCards] = useState<SpacedRepetitionCard[]>(_flashcardsCache || []);
+  useEffect(() => {
+    if (_flashcardsCache) return;
+    import('@/data/flashcards-index').then(m => {
+      _flashcardsCache = m.allFlashcards;
+      setCards(m.allFlashcards);
+    });
+  }, []);
+  return cards;
+}
 
 export function LearningPathway() {
+  const allFlashcards = useFlashcards();
   const { completeLesson, isLessonCompleted, pathwayProgress } = useProgressStore();
   const { isAuthenticated } = useAuthGate();
   const favoriteModules = useUserStore((s) => s.favoriteModules);
@@ -451,6 +466,16 @@ export function LearningPathway() {
 
   const totalModuleLessons = pathwayLevels.reduce((acc, l) => acc + l.lessons.length, 0);
 
+  // Check if active lesson is the last lesson in its level
+  const isLastLessonInLevel = useMemo(() => {
+    if (!activeLesson) return false;
+    for (const level of pathwayLevels) {
+      const idx = level.lessons.findIndex(l => l.id === activeLesson.id);
+      if (idx !== -1) return idx === level.lessons.length - 1;
+    }
+    return false;
+  }, [activeLesson, pathwayLevels]);
+
   // LessonViewer - Immersive lesson experience
   if (activeLesson && selectedModule) {
     // Get the level image for background
@@ -478,6 +503,7 @@ export function LearningPathway() {
           onNextLesson={handleNextLesson}
           backgroundImage={lessonBackgroundImage}
           flashcardCount={activeLessonFlashcardCount}
+          isLastLessonInLevel={isLastLessonInLevel}
         />
       </>
     );
@@ -485,22 +511,20 @@ export function LearningPathway() {
 
   return (
     <>
-      <ModuleLayout
-        title="Library"
-        subtitle="Explore 76 worlds of knowledge"
-        icon={<BookOpen className="w-5 h-5" />}
-        headerGradient="aurora"
-        rightContent={
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-golden/10 border border-golden/20">
-              <Trophy className="w-4 h-4 text-golden" />
-              <span className="text-golden font-semibold text-sm">
-                {pathwayProgress.totalXP} XP
-              </span>
-            </div>
+      <div className="pb-28">
+        {/* Editorial Library Header */}
+        <div className="px-6 pt-6 pb-2 max-w-3xl mx-auto">
+          <div className="flex items-baseline justify-between mb-1">
+            <h1 className="text-2xl font-serif italic tracking-tight">Library</h1>
+            <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[var(--color-text-muted)]">
+              {pathwayProgress.totalXP} XP
+            </span>
           </div>
-        }
-      >
+          <p className="text-xs text-[var(--color-text-muted)] uppercase tracking-[0.15em]">
+            Explore 76 worlds of knowledge
+          </p>
+        </div>
+        <div className="max-w-3xl mx-auto px-2">
         {/* Category Tab Bar - Sticky Navigation */}
         <CategoryTabBar
           categories={moduleCategories}
@@ -1089,7 +1113,8 @@ export function LearningPathway() {
             animated
           />
         </GlassCard>
-      </ModuleLayout>
+        </div>
+      </div>
 
       {/* Auth gate modal */}
       {showAuthAfterTeaser && (
