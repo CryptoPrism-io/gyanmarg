@@ -13,7 +13,6 @@ import { useUserStore, useOnboardingProgress } from '@/store/userStore';
 import { OnboardingLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { Button } from '@/components/atoms';
-import { Icon } from '@/components/atoms/Icon';
 import { modules } from '@/data/modules';
 import { moduleCategories } from '@/data/categories';
 
@@ -256,11 +255,9 @@ export function Onboarding() {
                                 w-8 h-8 rounded-lg flex items-center justify-center shrink-0
                                 ${isSelected ? 'bg-sunrise/20 border border-sunrise/40' : 'bg-white/5 border border-white/10'}
                               `}>
-                                <Icon
-                                  name={mod.icon}
-                                  size={16}
-                                  className={isSelected ? 'text-sunrise' : 'text-text-muted'}
-                                />
+                                <span className="text-sm leading-none">
+                                  {moduleCategoryMap.get(mod.id)?.icon ?? '📚'}
+                                </span>
                               </div>
                               <div className="min-w-0">
                                 <p className={`text-xs font-semibold leading-tight ${isSelected ? 'text-sunrise' : 'text-text-primary'}`}>
@@ -323,7 +320,9 @@ export function Onboarding() {
                       className="flex items-center gap-4 p-4 rounded-xl bg-sunrise/10 border border-sunrise/25"
                     >
                       <div className="w-12 h-12 rounded-xl bg-sunrise/20 border border-sunrise/30 flex items-center justify-center shrink-0">
-                        <Icon name={mod.icon} size={22} className="text-sunrise" />
+                        <span className="text-2xl leading-none">
+                          {moduleCategoryMap.get(mod.id)?.icon ?? '📚'}
+                        </span>
                       </div>
                       <div>
                         <p className="font-semibold text-text-primary">{mod.title}</p>
