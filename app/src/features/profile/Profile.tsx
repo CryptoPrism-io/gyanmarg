@@ -27,12 +27,10 @@ import {
   Info,
   ChevronRight,
   Share2,
-  Zap,
   TrendingUp,
   Award,
   Settings,
   Bookmark,
-  MapPin,
   Bell,
   Clock,
   Layers,
@@ -44,7 +42,7 @@ import { useProgressStore } from '@/store/progressStore';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 import type { StarredCard } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
-import { GoogleSignInButton, BadgeCard, GlassCard, RichMarkdown } from '@/components/molecules';
+import { GoogleSignInButton, BadgeCard, RichMarkdown } from '@/components/molecules';
 // ModuleLayout removed — using editorial layout directly
 import { Button } from '@/components/atoms';
 import { ShareableAchievementCard } from '@/components/organisms';
@@ -112,23 +110,6 @@ function getLearnerTitle(stats: {
     return { title: 'Curious Mind', color: 'text-lavender' };
   return { title: 'New Explorer', color: 'text-text-secondary' };
 }
-
-// --- Category color map ---
-const categoryColorMap: Record<string, string> = {
-  purple: 'from-purple-500/20 to-purple-600/5 border-purple-500/20',
-  blue: 'from-blue-500/20 to-blue-600/5 border-blue-500/20',
-  emerald: 'from-emerald-500/20 to-emerald-600/5 border-emerald-500/20',
-  green: 'from-green-500/20 to-green-600/5 border-green-500/20',
-  orange: 'from-orange-500/20 to-orange-600/5 border-orange-500/20',
-  amber: 'from-amber-500/20 to-amber-600/5 border-amber-500/20',
-  indigo: 'from-indigo-500/20 to-indigo-600/5 border-indigo-500/20',
-  cyan: 'from-cyan-500/20 to-cyan-600/5 border-cyan-500/20',
-  rose: 'from-rose-500/20 to-rose-600/5 border-rose-500/20',
-  slate: 'from-slate-400/20 to-slate-500/5 border-slate-400/20',
-  teal: 'from-teal-500/20 to-teal-600/5 border-teal-500/20',
-  pink: 'from-pink-500/20 to-pink-600/5 border-pink-500/20',
-  yellow: 'from-yellow-500/20 to-yellow-600/5 border-yellow-500/20',
-};
 
 const categoryTextColor: Record<string, string> = {
   purple: 'text-purple-400',
@@ -616,31 +597,34 @@ export function Profile() {
   return (
     <div className="pb-28">
       {/* Editorial Profile Header */}
-      <div className="px-6 pt-8 pb-4 max-w-3xl mx-auto">
-        <h1 className="text-4xl font-serif tracking-tight leading-none">
+      <div className="px-6 pt-10 pb-0 max-w-3xl mx-auto">
+        <h1 className="text-[2.6rem] font-serif tracking-[-0.02em] leading-none text-text-primary">
           {profile?.name || user?.displayName || 'Reader'}
         </h1>
-        <p className="text-[11px] uppercase tracking-[0.3em] font-semibold text-[var(--color-text-muted)] mt-2">
+        <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-text-muted mt-2.5">
           {tabSubtitle[activeView]}
         </p>
       </div>
 
       <div className="max-w-3xl mx-auto px-6">
       {/* ── EDITORIAL TAB BAR ── */}
-      <div className="flex gap-6 mb-8 border-b border-[var(--color-border)]">
+      <div className="flex gap-5 mt-6 mb-8 border-b border-white/[0.08]">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveView(tab.id)}
-            className={`relative pb-3 text-[10px] uppercase tracking-[0.2em] font-semibold transition-colors ${
+            className={`relative pb-3 text-[10px] uppercase tracking-[0.22em] font-bold transition-colors whitespace-nowrap ${
               activeView === tab.id
-                ? 'text-[var(--color-accent)]'
-                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
+                ? 'text-golden'
+                : 'text-text-muted hover:text-text-primary'
             }`}
           >
             {tab.label}
             {activeView === tab.id && (
-              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--color-accent)]" />
+              <motion.div
+                layoutId="tab-indicator"
+                className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-golden to-sunrise rounded-full"
+              />
             )}
           </button>
         ))}
@@ -663,26 +647,29 @@ export function Profile() {
 
               {/* Identity Banner */}
               <motion.div variants={itemVariants}>
-                <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-br from-golden/[0.04] via-surface to-lavender/[0.04]">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-golden/[0.06] rounded-full blur-3xl" />
-                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-lavender/[0.06] rounded-full blur-3xl" />
+                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-elevated/70 backdrop-blur-sm">
+                  {/* Ambient glows */}
+                  <div className="absolute -top-8 -right-8 w-48 h-48 bg-golden/[0.08] rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute -bottom-6 -left-6 w-36 h-36 bg-lavender/[0.08] rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-golden/20 to-transparent" />
+
                   <div className="relative p-5">
                     {/* Avatar + Name */}
-                    <div className="flex items-start gap-4 mb-4">
+                    <div className="flex items-start gap-4 mb-5">
                       {user?.photoURL ? (
-                        <img src={user.photoURL} alt="" className="w-16 h-16 rounded-2xl border-2 border-golden/30 shadow-lg shadow-golden/10" referrerPolicy="no-referrer" />
+                        <img src={user.photoURL} alt="" className="w-[60px] h-[60px] rounded-2xl border-2 border-golden/40 shadow-golden" referrerPolicy="no-referrer" />
                       ) : (
-                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-golden/25 to-sunrise/20 border-2 border-golden/30 flex items-center justify-center shadow-lg shadow-golden/10">
-                          <User className="w-8 h-8 text-golden" />
+                        <div className="w-[60px] h-[60px] rounded-2xl bg-gradient-to-br from-golden/30 to-sunrise/20 border-2 border-golden/40 flex items-center justify-center shadow-golden">
+                          <User className="w-7 h-7 text-golden" />
                         </div>
                       )}
                       <div className="flex-1 min-w-0">
-                        <h2 className="text-xl font-display font-bold text-text-primary truncate">
+                        <h2 className="text-xl font-display font-bold text-text-primary truncate leading-tight">
                           {profile?.name || user?.displayName || 'Learner'}
                         </h2>
-                        <p className={`text-sm font-medium ${learnerTitle.color} mt-0.5`}>{learnerTitle.title}</p>
-                        <div className="flex items-center gap-3 mt-2">
-                          <span className="text-xs text-text-muted">Level {userProgress.level}</span>
+                        <p className={`text-[13px] font-semibold ${learnerTitle.color} mt-0.5`}>{learnerTitle.title}</p>
+                        <div className="flex items-center gap-3 mt-1.5">
+                          <span className="text-[11px] text-text-muted bg-white/[0.05] px-2 py-0.5 rounded-full border border-white/[0.08]">Lv. {userProgress.level}</span>
                           {isConfigured && user && (
                             <span className="flex items-center gap-1 text-[11px] text-text-muted">
                               {syncError ? <CloudOff className="w-3 h-3 text-coral" /> : <Cloud className="w-3 h-3 text-sage" />}
@@ -694,7 +681,7 @@ export function Profile() {
                       <button
                         onClick={handleShareCard}
                         disabled={isSharing}
-                        className="w-10 h-10 rounded-xl bg-golden/10 border border-golden/20 flex items-center justify-center hover:bg-golden/20 transition-colors disabled:opacity-50"
+                        className="w-9 h-9 rounded-xl bg-golden/10 border border-golden/25 flex items-center justify-center hover:bg-golden/20 active:scale-95 transition-all disabled:opacity-50"
                       >
                         <Share2 className="w-4 h-4 text-golden" />
                       </button>
@@ -703,12 +690,12 @@ export function Profile() {
                     {/* XP Progress bar */}
                     <div className="mb-4">
                       <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-[11px] text-text-muted font-medium">Level {userProgress.level}</span>
+                        <span className="text-[11px] font-semibold text-golden/80">Level {userProgress.level}</span>
                         <span className="text-[11px] text-text-muted">{xpProgress} / 500 XP</span>
                       </div>
-                      <div className="h-2 rounded-full bg-white/[0.06] overflow-hidden">
+                      <div className="h-[5px] rounded-full bg-white/[0.06] overflow-hidden">
                         <motion.div
-                          className="h-full rounded-full bg-gradient-to-r from-golden via-golden to-sunrise"
+                          className="h-full rounded-full bg-gradient-to-r from-golden to-sunrise"
                           initial={{ width: 0 }}
                           animate={{ width: `${getLevelProgress()}%` }}
                           transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.3 }}
@@ -719,28 +706,26 @@ export function Profile() {
                     {/* 4 stats */}
                     <div className="grid grid-cols-4 gap-2">
                       {[
-                        { icon: <Trophy className="w-4 h-4" />, value: userProgress.xp.toLocaleString(), label: 'XP', color: 'text-golden' },
-                        { icon: <Flame className="w-4 h-4" />, value: currentStreak, label: 'Streak', color: 'text-coral' },
-                        { icon: <BookOpen className="w-4 h-4" />, value: userProgress.lessonsCompleted.length, label: 'Reads', color: 'text-sage' },
-                        { icon: <TrendingUp className="w-4 h-4" />, value: longestStreak || currentStreak, label: 'Best', color: 'text-sunrise' },
+                        { icon: <Trophy className="w-3.5 h-3.5" />, value: userProgress.xp.toLocaleString(), label: 'XP', color: 'text-golden', bg: 'bg-golden/[0.08] border-golden/15' },
+                        { icon: <Flame className="w-3.5 h-3.5" />, value: currentStreak, label: 'Streak', color: 'text-coral', bg: 'bg-coral/[0.08] border-coral/15' },
+                        { icon: <BookOpen className="w-3.5 h-3.5" />, value: userProgress.lessonsCompleted.length, label: 'Reads', color: 'text-sage', bg: 'bg-sage/[0.08] border-sage/15' },
+                        { icon: <TrendingUp className="w-3.5 h-3.5" />, value: longestStreak || currentStreak, label: 'Best', color: 'text-lavender', bg: 'bg-lavender/[0.08] border-lavender/15' },
                       ].map((stat) => (
-                        <div key={stat.label} className="text-center rounded-xl p-2.5 bg-white/[0.03] border border-white/[0.06]">
-                          <div className={`${stat.color} flex justify-center mb-1.5`}>{stat.icon}</div>
-                          <p className="text-base font-display font-bold text-text-primary">{stat.value}</p>
-                          <p className="text-[10px] text-text-muted mt-0.5">{stat.label}</p>
+                        <div key={stat.label} className={`text-center rounded-xl p-2.5 border ${stat.bg}`}>
+                          <div className={`${stat.color} flex justify-center mb-1`}>{stat.icon}</div>
+                          <p className="text-sm font-display font-bold text-text-primary tabular-nums">{stat.value}</p>
+                          <p className="text-[10px] text-text-muted mt-0.5 font-medium">{stat.label}</p>
                         </div>
                       ))}
                     </div>
 
                     {/* Weekly activity dots */}
-                    <div className="mt-4 flex items-center justify-between px-1">
-                      <span className="text-[10px] text-text-muted font-medium">This Week</span>
-                      <div className="flex items-center gap-1.5">
+                    <div className="mt-4 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                      <span className="text-[10px] text-text-muted font-semibold uppercase tracking-widest">This Week</span>
+                      <div className="flex items-center gap-1">
                         {weeklyActivity.map((active, i) => (
-                          <div key={i} className="flex flex-col items-center gap-1">
-                            <div className={`w-5 h-5 rounded-md flex items-center justify-center text-[9px] font-bold transition-all ${active ? 'bg-golden/20 text-golden border border-golden/30' : 'bg-white/[0.03] text-text-muted/40 border border-white/[0.04]'}`}>
-                              {orderedLabels[i]}
-                            </div>
+                          <div key={i} className={`w-[26px] h-[26px] rounded-lg flex items-center justify-center text-[9px] font-bold transition-all ${active ? 'bg-golden/25 text-golden border border-golden/40 shadow-golden' : 'bg-white/[0.03] text-text-muted/30 border border-white/[0.05]'}`}>
+                            {orderedLabels[i]}
                           </div>
                         ))}
                       </div>
@@ -751,22 +736,22 @@ export function Profile() {
 
               {/* Up Next — 2 items only */}
               <motion.div variants={itemVariants} className="space-y-3">
-                <h3 className="text-sm font-display font-semibold text-text-primary flex items-center gap-2 px-1">
-                  <Zap className="w-4 h-4 text-golden" />
-                  Up Next
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="flex items-center gap-2 px-0.5">
+                  <div className="w-[3px] h-4 rounded-full bg-gradient-to-b from-golden to-sunrise" />
+                  <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.18em]">Up Next</h3>
+                </div>
+                <div className="grid grid-cols-2 gap-2.5">
                   {continueInfo && (
                     <button
                       onClick={() => navigate(`/pathway/${continueInfo.module.id}`)}
-                      className="text-left rounded-2xl border border-golden/15 bg-gradient-to-br from-golden/[0.06] to-transparent p-4 hover:border-golden/30 transition-all group"
+                      className="text-left rounded-2xl border border-golden/20 bg-gradient-to-br from-golden/[0.07] via-elevated/50 to-transparent p-4 hover:border-golden/35 hover:from-golden/[0.10] active:scale-[0.98] transition-all group"
                     >
-                      <div className="w-9 h-9 rounded-xl bg-golden/15 flex items-center justify-center mb-3 group-hover:bg-golden/25 transition-colors">
+                      <div className="w-9 h-9 rounded-xl bg-golden/15 border border-golden/25 flex items-center justify-center mb-3 group-hover:bg-golden/25 transition-colors">
                         <BookOpen className="w-4 h-4 text-golden" />
                       </div>
-                      <p className="text-xs font-semibold text-text-primary truncate">{continueInfo.module.title}</p>
+                      <p className="text-xs font-bold text-text-primary truncate leading-tight">{continueInfo.module.title}</p>
                       <p className="text-[11px] text-text-muted mt-0.5 truncate">{continueInfo.lesson.title}</p>
-                      <div className="flex items-center gap-1 mt-2 text-golden text-[11px] font-medium">
+                      <div className="flex items-center gap-1 mt-2.5 text-golden text-[11px] font-semibold">
                         Continue <ChevronRight className="w-3 h-3" />
                       </div>
                     </button>
@@ -774,77 +759,79 @@ export function Profile() {
                   {nextBadge && (
                     <button
                       onClick={() => setActiveView('badges')}
-                      className="text-left rounded-2xl border border-lavender/15 bg-gradient-to-br from-lavender/[0.06] to-transparent p-4 hover:border-lavender/30 transition-all group"
+                      className="text-left rounded-2xl border border-lavender/20 bg-gradient-to-br from-lavender/[0.07] via-elevated/50 to-transparent p-4 hover:border-lavender/35 active:scale-[0.98] transition-all group"
                     >
-                      <div className="w-9 h-9 rounded-xl bg-lavender/15 flex items-center justify-center mb-3 text-lg group-hover:bg-lavender/25 transition-colors">
+                      <div className="w-9 h-9 rounded-xl bg-lavender/15 border border-lavender/25 flex items-center justify-center mb-3 text-lg group-hover:bg-lavender/25 transition-colors">
                         {nextBadge.badge.icon}
                       </div>
-                      <p className="text-xs font-semibold text-text-primary truncate">{nextBadge.badge.name}</p>
-                      <div className="mt-2">
-                        <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
-                          <div className="h-full rounded-full bg-lavender transition-all" style={{ width: `${nextBadge.progress}%` }} />
+                      <p className="text-xs font-bold text-text-primary truncate leading-tight">{nextBadge.badge.name}</p>
+                      <div className="mt-2.5">
+                        <div className="h-1.5 rounded-full bg-white/[0.07] overflow-hidden">
+                          <motion.div
+                            className="h-full rounded-full bg-lavender"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${nextBadge.progress}%` }}
+                            transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.4 }}
+                          />
                         </div>
-                        <p className="text-[10px] text-text-muted mt-1">{Math.round(nextBadge.progress)}% there</p>
+                        <p className="text-[10px] text-lavender/70 font-semibold mt-1">{Math.round(nextBadge.progress)}% there</p>
                       </div>
                     </button>
                   )}
                 </div>
 
                 {/* Weekly Challenge + Achievements row */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-2.5">
                   <Link to="/challenges" className="block">
-                    <div className="rounded-2xl border border-sunrise/15 bg-gradient-to-br from-sunrise/[0.06] to-transparent p-4 hover:border-sunrise/30 transition-all h-full">
+                    <div className="rounded-2xl border border-sunrise/20 bg-gradient-to-br from-sunrise/[0.07] via-elevated/50 to-transparent p-4 hover:border-sunrise/35 active:scale-[0.98] transition-all h-full">
                       <div className="flex items-center gap-2 mb-2">
                         <Target className="w-4 h-4 text-sunrise" />
-                        <span className="text-xs font-semibold text-text-primary">Weekly Challenge</span>
+                        <span className="text-xs font-bold text-text-primary">Weekly</span>
                       </div>
                       <p className="text-[11px] text-text-muted">Earn bonus XP</p>
                     </div>
                   </Link>
 
-                  <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-4">
+                  <button onClick={() => setActiveView('badges')} className="text-left rounded-2xl border border-white/10 bg-white/[0.02] p-4 hover:border-white/15 hover:bg-white/[0.04] active:scale-[0.98] transition-all">
                     <div className="flex items-center gap-2 mb-2">
                       <Award className="w-4 h-4 text-golden" />
-                      <span className="text-xs font-semibold text-text-primary">Achievements</span>
+                      <span className="text-xs font-bold text-text-primary">Badges</span>
                     </div>
-                    <p className="text-[11px] text-text-muted">{unlockedAchievements.length} of {achievements.length} unlocked</p>
-                  </div>
+                    <p className="text-[11px] text-text-muted">{unlockedAchievements.length} / {achievements.length} earned</p>
+                  </button>
                 </div>
               </motion.div>
 
               {/* Journey Map — top 8 by progress */}
               <motion.div variants={itemVariants} className="space-y-3">
-                <h3 className="text-sm font-display font-semibold text-text-primary flex items-center gap-2 px-1">
-                  <MapPin className="w-4 h-4 text-lavender" />
-                  Your Journey
-                </h3>
-                <div className="space-y-2">
+                <div className="flex items-center gap-2 px-0.5">
+                  <div className="w-[3px] h-4 rounded-full bg-gradient-to-b from-lavender to-sky" />
+                  <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.18em]">Your Journey</h3>
+                </div>
+                <div className="rounded-2xl border border-white/[0.08] bg-elevated/40 overflow-hidden divide-y divide-white/[0.05]">
                   {categoryProgress
                     .sort((a, b) => b.progress - a.progress)
                     .slice(0, 8)
-                    .map((cat) => (
-                      <div
-                        key={cat.id}
-                        className={`rounded-xl border bg-gradient-to-r p-3 ${categoryColorMap[cat.color] || 'border-white/10 from-white/5 to-transparent'}`}
-                      >
-                        <div className="flex items-center justify-between mb-1.5">
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm">{cat.icon}</span>
-                            <span className="text-xs font-medium text-text-primary">{cat.name}</span>
+                    .map((cat, idx) => (
+                      <div key={cat.id} className="p-3.5 hover:bg-white/[0.02] transition-colors">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2.5">
+                            <span className="text-base">{cat.icon}</span>
+                            <div>
+                              <span className="text-xs font-semibold text-text-primary">{cat.name}</span>
+                              <p className="text-[10px] text-text-muted mt-0.5">{cat.completedLessons} / {cat.totalLessons} lessons</p>
+                            </div>
                           </div>
-                          <span className={`text-[11px] font-bold ${categoryTextColor[cat.color] || 'text-text-muted'}`}>{cat.progress}%</span>
+                          <span className={`text-xs font-bold ${categoryTextColor[cat.color] || 'text-text-muted'}`}>{cat.progress}%</span>
                         </div>
-                        <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+                        <div className="h-[3px] rounded-full bg-white/[0.06] overflow-hidden">
                           <motion.div
                             className={`h-full rounded-full ${categoryBarColor[cat.color] || 'bg-golden'}`}
                             initial={{ width: 0 }}
                             animate={{ width: `${cat.progress}%` }}
-                            transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.1 }}
+                            transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.05 * idx }}
                           />
                         </div>
-                        <p className="text-[10px] text-text-muted mt-1">
-                          {cat.completedLessons} / {cat.totalLessons} lessons · {cat.modulesCount} modules
-                        </p>
                       </div>
                     ))}
                 </div>
@@ -870,42 +857,49 @@ export function Profile() {
             <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
               {/* Overall progress */}
               <motion.div variants={itemVariants}>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-text-muted font-medium">Collection Progress</span>
-                  <span className="text-xs font-bold text-golden">{totalBadgeProgress}%</span>
-                </div>
-                <div className="h-2 rounded-full bg-white/[0.06] overflow-hidden">
-                  <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-amber-600 via-golden to-sunrise"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${totalBadgeProgress}%` }}
-                    transition={{ type: 'spring', stiffness: 60, damping: 20, delay: 0.2 }}
-                  />
-                </div>
-                <div className="flex justify-between mt-1.5">
-                  {['bronze', 'silver', 'gold', 'platinum', 'diamond'].map((tier) => {
-                    const tierBadges = BADGES.filter(b => b.tier === tier);
-                    const tierUnlocked = tierBadges.filter(b => unlockedBadges.some(ub => ub.id === b.id));
-                    const tierColors: Record<string, string> = {
-                      bronze: 'text-amber-600', silver: 'text-slate-400', gold: 'text-yellow-400',
-                      platinum: 'text-cyan-300', diamond: 'text-purple-400',
-                    };
-                    return (
-                      <span key={tier} className={`text-[9px] font-medium ${tierColors[tier]}`}>
-                        {tierUnlocked.length}/{tierBadges.length} {tier}
-                      </span>
-                    );
-                  })}
+                <div className="rounded-2xl border border-white/[0.08] bg-elevated/50 p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em]">Collection</span>
+                    <span className="text-sm font-bold text-golden">{totalBadgeProgress}%</span>
+                  </div>
+                  <div className="h-[5px] rounded-full bg-white/[0.06] overflow-hidden mb-3">
+                    <motion.div
+                      className="h-full rounded-full bg-gradient-to-r from-amber-700 via-golden to-sunrise"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${totalBadgeProgress}%` }}
+                      transition={{ type: 'spring', stiffness: 60, damping: 20, delay: 0.2 }}
+                    />
+                  </div>
+                  <div className="flex justify-between">
+                    {['bronze', 'silver', 'gold', 'platinum', 'diamond'].map((tier) => {
+                      const tierBadges = BADGES.filter(b => b.tier === tier);
+                      const tierUnlocked = tierBadges.filter(b => unlockedBadges.some(ub => ub.id === b.id));
+                      const tierColors: Record<string, string> = {
+                        bronze: 'text-amber-600', silver: 'text-slate-400', gold: 'text-yellow-400',
+                        platinum: 'text-cyan-300', diamond: 'text-purple-400',
+                      };
+                      const tierBgs: Record<string, string> = {
+                        bronze: 'bg-amber-600/10', silver: 'bg-slate-400/10', gold: 'bg-yellow-400/10',
+                        platinum: 'bg-cyan-300/10', diamond: 'bg-purple-400/10',
+                      };
+                      return (
+                        <div key={tier} className={`px-2 py-1 rounded-lg ${tierBgs[tier]}`}>
+                          <p className={`text-[10px] font-bold ${tierColors[tier]} text-center`}>{tierUnlocked.length}/{tierBadges.length}</p>
+                          <p className={`text-[9px] ${tierColors[tier]} opacity-70 capitalize text-center mt-0.5`}>{tier}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </motion.div>
 
               {/* Hall of Fame */}
               {hallOfFame.length > 0 && (
                 <motion.div variants={itemVariants} className="space-y-2.5">
-                  <h3 className="text-sm font-display font-semibold text-text-primary flex items-center gap-2 px-1">
-                    <span className="text-base">🏆</span>
-                    Hall of Fame
-                  </h3>
+                  <div className="flex items-center gap-2 px-0.5">
+                    <div className="w-[3px] h-4 rounded-full bg-gradient-to-b from-golden to-amber-600" />
+                    <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.18em]">Hall of Fame</h3>
+                  </div>
                   <div className="space-y-2">
                     {hallOfFame.map((badge) => (
                       <div key={badge.id} className="relative group">
@@ -932,14 +926,14 @@ export function Profile() {
                 const treeUnlocked = treeBadges.filter(b => unlockedBadges.some(ub => ub.id === b.id)).length;
                 return (
                   <motion.div key={tree.key} variants={itemVariants} className="space-y-2">
-                    <div className="flex items-center justify-between px-1">
-                      <h3 className="text-sm font-display font-semibold text-text-primary flex items-center gap-2">
-                        <span className="text-base">{tree.icon}</span>
+                    <div className="flex items-center justify-between px-0.5">
+                      <h3 className="text-[11px] font-bold text-text-primary flex items-center gap-2 uppercase tracking-[0.15em]">
+                        <span className="text-sm">{tree.icon}</span>
                         {tree.label}
                       </h3>
-                      <span className={`text-[11px] font-bold ${tree.color}`}>{treeUnlocked}/{treeBadges.length}</span>
+                      <span className={`text-[11px] font-bold ${tree.color} px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.08]`}>{treeUnlocked}/{treeBadges.length}</span>
                     </div>
-                    <div className={`rounded-xl border ${tree.borderColor} bg-white/[0.01] p-3 space-y-1.5`}>
+                    <div className={`rounded-2xl border ${tree.borderColor} bg-elevated/40 p-3 space-y-1.5`}>
                       {treeBadges.map((badge, idx) => {
                         const unlocked = unlockedBadges.find(b => b.id === badge.id);
                         const isNextToEarn = !unlocked && (idx === 0 || unlockedBadges.some(ub => ub.id === treeBadges[idx - 1]?.id));
@@ -1026,44 +1020,50 @@ export function Profile() {
           {activeView === 'review' && (
             <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-5">
               <motion.div variants={itemVariants}>
-                <GlassCard>
-                  <h2 className="text-lg font-display font-bold text-text-primary mb-1 flex items-center gap-2">
-                    <Layers className="w-5 h-5 text-lavender" />
-                    Review Cards
-                  </h2>
-                  <p className="text-[11px] text-text-muted mb-5">Spaced repetition — reinforce what you've learned</p>
+                <div className="relative overflow-hidden rounded-3xl border border-lavender/20 bg-elevated/60 backdrop-blur-sm">
+                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-lavender/[0.07] rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lavender/20 to-transparent" />
+                  <div className="relative p-5">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Layers className="w-4 h-4 text-lavender" />
+                      <h2 className="text-base font-display font-bold text-text-primary">Review Cards</h2>
+                    </div>
+                    <p className="text-[11px] text-text-muted mb-5">Spaced repetition — reinforce what you've learned</p>
 
-                  {dueCardCount > 0 ? (
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3 p-4 rounded-xl bg-lavender/[0.08] border border-lavender/20">
-                        <div className="w-12 h-12 rounded-xl bg-lavender/20 flex items-center justify-center shrink-0">
-                          <span className="text-xl font-display font-bold text-lavender">{dueCardCount}</span>
+                    {dueCardCount > 0 ? (
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-4 p-4 rounded-2xl bg-lavender/[0.08] border border-lavender/20">
+                          <div className="w-14 h-14 rounded-2xl bg-lavender/20 border border-lavender/30 flex items-center justify-center shrink-0">
+                            <span className="text-2xl font-display font-bold text-lavender">{dueCardCount}</span>
+                          </div>
+                          <div>
+                            <p className="text-sm font-bold text-text-primary">
+                              {dueCardCount} card{dueCardCount !== 1 ? 's' : ''} due
+                            </p>
+                            <p className="text-[11px] text-text-muted mt-0.5">Complete all → earn <span className="text-golden font-semibold">+75 XP bonus</span></p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-sm font-semibold text-text-primary">
-                            {dueCardCount} card{dueCardCount !== 1 ? 's' : ''} due for review
-                          </p>
-                          <p className="text-[11px] text-text-muted mt-0.5">Complete all to earn +75 XP bonus</p>
-                        </div>
+                        <Button
+                          variant="primary"
+                          size="md"
+                          onClick={() => setShowReviewSession(true)}
+                          className="w-full gap-2 justify-center"
+                        >
+                          <Layers className="w-4 h-4" />
+                          Start Review Session
+                        </Button>
                       </div>
-                      <Button
-                        variant="primary"
-                        size="md"
-                        onClick={() => setShowReviewSession(true)}
-                        className="w-full gap-2 justify-center"
-                      >
-                        <Layers className="w-4 h-4" />
-                        Start Review Session
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center py-8 text-center">
-                      <CheckCircle2 className="w-12 h-12 text-sage mb-3" />
-                      <p className="text-sm font-semibold text-text-primary">All caught up!</p>
-                      <p className="text-[11px] text-text-muted mt-1">No cards due right now. Check back later.</p>
-                    </div>
-                  )}
-                </GlassCard>
+                    ) : (
+                      <div className="flex flex-col items-center py-10 text-center">
+                        <div className="w-16 h-16 rounded-2xl bg-sage/15 border border-sage/25 flex items-center justify-center mb-4">
+                          <CheckCircle2 className="w-8 h-8 text-sage" />
+                        </div>
+                        <p className="text-sm font-bold text-text-primary">All caught up!</p>
+                        <p className="text-[11px] text-text-muted mt-1.5">No cards due right now. Check back later.</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </motion.div>
               <div className="h-4" />
             </motion.div>
@@ -1073,32 +1073,36 @@ export function Profile() {
           {/* TAB: SETTINGS                            */}
           {/* ════════════════════════════════════════ */}
           {activeView === 'settings' && (
-            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-4">
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-3">
               {/* Cloud Sync */}
               {isConfigured && (
                 <motion.div variants={itemVariants}>
-                  <GlassCard>
-                    <h3 className="text-sm font-medium text-text-primary mb-3 flex items-center gap-2">
-                      <Cloud className="w-4 h-4 text-sage" />
-                      Cloud Sync
-                    </h3>
+                  <div className="rounded-2xl border border-white/10 bg-elevated/60 p-5">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-[3px] h-4 rounded-full bg-sage" />
+                      <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em] flex items-center gap-1.5">
+                        <Cloud className="w-3.5 h-3.5 text-sage" />
+                        Cloud Sync
+                      </h3>
+                    </div>
                     {user ? (
                       <>
-                        <div className="flex items-center gap-3 mb-3">
+                        <div className="flex items-center gap-3 mb-4 p-3 rounded-xl bg-white/[0.03] border border-white/[0.07]">
                           {user.photoURL ? (
-                            <img src={user.photoURL} alt="" className="w-8 h-8 rounded-lg" referrerPolicy="no-referrer" />
+                            <img src={user.photoURL} alt="" className="w-9 h-9 rounded-xl border border-white/10" referrerPolicy="no-referrer" />
                           ) : (
-                            <div className="w-8 h-8 rounded-lg bg-golden/20 flex items-center justify-center">
+                            <div className="w-9 h-9 rounded-xl bg-golden/20 border border-golden/25 flex items-center justify-center">
                               <User className="w-4 h-4 text-golden" />
                             </div>
                           )}
                           <div className="flex-1">
-                            <p className="text-xs font-medium text-text-primary">{user.displayName || 'User'}</p>
+                            <p className="text-xs font-bold text-text-primary">{user.displayName || 'User'}</p>
                             <p className="text-[11px] text-text-muted">{user.email}</p>
                           </div>
+                          <div className={`w-2 h-2 rounded-full ${syncError ? 'bg-coral' : 'bg-sage'}`} />
                         </div>
                         <div className="flex gap-2">
-                          <button onClick={syncNow} disabled={isSyncing} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs bg-sage/10 text-sage border border-sage/20 hover:bg-sage/20 transition-colors disabled:opacity-50">
+                          <button onClick={syncNow} disabled={isSyncing} className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs bg-sage/10 text-sage border border-sage/25 hover:bg-sage/20 active:scale-95 transition-all disabled:opacity-50">
                             <RefreshCw className={`w-3 h-3 ${isSyncing ? 'animate-spin' : ''}`} />
                             {isSyncing ? 'Syncing...' : `Sync (${formatLastSync()})`}
                           </button>
@@ -1111,19 +1115,22 @@ export function Profile() {
                     ) : (
                       <GoogleSignInButton variant="primary" size="md" label="Sign in with Google" />
                     )}
-                  </GlassCard>
+                  </div>
                 </motion.div>
               )}
 
               {/* Backup & Restore */}
               <motion.div variants={itemVariants}>
-                <GlassCard>
+                <div className="rounded-2xl border border-white/10 bg-elevated/60 p-5">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-medium text-text-primary flex items-center gap-2">
-                      <Shield className="w-4 h-4 text-sage" />
-                      Backup & Restore
-                    </h3>
-                    <span className="flex items-center gap-1.5 text-[11px] text-text-muted">
+                    <div className="flex items-center gap-2">
+                      <div className="w-[3px] h-4 rounded-full bg-sage" />
+                      <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em] flex items-center gap-1.5">
+                        <Shield className="w-3.5 h-3.5 text-sage" />
+                        Backup & Restore
+                      </h3>
+                    </div>
+                    <span className="flex items-center gap-1.5 text-[11px] text-text-muted bg-white/[0.04] px-2 py-1 rounded-lg border border-white/[0.07]">
                       <HardDrive className="w-3 h-3" />
                       {calculateStorageSize()} KB
                     </span>
@@ -1160,16 +1167,19 @@ export function Profile() {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </GlassCard>
+                </div>
               </motion.div>
 
               {/* Appearance */}
               <motion.div variants={itemVariants}>
-                <GlassCard>
-                  <h3 className="text-sm font-medium text-text-primary mb-4 flex items-center gap-2">
-                    <Settings className="w-4 h-4 text-golden" />
-                    Appearance
-                  </h3>
+                <div className="rounded-2xl border border-white/10 bg-elevated/60 p-5">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-[3px] h-4 rounded-full bg-golden" />
+                    <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em] flex items-center gap-1.5">
+                      <Settings className="w-3.5 h-3.5 text-golden" />
+                      Appearance
+                    </h3>
+                  </div>
                   <div className="flex gap-2">
                     {([
                       { value: 'dark' as const, label: 'Dark' },
@@ -1179,9 +1189,9 @@ export function Profile() {
                       <button
                         key={opt.value}
                         onClick={() => updateSettings({ theme: opt.value })}
-                        className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-semibold transition-all border ${
+                        className={`flex-1 py-3 px-3 rounded-xl text-xs font-bold transition-all border active:scale-95 ${
                           settings.theme === opt.value
-                            ? 'bg-golden/15 border-golden/30 text-golden'
+                            ? 'bg-golden/15 border-golden/35 text-golden'
                             : 'bg-white/[0.03] border-white/[0.08] text-text-muted hover:bg-white/[0.06]'
                         }`}
                       >
@@ -1189,91 +1199,100 @@ export function Profile() {
                       </button>
                     ))}
                   </div>
-                </GlassCard>
+                </div>
               </motion.div>
 
               {/* Learning Preferences */}
               <motion.div variants={itemVariants}>
-                <GlassCard>
-                  <h3 className="text-sm font-medium text-text-primary mb-4 flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-lavender" />
-                    Learning Preferences
-                  </h3>
+                <div className="rounded-2xl border border-white/10 bg-elevated/60 p-5">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-[3px] h-4 rounded-full bg-lavender" />
+                    <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em] flex items-center gap-1.5">
+                      <BookOpen className="w-3.5 h-3.5 text-lavender" />
+                      Learning Preferences
+                    </h3>
+                  </div>
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-4">
                       <div className="flex-1">
-                        <p className="text-xs font-medium text-text-primary">Express Learning Mode</p>
+                        <p className="text-xs font-bold text-text-primary">Express Learning Mode</p>
                         <p className="text-[11px] text-text-muted mt-0.5">Bite-sized lessons (2-5 min) instead of full sessions</p>
                       </div>
                       <button
                         onClick={() => updateSettings({ microLearningMode: !settings.microLearningMode })}
-                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${settings.microLearningMode ? 'bg-lavender' : 'bg-white/[0.1]'}`}
+                        className={`relative shrink-0 inline-flex h-6 w-11 items-center rounded-full transition-colors ${settings.microLearningMode ? 'bg-lavender' : 'bg-white/[0.12]'}`}
                       >
-                        <span className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${settings.microLearningMode ? 'translate-x-5' : 'translate-x-0.5'}`} />
+                        <span className={`inline-block h-5 w-5 transform rounded-full bg-white shadow-sm transition-transform ${settings.microLearningMode ? 'translate-x-5' : 'translate-x-0.5'}`} />
                       </button>
                     </div>
                     {settings.microLearningMode && (
-                      <div className="p-3 rounded-lg bg-lavender/[0.06] border border-lavender/20">
-                        <p className="text-[11px] text-lavender">⚡ Express Mode active: See shorter versions of lessons optimized for quick learning</p>
+                      <div className="p-3 rounded-xl bg-lavender/[0.08] border border-lavender/20">
+                        <p className="text-[11px] text-lavender font-medium">⚡ Express Mode active: See shorter versions of lessons optimized for quick learning</p>
                       </div>
                     )}
                   </div>
-                </GlassCard>
+                </div>
               </motion.div>
 
               {/* Notification Preferences */}
               <motion.div variants={itemVariants}>
-                <GlassCard>
-                  <h3 className="text-sm font-medium text-text-primary mb-3 flex items-center gap-2">
-                    <Bell className="w-4 h-4 text-coral" />
-                    Notification Preferences
-                  </h3>
+                <div className="rounded-2xl border border-white/10 bg-elevated/60 p-5">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-[3px] h-4 rounded-full bg-coral" />
+                    <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em] flex items-center gap-1.5">
+                      <Bell className="w-3.5 h-3.5 text-coral" />
+                      Notifications
+                    </h3>
+                  </div>
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-4">
                       <div className="flex-1">
-                        <p className="text-xs font-medium text-text-primary">Daily Streak Reminder</p>
+                        <p className="text-xs font-bold text-text-primary">Daily Streak Reminder</p>
                         <p className="text-[11px] text-text-muted mt-0.5">Get daily notifications to keep your streak alive</p>
                       </div>
                       <button
                         onClick={() => toggleNotifications(!notificationSchedule.enabled)}
-                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${notificationSchedule.enabled ? 'bg-sage' : 'bg-white/[0.1]'}`}
+                        className={`relative shrink-0 inline-flex h-6 w-11 items-center rounded-full transition-colors ${notificationSchedule.enabled ? 'bg-sage' : 'bg-white/[0.12]'}`}
                       >
-                        <span className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${notificationSchedule.enabled ? 'translate-x-5' : 'translate-x-0.5'}`} />
+                        <span className={`inline-block h-5 w-5 transform rounded-full bg-white shadow-sm transition-transform ${notificationSchedule.enabled ? 'translate-x-5' : 'translate-x-0.5'}`} />
                       </button>
                     </div>
                     {notificationSchedule.enabled && (
                       <div className="border-t border-white/[0.06] pt-4">
                         <label className="flex items-center gap-2 mb-2">
                           <Clock className="w-3.5 h-3.5 text-text-muted" />
-                          <span className="text-xs font-medium text-text-primary">Preferred Time</span>
+                          <span className="text-xs font-bold text-text-primary">Preferred Time</span>
                         </label>
                         <input
                           type="time"
                           value={notificationSchedule.scheduledTime}
                           onChange={(e) => setNotificationTime(e.target.value)}
-                          className="w-full px-3 py-2 rounded-lg bg-white/[0.05] border border-white/[0.1] text-text-primary text-sm focus:outline-none focus:border-sage/50 transition-colors"
+                          className="w-full px-3 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-text-primary text-sm focus:outline-none focus:border-sage/50 transition-colors"
                         />
                         <p className="text-[11px] text-text-muted mt-2">
-                          You'll receive a reminder at {notificationSchedule.scheduledTime} ({notificationSchedule.timezone})
+                          Reminder at {notificationSchedule.scheduledTime} · {notificationSchedule.timezone}
                         </p>
                       </div>
                     )}
                   </div>
-                </GlassCard>
+                </div>
               </motion.div>
 
               {/* Danger Zone */}
               <motion.div variants={itemVariants}>
-                <GlassCard>
-                  <h3 className="text-sm font-medium text-coral mb-2 flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4" />
-                    Danger Zone
-                  </h3>
-                  <p className="text-[11px] text-text-muted mb-3">Permanently delete all progress. Cannot be undone.</p>
+                <div className="rounded-2xl border border-coral/20 bg-coral/[0.03] p-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-[3px] h-4 rounded-full bg-coral" />
+                    <h3 className="text-[11px] font-bold text-coral uppercase tracking-[0.15em] flex items-center gap-1.5">
+                      <AlertTriangle className="w-3.5 h-3.5" />
+                      Danger Zone
+                    </h3>
+                  </div>
+                  <p className="text-[11px] text-text-muted mb-4">Permanently delete all progress. Cannot be undone.</p>
                   <AnimatePresence>
                     {showResetConfirm ? (
-                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="bg-coral/10 border border-coral/30 rounded-xl p-3">
-                        <p className="text-xs text-coral mb-3">Are you sure? All progress will be permanently deleted.</p>
+                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="bg-coral/10 border border-coral/30 rounded-xl p-4">
+                        <p className="text-xs text-coral font-medium mb-3">Are you sure? All progress will be permanently deleted.</p>
                         <div className="flex gap-2">
                           <Button variant="primary" size="sm" onClick={handleReset} className="bg-coral hover:bg-coral/80">Delete Everything</Button>
                           <Button variant="glass" size="sm" onClick={() => setShowResetConfirm(false)}>Cancel</Button>
@@ -1286,16 +1305,16 @@ export function Profile() {
                       </Button>
                     )}
                   </AnimatePresence>
-                </GlassCard>
+                </div>
               </motion.div>
 
               {/* App Info */}
               <motion.div variants={itemVariants}>
-                <GlassCard className="!p-3">
+                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] px-4 py-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Info className="w-4 h-4 text-golden" />
-                      <span className="text-xs text-text-secondary">Polymind v{APP_VERSION}</span>
+                      <Info className="w-3.5 h-3.5 text-golden" />
+                      <span className="text-xs font-mono text-text-muted">v{APP_VERSION}</span>
                     </div>
                     <div className="flex gap-2">
                       <Button variant="glass" size="sm" onClick={handleHardRefresh} disabled={isRefreshing} className="gap-1.5 text-[11px]">
@@ -1310,7 +1329,7 @@ export function Profile() {
                       </Link>
                     </div>
                   </div>
-                </GlassCard>
+                </div>
               </motion.div>
 
               <div className="h-4" />
