@@ -427,6 +427,9 @@ function AppRoutes() {
       {/* Connections — legacy, redirect to learn */}
       <Route path="/connections" element={<Navigate to="/pathway" replace />} />
 
+      {/* Explore — temp redirect until ExplorePage lands */}
+      <Route path="/explore" element={<Navigate to="/pathway" replace />} />
+
 
       {/* Landing Page */}
       <Route
