@@ -1,16 +1,14 @@
-import { useRef, useEffect, useMemo } from 'react';
+import { useRef, useEffect } from 'react';
 
 /**
- * Generative Art — Canvas-based animated particle field
+ * GenerativeArt — Canvas-based animated geometric line art
  *
- * Renders animated geometry that:
- * - Starts as scattered particles on early cards
- * - Organizes into geometric patterns as user progresses
- * - Forms a topic-relevant constellation on final card
- * - Animates smoothly on each card transition
+ * Each card index produces a completely different visual pattern.
+ * Patterns are animated and fill the available space beautifully.
+ * Think Sol LeWitt wall drawings meets creative coding.
  */
 
-// Seed-based PRNG for deterministic randomness per card
+// Seeded PRNG
 function seededRandom(seed: number) {
   let s = seed;
   return () => {
@@ -19,101 +17,236 @@ function seededRandom(seed: number) {
   };
 }
 
-// Topic detection from content
-function detectTopic(title: string, content: string): string {
-  const text = (title + ' ' + content).toLowerCase();
-  if (text.match(/chart|price|trading|market|candlestick|finance|invest|stock/)) return 'chart';
-  if (text.match(/brain|neuro|mind|cognitive|mental|think|psychology/)) return 'mind';
-  if (text.match(/stoic|philosophy|virtue|wisdom|plato|socrates|marcus|ethics/)) return 'philosophy';
-  if (text.match(/science|atom|physics|quantum|molecule|research|experiment/)) return 'science';
-  if (text.match(/meditat|spirit|chakra|yoga|breath|mindful|energy|soul/)) return 'spirit';
-  if (text.match(/code|program|algorithm|function|data|software|web|api/)) return 'code';
-  if (text.match(/book|read|learn|knowledge|library|study|write|story/)) return 'book';
-  if (text.match(/strategy|game|decision|system|model|framework/)) return 'strategy';
-  return 'default';
-}
+// Pattern library — each draws differently
+type DrawFn = (ctx: CanvasRenderingContext2D, W: number, H: number, t: number, color: string, rng: () => number) => void;
 
-// Target constellation points per topic (normalized 0-1)
-const CONSTELLATIONS: Record<string, [number, number][]> = {
-  // Diamond
-  default: [
-    [0.5, 0.1], [0.8, 0.3], [0.9, 0.5], [0.8, 0.7], [0.5, 0.9],
-    [0.2, 0.7], [0.1, 0.5], [0.2, 0.3], [0.5, 0.5],
-  ],
-  // Ascending chart bars
-  chart: [
-    [0.15, 0.85], [0.15, 0.7], [0.3, 0.85], [0.3, 0.55],
-    [0.45, 0.85], [0.45, 0.4], [0.6, 0.85], [0.6, 0.25],
-    [0.75, 0.85], [0.75, 0.15], [0.9, 0.85], [0.9, 0.3],
-    [0.1, 0.88], [0.95, 0.88],
-  ],
-  // Brain/neural network
-  mind: [
-    [0.5, 0.15], [0.3, 0.25], [0.7, 0.25], [0.2, 0.4], [0.5, 0.35],
-    [0.8, 0.4], [0.15, 0.55], [0.35, 0.55], [0.65, 0.55], [0.85, 0.55],
-    [0.25, 0.7], [0.5, 0.65], [0.75, 0.7], [0.4, 0.8], [0.6, 0.8], [0.5, 0.9],
-  ],
-  // Greek column
-  philosophy: [
-    [0.3, 0.1], [0.7, 0.1], [0.25, 0.15], [0.75, 0.15],
-    [0.35, 0.2], [0.65, 0.2], [0.35, 0.35], [0.65, 0.35],
-    [0.35, 0.5], [0.65, 0.5], [0.35, 0.65], [0.65, 0.65],
-    [0.35, 0.8], [0.65, 0.8], [0.25, 0.85], [0.75, 0.85],
-    [0.2, 0.9], [0.8, 0.9],
-  ],
-  // Atom orbits
-  science: [
-    [0.5, 0.5], [0.5, 0.2], [0.5, 0.8], [0.2, 0.5], [0.8, 0.5],
-    [0.3, 0.3], [0.7, 0.3], [0.3, 0.7], [0.7, 0.7],
-    [0.5, 0.1], [0.9, 0.5], [0.5, 0.9], [0.1, 0.5],
-    [0.35, 0.15], [0.65, 0.15], [0.85, 0.35], [0.85, 0.65],
-    [0.65, 0.85], [0.35, 0.85], [0.15, 0.65], [0.15, 0.35],
-  ],
-  // Mandala/lotus
-  spirit: [
-    [0.5, 0.5], [0.5, 0.2], [0.5, 0.8], [0.2, 0.5], [0.8, 0.5],
-    [0.32, 0.32], [0.68, 0.32], [0.32, 0.68], [0.68, 0.68],
-    [0.5, 0.1], [0.5, 0.9], [0.1, 0.5], [0.9, 0.5],
-    [0.25, 0.25], [0.75, 0.25], [0.25, 0.75], [0.75, 0.75],
-  ],
-  // Binary/circuit
-  code: [
-    [0.2, 0.2], [0.4, 0.2], [0.6, 0.2], [0.8, 0.2],
-    [0.2, 0.4], [0.5, 0.35], [0.8, 0.4],
-    [0.3, 0.5], [0.5, 0.5], [0.7, 0.5],
-    [0.2, 0.6], [0.5, 0.65], [0.8, 0.6],
-    [0.2, 0.8], [0.4, 0.8], [0.6, 0.8], [0.8, 0.8],
-  ],
-  // Open book
-  book: [
-    [0.5, 0.15], [0.5, 0.3], [0.5, 0.5], [0.5, 0.7], [0.5, 0.85],
-    [0.3, 0.2], [0.25, 0.35], [0.2, 0.5], [0.25, 0.65], [0.3, 0.8],
-    [0.7, 0.2], [0.75, 0.35], [0.8, 0.5], [0.75, 0.65], [0.7, 0.8],
-  ],
-  // Chess/grid
-  strategy: [
-    [0.2, 0.2], [0.4, 0.2], [0.6, 0.2], [0.8, 0.2],
-    [0.2, 0.4], [0.4, 0.4], [0.6, 0.4], [0.8, 0.4],
-    [0.2, 0.6], [0.4, 0.6], [0.6, 0.6], [0.8, 0.6],
-    [0.2, 0.8], [0.4, 0.8], [0.6, 0.8], [0.8, 0.8],
-  ],
-};
+const patterns: DrawFn[] = [
+  // 0: Concentric ripples
+  (ctx, W, H, t, color) => {
+    const cx = W / 2;
+    const cy = H / 2;
+    const maxR = Math.max(W, H) * 0.45;
+    for (let i = 0; i < 12; i++) {
+      const r = ((i * maxR / 12) + t * 30) % maxR;
+      const alpha = 0.4 * (1 - r / maxR);
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 0.8;
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+  },
 
-interface Particle {
-  // Current position
-  x: number;
-  y: number;
-  // Random starting position
-  startX: number;
-  startY: number;
-  // Target constellation position
-  targetX: number;
-  targetY: number;
-  // Visual
-  radius: number;
-  opacity: number;
-  speed: number;
-}
+  // 1: Flowing sine waves
+  (ctx, W, H, t, color) => {
+    for (let i = 0; i < 8; i++) {
+      ctx.globalAlpha = 0.15 + (i / 8) * 0.2;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 0.8;
+      ctx.beginPath();
+      for (let x = 0; x <= W; x += 2) {
+        const freq = 0.008 + i * 0.003;
+        const amp = 15 + i * 8;
+        const phase = t * (0.5 + i * 0.15) + i * 0.7;
+        const y = H / 2 + Math.sin(x * freq + phase) * amp + (i - 4) * 18;
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+  },
+
+  // 2: Sacred geometry — rotating hexagon layers
+  (ctx, W, H, t, color) => {
+    const cx = W / 2;
+    const cy = H / 2;
+    for (let layer = 0; layer < 5; layer++) {
+      const r = 25 + layer * 28;
+      const sides = 6;
+      const rotation = t * (0.3 + layer * 0.1) * (layer % 2 === 0 ? 1 : -1);
+      ctx.globalAlpha = 0.2 + layer * 0.06;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 0.7;
+      ctx.beginPath();
+      for (let i = 0; i <= sides; i++) {
+        const angle = (i / sides) * Math.PI * 2 + rotation;
+        const px = cx + Math.cos(angle) * r;
+        const py = cy + Math.sin(angle) * r;
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      ctx.stroke();
+
+      // Inner star connections
+      if (layer > 0) {
+        ctx.globalAlpha = 0.08;
+        for (let i = 0; i < sides; i++) {
+          const a1 = (i / sides) * Math.PI * 2 + rotation;
+          const a2 = ((i + 2) / sides) * Math.PI * 2 + rotation;
+          ctx.beginPath();
+          ctx.moveTo(cx + Math.cos(a1) * r, cy + Math.sin(a1) * r);
+          ctx.lineTo(cx + Math.cos(a2) * r, cy + Math.sin(a2) * r);
+          ctx.stroke();
+        }
+      }
+    }
+  },
+
+  // 3: Growing fractal tree
+  (ctx, W, H, t, color, rng) => {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 0.8;
+
+    function branch(x: number, y: number, len: number, angle: number, depth: number) {
+      if (depth <= 0 || len < 3) return;
+      const endX = x + Math.cos(angle) * len;
+      const endY = y + Math.sin(angle) * len;
+      ctx.globalAlpha = 0.1 + (depth / 8) * 0.25;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(endX, endY);
+      ctx.stroke();
+
+      const spread = 0.4 + Math.sin(t * 0.5) * 0.15;
+      const shrink = 0.65 + rng() * 0.1;
+      branch(endX, endY, len * shrink, angle - spread, depth - 1);
+      branch(endX, endY, len * shrink, angle + spread, depth - 1);
+    }
+
+    branch(W / 2, H * 0.9, H * 0.22, -Math.PI / 2, 8);
+  },
+
+  // 4: Golden spiral
+  (ctx, W, H, t, color) => {
+    const cx = W / 2;
+    const cy = H / 2;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 0.8;
+
+    // Fibonacci spiral
+    ctx.beginPath();
+    const turns = 6;
+    const points = 300;
+    for (let i = 0; i < points; i++) {
+      const theta = (i / points) * turns * Math.PI * 2 + t * 0.3;
+      const r = 2 * Math.pow(1.08, i / 10);
+      if (r > Math.max(W, H) * 0.45) break;
+      const x = cx + Math.cos(theta) * r;
+      const y = cy + Math.sin(theta) * r;
+      ctx.globalAlpha = 0.1 + (i / points) * 0.3;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Dot markers along spiral
+    for (let i = 0; i < points; i += 20) {
+      const theta = (i / points) * turns * Math.PI * 2 + t * 0.3;
+      const r = 2 * Math.pow(1.08, i / 10);
+      if (r > Math.max(W, H) * 0.45) break;
+      ctx.globalAlpha = 0.25;
+      ctx.beginPath();
+      ctx.arc(cx + Math.cos(theta) * r, cy + Math.sin(theta) * r, 1.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  },
+
+  // 5: Tessellating triangles
+  (ctx, W, H, t, color) => {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 0.5;
+    const size = 40;
+    const cols = Math.ceil(W / size) + 1;
+    const rows = Math.ceil(H / (size * 0.866)) + 1;
+    const offsetX = Math.sin(t * 0.3) * 10;
+    const offsetY = Math.cos(t * 0.2) * 8;
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const x = col * size + (row % 2) * (size / 2) + offsetX;
+        const y = row * size * 0.866 + offsetY;
+        const dist = Math.sqrt(Math.pow(x - W / 2, 2) + Math.pow(y - H / 2, 2));
+        const maxDist = Math.max(W, H) * 0.5;
+        ctx.globalAlpha = Math.max(0, 0.25 * (1 - dist / maxDist));
+
+        ctx.beginPath();
+        ctx.moveTo(x, y - size * 0.33);
+        ctx.lineTo(x - size * 0.5, y + size * 0.33);
+        ctx.lineTo(x + size * 0.5, y + size * 0.33);
+        ctx.closePath();
+        ctx.stroke();
+      }
+    }
+  },
+
+  // 6: Orbiting rings
+  (ctx, W, H, t, color) => {
+    const cx = W / 2;
+    const cy = H / 2;
+    ctx.strokeStyle = color;
+
+    for (let i = 0; i < 5; i++) {
+      const r = 30 + i * 22;
+      const tilt = 0.3 + i * 0.25;
+      const rotation = t * (0.2 + i * 0.08);
+      ctx.globalAlpha = 0.15 + i * 0.05;
+      ctx.lineWidth = 0.7;
+      ctx.beginPath();
+
+      for (let a = 0; a <= Math.PI * 2; a += 0.05) {
+        const px = cx + Math.cos(a + rotation) * r;
+        const py = cy + Math.sin(a + rotation) * r * tilt;
+        if (a === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      ctx.stroke();
+
+      // Orbiting dot
+      const dotAngle = t * (1 + i * 0.3);
+      const dotX = cx + Math.cos(dotAngle) * r;
+      const dotY = cy + Math.sin(dotAngle) * r * tilt;
+      ctx.globalAlpha = 0.4;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(dotX, dotY, 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  },
+
+  // 7: Dot matrix / halftone
+  (ctx, W, H, t, color) => {
+    ctx.fillStyle = color;
+    const spacing = 16;
+    const cols = Math.ceil(W / spacing);
+    const rows = Math.ceil(H / spacing);
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const x = col * spacing + spacing / 2;
+        const y = row * spacing + spacing / 2;
+
+        const dx = x - W / 2;
+        const dy = y - H / 2;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const maxDist = Math.max(W, H) * 0.5;
+
+        const wave = Math.sin(dist * 0.04 - t * 1.5) * 0.5 + 0.5;
+        const size = wave * 3;
+        const alpha = wave * 0.3 * (1 - dist / maxDist);
+
+        if (alpha > 0.02) {
+          ctx.globalAlpha = alpha;
+          ctx.beginPath();
+          ctx.arc(x, y, size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+  },
+];
 
 interface GenerativeArtProps {
   cardIndex: number;
@@ -122,27 +255,19 @@ interface GenerativeArtProps {
   cardContent?: string;
 }
 
-export function GenerativeArt({ cardIndex, totalCards, cardTitle = '', cardContent = '' }: GenerativeArtProps) {
+export function GenerativeArt({ cardIndex }: GenerativeArtProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animFrameRef = useRef<number>(0);
-  const particlesRef = useRef<Particle[]>([]);
-  const progressRef = useRef(0);
-  const targetProgressRef = useRef(0);
+  const animRef = useRef<number>(0);
 
-  const topic = useMemo(() => detectTopic(cardTitle, cardContent), [cardTitle, cardContent]);
-
-  // How far through the lesson we are (0 = scattered, 1 = formed)
-  const formationProgress = totalCards > 1 ? cardIndex / (totalCards - 1) : 0;
-  targetProgressRef.current = formationProgress;
+  // Pick pattern based on card index — cycles through all patterns
+  const patternIndex = cardIndex % patterns.length;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Handle DPI
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
     canvas.width = rect.width * dpr;
@@ -151,135 +276,30 @@ export function GenerativeArt({ cardIndex, totalCards, cardTitle = '', cardConte
     const W = rect.width;
     const H = rect.height;
 
-    // Generate particles
-    const constellation = CONSTELLATIONS[topic] || CONSTELLATIONS.default;
-    const numParticles = constellation.length + 12; // extra ambient particles
-    const rng = seededRandom(42 + cardIndex);
-
-    if (particlesRef.current.length !== numParticles) {
-      const particles: Particle[] = [];
-      for (let i = 0; i < numParticles; i++) {
-        const target = constellation[i % constellation.length];
-        particles.push({
-          x: rng() * W,
-          y: rng() * H,
-          startX: rng() * W,
-          startY: rng() * H,
-          targetX: target[0] * W,
-          targetY: target[1] * H,
-          radius: 1 + rng() * 2,
-          opacity: 0.15 + rng() * 0.35,
-          speed: 0.3 + rng() * 0.7,
-        });
-      }
-      particlesRef.current = particles;
-    } else {
-      // Update targets for new card
-      const particles = particlesRef.current;
-      const newRng = seededRandom(42 + cardIndex);
-      for (let i = 0; i < particles.length; i++) {
-        const target = constellation[i % constellation.length];
-        particles[i].targetX = target[0] * W;
-        particles[i].targetY = target[1] * H;
-        // Slightly randomize start positions for scatter
-        particles[i].startX = newRng() * W;
-        particles[i].startY = newRng() * H;
-      }
-    }
-
-    // Get CSS variable colors
     const style = getComputedStyle(document.documentElement);
-    const accentColor = style.getPropertyValue('--color-accent').trim() || '#C5A368';
-    const mutedColor = style.getPropertyValue('--color-text-muted').trim() || '#9A8F81';
+    const accent = style.getPropertyValue('--color-accent').trim() || '#C5A368';
+    const rng = seededRandom(cardIndex * 7919 + 42);
+    const draw = patterns[patternIndex];
 
-    let startTime = performance.now();
+    const startTime = performance.now();
 
-    function animate(time: number) {
-      if (!ctx) return;
-      const elapsed = (time - startTime) / 1000;
-
-      // Smooth progress interpolation
-      progressRef.current += (targetProgressRef.current - progressRef.current) * 0.03;
-      const p = progressRef.current;
-
-      ctx.clearRect(0, 0, W, H);
-
-      const particles = particlesRef.current;
-
-      // Draw connection lines between nearby particles (more visible as they form)
-      const lineOpacity = p * 0.12;
-      if (lineOpacity > 0.01) {
-        ctx.strokeStyle = accentColor;
-        ctx.lineWidth = 0.5;
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const maxDist = 60 + p * 40; // Lines reach further as formation progresses
-            if (dist < maxDist) {
-              ctx.globalAlpha = lineOpacity * (1 - dist / maxDist);
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[j].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
-            }
-          }
-        }
-      }
-
-      // Draw and move particles
-      for (let i = 0; i < particles.length; i++) {
-        const part = particles[i];
-
-        // Lerp between scattered and formed positions
-        const tx = part.startX + (part.targetX - part.startX) * p;
-        const ty = part.startY + (part.targetY - part.startY) * p;
-
-        // Gentle floating motion when scattered
-        const floatX = Math.sin(elapsed * part.speed + i) * (1 - p) * 15;
-        const floatY = Math.cos(elapsed * part.speed * 0.7 + i * 1.3) * (1 - p) * 12;
-
-        // Smooth movement toward target
-        part.x += (tx + floatX - part.x) * 0.04;
-        part.y += (ty + floatY - part.y) * 0.04;
-
-        // Draw particle
-        const isConstellation = i < (CONSTELLATIONS[topic] || CONSTELLATIONS.default).length;
-        const color = isConstellation ? accentColor : mutedColor;
-        const size = part.radius * (0.8 + p * 0.6);
-
-        ctx.globalAlpha = part.opacity * (0.3 + p * 0.5);
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc(part.x, part.y, size, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Glow for constellation particles when mostly formed
-        if (isConstellation && p > 0.6) {
-          ctx.globalAlpha = (p - 0.6) * 0.15;
-          ctx.beginPath();
-          ctx.arc(part.x, part.y, size * 4, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-
-      ctx.globalAlpha = 1;
-      animFrameRef.current = requestAnimationFrame(animate);
+    function animate(now: number) {
+      const t = (now - startTime) / 1000;
+      ctx!.clearRect(0, 0, W, H);
+      draw(ctx!, W, H, t, accent, rng);
+      ctx!.globalAlpha = 1;
+      animRef.current = requestAnimationFrame(animate);
     }
 
-    animFrameRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(animFrameRef.current);
-    };
-  }, [cardIndex, topic, totalCards]);
+    animRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animRef.current);
+  }, [cardIndex, patternIndex]);
 
   return (
     <canvas
       ref={canvasRef}
       className="w-full h-full pointer-events-none"
-      style={{ opacity: 0.5 }}
+      style={{ opacity: 0.4 }}
     />
   );
 }
