@@ -1,10 +1,12 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Icon } from '@/components/atoms/Icon';
 import { useAuthContext } from '@/contexts/AuthContext';
 import { useProgressStore } from '@/store/progressStore';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
+import { useUserStore } from '@/store/userStore';
+import { PaywallGate } from '@/components/organisms/PaywallGate';
 import { getDailyQuote } from '@/data/quotes';
 
 const fadeIn = {
@@ -21,6 +23,14 @@ export function Dashboard() {
   const refreshStreakFreeze = useProgressStore((s) => s.refreshStreakFreeze);
   const lastViewedLesson = useProgressStore((s) => s.lastViewedLesson);
   const userProgress = useProgressStore((s) => s.userProgress);
+
+  const hasLifetimeAccess = useUserStore((s) => s.hasLifetimeAccess);
+  const purchasedModules = useUserStore((s) => s.purchasedModules);
+  const purchaseModule = useUserStore((s) => s.purchaseModule);
+  const activateLifetime = useUserStore((s) => s.activateLifetime);
+  const showUpgradeBanner = !hasLifetimeAccess && purchasedModules.length === 0;
+
+  const [isPaywallOpen, setIsPaywallOpen] = useState(false);
 
   const getDueCards = useSpacedRepetitionStore((s) => s.getDueCards);
   const dueCount = useMemo(() => getDueCards().length, [getDueCards]);
@@ -56,6 +66,23 @@ export function Dashboard() {
 
   return (
     <div className="pb-28">
+      {/* Upgrade banner — shown only to users with no purchases yet */}
+      {showUpgradeBanner && (
+        <div className="px-4 pt-4 max-w-3xl mx-auto">
+          <div className="flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-amber-500/8 border border-amber-500/20 text-sm">
+            <span className="text-amber-400/90 text-[11px] leading-snug">
+              Unlock any module for ₹99 · All 76 modules for ₹999 lifetime
+            </span>
+            <button
+              onClick={() => setIsPaywallOpen(true)}
+              className="shrink-0 px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-[11px] font-semibold transition-colors"
+            >
+              See Plans
+            </button>
+          </div>
+        </div>
+      )}
+
       <main className="px-6 space-y-16 mt-8 max-w-3xl mx-auto">
 
         {/* === HERO QUOTE === */}
@@ -221,6 +248,24 @@ export function Dashboard() {
         </motion.section>
 
       </main>
+
+      {/* PaywallGate — triggered from upgrade banner "See Plans" */}
+      {isPaywallOpen && (
+        <PaywallGate
+          moduleId={null}
+          onClose={() => setIsPaywallOpen(false)}
+          onPurchaseModule={(id) => {
+            // TODO: wire Razorpay before go-live
+            purchaseModule(id);
+            setIsPaywallOpen(false);
+          }}
+          onPurchaseLifetime={() => {
+            // TODO: wire Razorpay before go-live
+            activateLifetime();
+            setIsPaywallOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 }
