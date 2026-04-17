@@ -5,7 +5,7 @@ import { Sparkles, Eye, X } from 'lucide-react';
 import { Modal } from './Modal';
 import { Button } from '@/components/atoms';
 import { useUserStore } from '@/store/userStore';
-import { getModuleById } from '@/data/modules';
+import { getModuleMetaById } from '@/data/modules-meta';
 
 interface VizUnlockModalProps {
   isOpen: boolean;
@@ -167,10 +167,9 @@ export function VizUnlockModal({ isOpen, onClose, vizUnlock }: VizUnlockModalPro
   const vizTitle = vizUnlock ? (vizTitles[vizUnlock.vizId] || vizUnlock.vizId) : '';
   const moduleInfo = useMemo(() => {
     if (!vizUnlock) return null;
-    const mod = getModuleById(vizUnlock.moduleId);
-    if (!mod?.pathway) return null;
-    const level = mod.pathway.find(l => l.id === vizUnlock.levelId);
-    return { moduleName: mod.title, levelName: level?.title || '' };
+    const mod = getModuleMetaById(vizUnlock.moduleId);
+    if (!mod) return null;
+    return { moduleName: mod.title, levelName: '' };
   }, [vizUnlock]);
 
   useEffect(() => {

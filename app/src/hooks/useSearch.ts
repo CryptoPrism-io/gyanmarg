@@ -1,5 +1,4 @@
 import { useMemo, useState, useCallback } from 'react';
-import { modules } from '@/data/modules';
 
 export interface SearchResult {
   moduleId: string;
@@ -14,8 +13,17 @@ export interface SearchResult {
   xpReward: number;
 }
 
-// Build flat index once — ~4,700 entries
-function buildSearchIndex(): SearchResult[] {
+// Build flat index LAZILY — only when user first searches
+// This prevents importing modules.ts (26 MB) on app startup
+let _searchIndex: SearchResult[] | null = null;
+
+function getSearchIndex(): SearchResult[] {
+  if (_searchIndex) return _searchIndex;
+
+  // Dynamic import at runtime — only loads when search is first used
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { modules } = require('@/data/modules');
+
   const index: SearchResult[] = [];
   for (const mod of modules) {
     if (!mod.isAvailable || !mod.pathway) continue;
@@ -36,6 +44,7 @@ function buildSearchIndex(): SearchResult[] {
       }
     }
   }
+  _searchIndex = index;
   return index;
 }
 
@@ -58,11 +67,11 @@ export function useSearch() {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
-  const index = useMemo(() => buildSearchIndex(), []);
-
+  // Index built lazily on first search query — NOT on mount
   const results = useMemo(() => {
     if (!query || query.length < 2) return [];
 
+    const index = getSearchIndex();
     const scored: { result: SearchResult; score: number }[] = [];
 
     for (const item of index) {
@@ -80,7 +89,7 @@ export function useSearch() {
     // Sort by score descending, limit to 20
     scored.sort((a, b) => b.score - a.score);
     return scored.slice(0, 20).map(s => s.result);
-  }, [query, index]);
+  }, [query]);
 
   // Group results by module
   const groupedResults = useMemo(() => {
@@ -105,6 +114,6 @@ export function useSearch() {
     isOpen,
     open,
     close,
-    totalIndexed: index.length,
+    totalIndexed: _searchIndex?.length ?? 0,
   };
 }

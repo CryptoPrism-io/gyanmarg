@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Clock, BookMarked, ChevronRight } from 'lucide-react';
-import { modules } from '@/data/modules';
+import { getModuleMetaById } from '@/data/modules-meta';
 import type { LessonBookmark } from '@/types';
 
 interface ResumeCardProps {
@@ -32,28 +32,16 @@ export function ResumeCard({ bookmark }: ResumeCardProps) {
     return `${diffDays}d ago`;
   }, [bookmark]);
 
-  // Get module and lesson info
+  // Get module info from lightweight meta (no pathway data needed)
   const moduleData = useMemo(() => {
     if (!bookmark) return null;
-    const mod = modules.find((m) => m.id === bookmark.moduleId);
-    if (!mod?.pathway) return null;
-
-    // Find the level containing this lesson
-    let levelTitle = '';
-    let lessonTitle = '';
-    for (const level of mod.pathway) {
-      const lesson = level.lessons.find((l) => l.id === bookmark.lessonId);
-      if (lesson) {
-        levelTitle = level.title;
-        lessonTitle = lesson.title;
-        break;
-      }
-    }
+    const meta = getModuleMetaById(bookmark.moduleId);
+    if (!meta) return null;
 
     return {
-      moduleTitle: mod.title,
-      levelTitle,
-      lessonTitle,
+      moduleTitle: meta.title,
+      levelTitle: '',
+      lessonTitle: meta.subtitle,
       scrollPercent: bookmark.scrollPosition,
     };
   }, [bookmark]);

@@ -1,25 +1,23 @@
 /**
- * Review Categories — Auto-generated per-module
+ * Review Categories — Built from lightweight manifests
  *
- * Each module in modules.ts becomes its own ReviewCategory.
- * Uses the same pathwayId matching as lesson-flashcard-map.ts.
+ * ZERO-WEIGHT: Uses modules-meta.ts (11 KB) + lesson-manifest.ts (54 KB)
+ * Total: 65 KB. Does NOT import modules.ts (26 MB pathway chain).
  */
 
-import { modules } from './modules';
+import { modulesMeta } from './modules-meta';
+import { lessonManifest, moduleToPathwayKey } from './lesson-manifest';
 
 export interface ReviewCategory {
-  id: string;          // Same as module ID
-  name: string;        // Module title
-  icon: string;        // Emoji icon
-  color: string;       // Review Hub color palette key
-  pathwayIds: string[];  // All pathwayId variants that match this module's flashcards
+  id: string;
+  name: string;
+  icon: string;
+  color: string;
+  pathwayIds: string[];
   xpPerCard: number;
-  description: string; // Module subtitle
+  description: string;
 }
 
-/**
- * Map module lucide icon names → emojis for the Review Hub
- */
 const iconToEmoji: Record<string, string> = {
   brain: '🧠', cpu: '🤖', 'trending-up': '💰', 'message-square': '🤝',
   zap: '🥋', link: '🔗', lightbulb: '🎯', code: '🐍',
@@ -37,9 +35,6 @@ const iconToEmoji: Record<string, string> = {
   wand: '🪄', wrench: '🔧', activity: '💪', grid: '📐',
 };
 
-/**
- * Map module color names → Review Hub palette keys
- */
 const colorToReviewColor: Record<string, string> = {
   orange: 'golden', blue: 'electric', emerald: 'sage', purple: 'lavender',
   amber: 'golden', cyan: 'electric', rose: 'coral', green: 'sage',
@@ -48,57 +43,40 @@ const colorToReviewColor: Record<string, string> = {
   slate: 'lavender', zinc: 'lavender', fuchsia: 'coral', stone: 'golden',
 };
 
-/**
- * Build pathwayId match set for a module (same logic as lesson-flashcard-map.ts).
- * Includes the module ID itself + lesson prefix variants.
- */
-function buildMatchPathwayIds(mod: typeof modules[0]): string[] {
-  const matchSet = new Set<string>();
-  matchSet.add(mod.id);
+// Build categories from lightweight metadata — NO pathway data needed
+export const reviewCategories: ReviewCategory[] = modulesMeta
+  .filter(mod => {
+    // Check if module has lessons in the manifest (equivalent to checking isAvailable + has pathway)
+    const pathwayKey = moduleToPathwayKey[mod.id];
+    return mod.isAvailable && pathwayKey && lessonManifest[pathwayKey]?.length > 0;
+  })
+  .map(mod => {
+    const pathwayKey = moduleToPathwayKey[mod.id];
+    const lessonIds = lessonManifest[pathwayKey] || [];
 
-  if (mod.pathway) {
-    for (const level of mod.pathway) {
-      for (const lesson of level.lessons) {
-        const match = lesson.id.match(/^(.+?)-\d+$/);
-        if (match) {
-          matchSet.add(match[1]);
-        }
-      }
+    const matchSet = new Set<string>();
+    matchSet.add(mod.id);
+    for (const lessonId of lessonIds) {
+      const match = lessonId.match(/^(.+?)-\d+$/);
+      if (match) matchSet.add(match[1]);
     }
-  }
 
-  return Array.from(matchSet);
-}
+    return {
+      id: mod.id,
+      name: mod.title,
+      icon: iconToEmoji[mod.icon] || '📚',
+      color: colorToReviewColor[mod.color] || 'lavender',
+      pathwayIds: Array.from(matchSet),
+      xpPerCard: 20,
+      description: mod.subtitle,
+    };
+  });
 
-/**
- * Auto-generate one ReviewCategory per module
- */
-export const reviewCategories: ReviewCategory[] = modules
-  .filter(mod => mod.isAvailable && mod.pathway && mod.pathway.length > 0)
-  .map(mod => ({
-    id: mod.id,
-    name: mod.title,
-    icon: iconToEmoji[mod.icon] || '📚',
-    color: colorToReviewColor[mod.color] || 'lavender',
-    pathwayIds: buildMatchPathwayIds(mod),
-    xpPerCard: 20,
-    description: mod.subtitle,
-  }));
-
-/**
- * Get category by ID
- */
 export function getCategoryById(id: string): ReviewCategory | undefined {
   return reviewCategories.find(c => c.id === id);
 }
 
-/**
- * Get category for a flashcard based on its pathwayId.
- * Uses exact matching against each category's pathwayIds set.
- */
 export function getCategoryForPathwayId(pathwayId: string): ReviewCategory | undefined {
   if (!pathwayId) return undefined;
-  return reviewCategories.find(cat =>
-    cat.pathwayIds.includes(pathwayId)
-  );
+  return reviewCategories.find(cat => cat.pathwayIds.includes(pathwayId));
 }
