@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Sparkles, RotateCcw, ChevronRight, Brain } from 'lucide-react';
 import { TinderCard } from '@/components/molecules/TinderCard';
 import { FloatingXP } from '@/components/atoms/FloatingXP';
-import { QuickGamePicker } from '@/components/games/QuickGamePicker';
 import { useProgressStore } from '@/store/progressStore';
 
 import { useCardStack } from '@/hooks/useCardStack';
@@ -25,6 +24,7 @@ interface TinderCardStackProps {
   onNextLesson?: (lesson: PathwayLesson) => void;
   flashcardCount?: number;
   heroImage?: string;
+  isLastLessonInLevel?: boolean;
 }
 
 const colorGradients: Record<string, string> = {
@@ -87,12 +87,11 @@ export function TinderCardStack({
   onNextLesson,
   flashcardCount = 0,
   heroImage,
+  isLastLessonInLevel = false,
 }: TinderCardStackProps) {
   const gradient = colorGradients[moduleColor] || colorGradients.orange;
   const { playXpGain, playSuccess, playClick } = useSoundEffects();
   const [showingCompletion, setShowingCompletion] = useState(false);
-  const [showQuickGame, setShowQuickGame] = useState(false);
-  const [gameBonusXP, setGameBonusXP] = useState(0);
   const [countdown, setCountdown] = useState(COUNTDOWN_SECONDS);
   const autoCompletedRef = useRef(false);
   const [cardReady, setCardReady] = useState(false);
@@ -121,6 +120,7 @@ export function TinderCardStack({
     onXPEarned: (amount) => {
       addMicroXP(amount);
     },
+    isLastLessonInLevel,
   });
 
   const handleSwipe = useCallback(
@@ -159,29 +159,21 @@ export function TinderCardStack({
     onComplete();
   }, [onComplete, playSuccess]);
 
-  // When quick game finishes → show celebration
-  const handleGameFinish = useCallback((gameXP: number) => {
-    setGameBonusXP(gameXP);
-    setShowQuickGame(false);
-    setShowingCompletion(true);
-    setCountdown(COUNTDOWN_SECONDS);
-  }, []);
-
-  // Auto-complete when all cards are swiped: mark done → show quick game
+  // Auto-complete when all cards are swiped: mark done → show celebration
   useEffect(() => {
-    if (isComplete && !lessonComplete && !showingCompletion && !showQuickGame && !autoCompletedRef.current) {
+    if (isComplete && !lessonComplete && !showingCompletion && !autoCompletedRef.current) {
       autoCompletedRef.current = true;
-      // Small delay so the last card animation finishes
       const timer = setTimeout(() => {
         markLessonDone();
-        setShowQuickGame(true);
+        setShowingCompletion(true);
+        setCountdown(COUNTDOWN_SECONDS);
       }, 400);
       return () => clearTimeout(timer);
     }
-  }, [isComplete, lessonComplete, showingCompletion, showQuickGame, markLessonDone]);
+  }, [isComplete, lessonComplete, showingCompletion, markLessonDone]);
 
-  // Auto-advance countdown — only when showing a completion UI (not during quick game)
-  const shouldCountdown = isComplete && !showQuickGame && (showingCompletion || lessonComplete) && !!nextLesson && !!onNextLesson;
+  // Auto-advance countdown
+  const shouldCountdown = isComplete && (showingCompletion || lessonComplete) && !!nextLesson && !!onNextLesson;
   useEffect(() => {
     if (shouldCountdown) {
       if (countdown <= 0) {
@@ -207,7 +199,7 @@ export function TinderCardStack({
   // Visible cards (current + next 2)
   const visibleCards = cards.slice(currentIndex, currentIndex + 3);
 
-  const combinedXP = totalXP + gameBonusXP;
+  const combinedXP = totalXP;
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-[70vh] py-4">
@@ -240,21 +232,8 @@ export function TinderCardStack({
             ))}
         </AnimatePresence>
 
-        {/* Quick Game Phase */}
-        {isComplete && showQuickGame && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute inset-0 flex items-center justify-center overflow-y-auto"
-          >
-            <div className="w-full max-w-md px-4 py-4">
-              <QuickGamePicker lesson={lesson} onFinish={handleGameFinish} />
-            </div>
-          </motion.div>
-        )}
-
         {/* Completion State */}
-        {isComplete && !showQuickGame && (
+        {isComplete && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -365,17 +344,6 @@ export function TinderCardStack({
                   >
                     <span>+{combinedXP} XP earned</span>
                   </motion.div>
-
-                  {gameBonusXP > 0 && (
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                      className="relative text-xs text-text-muted mb-2"
-                    >
-                      includes +{gameBonusXP} game bonus
-                    </motion.p>
-                  )}
 
                   {/* Revision Unlocked banner */}
                   {flashcardCount > 0 && (

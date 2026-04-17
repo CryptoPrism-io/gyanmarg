@@ -1,10 +1,28 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { FlashcardWithScheduling, ReviewRating, ReviewHistoryEntry, SpacedRepetitionCard } from '@/types';
-import { allFlashcards } from '@/data/flashcards-index';
 import { reviewCategories } from '@/data/review-categories';
 import { getUnlockedPathwayIds } from '@/data/lesson-flashcard-map';
 import { triggerSync } from '@/store/firebaseSync';
+
+// Lazy-load flashcard data (4.2 MB) — only fetched when sync or stats are needed
+let _flashcardsCache: SpacedRepetitionCard[] | null = null;
+let _flashcardsPromise: Promise<SpacedRepetitionCard[]> | null = null;
+
+function getFlashcardsSync(): SpacedRepetitionCard[] {
+  return _flashcardsCache || [];
+}
+
+function loadFlashcards(): Promise<SpacedRepetitionCard[]> {
+  if (_flashcardsCache) return Promise.resolve(_flashcardsCache);
+  if (_flashcardsPromise) return _flashcardsPromise;
+  _flashcardsPromise = import('@/data/flashcards-index').then(m => {
+    _flashcardsCache = m.allFlashcards;
+    _flashcardsPromise = null;
+    return _flashcardsCache;
+  });
+  return _flashcardsPromise;
+}
 
 interface CategoryStats {
   categoryId: string;
@@ -116,55 +134,64 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
       syncUnlockedCards: (completedLessonIds: string[]) => {
         if (completedLessonIds.length === 0) return;
 
-        const MAX_CARDS_PER_MODULE = 50;
-        const state = get();
-        const existingCardIds = new Set(state.unlockedCards.map(c => c.id));
+        const doSync = (allCards: SpacedRepetitionCard[]) => {
+          const MAX_CARDS_PER_MODULE = 50;
+          const state = get();
+          const existingCardIds = new Set(state.unlockedCards.map(c => c.id));
 
-        // Count existing cards per pathwayId
-        const existingCountByPathway: Record<string, number> = {};
-        state.unlockedCards.forEach(c => {
-          const pid = c.pathwayId || '';
-          existingCountByPathway[pid] = (existingCountByPathway[pid] || 0) + 1;
-        });
+          // Count existing cards per pathwayId
+          const existingCountByPathway: Record<string, number> = {};
+          state.unlockedCards.forEach(c => {
+            const pid = c.pathwayId || '';
+            existingCountByPathway[pid] = (existingCountByPathway[pid] || 0) + 1;
+          });
 
-        // Get all pathwayIds for fully completed modules
-        const unlockedPids = getUnlockedPathwayIds(completedLessonIds);
-        if (unlockedPids.size === 0) return;
+          // Get all pathwayIds for fully completed modules
+          const unlockedPids = getUnlockedPathwayIds(completedLessonIds);
+          if (unlockedPids.size === 0) return;
 
-        // Find candidate cards (matching completed modules, not already unlocked)
-        const candidateCards = allFlashcards.filter(card => {
-          if (existingCardIds.has(card.id)) return false;
-          return card.pathwayId ? unlockedPids.has(card.pathwayId) : false;
-        });
+          // Find candidate cards (matching completed modules, not already unlocked)
+          const candidateCards = allCards.filter(card => {
+            if (existingCardIds.has(card.id)) return false;
+            return card.pathwayId ? unlockedPids.has(card.pathwayId) : false;
+          });
 
-        // Group candidates by pathwayId and cap each at MAX_CARDS_PER_MODULE
-        const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
-        const grouped: Record<string, typeof candidateCards> = {};
-        candidateCards.forEach(card => {
-          const pid = card.pathwayId || 'unknown';
-          if (!grouped[pid]) grouped[pid] = [];
-          grouped[pid].push(card);
-        });
+          // Group candidates by pathwayId and cap each at MAX_CARDS_PER_MODULE
+          const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
+          const grouped: Record<string, typeof candidateCards> = {};
+          candidateCards.forEach(card => {
+            const pid = card.pathwayId || 'unknown';
+            if (!grouped[pid]) grouped[pid] = [];
+            grouped[pid].push(card);
+          });
 
-        const newCardsToUnlock: typeof candidateCards = [];
-        for (const [pid, cards] of Object.entries(grouped)) {
-          const existingCount = existingCountByPathway[pid] || 0;
-          const slotsAvailable = Math.max(0, MAX_CARDS_PER_MODULE - existingCount);
-          if (slotsAvailable === 0) continue;
+          const newCardsToUnlock: typeof candidateCards = [];
+          for (const [pid, cards] of Object.entries(grouped)) {
+            const existingCount = existingCountByPathway[pid] || 0;
+            const slotsAvailable = Math.max(0, MAX_CARDS_PER_MODULE - existingCount);
+            if (slotsAvailable === 0) continue;
 
-          // Sort by difficulty (beginner first) for balanced learning
-          const sorted = cards.sort((a, b) =>
-            (difficultyOrder[a.difficulty] || 1) - (difficultyOrder[b.difficulty] || 1)
-          );
-          newCardsToUnlock.push(...sorted.slice(0, slotsAvailable));
-        }
+            // Sort by difficulty (beginner first) for balanced learning
+            const sorted = cards.sort((a, b) =>
+              (difficultyOrder[a.difficulty] || 1) - (difficultyOrder[b.difficulty] || 1)
+            );
+            newCardsToUnlock.push(...sorted.slice(0, slotsAvailable));
+          }
 
-        if (newCardsToUnlock.length > 0) {
-          const initializedNewCards = newCardsToUnlock.map(initializeCard);
-          set(state => ({
-            unlockedCards: [...state.unlockedCards, ...initializedNewCards],
-          }));
-          triggerSync();
+          if (newCardsToUnlock.length > 0) {
+            const initializedNewCards = newCardsToUnlock.map(initializeCard);
+            set(state => ({
+              unlockedCards: [...state.unlockedCards, ...initializedNewCards],
+            }));
+            triggerSync();
+          }
+        };
+
+        // Use cached flashcards if available, otherwise load async
+        if (_flashcardsCache) {
+          doSync(_flashcardsCache);
+        } else {
+          loadFlashcards().then(doSync);
         }
       },
 
@@ -367,7 +394,7 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
         const due = state.unlockedCards.filter(c => c.nextReviewDate <= today).length;
         const mastered = state.unlockedCards.filter(c => c.interval > 21).length;
         const learning = state.unlockedCards.filter(c => c.repetitions > 0 && c.interval <= 21).length;
-        const locked = allFlashcards.length - unlocked;
+        const locked = getFlashcardsSync().length - unlocked;
 
         return { total: unlocked, due, mastered, learning, locked };
       },
@@ -399,7 +426,7 @@ export const useSpacedRepetitionStore = create<SpacedRepetitionState>()(
       },
 
       getTotalAvailableCards: () => {
-        return allFlashcards.length;
+        return getFlashcardsSync().length;
       },
     }),
     {

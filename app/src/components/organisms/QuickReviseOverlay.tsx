@@ -1,12 +1,12 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Brain, Sparkles, ChevronRight } from 'lucide-react';
 import { FlashCard, RatingButtons } from '@/components/molecules/FlashCard';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 import { useProgressStore } from '@/store/progressStore';
-import { allFlashcards } from '@/data/flashcards-index';
 import { getFlashcardsForLessonIds } from '@/data/lesson-flashcard-map';
+import type { SpacedRepetitionCard } from '@/types';
 import type { FlashcardWithScheduling, ReviewRating } from '@/types';
 
 const MAX_CARDS_PER_SESSION = 8;
@@ -66,6 +66,9 @@ interface QuickReviseOverlayProps {
   onClose: () => void;
 }
 
+// Lazy flashcard loader
+let _flashcardsCache: SpacedRepetitionCard[] | null = null;
+
 export function QuickReviseOverlay({
   lessonIds,
   reviseLabel,
@@ -82,6 +85,15 @@ export function QuickReviseOverlay({
   const [totalXPEarned, setTotalXPEarned] = useState(0);
   const [sessionComplete, setSessionComplete] = useState(false);
   const [ratingDisabled, setRatingDisabled] = useState(false);
+  const [allFlashcards, setAllFlashcards] = useState<SpacedRepetitionCard[]>(_flashcardsCache || []);
+
+  useEffect(() => {
+    if (_flashcardsCache) return;
+    import('@/data/flashcards-index').then(m => {
+      _flashcardsCache = m.allFlashcards;
+      setAllFlashcards(m.allFlashcards);
+    });
+  }, []);
 
   // Select cards for this session
   const sessionCards = useMemo(() => {

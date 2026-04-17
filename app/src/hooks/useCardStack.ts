@@ -18,6 +18,7 @@ export interface CardContent {
 interface UseCardStackProps {
   lesson: PathwayLesson;
   onXPEarned?: (amount: number) => void;
+  isLastLessonInLevel?: boolean;
 }
 
 interface UseCardStackReturn {
@@ -136,7 +137,7 @@ function splitByHeaders(content: string): { header?: string; body: string }[] {
 }
 
 // Parse lesson content into digestible cards
-function parseContentToCards(lesson: PathwayLesson): CardContent[] {
+function parseContentToCards(lesson: PathwayLesson, isLastLessonInLevel = false): CardContent[] {
   const cards: CardContent[] = [];
   let cardIndex = 0;
 
@@ -189,8 +190,8 @@ function parseContentToCards(lesson: PathwayLesson): CardContent[] {
     icon: 'Target',
   });
 
-  // 5. Action item (if present)
-  if (lesson.content.actionItem) {
+  // 5. Action item (only on last lesson of a level)
+  if (lesson.content.actionItem && isLastLessonInLevel) {
     cards.push({
       id: `${lesson.id}-action-${cardIndex++}`,
       type: 'action',
@@ -221,8 +222,8 @@ function parseContentToCards(lesson: PathwayLesson): CardContent[] {
   return cards;
 }
 
-export function useCardStack({ lesson, onXPEarned }: UseCardStackProps): UseCardStackReturn {
-  const cards = useMemo(() => parseContentToCards(lesson), [lesson]);
+export function useCardStack({ lesson, onXPEarned, isLastLessonInLevel = false }: UseCardStackProps): UseCardStackReturn {
+  const cards = useMemo(() => parseContentToCards(lesson, isLastLessonInLevel), [lesson, isLastLessonInLevel]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [totalXP, setTotalXP] = useState(0);
   const [history, setHistory] = useState<number[]>([]);
