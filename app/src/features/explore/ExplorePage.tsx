@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, X, ChevronRight } from 'lucide-react';
-import { PaywallGate as RealPaywallGate } from '@/components/organisms/PaywallGate';
+import { FreeTrialGate } from '@/components/organisms/FreeTrialGate';
 import { useUserStore } from '@/store/userStore';
 import {
   HabitLoopDiagram,
@@ -304,7 +304,7 @@ export function ExplorePage() {
   // showRealPaywall: true when user clicks "See Plans" inside the inline viz preview
   const [showRealPaywall, setShowRealPaywall] = useState(false);
 
-  const activateLifetime = useUserStore((s) => s.activateLifetime);
+  const isTrialActive = useUserStore((s) => s.isTrialActive);
 
   // Derive ordered categories from actual viz data (preserving insertion order)
   const categories = useMemo(() => {
@@ -319,7 +319,7 @@ export function ExplorePage() {
   }, [activeCategory]);
 
   const handleOpen = (viz: VizEntry) => {
-    if (FREE_VIZ_IDS.has(viz.id)) {
+    if (FREE_VIZ_IDS.has(viz.id) || isTrialActive()) {
       setSelectedViz(viz);
       setShowVizPaywall(false);
     } else {
@@ -485,18 +485,9 @@ export function ExplorePage() {
         )}
       </div>
 
-      {/* ── Real PaywallGate (lifetime upsell triggered from viz inline preview) */}
+      {/* ── FreeTrialGate (triggered from viz inline paywall preview) */}
       {showRealPaywall && (
-        <RealPaywallGate
-          moduleId={null}
-          onClose={() => setShowRealPaywall(false)}
-          onPurchaseLifetime={() => {
-            // TODO: wire Razorpay before go-live
-            activateLifetime();
-            setShowRealPaywall(false);
-            handleClose();
-          }}
-        />
+        <FreeTrialGate onClose={() => { setShowRealPaywall(false); }} />
       )}
 
       {/* ── Viz Modal ─────────────────────────────────────────────────────── */}

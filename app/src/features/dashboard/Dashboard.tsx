@@ -6,7 +6,7 @@ import { useAuthContext } from '@/contexts/AuthContext';
 import { useProgressStore } from '@/store/progressStore';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 import { useUserStore } from '@/store/userStore';
-import { PaywallGate } from '@/components/organisms/PaywallGate';
+import { FreeTrialGate } from '@/components/organisms/FreeTrialGate';
 import { getDailyQuote } from '@/data/quotes';
 
 const fadeIn = {
@@ -25,9 +25,9 @@ export function Dashboard() {
   const userProgress = useProgressStore((s) => s.userProgress);
 
   const hasLifetimeAccess = useUserStore((s) => s.hasLifetimeAccess);
+  const isTrialActive = useUserStore((s) => s.isTrialActive);
   const purchasedModules = useUserStore((s) => s.purchasedModules);
-  const activateLifetime = useUserStore((s) => s.activateLifetime);
-  const showUpgradeBanner = !hasLifetimeAccess && purchasedModules.length === 0;
+  const showUpgradeBanner = !hasLifetimeAccess && !isTrialActive() && purchasedModules.length === 0;
 
   const [isPaywallOpen, setIsPaywallOpen] = useState(false);
 
@@ -68,15 +68,15 @@ export function Dashboard() {
       {/* Upgrade banner — shown only to users with no purchases yet */}
       {showUpgradeBanner && (
         <div className="px-4 pt-4 max-w-3xl mx-auto">
-          <div className="flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-amber-500/8 border border-amber-500/20 text-sm">
-            <span className="text-amber-400/90 text-[11px] leading-snug">
-              Unlock any module for ₹99 · All 76 modules for ₹999 lifetime
+          <div className="flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-green-500/8 border border-green-500/20 text-sm">
+            <span className="text-green-400/90 text-[11px] leading-snug">
+              ✨ Unlock all 76 modules free for 60 days — no card required
             </span>
             <button
               onClick={() => setIsPaywallOpen(true)}
-              className="shrink-0 px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-[11px] font-semibold transition-colors"
+              className="shrink-0 px-3 py-1 rounded-lg bg-green-500 hover:bg-green-400 text-black text-[11px] font-semibold transition-colors"
             >
-              See Plans
+              Start Free Trial
             </button>
           </div>
         </div>
@@ -248,17 +248,9 @@ export function Dashboard() {
 
       </main>
 
-      {/* PaywallGate — triggered from upgrade banner "See Plans" */}
+      {/* FreeTrialGate — triggered from upgrade banner "Start Free Trial" */}
       {isPaywallOpen && (
-        <PaywallGate
-          moduleId={null}
-          onClose={() => setIsPaywallOpen(false)}
-          onPurchaseLifetime={() => {
-            // TODO: wire Razorpay before go-live
-            activateLifetime();
-            setIsPaywallOpen(false);
-          }}
-        />
+        <FreeTrialGate onClose={() => setIsPaywallOpen(false)} />
       )}
     </div>
   );

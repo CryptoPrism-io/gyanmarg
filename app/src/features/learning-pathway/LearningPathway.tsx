@@ -20,7 +20,7 @@ import { useProgressStore } from '@/store/progressStore';
 import { useUserStore } from '@/store/userStore';
 import { useAuthGate } from '@/hooks/useAuthGate';
 import { usePaywall } from '@/hooks/usePaywall';
-import { PaywallGate } from '@/components/organisms/PaywallGate';
+import { FreeTrialGate } from '@/components/organisms/FreeTrialGate';
 // ModuleLayout removed — using editorial layout directly
 import { getVizForLevel } from '@/data/vizLevelMap';
 import { GlassCard, NetflixLevelCard, GlassLessonRow, NetflixModuleCard, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
@@ -56,9 +56,6 @@ export function LearningPathway() {
   const favoriteModules = useUserStore((s) => s.favoriteModules);
   const toggleFavoriteModule = useUserStore((s) => s.toggleFavoriteModule);
   const isFavoriteModule = useUserStore((s) => s.isFavoriteModule);
-  const purchaseModule = useUserStore((s) => s.purchaseModule);
-  const activateLifetime = useUserStore((s) => s.activateLifetime);
-
   const { canAccessLesson, showPaywall, closePaywall, paywallModuleId } = usePaywall();
 
   // URL params for deep linking: /pathway/:moduleId/:levelId/:lessonId
@@ -962,11 +959,10 @@ export function LearningPathway() {
                                       });
                                     } : undefined}
                                   />
-                                  {/* Amber paywall lock badge for lessons requiring purchase */}
+                                  {/* Subtle paywall lock badge for lessons requiring purchase */}
                                   {paywallLocked && (
-                                    <div className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center gap-1 px-2 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 pointer-events-none">
-                                      <Lock className="w-3 h-3 text-amber-400" />
-                                      <span className="text-[10px] font-semibold text-amber-400">₹99</span>
+                                    <div className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full bg-white/5 border border-white/10 pointer-events-none">
+                                      <Lock className="w-3 h-3 text-white/40" />
                                     </div>
                                   )}
                                 </div>
@@ -1161,26 +1157,12 @@ export function LearningPathway() {
         />
       )}
 
-      {/* Paywall Gate */}
+      {/* Free Trial Gate */}
       {paywallModuleId !== null && (
-        <PaywallGate
+        <FreeTrialGate
           moduleId={paywallModuleId}
-          moduleName={
-            paywallModuleId
-              ? modules.find(m => m.id === paywallModuleId)?.title
-              : undefined
-          }
+          moduleName={modules.find(m => m.id === paywallModuleId)?.title}
           onClose={closePaywall}
-          onPurchaseModule={(id) => {
-            // TODO: wire Razorpay before go-live
-            purchaseModule(id);
-            closePaywall();
-          }}
-          onPurchaseLifetime={() => {
-            // TODO: wire Razorpay before go-live
-            activateLifetime();
-            closePaywall();
-          }}
         />
       )}
     </>
