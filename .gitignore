@@ -42,3 +42,6 @@ app/build-output.txt
 
 # Design wireframe files (in docs/design/)
 *.pen
+
+# Git worktrees
+.worktrees/
