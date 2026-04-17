@@ -8,6 +8,7 @@ import { useSoundEffects } from '@/hooks/useSoundEffects';
 import { FloatingXP } from '@/components/atoms/FloatingXP';
 import { RichMarkdown } from '@/components/molecules/RichMarkdown';
 import { VizCardRenderer } from '@/components/molecules/VizCardRenderer';
+import { AsciiArt } from '@/components/atoms/AsciiArt';
 import type { PathwayLesson, QuizQuestion } from '@/types';
 import type { CardContent } from '@/hooks/useCardStack';
 
@@ -133,12 +134,14 @@ function QuizCardContent({ quiz, onAnswer }: { quiz: QuizQuestion; onAnswer: (co
 function ReelCard({
   card,
   index,
+  totalCards,
   onQuizAnswer,
   lessonId,
   moduleId,
 }: {
   card: CardContent;
   index: number;
+  totalCards: number;
   onQuizAnswer: (correct: boolean) => void;
   lessonId?: string;
   moduleId?: string;
@@ -231,6 +234,18 @@ function ReelCard({
 
         {card.type === 'visualization' && card.vizId && (
           <VizCardRenderer vizId={card.vizId} />
+        )}
+
+        {/* Generative ASCII art — fills blank space, builds toward completion */}
+        {card.type !== 'quiz' && card.type !== 'visualization' && (
+          <div className="mt-auto pt-8">
+            <AsciiArt
+              cardIndex={index}
+              totalCards={totalCards}
+              cardTitle={card.title}
+              cardContent={card.content}
+            />
+          </div>
         )}
       </div>
     </div>
@@ -417,6 +432,7 @@ export function ReelsCardStack({
             <ReelCard
               card={card}
               index={i}
+              totalCards={cards.length}
               onQuizAnswer={(correct) => handleQuizAnswer(card.id, correct)}
               lessonId={lesson.id}
               moduleId={moduleId}
