@@ -52,6 +52,7 @@ export interface FirestoreUserDocument {
     profile: UserProfile | null;
     isOnboarded: boolean;
     settings: UserSettings;
+    freeModules?: string[];
   };
 
   // From progressStore

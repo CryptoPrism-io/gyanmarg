@@ -137,6 +137,7 @@ export function Onboarding() {
     } else {
       completeOnboarding({
         ...userData,
+        freeModules: [], // Will be set in the new onboarding flow (Task A2)
         completed: true,
         completedAt: new Date().toISOString(),
       });
