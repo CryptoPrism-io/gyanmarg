@@ -1,5 +1,9 @@
-import { useState, useMemo, useRef, useCallback } from 'react';
+import { useState, useMemo, useRef, useCallback, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const SpacedRepetitionInline = lazy(() =>
+  import('@/features/spaced-repetition/SpacedRepetition').then((m) => ({ default: m.SpacedRepetition }))
+);
 import {
   User,
   Trophy,
@@ -243,6 +247,7 @@ type ProfileView = 'main' | 'badges' | 'saved' | 'review' | 'settings';
 
 export function Profile() {
   const [activeView, setActiveView] = useState<ProfileView>('main');
+  const [showReviewSession, setShowReviewSession] = useState(false);
   const navigate = useNavigate();
 
   // Stores
@@ -1044,7 +1049,7 @@ export function Profile() {
                       <Button
                         variant="primary"
                         size="md"
-                        onClick={() => navigate('/review')}
+                        onClick={() => setShowReviewSession(true)}
                         className="w-full gap-2 justify-center"
                       >
                         <Layers className="w-4 h-4" />
@@ -1352,6 +1357,33 @@ export function Profile() {
           <div style={{ fontSize: 10, color: '#666', textAlign: 'center' as const }}>polymind.app</div>
         </div>
       </div>
+
+      {/* Inline Review Session Overlay */}
+      {showReviewSession && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-40 bg-[var(--color-bg)] overflow-y-auto"
+        >
+          <div className="sticky top-0 z-10 flex items-center gap-3 px-4 py-3 bg-[var(--color-bg)]/90 backdrop-blur-sm border-b border-white/[0.06]">
+            <button
+              onClick={() => setShowReviewSession(false)}
+              className="flex items-center gap-2 text-xs text-text-muted hover:text-text-primary transition-colors"
+            >
+              <ChevronRight className="w-4 h-4 rotate-180" />
+              Back to Profile
+            </button>
+          </div>
+          <Suspense fallback={
+            <div className="flex items-center justify-center min-h-[60vh]">
+              <div className="w-8 h-8 rounded-full border-2 border-lavender/30 border-t-lavender animate-spin" />
+            </div>
+          }>
+            <SpacedRepetitionInline />
+          </Suspense>
+        </motion.div>
+      )}
 
       {/* Shareable Achievement Modal */}
       {shareableBadge && (
