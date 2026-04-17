@@ -304,7 +304,7 @@ function PaywallGate({ onClose }: { onClose: () => void }) {
       <div>
         <h3 className="text-lg font-semibold text-white mb-1">Pro Visualization</h3>
         <p className="text-sm text-gray-400 max-w-xs">
-          Upgrade to Pro to unlock all 120 interactive visualizations.
+          Upgrade to Pro to unlock all 119 interactive visualizations.
         </p>
       </div>
       <div className="w-full max-w-xs p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
@@ -370,7 +370,7 @@ export function ExplorePage() {
             Explore Ideas
           </h1>
           <p className="mt-2 text-gray-400 text-sm sm:text-base">
-            120 interactive visualizations across science, philosophy, psychology, and more
+            119 interactive visualizations across science, philosophy, psychology, and more
           </p>
           {/* Pro badge */}
           <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20">
