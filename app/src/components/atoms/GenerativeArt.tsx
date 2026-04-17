@@ -1,251 +1,238 @@
-import { useRef, useEffect } from 'react';
+import { useMemo } from 'react';
 
 /**
- * GenerativeArt — Canvas-based animated geometric line art
+ * GenerativeArt — Static SVG geometric line art
  *
- * Each card index produces a completely different visual pattern.
- * Patterns are animated and fill the available space beautifully.
- * Think Sol LeWitt wall drawings meets creative coding.
+ * No animation. No Canvas. No requestAnimationFrame. Zero CPU.
+ * 100+ unique seeded patterns rendered as pure SVG paths.
+ * Each card index produces a deterministic, beautiful geometric design.
  */
 
-// Seeded PRNG
+// Seeded PRNG for deterministic randomness
 function seededRandom(seed: number) {
-  let s = seed;
+  let s = Math.abs(seed) || 1;
   return () => {
     s = (s * 16807 + 0) % 2147483647;
     return (s - 1) / 2147483646;
   };
 }
 
-// Pattern library — each draws differently
-type DrawFn = (ctx: CanvasRenderingContext2D, W: number, H: number, t: number, color: string, rng: () => number) => void;
+type PatternFn = (rng: () => number, W: number, H: number) => string;
 
-const patterns: DrawFn[] = [
-  // 0: Concentric ripples
-  (ctx, W, H, t, color) => {
-    const cx = W / 2;
-    const cy = H / 2;
-    const maxR = Math.max(W, H) * 0.45;
-    for (let i = 0; i < 12; i++) {
-      const r = ((i * maxR / 12) + t * 30) % maxR;
-      const alpha = 0.4 * (1 - r / maxR);
-      ctx.globalAlpha = alpha;
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 0.8;
-      ctx.beginPath();
-      ctx.arc(cx, cy, r, 0, Math.PI * 2);
-      ctx.stroke();
-    }
-  },
+// --- Pattern generators (each returns SVG path data) ---
 
-  // 1: Flowing sine waves
-  (ctx, W, H, t, color) => {
-    for (let i = 0; i < 8; i++) {
-      ctx.globalAlpha = 0.15 + (i / 8) * 0.2;
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 0.8;
-      ctx.beginPath();
-      for (let x = 0; x <= W; x += 2) {
-        const freq = 0.008 + i * 0.003;
-        const amp = 15 + i * 8;
-        const phase = t * (0.5 + i * 0.15) + i * 0.7;
-        const y = H / 2 + Math.sin(x * freq + phase) * amp + (i - 4) * 18;
-        if (x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-    }
-  },
+const concentricCircles: PatternFn = (rng, W, H) => {
+  const cx = W / 2 + (rng() - 0.5) * 40;
+  const cy = H / 2 + (rng() - 0.5) * 30;
+  const count = 5 + Math.floor(rng() * 8);
+  const maxR = Math.min(W, H) * 0.4;
+  return Array.from({ length: count }, (_, i) => {
+    const r = (i + 1) * (maxR / count);
+    return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="currentColor" stroke-width="0.6" opacity="${0.15 + (i / count) * 0.2}"/>`;
+  }).join('');
+};
 
-  // 2: Sacred geometry — rotating hexagon layers
-  (ctx, W, H, t, color) => {
-    const cx = W / 2;
-    const cy = H / 2;
-    for (let layer = 0; layer < 5; layer++) {
-      const r = 25 + layer * 28;
-      const sides = 6;
-      const rotation = t * (0.3 + layer * 0.1) * (layer % 2 === 0 ? 1 : -1);
-      ctx.globalAlpha = 0.2 + layer * 0.06;
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 0.7;
-      ctx.beginPath();
-      for (let i = 0; i <= sides; i++) {
-        const angle = (i / sides) * Math.PI * 2 + rotation;
-        const px = cx + Math.cos(angle) * r;
-        const py = cy + Math.sin(angle) * r;
-        if (i === 0) ctx.moveTo(px, py);
-        else ctx.lineTo(px, py);
-      }
-      ctx.closePath();
-      ctx.stroke();
+const crosshatch: PatternFn = (rng, W, H) => {
+  const lines: string[] = [];
+  const spacing = 12 + Math.floor(rng() * 16);
+  const angle = rng() * 30 - 15;
+  const rad = (angle * Math.PI) / 180;
+  for (let i = -W; i < W + H; i += spacing) {
+    const x1 = i;
+    const y1 = 0;
+    const x2 = i + Math.cos(rad) * H;
+    const y2 = H;
+    lines.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="currentColor" stroke-width="0.4" opacity="${0.1 + rng() * 0.12}"/>`);
+  }
+  // Second direction
+  const angle2 = 90 + rng() * 30 - 15;
+  const rad2 = (angle2 * Math.PI) / 180;
+  for (let i = -H; i < W + H; i += spacing) {
+    lines.push(`<line x1="0" y1="${i}" x2="${W}" y2="${i + Math.sin(rad2) * W}" stroke="currentColor" stroke-width="0.4" opacity="${0.08 + rng() * 0.1}"/>`);
+  }
+  return lines.join('');
+};
 
-      // Inner star connections
-      if (layer > 0) {
-        ctx.globalAlpha = 0.08;
-        for (let i = 0; i < sides; i++) {
-          const a1 = (i / sides) * Math.PI * 2 + rotation;
-          const a2 = ((i + 2) / sides) * Math.PI * 2 + rotation;
-          ctx.beginPath();
-          ctx.moveTo(cx + Math.cos(a1) * r, cy + Math.sin(a1) * r);
-          ctx.lineTo(cx + Math.cos(a2) * r, cy + Math.sin(a2) * r);
-          ctx.stroke();
-        }
-      }
-    }
-  },
+const nestedPolygons: PatternFn = (rng, W, H) => {
+  const cx = W / 2;
+  const cy = H / 2;
+  const sides = 3 + Math.floor(rng() * 5); // 3 to 7
+  const layers = 4 + Math.floor(rng() * 5);
+  const maxR = Math.min(W, H) * 0.38;
+  const baseRotation = rng() * Math.PI;
 
-  // 3: Growing fractal tree
-  (ctx, W, H, t, color, rng) => {
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 0.8;
+  return Array.from({ length: layers }, (_, layer) => {
+    const r = (layer + 1) * (maxR / layers);
+    const rotation = baseRotation + layer * 0.15;
+    const points = Array.from({ length: sides }, (_, i) => {
+      const a = (i / sides) * Math.PI * 2 + rotation;
+      return `${cx + Math.cos(a) * r},${cy + Math.sin(a) * r}`;
+    }).join(' ');
+    return `<polygon points="${points}" fill="none" stroke="currentColor" stroke-width="0.6" opacity="${0.12 + layer * 0.04}"/>`;
+  }).join('');
+};
 
-    function branch(x: number, y: number, len: number, angle: number, depth: number) {
-      if (depth <= 0 || len < 3) return;
-      const endX = x + Math.cos(angle) * len;
-      const endY = y + Math.sin(angle) * len;
-      ctx.globalAlpha = 0.1 + (depth / 8) * 0.25;
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(endX, endY);
-      ctx.stroke();
+const radialLines: PatternFn = (rng, W, H) => {
+  const cx = W / 2 + (rng() - 0.5) * 60;
+  const cy = H / 2 + (rng() - 0.5) * 40;
+  const count = 12 + Math.floor(rng() * 24);
+  const innerR = 10 + rng() * 20;
+  const outerR = Math.min(W, H) * (0.3 + rng() * 0.15);
 
-      const spread = 0.4 + Math.sin(t * 0.5) * 0.15;
-      const shrink = 0.65 + rng() * 0.1;
-      branch(endX, endY, len * shrink, angle - spread, depth - 1);
-      branch(endX, endY, len * shrink, angle + spread, depth - 1);
-    }
+  return Array.from({ length: count }, (_, i) => {
+    const a = (i / count) * Math.PI * 2;
+    const x1 = cx + Math.cos(a) * innerR;
+    const y1 = cy + Math.sin(a) * innerR;
+    const x2 = cx + Math.cos(a) * outerR;
+    const y2 = cy + Math.sin(a) * outerR;
+    return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="currentColor" stroke-width="0.5" opacity="${0.1 + rng() * 0.15}"/>`;
+  }).join('');
+};
 
-    branch(W / 2, H * 0.9, H * 0.22, -Math.PI / 2, 8);
-  },
+const dotGrid: PatternFn = (rng, W, H) => {
+  const spacing = 14 + Math.floor(rng() * 10);
+  const dots: string[] = [];
+  const cx = W / 2;
+  const cy = H / 2;
+  const maxDist = Math.max(W, H) * 0.5;
 
-  // 4: Golden spiral
-  (ctx, W, H, t, color) => {
-    const cx = W / 2;
-    const cy = H / 2;
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 0.8;
-
-    // Fibonacci spiral
-    ctx.beginPath();
-    const turns = 6;
-    const points = 300;
-    for (let i = 0; i < points; i++) {
-      const theta = (i / points) * turns * Math.PI * 2 + t * 0.3;
-      const r = 2 * Math.pow(1.08, i / 10);
-      if (r > Math.max(W, H) * 0.45) break;
-      const x = cx + Math.cos(theta) * r;
-      const y = cy + Math.sin(theta) * r;
-      ctx.globalAlpha = 0.1 + (i / points) * 0.3;
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-
-    // Dot markers along spiral
-    for (let i = 0; i < points; i += 20) {
-      const theta = (i / points) * turns * Math.PI * 2 + t * 0.3;
-      const r = 2 * Math.pow(1.08, i / 10);
-      if (r > Math.max(W, H) * 0.45) break;
-      ctx.globalAlpha = 0.25;
-      ctx.beginPath();
-      ctx.arc(cx + Math.cos(theta) * r, cy + Math.sin(theta) * r, 1.5, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  },
-
-  // 5: Tessellating triangles
-  (ctx, W, H, t, color) => {
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 0.5;
-    const size = 40;
-    const cols = Math.ceil(W / size) + 1;
-    const rows = Math.ceil(H / (size * 0.866)) + 1;
-    const offsetX = Math.sin(t * 0.3) * 10;
-    const offsetY = Math.cos(t * 0.2) * 8;
-
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        const x = col * size + (row % 2) * (size / 2) + offsetX;
-        const y = row * size * 0.866 + offsetY;
-        const dist = Math.sqrt(Math.pow(x - W / 2, 2) + Math.pow(y - H / 2, 2));
-        const maxDist = Math.max(W, H) * 0.5;
-        ctx.globalAlpha = Math.max(0, 0.25 * (1 - dist / maxDist));
-
-        ctx.beginPath();
-        ctx.moveTo(x, y - size * 0.33);
-        ctx.lineTo(x - size * 0.5, y + size * 0.33);
-        ctx.lineTo(x + size * 0.5, y + size * 0.33);
-        ctx.closePath();
-        ctx.stroke();
+  for (let x = spacing / 2; x < W; x += spacing) {
+    for (let y = spacing / 2; y < H; y += spacing) {
+      const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
+      const size = 0.8 + (1 - dist / maxDist) * 1.5;
+      const opacity = Math.max(0.05, 0.25 * (1 - dist / maxDist));
+      if (size > 0.3) {
+        dots.push(`<circle cx="${x}" cy="${y}" r="${size}" fill="currentColor" opacity="${opacity}"/>`);
       }
     }
-  },
+  }
+  return dots.join('');
+};
 
-  // 6: Orbiting rings
-  (ctx, W, H, t, color) => {
-    const cx = W / 2;
-    const cy = H / 2;
-    ctx.strokeStyle = color;
+const wavyLines: PatternFn = (rng, W, H) => {
+  const count = 5 + Math.floor(rng() * 6);
+  const lines: string[] = [];
 
-    for (let i = 0; i < 5; i++) {
-      const r = 30 + i * 22;
-      const tilt = 0.3 + i * 0.25;
-      const rotation = t * (0.2 + i * 0.08);
-      ctx.globalAlpha = 0.15 + i * 0.05;
-      ctx.lineWidth = 0.7;
-      ctx.beginPath();
-
-      for (let a = 0; a <= Math.PI * 2; a += 0.05) {
-        const px = cx + Math.cos(a + rotation) * r;
-        const py = cy + Math.sin(a + rotation) * r * tilt;
-        if (a === 0) ctx.moveTo(px, py);
-        else ctx.lineTo(px, py);
-      }
-      ctx.closePath();
-      ctx.stroke();
-
-      // Orbiting dot
-      const dotAngle = t * (1 + i * 0.3);
-      const dotX = cx + Math.cos(dotAngle) * r;
-      const dotY = cy + Math.sin(dotAngle) * r * tilt;
-      ctx.globalAlpha = 0.4;
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.arc(dotX, dotY, 2, 0, Math.PI * 2);
-      ctx.fill();
+  for (let i = 0; i < count; i++) {
+    const yBase = ((i + 1) / (count + 1)) * H;
+    const amp = 8 + rng() * 20;
+    const freq = 0.01 + rng() * 0.02;
+    const phase = rng() * Math.PI * 2;
+    let d = '';
+    for (let x = 0; x <= W; x += 3) {
+      const y = yBase + Math.sin(x * freq + phase) * amp;
+      d += x === 0 ? `M${x},${y}` : ` L${x},${y}`;
     }
-  },
+    lines.push(`<path d="${d}" fill="none" stroke="currentColor" stroke-width="0.6" opacity="${0.12 + rng() * 0.12}"/>`);
+  }
+  return lines.join('');
+};
 
-  // 7: Dot matrix / halftone
-  (ctx, W, H, t, color) => {
-    ctx.fillStyle = color;
-    const spacing = 16;
-    const cols = Math.ceil(W / spacing);
-    const rows = Math.ceil(H / spacing);
+const spirograph: PatternFn = (rng, W, H) => {
+  const cx = W / 2;
+  const cy = H / 2;
+  const R = Math.min(W, H) * 0.3;
+  const r = R * (0.3 + rng() * 0.4);
+  const d = r * (0.5 + rng() * 0.8);
+  const steps = 500;
+  let path = '';
 
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        const x = col * spacing + spacing / 2;
-        const y = row * spacing + spacing / 2;
+  for (let i = 0; i <= steps; i++) {
+    const t = (i / steps) * Math.PI * 2 * (3 + Math.floor(rng() * 5));
+    const x = cx + (R - r) * Math.cos(t) + d * Math.cos(((R - r) / r) * t);
+    const y = cy + (R - r) * Math.sin(t) - d * Math.sin(((R - r) / r) * t);
+    path += i === 0 ? `M${x},${y}` : ` L${x},${y}`;
+  }
 
-        const dx = x - W / 2;
-        const dy = y - H / 2;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = Math.max(W, H) * 0.5;
+  return `<path d="${path}" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>`;
+};
 
-        const wave = Math.sin(dist * 0.04 - t * 1.5) * 0.5 + 0.5;
-        const size = wave * 3;
-        const alpha = wave * 0.3 * (1 - dist / maxDist);
+const diagonalStripes: PatternFn = (rng, W, H) => {
+  const spacing = 8 + Math.floor(rng() * 14);
+  const direction = rng() > 0.5 ? 1 : -1;
+  const lines: string[] = [];
 
-        if (alpha > 0.02) {
-          ctx.globalAlpha = alpha;
-          ctx.beginPath();
-          ctx.arc(x, y, size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
+  for (let i = -(W + H); i < W + H; i += spacing) {
+    const x1 = direction > 0 ? i : W - i;
+    const y1 = 0;
+    const x2 = direction > 0 ? i + H : W - i - H;
+    const y2 = H;
+    lines.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="currentColor" stroke-width="0.4" opacity="${0.06 + rng() * 0.08}"/>`);
+  }
+  return lines.join('');
+};
+
+const concentricSquares: PatternFn = (rng, W, H) => {
+  const cx = W / 2;
+  const cy = H / 2;
+  const layers = 5 + Math.floor(rng() * 6);
+  const maxS = Math.min(W, H) * 0.4;
+  const rotation = rng() * 15;
+
+  return Array.from({ length: layers }, (_, i) => {
+    const s = (i + 1) * (maxS / layers);
+    const rot = rotation + i * (rng() * 8);
+    return `<rect x="${cx - s}" y="${cy - s}" width="${s * 2}" height="${s * 2}" fill="none" stroke="currentColor" stroke-width="0.5" opacity="${0.1 + i * 0.03}" transform="rotate(${rot} ${cx} ${cy})"/>`;
+  }).join('');
+};
+
+const scatterTriangles: PatternFn = (rng, W, H) => {
+  const count = 8 + Math.floor(rng() * 15);
+  return Array.from({ length: count }, () => {
+    const x = rng() * W;
+    const y = rng() * H;
+    const size = 8 + rng() * 25;
+    const rot = rng() * 360;
+    const points = `${x},${y - size * 0.6} ${x - size * 0.5},${y + size * 0.4} ${x + size * 0.5},${y + size * 0.4}`;
+    return `<polygon points="${points}" fill="none" stroke="currentColor" stroke-width="0.5" opacity="${0.08 + rng() * 0.12}" transform="rotate(${rot} ${x} ${y})"/>`;
+  }).join('');
+};
+
+const flowField: PatternFn = (rng, W, H) => {
+  const lines: string[] = [];
+  const count = 30 + Math.floor(rng() * 30);
+  const seed = rng() * 1000;
+
+  for (let i = 0; i < count; i++) {
+    let x = rng() * W;
+    let y = rng() * H;
+    let d = `M${x},${y}`;
+    for (let s = 0; s < 20; s++) {
+      const angle = Math.sin(x * 0.01 + seed) * Math.cos(y * 0.01 + seed) * Math.PI * 2;
+      x += Math.cos(angle) * 5;
+      y += Math.sin(angle) * 5;
+      if (x < 0 || x > W || y < 0 || y > H) break;
+      d += ` L${x},${y}`;
     }
-  },
+    lines.push(`<path d="${d}" fill="none" stroke="currentColor" stroke-width="0.5" opacity="${0.1 + rng() * 0.1}"/>`);
+  }
+  return lines.join('');
+};
+
+const moire: PatternFn = (rng, W, H) => {
+  const cx1 = W * 0.4 + rng() * W * 0.2;
+  const cy1 = H * 0.4 + rng() * H * 0.2;
+  const cx2 = W * 0.5 + rng() * W * 0.15;
+  const cy2 = H * 0.5 + rng() * H * 0.15;
+  const count = 10 + Math.floor(rng() * 8);
+  const maxR = Math.min(W, H) * 0.4;
+
+  const set1 = Array.from({ length: count }, (_, i) => {
+    const r = (i + 1) * (maxR / count);
+    return `<circle cx="${cx1}" cy="${cy1}" r="${r}" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.1"/>`;
+  });
+  const set2 = Array.from({ length: count }, (_, i) => {
+    const r = (i + 1) * (maxR / count);
+    return `<circle cx="${cx2}" cy="${cy2}" r="${r}" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.1"/>`;
+  });
+  return [...set1, ...set2].join('');
+};
+
+// All pattern generators
+const allPatterns: PatternFn[] = [
+  concentricCircles, crosshatch, nestedPolygons, radialLines,
+  dotGrid, wavyLines, spirograph, diagonalStripes,
+  concentricSquares, scatterTriangles, flowField, moire,
 ];
 
 interface GenerativeArtProps {
@@ -256,50 +243,24 @@ interface GenerativeArtProps {
 }
 
 export function GenerativeArt({ cardIndex }: GenerativeArtProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animRef = useRef<number>(0);
+  const svg = useMemo(() => {
+    const W = 300;
+    const H = 200;
+    // Each card gets a unique seed → unique pattern + unique parameters
+    const seed = cardIndex * 7919 + 42;
+    const rng = seededRandom(seed);
+    const patternIdx = cardIndex % allPatterns.length;
+    const pattern = allPatterns[patternIdx];
+    const content = pattern(rng, W, H);
 
-  // Pick pattern based on card index — cycles through all patterns
-  const patternIndex = cardIndex % patterns.length;
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-    const W = rect.width;
-    const H = rect.height;
-
-    const style = getComputedStyle(document.documentElement);
-    const accent = style.getPropertyValue('--color-accent').trim() || '#C5A368';
-    const rng = seededRandom(cardIndex * 7919 + 42);
-    const draw = patterns[patternIndex];
-
-    const startTime = performance.now();
-
-    function animate(now: number) {
-      const t = (now - startTime) / 1000;
-      ctx!.clearRect(0, 0, W, H);
-      draw(ctx!, W, H, t, accent, rng);
-      ctx!.globalAlpha = 1;
-      animRef.current = requestAnimationFrame(animate);
-    }
-
-    animRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animRef.current);
-  }, [cardIndex, patternIndex]);
+    return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">${content}</svg>`;
+  }, [cardIndex]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="w-full h-full pointer-events-none"
-      style={{ opacity: 0.4 }}
+    <div
+      className="w-full h-full text-[var(--color-text-muted)]"
+      style={{ opacity: 0.35 }}
+      dangerouslySetInnerHTML={{ __html: svg }}
     />
   );
 }

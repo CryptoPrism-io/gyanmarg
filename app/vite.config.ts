@@ -18,4 +18,37 @@ export default defineConfig({
       '@/styles': path.resolve(__dirname, './src/styles'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Vendor chunks
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router')) {
+            return 'react-vendor';
+          }
+          if (id.includes('node_modules/framer-motion')) {
+            return 'framer-vendor';
+          }
+          if (id.includes('node_modules/zustand')) {
+            return 'state-vendor';
+          }
+          // Flashcard data — lazy loaded, separate chunk
+          if (id.includes('data/flashcards')) {
+            return 'flashcard-data';
+          }
+          // Pathway lesson files — split into category chunks (~3MB each instead of 26MB monolith)
+          if (id.includes('data/pathways/') && id.includes('-lessons')) {
+            const fileName = id.split('/').pop()?.replace('.ts', '') || '';
+            // Group by first letter prefix for reasonable chunk count
+            const prefix = fileName.split('-')[0];
+            return `pathway-${prefix}`;
+          }
+          // Visualization components — heavy, separate chunk
+          if (id.includes('components/visualizations/')) {
+            return 'visualizations';
+          }
+        },
+      },
+    },
+  },
 })
