@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { createPortal } from 'react-dom';
-import { X } from 'lucide-react';
-import { TinderCardStack } from '@/components/organisms/TinderCardStack';
+import { Icon } from '@/components/atoms/Icon';
+import { ReelsCardStack } from '@/components/organisms/ReelsCardStack';
 import type { PathwayLesson } from '@/types';
 
 interface NextLessonInfo {
@@ -27,6 +27,7 @@ interface LessonViewerProps {
   onNextLesson?: (lesson: PathwayLesson) => void;
   backgroundImage?: string;
   flashcardCount?: number;
+  isLastLessonInLevel?: boolean;
 }
 
 export function LessonViewer({
@@ -41,7 +42,7 @@ export function LessonViewer({
   nextLesson,
   onNextLesson,
   flashcardCount,
-  backgroundImage,
+  isLastLessonInLevel,
 }: LessonViewerProps) {
 
   const content = (
@@ -49,35 +50,35 @@ export function LessonViewer({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-base z-[9999] flex flex-col"
+      className="fixed inset-0 bg-[rgb(var(--bg-base-rgb))] z-[9999] flex flex-col"
     >
-      {/* Header — close + breadcrumb + title only */}
-      <div className="relative z-10 flex-shrink-0 border-b border-white/10">
-        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-4">
+      {/* Editorial Header — minimal */}
+      <div className="relative z-10 flex-shrink-0 border-b border-[var(--color-border)]">
+        <div className="max-w-3xl mx-auto px-6 py-3 flex items-center gap-4">
           <button
             onClick={onClose}
-            className="w-12 h-12 rounded-xl bg-surface/50 hover:bg-surface flex items-center justify-center transition-colors shrink-0"
-            aria-label="Close lesson viewer"
+            className="shrink-0 text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
+            aria-label="Close"
           >
-            <X className="w-6 h-6 text-text-muted" />
+            <Icon name="close" size={20} weight={300} />
           </button>
-          <div className="min-w-0">
+          <div className="flex-1 min-w-0">
             {moduleName && levelName && (
-              <p className="text-xs text-text-muted mb-0.5 truncate">
-                {moduleName} → {levelName}
+              <p className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-[0.15em] truncate">
+                {moduleName} &rarr; {levelName}
               </p>
             )}
-            <h1 className="text-lg font-display font-bold text-text-primary line-clamp-1">
-              {lesson.title}
-            </h1>
           </div>
+          <span className="text-[10px] font-serif italic text-[var(--color-text-muted)] shrink-0">
+            {lesson.title}
+          </span>
         </div>
       </div>
 
-      {/* Main Content Area - Tinder Card Stack */}
-      <div className="relative z-10 flex-1 overflow-y-auto">
-        <div className="max-w-4xl mx-auto px-4">
-          <TinderCardStack
+      {/* Main Content — Reels Vertical Scroll */}
+      <div className="relative z-10 flex-1 overflow-hidden">
+        <div className="h-full max-w-3xl mx-auto">
+          <ReelsCardStack
             key={lesson.id}
             lesson={lesson}
             onComplete={onComplete}
@@ -87,7 +88,7 @@ export function LessonViewer({
             nextLesson={nextLesson}
             onNextLesson={onNextLesson}
             flashcardCount={flashcardCount}
-            heroImage={backgroundImage}
+            isLastLessonInLevel={isLastLessonInLevel}
           />
         </div>
       </div>
