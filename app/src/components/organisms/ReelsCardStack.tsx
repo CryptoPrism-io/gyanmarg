@@ -8,7 +8,7 @@ import { useSoundEffects } from '@/hooks/useSoundEffects';
 import { FloatingXP } from '@/components/atoms/FloatingXP';
 import { RichMarkdown } from '@/components/molecules/RichMarkdown';
 import { VizCardRenderer } from '@/components/molecules/VizCardRenderer';
-import { AsciiArt } from '@/components/atoms/AsciiArt';
+import { GenerativeArt } from '@/components/atoms/GenerativeArt';
 import type { PathwayLesson, QuizQuestion } from '@/types';
 import type { CardContent } from '@/hooks/useCardStack';
 
@@ -236,10 +236,10 @@ function ReelCard({
           <VizCardRenderer vizId={card.vizId} />
         )}
 
-        {/* Generative ASCII art — fills blank space, builds toward completion */}
+        {/* Generative particle art — fills blank space, forms constellation on completion */}
         {card.type !== 'quiz' && card.type !== 'visualization' && (
-          <div className="mt-auto pt-8">
-            <AsciiArt
+          <div className="mt-auto flex-1 min-h-[120px] max-h-[280px]">
+            <GenerativeArt
               cardIndex={index}
               totalCards={totalCards}
               cardTitle={card.title}
