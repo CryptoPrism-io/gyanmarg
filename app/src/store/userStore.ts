@@ -21,6 +21,9 @@ interface UserState {
   // Pending achievement notification
   pendingAchievement: { id: string; name: string; xpReward: number } | null;
 
+  // Free modules (picked during onboarding, always accessible)
+  freeModules: string[];
+
   // Favorite modules
   favoriteModules: string[];
 
@@ -49,6 +52,9 @@ interface UserState {
   // Achievement notification
   setPendingAchievement: (achievement: { id: string; name: string; xpReward: number } | null) => void;
   clearPendingAchievement: () => void;
+
+  // Free modules selector
+  isFreeModule: (id: string) => boolean;
 
   // Favorite modules
   toggleFavoriteModule: (moduleId: string) => void;
@@ -86,6 +92,7 @@ export const useUserStore = create<UserState>()(
       notificationPermission: 'default',
       reviewReminder: null,
       pendingAchievement: null,
+      freeModules: [],
       favoriteModules: [],
       lastLoginDate: null,
       consecutiveLogins: 0,
@@ -103,12 +110,13 @@ export const useUserStore = create<UserState>()(
         set({
           profile: {
             name: data.name,
-            primaryGoal: data.primaryGoal,
-            learningStyle: data.learningStyle,
-            dailyTime: data.dailyTime,
-            selectedDomains: data.selectedDomains,
+            primaryGoal: data.primaryGoal ?? '',
+            learningStyle: data.learningStyle ?? '',
+            dailyTime: data.dailyTime ?? 15,
+            selectedDomains: data.selectedDomains ?? [],
             createdAt: new Date().toISOString(),
           },
+          freeModules: data.freeModules ?? [],
           isOnboarded: true,
           onboardingProgress: null, // Clear progress after completion
         });
@@ -132,6 +140,7 @@ export const useUserStore = create<UserState>()(
           notificationPermission: 'default',
           reviewReminder: null,
           pendingAchievement: null,
+          freeModules: [],
           favoriteModules: [],
         }),
 
@@ -162,6 +171,10 @@ export const useUserStore = create<UserState>()(
 
       clearPendingAchievement: () =>
         set({ pendingAchievement: null }),
+
+      // Free modules selector
+      isFreeModule: (id) =>
+        (get().freeModules ?? []).includes(id),
 
       // Favorite modules
       toggleFavoriteModule: (moduleId) =>

@@ -202,10 +202,12 @@ export interface UserSettings {
 // Onboarding Types
 export interface OnboardingData {
   name: string;
-  primaryGoal: string;
-  learningStyle: string;
-  dailyTime: number;
-  selectedDomains: string[];
+  freeModules: string[]; // 2 module IDs user picked as free during onboarding
+  // Legacy fields (optional for backward compat with existing localStorage)
+  primaryGoal?: string;
+  learningStyle?: string;
+  dailyTime?: number;
+  selectedDomains?: string[];
   completed: boolean;
   completedAt: string | null;
 }

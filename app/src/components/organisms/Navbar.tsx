@@ -9,7 +9,7 @@ import { SearchModal } from '@/components/organisms/SearchModal';
 const navItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Index', icon: 'grid_view' },
   { id: 'pathway', path: '/pathway', label: 'Archive', icon: 'auto_stories' },
-  { id: 'review', path: '/review', label: 'Reflect', icon: 'history_edu' },
+  { id: 'explore', path: '/explore', label: 'Explore', icon: 'explore' },
   { id: 'profile', path: '/profile', label: 'Profile', icon: 'person' },
 ];
 
