@@ -31,10 +31,13 @@ import {
   MapPin,
   Bell,
   Clock,
+  Layers,
+  CheckCircle2,
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserStore } from '@/store/userStore';
 import { useProgressStore } from '@/store/progressStore';
+import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 import type { StarredCard } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
 import { GoogleSignInButton, BadgeCard, GlassCard, RichMarkdown } from '@/components/molecules';
@@ -236,7 +239,7 @@ function SavedCardItem({ card, onUnstar }: { card: StarredCard; onUnstar: () => 
 }
 
 // --- Sub-page views ---
-type ProfileView = 'main' | 'badges' | 'saved' | 'settings';
+type ProfileView = 'main' | 'badges' | 'saved' | 'review' | 'settings';
 
 export function Profile() {
   const [activeView, setActiveView] = useState<ProfileView>('main');
@@ -260,6 +263,10 @@ export function Profile() {
   const setNotificationTime = useProgressStore((s) => s.setNotificationTime);
   const settings = useUserStore((s) => s.settings);
   const updateSettings = useUserStore((s) => s.updateSettings);
+
+  // Spaced Repetition
+  const getDueCards = useSpacedRepetitionStore((s) => s.getDueCards);
+  const dueCardCount = getDueCards().length;
 
   // Auth
   const { user, signOut, isSyncing, syncNow, lastSyncAt, syncError, isConfigured } = useAuth();
@@ -589,6 +596,7 @@ export function Profile() {
     { id: 'main' as const, label: 'Overview', icon: User },
     { id: 'badges' as const, label: 'Badges', icon: Award },
     { id: 'saved' as const, label: 'Saved', icon: Bookmark },
+    { id: 'review' as const, label: 'Review', icon: Layers },
     { id: 'settings' as const, label: 'Settings', icon: Settings },
   ];
 
@@ -596,6 +604,7 @@ export function Profile() {
     main: learnerTitle.title,
     badges: `${unlockedBadges.length} of ${BADGES.length} earned`,
     saved: `${starredCards.length} cards`,
+    review: dueCardCount > 0 ? `${dueCardCount} cards due` : 'All caught up',
     settings: 'Data & Account',
   };
 
@@ -1003,6 +1012,55 @@ export function Profile() {
                   </AnimatePresence>
                 </motion.div>
               )}
+            </motion.div>
+          )}
+
+          {/* ════════════════════════════════════════ */}
+          {/* TAB: REVIEW (spaced repetition)          */}
+          {/* ════════════════════════════════════════ */}
+          {activeView === 'review' && (
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-5">
+              <motion.div variants={itemVariants}>
+                <GlassCard>
+                  <h2 className="text-lg font-display font-bold text-text-primary mb-1 flex items-center gap-2">
+                    <Layers className="w-5 h-5 text-lavender" />
+                    Review Cards
+                  </h2>
+                  <p className="text-[11px] text-text-muted mb-5">Spaced repetition — reinforce what you've learned</p>
+
+                  {dueCardCount > 0 ? (
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3 p-4 rounded-xl bg-lavender/[0.08] border border-lavender/20">
+                        <div className="w-12 h-12 rounded-xl bg-lavender/20 flex items-center justify-center shrink-0">
+                          <span className="text-xl font-display font-bold text-lavender">{dueCardCount}</span>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-text-primary">
+                            {dueCardCount} card{dueCardCount !== 1 ? 's' : ''} due for review
+                          </p>
+                          <p className="text-[11px] text-text-muted mt-0.5">Complete all to earn +75 XP bonus</p>
+                        </div>
+                      </div>
+                      <Button
+                        variant="primary"
+                        size="md"
+                        onClick={() => navigate('/review')}
+                        className="w-full gap-2 justify-center"
+                      >
+                        <Layers className="w-4 h-4" />
+                        Start Review Session
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center py-8 text-center">
+                      <CheckCircle2 className="w-12 h-12 text-sage mb-3" />
+                      <p className="text-sm font-semibold text-text-primary">All caught up!</p>
+                      <p className="text-[11px] text-text-muted mt-1">No cards due right now. Check back later.</p>
+                    </div>
+                  )}
+                </GlassCard>
+              </motion.div>
+              <div className="h-4" />
             </motion.div>
           )}
 

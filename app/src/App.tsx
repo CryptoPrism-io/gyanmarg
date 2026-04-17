@@ -37,9 +37,7 @@ import { LandingPage } from '@/features/landing/LandingPage';
 // Code-split routes - lazy loaded for better performance
 const Dashboard = lazy(() => import('@/features/dashboard/Dashboard').then(m => ({ default: m.Dashboard })));
 const LearningPathway = lazy(() => import('@/features/learning-pathway/LearningPathway').then(m => ({ default: m.LearningPathway })));
-const SpacedRepetition = lazy(() => import('@/features/spaced-repetition/SpacedRepetition').then(m => ({ default: m.SpacedRepetition })));
 const DailyChallenges = lazy(() => import('@/features/daily-challenges/DailyChallenges').then(m => ({ default: m.DailyChallenges })));
-const VisualLab = lazy(() => import('@/features/visual-lab/VisualLab').then(m => ({ default: m.VisualLab })));
 const Profile = lazy(() => import('@/features/profile/Profile').then(m => ({ default: m.Profile })));
 const Onboarding = lazy(() => import('@/features/onboarding/Onboarding').then(m => ({ default: m.Onboarding })));
 
@@ -50,6 +48,9 @@ const BlogArticlePage = lazy(() => import('@/features/blog/BlogArticlePage').the
 const HowToPage = lazy(() => import('@/features/how-to/HowToPage').then(m => ({ default: m.HowToPage })));
 const BrandKitPage = lazy(() => import('@/features/brand-kit/BrandKitPage').then(m => ({ default: m.BrandKitPage })));
 const ChangelogPage = lazy(() => import('@/features/changelog/ChangelogPage').then(m => ({ default: m.ChangelogPage })));
+
+// Explore Page
+const ExplorePage = lazy(() => import('@/features/explore/ExplorePage').then(m => ({ default: m.ExplorePage })));
 
 // Experimental Features
 const ReelReader = lazy(() => import('@/features/experimental/ReelReader').then(m => ({ default: m.ReelReader })));
@@ -292,20 +293,7 @@ function AppRoutes() {
         }
       />
 
-      <Route
-        path="/review"
-        element={
-          <ProtectedRoute>
-            <PageLayout>
-              <PageTransition>
-                <Suspense fallback={<PageLoader />}>
-                  <SpacedRepetition />
-                </Suspense>
-              </PageTransition>
-            </PageLayout>
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/review" element={<Navigate to="/profile" replace />} />
 
 
       {/* Challenges — still accessible but not in main nav */}
@@ -408,27 +396,27 @@ function AppRoutes() {
         }
       />
 
-      {/* Visual Lab - Legacy route, now accessible via dedicated path */}
+      {/* Visual Lab - Legacy redirect to explore */}
+      <Route path="/visualizations" element={<Navigate to="/explore" replace />} />
+
+      {/* Connections — legacy, redirect to learn */}
+      <Route path="/connections" element={<Navigate to="/pathway" replace />} />
+
+      {/* Explore — full page */}
       <Route
-        path="/visualizations"
+        path="/explore"
         element={
           <ProtectedRoute>
             <PageLayout>
               <PageTransition>
                 <Suspense fallback={<PageLoader />}>
-                  <VisualLab />
+                  <ExplorePage />
                 </Suspense>
               </PageTransition>
             </PageLayout>
           </ProtectedRoute>
         }
       />
-
-      {/* Connections — legacy, redirect to learn */}
-      <Route path="/connections" element={<Navigate to="/pathway" replace />} />
-
-      {/* Explore — temp redirect until ExplorePage lands */}
-      <Route path="/explore" element={<Navigate to="/pathway" replace />} />
 
 
       {/* Landing Page */}
