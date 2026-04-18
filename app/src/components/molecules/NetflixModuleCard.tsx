@@ -54,10 +54,10 @@ export function NetflixModuleCard({
         {/* Progress pill — bottom left, only when started */}
         {progress > 0 && (
           <div className="absolute bottom-2 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-black/50 backdrop-blur-sm">
-            <div className="w-12 h-[2px] rounded-full bg-white/20 overflow-hidden">
+            <div className="w-12 h-[2px] rounded-full overflow-hidden" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}>
               <div className="h-full bg-[var(--color-accent)] rounded-full" style={{ width: `${progress}%` }} />
             </div>
-            <span className="text-[8px] text-white/70 font-medium tabular-nums">{Math.round(progress)}%</span>
+            <span className="text-[8px] font-medium tabular-nums" style={{ color: 'rgba(255,255,255,0.85)' }}>{Math.round(progress)}%</span>
           </div>
         )}
 
