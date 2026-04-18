@@ -5,6 +5,7 @@ import { useProgressStore } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
 import { UserAvatar, GoogleSignInButton } from '@/components/molecules';
 import { SearchModal } from '@/components/organisms/SearchModal';
+import { PolymindLogo } from '@/components/brand/PolymindLogo';
 
 const navItems = [
   { id: 'dashboard', path: '/dashboard', label: 'Index', icon: 'grid_view' },
@@ -24,7 +25,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <Link to="/dashboard" className="flex items-center gap-2 group">
-            <Icon name="auto_awesome" size={20} filled className="text-[var(--color-accent)]" />
+            <PolymindLogo size="xs" variant="simple" animated />
             <span className="font-serif italic text-lg tracking-tight">Polymind</span>
           </Link>
 

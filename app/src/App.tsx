@@ -1,4 +1,5 @@
 import { useEffect, useState, lazy, Suspense } from 'react';
+import { PolymindLogo } from '@/components/brand/PolymindLogo';
 import {
   BrowserRouter,
   Routes,
@@ -66,10 +67,7 @@ const MindMapExplorer = lazy(() => import('@/features/experimental/MindMapExplor
 function PageLoader() {
   return (
     <div className="min-h-screen bg-base flex items-center justify-center">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-10 h-10 border-2 border-golden/30 border-t-golden rounded-full animate-spin" />
-        <p className="text-text-muted text-sm">Loading...</p>
-      </div>
+      <PolymindLogo size="lg" variant="simple" animated />
     </div>
   );
 }
