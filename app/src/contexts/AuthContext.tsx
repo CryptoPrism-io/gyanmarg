@@ -16,7 +16,7 @@ import {
   syncOnLogin,
   syncToFirestore,
   createDebouncedSync,
-  hasLocalStorageData,
+  getLocalStorageData,
   type FirebaseAuthUser,
 } from '@/lib/firebase';
 import { initializeSync, clearSync } from '@/store/firebaseSync';
@@ -110,12 +110,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
         // Initialize global sync for stores
         initializeSync();
 
-        // AUTO-SYNC FOR RETURNING USERS ON NEW DEVICES
-        // If user is already authenticated but localStorage is empty/stale,
-        // automatically pull data from Firestore
-        if (!getHasAutoSynced() && !hasLocalStorageData()) {
-          console.log('[Sync] Detected returning user on new device, auto-syncing...');
-          setHasAutoSynced(true); // Persist to localStorage to prevent reload loops
+        // AUTO-SYNC: always run once per session to pull latest data from Firestore.
+        // Catches phones/new devices with stale or empty localStorage.
+        if (!getHasAutoSynced()) {
+          const xpBefore = getLocalStorageData().progress.userProgress.xp;
+          console.log('[Sync] Auto-sync starting, local XP:', xpBefore);
+          setHasAutoSynced(true);
           setIsSyncing(true);
 
           try {
@@ -126,18 +126,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
               setLastSyncAt(new Date());
             }
 
-            // Request notification permission after successful sync
             await requestNotificationPermission();
 
-            // Reload to apply hydrated data to Zustand stores
-            // This reload is now safe because hasAutoSynced persists in localStorage
-            if (syncResult.hydrated || syncResult.merged) {
-              console.log('[Sync] Reloading to apply synced data...');
+            // Only reload if data actually changed — avoids jarring desktop reload when already in sync
+            const xpAfter = getLocalStorageData().progress.userProgress.xp;
+            const dataImproved = syncResult.hydrated || xpAfter !== xpBefore;
+            if (dataImproved) {
+              console.log('[Sync] Data improved (XP:', xpBefore, '→', xpAfter, '), reloading...');
               window.location.reload();
             }
           } catch (error) {
             console.error('[Sync] Auto-sync failed:', error);
-            setHasAutoSynced(false); // Reset flag if sync failed
+            setHasAutoSynced(false);
           } finally {
             setIsSyncing(false);
           }
