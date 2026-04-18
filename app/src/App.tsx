@@ -15,7 +15,7 @@ import { analytics } from '@/lib/analytics';
 import { celebrationQueue, type CelebrationEvent } from '@/lib/celebrationQueue';
 
 // Store
-import { useUserStore, usePendingAchievement, useIsOnboarded } from '@/store/userStore';
+import { useUserStore, usePendingAchievement } from '@/store/userStore';
 import { useProgressStore, usePendingLevelUp, usePendingVizUnlock } from '@/store/progressStore';
 
 // Auth
@@ -39,7 +39,6 @@ const Dashboard = lazy(() => import('@/features/dashboard/Dashboard').then(m => 
 const LearningPathway = lazy(() => import('@/features/learning-pathway/LearningPathway').then(m => ({ default: m.LearningPathway })));
 const DailyChallenges = lazy(() => import('@/features/daily-challenges/DailyChallenges').then(m => ({ default: m.DailyChallenges })));
 const Profile = lazy(() => import('@/features/profile/Profile').then(m => ({ default: m.Profile })));
-const Onboarding = lazy(() => import('@/features/onboarding/Onboarding').then(m => ({ default: m.Onboarding })));
 
 const LearningSciencePage = lazy(() => import('@/features/science/LearningSciencePage').then(m => ({ default: m.LearningSciencePage })));
 const BookListPage = lazy(() => import('@/features/books/BookListPage').then(m => ({ default: m.BookListPage })));
@@ -243,12 +242,7 @@ function PageTransition({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Protected route wrapper - redirects to onboarding if not completed
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const isOnboarded = useIsOnboarded();
-  if (!isOnboarded) {
-    return <Navigate to="/onboarding" replace />;
-  }
   return <>{children}</>;
 }
 
@@ -256,15 +250,8 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 function AppRoutes() {
   return (
     <Routes>
-      {/* Onboarding flow for new users */}
-      <Route
-        path="/onboarding"
-        element={
-          <Suspense fallback={<PageLoader />}>
-            <Onboarding />
-          </Suspense>
-        }
-      />
+      {/* Onboarding removed — redirect to dashboard */}
+      <Route path="/onboarding" element={<Navigate to="/dashboard" replace />} />
 
       {/* Main App Routes - Lazy loaded */}
       <Route

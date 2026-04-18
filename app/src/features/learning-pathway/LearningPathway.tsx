@@ -25,7 +25,6 @@ import { getVizForLevel } from '@/data/vizLevelMap';
 import { NetflixLevelCard, GlassLessonRow, NetflixModuleCard, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
 import { LessonViewer } from '@/components/organisms/LessonViewer';
 import { QuickReviseOverlay } from '@/components/organisms/QuickReviseOverlay';
-import { SignInGate } from '@/components/organisms';
 import type { PathwayLevel, PathwayLesson } from '@/types';
 import { modules } from '@/data/modules';
 import { moduleCategories, getCategoriesWithModules, getCategoryForModule } from '@/data/categories';
@@ -50,7 +49,7 @@ function useFlashcards(): SpacedRepetitionCard[] {
 export function LearningPathway() {
   const allFlashcards = useFlashcards();
   const { completeLesson, isLessonCompleted, pathwayProgress } = useProgressStore();
-  const { isAuthenticated } = useAuthGate();
+  const { requireAuth, AuthGateModal } = useAuthGate();
   const favoriteModules = useUserStore((s) => s.favoriteModules);
   const toggleFavoriteModule = useUserStore((s) => s.toggleFavoriteModule);
   const isFavoriteModule = useUserStore((s) => s.isFavoriteModule);
@@ -68,7 +67,6 @@ export function LearningPathway() {
   const [activeLesson, _setActiveLesson] = useState<PathwayLesson | null>(null);
   const [activeLessonIndex, setActiveLessonIndex] = useState<number>(0);
   const [activeLevelIndex, setActiveLevelIndex] = useState<number>(0);
-  const [showAuthAfterTeaser, setShowAuthAfterTeaser] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [reviseOverlay, setReviseOverlay] = useState<{
     lessonIds: string[];
@@ -245,19 +243,6 @@ export function LearningPathway() {
     [selectedComingSoonModuleId]
   );
 
-  // DEV: Auth gate disabled for content QA
-  useEffect(() => {
-    setShowAuthAfterTeaser(false);
-  }, [activeLesson, isAuthenticated]);
-
-  const handleAuthGateClose = () => {
-    setShowAuthAfterTeaser(false);
-    setActiveLesson(null);
-  };
-
-  const handleAuthSuccess = () => {
-    setShowAuthAfterTeaser(false);
-  };
 
   // Get the selected module and its pathway
   const selectedModule = useMemo(
@@ -413,22 +398,21 @@ export function LearningPathway() {
 
   // Handle opening a lesson
   const handleOpenLesson = (lesson: PathwayLesson, globalIndex: number, levelIdx: number) => {
-    // Paywall check: first lesson (globalIndex 0 within level) is always free;
-    // subsequent lessons require module access
-    const level = pathwayLevels[levelIdx];
-    const lessonIndexWithinLevel = level ? level.lessons.findIndex(l => l.id === lesson.id) : 0;
-    if (selectedModuleId && !canAccessLesson(selectedModuleId, lessonIndexWithinLevel)) {
-      showPaywall(selectedModuleId);
-      return;
-    }
-    _setSelectedLevelId(level?.id || null);
-    setActiveLessonIndex(globalIndex);
-    setActiveLevelIndex(levelIdx);
-    // Navigate with full path
-    if (selectedModuleId && level) {
-      navigate(`/pathway/${selectedModuleId}/${level.id}/${lesson.id}`, { replace: true });
-    }
-    _setActiveLesson(lesson);
+    requireAuth(() => {
+      const level = pathwayLevels[levelIdx];
+      const lessonIndexWithinLevel = level ? level.lessons.findIndex(l => l.id === lesson.id) : 0;
+      if (selectedModuleId && !canAccessLesson(selectedModuleId, lessonIndexWithinLevel)) {
+        showPaywall(selectedModuleId);
+        return;
+      }
+      _setSelectedLevelId(level?.id || null);
+      setActiveLessonIndex(globalIndex);
+      setActiveLevelIndex(levelIdx);
+      if (selectedModuleId && level) {
+        navigate(`/pathway/${selectedModuleId}/${level.id}/${lesson.id}`, { replace: true });
+      }
+      _setActiveLesson(lesson);
+    });
   };
 
   // Find the next lesson in the pathway
@@ -1132,14 +1116,8 @@ export function LearningPathway() {
         </div>
       </div>
 
-      {/* Auth gate modal */}
-      {showAuthAfterTeaser && (
-        <SignInGate
-          isOpen={true}
-          onClose={handleAuthGateClose}
-          onSignIn={handleAuthSuccess}
-        />
-      )}
+      {/* Auth gate modal — shown when unauthenticated user clicks a lesson */}
+      {AuthGateModal}
 
       {/* Quick Revise Overlay */}
       {reviseOverlay && (
