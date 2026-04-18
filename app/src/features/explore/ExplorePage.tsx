@@ -1,8 +1,9 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, X, ChevronRight } from 'lucide-react';
+import { Lock, Unlock, X, ChevronRight } from 'lucide-react';
 import { BetaAccessGate } from '@/components/organisms/BetaAccessGate';
 import { useUserStore } from '@/store/userStore';
+import { useProgressStore } from '@/store/progressStore';
 import {
   HabitLoopDiagram,
   ForgettingCurveDiagram,
@@ -305,6 +306,8 @@ export function ExplorePage() {
   const [showRealPaywall, setShowRealPaywall] = useState(false);
 
   const isTrialActive = useUserStore((s) => s.isTrialActive);
+  const { userProgress, isVisualizationUnlocked, purchaseViz } = useProgressStore();
+  const VIZ_COST = 5000;
 
   // Derive ordered categories from actual viz data (preserving insertion order)
   const categories = useMemo(() => {
@@ -319,13 +322,9 @@ export function ExplorePage() {
   }, [activeCategory]);
 
   const handleOpen = (viz: VizEntry) => {
-    if (FREE_VIZ_IDS.has(viz.id) || isTrialActive()) {
-      setSelectedViz(viz);
-      setShowVizPaywall(false);
-    } else {
-      setSelectedViz(viz);
-      setShowVizPaywall(true);
-    }
+    const isUnlocked = FREE_VIZ_IDS.has(viz.id) || isTrialActive() || isVisualizationUnlocked(viz.id);
+    setSelectedViz(viz);
+    setShowVizPaywall(!isUnlocked);
   };
 
   const handleClose = () => {
@@ -530,22 +529,47 @@ export function ExplorePage() {
               {/* Modal body */}
               <div className="p-5">
                 {!showVizPaywall && ActiveComponent && <ActiveComponent />}
-                {showVizPaywall && (
-                  <div className="flex flex-col items-center justify-center gap-3 py-6 text-center">
-                    <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
-                      <Lock className="w-5 h-5 text-amber-500" />
+                {showVizPaywall && (() => {
+                  const canAfford = userProgress.xp >= VIZ_COST;
+                  return (
+                    <div className="flex flex-col items-center justify-center gap-3 py-8 text-center">
+                      <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                        <Lock className="w-5 h-5 text-amber-500" />
+                      </div>
+                      <p className="text-sm text-text-secondary max-w-xs">
+                        Spend XP to unlock this visualization permanently.
+                      </p>
+                      {/* XP balance */}
+                      <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface border border-white/[0.08]">
+                        <span className="text-xs text-text-muted">Your XP:</span>
+                        <span className={`text-xs font-bold ${canAfford ? 'text-amber-500' : 'text-red-400'}`}>
+                          {userProgress.xp.toLocaleString()} XP
+                        </span>
+                      </div>
+                      <button
+                        disabled={!canAfford}
+                        onClick={() => {
+                          if (selectedViz && purchaseViz(selectedViz.id)) {
+                            setShowVizPaywall(false);
+                          }
+                        }}
+                        className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                          canAfford
+                            ? 'bg-amber-500 hover:bg-amber-400 text-black'
+                            : 'bg-surface border border-white/[0.08] text-text-muted cursor-not-allowed opacity-60'
+                        }`}
+                      >
+                        <Unlock className="w-4 h-4" />
+                        Unlock for {VIZ_COST.toLocaleString()} XP
+                      </button>
+                      {!canAfford && (
+                        <p className="text-xs text-red-400">
+                          Need {(VIZ_COST - userProgress.xp).toLocaleString()} more XP
+                        </p>
+                      )}
                     </div>
-                    <p className="text-sm text-text-secondary">
-                      Unlock lifetime access to all 119 visualizations for ₹999.
-                    </p>
-                    <button
-                      onClick={() => setShowRealPaywall(true)}
-                      className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black text-sm font-semibold transition-colors"
-                    >
-                      See Plans
-                    </button>
-                  </div>
-                )}
+                  );
+                })()}
               </div>
             </motion.div>
           </motion.div>
