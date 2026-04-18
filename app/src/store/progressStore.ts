@@ -131,11 +131,12 @@ interface ProgressState {
   // Hint XP deduction (for game hints — never levels down)
   deductXP: (amount: number) => boolean;
 
-  // Visualization Unlocking (level-completion based)
+  // Visualization Unlocking
   unlockedVisualizations: string[];
   isVisualizationUnlocked: (vizId: string) => boolean;
   getUnlockedVisualizationsCount: () => number;
   clearPendingVizUnlock: () => void;
+  purchaseViz: (vizId: string) => boolean; // deducts 5000 XP, returns false if insufficient
 
   // Reset
   resetProgress: () => void;
@@ -819,7 +820,18 @@ export const useProgressStore = create<ProgressState>()(
         return true;
       },
 
-      // Visualization unlocking — driven by level completion, not XP spending
+      purchaseViz: (vizId: string) => {
+        const state = get();
+        const VIZ_COST = 5000;
+        if (state.userProgress.xp < VIZ_COST) return false;
+        if (state.unlockedVisualizations.includes(vizId)) return true;
+        set((s) => ({
+          userProgress: { ...s.userProgress, xp: s.userProgress.xp - VIZ_COST },
+          unlockedVisualizations: [...s.unlockedVisualizations, vizId],
+        }));
+        return true;
+      },
+
       isVisualizationUnlocked: (vizId: string) => {
         return get().unlockedVisualizations.includes(vizId);
       },

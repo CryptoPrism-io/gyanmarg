@@ -1,7 +1,7 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, ChevronLeft, ChevronRight, Lightbulb, Filter, BookOpen, X, Search, ChevronDown, Star, Lock, Unlock } from 'lucide-react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useProgressStore } from '@/store/progressStore';
 import { vizLevelMap } from '@/data/vizLevelMap';
 import { getModuleById } from '@/data/modules';
@@ -1556,7 +1556,6 @@ const FREE_STARTER_VISUALS = [
 ];
 
 export function VisualLab() {
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState('all');
@@ -1567,12 +1566,15 @@ export function VisualLab() {
   const categoryRef = useRef<HTMLDivElement>(null);
   const bookRef = useRef<HTMLDivElement>(null);
 
+  const VIZ_COST = 5000;
+
   // Progress store for unlocking
   const {
     userProgress,
     unlockedVisualizations,
     isVisualizationUnlocked,
     getUnlockedVisualizationsCount,
+    purchaseViz,
   } = useProgressStore();
 
   // Check if visualization is unlocked (free starters or earned via level completion)
@@ -2105,50 +2107,48 @@ export function VisualLab() {
                       </div>
                     </>
                   ) : (
-                    /* Locked state - show level completion requirement */
+                    /* Locked state — unlock with XP */
                     (() => {
-                      const info = getVizUnlockInfo(activeViz.id);
+                      const canAfford = userProgress.xp >= VIZ_COST;
                       return (
                         <div className="flex flex-col items-center justify-center py-12">
                           <div className="w-20 h-20 rounded-2xl bg-surface/50 border border-white/10 flex items-center justify-center mb-6">
                             <Lock className="w-10 h-10 text-text-muted" />
                           </div>
                           <h3 className="text-lg font-display font-semibold text-text-primary mb-2">
-                            Complete the level to unlock
+                            Locked Visualization
                           </h3>
-                          {info ? (
-                            <>
-                              <p className="text-sm text-text-muted mb-2 text-center max-w-sm">
-                                Finish <span className="text-sunrise font-medium">{info.levelName}</span> in{' '}
-                                <span className="text-lavender font-medium">{info.moduleName}</span> to earn this visualization.
-                              </p>
-                              <div className="w-full max-w-xs mb-4">
-                                <div className="flex justify-between text-xs text-text-muted mb-1">
-                                  <span>{info.completed}/{info.total} lessons</span>
-                                  <span>{info.percentage}%</span>
-                                </div>
-                                <div className="h-2 bg-surface rounded-full overflow-hidden">
-                                  <div
-                                    className="h-full bg-gradient-to-r from-sunrise to-golden rounded-full transition-all duration-500"
-                                    style={{ width: `${info.percentage}%` }}
-                                  />
-                                </div>
-                              </div>
-                              <button
-                                onClick={() => navigate(`/pathway/${info.moduleId}/${info.levelId}`)}
-                                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-golden to-sunrise text-base hover:opacity-90 hover:scale-105 transition-all"
-                              >
-                                <BookOpen className="w-5 h-5" />
-                                <span>{info.completed > 0 ? 'Continue Learning' : 'Start Learning'}</span>
-                              </button>
-                            </>
-                          ) : (
-                            <p className="text-sm text-text-muted mb-6 text-center max-w-sm">
-                              Complete the related lessons to unlock this interactive visualization.
+                          <p className="text-sm text-text-muted mb-6 text-center max-w-sm">
+                            Spend XP to unlock this interactive visualization permanently.
+                          </p>
+
+                          {/* XP balance */}
+                          <div className="flex items-center gap-2 mb-5 px-4 py-2 rounded-full bg-surface border border-white/[0.08]">
+                            <span className="text-sm text-text-muted">Your XP:</span>
+                            <span className={`text-sm font-bold ${canAfford ? 'text-golden' : 'text-coral'}`}>
+                              {userProgress.xp.toLocaleString()} XP
+                            </span>
+                          </div>
+
+                          <button
+                            onClick={() => purchaseViz(activeViz.id)}
+                            disabled={!canAfford}
+                            className={`flex items-center gap-2 px-8 py-3 rounded-xl font-semibold text-base transition-all ${
+                              canAfford
+                                ? 'bg-gradient-to-r from-golden to-sunrise text-background hover:opacity-90 hover:scale-105'
+                                : 'bg-surface border border-white/[0.08] text-text-muted cursor-not-allowed opacity-60'
+                            }`}
+                          >
+                            <Unlock className="w-5 h-5" />
+                            <span>Unlock for {VIZ_COST.toLocaleString()} XP</span>
+                          </button>
+
+                          {!canAfford && (
+                            <p className="mt-3 text-xs text-coral text-center">
+                              Need {(VIZ_COST - userProgress.xp).toLocaleString()} more XP — keep completing lessons!
                             </p>
                           )}
 
-                          {/* Source (still shown even when locked) */}
                           <div className="mt-8 flex items-center justify-center gap-2 text-xs text-text-muted">
                             <Lightbulb className="w-3.5 h-3.5" />
                             <span>Source: {activeViz.source}</span>
