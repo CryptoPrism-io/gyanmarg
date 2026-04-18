@@ -329,6 +329,18 @@
 [data-theme="light"] .bg-amber-500\/10 { background-color: rgba(146,64,14,0.08) !important; }
 [data-theme="light"] .bg-amber-500\/20 { background-color: rgba(146,64,14,0.12) !important; }
 
+/* Inline-style hex amber/orange — CSS class rules cannot override inline styles,
+   but attribute selectors can. Covers all common amber hex values used in viz components. */
+[data-theme="light"] [style*="#F59E0B"] { color: #b45309 !important; }
+[data-theme="light"] [style*="#f59e0b"] { color: #b45309 !important; }
+[data-theme="light"] [style*="#FBBF24"] { color: #92400e !important; }
+[data-theme="light"] [style*="#fbbf24"] { color: #92400e !important; }
+[data-theme="light"] [style*="#FCD34D"] { color: #b45309 !important; }
+[data-theme="light"] [style*="#fcd34d"] { color: #b45309 !important; }
+[data-theme="light"] [style*="#D97706"] { color: #92400e !important; }
+[data-theme="light"] [style*="#d97706"] { color: #92400e !important; }
+[data-theme="light"] [style*="#B45309"] { color: #78350f !important; }
+
 /* Kill glows, colored shadows, ambient effects in light mode */
 [data-theme="light"] [class*="shadow-golden"],
 [data-theme="light"] [class*="shadow-sunrise"],

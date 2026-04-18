@@ -8,8 +8,10 @@ import {
   ArrowRight,
   BookOpen,
   Check,
+  LogIn,
 } from 'lucide-react';
 import { useUserStore, useOnboardingProgress } from '@/store/userStore';
+import { useAuthContext } from '@/contexts/AuthContext';
 import { OnboardingLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { Button } from '@/components/atoms';
@@ -27,24 +29,46 @@ for (const cat of moduleCategories) {
 // Only show available modules in the picker
 const availableModules = modules.filter((m) => m.isAvailable);
 
-const TOTAL_STEPS = 3;
+// Step 0 = login/skip, Step 1 = name, Step 2 = modules, Step 3 = confirm
+const TOTAL_STEPS = 4;
 
 export function Onboarding() {
   const navigate = useNavigate();
   const completeOnboarding = useUserStore((state) => state.completeOnboarding);
   const setOnboardingStep = useUserStore((state) => state.setOnboardingStep);
   const savedProgress = useOnboardingProgress();
+  const { signIn, isLoading: authLoading } = useAuthContext();
 
   const [step, setStep] = useState(savedProgress?.currentStep ?? 0);
   const [name, setName] = useState<string>(savedProgress?.data?.name ?? '');
   const [selectedModuleIds, setSelectedModuleIds] = useState<string[]>(
     savedProgress?.data?.freeModules ?? []
   );
+  const [googleError, setGoogleError] = useState<string | null>(null);
+  const [signingIn, setSigningIn] = useState(false);
 
   // Persist progress on step/data change
   useEffect(() => {
     setOnboardingStep(step, { name, freeModules: selectedModuleIds });
   }, [step, name, selectedModuleIds, setOnboardingStep]);
+
+  const handleGoogleSignIn = async () => {
+    setGoogleError(null);
+    setSigningIn(true);
+    const result = await signIn();
+    setSigningIn(false);
+    if (!result.success) {
+      setGoogleError(result.error ?? 'Sign-in failed. Try again.');
+      return;
+    }
+    if (!result.needsOnboarding) {
+      // Existing user — all data restored from Firestore, go straight to app
+      navigate('/dashboard');
+    } else {
+      // New Google user — proceed to name step, pre-fill from Google display name
+      setStep(1);
+    }
+  };
 
   const handleNext = () => {
     if (step < TOTAL_STEPS - 1) {
@@ -67,10 +91,12 @@ export function Onboarding() {
   const canProceed = (): boolean => {
     switch (step) {
       case 0:
-        return name.trim().length > 0;
+        return true; // login step — "Continue" always available
       case 1:
-        return selectedModuleIds.length === 2;
+        return name.trim().length > 0;
       case 2:
+        return selectedModuleIds.length === 2;
+      case 3:
         return true;
       default:
         return true;
@@ -124,6 +150,11 @@ export function Onboarding() {
                 Enter the Library
                 <ArrowRight className="w-5 h-5 ml-2" />
               </>
+            ) : step === 0 ? (
+              <>
+                I&apos;m new here
+                <ChevronRight className="w-5 h-5 ml-1" />
+              </>
             ) : (
               <>
                 Continue
@@ -142,7 +173,7 @@ export function Onboarding() {
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
         >
-          {/* ===== STEP 1: Welcome + Name ===== */}
+          {/* ===== STEP 0: Sign In or Continue ===== */}
           {step === 0 && (
             <div className="space-y-8">
               <div className="text-center">
@@ -156,6 +187,72 @@ export function Onboarding() {
                 </motion.div>
                 <h1 className="text-3xl font-display font-bold text-text-primary tracking-tight">
                   Welcome to Polymind
+                </h1>
+                <p className="text-text-secondary mt-2">
+                  The infinite library for curious minds
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                {/* Google sign-in — for returning users */}
+                <motion.button
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleGoogleSignIn}
+                  disabled={signingIn || authLoading}
+                  className="w-full flex items-center justify-center gap-3 px-5 py-4 rounded-xl border border-white/15 glass text-text-primary font-medium transition-all hover:border-white/30 disabled:opacity-60"
+                >
+                  {signingIn ? (
+                    <div className="w-5 h-5 border-2 border-text-muted border-t-sunrise rounded-full animate-spin" />
+                  ) : (
+                    <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                  )}
+                  {signingIn ? 'Signing in…' : 'Continue with Google'}
+                </motion.button>
+
+                {googleError && (
+                  <p className="text-red-400 text-sm text-center">{googleError}</p>
+                )}
+
+                <div className="flex items-center gap-3 text-text-muted text-xs">
+                  <div className="flex-1 h-px bg-white/10" />
+                  <span>or</span>
+                  <div className="flex-1 h-px bg-white/10" />
+                </div>
+              </div>
+
+              <GlassCard className="border-sunrise/20">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-sunrise/10 border border-sunrise/20 flex items-center justify-center shrink-0">
+                    <BookOpen className="w-5 h-5 text-sunrise" />
+                  </div>
+                  <p className="text-sunrise text-sm leading-relaxed">
+                    1000+ bestselling authors across 76 domains —
+                    curated into immersive reading journeys for the curious mind.
+                  </p>
+                </div>
+              </GlassCard>
+            </div>
+          )}
+
+          {/* ===== STEP 1: Name ===== */}
+          {step === 1 && (
+            <div className="space-y-8">
+              <div className="text-center">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 300, delay: 0.2 }}
+                  className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-sunrise to-golden flex items-center justify-center shadow-sunrise"
+                >
+                  <LogIn className="w-10 h-10 text-base" />
+                </motion.div>
+                <h1 className="text-3xl font-display font-bold text-text-primary tracking-tight">
+                  What's your name?
                 </h1>
                 <p className="text-text-secondary mt-2">
                   Your path to personal mastery begins here
@@ -178,23 +275,11 @@ export function Onboarding() {
                   autoFocus
                 />
               </div>
-
-              <GlassCard className="border-sunrise/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-sunrise/10 border border-sunrise/20 flex items-center justify-center shrink-0">
-                    <BookOpen className="w-5 h-5 text-sunrise" />
-                  </div>
-                  <p className="text-sunrise text-sm leading-relaxed">
-                    1000+ bestselling authors across 76 domains —
-                    curated into immersive reading journeys for the curious mind.
-                  </p>
-                </div>
-              </GlassCard>
             </div>
           )}
 
           {/* ===== STEP 2: Pick 2 Free Modules ===== */}
-          {step === 1 && (
+          {step === 2 && (
             <div className="space-y-5">
               <div className="text-center">
                 <h1 className="text-2xl font-display font-bold text-text-primary tracking-tight">
@@ -288,7 +373,7 @@ export function Onboarding() {
           )}
 
           {/* ===== STEP 3: You're Ready ===== */}
-          {step === 2 && (
+          {step === 3 && (
             <div className="space-y-8">
               <div className="text-center">
                 <motion.div
