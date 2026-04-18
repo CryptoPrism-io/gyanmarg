@@ -316,6 +316,19 @@
   background-color: rgb(var(--bg-elevated-rgb)) !important;
 }
 
+/* Amber/yellow text — illegible on warm-cream light backgrounds
+   amber-400 (#FBBF24) and amber-300 need to be darkened */
+[data-theme="light"] .text-amber-400 { color: #92400e !important; }
+[data-theme="light"] .text-amber-300 { color: #b45309 !important; }
+[data-theme="light"] .text-yellow-400 { color: #92400e !important; }
+[data-theme="light"] .text-yellow-300 { color: #b45309 !important; }
+/* Amber borders also need darkening */
+[data-theme="light"] .border-amber-400 { border-color: #b45309 !important; }
+[data-theme="light"] .border-amber-500\/30 { border-color: rgba(146,64,14,0.4) !important; }
+/* Amber bg tints — bump opacity for visibility */
+[data-theme="light"] .bg-amber-500\/10 { background-color: rgba(146,64,14,0.08) !important; }
+[data-theme="light"] .bg-amber-500\/20 { background-color: rgba(146,64,14,0.12) !important; }
+
 /* Kill glows, colored shadows, ambient effects in light mode */
 [data-theme="light"] [class*="shadow-golden"],
 [data-theme="light"] [class*="shadow-sunrise"],
