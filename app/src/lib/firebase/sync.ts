@@ -97,22 +97,49 @@ export function hasLocalStorageData(): boolean {
 }
 
 /**
+ * Read raw state from a localStorage persist key (Zustand format)
+ */
+function readLocalState(key: string): Record<string, unknown> | null {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed.state || null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Hydrate Zustand stores from Firestore data
  * This writes directly to localStorage which triggers Zustand's persist middleware
  */
 export function hydrateFromFirestore(firestoreData: FirestoreUserDocument): void {
   try {
-    // User store
+    // Preserve local-only fields that aren't tracked in Firestore
+    const existingProgress = readLocalState(STORAGE_KEYS.progress);
+    const existingUser = readLocalState(STORAGE_KEYS.user);
+
+    // User store — merge: Firestore wins for synced fields, preserve local-only
     localStorage.setItem(STORAGE_KEYS.user, JSON.stringify({
-      state: firestoreData.user,
+      state: {
+        ...(existingUser || {}),
+        ...firestoreData.user,
+      },
       version: 0,
     }));
 
-    // Progress store
+    // Progress store — merge: Firestore wins for synced fields, preserve local-only
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const remoteProgressExtra = firestoreData.progress as any;
     localStorage.setItem(STORAGE_KEYS.progress, JSON.stringify({
       state: {
         ...firestoreData.progress,
         pendingLevelUp: null, // UI-only, never synced
+        // Preserve local-only fields (or take from Firestore if they were synced there)
+        starredCards: remoteProgressExtra.starredCards ?? existingProgress?.starredCards ?? [],
+        unlockedVisualizations: remoteProgressExtra.unlockedVisualizations ?? existingProgress?.unlockedVisualizations ?? [],
+        notificationSchedule: existingProgress?.notificationSchedule ?? remoteProgressExtra.notificationSchedule ?? undefined,
       },
       version: 0,
     }));
@@ -146,6 +173,12 @@ function mergeData(local: LocalStorageData, remote: FirestoreUserDocument): Loca
   const remoteXP = remote.progress.userProgress.xp || 0;
   const localLevel = local.progress.userProgress.level || 1;
   const remoteLevel = remote.progress.userProgress.level || 1;
+
+  // Cast to access local-only runtime fields not in the TypeScript types
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const localProgressExtra = local.progress as any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const remoteProgressExtra = remote.progress as any;
 
   return {
     user: local.user.isOnboarded ? local.user : remote.user,
@@ -206,7 +239,20 @@ function mergeData(local: LocalStorageData, remote: FirestoreUserDocument): Loca
       streakFreezes: Math.max(remote.progress.streakFreezes || 0, local.progress.streakFreezes || 0),
       lastFreezeUsed: local.progress.lastFreezeUsed || remote.progress.lastFreezeUsed,
       freezeRefreshDate: local.progress.freezeRefreshDate || remote.progress.freezeRefreshDate,
-    },
+      // Local-only fields (not in Firestore types, preserve from both sides)
+      starredCards: (() => {
+        const localCards: { cardId: string }[] = localProgressExtra.starredCards || [];
+        const remoteCards: { cardId: string }[] = remoteProgressExtra.starredCards || [];
+        const seen = new Set(localCards.map((c) => c.cardId));
+        return [...localCards, ...remoteCards.filter((c) => !seen.has(c.cardId))];
+      })(),
+      unlockedVisualizations: Array.from(new Set([
+        ...(remoteProgressExtra.unlockedVisualizations || []),
+        ...(localProgressExtra.unlockedVisualizations || []),
+      ])),
+      notificationSchedule: localProgressExtra.notificationSchedule ?? remoteProgressExtra.notificationSchedule,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any,
     habits: {
       habits: mergeById(remote.habits.habits, local.habits.habits),
       completions: mergeHabitCompletions(remote.habits.completions, local.habits.completions),
@@ -284,9 +330,12 @@ export async function syncOnLogin(authUser: FirebaseAuthUser): Promise<{
     const localData = getLocalStorageData();
     const hasLocal = hasLocalStorageData();
 
+    // Diagnostic — always visible in DevTools console
+    console.log('[Sync] hasLocal:', hasLocal, '| firestoreLevel:', firestoreData?.progress?.userProgress?.level ?? 'NO DOC', '| localLevel:', localData.progress.userProgress.level ?? 'none');
+
     if (!firestoreData) {
       // New Firebase user - no Firestore document
-      console.log('[Sync] New Firebase user');
+      console.log('[Sync] New Firebase user — no Firestore document exists');
 
       if (hasLocal) {
         // Has localStorage data - upload to Firestore
@@ -313,7 +362,7 @@ export async function syncOnLogin(authUser: FirebaseAuthUser): Promise<{
         console.log('[Sync] Merging localStorage with Firestore');
         const mergedData = mergeData(localData, firestoreData);
 
-        // Update both localStorage and Firestore with merged data
+        // Write merged data to localStorage FIRST (guaranteed to succeed)
         hydrateFromFirestore({
           ...firestoreData,
           user: mergedData.user,
@@ -322,7 +371,11 @@ export async function syncOnLogin(authUser: FirebaseAuthUser): Promise<{
           spacedRepetition: mergedData.spacedRepetition,
         });
 
-        await syncAllToFirestore(authUser.uid, mergedData);
+        // Push merged data back to Firestore - don't let this failure block the reload
+        syncAllToFirestore(authUser.uid, mergedData).catch((err) => {
+          console.error('[Sync] Failed to push merged data to Firestore (will retry on next sync):', err);
+        });
+
         return { needsOnboarding: false, merged: true, hydrated: false, error: null };
       } else {
         // No localStorage data - hydrate from Firestore

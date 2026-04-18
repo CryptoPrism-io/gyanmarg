@@ -190,7 +190,7 @@ function ReelCard({
       </div>
 
       {/* Content — editorial typography */}
-      <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent pr-1">
+      <div className="flex-1 overflow-hidden pr-1">
         {card.type === 'overview' && (
           <div className="flex flex-col gap-5">
             <h2 className="text-3xl font-serif leading-[1.15] tracking-tight">{card.title}</h2>
