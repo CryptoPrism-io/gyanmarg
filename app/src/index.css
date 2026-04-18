@@ -248,9 +248,9 @@
   --color-sunrise-light: var(--color-accent-bright);
   --color-sunrise-dark: var(--color-accent-dim);
   --color-sunrise-muted: rgba(245,158,11,0.12);
-  --color-golden: var(--color-accent-bright);
-  --color-golden-light: var(--color-accent-bright);
-  --color-golden-muted: rgba(245,158,11,0.10);
+  --color-golden: #B45309;
+  --color-golden-light: #D97706;
+  --color-golden-muted: rgba(180,83,9,0.10);
   --color-coral-muted: rgba(220,38,38,0.10);
   --color-sage-muted: rgba(5,150,105,0.10);
   --color-lavender-muted: rgba(124,58,237,0.10);
