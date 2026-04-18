@@ -1200,3 +1200,8 @@ select:-webkit-autofill {
   filter: saturate(1.2) brightness(1.08) contrast(1.05);
   transition: filter 0.3s ease;
 }
+
+[data-theme="light"] .level-cover-img {
+  filter: invert(0.72) hue-rotate(180deg) saturate(0.8) brightness(1.05);
+  transition: filter 0.3s ease;
+}
