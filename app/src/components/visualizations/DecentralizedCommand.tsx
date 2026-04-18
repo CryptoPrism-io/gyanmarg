@@ -47,7 +47,7 @@ export function DecentralizedCommand() {
               className={`px-4 py-2 rounded-lg text-xs transition-all ${
                 commandType === 'centralized'
                   ? 'bg-red-500/20 text-red-400'
-                  : 'text-gray-500 hover:text-gray-400'
+                  : 'text-[var(--viz-muted)] hover:text-[var(--viz-muted)]'
               }`}
             >
               Centralized
@@ -57,7 +57,7 @@ export function DecentralizedCommand() {
               className={`px-4 py-2 rounded-lg text-xs transition-all ${
                 commandType === 'decentralized'
                   ? 'bg-green-500/20 text-green-400'
-                  : 'text-gray-500 hover:text-gray-400'
+                  : 'text-[var(--viz-muted)] hover:text-[var(--viz-muted)]'
               }`}
             >
               Decentralized
@@ -98,7 +98,7 @@ export function DecentralizedCommand() {
                         className="absolute w-8 h-8 rounded-full bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] flex items-center justify-center"
                         style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }}
                       >
-                        <span className="text-[8px] text-gray-400">{member[0]}</span>
+                        <span className="text-[8px] text-[var(--viz-muted)]">{member[0]}</span>
                       </motion.div>
                     </div>
                   );
@@ -175,7 +175,7 @@ export function DecentralizedCommand() {
             </div>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Extreme Ownership" by Jocko Willink
           </p>
         </div>

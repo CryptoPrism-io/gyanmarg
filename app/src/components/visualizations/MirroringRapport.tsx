@@ -91,7 +91,7 @@ export function MirroringRapport() {
 
           {/* Rapport meter */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+            <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
               <span>Rapport Level</span>
               <span>{rapportLevel}%</span>
             </div>
@@ -111,7 +111,7 @@ export function MirroringRapport() {
               className={`w-full py-2 rounded-lg text-xs border transition-all backdrop-blur-sm ${
                 isMirroring
                   ? 'bg-green-500/20 border-green-500/50 text-green-400'
-                  : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile)]'
+                  : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile)]'
               }`}
             >
               {isMirroring ? '✓ Auto-Mirroring ON' : 'Enable Auto-Mirroring'}
@@ -119,7 +119,7 @@ export function MirroringRapport() {
 
             {/* Person A posture selector */}
             <div>
-              <p className="text-[10px] text-gray-500 mb-2">Change Person A's posture:</p>
+              <p className="text-[10px] text-[var(--viz-muted)] mb-2">Change Person A's posture:</p>
               <div className="grid grid-cols-4 gap-2">
                 {postures.map((p) => (
                   <button
@@ -128,7 +128,7 @@ export function MirroringRapport() {
                     className={`py-1.5 rounded text-[10px] border transition-all backdrop-blur-sm ${
                       personAPosture === p
                         ? 'bg-blue-500/20 border-blue-500/50 text-blue-400'
-                        : 'border-[var(--viz-border-light)] bg-[var(--viz-tile)] text-gray-500 hover:bg-[var(--viz-tile)]'
+                        : 'border-[var(--viz-border-light)] bg-[var(--viz-tile)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile)]'
                     }`}
                   >
                     {p}
@@ -149,7 +149,7 @@ export function MirroringRapport() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "The Definitive Book of Body Language" by Allan Pease
           </p>
         </div>

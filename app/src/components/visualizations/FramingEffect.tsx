@@ -64,7 +64,7 @@ export function FramingEffect() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-amber-400">The Framing Effect</h3>
-            <p className="text-[10px] text-gray-500">How words change our decisions</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">How words change our decisions</p>
           </div>
 
           {/* Scenario indicator */}
@@ -84,7 +84,7 @@ export function FramingEffect() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
-              <p className="text-xs text-gray-300 text-center">{scenario.question}</p>
+              <p className="text-xs text-[var(--viz-secondary)] text-center">{scenario.question}</p>
             </div>
           </div>
 
@@ -107,7 +107,7 @@ export function FramingEffect() {
               <div className="relative p-4 flex items-center gap-3">
                 <span className="text-green-400 text-lg">A</span>
                 <div>
-                  <p className="text-sm text-gray-200">{scenario.optionA.label}</p>
+                  <p className="text-sm text-[var(--viz-secondary)]">{scenario.optionA.label}</p>
                   <p className="text-[10px] text-green-400/70">Gain framing</p>
                 </div>
               </div>
@@ -130,7 +130,7 @@ export function FramingEffect() {
               <div className="relative p-4 flex items-center gap-3">
                 <span className="text-red-400 text-lg">B</span>
                 <div>
-                  <p className="text-sm text-gray-200">{scenario.optionB.label}</p>
+                  <p className="text-sm text-[var(--viz-secondary)]">{scenario.optionB.label}</p>
                   <p className="text-[10px] text-red-400/70">Loss framing</p>
                 </div>
               </div>
@@ -151,11 +151,11 @@ export function FramingEffect() {
                   <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
                   <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
                   <div className="relative p-4">
-                    <p className="text-[10px] text-gray-500 mb-3">How people typically respond:</p>
+                    <p className="text-[10px] text-[var(--viz-muted)] mb-3">How people typically respond:</p>
 
                     <div className="space-y-2">
                       <div>
-                        <div className="flex justify-between text-[10px] text-gray-400 mb-1">
+                        <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
                           <span>Option A (Gain)</span>
                           <span className="text-green-400">{scenario.optionA.percentage}%</span>
                         </div>
@@ -170,7 +170,7 @@ export function FramingEffect() {
                       </div>
 
                       <div>
-                        <div className="flex justify-between text-[10px] text-gray-400 mb-1">
+                        <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
                           <span>Option B (Loss)</span>
                           <span className="text-red-400">{scenario.optionB.percentage}%</span>
                         </div>
@@ -199,7 +199,7 @@ export function FramingEffect() {
                 {/* Next button */}
                 <button
                   onClick={nextScenario}
-                  className="w-full py-2 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] text-gray-300 text-xs rounded-lg hover:bg-[var(--viz-tile-md)] transition-colors"
+                  className="w-full py-2 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] text-[var(--viz-secondary)] text-xs rounded-lg hover:bg-[var(--viz-tile-md)] transition-colors"
                 >
                   Try Next Scenario
                 </button>
@@ -213,7 +213,7 @@ export function FramingEffect() {
             <div className="absolute inset-0 border border-purple-500/20 rounded-xl" />
             <div className="relative p-3">
               <p className="text-[10px] text-purple-400 font-medium">Defense:</p>
-              <p className="text-[10px] text-gray-400">
+              <p className="text-[10px] text-[var(--viz-muted)]">
                 Always reframe options in both gain and loss terms before deciding. Ask: "What am I
                 actually choosing between?"
               </p>
@@ -225,7 +225,7 @@ export function FramingEffect() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                 <span className="text-amber-400 font-medium">Kahneman & Tversky:</span> "The framing of a
                 decision problem can have a dramatic effect on the choices people make, even when the
                 underlying options are logically equivalent."

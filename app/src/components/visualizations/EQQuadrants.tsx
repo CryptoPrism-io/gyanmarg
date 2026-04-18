@@ -82,10 +82,10 @@ export function EQQuadrants() {
           {/* Quadrant grid */}
           <div className="relative w-56 h-56">
             {/* Axis labels */}
-            <p className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] text-gray-500">SELF</p>
-            <p className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-[8px] text-gray-500">OTHERS</p>
-            <p className="absolute top-1/2 -left-8 -translate-y-1/2 text-[8px] text-gray-500 -rotate-90">AWARENESS</p>
-            <p className="absolute top-1/2 -right-8 -translate-y-1/2 text-[8px] text-gray-500 rotate-90">ACTION</p>
+            <p className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] text-[var(--viz-muted)]">SELF</p>
+            <p className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-[8px] text-[var(--viz-muted)]">OTHERS</p>
+            <p className="absolute top-1/2 -left-8 -translate-y-1/2 text-[8px] text-[var(--viz-muted)] -rotate-90">AWARENESS</p>
+            <p className="absolute top-1/2 -right-8 -translate-y-1/2 text-[8px] text-[var(--viz-muted)] rotate-90">ACTION</p>
 
             {/* Grid */}
             <div className="grid grid-cols-2 gap-1 h-full">
@@ -102,7 +102,7 @@ export function EQQuadrants() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <p className={`text-[10px] font-medium ${isActive ? colors.text : 'text-gray-400'}`}>
+                    <p className={`text-[10px] font-medium ${isActive ? colors.text : 'text-[var(--viz-muted)]'}`}>
                       {q.title}
                     </p>
                   </motion.button>
@@ -123,16 +123,16 @@ export function EQQuadrants() {
                 <p className={`text-sm font-medium ${colorMap[active.color].text} mb-1`}>
                   {active.title}
                 </p>
-                <p className="text-xs text-gray-400 mb-3">{active.description}</p>
+                <p className="text-xs text-[var(--viz-muted)] mb-3">{active.description}</p>
 
-                <p className="text-[10px] text-gray-500 uppercase mb-1">Ask yourself:</p>
+                <p className="text-[10px] text-[var(--viz-muted)] uppercase mb-1">Ask yourself:</p>
                 <ul className="space-y-1 mb-3">
                   {active.questions.map((q, idx) => (
-                    <li key={idx} className="text-[10px] text-gray-300">• {q}</li>
+                    <li key={idx} className="text-[10px] text-[var(--viz-secondary)]">• {q}</li>
                   ))}
                 </ul>
 
-                <p className="text-[10px] text-gray-500 uppercase mb-1">Practice tips:</p>
+                <p className="text-[10px] text-[var(--viz-muted)] uppercase mb-1">Practice tips:</p>
                 <ul className="space-y-1">
                   {active.tips.map((tip, idx) => (
                     <li key={idx} className={`text-[10px] ${colorMap[active.color].text}`}>✓ {tip}</li>
@@ -142,7 +142,7 @@ export function EQQuadrants() {
             </motion.div>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Emotional Intelligence 2.0" by Travis Bradberry
           </p>
         </div>

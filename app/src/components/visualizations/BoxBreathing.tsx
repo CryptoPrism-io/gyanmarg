@@ -99,7 +99,7 @@ export function BoxBreathing() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-blue-400">Box Breathing</h3>
-            <p className="text-[10px] text-gray-500">Navy SEAL stress control technique</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">Navy SEAL stress control technique</p>
           </div>
 
           {/* Duration selector */}
@@ -111,7 +111,7 @@ export function BoxBreathing() {
                 className={`w-10 h-10 rounded-lg text-xs font-bold transition-all backdrop-blur-sm ${
                   duration === d
                     ? 'bg-blue-500/80 text-[var(--viz-text)] border border-blue-400/50'
-                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile-md)]'
+                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile-md)]'
                 } ${isActive ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {d}s
@@ -124,16 +124,16 @@ export function BoxBreathing() {
             {/* Outer box */}
             <div className="absolute inset-4 border-2 border-gray-700/50 rounded-lg">
               {/* Phase labels on corners */}
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-gray-500">
+              <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-[var(--viz-muted)]">
                 Hold ({duration}s)
               </div>
-              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] text-gray-500">
+              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[10px] text-[var(--viz-muted)]">
                 Hold ({duration}s)
               </div>
-              <div className="absolute -left-12 top-1/2 -translate-y-1/2 -rotate-90 text-[10px] text-gray-500">
+              <div className="absolute -left-12 top-1/2 -translate-y-1/2 -rotate-90 text-[10px] text-[var(--viz-muted)]">
                 Inhale ({duration}s)
               </div>
-              <div className="absolute -right-12 top-1/2 -translate-y-1/2 rotate-90 text-[10px] text-gray-500">
+              <div className="absolute -right-12 top-1/2 -translate-y-1/2 rotate-90 text-[10px] text-[var(--viz-muted)]">
                 Exhale ({duration}s)
               </div>
             </div>
@@ -210,7 +210,7 @@ export function BoxBreathing() {
                   <p className="text-sm font-bold" style={{ color: phase.color }}>
                     {phase.name}
                   </p>
-                  <p className="text-[10px] text-gray-500">{phase.instruction}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">{phase.instruction}</p>
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -220,7 +220,7 @@ export function BoxBreathing() {
           {breathCount > 0 && (
             <div className="text-center">
               <p className="text-2xl font-bold text-[var(--viz-text)]">{breathCount}</p>
-              <p className="text-[10px] text-gray-500">breath cycles completed</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">breath cycles completed</p>
             </div>
           )}
 
@@ -245,7 +245,7 @@ export function BoxBreathing() {
             {(breathCount > 0 || progress > 0) && (
               <button
                 onClick={reset}
-                className="px-4 py-3 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] text-gray-400
+                className="px-4 py-3 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] text-[var(--viz-muted)]
                          rounded-xl text-xs hover:bg-[var(--viz-tile-md)] transition-all"
               >
                 Reset
@@ -260,7 +260,7 @@ export function BoxBreathing() {
               <div className="absolute inset-0 border border-blue-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-blue-400 font-medium">Calm Mind</p>
-                <p className="text-[9px] text-gray-400">Activates parasympathetic</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Activates parasympathetic</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg">
@@ -268,7 +268,7 @@ export function BoxBreathing() {
               <div className="absolute inset-0 border border-green-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-green-400 font-medium">Lower HR</p>
-                <p className="text-[9px] text-gray-400">Reduces heart rate</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Reduces heart rate</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg">
@@ -276,7 +276,7 @@ export function BoxBreathing() {
               <div className="absolute inset-0 border border-purple-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-purple-400 font-medium">Focus</p>
-                <p className="text-[9px] text-gray-400">Improves concentration</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Improves concentration</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg">
@@ -284,7 +284,7 @@ export function BoxBreathing() {
               <div className="absolute inset-0 border border-amber-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-amber-400 font-medium">Energy</p>
-                <p className="text-[9px] text-gray-400">Increases oxygen</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Increases oxygen</p>
               </div>
             </div>
           </div>
@@ -294,7 +294,7 @@ export function BoxBreathing() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                 <span className="text-blue-400 font-medium">Navy SEAL Protocol:</span> Box breathing is
                 used by Special Forces to stay calm under extreme stress. 4 cycles before high-stakes
                 situations can dramatically improve performance.

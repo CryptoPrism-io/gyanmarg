@@ -68,8 +68,8 @@ export function LeadershipChemicals() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-sm font-medium text-gray-300">The Chemistry of Leadership</p>
-            <p className="text-[10px] text-gray-500">
+            <p className="text-sm font-medium text-[var(--viz-secondary)]">The Chemistry of Leadership</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">
               How leaders trigger helpful vs harmful chemicals
             </p>
           </div>
@@ -90,7 +90,7 @@ export function LeadershipChemicals() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <span className="text-lg">{chem.icon}</span>
-                  <p className={`text-[10px] mt-1 ${isActive ? colors.text : 'text-gray-500'}`}>
+                  <p className={`text-[10px] mt-1 ${isActive ? colors.text : 'text-[var(--viz-muted)]'}`}>
                     {chem.name}
                   </p>
                 </motion.button>
@@ -129,12 +129,12 @@ export function LeadershipChemicals() {
                     </div>
                     <div className="space-y-2 text-xs">
                       <div>
-                        <span className="text-gray-500">Effect: </span>
-                        <span className="text-gray-300">{chem.description}</span>
+                        <span className="text-[var(--viz-muted)]">Effect: </span>
+                        <span className="text-[var(--viz-secondary)]">{chem.description}</span>
                       </div>
                       <div>
-                        <span className="text-gray-500">Triggered by: </span>
-                        <span className="text-gray-300">{chem.trigger}</span>
+                        <span className="text-[var(--viz-muted)]">Triggered by: </span>
+                        <span className="text-[var(--viz-secondary)]">{chem.trigger}</span>
                       </div>
                     </div>
                   </>
@@ -151,7 +151,7 @@ export function LeadershipChemicals() {
             </p>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Leaders Eat Last" by Simon Sinek
           </p>
         </div>

@@ -50,14 +50,14 @@ export function RuleOfThree() {
                 </motion.div>
               ))}
             </div>
-            <p className="text-[10px] text-center text-gray-500 mb-4">
+            <p className="text-[10px] text-center text-[var(--viz-muted)] mb-4">
               Working memory holds 3-4 items easily. More overwhelms.
             </p>
           </div>
 
           {/* Famous examples */}
           <div className="w-full max-w-xs">
-            <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2 text-center">
+            <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2 text-center">
               Famous Examples
             </p>
             <div className="flex gap-2 justify-center mb-3">
@@ -68,7 +68,7 @@ export function RuleOfThree() {
                   className={`relative overflow-hidden px-3 py-1 rounded-full text-[10px] transition-all ${
                     idx === activeExample
                       ? 'text-amber-400'
-                      : 'text-gray-500 hover:text-gray-400'
+                      : 'text-[var(--viz-muted)] hover:text-[var(--viz-muted)]'
                   }`}
                 >
                   {idx === activeExample ? (
@@ -117,7 +117,7 @@ export function RuleOfThree() {
 
           {/* Practice section */}
           <div className="w-full max-w-xs">
-            <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2 text-center">
+            <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2 text-center">
               Try It: Your 3 Key Points
             </p>
             <div className="grid grid-cols-3 gap-2">
@@ -132,13 +132,13 @@ export function RuleOfThree() {
                     newPoints[idx] = e.target.value;
                     setUserPoints(newPoints);
                   }}
-                  className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg p-2 text-xs text-gray-300 placeholder-gray-600 text-center focus:border-amber-500/50 focus:outline-none backdrop-blur-sm"
+                  className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg p-2 text-xs text-[var(--viz-secondary)] placeholder-gray-600 text-center focus:border-amber-500/50 focus:outline-none backdrop-blur-sm"
                 />
               ))}
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Talk Like TED" by Carmine Gallo
           </p>
         </div>

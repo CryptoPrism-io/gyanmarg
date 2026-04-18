@@ -80,7 +80,7 @@ export function AcquisitionCriteria() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Use this checklist to evaluate acquisition targets.
             </p>
           </div>
@@ -94,7 +94,7 @@ export function AcquisitionCriteria() {
                 className={`px-3 py-1.5 rounded-lg text-[10px] transition-all ${
                   idx === activeCategory
                     ? 'bg-blue-500/20 border border-blue-500/50 text-blue-400'
-                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border)] text-gray-500 hover:border-[var(--viz-border-light)]'
+                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)]'
                 }`}
               >
                 {cat.category}
@@ -130,7 +130,7 @@ export function AcquisitionCriteria() {
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <p className={`text-xs ${isChecked ? 'text-green-400' : 'text-gray-300'}`}>
+                          <p className={`text-xs ${isChecked ? 'text-green-400' : 'text-[var(--viz-secondary)]'}`}>
                             {item.name}
                           </p>
                           {item.critical && (
@@ -139,7 +139,7 @@ export function AcquisitionCriteria() {
                             </span>
                           )}
                         </div>
-                        <p className="text-[10px] text-gray-500 mt-0.5">{item.description}</p>
+                        <p className="text-[10px] text-[var(--viz-muted)] mt-0.5">{item.description}</p>
                       </div>
                     </div>
                   </div>
@@ -154,8 +154,8 @@ export function AcquisitionCriteria() {
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-4">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-xs text-gray-400">Progress:</span>
-                <span className="text-xs text-gray-300">{checkedCount}/{totalItems}</span>
+                <span className="text-xs text-[var(--viz-muted)]">Progress:</span>
+                <span className="text-xs text-[var(--viz-secondary)]">{checkedCount}/{totalItems}</span>
               </div>
               <div className="h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden mb-2">
                 <motion.div
@@ -164,7 +164,7 @@ export function AcquisitionCriteria() {
                 />
               </div>
               <div className="flex justify-between text-[10px]">
-                <span className="text-gray-500">Critical items: {criticalChecked}/{criticalItems.length}</span>
+                <span className="text-[var(--viz-muted)]">Critical items: {criticalChecked}/{criticalItems.length}</span>
               </div>
             </div>
           </div>
@@ -203,7 +203,7 @@ export function AcquisitionCriteria() {
             </motion.div>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Buy Then Build" by Walker Deibel
           </p>
         </div>

@@ -89,7 +89,7 @@ export function PowerPoses() {
                   <p className={`text-sm font-medium ${pose.type === 'power' ? 'text-green-400' : 'text-red-400'}`}>
                     {pose.name}
                   </p>
-                  <p className="text-xs text-gray-400 mt-1">{pose.description}</p>
+                  <p className="text-xs text-[var(--viz-muted)] mt-1">{pose.description}</p>
                 </div>
                 <span className={`text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm ${
                   pose.type === 'power'
@@ -102,12 +102,12 @@ export function PowerPoses() {
 
               <div className="space-y-2 text-xs">
                 <div>
-                  <span className="text-gray-500">Signals: </span>
-                  <span className="text-gray-300">{pose.signals}</span>
+                  <span className="text-[var(--viz-muted)]">Signals: </span>
+                  <span className="text-[var(--viz-secondary)]">{pose.signals}</span>
                 </div>
                 <div>
-                  <span className="text-gray-500">Best used: </span>
-                  <span className="text-gray-300">{pose.when}</span>
+                  <span className="text-[var(--viz-muted)]">Best used: </span>
+                  <span className="text-[var(--viz-secondary)]">{pose.when}</span>
                 </div>
               </div>
             </div>
@@ -124,7 +124,7 @@ export function PowerPoses() {
                     ? p.type === 'power'
                       ? 'bg-green-500/20 border-green-500/50 text-green-400'
                       : 'bg-red-500/20 border-red-500/50 text-red-400'
-                    : 'border-[var(--viz-border-light)] bg-[var(--viz-tile)] text-gray-500 hover:border-[var(--viz-border-light)] hover:bg-[var(--viz-tile)]'
+                    : 'border-[var(--viz-border-light)] bg-[var(--viz-tile)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)] hover:bg-[var(--viz-tile)]'
                 }`}
               >
                 {p.name}
@@ -137,14 +137,14 @@ export function PowerPoses() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-white/[0.01] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-3">
-              <p className="text-[10px] text-gray-400 text-center">
+              <p className="text-[10px] text-[var(--viz-muted)] text-center">
                 <span className="text-amber-400">Research shows:</span> Holding a power pose for 2 minutes
                 increases testosterone and decreases cortisol
               </p>
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "The Definitive Book of Body Language" by Allan Pease
           </p>
         </div>

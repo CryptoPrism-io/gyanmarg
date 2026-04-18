@@ -112,7 +112,7 @@ export function AssetAllocation() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-amber-400">Asset Allocation</h3>
-            <p className="text-[10px] text-gray-500">The most important investment decision</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">The most important investment decision</p>
           </div>
 
           {/* Profile selector */}
@@ -127,7 +127,7 @@ export function AssetAllocation() {
                 className={`px-3 py-1.5 rounded-lg text-[10px] backdrop-blur-sm transition-all ${
                   !customMode && selectedProfile === index
                     ? 'bg-amber-500/20 border border-amber-500/50 text-amber-400'
-                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile-md)]'
+                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile-md)]'
                 }`}
               >
                 {profile.name}
@@ -138,7 +138,7 @@ export function AssetAllocation() {
               className={`px-3 py-1.5 rounded-lg text-[10px] backdrop-blur-sm transition-all ${
                 customMode
                   ? 'bg-purple-500/20 border border-purple-500/50 text-purple-400'
-                  : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile-md)]'
+                  : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile-md)]'
               }`}
             >
               Custom
@@ -178,7 +178,7 @@ export function AssetAllocation() {
                 />
                 <div className="flex-1">
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-gray-300">{asset.name}</span>
+                    <span className="text-xs text-[var(--viz-secondary)]">{asset.name}</span>
                     <span className="text-xs font-bold" style={{ color: asset.color }}>
                       {allocation[index]}%
                     </span>
@@ -207,16 +207,16 @@ export function AssetAllocation() {
               <div className="relative p-3">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-xs font-bold text-amber-400">{profiles[selectedProfile].name}</span>
-                  <span className="text-[10px] text-gray-500">Age: {profiles[selectedProfile].age}</span>
+                  <span className="text-[10px] text-[var(--viz-muted)]">Age: {profiles[selectedProfile].age}</span>
                 </div>
-                <p className="text-[10px] text-gray-400">{profiles[selectedProfile].description}</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">{profiles[selectedProfile].description}</p>
               </div>
             </div>
           )}
 
           {/* Risk meter */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+            <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
               <span>Risk Level</span>
               <span className={totalRisk > 70 ? 'text-red-400' : totalRisk > 40 ? 'text-amber-400' : 'text-green-400'}>
                 {totalRisk > 70 ? 'High' : totalRisk > 40 ? 'Moderate' : 'Low'}
@@ -240,7 +240,7 @@ export function AssetAllocation() {
               <div className="absolute inset-0 border border-green-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-green-400 font-medium">Age Rule</p>
-                <p className="text-[9px] text-gray-400">100 - age = stock %</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">100 - age = stock %</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg">
@@ -248,7 +248,7 @@ export function AssetAllocation() {
               <div className="absolute inset-0 border border-blue-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-blue-400 font-medium">Rebalance</p>
-                <p className="text-[9px] text-gray-400">Quarterly or annually</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Quarterly or annually</p>
               </div>
             </div>
           </div>
@@ -258,7 +258,7 @@ export function AssetAllocation() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                 <span className="text-amber-400 font-medium">Benjamin Graham:</span> "The essence of
                 investment management is the management of risks, not the management of returns." Your
                 allocation decision determines 90% of your investment outcome.

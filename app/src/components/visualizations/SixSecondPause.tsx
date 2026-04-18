@@ -90,7 +90,7 @@ export function SixSecondPause() {
           {/* Status text */}
           <div className="text-center h-12">
             {!isTriggered && !response && (
-              <p className="text-xs text-gray-400">Click below to simulate an emotional trigger</p>
+              <p className="text-xs text-[var(--viz-muted)]">Click below to simulate an emotional trigger</p>
             )}
             {isTriggered && !isPausing && (
               <motion.p
@@ -149,7 +149,7 @@ export function SixSecondPause() {
             {response && (
               <button
                 onClick={reset}
-                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-gray-400 text-xs hover:bg-[var(--viz-tile)] backdrop-blur-sm"
+                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-[var(--viz-muted)] text-xs hover:bg-[var(--viz-tile)] backdrop-blur-sm"
               >
                 Try Again
               </button>
@@ -160,14 +160,14 @@ export function SixSecondPause() {
           <div className="relative overflow-hidden w-full max-w-xs rounded-lg p-3">
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
-            <p className="relative z-10 text-[10px] text-gray-400 text-center">
+            <p className="relative z-10 text-[10px] text-[var(--viz-muted)] text-center">
               <span className="text-amber-400">Why 6 seconds?</span> It takes about 6 seconds for
               chemicals from an emotional reaction to be processed. Pausing lets your rational
               prefrontal cortex catch up.
             </p>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Emotional Intelligence 2.0" by Travis Bradberry
           </p>
         </div>

@@ -35,12 +35,12 @@ export function RuleOf72() {
           {/* Title */}
           <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 text-center max-w-xs">
         <p className="text-lg font-bold text-amber-400">72 ÷ Rate = Years to Double</p>
-        <p className="text-[10px] text-gray-500 mt-1">The magic formula for compound growth</p>
+        <p className="text-[10px] text-[var(--viz-muted)] mt-1">The magic formula for compound growth</p>
       </div>
 
       {/* Rate slider */}
       <div className="w-full max-w-xs">
-        <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+        <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
           <span>Annual return rate</span>
           <span className="text-amber-400 font-bold">{rate}%</span>
         </div>
@@ -60,23 +60,23 @@ export function RuleOf72() {
       <div className="flex items-center gap-3 text-center">
         <div className="p-3 bg-amber-500/20 border border-amber-500/40 rounded-xl">
           <p className="text-2xl font-bold text-amber-400">72</p>
-          <p className="text-[9px] text-gray-500">Magic Number</p>
+          <p className="text-[9px] text-[var(--viz-muted)]">Magic Number</p>
         </div>
-        <span className="text-xl text-gray-500">÷</span>
+        <span className="text-xl text-[var(--viz-muted)]">÷</span>
         <div className="p-3 bg-blue-500/20 border border-blue-500/40 rounded-xl">
           <p className="text-2xl font-bold text-blue-400">{rate}%</p>
-          <p className="text-[9px] text-gray-500">Rate</p>
+          <p className="text-[9px] text-[var(--viz-muted)]">Rate</p>
         </div>
-        <span className="text-xl text-gray-500">=</span>
+        <span className="text-xl text-[var(--viz-muted)]">=</span>
         <div className="p-3 bg-green-500/20 border border-green-500/40 rounded-xl">
           <p className="text-2xl font-bold text-green-400">{yearsToDouble.toFixed(1)}</p>
-          <p className="text-[9px] text-gray-500">Years</p>
+          <p className="text-[9px] text-[var(--viz-muted)]">Years</p>
         </div>
       </div>
 
       {/* Doubling timeline */}
       <div className="w-full max-w-xs">
-        <p className="text-[10px] text-gray-500 mb-2 text-center">Your money doubling over time:</p>
+        <p className="text-[10px] text-[var(--viz-muted)] mb-2 text-center">Your money doubling over time:</p>
         <div className="relative h-32">
           <svg viewBox="0 0 280 100" className="w-full h-full">
             {/* Grid lines */}
@@ -117,7 +117,7 @@ export function RuleOf72() {
 
       {/* Starting amount */}
       <div className="w-full max-w-xs">
-        <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+        <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
           <span>Starting amount</span>
           <span className="text-green-400">${principal.toLocaleString()}</span>
         </div>
@@ -139,19 +139,19 @@ export function RuleOf72() {
           <p className="text-lg font-bold text-green-400">
             ${((principal * Math.pow(2, 4)) / 1000).toFixed(0)}K
           </p>
-          <p className="text-[9px] text-gray-500">After 4 doublings</p>
-          <p className="text-[10px] text-gray-400">{(yearsToDouble * 4).toFixed(0)} years</p>
+          <p className="text-[9px] text-[var(--viz-muted)]">After 4 doublings</p>
+          <p className="text-[10px] text-[var(--viz-muted)]">{(yearsToDouble * 4).toFixed(0)} years</p>
         </div>
         <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-center">
           <p className="text-lg font-bold text-amber-400">16x</p>
-          <p className="text-[9px] text-gray-500">Growth multiple</p>
-          <p className="text-[10px] text-gray-400">From 4 doublings</p>
+          <p className="text-[9px] text-[var(--viz-muted)]">Growth multiple</p>
+          <p className="text-[10px] text-[var(--viz-muted)]">From 4 doublings</p>
         </div>
       </div>
 
       {/* Common rates reference */}
       <div className="w-full max-w-xs p-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl backdrop-blur-sm">
-        <p className="text-[10px] text-gray-500 mb-2">Quick reference:</p>
+        <p className="text-[10px] text-[var(--viz-muted)] mb-2">Quick reference:</p>
         <div className="grid grid-cols-3 gap-2 text-center">
           {[
             { rate: 6, years: 12, label: 'Bonds' },
@@ -159,9 +159,9 @@ export function RuleOf72() {
             { rate: 12, years: 6, label: 'Growth' },
           ].map((r) => (
             <div key={r.rate} className="p-2 bg-gray-800/50 rounded-lg">
-              <p className="text-xs text-gray-300">{r.rate}%</p>
+              <p className="text-xs text-[var(--viz-secondary)]">{r.rate}%</p>
               <p className="text-[10px] text-amber-400">{r.years} yrs</p>
-              <p className="text-[8px] text-gray-500">{r.label}</p>
+              <p className="text-[8px] text-[var(--viz-muted)]">{r.label}</p>
             </div>
           ))}
         </div>
@@ -169,7 +169,7 @@ export function RuleOf72() {
 
       {/* Key insight */}
       <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-4 max-w-xs backdrop-blur-sm">
-        <p className="text-xs text-gray-400 leading-relaxed">
+        <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
           <span className="text-amber-400 font-medium">The Rule of 72:</span> A quick mental math
           trick to estimate how long it takes to double your money. At 8% returns, money doubles
           every 9 years. Starting early makes all the difference.

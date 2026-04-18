@@ -171,7 +171,7 @@ export function CompoundInterest() {
           >
             {formatCurrency(animatedValue)}
           </motion.p>
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-[var(--viz-muted)] mt-1">
             in {years} years at {rate}% annual return
           </p>
         </div>
@@ -367,9 +367,9 @@ export function CompoundInterest() {
                 exit={{ opacity: 0, y: 10 }}
                 className="absolute top-2 left-2 bg-[var(--viz-inner-dark)] border border-green-500/30 rounded-lg p-2"
               >
-                <p className="text-[10px] text-gray-400">Year {selectedData.year}</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Year {selectedData.year}</p>
                 <p className="text-sm font-bold text-green-400">{formatCurrency(selectedData.compound)}</p>
-                <p className="text-[10px] text-gray-500">
+                <p className="text-[10px] text-[var(--viz-muted)]">
                   Interest this year: {formatCurrency(selectedData.interestThisYear)}
                 </p>
               </motion.div>
@@ -384,7 +384,7 @@ export function CompoundInterest() {
             </div>
             <div className="flex items-center gap-1">
               <div className="w-3 h-0.5 bg-gray-500 rounded" style={{ background: 'repeating-linear-gradient(90deg, #6B7280, #6B7280 2px, transparent 2px, transparent 4px)' }} />
-              <span className="text-[9px] text-gray-500">Contributions</span>
+              <span className="text-[9px] text-[var(--viz-muted)]">Contributions</span>
             </div>
           </div>
         </div>
@@ -396,7 +396,7 @@ export function CompoundInterest() {
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-[10px] text-gray-500">💰 Starting</span>
+              <span className="text-[10px] text-[var(--viz-muted)]">💰 Starting</span>
               <span className="text-sm font-bold text-green-400">${principal.toLocaleString()}</span>
             </div>
             <input
@@ -413,7 +413,7 @@ export function CompoundInterest() {
 
           <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-[10px] text-gray-500">📅 Monthly</span>
+              <span className="text-[10px] text-[var(--viz-muted)]">📅 Monthly</span>
               <span className="text-sm font-bold text-green-400">${monthlyAdd.toLocaleString()}</span>
             </div>
             <input
@@ -433,7 +433,7 @@ export function CompoundInterest() {
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-[10px] text-gray-500">📈 Return</span>
+              <span className="text-[10px] text-[var(--viz-muted)]">📈 Return</span>
               <span className="text-sm font-bold text-amber-400">{rate}%</span>
             </div>
             <input
@@ -450,7 +450,7 @@ export function CompoundInterest() {
 
           <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-[10px] text-gray-500">⏱️ Years</span>
+              <span className="text-[10px] text-[var(--viz-muted)]">⏱️ Years</span>
               <span className="text-sm font-bold text-blue-400">{years}</span>
             </div>
             <input
@@ -500,7 +500,7 @@ export function CompoundInterest() {
               <div className="flex justify-between mt-2">
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 bg-gray-600 rounded-sm" />
-                  <span className="text-[10px] text-gray-400">You invest ({Math.round((totalContributions / maxValue) * 100)}%)</span>
+                  <span className="text-[10px] text-[var(--viz-muted)]">You invest ({Math.round((totalContributions / maxValue) * 100)}%)</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 bg-green-500 rounded-sm" />
@@ -515,7 +515,7 @@ export function CompoundInterest() {
       {/* Scenarios comparison */}
       <button
         onClick={() => setShowScenarios(!showScenarios)}
-        className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+        className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
       >
         {showScenarios ? '▼ Hide' : '⏰ Show'} timing comparison
       </button>
@@ -538,7 +538,7 @@ export function CompoundInterest() {
               <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3 text-center">
                 <p className="text-[9px] text-blue-400/70 mb-1">Your plan</p>
                 <p className="text-lg font-bold text-blue-400">{formatCurrency(scenarios.current)}</p>
-                <p className="text-[10px] text-gray-500">Current</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Current</p>
               </div>
 
               <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-3 text-center">
@@ -559,7 +559,7 @@ export function CompoundInterest() {
 
       {/* Key insight */}
       <div className="bg-gradient-to-r from-green-500/10 via-emerald-500/10 to-green-500/10 border border-green-500/30 rounded-xl p-4 max-w-sm">
-        <p className="text-xs text-gray-400 leading-relaxed text-center">
+        <p className="text-xs text-[var(--viz-muted)] leading-relaxed text-center">
           <span className="text-green-400 font-medium">Einstein:</span> "Compound interest is the
           eighth wonder of the world. He who understands it, earns it; he who doesn't, pays it."
         </p>

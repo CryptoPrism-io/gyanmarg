@@ -77,7 +77,7 @@ export function CashflowQuadrant() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span className={`text-2xl font-bold ${isActive ? colors.text : 'text-gray-500'}`}>
+                  <span className={`text-2xl font-bold ${isActive ? colors.text : 'text-[var(--viz-muted)]'}`}>
                     {q.id}
                   </span>
                   <p className={`text-[10px] mt-1 ${isActive ? colors.text : 'text-gray-600'}`}>
@@ -89,7 +89,7 @@ export function CashflowQuadrant() {
           </div>
 
           {/* Labels */}
-          <div className="flex gap-8 text-[10px] text-gray-500">
+          <div className="flex gap-8 text-[10px] text-[var(--viz-muted)]">
             <div>
               <p className="text-center">← Left Side</p>
               <p className="text-center">Trade time for $</p>
@@ -118,11 +118,11 @@ export function CashflowQuadrant() {
                       <p className={`text-sm font-medium ${colors.text} mb-2`}>
                         {q.id} - {q.title}
                       </p>
-                      <p className="text-xs text-gray-300 mb-3">{q.description}</p>
+                      <p className="text-xs text-[var(--viz-secondary)] mb-3">{q.description}</p>
                       <div className="space-y-1 text-[10px]">
-                        <p><span className="text-gray-500">Taxes:</span> <span className="text-gray-300">{q.taxes}</span></p>
-                        <p><span className="text-gray-500">Time:</span> <span className="text-gray-300">{q.time}</span></p>
-                        <p><span className="text-gray-500">Security:</span> <span className="text-gray-300">{q.security}</span></p>
+                        <p><span className="text-[var(--viz-muted)]">Taxes:</span> <span className="text-[var(--viz-secondary)]">{q.taxes}</span></p>
+                        <p><span className="text-[var(--viz-muted)]">Time:</span> <span className="text-[var(--viz-secondary)]">{q.time}</span></p>
+                        <p><span className="text-[var(--viz-muted)]">Security:</span> <span className="text-[var(--viz-secondary)]">{q.security}</span></p>
                       </div>
                     </div>
                   </>
@@ -142,7 +142,7 @@ export function CashflowQuadrant() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Rich Dad Poor Dad" by Robert Kiyosaki
           </p>
         </div>

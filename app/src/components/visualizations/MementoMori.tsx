@@ -28,7 +28,7 @@ export function MementoMori() {
         <div className="flex flex-col items-center gap-4">
           {/* Quote */}
           <div className="text-center">
-            <p className="text-xs text-gray-400 mb-1">
+            <p className="text-xs text-[var(--viz-muted)] mb-1">
               "You could leave life right now. Let that determine what you do and say and think."
             </p>
             <p className="text-[10px] text-amber-400">— Marcus Aurelius</p>
@@ -37,14 +37,14 @@ export function MementoMori() {
           {!showVisualization ? (
             <div className="w-full max-w-xs space-y-4">
               <div className="space-y-2">
-                <label className="text-xs text-gray-400">Your birth year:</label>
+                <label className="text-xs text-[var(--viz-muted)]">Your birth year:</label>
                 <input
                   type="number"
                   value={birthYear}
                   onChange={(e) => setBirthYear(Number(e.target.value))}
                   min={1940}
                   max={2010}
-                  className="w-full p-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-gray-300 text-center focus:border-amber-500/50 focus:outline-none backdrop-blur-sm"
+                  className="w-full p-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-[var(--viz-secondary)] text-center focus:border-amber-500/50 focus:outline-none backdrop-blur-sm"
                 />
               </div>
 
@@ -69,8 +69,8 @@ export function MementoMori() {
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-500/[0.15] to-gray-500/[0.05] backdrop-blur-sm" />
                   <div className="absolute inset-0 border border-gray-700 rounded-lg" />
                   <div className="relative z-10 p-2 text-center">
-                    <p className="text-lg font-bold text-gray-400">{age}</p>
-                    <p className="text-[8px] text-gray-500">Years Lived</p>
+                    <p className="text-lg font-bold text-[var(--viz-muted)]">{age}</p>
+                    <p className="text-[8px] text-[var(--viz-muted)]">Years Lived</p>
                   </div>
                 </div>
                 <div className="relative overflow-hidden rounded-lg">
@@ -85,8 +85,8 @@ export function MementoMori() {
                   <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
                   <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                   <div className="relative z-10 p-2 text-center">
-                    <p className="text-lg font-bold text-gray-300">{lifeExpectancy}</p>
-                    <p className="text-[8px] text-gray-500">Expectancy</p>
+                    <p className="text-lg font-bold text-[var(--viz-secondary)]">{lifeExpectancy}</p>
+                    <p className="text-[8px] text-[var(--viz-muted)]">Expectancy</p>
                   </div>
                 </div>
               </div>
@@ -96,7 +96,7 @@ export function MementoMori() {
                 <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
                 <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                 <div className="relative z-10 p-3">
-                  <p className="text-[10px] text-gray-500 mb-2 text-center">Your life in years:</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] mb-2 text-center">Your life in years:</p>
                   <div className="flex flex-wrap gap-[2px]">
                     {years.map((year) => {
                       const isLived = year <= age;
@@ -116,7 +116,7 @@ export function MementoMori() {
                       );
                     })}
                   </div>
-                  <div className="flex justify-between mt-2 text-[8px] text-gray-500">
+                  <div className="flex justify-between mt-2 text-[8px] text-[var(--viz-muted)]">
                     <span>Gray = Lived</span>
                     <span>Amber = Remaining</span>
                   </div>
@@ -131,7 +131,7 @@ export function MementoMori() {
                   <p className="text-xs text-amber-400 text-center mb-2">
                     The Stoic Question:
                   </p>
-                  <p className="text-[10px] text-gray-400 text-center italic">
+                  <p className="text-[10px] text-[var(--viz-muted)] text-center italic">
                     "If this were your last week, would you spend it the way you're spending this one?"
                   </p>
                 </div>
@@ -142,10 +142,10 @@ export function MementoMori() {
                 <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
                 <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                 <div className="relative z-10 p-3 space-y-2">
-                  <p className="text-[10px] text-gray-400">
+                  <p className="text-[10px] text-[var(--viz-muted)]">
                     <span className="text-green-400">Memento Mori</span> isn't morbid—it's motivating.
                   </p>
-                  <ul className="text-[10px] text-gray-500 space-y-1">
+                  <ul className="text-[10px] text-[var(--viz-muted)] space-y-1">
                     <li>• Death awareness reduces anxiety about trivial things</li>
                     <li>• It clarifies what truly matters</li>
                     <li>• Each day becomes more precious</li>
@@ -155,14 +155,14 @@ export function MementoMori() {
 
               <button
                 onClick={() => setShowVisualization(false)}
-                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
+                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-[var(--viz-muted)] backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
               >
                 Reset
               </button>
             </motion.div>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "The Daily Stoic" by Ryan Holiday
           </p>
         </div>

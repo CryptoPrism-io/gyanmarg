@@ -47,11 +47,11 @@ export function CustomerAsHero() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               In every story, there's a <span className="text-blue-400">hero</span> and a{' '}
               <span className="text-amber-400">guide</span>.
             </p>
-            <p className="text-[10px] text-gray-500">Your customer is the hero. You are Yoda, not Luke.</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">Your customer is the hero. You are Yoda, not Luke.</p>
           </div>
 
           {/* Visual metaphor */}
@@ -62,7 +62,7 @@ export function CustomerAsHero() {
               <div className="relative z-10 p-3 text-center">
                 <p className="text-2xl mb-1">🦸</p>
                 <p className="text-xs text-blue-400 font-medium">The Hero</p>
-                <p className="text-[10px] text-gray-500">Your Customer</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Your Customer</p>
                 <p className="text-[8px] text-gray-600 mt-1">Has a problem, needs transformation</p>
               </div>
             </div>
@@ -72,7 +72,7 @@ export function CustomerAsHero() {
               <div className="relative z-10 p-3 text-center">
                 <p className="text-2xl mb-1">🧙</p>
                 <p className="text-xs text-amber-400 font-medium">The Guide</p>
-                <p className="text-[10px] text-gray-500">Your Brand</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Your Brand</p>
                 <p className="text-[8px] text-gray-600 mt-1">Has empathy, provides the plan</p>
               </div>
             </div>
@@ -87,7 +87,7 @@ export function CustomerAsHero() {
                 className={`w-8 h-8 rounded-lg text-xs transition-all ${
                   idx === activeComparison
                     ? 'bg-amber-500/20 border border-amber-500/50 text-amber-400 backdrop-blur-sm'
-                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border)] text-gray-500 hover:border-[var(--viz-border-light)]'
+                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)]'
                 }`}
               >
                 {idx + 1}
@@ -101,7 +101,7 @@ export function CustomerAsHero() {
               <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
               <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
               <div className="relative z-10 p-3 text-center">
-                <p className="text-xs text-gray-400">{comparison.aspect}</p>
+                <p className="text-xs text-[var(--viz-muted)]">{comparison.aspect}</p>
               </div>
             </div>
 
@@ -115,7 +115,7 @@ export function CustomerAsHero() {
               <div className={`absolute inset-0 border rounded-lg ${showCorrect ? 'border-red-500/20' : 'border-red-500/30'}`} />
               <div className="relative z-10 p-3">
                 <p className="text-[10px] text-red-400 uppercase mb-1">Brand as Hero:</p>
-                <p className="text-xs text-gray-400 italic">{comparison.wrong}</p>
+                <p className="text-xs text-[var(--viz-muted)] italic">{comparison.wrong}</p>
               </div>
             </motion.div>
 
@@ -140,7 +140,7 @@ export function CustomerAsHero() {
                   <div className="absolute inset-0 border border-green-500/30 rounded-lg" />
                   <div className="relative z-10 p-3">
                     <p className="text-[10px] text-green-400 uppercase mb-1">Customer as Hero:</p>
-                    <p className="text-xs text-gray-300 italic">{comparison.right}</p>
+                    <p className="text-xs text-[var(--viz-secondary)] italic">{comparison.right}</p>
                   </div>
                 </div>
 
@@ -157,7 +157,7 @@ export function CustomerAsHero() {
             )}
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Building a StoryBrand" by Donald Miller
           </p>
         </div>

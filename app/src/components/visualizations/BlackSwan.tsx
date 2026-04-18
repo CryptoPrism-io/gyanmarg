@@ -71,8 +71,8 @@ export function BlackSwan() {
         <div className="flex flex-col items-center gap-5">
           {/* Title */}
           <div className="text-center">
-            <h3 className="text-sm font-bold text-gray-200">Black Swan Events</h3>
-            <p className="text-[10px] text-gray-500">The impact of the highly improbable</p>
+            <h3 className="text-sm font-bold text-[var(--viz-secondary)]">Black Swan Events</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">The impact of the highly improbable</p>
           </div>
 
           {/* Swan visualization */}
@@ -140,7 +140,7 @@ export function BlackSwan() {
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <p className="text-[10px] text-gray-300 font-bold">THE TAILS MATTER</p>
+              <p className="text-[10px] text-[var(--viz-secondary)] font-bold">THE TAILS MATTER</p>
             </motion.div>
           </div>
 
@@ -155,7 +155,7 @@ export function BlackSwan() {
                     ? e.type === 'positive'
                       ? 'bg-green-500/20 border border-green-500/50 text-green-400'
                       : 'bg-red-500/20 border border-red-500/50 text-red-400'
-                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-500 hover:bg-[var(--viz-tile-md)]'
+                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile-md)]'
                 }`}
               >
                 {e.year}
@@ -192,14 +192,14 @@ export function BlackSwan() {
                       >
                         {event.name}
                       </h4>
-                      <p className="text-[10px] text-gray-500">{event.year}</p>
+                      <p className="text-[10px] text-[var(--viz-muted)]">{event.year}</p>
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <div className="p-2 bg-[var(--viz-tile)] backdrop-blur-sm rounded-lg border border-[var(--viz-border)]">
-                      <p className="text-[10px] text-gray-500">Impact:</p>
-                      <p className="text-xs text-gray-300">{event.impact}</p>
+                      <p className="text-[10px] text-[var(--viz-muted)]">Impact:</p>
+                      <p className="text-xs text-[var(--viz-secondary)]">{event.impact}</p>
                     </div>
                     <div
                       className={`p-2 rounded-lg backdrop-blur-sm ${
@@ -213,7 +213,7 @@ export function BlackSwan() {
                       >
                         Lesson:
                       </p>
-                      <p className="text-xs text-gray-300">{event.lesson}</p>
+                      <p className="text-xs text-[var(--viz-secondary)]">{event.lesson}</p>
                     </div>
                   </div>
                 </div>
@@ -224,7 +224,7 @@ export function BlackSwan() {
           {/* Characteristics toggle */}
           <button
             onClick={() => setShowCharacteristics(!showCharacteristics)}
-            className="text-xs text-gray-500 hover:text-gray-300"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
           >
             {showCharacteristics ? 'Hide' : 'Show'} Black Swan characteristics
           </button>
@@ -250,8 +250,8 @@ export function BlackSwan() {
                     <div className="relative p-2 flex items-center gap-2">
                       <span className="text-xl">{c.icon}</span>
                       <div>
-                        <p className="text-xs text-gray-300 font-medium">{c.trait}</p>
-                        <p className="text-[10px] text-gray-500">{c.description}</p>
+                        <p className="text-xs text-[var(--viz-secondary)] font-medium">{c.trait}</p>
+                        <p className="text-[10px] text-[var(--viz-muted)]">{c.description}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -267,7 +267,7 @@ export function BlackSwan() {
               <div className="absolute inset-0 border border-green-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-green-400 font-medium">Negative Swans</p>
-                <p className="text-[9px] text-gray-400">Limit downside, buy insurance</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Limit downside, buy insurance</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg">
@@ -275,7 +275,7 @@ export function BlackSwan() {
               <div className="absolute inset-0 border border-blue-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-blue-400 font-medium">Positive Swans</p>
-                <p className="text-[9px] text-gray-400">Maximize exposure to upside</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Maximize exposure to upside</p>
               </div>
             </div>
           </div>
@@ -285,8 +285,8 @@ export function BlackSwan() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
-              <p className="text-xs text-gray-400 leading-relaxed">
-                <span className="text-gray-200 font-medium">Nassim Taleb:</span> "The strategy for life is
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
+                <span className="text-[var(--viz-secondary)] font-medium">Nassim Taleb:</span> "The strategy for life is
                 to be convex: expose yourself to positive Black Swans while limiting exposure to negative
                 ones. The payoff asymmetry is everything."
               </p>

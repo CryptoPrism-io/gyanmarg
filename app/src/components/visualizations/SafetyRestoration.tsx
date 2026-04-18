@@ -37,7 +37,7 @@ export function SafetyRestoration() {
             <button
               onClick={() => { setPhase('detect'); setDetectedSignal(null); }}
               className={`relative z-10 px-4 py-2 rounded-lg text-xs transition-all ${
-                phase === 'detect' ? 'bg-amber-500/20 text-amber-400' : 'text-gray-500'
+                phase === 'detect' ? 'bg-amber-500/20 text-amber-400' : 'text-[var(--viz-muted)]'
               }`}
             >
               1. Detect Danger
@@ -45,7 +45,7 @@ export function SafetyRestoration() {
             <button
               onClick={() => setPhase('restore')}
               className={`relative z-10 px-4 py-2 rounded-lg text-xs transition-all ${
-                phase === 'restore' ? 'bg-green-500/20 text-green-400' : 'text-gray-500'
+                phase === 'restore' ? 'bg-green-500/20 text-green-400' : 'text-[var(--viz-muted)]'
               }`}
             >
               2. Restore Safety
@@ -62,7 +62,7 @@ export function SafetyRestoration() {
                 className="w-full max-w-xs space-y-3"
               >
                 <div className="text-center mb-2">
-                  <p className="text-xs text-gray-400">When safety is at risk, people go to:</p>
+                  <p className="text-xs text-[var(--viz-muted)]">When safety is at risk, people go to:</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
@@ -70,19 +70,19 @@ export function SafetyRestoration() {
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
                     <div className="relative z-10">
                       <p className="text-[10px] text-blue-400 uppercase">Silence</p>
-                      <p className="text-[8px] text-gray-500">Withdrawing from dialogue</p>
+                      <p className="text-[8px] text-[var(--viz-muted)]">Withdrawing from dialogue</p>
                     </div>
                   </div>
                   <div className="relative overflow-hidden bg-red-500/10 border border-red-500/30 rounded-lg p-2 text-center">
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
                     <div className="relative z-10">
                       <p className="text-[10px] text-red-400 uppercase">Violence</p>
-                      <p className="text-[8px] text-gray-500">Trying to force meaning</p>
+                      <p className="text-[8px] text-[var(--viz-muted)]">Trying to force meaning</p>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-[10px] text-gray-500 text-center">Click to detect the signal:</p>
+                <p className="text-[10px] text-[var(--viz-muted)] text-center">Click to detect the signal:</p>
                 {signals.map((signal, idx) => (
                   <motion.button
                     key={idx}
@@ -98,7 +98,7 @@ export function SafetyRestoration() {
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.01] to-transparent" />
                     <div className="relative z-10">
                       <div className="flex justify-between items-center">
-                        <span className="text-xs text-gray-300">{signal.behavior}</span>
+                        <span className="text-xs text-[var(--viz-secondary)]">{signal.behavior}</span>
                         {detectedSignal === idx && (
                           <span className={`text-[10px] px-2 py-0.5 rounded-full ${
                             signal.type === 'silence'
@@ -110,7 +110,7 @@ export function SafetyRestoration() {
                         )}
                       </div>
                       {detectedSignal === idx && (
-                        <p className="text-[10px] text-gray-500 mt-1">{signal.description}</p>
+                        <p className="text-[10px] text-[var(--viz-muted)] mt-1">{signal.description}</p>
                       )}
                     </div>
                   </motion.button>
@@ -138,7 +138,7 @@ export function SafetyRestoration() {
                 exit={{ opacity: 0, x: -20 }}
                 className="w-full max-w-xs space-y-3"
               >
-                <p className="text-[10px] text-gray-500 text-center">Safety restoration tools:</p>
+                <p className="text-[10px] text-[var(--viz-muted)] text-center">Safety restoration tools:</p>
 
                 {restorationTools.map((tool, idx) => (
                   <motion.button
@@ -152,15 +152,15 @@ export function SafetyRestoration() {
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.01] to-transparent" />
                     <div className="relative z-10">
-                      <p className={`text-xs font-medium ${selectedTool === idx ? 'text-green-400' : 'text-gray-300'}`}>
+                      <p className={`text-xs font-medium ${selectedTool === idx ? 'text-green-400' : 'text-[var(--viz-secondary)]'}`}>
                         {tool.name}
                       </p>
-                      <p className="text-[10px] text-gray-500 mt-1">{tool.description}</p>
+                      <p className="text-[10px] text-[var(--viz-muted)] mt-1">{tool.description}</p>
                       {selectedTool === idx && (
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
-                          className="mt-2 p-2 bg-[var(--viz-inner)] rounded text-[10px] text-gray-400 italic backdrop-blur-sm"
+                          className="mt-2 p-2 bg-[var(--viz-inner)] rounded text-[10px] text-[var(--viz-muted)] italic backdrop-blur-sm"
                         >
                           "{tool.example}"
                         </motion.div>
@@ -172,7 +172,7 @@ export function SafetyRestoration() {
             )}
           </AnimatePresence>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Crucial Conversations" by Kerry Patterson
           </p>
         </div>

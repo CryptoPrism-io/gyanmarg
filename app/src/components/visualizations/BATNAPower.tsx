@@ -27,8 +27,8 @@ export function BATNAPower() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-sm font-medium text-gray-300">BATNA Power Analysis</p>
-            <p className="text-[10px] text-gray-500">
+            <p className="text-sm font-medium text-[var(--viz-secondary)]">BATNA Power Analysis</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">
               Best Alternative To Negotiated Agreement
             </p>
           </div>
@@ -42,7 +42,7 @@ export function BATNAPower() {
                 animate={{ height: `${yourBatna}%` }}
               />
               <p className="text-[10px] text-blue-400 mt-2">Your BATNA</p>
-              <p className="text-xs text-gray-500">{yourBatna}%</p>
+              <p className="text-xs text-[var(--viz-muted)]">{yourBatna}%</p>
             </div>
 
             {/* Their BATNA */}
@@ -52,14 +52,14 @@ export function BATNAPower() {
                 animate={{ height: `${theirBatna}%` }}
               />
               <p className="text-[10px] text-purple-400 mt-2">Their BATNA</p>
-              <p className="text-xs text-gray-500">{theirBatna}%</p>
+              <p className="text-xs text-[var(--viz-muted)]">{theirBatna}%</p>
             </div>
           </div>
 
           {/* Sliders */}
           <div className="w-full max-w-xs space-y-3">
             <div>
-              <p className="text-[10px] text-gray-500 mb-1">
+              <p className="text-[10px] text-[var(--viz-muted)] mb-1">
                 Your alternatives (if this deal fails)
               </p>
               <input
@@ -72,7 +72,7 @@ export function BATNAPower() {
               />
             </div>
             <div>
-              <p className="text-[10px] text-gray-500 mb-1">
+              <p className="text-[10px] text-[var(--viz-muted)] mb-1">
                 Their alternatives (estimate)
               </p>
               <input
@@ -125,14 +125,14 @@ export function BATNAPower() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-white/[0.01] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-3">
-              <p className="text-[10px] text-gray-400 text-center">
+              <p className="text-[10px] text-[var(--viz-muted)] text-center">
                 <span className="text-amber-400">Key:</span> Never negotiate without knowing your BATNA.
                 The better your alternative, the more power you have to walk away.
               </p>
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Getting to Yes" by Fisher & Ury
           </p>
         </div>

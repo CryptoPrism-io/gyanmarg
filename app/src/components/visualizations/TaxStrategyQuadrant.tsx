@@ -67,7 +67,7 @@ export function TaxStrategyQuadrant() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Where you earn determines how much you keep.
             </p>
           </div>
@@ -88,15 +88,15 @@ export function TaxStrategyQuadrant() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <p className={`text-2xl font-bold ${colors.text} mb-1`}>{q.label}</p>
-                  <p className={`text-xs ${isActive ? colors.text : 'text-gray-400'}`}>{q.name}</p>
-                  <p className="text-[10px] text-gray-500">{q.taxRate}</p>
+                  <p className={`text-xs ${isActive ? colors.text : 'text-[var(--viz-muted)]'}`}>{q.name}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">{q.taxRate}</p>
                 </motion.button>
               );
             })}
           </div>
 
           {/* Arrow showing direction */}
-          <div className="flex items-center gap-2 text-[10px] text-gray-500">
+          <div className="flex items-center gap-2 text-[10px] text-[var(--viz-muted)]">
             <span className="text-red-400">E</span>
             <span>→</span>
             <span className="text-amber-400">S</span>
@@ -123,24 +123,24 @@ export function TaxStrategyQuadrant() {
 
                 <div className="space-y-2 text-[10px]">
                   <div className="flex justify-between">
-                    <span className="text-gray-500">Tax flow:</span>
-                    <span className="text-gray-300">{quadrants[activeQuadrant].description}</span>
+                    <span className="text-[var(--viz-muted)]">Tax flow:</span>
+                    <span className="text-[var(--viz-secondary)]">{quadrants[activeQuadrant].description}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-500">Deductions:</span>
-                    <span className="text-gray-300">{quadrants[activeQuadrant].deductions}</span>
+                    <span className="text-[var(--viz-muted)]">Deductions:</span>
+                    <span className="text-[var(--viz-secondary)]">{quadrants[activeQuadrant].deductions}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-500">Control:</span>
-                    <span className="text-gray-300">{quadrants[activeQuadrant].control}</span>
+                    <span className="text-[var(--viz-muted)]">Control:</span>
+                    <span className="text-[var(--viz-secondary)]">{quadrants[activeQuadrant].control}</span>
                   </div>
                 </div>
 
                 <div className="mt-3 bg-[var(--viz-inner)] backdrop-blur-sm rounded p-2">
-                  <p className="text-[10px] text-gray-500 mb-1">Strategies:</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] mb-1">Strategies:</p>
                   <div className="space-y-1">
                     {quadrants[activeQuadrant].strategies.map((s, i) => (
-                      <p key={i} className="text-[10px] text-gray-400">• {s}</p>
+                      <p key={i} className="text-[10px] text-[var(--viz-muted)]">• {s}</p>
                     ))}
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export function TaxStrategyQuadrant() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Tax-Free Wealth" by Tom Wheelwright
           </p>
         </div>

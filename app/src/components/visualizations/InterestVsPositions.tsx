@@ -52,7 +52,7 @@ export function InterestVsPositions() {
         <div className="flex flex-col items-center gap-4 w-full max-w-sm">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400 mb-1">
+            <p className="text-xs text-[var(--viz-muted)] mb-1">
               Positions are <span className="text-red-400">what you say you want</span>.
               Interests are <span className="text-green-400">why you want it</span>.
             </p>
@@ -63,10 +63,10 @@ export function InterestVsPositions() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-white/[0.01] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-3 text-center">
-              <p className="text-[10px] text-gray-500 uppercase mb-1">
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase mb-1">
                 Scenario {exampleIdx + 1}/{examples.length}
               </p>
-              <p className="text-sm text-gray-300">{example.conflict}</p>
+              <p className="text-sm text-[var(--viz-secondary)]">{example.conflict}</p>
             </div>
           </div>
 
@@ -90,7 +90,7 @@ export function InterestVsPositions() {
                   <div className="absolute inset-0 border border-red-500/30 rounded-lg" />
                   <div className="relative z-10 p-3">
                     <p className="text-[10px] text-red-400 mb-1">Person A</p>
-                    <p className="text-xs text-gray-300 italic">{example.positionA}</p>
+                    <p className="text-xs text-[var(--viz-secondary)] italic">{example.positionA}</p>
                   </div>
                 </div>
                 <div className="relative overflow-hidden rounded-lg">
@@ -98,7 +98,7 @@ export function InterestVsPositions() {
                   <div className="absolute inset-0 border border-red-500/30 rounded-lg" />
                   <div className="relative z-10 p-3">
                     <p className="text-[10px] text-red-400 mb-1">Person B</p>
-                    <p className="text-xs text-gray-300 italic">{example.positionB}</p>
+                    <p className="text-xs text-[var(--viz-secondary)] italic">{example.positionB}</p>
                   </div>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export function InterestVsPositions() {
                       <div className="absolute inset-0 border border-green-500/30 rounded-lg" />
                       <div className="relative z-10 p-3">
                         <p className="text-[10px] text-green-400 mb-1">A's Real Need</p>
-                        <p className="text-xs text-gray-300">{example.interestA}</p>
+                        <p className="text-xs text-[var(--viz-secondary)]">{example.interestA}</p>
                       </div>
                     </div>
                     <div className="relative overflow-hidden rounded-lg">
@@ -134,7 +134,7 @@ export function InterestVsPositions() {
                       <div className="absolute inset-0 border border-green-500/30 rounded-lg" />
                       <div className="relative z-10 p-3">
                         <p className="text-[10px] text-green-400 mb-1">B's Real Need</p>
-                        <p className="text-xs text-gray-300">{example.interestB}</p>
+                        <p className="text-xs text-[var(--viz-secondary)]">{example.interestB}</p>
                       </div>
                     </div>
                   </div>
@@ -152,7 +152,7 @@ export function InterestVsPositions() {
                       <p className="text-[10px] text-green-400 uppercase tracking-wider mb-1">
                         Win-Win Solution
                       </p>
-                      <p className="text-sm text-gray-200">{example.solution}</p>
+                      <p className="text-sm text-[var(--viz-secondary)]">{example.solution}</p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -166,7 +166,7 @@ export function InterestVsPositions() {
                   <div className="absolute inset-0 border border-[var(--viz-border-light)] border-dashed rounded-lg" />
                   <div className="relative z-10 p-6 text-center">
                     <p className="text-2xl mb-2">🧊</p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-[var(--viz-muted)]">
                       Hidden beneath the surface...
                     </p>
                     <p className="text-[10px] text-gray-600 mt-1">
@@ -213,7 +213,7 @@ export function InterestVsPositions() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Getting to Yes" by Roger Fisher & William Ury
           </p>
         </div>

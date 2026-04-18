@@ -72,7 +72,7 @@ export function ThreeConversations() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <p className={`text-xs font-medium text-center ${isActive ? colors.text : 'text-gray-400'}`}>
+                  <p className={`text-xs font-medium text-center ${isActive ? colors.text : 'text-[var(--viz-muted)]'}`}>
                     {layer.name}
                   </p>
                 </motion.button>
@@ -92,12 +92,12 @@ export function ThreeConversations() {
                 <p className={`text-sm font-medium ${colorMap[layers[activeLayer].color].text} mb-2`}>
                   The {layers[activeLayer].name} Conversation
                 </p>
-                <p className="text-xs text-gray-400 mb-3">{layers[activeLayer].surface}</p>
+                <p className="text-xs text-[var(--viz-muted)] mb-3">{layers[activeLayer].surface}</p>
 
-                <p className="text-[10px] text-gray-500 uppercase mb-1">Key questions:</p>
+                <p className="text-[10px] text-[var(--viz-muted)] uppercase mb-1">Key questions:</p>
                 <ul className="space-y-1 mb-3">
                   {layers[activeLayer].questions.map((q, idx) => (
-                    <li key={idx} className="text-[10px] text-gray-300">• {q}</li>
+                    <li key={idx} className="text-[10px] text-[var(--viz-secondary)]">• {q}</li>
                   ))}
                 </ul>
 
@@ -115,13 +115,13 @@ export function ThreeConversations() {
           <div className="relative overflow-hidden w-full max-w-xs rounded-lg p-3">
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
-            <p className="relative z-10 text-[10px] text-gray-400 text-center">
+            <p className="relative z-10 text-[10px] text-[var(--viz-muted)] text-center">
               💡 We often argue about "what happened" when the real issue is feelings or identity.
               Address all three layers.
             </p>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Difficult Conversations" by Douglas Stone
           </p>
         </div>

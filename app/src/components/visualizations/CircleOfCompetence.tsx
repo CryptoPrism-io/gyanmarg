@@ -105,10 +105,10 @@ export function CircleOfCompetence() {
         </motion.div>
 
         {/* Labels on circles - positioned at each ring's top edge */}
-        <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[8px] text-gray-500 whitespace-nowrap pointer-events-none opacity-70">
+        <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[8px] text-[var(--viz-muted)] whitespace-nowrap pointer-events-none opacity-70">
           Unknown Unknowns
         </div>
-        <div className="absolute top-[13%] left-1/2 -translate-x-1/2 text-[8px] text-gray-400 whitespace-nowrap pointer-events-none">
+        <div className="absolute top-[13%] left-1/2 -translate-x-1/2 text-[8px] text-[var(--viz-muted)] whitespace-nowrap pointer-events-none">
           Known Unknowns
         </div>
         <div className="absolute top-[28%] left-1/2 -translate-x-1/2 text-[9px] text-green-400 font-medium whitespace-nowrap pointer-events-none">
@@ -128,7 +128,7 @@ export function CircleOfCompetence() {
             className={`text-[10px] px-3 py-1.5 rounded-full transition-all duration-200 border ${
               activeCircle === circle.id
                 ? 'bg-white/10 text-[var(--viz-text)] border-current'
-                : 'text-gray-500 hover:text-gray-300 border-transparent hover:border-gray-600'
+                : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent hover:border-gray-600'
             }`}
             style={{
               color: activeCircle === circle.id ? circle.color : undefined,
@@ -156,8 +156,8 @@ export function CircleOfCompetence() {
             >
               {activeData.label}
             </div>
-            <p className="text-xs text-gray-400 mb-2">{activeData.description}</p>
-            <p className="text-xs text-gray-500 italic">e.g., {activeData.example}</p>
+            <p className="text-xs text-[var(--viz-muted)] mb-2">{activeData.description}</p>
+            <p className="text-xs text-[var(--viz-muted)] italic">e.g., {activeData.example}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -165,7 +165,7 @@ export function CircleOfCompetence() {
       {/* Buffett Quote */}
       <button
         onClick={() => setShowExpand(!showExpand)}
-        className="text-[10px] text-gray-500 hover:text-gray-300 transition-colors"
+        className="text-[10px] text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
       >
         {showExpand ? '▼ Hide insight' : '▶ Buffett\'s advice'}
       </button>
@@ -176,7 +176,7 @@ export function CircleOfCompetence() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="text-xs text-gray-400 italic text-center max-w-xs overflow-hidden"
+            className="text-xs text-[var(--viz-muted)] italic text-center max-w-xs overflow-hidden"
           >
             "Know your circle of competence, and stick within it. The size of that circle is not very important; knowing its boundaries, however, is vital."
             <span className="block text-amber-500 mt-1 not-italic">— Warren Buffett</span>

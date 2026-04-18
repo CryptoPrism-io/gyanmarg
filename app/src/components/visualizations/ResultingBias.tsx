@@ -65,7 +65,7 @@ export function ResultingBias() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               <span className="text-red-400">Resulting:</span> Judging decision quality by outcome alone
             </p>
           </div>
@@ -75,10 +75,10 @@ export function ResultingBias() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-4">
-              <p className="text-[10px] text-gray-500 uppercase mb-2">
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase mb-2">
                 Scenario {currentScenario + 1}/{scenarios.length}
               </p>
-              <p className="text-sm text-gray-300 mb-3">{scenario.decision}</p>
+              <p className="text-sm text-[var(--viz-secondary)] mb-3">{scenario.decision}</p>
 
               <div className={`p-2 rounded-lg backdrop-blur-sm ${
                 scenario.outcome === 'good'
@@ -97,7 +97,7 @@ export function ResultingBias() {
           {/* Question */}
           {!showExplanation ? (
             <div className="w-full max-w-xs space-y-3">
-              <p className="text-xs text-gray-400 text-center">
+              <p className="text-xs text-[var(--viz-muted)] text-center">
                 Was this a <span className="text-amber-400">good decision</span>?
               </p>
               <div className="grid grid-cols-2 gap-2">
@@ -133,7 +133,7 @@ export function ResultingBias() {
                   <p className={`text-sm font-medium ${isCorrect ? 'text-green-400' : 'text-amber-400'}`}>
                     {isCorrect ? 'Correct!' : 'Not quite!'}
                   </p>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-[var(--viz-muted)] mt-1">
                     This was a <span className={scenario.wasGoodDecision ? 'text-green-400' : 'text-red-400'}>
                       {scenario.wasGoodDecision ? 'good' : 'bad'} decision
                     </span> with a{' '}
@@ -148,7 +148,7 @@ export function ResultingBias() {
                   <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
                   <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                   <div className="relative z-10 p-3">
-                    <p className="text-xs text-gray-300">{scenario.explanation}</p>
+                    <p className="text-xs text-[var(--viz-secondary)]">{scenario.explanation}</p>
                   </div>
                 </div>
 
@@ -174,7 +174,7 @@ export function ResultingBias() {
             </AnimatePresence>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Thinking in Bets" by Annie Duke
           </p>
         </div>

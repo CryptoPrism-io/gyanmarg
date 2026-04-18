@@ -71,7 +71,7 @@ export function NetworkEffect() {
 
           {/* Connection slider */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+            <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
               <span>Connections</span>
               <span>{connections}</span>
             </div>
@@ -93,16 +93,16 @@ export function NetworkEffect() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-white/[0.01] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-4 text-center">
-              <p className="text-[10px] text-gray-500 uppercase tracking-wide">Potential Connections</p>
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide">Potential Connections</p>
               <motion.p
                 key={networkValue}
                 initial={{ scale: 1.2, color: '#22c55e' }}
                 animate={{ scale: 1, color: '#d1d5db' }}
-                className="text-3xl font-bold text-gray-300"
+                className="text-3xl font-bold text-[var(--viz-secondary)]"
               >
                 {networkValue}
               </motion.p>
-              <p className="text-[10px] text-gray-500 mt-1">
+              <p className="text-[10px] text-[var(--viz-muted)] mt-1">
                 n(n-1)/2 = {connections}x{connections - 1}/2
               </p>
             </div>
@@ -124,13 +124,13 @@ export function NetworkEffect() {
                 <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                 <div className="relative z-10 p-2 text-center">
                   <span className="text-lg">{principle.emoji}</span>
-                  <p className="text-[10px] text-gray-400 mt-1">{principle.text}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] mt-1">{principle.text}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Never Eat Alone" by Keith Ferrazzi
           </p>
         </div>

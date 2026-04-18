@@ -89,8 +89,8 @@ export function SevenCures() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-sm font-medium text-gray-300">Seven Cures for a Lean Purse</p>
-            <p className="text-[10px] text-gray-500">
+            <p className="text-sm font-medium text-[var(--viz-secondary)]">Seven Cures for a Lean Purse</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">
               Ancient wisdom for building wealth
             </p>
           </div>
@@ -106,7 +106,7 @@ export function SevenCures() {
                     ? `${colorMap[c.color].bg} ${colorMap[c.color].border} ${colorMap[c.color].text}`
                     : completed.includes(c.number)
                     ? 'bg-green-500/20 border-green-500/50 text-green-400'
-                    : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-gray-500 hover:bg-[var(--viz-tile)]'
+                    : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile)]'
                 }`}
               >
                 {completed.includes(c.number) ? '✓' : c.number}
@@ -127,18 +127,18 @@ export function SevenCures() {
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-2xl">{cure.icon}</span>
                 <div>
-                  <p className="text-[10px] text-gray-500">Cure #{cure.number}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">Cure #{cure.number}</p>
                   <p className={`text-sm font-medium ${colors.text}`}>{cure.title}</p>
                 </div>
               </div>
-              <p className="text-xs text-gray-300 mb-3">{cure.modern}</p>
+              <p className="text-xs text-[var(--viz-secondary)] mb-3">{cure.modern}</p>
 
               <button
                 onClick={() => toggleComplete(cure.number)}
                 className={`w-full py-2 rounded-lg text-xs border transition-all backdrop-blur-sm ${
                   completed.includes(cure.number)
                     ? 'bg-green-500/20 border-green-500/50 text-green-400'
-                    : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile)] hover:border-[var(--viz-border-light)]'
+                    : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile)] hover:border-[var(--viz-border-light)]'
                 }`}
               >
                 {completed.includes(cure.number) ? '✓ Practicing this' : 'Mark as practicing'}
@@ -148,7 +148,7 @@ export function SevenCures() {
 
           {/* Completion status */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               {completed.length}/7 cures adopted
             </p>
             {completed.length === 7 && (
@@ -162,7 +162,7 @@ export function SevenCures() {
             )}
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "The Richest Man in Babylon" by George Clason
           </p>
         </div>

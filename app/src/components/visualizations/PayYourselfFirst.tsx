@@ -27,10 +27,10 @@ export function PayYourselfFirst() {
             <div className="absolute inset-0 border border-amber-500/30 rounded-lg" />
             <div className="relative z-10 p-4 text-center">
               <p className="text-[10px] text-amber-400 uppercase tracking-wide">The First Law of Gold</p>
-              <p className="text-sm text-gray-300 mt-2 font-medium">
+              <p className="text-sm text-[var(--viz-secondary)] mt-2 font-medium">
                 "A part of all you earn is yours to keep"
               </p>
-              <p className="text-[10px] text-gray-500 mt-1">
+              <p className="text-[10px] text-[var(--viz-muted)] mt-1">
                 Save at least 10% before paying anyone else
               </p>
             </div>
@@ -71,7 +71,7 @@ export function PayYourselfFirst() {
             {/* Sliders */}
             <div className="space-y-3">
               <div>
-                <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+                <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
                   <span>Monthly Income</span>
                   <span>${income}</span>
                 </div>
@@ -87,7 +87,7 @@ export function PayYourselfFirst() {
               </div>
 
               <div>
-                <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+                <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
                   <span>Savings Rate</span>
                   <span>{savingsRate}%</span>
                 </div>
@@ -102,7 +102,7 @@ export function PayYourselfFirst() {
               </div>
 
               <div>
-                <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+                <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
                   <span>Time Horizon</span>
                   <span>{years} years</span>
                 </div>
@@ -124,8 +124,8 @@ export function PayYourselfFirst() {
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-white/[0.01] backdrop-blur-sm" />
               <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
               <div className="relative z-10 p-3 text-center">
-                <p className="text-[10px] text-gray-500">Total Saved</p>
-                <p className="text-lg font-bold text-gray-300">
+                <p className="text-[10px] text-[var(--viz-muted)]">Total Saved</p>
+                <p className="text-lg font-bold text-[var(--viz-secondary)]">
                   ${totalSaved.toLocaleString()}
                 </p>
               </div>
@@ -147,7 +147,7 @@ export function PayYourselfFirst() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "The Richest Man in Babylon" by George Clason
           </p>
         </div>

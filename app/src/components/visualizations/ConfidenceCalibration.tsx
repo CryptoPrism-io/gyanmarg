@@ -95,7 +95,7 @@ export function ConfidenceCalibration() {
                   <div className="absolute inset-0 border border-green-500/30 rounded-lg" />
                   <div className="relative z-10 p-3 text-center">
                     <p className="text-xl font-bold text-green-400">{accuracy.toFixed(0)}%</p>
-                    <p className="text-[10px] text-gray-500">Actual Accuracy</p>
+                    <p className="text-[10px] text-[var(--viz-muted)]">Actual Accuracy</p>
                     <p className="text-[8px] text-gray-600">{correctCount}/{responses.length} correct</p>
                   </div>
                 </div>
@@ -104,7 +104,7 @@ export function ConfidenceCalibration() {
                   <div className="absolute inset-0 border border-blue-500/30 rounded-lg" />
                   <div className="relative z-10 p-3 text-center">
                     <p className="text-xl font-bold text-blue-400">{avgConfidence.toFixed(0)}%</p>
-                    <p className="text-[10px] text-gray-500">Avg Confidence</p>
+                    <p className="text-[10px] text-[var(--viz-muted)]">Avg Confidence</p>
                   </div>
                 </div>
               </div>
@@ -131,7 +131,7 @@ export function ConfidenceCalibration() {
                     ? 'Overconfident'
                     : 'Underconfident'}
                 </p>
-                <p className="text-xs text-gray-400 text-center mt-1">
+                <p className="text-xs text-[var(--viz-muted)] text-center mt-1">
                   Gap: {calibration.toFixed(0)} percentage points
                 </p>
               </div>
@@ -140,7 +140,7 @@ export function ConfidenceCalibration() {
                 <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
                 <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                 <div className="relative z-10 p-3">
-                  <p className="text-[10px] text-gray-400">
+                  <p className="text-[10px] text-[var(--viz-muted)]">
                     <span className="text-purple-400">Perfect calibration</span> means your confidence
                     matches your accuracy. If you're 70% confident, you should be right 70% of the time.
                   </p>
@@ -149,7 +149,7 @@ export function ConfidenceCalibration() {
 
               {/* Individual results */}
               <div className="space-y-1">
-                <p className="text-[10px] text-gray-500">Your answers:</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Your answers:</p>
                 {questions.map((q, idx) => {
                   const r = responses[idx];
                   const isCorrect = r.guess === q.answer;
@@ -157,7 +157,7 @@ export function ConfidenceCalibration() {
                     <div key={idx} className={`p-2 rounded text-[10px] flex justify-between backdrop-blur-sm ${
                       isCorrect ? 'bg-green-500/[0.08]' : 'bg-red-500/[0.08]'
                     }`}>
-                      <span className="text-gray-400 truncate flex-1">{q.question.slice(0, 30)}...</span>
+                      <span className="text-[var(--viz-muted)] truncate flex-1">{q.question.slice(0, 30)}...</span>
                       <span className={isCorrect ? 'text-green-400' : 'text-red-400'}>
                         {r.confidence}% conf
                       </span>
@@ -168,13 +168,13 @@ export function ConfidenceCalibration() {
 
               <button
                 onClick={reset}
-                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
+                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-[var(--viz-muted)] backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
               >
                 Try Again
               </button>
             </motion.div>
 
-            <p className="text-[10px] text-gray-500 text-center">
+            <p className="text-[10px] text-[var(--viz-muted)] text-center">
               From "Thinking in Bets" by Annie Duke
             </p>
           </div>
@@ -196,7 +196,7 @@ export function ConfidenceCalibration() {
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Rate your confidence: How likely is this statement to be true?
             </p>
           </div>
@@ -205,10 +205,10 @@ export function ConfidenceCalibration() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-4">
-              <p className="text-[10px] text-gray-500 mb-2">
+              <p className="text-[10px] text-[var(--viz-muted)] mb-2">
                 Question {currentQ + 1}/{questions.length}
               </p>
-              <p className="text-sm text-gray-300">{q.question}</p>
+              <p className="text-sm text-[var(--viz-secondary)]">{q.question}</p>
             </div>
           </div>
 
@@ -219,7 +219,7 @@ export function ConfidenceCalibration() {
               className={`py-3 rounded-lg border text-sm transition-all backdrop-blur-sm ${
                 guess === true
                   ? 'bg-green-500/20 border-green-500/50 text-green-400'
-                  : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-500 hover:border-[var(--viz-border-light)]'
+                  : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)]'
               }`}
               whileTap={{ scale: 0.98 }}
             >
@@ -230,7 +230,7 @@ export function ConfidenceCalibration() {
               className={`py-3 rounded-lg border text-sm transition-all backdrop-blur-sm ${
                 guess === false
                   ? 'bg-red-500/20 border-red-500/50 text-red-400'
-                  : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-500 hover:border-[var(--viz-border-light)]'
+                  : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)]'
               }`}
               whileTap={{ scale: 0.98 }}
             >
@@ -246,7 +246,7 @@ export function ConfidenceCalibration() {
               className="w-full max-w-xs space-y-2"
             >
               <div className="flex justify-between text-[10px]">
-                <span className="text-gray-500">Confidence:</span>
+                <span className="text-[var(--viz-muted)]">Confidence:</span>
                 <span className="text-amber-400 font-medium">{confidence}%</span>
               </div>
               <input
@@ -271,7 +271,7 @@ export function ConfidenceCalibration() {
             </motion.div>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Thinking in Bets" by Annie Duke
           </p>
         </div>

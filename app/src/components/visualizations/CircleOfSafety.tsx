@@ -84,7 +84,7 @@ export function CircleOfSafety() {
               {['O', 'O', 'O'].map((icon, idx) => (
                 <motion.div
                   key={idx}
-                  className="text-lg text-gray-400"
+                  className="text-lg text-[var(--viz-muted)]"
                   animate={{
                     y: safetyLevel > 50 ? [0, -2, 0] : 0,
                     opacity: safetyLevel > 30 ? 1 : 0.5,
@@ -97,7 +97,7 @@ export function CircleOfSafety() {
             </div>
 
             {/* Label */}
-            <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[10px] text-gray-500">
+            <p className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[10px] text-[var(--viz-muted)]">
               Circle of Safety
             </p>
           </div>
@@ -105,7 +105,7 @@ export function CircleOfSafety() {
           {/* Controls */}
           <div className="w-full max-w-xs space-y-3">
             <div>
-              <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+              <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
                 <span>Leader Safety (trust, support)</span>
                 <span>{safetyLevel}%</span>
               </div>
@@ -119,7 +119,7 @@ export function CircleOfSafety() {
               />
             </div>
             <div>
-              <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+              <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
                 <span>External Threats</span>
                 <span>{threatLevel}%</span>
               </div>
@@ -158,7 +158,7 @@ export function CircleOfSafety() {
             </p>
           </motion.div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Leaders Eat Last" by Simon Sinek
           </p>
         </div>

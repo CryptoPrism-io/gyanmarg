@@ -277,7 +277,7 @@ export function TacticalEmpathy() {
           <div className="flex flex-col items-center gap-4">
             <div className="text-center mb-2">
               <h3 className="text-sm font-bold text-blue-400">Tactical Empathy Training</h3>
-              <p className="text-[10px] text-gray-500">Master the 5 techniques from Never Split the Difference</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Master the 5 techniques from Never Split the Difference</p>
             </div>
 
             {/* Technique cards */}
@@ -304,7 +304,7 @@ export function TacticalEmpathy() {
                       <p className="text-xs font-medium" style={{ color: tech.color }}>
                         {tech.name}
                       </p>
-                      <p className="text-[10px] text-gray-400">{tech.tip}</p>
+                      <p className="text-[10px] text-[var(--viz-muted)]">{tech.tip}</p>
                     </div>
                     <div
                       className="w-2 h-2 rounded-full"
@@ -358,7 +358,7 @@ export function TacticalEmpathy() {
                 {score >= 80 ? '🏆' : score >= 60 ? '🎯' : '💪'}
               </div>
               <h3 className="text-lg font-bold text-[var(--viz-text)] mb-1">Training Complete!</h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--viz-muted)]">
                 {score >= 80 ? 'FBI Negotiator Level!' : score >= 60 ? 'Solid Foundation!' : 'Keep Practicing!'}
               </p>
             </motion.div>
@@ -370,7 +370,7 @@ export function TacticalEmpathy() {
                 <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
                 <div className="relative z-10 p-3 text-center">
                   <p className="text-2xl font-bold text-blue-400">{score}%</p>
-                  <p className="text-[10px] text-gray-500">Rapport Score</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">Rapport Score</p>
                 </div>
               </div>
               <div className="relative overflow-hidden rounded-xl">
@@ -378,14 +378,14 @@ export function TacticalEmpathy() {
                 <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
                 <div className="relative z-10 p-3 text-center">
                   <p className="text-2xl font-bold text-purple-400">{techniquesLearned}/5</p>
-                  <p className="text-[10px] text-gray-500">Techniques Used</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">Techniques Used</p>
                 </div>
               </div>
             </div>
 
             {/* Techniques mastered */}
             <div className="w-full max-w-xs">
-              <p className="text-xs text-gray-500 mb-2">Techniques practiced:</p>
+              <p className="text-xs text-[var(--viz-muted)] mb-2">Techniques practiced:</p>
               <div className="flex flex-wrap gap-2">
                 {techniqueUsed.map((t) => (
                   <span
@@ -407,7 +407,7 @@ export function TacticalEmpathy() {
               <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
               <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative z-10 p-4">
-                <p className="text-xs text-gray-400 leading-relaxed">
+                <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                   <span className="text-blue-400 font-medium">Chris Voss:</span> "Tactical empathy
                   is understanding the feelings and mindset of another in the moment—and hearing what's
                   behind those feelings. It's emotional intelligence on steroids."
@@ -446,11 +446,11 @@ export function TacticalEmpathy() {
               <span className="text-lg">{scenario.icon}</span>
               <div>
                 <p className="text-xs font-medium text-[var(--viz-text)]">{scenario.title}</p>
-                <p className="text-[9px] text-gray-500">{scenario.context}</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">{scenario.context}</p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-[9px] text-gray-500">Rapport</p>
+              <p className="text-[9px] text-[var(--viz-muted)]">Rapport</p>
               <div className="w-16 h-2 bg-[var(--viz-inner)] rounded-full overflow-hidden">
                 <motion.div
                   className="h-full rounded-full"
@@ -501,13 +501,13 @@ export function TacticalEmpathy() {
                     }`}
                   >
                     {msg.sender === 'narrator' ? (
-                      <p className="text-[10px] text-gray-500 italic">{msg.text}</p>
+                      <p className="text-[10px] text-[var(--viz-muted)] italic">{msg.text}</p>
                     ) : (
                       <div
                         className={`max-w-[80%] px-3 py-2 rounded-xl text-xs ${
                           msg.sender === 'you'
                             ? 'bg-blue-500/20 border border-blue-500/30 text-blue-100'
-                            : 'bg-[var(--viz-inner)] text-gray-300'
+                            : 'bg-[var(--viz-inner)] text-[var(--viz-secondary)]'
                         }`}
                       >
                         {msg.text}
@@ -558,7 +558,7 @@ export function TacticalEmpathy() {
                     animate={{ opacity: 1, y: 0 }}
                     className="flex justify-start"
                   >
-                    <div className="max-w-[80%] px-3 py-2 rounded-xl text-xs bg-[var(--viz-inner)] text-gray-300">
+                    <div className="max-w-[80%] px-3 py-2 rounded-xl text-xs bg-[var(--viz-inner)] text-[var(--viz-secondary)]">
                       {scenario.choices[selectedChoice].isCorrect
                         ? scenario.goodOutcome
                         : scenario.badOutcome}
@@ -579,7 +579,7 @@ export function TacticalEmpathy() {
                 exit={{ opacity: 0 }}
                 className="w-full space-y-2"
               >
-                <p className="text-[10px] text-gray-500 text-center">Choose your response:</p>
+                <p className="text-[10px] text-[var(--viz-muted)] text-center">Choose your response:</p>
                 {scenario.choices.map((choice, i) => (
                   <motion.button
                     key={i}
@@ -591,7 +591,7 @@ export function TacticalEmpathy() {
                     <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all" />
                     <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-xl hover:border-white/[0.2] transition-all" />
                     <div className="relative z-10 p-3">
-                      <p className="text-xs text-gray-300">{choice.text}</p>
+                      <p className="text-xs text-[var(--viz-secondary)]">{choice.text}</p>
                       <div className="flex items-center gap-1 mt-1">
                         <span className="text-sm">{techniques[choice.technique].icon}</span>
                         <span
@@ -645,7 +645,7 @@ export function TacticalEmpathy() {
                           : 'Learning moment'}
                       </span>
                     </div>
-                    <p className="text-[11px] text-gray-300">
+                    <p className="text-[11px] text-[var(--viz-secondary)]">
                       {scenario.choices[selectedChoice].explanation}
                     </p>
                   </div>
@@ -670,7 +670,7 @@ export function TacticalEmpathy() {
                       >
                         {techniques[scenario.choices[selectedChoice].technique].name}
                       </p>
-                      <p className="text-[9px] text-gray-500">
+                      <p className="text-[9px] text-[var(--viz-muted)]">
                         {techniques[scenario.choices[selectedChoice].technique].tip}
                       </p>
                     </div>

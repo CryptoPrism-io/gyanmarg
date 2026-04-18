@@ -36,12 +36,12 @@ export function AckermanModel() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-amber-400">The Ackerman Model</h3>
-            <p className="text-[10px] text-gray-500">A systematic approach to price negotiation</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">A systematic approach to price negotiation</p>
           </div>
 
       {/* Target price input */}
       <div className="w-full max-w-xs">
-        <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+        <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
           <span>Your target price</span>
           <span className="text-green-400 font-bold">${targetPrice.toLocaleString()}</span>
         </div>
@@ -139,7 +139,7 @@ export function AckermanModel() {
                 ? 'bg-green-500 text-black'
                 : currentStep > index
                 ? 'bg-green-500/30 text-green-400'
-                : 'bg-gray-800 text-gray-500'
+                : 'bg-gray-800 text-[var(--viz-muted)]'
             }`}
           >
             {index + 1}
@@ -156,11 +156,11 @@ export function AckermanModel() {
       >
         <div className="flex items-center gap-2 mb-2">
           <span className="text-lg font-bold text-green-400">Step {currentStep + 1}:</span>
-          <span className="text-sm text-gray-300">{steps[currentStep].label}</span>
+          <span className="text-sm text-[var(--viz-secondary)]">{steps[currentStep].label}</span>
         </div>
-        <p className="text-xs text-gray-400 mb-2">{steps[currentStep].tip}</p>
+        <p className="text-xs text-[var(--viz-muted)] mb-2">{steps[currentStep].tip}</p>
         <div className="p-2 bg-gray-800/50 rounded-lg">
-          <p className="text-[10px] text-gray-500">Your offer:</p>
+          <p className="text-[10px] text-[var(--viz-muted)]">Your offer:</p>
           <p className="text-lg font-bold text-green-400">
             ${currentStep === 3 ? finalOffer.toLocaleString() : offers[currentStep].toLocaleString()}
           </p>
@@ -183,7 +183,7 @@ export function AckermanModel() {
 
       {/* Key insight */}
       <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-4 max-w-xs backdrop-blur-sm">
-        <p className="text-xs text-gray-400 leading-relaxed">
+        <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
           <span className="text-green-400 font-medium">Chris Voss:</span> "By using this system,
           you create the illusion of reasoned concession while secretly using psychology to
           anchor expectations and extract maximum value."

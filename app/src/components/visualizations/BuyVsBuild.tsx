@@ -56,7 +56,7 @@ export function BuyVsBuild() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Why buy a business instead of starting one?
             </p>
           </div>
@@ -69,7 +69,7 @@ export function BuyVsBuild() {
               <div className="relative z-10 p-3 text-center">
                 <p className="text-lg mb-1">🏗️</p>
                 <p className="text-xs text-amber-400 font-medium">Build</p>
-                <p className="text-[10px] text-gray-500">Start from zero</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Start from zero</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg">
@@ -78,7 +78,7 @@ export function BuyVsBuild() {
               <div className="relative z-10 p-3 text-center">
                 <p className="text-lg mb-1">🏢</p>
                 <p className="text-xs text-green-400 font-medium">Buy</p>
-                <p className="text-[10px] text-gray-500">Acquire existing</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Acquire existing</p>
               </div>
             </div>
           </div>
@@ -97,19 +97,19 @@ export function BuyVsBuild() {
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="relative z-10 p-3">
-                  <p className="text-xs text-gray-300 font-medium mb-2">{comp.factor}</p>
+                  <p className="text-xs text-[var(--viz-secondary)] font-medium mb-2">{comp.factor}</p>
                   <div className="grid grid-cols-2 gap-2">
                     <div className={`p-2 rounded text-center ${
                       comp.winner === 'build' ? 'bg-amber-500/20' : 'bg-[var(--viz-tile)]'
                     }`}>
-                      <p className={`text-[10px] ${comp.winner === 'build' ? 'text-amber-400' : 'text-gray-500'}`}>
+                      <p className={`text-[10px] ${comp.winner === 'build' ? 'text-amber-400' : 'text-[var(--viz-muted)]'}`}>
                         {comp.build}
                       </p>
                     </div>
                     <div className={`p-2 rounded text-center ${
                       comp.winner === 'buy' ? 'bg-green-500/20' : 'bg-[var(--viz-tile)]'
                     }`}>
-                      <p className={`text-[10px] ${comp.winner === 'buy' ? 'text-green-400' : 'text-gray-500'}`}>
+                      <p className={`text-[10px] ${comp.winner === 'buy' ? 'text-green-400' : 'text-[var(--viz-muted)]'}`}>
                         {comp.buy}
                       </p>
                     </div>
@@ -127,12 +127,12 @@ export function BuyVsBuild() {
               <div className="flex justify-between items-center">
                 <div className="text-center">
                   <p className="text-lg font-bold text-amber-400">1</p>
-                  <p className="text-[10px] text-gray-500">Build Wins</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">Build Wins</p>
                 </div>
-                <div className="text-[10px] text-gray-500">vs</div>
+                <div className="text-[10px] text-[var(--viz-muted)]">vs</div>
                 <div className="text-center">
                   <p className="text-lg font-bold text-green-400">5</p>
-                  <p className="text-[10px] text-gray-500">Buy Wins</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">Buy Wins</p>
                 </div>
               </div>
             </div>
@@ -150,7 +150,7 @@ export function BuyVsBuild() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Buy Then Build" by Walker Deibel
           </p>
         </div>

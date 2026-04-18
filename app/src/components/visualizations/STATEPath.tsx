@@ -84,7 +84,7 @@ export function STATEPath() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className={`text-xl font-bold ${isActive ? c.text : 'text-gray-500'}`}>
+                  <span className={`text-xl font-bold ${isActive ? c.text : 'text-[var(--viz-muted)]'}`}>
                     {s.letter}
                   </span>
                 </motion.button>
@@ -104,13 +104,13 @@ export function STATEPath() {
               <p className={`text-sm font-medium ${colors.text}`}>
                 {step.letter} - {step.name}
               </p>
-              <p className="text-xs text-gray-400 mt-1 mb-3">{step.description}</p>
+              <p className="text-xs text-[var(--viz-muted)] mt-1 mb-3">{step.description}</p>
 
               <div className="relative overflow-hidden rounded-lg p-3 mb-3">
                 <div className="absolute inset-0 bg-[var(--viz-inner)] backdrop-blur-sm" />
                 <div className="relative z-10">
-                  <p className="text-[10px] text-gray-500 uppercase mb-1">Example</p>
-                  <p className="text-xs text-gray-300 italic">"{step.example}"</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] uppercase mb-1">Example</p>
+                  <p className="text-xs text-[var(--viz-secondary)] italic">"{step.example}"</p>
                 </div>
               </div>
 
@@ -125,20 +125,20 @@ export function STATEPath() {
             <button
               onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
               disabled={activeStep === 0}
-              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all"
+              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-[var(--viz-muted)] disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all"
             >
               ← Previous
             </button>
             <button
               onClick={() => setActiveStep((prev) => Math.min(stateSteps.length - 1, prev + 1))}
               disabled={activeStep === stateSteps.length - 1}
-              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all"
+              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-[var(--viz-muted)] disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all"
             >
               Next →
             </button>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Crucial Conversations" by Kerry Patterson
           </p>
         </div>

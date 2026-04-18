@@ -50,7 +50,7 @@ export function DichotomyOfControl() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400 mb-1">
+            <p className="text-xs text-[var(--viz-muted)] mb-1">
               "Make the best use of what is in your power, and take the rest as it happens."
             </p>
             <p className="text-[10px] text-amber-400">— Epictetus</p>
@@ -69,7 +69,7 @@ export function DichotomyOfControl() {
               <div className="absolute inset-0 bg-gradient-to-br from-gray-500/[0.15] to-gray-500/[0.05] backdrop-blur-sm" />
               <div className="absolute inset-0 border border-gray-600 rounded-lg" />
               <div className="relative z-10 p-2 text-center">
-                <p className="text-[10px] text-gray-400 uppercase">Not In Your Control</p>
+                <p className="text-[10px] text-[var(--viz-muted)] uppercase">Not In Your Control</p>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@ export function DichotomyOfControl() {
                     className={`flex-1 py-2 px-3 rounded-lg border text-xs transition-all ${
                       sorted[idx] === 'control'
                         ? 'bg-green-500/20 border-green-500/50 text-green-400'
-                        : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-500 hover:border-[var(--viz-border-light)]'
+                        : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)]'
                     }`}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -93,14 +93,14 @@ export function DichotomyOfControl() {
                   <div className={`flex-[2] py-2 px-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg backdrop-blur-sm ${
                     sorted[idx] ? 'opacity-60' : ''
                   }`}>
-                    <p className="text-xs text-gray-300 text-center">{item.text}</p>
+                    <p className="text-xs text-[var(--viz-secondary)] text-center">{item.text}</p>
                   </div>
                   <motion.button
                     onClick={() => handleSort(idx, 'noControl')}
                     className={`flex-1 py-2 px-3 rounded-lg border text-xs transition-all ${
                       sorted[idx] === 'noControl'
-                        ? 'bg-gray-500/20 border-gray-500/50 text-gray-400'
-                        : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-500 hover:border-[var(--viz-border-light)]'
+                        ? 'bg-gray-500/20 border-gray-500/50 text-[var(--viz-muted)]'
+                        : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)]'
                     }`}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -131,7 +131,7 @@ export function DichotomyOfControl() {
                 <div className="absolute inset-0 border border-amber-500/30 rounded-lg" />
                 <div className="relative z-10 p-4 text-center">
                   <p className="text-2xl font-bold text-amber-400">{getScore()}/{items.length}</p>
-                  <p className="text-xs text-gray-400 mt-1">Correct answers</p>
+                  <p className="text-xs text-[var(--viz-muted)] mt-1">Correct answers</p>
                 </div>
               </div>
 
@@ -148,11 +148,11 @@ export function DichotomyOfControl() {
                           : 'bg-red-500/[0.08] border-red-500/30'
                       }`}
                     >
-                      <p className="text-xs text-gray-300">{item.text}</p>
+                      <p className="text-xs text-[var(--viz-secondary)]">{item.text}</p>
                       <span className={`text-[10px] px-2 py-0.5 rounded-full ${
                         item.controllable
                           ? 'bg-green-500/30 text-green-400'
-                          : 'bg-gray-500/30 text-gray-400'
+                          : 'bg-gray-500/30 text-[var(--viz-muted)]'
                       }`}>
                         {item.controllable ? 'Control' : 'No Control'}
                       </span>
@@ -163,14 +163,14 @@ export function DichotomyOfControl() {
 
               <button
                 onClick={reset}
-                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
+                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-[var(--viz-muted)] backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
               >
                 Try Again
               </button>
             </motion.div>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "The Daily Stoic" by Ryan Holiday
           </p>
         </div>

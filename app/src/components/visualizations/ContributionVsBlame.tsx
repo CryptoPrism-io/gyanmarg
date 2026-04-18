@@ -40,7 +40,7 @@ export function ContributionVsBlame() {
               className={`relative z-10 px-4 py-2 rounded-lg text-xs transition-all ${
                 perspective === 'blame'
                   ? 'bg-red-500/20 text-red-400'
-                  : 'text-gray-500 hover:text-gray-400'
+                  : 'text-[var(--viz-muted)] hover:text-[var(--viz-muted)]'
               }`}
             >
               Blame Mode
@@ -50,7 +50,7 @@ export function ContributionVsBlame() {
               className={`relative z-10 px-4 py-2 rounded-lg text-xs transition-all ${
                 perspective === 'contribution'
                   ? 'bg-green-500/20 text-green-400'
-                  : 'text-gray-500 hover:text-gray-400'
+                  : 'text-[var(--viz-muted)] hover:text-[var(--viz-muted)]'
               }`}
             >
               Contribution Mode
@@ -74,7 +74,7 @@ export function ContributionVsBlame() {
           {/* Content based on mode */}
           {perspective === 'blame' ? (
             <div className="w-full max-w-xs space-y-2">
-              <p className="text-[10px] text-gray-500 text-center">Common blame thoughts:</p>
+              <p className="text-[10px] text-[var(--viz-muted)] text-center">Common blame thoughts:</p>
               {blameStatements.map((statement, idx) => (
                 <div
                   key={idx}
@@ -82,7 +82,7 @@ export function ContributionVsBlame() {
                 >
                   <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
                   <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
-                  <p className="relative z-10 text-xs text-gray-400 italic">"{statement}"</p>
+                  <p className="relative z-10 text-xs text-[var(--viz-muted)] italic">"{statement}"</p>
                 </div>
               ))}
               <motion.div
@@ -96,7 +96,7 @@ export function ContributionVsBlame() {
             </div>
           ) : (
             <div className="w-full max-w-xs space-y-3">
-              <p className="text-[10px] text-gray-500 text-center">Ask yourself:</p>
+              <p className="text-[10px] text-[var(--viz-muted)] text-center">Ask yourself:</p>
               {contributionQuestions.map((question, idx) => (
                 <div
                   key={idx}
@@ -109,12 +109,12 @@ export function ContributionVsBlame() {
               ))}
 
               <div className="space-y-2">
-                <p className="text-[10px] text-gray-500">Your contribution (even 10%):</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Your contribution (even 10%):</p>
                 <textarea
                   value={myContribution}
                   onChange={(e) => setMyContribution(e.target.value)}
                   placeholder="I contributed by..."
-                  className="w-full p-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-green-500/50 focus:outline-none resize-none h-20 backdrop-blur-sm"
+                  className="w-full p-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-[var(--viz-secondary)] placeholder-gray-600 focus:border-green-500/50 focus:outline-none resize-none h-20 backdrop-blur-sm"
                 />
               </div>
 
@@ -140,7 +140,7 @@ export function ContributionVsBlame() {
                     <p className="text-[10px] text-green-400 text-center">
                       ✓ By acknowledging your contribution, you:
                     </p>
-                    <ul className="mt-2 space-y-1 text-[10px] text-gray-400">
+                    <ul className="mt-2 space-y-1 text-[10px] text-[var(--viz-muted)]">
                       <li>• Open dialogue instead of triggering defense</li>
                       <li>• Model accountability that others may follow</li>
                       <li>• Identify what YOU can change next time</li>
@@ -151,7 +151,7 @@ export function ContributionVsBlame() {
             </div>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Difficult Conversations" by Douglas Stone
           </p>
         </div>

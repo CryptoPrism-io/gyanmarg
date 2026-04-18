@@ -53,7 +53,7 @@ export function YesAndPrinciple() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               The foundation of improv: Accept and build.
             </p>
           </div>
@@ -63,7 +63,7 @@ export function YesAndPrinciple() {
             <button
               onClick={() => setMode('learn')}
               className={`px-4 py-2 rounded-lg text-xs transition-all ${
-                mode === 'learn' ? 'bg-amber-500/20 text-amber-400' : 'text-gray-500'
+                mode === 'learn' ? 'bg-amber-500/20 text-amber-400' : 'text-[var(--viz-muted)]'
               }`}
             >
               Learn
@@ -71,7 +71,7 @@ export function YesAndPrinciple() {
             <button
               onClick={() => setMode('practice')}
               className={`px-4 py-2 rounded-lg text-xs transition-all ${
-                mode === 'practice' ? 'bg-green-500/20 text-green-400' : 'text-gray-500'
+                mode === 'practice' ? 'bg-green-500/20 text-green-400' : 'text-[var(--viz-muted)]'
               }`}
             >
               Practice
@@ -84,7 +84,7 @@ export function YesAndPrinciple() {
             <div className="absolute inset-0 border border-blue-500/30 rounded-lg" />
             <div className="relative z-10 p-4">
               <p className="text-[10px] text-blue-400 uppercase mb-1">Partner says:</p>
-              <p className="text-sm text-gray-300 italic">"{scene.offer}"</p>
+              <p className="text-sm text-[var(--viz-secondary)] italic">"{scene.offer}"</p>
             </div>
           </div>
 
@@ -93,14 +93,14 @@ export function YesAndPrinciple() {
               {/* Response options */}
               {!showResult && (
                 <div className="w-full max-w-xs space-y-2">
-                  <p className="text-[10px] text-gray-500 text-center">How do you respond?</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] text-center">How do you respond?</p>
                   <motion.button
                     onClick={() => handleResponse('yesAnd')}
                     className="w-full p-3 bg-green-500/[0.08] border border-green-500/30 rounded-lg text-left hover:bg-green-500/[0.15] backdrop-blur-sm"
                     whileTap={{ scale: 0.98 }}
                   >
                     <p className="text-[10px] text-green-400 uppercase mb-1">"Yes, And..."</p>
-                    <p className="text-xs text-gray-400 italic">"{scene.yesAnd}"</p>
+                    <p className="text-xs text-[var(--viz-muted)] italic">"{scene.yesAnd}"</p>
                   </motion.button>
                   <motion.button
                     onClick={() => handleResponse('block')}
@@ -108,7 +108,7 @@ export function YesAndPrinciple() {
                     whileTap={{ scale: 0.98 }}
                   >
                     <p className="text-[10px] text-red-400 uppercase mb-1">Block</p>
-                    <p className="text-xs text-gray-400 italic">"{scene.noBlock}"</p>
+                    <p className="text-xs text-[var(--viz-muted)] italic">"{scene.noBlock}"</p>
                   </motion.button>
                 </div>
               )}
@@ -129,7 +129,7 @@ export function YesAndPrinciple() {
                     <p className={`text-sm font-medium ${response === 'yesAnd' ? 'text-green-400' : 'text-red-400'}`}>
                       {response === 'yesAnd' ? 'Scene moves forward!' : 'Scene dies.'}
                     </p>
-                    <p className="text-xs text-gray-400 mt-2">
+                    <p className="text-xs text-[var(--viz-muted)] mt-2">
                       {response === 'yesAnd'
                         ? '"Yes, And" accepts the reality and adds to it. Energy builds.'
                         : 'Blocking rejects the offer. Your partner has nowhere to go.'}
@@ -151,12 +151,12 @@ export function YesAndPrinciple() {
             /* Practice mode */
             <div className="w-full max-w-xs space-y-3">
               <div className="space-y-2">
-                <p className="text-[10px] text-gray-500">Write your "Yes, And..." response:</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Write your "Yes, And..." response:</p>
                 <textarea
                   value={userInput}
                   onChange={(e) => setUserInput(e.target.value)}
                   placeholder="Yes! And..."
-                  className="w-full p-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-green-500/50 focus:outline-none resize-none h-20 backdrop-blur-sm"
+                  className="w-full p-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-[var(--viz-secondary)] placeholder-gray-600 focus:border-green-500/50 focus:outline-none resize-none h-20 backdrop-blur-sm"
                 />
               </div>
 
@@ -167,7 +167,7 @@ export function YesAndPrinciple() {
                   className="bg-green-500/[0.08] border border-green-500/30 rounded-lg p-3 backdrop-blur-sm"
                 >
                   <p className="text-xs text-green-400">Great "Yes, And"!</p>
-                  <p className="text-[10px] text-gray-400 mt-1">
+                  <p className="text-[10px] text-[var(--viz-muted)] mt-1">
                     You accepted the offer and added something new. The scene can continue.
                   </p>
                 </motion.div>
@@ -175,7 +175,7 @@ export function YesAndPrinciple() {
 
               <button
                 onClick={nextScene}
-                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
+                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-[var(--viz-muted)] backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
               >
                 New Prompt
               </button>
@@ -187,14 +187,14 @@ export function YesAndPrinciple() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-3">
-              <p className="text-[10px] text-gray-400 text-center">
+              <p className="text-[10px] text-[var(--viz-muted)] text-center">
                 <span className="text-purple-400">Beyond improv:</span> "Yes, And" works in brainstorms,
                 negotiations, and relationships. Accept first, then build.
               </p>
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Impro" by Keith Johnstone
           </p>
         </div>

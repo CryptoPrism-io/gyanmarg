@@ -145,7 +145,7 @@ export function KnowledgeIllusion() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-purple-400">The Knowledge Illusion</h3>
-            <p className="text-[10px] text-gray-500">You know less than you think you know</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">You know less than you think you know</p>
           </div>
 
           {/* Challenge selector */}
@@ -189,7 +189,7 @@ export function KnowledgeIllusion() {
               <div className="absolute inset-0 border border-purple-500/20 rounded-2xl" />
               <div className="relative z-10">
                 <span className="text-4xl">{challenge.icon}</span>
-                <p className="text-sm text-gray-300 mt-2">{challenge.question}</p>
+                <p className="text-sm text-[var(--viz-secondary)] mt-2">{challenge.question}</p>
               </div>
             </div>
 
@@ -197,7 +197,7 @@ export function KnowledgeIllusion() {
               <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
               <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative z-10">
-                <p className="text-[10px] text-gray-500 mb-2 text-center">
+                <p className="text-[10px] text-[var(--viz-muted)] mb-2 text-center">
                   Rate your understanding before trying to explain:
                 </p>
 
@@ -265,7 +265,7 @@ export function KnowledgeIllusion() {
                 🤔
               </motion.span>
               <p className="text-sm text-amber-400 mt-2 font-medium">Think out loud...</p>
-                <p className="text-xs text-gray-400 mt-1">{challenge.prompt}</p>
+                <p className="text-xs text-[var(--viz-muted)] mt-1">{challenge.prompt}</p>
               </div>
             </div>
 
@@ -278,7 +278,7 @@ export function KnowledgeIllusion() {
               >
                 {Math.floor(thinkingTime / 60)}:{(thinkingTime % 60).toString().padStart(2, '0')}
               </motion.p>
-              <p className="text-[10px] text-gray-500">Time spent thinking</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Time spent thinking</p>
             </div>
 
             {/* Animated brain */}
@@ -337,7 +337,7 @@ export function KnowledgeIllusion() {
             className="w-full max-w-sm space-y-3"
           >
             <div className="text-center">
-              <p className="text-xs text-gray-400">Did you mention all of these?</p>
+              <p className="text-xs text-[var(--viz-muted)]">Did you mention all of these?</p>
               <p className="text-[10px] text-gray-600">Click each to reveal</p>
             </div>
 
@@ -361,7 +361,7 @@ export function KnowledgeIllusion() {
                       {revealedHints.includes(i) ? '❌' : '❓'}
                     </span>
                     <p className={`text-xs ${
-                      revealedHints.includes(i) ? 'text-gray-300' : 'text-gray-500'
+                      revealedHints.includes(i) ? 'text-[var(--viz-secondary)]' : 'text-[var(--viz-muted)]'
                     }`}>
                       {revealedHints.includes(i) ? hint : 'Tap to reveal...'}
                     </p>
@@ -376,7 +376,7 @@ export function KnowledgeIllusion() {
               <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative z-10">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-[10px] text-gray-500">Your updated confidence:</span>
+                  <span className="text-[10px] text-[var(--viz-muted)]">Your updated confidence:</span>
                   <span className="text-lg font-bold text-red-400">{Math.round(finalConfidence)}%</span>
                 </div>
                 <div className="h-3 bg-gray-800 rounded-full overflow-hidden relative">
@@ -391,7 +391,7 @@ export function KnowledgeIllusion() {
                   />
                 </div>
                 <div className="flex justify-between text-[9px] mt-1">
-                  <span className="text-gray-500">Before: {initialConfidence}%</span>
+                  <span className="text-[var(--viz-muted)]">Before: {initialConfidence}%</span>
                   <span className="text-red-400">-{Math.round(confidenceDrop)}% drop</span>
                 </div>
               </div>
@@ -474,15 +474,15 @@ export function KnowledgeIllusion() {
             <div className="grid grid-cols-3 gap-2">
               <div className="bg-purple-500/10 border border-purple-500/30 rounded-xl p-2 text-center">
                 <p className="text-lg font-bold text-purple-400">{initialConfidence}%</p>
-                <p className="text-[9px] text-gray-500">Before</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Before</p>
               </div>
               <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-2 text-center">
                 <p className="text-lg font-bold text-red-400">-{Math.round(confidenceDrop)}%</p>
-                <p className="text-[9px] text-gray-500">Drop</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Drop</p>
               </div>
               <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-2 text-center">
                 <p className="text-lg font-bold text-green-400">{Math.round(finalConfidence)}%</p>
-                <p className="text-[9px] text-gray-500">After</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">After</p>
               </div>
             </div>
 
@@ -492,13 +492,13 @@ export function KnowledgeIllusion() {
               <div className="absolute inset-0 border border-amber-500/20 rounded-xl" />
               <div className="relative z-10">
                 <p className="text-[10px] text-amber-400 font-medium">💡 Research shows:</p>
-                <p className="text-[10px] text-gray-400 mt-1">{challenge.explanation}</p>
+                <p className="text-[10px] text-[var(--viz-muted)] mt-1">{challenge.explanation}</p>
               </div>
             </div>
 
             <button
               onClick={nextChallenge}
-              className="w-full py-3 rounded-xl text-sm font-semibold bg-gray-800 border border-gray-700 text-gray-300"
+              className="w-full py-3 rounded-xl text-sm font-semibold bg-gray-800 border border-gray-700 text-[var(--viz-secondary)]"
             >
               Try Another Topic →
             </button>
@@ -511,7 +511,7 @@ export function KnowledgeIllusion() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative z-10">
-              <p className="text-xs text-gray-400 leading-relaxed text-center">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed text-center">
                 <span className="text-purple-400 font-medium">Steven Sloman:</span> "We think we know more
                 than we do because we draw on knowledge in the world and in others' heads.
                 The illusion breaks when we're asked to explain."

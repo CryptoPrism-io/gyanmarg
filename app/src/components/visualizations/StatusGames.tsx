@@ -47,7 +47,7 @@ export function StatusGames() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               There are two paths to high status. Choose wisely.
             </p>
           </div>
@@ -63,10 +63,10 @@ export function StatusGames() {
               }`}
               whileTap={{ scale: 0.98 }}
             >
-              <p className={`text-sm font-medium mb-1 ${selected === 'dominance' ? 'text-red-400' : 'text-gray-400'}`}>
+              <p className={`text-sm font-medium mb-1 ${selected === 'dominance' ? 'text-red-400' : 'text-[var(--viz-muted)]'}`}>
                 Dominance
               </p>
-              <p className="text-[10px] text-gray-500">Status through fear</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Status through fear</p>
             </motion.button>
 
             <motion.button
@@ -78,10 +78,10 @@ export function StatusGames() {
               }`}
               whileTap={{ scale: 0.98 }}
             >
-              <p className={`text-sm font-medium mb-1 ${selected === 'prestige' ? 'text-green-400' : 'text-gray-400'}`}>
+              <p className={`text-sm font-medium mb-1 ${selected === 'prestige' ? 'text-green-400' : 'text-[var(--viz-muted)]'}`}>
                 Prestige
               </p>
-              <p className="text-[10px] text-gray-500">Status through respect</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Status through respect</p>
             </motion.button>
           </div>
 
@@ -111,22 +111,22 @@ export function StatusGames() {
                       <span className={selected === 'dominance' ? 'text-red-400' : 'text-green-400'}>
                         {selected === 'dominance' ? '✗' : '✓'}
                       </span>
-                      <span className="text-xs text-gray-400">{trait}</span>
+                      <span className="text-xs text-[var(--viz-muted)]">{trait}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="bg-[var(--viz-inner)] rounded-lg p-3 space-y-2 backdrop-blur-sm">
                   <div className="flex justify-between">
-                    <span className="text-[10px] text-gray-500">Short-term:</span>
-                    <span className="text-[10px] text-gray-300">{outcomes[selected].shortTerm}</span>
+                    <span className="text-[10px] text-[var(--viz-muted)]">Short-term:</span>
+                    <span className="text-[10px] text-[var(--viz-secondary)]">{outcomes[selected].shortTerm}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-[10px] text-gray-500">Long-term:</span>
-                    <span className="text-[10px] text-gray-300">{outcomes[selected].longTerm}</span>
+                    <span className="text-[10px] text-[var(--viz-muted)]">Long-term:</span>
+                    <span className="text-[10px] text-[var(--viz-secondary)]">{outcomes[selected].longTerm}</span>
                   </div>
                   <div className="pt-2 border-t border-[var(--viz-border-light)]">
-                    <p className="text-[10px] text-gray-400">{outcomes[selected].sustainability}</p>
+                    <p className="text-[10px] text-[var(--viz-muted)]">{outcomes[selected].sustainability}</p>
                   </div>
                 </div>
               </div>
@@ -138,14 +138,14 @@ export function StatusGames() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-3">
-              <p className="text-[10px] text-gray-400 text-center">
+              <p className="text-[10px] text-[var(--viz-muted)] text-center">
                 <span className="text-amber-400">Key insight:</span> Dominance works in zero-sum games.
                 Prestige wins in collaborative environments where reputation matters.
               </p>
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "The Status Game" by Will Storr
           </p>
         </div>

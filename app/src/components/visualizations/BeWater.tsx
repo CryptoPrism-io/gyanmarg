@@ -102,7 +102,7 @@ export function BeWater() {
         <div className="flex flex-col items-center gap-5">
           <div className="text-center">
             <h3 className="text-sm font-bold text-blue-400">Be Water, My Friend</h3>
-            <p className="text-[10px] text-gray-500">Adapt like water to any circumstance</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">Adapt like water to any circumstance</p>
           </div>
 
       {/* Scenario selector */}
@@ -470,10 +470,10 @@ export function BeWater() {
           animate={{ opacity: 1, x: 0 }}
           className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-3 backdrop-blur-sm"
         >
-          <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-1">
+          <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-1">
             {scenario.icon} Challenge: {scenario.name}
           </p>
-          <p className="text-xs text-gray-300">{scenario.description}</p>
+          <p className="text-xs text-[var(--viz-secondary)]">{scenario.description}</p>
         </motion.div>
 
         <AnimatePresence mode="wait">
@@ -488,7 +488,7 @@ export function BeWater() {
               <p className="text-[10px] text-blue-400 uppercase tracking-wide mb-1">
                 💧 Water's Response
               </p>
-              <p className="text-xs text-gray-300">{scenario.adaptation}</p>
+              <p className="text-xs text-[var(--viz-secondary)]">{scenario.adaptation}</p>
               <p className="text-[10px] text-blue-400 font-medium mt-2 italic">
                 "{scenario.principle}"
               </p>
@@ -504,7 +504,7 @@ export function BeWater() {
           className={`px-4 py-2 rounded-xl text-xs font-medium border transition-all ${
             autoPlay
               ? 'bg-blue-500/20 border-blue-500/50 text-blue-400'
-              : 'border-gray-700 text-gray-400 hover:border-gray-600'
+              : 'border-gray-700 text-[var(--viz-muted)] hover:border-gray-600'
           }`}
           whileTap={{ scale: 0.95 }}
         >
@@ -512,7 +512,7 @@ export function BeWater() {
         </motion.button>
         <motion.button
           onClick={() => setCurrentScenario((currentScenario + 1) % scenarios.length)}
-          className="px-4 py-2 rounded-xl text-xs font-medium border border-gray-700 text-gray-400 hover:border-gray-600"
+          className="px-4 py-2 rounded-xl text-xs font-medium border border-gray-700 text-[var(--viz-muted)] hover:border-gray-600"
           whileTap={{ scale: 0.95 }}
         >
           Next →
@@ -521,7 +521,7 @@ export function BeWater() {
 
       {/* Bruce Lee quote */}
       <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-4 max-w-xs backdrop-blur-sm">
-        <p className="text-xs text-gray-300 italic text-center leading-relaxed">
+        <p className="text-xs text-[var(--viz-secondary)] italic text-center leading-relaxed">
           "Empty your mind. Be formless, shapeless—like water. Water can flow, or it can crash.
           Be water, my friend."
         </p>
@@ -545,7 +545,7 @@ export function BeWater() {
           >
             <span className="text-lg">{p.icon}</span>
             <p className="text-[10px] text-blue-400 font-medium">{p.title}</p>
-            <p className="text-[9px] text-gray-500">{p.text}</p>
+            <p className="text-[9px] text-[var(--viz-muted)]">{p.text}</p>
           </motion.div>
         ))}
       </div>

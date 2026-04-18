@@ -80,7 +80,7 @@ export function MindfulnessMeditation() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-purple-400">Mindfulness Meditation</h3>
-            <p className="text-[10px] text-gray-500">Train your attention, change your brain</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">Train your attention, change your brain</p>
           </div>
 
           {/* Duration selector (only when idle) */}
@@ -93,7 +93,7 @@ export function MindfulnessMeditation() {
                   className={`w-12 h-12 rounded-lg text-xs font-bold backdrop-blur-sm transition-all ${
                     totalMinutes === mins
                       ? 'bg-purple-500/80 text-[var(--viz-text)] border border-purple-400/50'
-                      : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile-md)]'
+                      : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile-md)]'
                   }`}
                 >
                   {mins}m
@@ -130,7 +130,7 @@ export function MindfulnessMeditation() {
                     className="text-center"
                   >
                     <p className="text-3xl">Meditate</p>
-                    <p className="text-xs text-gray-400 mt-2">Ready to begin</p>
+                    <p className="text-xs text-[var(--viz-muted)] mt-2">Ready to begin</p>
                   </motion.div>
                 )}
 
@@ -207,7 +207,7 @@ export function MindfulnessMeditation() {
                   animate={{ width: `${(timer / (totalMinutes * 60)) * 100}%` }}
                 />
               </div>
-              <div className="flex justify-between text-[10px] text-gray-500 mt-1">
+              <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mt-1">
                 <span>0:00</span>
                 <span>{totalMinutes}:00</span>
               </div>
@@ -244,7 +244,7 @@ export function MindfulnessMeditation() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-3">
-              <p className="text-[10px] text-gray-500 mb-2">The meditation loop:</p>
+              <p className="text-[10px] text-[var(--viz-muted)] mb-2">The meditation loop:</p>
               <div className="flex items-center justify-between text-[10px]">
                 <div className="text-center">
                   <span className="text-purple-400">Focus</span>
@@ -272,7 +272,7 @@ export function MindfulnessMeditation() {
           {/* Brain benefits toggle */}
           <button
             onClick={() => setShowBenefits(!showBenefits)}
-            className="text-xs text-gray-500 hover:text-gray-300"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
           >
             {showBenefits ? 'Hide' : 'Show'} brain changes
           </button>
@@ -305,7 +305,7 @@ export function MindfulnessMeditation() {
                       <p className="text-[10px] font-medium" style={{ color: region.color }}>
                         {region.name}
                       </p>
-                      <p className="text-[9px] text-gray-400">{region.benefit}</p>
+                      <p className="text-[9px] text-[var(--viz-muted)]">{region.benefit}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -318,7 +318,7 @@ export function MindfulnessMeditation() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                 <span className="text-purple-400 font-medium">Jon Kabat-Zinn:</span> "Mindfulness means
                 paying attention in a particular way: on purpose, in the present moment, and
                 non-judgmentally. Each return to the breath is a bicep curl for your attention."

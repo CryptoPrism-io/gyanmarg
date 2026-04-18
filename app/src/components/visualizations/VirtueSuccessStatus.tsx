@@ -58,7 +58,7 @@ export function VirtueSuccessStatus() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               We all play status games. Which one dominates your life?
             </p>
           </div>
@@ -79,7 +79,7 @@ export function VirtueSuccessStatus() {
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-lg">{game.emoji}</span>
-                      <span className={`text-sm font-medium ${isActive ? colors.text : 'text-gray-400'}`}>
+                      <span className={`text-sm font-medium ${isActive ? colors.text : 'text-[var(--viz-muted)]'}`}>
                         {game.name} Game
                       </span>
                     </div>
@@ -91,11 +91,11 @@ export function VirtueSuccessStatus() {
                       animate={{ opacity: 1, height: 'auto' }}
                       className={`${colors.bg} border ${colors.border} rounded-lg p-3 ml-4 backdrop-blur-sm`}
                     >
-                      <p className="text-xs text-gray-300 mb-2">{game.definition}</p>
+                      <p className="text-xs text-[var(--viz-secondary)] mb-2">{game.definition}</p>
                       <div className="space-y-1 text-[10px]">
-                        <p><span className="text-gray-500">Arena:</span> <span className="text-gray-400">{game.arena}</span></p>
-                        <p><span className="text-gray-500">Currency:</span> <span className="text-gray-400">{game.currency}</span></p>
-                        <p><span className="text-gray-500">Trap:</span> <span className={colors.text}>{game.weakness}</span></p>
+                        <p><span className="text-[var(--viz-muted)]">Arena:</span> <span className="text-[var(--viz-muted)]">{game.arena}</span></p>
+                        <p><span className="text-[var(--viz-muted)]">Currency:</span> <span className="text-[var(--viz-muted)]">{game.currency}</span></p>
+                        <p><span className="text-[var(--viz-muted)]">Trap:</span> <span className={colors.text}>{game.weakness}</span></p>
                       </div>
                     </motion.div>
                   )}
@@ -109,7 +109,7 @@ export function VirtueSuccessStatus() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-4">
-              <p className="text-xs text-gray-400 mb-3 text-center">
+              <p className="text-xs text-[var(--viz-muted)] mb-3 text-center">
                 How much does each game drive you?
               </p>
               {games.map((game, idx) => {
@@ -118,7 +118,7 @@ export function VirtueSuccessStatus() {
                   <div key={idx} className="mb-3">
                     <div className="flex justify-between text-[10px] mb-1">
                       <span className={colors.text}>{game.name}</span>
-                      <span className="text-gray-500">{selfAssessment[idx]}%</span>
+                      <span className="text-[var(--viz-muted)]">{selfAssessment[idx]}%</span>
                     </div>
                     <input
                       type="range"
@@ -146,7 +146,7 @@ export function VirtueSuccessStatus() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "The Status Game" by Will Storr
           </p>
         </div>

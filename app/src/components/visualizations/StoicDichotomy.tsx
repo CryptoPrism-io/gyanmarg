@@ -76,7 +76,7 @@ export function StoicDichotomy() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-blue-400">The Dichotomy of Control</h3>
-            <p className="text-[10px] text-gray-500">The foundation of Stoic wisdom</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">The foundation of Stoic wisdom</p>
           </div>
 
           {/* Quote */}
@@ -87,7 +87,7 @@ export function StoicDichotomy() {
               <p className="text-xs text-blue-400 italic text-center">
                 "Make the best use of what is in your power, and take the rest as it happens."
               </p>
-              <p className="text-[10px] text-gray-500 text-center mt-1">— Epictetus</p>
+              <p className="text-[10px] text-[var(--viz-muted)] text-center mt-1">— Epictetus</p>
             </div>
           </div>
 
@@ -125,7 +125,7 @@ export function StoicDichotomy() {
               <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
               <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative z-10">
-                <p className="text-[10px] text-gray-400 font-bold text-center mb-2">❌ NOT IN YOUR CONTROL</p>
+                <p className="text-[10px] text-[var(--viz-muted)] font-bold text-center mb-2">❌ NOT IN YOUR CONTROL</p>
                 <div className="space-y-1">
                   {noControlItems.map((item) => (
                     <motion.div
@@ -137,7 +137,7 @@ export function StoicDichotomy() {
                           ? isCorrect(item, 'no-control')
                             ? 'bg-green-500/30 text-green-300'
                             : 'bg-red-500/30 text-red-300'
-                          : 'bg-gray-500/20 text-gray-300'
+                          : 'bg-gray-500/20 text-[var(--viz-secondary)]'
                       }`}
                     >
                       {item}
@@ -151,7 +151,7 @@ export function StoicDichotomy() {
           {/* Unsorted items */}
           {unsortedItems.length > 0 && (
             <div className="w-full max-w-xs">
-              <p className="text-[10px] text-gray-500 mb-2 text-center">Click an item, then choose a category:</p>
+              <p className="text-[10px] text-[var(--viz-muted)] mb-2 text-center">Click an item, then choose a category:</p>
               <div className="flex flex-wrap gap-1.5 justify-center">
                 {unsortedItems.map((item) => (
                   <motion.button
@@ -160,7 +160,7 @@ export function StoicDichotomy() {
                     className={`px-2 py-1 rounded text-[10px] border transition-all ${
                       selectedItem?.text === item
                         ? 'bg-amber-500/20 border-amber-500 text-amber-400'
-                        : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-400 hover:border-[var(--viz-border-light)] hover:bg-[var(--viz-tile)]'
+                        : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)] hover:bg-[var(--viz-tile)]'
                     }`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -190,7 +190,7 @@ export function StoicDichotomy() {
                   handleDrop(selectedItem.text, 'no-control');
                   setSelectedItem(null);
                 }}
-                className="relative overflow-hidden px-4 py-2 rounded-lg text-xs text-gray-400">
+                className="relative overflow-hidden px-4 py-2 rounded-lg text-xs text-[var(--viz-muted)]">
                 <div className="absolute inset-0 bg-[var(--viz-tile)]" />
                 <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-lg" />
                 <span className="relative z-10">❌ Not in Control</span>
@@ -216,7 +216,7 @@ export function StoicDichotomy() {
                   </p>
                   <button
                     onClick={reset}
-                    className="relative overflow-hidden px-4 py-2 rounded-lg text-xs text-gray-300">
+                    className="relative overflow-hidden px-4 py-2 rounded-lg text-xs text-[var(--viz-secondary)]">
                     <div className="absolute inset-0 bg-[var(--viz-tile)]" />
                     <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                     <span className="relative z-10">Try Again</span>
@@ -239,7 +239,7 @@ export function StoicDichotomy() {
                   <div className="absolute inset-0 border border-green-500/20 rounded-xl" />
                   <div className="relative z-10">
                     <p className="text-[10px] text-green-400 font-medium">Focus on what you control:</p>
-                    <p className="text-[10px] text-gray-400">
+                    <p className="text-[10px] text-[var(--viz-muted)]">
                       Your thoughts, values, goals, reactions, and effort
                     </p>
                   </div>
@@ -248,8 +248,8 @@ export function StoicDichotomy() {
                   <div className="absolute inset-0 bg-[var(--viz-tile)]" />
                   <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
                   <div className="relative z-10">
-                    <p className="text-[10px] text-gray-400 font-medium">Accept what you cannot:</p>
-                    <p className="text-[10px] text-gray-500">
+                    <p className="text-[10px] text-[var(--viz-muted)] font-medium">Accept what you cannot:</p>
+                    <p className="text-[10px] text-[var(--viz-muted)]">
                       Others' opinions, external events, the past, circumstances
                     </p>
                   </div>
@@ -263,7 +263,7 @@ export function StoicDichotomy() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative z-10">
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                 <span className="text-blue-400 font-medium">Marcus Aurelius:</span> "You have power over
                 your mind—not outside events. Realize this, and you will find strength. Waste no more
                 time arguing about what a good man should be. Be one."

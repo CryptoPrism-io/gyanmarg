@@ -44,7 +44,7 @@ export function CircadianRhythm() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-purple-400">Your 24-Hour Body Clock</h3>
-            <p className="text-[10px] text-gray-500">Circadian rhythm optimization</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">Circadian rhythm optimization</p>
           </div>
 
       {/* Clock visualization */}
@@ -162,13 +162,13 @@ export function CircadianRhythm() {
             <p className="text-sm font-bold" style={{ color: currentBlock.color }}>
               {currentBlock.label}
             </p>
-            <p className="text-xs text-gray-400">{currentBlock.activity}</p>
+            <p className="text-xs text-[var(--viz-muted)]">{currentBlock.activity}</p>
           </div>
         </div>
 
         {/* Energy bar */}
         <div className="mt-3">
-          <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+          <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
             <span>Energy Level</span>
             <span style={{ color: currentBlock.color }}>{currentBlock.energy}%</span>
           </div>
@@ -187,17 +187,17 @@ export function CircadianRhythm() {
       <div className="w-full max-w-xs grid grid-cols-2 gap-2">
         <div className="p-2 bg-amber-500/10 border border-amber-500/30 rounded-lg">
           <p className="text-[10px] text-amber-400 font-medium">☀️ Morning Light</p>
-          <p className="text-[9px] text-gray-400">Get sunlight in first 30 mins</p>
+          <p className="text-[9px] text-[var(--viz-muted)]">Get sunlight in first 30 mins</p>
         </div>
         <div className="p-2 bg-purple-500/10 border border-purple-500/30 rounded-lg">
           <p className="text-[10px] text-purple-400 font-medium">🌙 Dim Lights</p>
-          <p className="text-[9px] text-gray-400">Reduce blue light after 8 PM</p>
+          <p className="text-[9px] text-[var(--viz-muted)]">Reduce blue light after 8 PM</p>
         </div>
       </div>
 
       {/* Key insight */}
       <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-4 max-w-xs backdrop-blur-sm">
-        <p className="text-xs text-gray-400 leading-relaxed">
+        <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
           <span className="text-purple-400 font-medium">Andrew Huberman:</span> "Your circadian
           rhythm is the master controller of nearly every biological process. Align your activities
           with it, don't fight against it."

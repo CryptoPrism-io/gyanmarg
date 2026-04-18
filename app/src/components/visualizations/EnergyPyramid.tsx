@@ -59,7 +59,7 @@ export function EnergyPyramid() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Energy, not time, is the fundamental currency of high performance.
             </p>
           </div>
@@ -81,10 +81,10 @@ export function EnergyPyramid() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <p className={`text-xs font-medium text-center ${isActive ? colors.text : 'text-gray-400'}`}>
+                  <p className={`text-xs font-medium text-center ${isActive ? colors.text : 'text-[var(--viz-muted)]'}`}>
                     {level.name}
                   </p>
-                  <p className="text-[8px] text-gray-500 text-center">{level.description}</p>
+                  <p className="text-[8px] text-[var(--viz-muted)] text-center">{level.description}</p>
                 </motion.button>
               );
             })}
@@ -104,17 +104,17 @@ export function EnergyPyramid() {
                 {energyLevels[activeLevel].name} Energy
               </p>
 
-              <p className="text-[10px] text-gray-500 uppercase mb-1">Self-check:</p>
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase mb-1">Self-check:</p>
               <ul className="space-y-1 mb-3">
                 {energyLevels[activeLevel].questions.map((q, idx) => (
-                  <li key={idx} className="text-[10px] text-gray-400">• {q}</li>
+                  <li key={idx} className="text-[10px] text-[var(--viz-muted)]">• {q}</li>
                 ))}
               </ul>
 
-              <p className="text-[10px] text-gray-500 uppercase mb-1">Build this energy:</p>
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase mb-1">Build this energy:</p>
               <ul className="space-y-1">
                 {energyLevels[activeLevel].practices.map((p, idx) => (
-                  <li key={idx} className="text-[10px] text-gray-300">✓ {p}</li>
+                  <li key={idx} className="text-[10px] text-[var(--viz-secondary)]">✓ {p}</li>
                 ))}
               </ul>
             </motion.div>
@@ -122,13 +122,13 @@ export function EnergyPyramid() {
 
           {/* Key insight */}
           <div className="w-full max-w-xs bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg p-3">
-            <p className="text-[10px] text-gray-400 text-center">
+            <p className="text-[10px] text-[var(--viz-muted)] text-center">
               <span className="text-amber-400">Key insight:</span> Physical energy is the foundation.
               Without it, the other levels collapse. Start from the bottom up.
             </p>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "The Power of Full Engagement" by Jim Loehr
           </p>
         </div>

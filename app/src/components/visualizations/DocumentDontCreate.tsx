@@ -48,7 +48,7 @@ export function DocumentDontCreate() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Stop trying to <span className="text-red-400">create</span> content.
             </p>
             <p className="text-sm text-green-400 font-medium">Start documenting your journey.</p>
@@ -62,7 +62,7 @@ export function DocumentDontCreate() {
               <div className="relative z-10 p-3 text-center">
                 <p className="text-lg mb-1">😰</p>
                 <p className="text-xs text-red-400 font-medium">Creating</p>
-                <p className="text-[10px] text-gray-500">Pressure, perfectionism, burnout</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Pressure, perfectionism, burnout</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg">
@@ -71,14 +71,14 @@ export function DocumentDontCreate() {
               <div className="relative z-10 p-3 text-center">
                 <p className="text-lg mb-1">📱</p>
                 <p className="text-xs text-green-400 font-medium">Documenting</p>
-                <p className="text-[10px] text-gray-500">Authentic, sustainable, easy</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Authentic, sustainable, easy</p>
               </div>
             </div>
           </div>
 
           {/* Content types */}
           <div className="w-full max-w-xs space-y-2">
-            <p className="text-[10px] text-gray-500 text-center">What can you document?</p>
+            <p className="text-[10px] text-[var(--viz-muted)] text-center">What can you document?</p>
             {contentTypes.map((content, idx) => (
               <motion.button
                 key={idx}
@@ -95,7 +95,7 @@ export function DocumentDontCreate() {
                 <div className="relative z-10 p-3">
                   <div className="flex items-center gap-2">
                     <span className="text-lg">{content.icon}</span>
-                    <span className={`text-xs ${activeType === idx ? 'text-amber-400' : 'text-gray-400'}`}>
+                    <span className={`text-xs ${activeType === idx ? 'text-amber-400' : 'text-[var(--viz-muted)]'}`}>
                       {content.type}
                     </span>
                   </div>
@@ -106,7 +106,7 @@ export function DocumentDontCreate() {
                       className="mt-2 pl-7 space-y-1"
                     >
                       {content.examples.map((ex, i) => (
-                        <p key={i} className="text-[10px] text-gray-500">• {ex}</p>
+                        <p key={i} className="text-[10px] text-[var(--viz-muted)]">• {ex}</p>
                       ))}
                     </motion.div>
                   )}
@@ -155,7 +155,7 @@ export function DocumentDontCreate() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Crushing It!" by Gary Vaynerchuk
           </p>
         </div>

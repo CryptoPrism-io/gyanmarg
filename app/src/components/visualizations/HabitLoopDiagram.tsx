@@ -163,7 +163,7 @@ export function HabitLoopDiagram({
           >
             HABIT
           </motion.div>
-          <div className="text-[10px] text-gray-400 font-medium">LOOP</div>
+          <div className="text-[10px] text-[var(--viz-muted)] font-medium">LOOP</div>
         </div>
 
         {/* Connecting arrows */}
@@ -304,7 +304,7 @@ export function HabitLoopDiagram({
               className={`text-xs px-2 py-1 rounded-full transition-all ${
                 activeStage === stage.id
                   ? 'bg-white/10 text-[var(--viz-text)]'
-                  : 'text-gray-500 hover:text-gray-300'
+                  : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]'
               }`}
               style={{
                 borderColor: activeStage === stage.id ? stage.color : 'transparent',
@@ -333,8 +333,8 @@ export function HabitLoopDiagram({
             >
               {activeStageData.label}
             </div>
-            <p className="text-xs text-gray-400 mb-2">{activeStageData.description}</p>
-            <p className="text-xs text-gray-500 italic">"{activeStageData.example}"</p>
+            <p className="text-xs text-[var(--viz-muted)] mb-2">{activeStageData.description}</p>
+            <p className="text-xs text-[var(--viz-muted)] italic">"{activeStageData.example}"</p>
           </motion.div>
         )}
       </AnimatePresence>

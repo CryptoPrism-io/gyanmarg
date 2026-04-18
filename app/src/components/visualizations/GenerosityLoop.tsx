@@ -41,7 +41,7 @@ export function GenerosityLoop() {
           {/* Balance meter */}
           <div className="w-full max-w-xs">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-[10px] text-gray-500">Relationship Bank</span>
+              <span className="text-[10px] text-[var(--viz-muted)]">Relationship Bank</span>
               <span className={`text-xs ${
                 status.color === 'green'
                   ? 'text-green-400'
@@ -85,7 +85,7 @@ export function GenerosityLoop() {
 
           {/* Actions */}
           <div className="w-full max-w-xs space-y-2">
-            <p className="text-[10px] text-gray-500 text-center uppercase tracking-wide">
+            <p className="text-[10px] text-[var(--viz-muted)] text-center uppercase tracking-wide">
               Deposit into the relationship:
             </p>
             {actions.map((action, idx) => (
@@ -101,7 +101,7 @@ export function GenerosityLoop() {
                 <div className="relative z-10 flex items-center justify-between p-3">
                   <div className="flex items-center gap-3">
                     <span className="text-lg">{action.icon}</span>
-                    <span className="text-xs text-gray-300">{action.action}</span>
+                    <span className="text-xs text-[var(--viz-secondary)]">{action.action}</span>
                   </div>
                   <span className="text-[10px] text-green-400">+{action.points}</span>
                 </div>
@@ -120,7 +120,7 @@ export function GenerosityLoop() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Never Eat Alone" by Keith Ferrazzi
           </p>
         </div>

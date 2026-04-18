@@ -70,7 +70,7 @@ export function HaloEffect() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-amber-400">The Halo Effect</h3>
-            <p className="text-[10px] text-gray-500">When one trait colors our entire perception</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">When one trait colors our entire perception</p>
           </div>
 
           {/* Visual representation */}
@@ -155,7 +155,7 @@ export function HaloEffect() {
                 className={`relative overflow-hidden px-3 py-2 rounded-lg text-xs border transition-all ${
                   selectedExample === i
                     ? 'bg-amber-500/20 border-amber-500 text-amber-400'
-                    : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-400 hover:border-[var(--viz-border-light)] hover:bg-[var(--viz-tile)]'
+                    : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)] hover:bg-[var(--viz-tile)]'
                 }`}
               >
                 {ex.icon} {ex.label.split(' ')[0]}
@@ -164,7 +164,7 @@ export function HaloEffect() {
           </div>
 
           {/* Instruction */}
-          <p className="text-[10px] text-gray-500">Click the circles to reveal the false assumptions</p>
+          <p className="text-[10px] text-[var(--viz-muted)]">Click the circles to reveal the false assumptions</p>
 
           {/* Bias list */}
           <div className="w-full max-w-xs space-y-2">
@@ -181,9 +181,9 @@ export function HaloEffect() {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs text-gray-300">
+                    <p className="text-xs text-[var(--viz-secondary)]">
                       <span className="text-amber-400">{bias.trait}</span> →{' '}
-                      <span className={revealedBiases.includes(i) ? 'line-through text-gray-500' : ''}>
+                      <span className={revealedBiases.includes(i) ? 'line-through text-[var(--viz-muted)]' : ''}>
                         {bias.assumption}
                       </span>
                     </p>
@@ -212,7 +212,7 @@ export function HaloEffect() {
             <div className="absolute inset-0 border border-green-500/20 rounded-xl" />
             <div className="relative z-10">
               <p className="text-[10px] text-green-400 font-medium">🛡️ Defense Strategy:</p>
-              <p className="text-[10px] text-gray-400">
+              <p className="text-[10px] text-[var(--viz-muted)]">
                 Evaluate each trait independently. Ask: "What evidence do I have for THIS specific claim?"
                 Don't let one positive trait create a halo of assumed virtues.
               </p>
@@ -225,7 +225,7 @@ export function HaloEffect() {
             <div className="absolute inset-0 border border-red-500/20 rounded-xl" />
             <div className="relative z-10">
               <p className="text-[10px] text-red-400 font-medium">😈 The Horn Effect (Reverse):</p>
-              <p className="text-[10px] text-gray-400">
+              <p className="text-[10px] text-[var(--viz-muted)]">
                 One negative trait can create a "devil's horns" effect—we assume other negative qualities
                 based on a single flaw.
               </p>
@@ -237,7 +237,7 @@ export function HaloEffect() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative z-10">
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                 <span className="text-amber-400 font-medium">Daniel Kahneman:</span> "The halo effect
                 helps keep our view of the world coherent and simple. But coherence is not accuracy—it
                 leads us to form first impressions that are often wrong."

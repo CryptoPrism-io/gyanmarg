@@ -75,7 +75,7 @@ export function WorkRestCycle() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Peak performers oscillate between <span className="text-blue-400">stress</span> and{' '}
               <span className="text-green-400">recovery</span>.
             </p>
@@ -109,7 +109,7 @@ export function WorkRestCycle() {
                 ? 'bg-blue-500/20 text-blue-400'
                 : phase === 'rest'
                 ? 'bg-green-500/20 text-green-400'
-                : 'bg-gray-500/20 text-gray-400'
+                : 'bg-gray-500/20 text-[var(--viz-muted)]'
             }`}>
               {phase === 'idle' ? 'Ready' : phase === 'work' ? 'Working' : 'Resting'}
             </div>
@@ -126,7 +126,7 @@ export function WorkRestCycle() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs">
                     <span className="text-blue-400">Deep Work Sprint</span>
-                    <span className="text-gray-400">{formatTime(workTime)} / {formatTime(WORK_DURATION)}</span>
+                    <span className="text-[var(--viz-muted)]">{formatTime(workTime)} / {formatTime(WORK_DURATION)}</span>
                   </div>
                   <div className="h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden">
                     <motion.div
@@ -134,7 +134,7 @@ export function WorkRestCycle() {
                       style={{ width: `${workProgress}%` }}
                     />
                   </div>
-                  <p className="text-[10px] text-gray-500 text-center">
+                  <p className="text-[10px] text-[var(--viz-muted)] text-center">
                     Stay fully engaged. No distractions.
                   </p>
                 </div>
@@ -142,7 +142,7 @@ export function WorkRestCycle() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs">
                     <span className="text-green-400">Recovery Break</span>
-                    <span className="text-gray-400">{formatTime(restTime)} / {formatTime(REST_DURATION)}</span>
+                    <span className="text-[var(--viz-muted)]">{formatTime(restTime)} / {formatTime(REST_DURATION)}</span>
                   </div>
                   <div className="h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden">
                     <motion.div
@@ -150,7 +150,7 @@ export function WorkRestCycle() {
                       style={{ width: `${restProgress}%` }}
                     />
                   </div>
-                  <p className="text-[10px] text-gray-500 text-center">
+                  <p className="text-[10px] text-[var(--viz-muted)] text-center">
                     Fully disengage. Move, breathe, reset.
                   </p>
                 </div>
@@ -172,7 +172,7 @@ export function WorkRestCycle() {
             ) : (
               <button
                 onClick={reset}
-                className="px-6 py-2 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] rounded-lg text-sm text-gray-400"
+                className="px-6 py-2 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] rounded-lg text-sm text-[var(--viz-muted)]"
               >
                 Reset
               </button>
@@ -190,13 +190,13 @@ export function WorkRestCycle() {
 
           {/* Key principle */}
           <div className="w-full max-w-xs bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg p-3">
-            <p className="text-[10px] text-gray-400 text-center">
+            <p className="text-[10px] text-[var(--viz-muted)] text-center">
               <span className="text-purple-400">The principle:</span> 90 minutes work, 20 minutes rest.
               Energy is not linear—it must be rhythmically renewed.
             </p>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "The Power of Full Engagement" by Jim Loehr
           </p>
         </div>

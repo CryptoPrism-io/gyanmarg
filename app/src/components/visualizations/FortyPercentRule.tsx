@@ -50,8 +50,8 @@ export function FortyPercentRule() {
             <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-lg" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
             <div className="relative z-10 p-4 text-center">
-              <p className="text-xs text-gray-500 uppercase tracking-wide">The 40% Rule</p>
-              <p className="text-lg text-gray-200 font-bold mt-2">
+              <p className="text-xs text-[var(--viz-muted)] uppercase tracking-wide">The 40% Rule</p>
+              <p className="text-lg text-[var(--viz-secondary)] font-bold mt-2">
                 When your mind says you're done...
               </p>
               <p className="text-2xl text-amber-400 font-bold">
@@ -130,7 +130,7 @@ export function FortyPercentRule() {
                   <div className="absolute inset-0 border border-red-500/30 rounded-lg" />
                   <div className="relative z-10 p-3 text-center">
                     <p className="text-red-400 text-sm font-medium">Your mind says QUIT!</p>
-                    <p className="text-[10px] text-gray-400 mt-1">
+                    <p className="text-[10px] text-[var(--viz-muted)] mt-1">
                       But you have 60% left in the tank...
                     </p>
                   </div>
@@ -150,7 +150,7 @@ export function FortyPercentRule() {
                 <div className="absolute inset-0 border border-amber-500/30 rounded-lg" />
                 <div className="relative z-10 p-3 text-center">
                   <p className="text-amber-400 text-sm">Accessing reserves...</p>
-                  <p className="text-[10px] text-gray-400">
+                  <p className="text-[10px] text-[var(--viz-muted)]">
                     This is where growth happens
                   </p>
                 </div>
@@ -168,14 +168,14 @@ export function FortyPercentRule() {
                   <div className="absolute inset-0 border border-green-500/30 rounded-lg" />
                   <div className="relative z-10 p-3 text-center">
                     <p className="text-green-400 text-sm font-medium">TRUE LIMIT REACHED</p>
-                    <p className="text-[10px] text-gray-400 mt-1">
+                    <p className="text-[10px] text-[var(--viz-muted)] mt-1">
                       You went 60% beyond the quit signal!
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={reset}
-                  className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-gray-400 text-xs hover:border-[var(--viz-border-light)] transition-colors"
+                  className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-[var(--viz-muted)] text-xs hover:border-[var(--viz-border-light)] transition-colors"
                 >
                   Reset
                 </button>
@@ -183,7 +183,7 @@ export function FortyPercentRule() {
             )}
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Can't Hurt Me" by David Goggins
           </p>
         </div>

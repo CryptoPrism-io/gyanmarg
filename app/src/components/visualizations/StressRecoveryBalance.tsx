@@ -42,7 +42,7 @@ export function StressRecoveryBalance() {
   const zone = getZone();
 
   const colorMap: Record<string, { bg: string; border: string; text: string }> = {
-    gray: { bg: 'bg-gray-500/10', border: 'border-gray-500/30', text: 'text-gray-400' },
+    gray: { bg: 'bg-gray-500/10', border: 'border-gray-500/30', text: 'text-[var(--viz-muted)]' },
     green: { bg: 'bg-green-500/10', border: 'border-green-500/30', text: 'text-green-400' },
     red: { bg: 'bg-red-500/10', border: 'border-red-500/30', text: 'text-red-400' },
   };
@@ -61,7 +61,7 @@ export function StressRecoveryBalance() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Growth = <span className="text-blue-400">Stress</span> +{' '}
               <span className="text-green-400">Recovery</span>
             </p>
@@ -128,7 +128,7 @@ export function StressRecoveryBalance() {
                 {zone.result}
               </span>
             </div>
-            <p className="text-xs text-gray-400">{zone.description}</p>
+            <p className="text-xs text-[var(--viz-muted)]">{zone.description}</p>
           </motion.div>
 
           {/* Zone legend */}
@@ -142,7 +142,7 @@ export function StressRecoveryBalance() {
                     : 'bg-[var(--viz-tile)] border-[var(--viz-border)]'
                 }`}
               >
-                <p className={`text-[10px] ${z.name === zone.name ? colorMap[z.color].text : 'text-gray-500'}`}>
+                <p className={`text-[10px] ${z.name === zone.name ? colorMap[z.color].text : 'text-[var(--viz-muted)]'}`}>
                   {z.name}
                 </p>
               </div>
@@ -151,13 +151,13 @@ export function StressRecoveryBalance() {
 
           {/* Key insight */}
           <div className="w-full max-w-xs bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg p-3">
-            <p className="text-[10px] text-gray-400 text-center">
+            <p className="text-[10px] text-[var(--viz-muted)] text-center">
               <span className="text-purple-400">Elite secret:</span> Growth doesn't happen during stress—
               it happens during recovery. But you need the stress first to trigger adaptation.
             </p>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Peak Performance" by Brad Stulberg
           </p>
         </div>

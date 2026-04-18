@@ -56,7 +56,7 @@ export function BlockchainBasics() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-amber-400">Blockchain Fundamentals</h3>
-            <p className="text-[10px] text-gray-500">Immutable, decentralized ledger technology</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">Immutable, decentralized ledger technology</p>
           </div>
 
           {/* Blockchain visualization */}
@@ -95,7 +95,7 @@ export function BlockchainBasics() {
 
                   <div className="relative z-10">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="text-[8px] text-gray-500">Block #{block.id}</span>
+                      <span className="text-[8px] text-[var(--viz-muted)]">Block #{block.id}</span>
                       {block.id !== 0 && showTamper && (
                         <button
                           onClick={() => tamperBlock(block.id)}
@@ -106,15 +106,15 @@ export function BlockchainBasics() {
                       )}
                     </div>
 
-                    <p className="text-[9px] text-gray-300 truncate mb-1">{block.data}</p>
+                    <p className="text-[9px] text-[var(--viz-secondary)] truncate mb-1">{block.data}</p>
 
                     <div className="space-y-0.5">
                       <div className="flex justify-between">
-                        <span className="text-[7px] text-gray-500">Hash:</span>
+                        <span className="text-[7px] text-[var(--viz-muted)]">Hash:</span>
                         <span className="text-[7px] text-green-400 font-mono">{block.hash}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-[7px] text-gray-500">Prev:</span>
+                        <span className="text-[7px] text-[var(--viz-muted)]">Prev:</span>
                         <span className="text-[7px] text-blue-400 font-mono">{block.prevHash}</span>
                       </div>
                     </div>
@@ -148,7 +148,7 @@ export function BlockchainBasics() {
                 <div className="absolute inset-0 border border-red-500/30 rounded-xl" />
                 <div className="relative z-10">
                   <p className="text-xs text-red-400 font-bold">⚠️ Tampering Detected!</p>
-                  <p className="text-[10px] text-gray-400">
+                  <p className="text-[10px] text-[var(--viz-muted)]">
                     If block #{tamperedBlock} is changed, its hash changes, breaking the link to block #
                     {tamperedBlock + 1}. Every subsequent block becomes invalid!
                   </p>
@@ -173,7 +173,7 @@ export function BlockchainBasics() {
             <button
               onClick={() => setShowTamper(!showTamper)}
               className={`relative overflow-hidden px-4 py-2 rounded-lg text-xs transition-all ${
-                showTamper ? 'text-red-400' : 'text-gray-400'
+                showTamper ? 'text-red-400' : 'text-[var(--viz-muted)]'
               }`}
             >
               {showTamper ? (
@@ -194,7 +194,7 @@ export function BlockchainBasics() {
           {/* Key concepts toggle */}
           <button
             onClick={() => setShowConcepts(!showConcepts)}
-            className="text-xs text-gray-500 hover:text-gray-300"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
           >
             {showConcepts ? '▼ Hide' : '▶ Show'} key concepts
           </button>
@@ -212,7 +212,7 @@ export function BlockchainBasics() {
                   <div className="absolute inset-0 border border-green-500/20 rounded-lg" />
                   <div className="relative z-10">
                     <p className="text-[10px] text-green-400 font-medium">🔗 Hash Linking</p>
-                    <p className="text-[9px] text-gray-400">Each block references the previous hash</p>
+                    <p className="text-[9px] text-[var(--viz-muted)]">Each block references the previous hash</p>
                   </div>
                 </div>
                 <div className="relative overflow-hidden p-2 rounded-lg">
@@ -220,7 +220,7 @@ export function BlockchainBasics() {
                   <div className="absolute inset-0 border border-blue-500/20 rounded-lg" />
                   <div className="relative z-10">
                     <p className="text-[10px] text-blue-400 font-medium">⛏️ Mining</p>
-                    <p className="text-[9px] text-gray-400">Proof of work validates new blocks</p>
+                    <p className="text-[9px] text-[var(--viz-muted)]">Proof of work validates new blocks</p>
                   </div>
                 </div>
                 <div className="relative overflow-hidden p-2 rounded-lg">
@@ -228,7 +228,7 @@ export function BlockchainBasics() {
                   <div className="absolute inset-0 border border-purple-500/20 rounded-lg" />
                   <div className="relative z-10">
                     <p className="text-[10px] text-purple-400 font-medium">🌐 Decentralized</p>
-                    <p className="text-[9px] text-gray-400">No single point of control</p>
+                    <p className="text-[9px] text-[var(--viz-muted)]">No single point of control</p>
                   </div>
                 </div>
                 <div className="relative overflow-hidden p-2 rounded-lg">
@@ -236,7 +236,7 @@ export function BlockchainBasics() {
                   <div className="absolute inset-0 border border-amber-500/20 rounded-lg" />
                   <div className="relative z-10">
                     <p className="text-[10px] text-amber-400 font-medium">🔒 Immutable</p>
-                    <p className="text-[9px] text-gray-400">Changing history is computationally impossible</p>
+                    <p className="text-[9px] text-[var(--viz-muted)]">Changing history is computationally impossible</p>
                   </div>
                 </div>
               </motion.div>
@@ -248,8 +248,8 @@ export function BlockchainBasics() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative z-10">
-              <p className="text-[10px] text-gray-500 mb-2">Why it's secure:</p>
-              <div className="space-y-1 text-[10px] text-gray-400">
+              <p className="text-[10px] text-[var(--viz-muted)] mb-2">Why it's secure:</p>
+              <div className="space-y-1 text-[10px] text-[var(--viz-muted)]">
                 <p>1. Each block contains a hash of the previous block</p>
                 <p>2. Changing any data changes the hash</p>
                 <p>3. This breaks all subsequent links</p>
@@ -264,7 +264,7 @@ export function BlockchainBasics() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative z-10">
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                 <span className="text-amber-400 font-medium">Satoshi Nakamoto:</span> "The root problem
                 with conventional currency is all the trust that's required. With blockchain, we replace
                 trust with cryptographic proof."

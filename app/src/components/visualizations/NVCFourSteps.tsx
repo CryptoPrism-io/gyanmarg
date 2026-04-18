@@ -109,7 +109,7 @@ export function NVCFourSteps() {
                 <p className={`text-sm font-medium ${colors.text} mb-1`}>
                   Step {step.num}: {step.name}
                 </p>
-                <p className="text-[10px] text-gray-400">{step.tip}</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">{step.tip}</p>
               </div>
             </div>
 
@@ -118,7 +118,7 @@ export function NVCFourSteps() {
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.01] to-transparent" />
               <div className="relative z-10">
                 <p className="text-[10px] text-red-400 uppercase tracking-wide mb-1">❌ Avoid</p>
-                <p className="text-xs text-gray-300 italic">"{step.bad}"</p>
+                <p className="text-xs text-[var(--viz-secondary)] italic">"{step.bad}"</p>
               </div>
             </div>
 
@@ -126,7 +126,7 @@ export function NVCFourSteps() {
             {!showGood ? (
               <button
                 onClick={() => setShowGood(true)}
-                className="w-full py-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-gray-400 hover:border-green-500/30 hover:bg-[var(--viz-tile)] backdrop-blur-sm transition-all"
+                className="w-full py-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-[var(--viz-muted)] hover:border-green-500/30 hover:bg-[var(--viz-tile)] backdrop-blur-sm transition-all"
               >
                 Reveal the NVC way →
               </button>
@@ -139,7 +139,7 @@ export function NVCFourSteps() {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.01] to-transparent" />
                 <div className="relative z-10">
                   <p className="text-[10px] text-green-400 uppercase tracking-wide mb-1">✓ Better</p>
-                  <p className="text-xs text-gray-300 italic">"{step.good}"</p>
+                  <p className="text-xs text-[var(--viz-secondary)] italic">"{step.good}"</p>
                 </div>
               </motion.div>
             )}
@@ -162,7 +162,7 @@ export function NVCFourSteps() {
                   </p>
                   <button
                     onClick={reset}
-                    className="px-4 py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all"
+                    className="px-4 py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-[var(--viz-muted)] backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all"
                   >
                     Start Over
                   </button>
@@ -171,7 +171,7 @@ export function NVCFourSteps() {
             </motion.div>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Nonviolent Communication" by Marshall Rosenberg
           </p>
         </div>

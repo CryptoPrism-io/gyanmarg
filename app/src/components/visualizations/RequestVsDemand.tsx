@@ -79,17 +79,17 @@ export function RequestVsDemand() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10">
-              <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-1">
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-1">
                 Scenario {activeScenario + 1}/{scenarios.length}
               </p>
-              <p className="text-sm text-gray-300">{scenario.situation}</p>
+              <p className="text-sm text-[var(--viz-secondary)]">{scenario.situation}</p>
             </div>
           </div>
 
           {/* Choose approach */}
           {!choice && (
             <div className="w-full max-w-xs space-y-2">
-              <p className="text-[10px] text-gray-500 text-center">How do you communicate?</p>
+              <p className="text-[10px] text-[var(--viz-muted)] text-center">How do you communicate?</p>
               <button
                 onClick={() => handleChoice('demand')}
                 className="relative overflow-hidden w-full p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-left hover:bg-red-500/20 transition-all"
@@ -97,7 +97,7 @@ export function RequestVsDemand() {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
                 <div className="relative z-10">
                   <p className="text-[10px] text-red-400 uppercase mb-1">Demand</p>
-                  <p className="text-xs text-gray-400 italic">"{scenario.demand}"</p>
+                  <p className="text-xs text-[var(--viz-muted)] italic">"{scenario.demand}"</p>
                 </div>
               </button>
               <button
@@ -107,7 +107,7 @@ export function RequestVsDemand() {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
                 <div className="relative z-10">
                   <p className="text-[10px] text-green-400 uppercase mb-1">Request</p>
-                  <p className="text-xs text-gray-400 italic">"{scenario.request}"</p>
+                  <p className="text-xs text-[var(--viz-muted)] italic">"{scenario.request}"</p>
                 </div>
               </button>
             </div>
@@ -120,7 +120,7 @@ export function RequestVsDemand() {
               animate={{ opacity: 1, y: 0 }}
               className="w-full max-w-xs"
             >
-              <p className="text-[10px] text-gray-500 text-center mb-2">
+              <p className="text-[10px] text-[var(--viz-muted)] text-center mb-2">
                 You used a <span className={choice === 'demand' ? 'text-red-400' : 'text-green-400'}>{choice}</span>.
                 How do they respond?
               </p>
@@ -183,13 +183,13 @@ export function RequestVsDemand() {
           <div className="relative overflow-hidden w-full max-w-xs rounded-lg p-3">
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
-            <p className="relative z-10 text-[10px] text-gray-400 text-center">
+            <p className="relative z-10 text-[10px] text-[var(--viz-muted)] text-center">
               <span className="text-green-400">The difference:</span> If "no" brings punishment or guilt,
               it was a demand disguised as a request.
             </p>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Nonviolent Communication" by Marshall Rosenberg
           </p>
         </div>

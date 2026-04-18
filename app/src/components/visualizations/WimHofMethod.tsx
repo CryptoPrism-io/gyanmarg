@@ -108,7 +108,7 @@ export function WimHofMethod() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-cyan-400">Wim Hof Method</h3>
-            <p className="text-[10px] text-gray-500">Supercharge your body with breath</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">Supercharge your body with breath</p>
           </div>
 
           {/* Round indicator */}
@@ -127,7 +127,7 @@ export function WimHofMethod() {
                 {r < round || phase === 'complete' ? (
                   <span className="text-green-400">ok</span>
                 ) : (
-                  <span className={round === r ? 'text-cyan-400' : 'text-gray-500'}>{r}</span>
+                  <span className={round === r ? 'text-cyan-400' : 'text-[var(--viz-muted)]'}>{r}</span>
                 )}
               </div>
             ))}
@@ -154,7 +154,7 @@ export function WimHofMethod() {
                   >
                     <div className="text-center">
                       <p className="text-4xl font-bold text-cyan-400">{breathCount}</p>
-                      <p className="text-[10px] text-gray-500">/{targetBreaths} breaths</p>
+                      <p className="text-[10px] text-[var(--viz-muted)]">/{targetBreaths} breaths</p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -181,7 +181,7 @@ export function WimHofMethod() {
                   >
                     <div className="text-center">
                       <p className="text-4xl font-bold text-purple-400">{formatTime(timer)}</p>
-                      <p className="text-[10px] text-gray-500">HOLD</p>
+                      <p className="text-[10px] text-[var(--viz-muted)]">HOLD</p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -202,7 +202,7 @@ export function WimHofMethod() {
                   >
                     <div className="text-center">
                       <p className="text-4xl font-bold text-green-400">{timer}</p>
-                      <p className="text-[10px] text-gray-500">RECOVERY BREATH</p>
+                      <p className="text-[10px] text-[var(--viz-muted)]">RECOVERY BREATH</p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -228,7 +228,7 @@ export function WimHofMethod() {
 
           {/* Phase instructions */}
           <div className="text-center">
-            <p className="text-sm font-medium text-gray-300">
+            <p className="text-sm font-medium text-[var(--viz-secondary)]">
               {phase === 'breathing' && 'Breathe deeply - inhale through nose, exhale through mouth'}
               {phase === 'retention' && 'Hold after exhale - let go of air and hold'}
               {phase === 'recovery' && 'Deep breath in - hold for 15 seconds'}
@@ -267,7 +267,7 @@ export function WimHofMethod() {
             {(rounds.length > 0 || breathCount > 0) && phase !== 'complete' && (
               <button
                 onClick={reset}
-                className="px-4 py-3 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] text-gray-400 rounded-xl text-xs hover:bg-[var(--viz-tile-md)]"
+                className="px-4 py-3 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] text-[var(--viz-muted)] rounded-xl text-xs hover:bg-[var(--viz-tile-md)]"
               >
                 Reset
               </button>
@@ -288,7 +288,7 @@ export function WimHofMethod() {
           {/* Results */}
           {rounds.length > 0 && (
             <div className="w-full max-w-xs">
-              <p className="text-[10px] text-gray-500 mb-2">Your retention times:</p>
+              <p className="text-[10px] text-[var(--viz-muted)] mb-2">Your retention times:</p>
               <div className="flex gap-2">
                 {rounds.map((r, i) => (
                   <div
@@ -299,7 +299,7 @@ export function WimHofMethod() {
                     <div className="absolute inset-0 border border-purple-500/20 rounded-lg" />
                     <div className="relative p-2 text-center">
                       <p className="text-lg font-bold text-purple-400">{formatTime(r.retention)}</p>
-                      <p className="text-[9px] text-gray-500">Round {i + 1}</p>
+                      <p className="text-[9px] text-[var(--viz-muted)]">Round {i + 1}</p>
                     </div>
                   </div>
                 ))}
@@ -310,7 +310,7 @@ export function WimHofMethod() {
           {/* Guide toggle */}
           <button
             onClick={() => setShowGuide(!showGuide)}
-            className="text-xs text-gray-500 hover:text-gray-300"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
           >
             {showGuide ? 'Hide' : 'Show'} method guide
           </button>
@@ -328,7 +328,7 @@ export function WimHofMethod() {
                   <div className="absolute inset-0 border border-cyan-500/20 rounded-lg" />
                   <div className="relative p-2">
                     <p className="text-[10px] text-cyan-400 font-medium">Step 1: Power Breathing</p>
-                    <p className="text-[9px] text-gray-400">30 deep breaths - fully in, let go</p>
+                    <p className="text-[9px] text-[var(--viz-muted)]">30 deep breaths - fully in, let go</p>
                   </div>
                 </div>
                 <div className="relative overflow-hidden rounded-lg">
@@ -336,7 +336,7 @@ export function WimHofMethod() {
                   <div className="absolute inset-0 border border-purple-500/20 rounded-lg" />
                   <div className="relative p-2">
                     <p className="text-[10px] text-purple-400 font-medium">Step 2: Retention</p>
-                    <p className="text-[9px] text-gray-400">Hold after exhale as long as comfortable</p>
+                    <p className="text-[9px] text-[var(--viz-muted)]">Hold after exhale as long as comfortable</p>
                   </div>
                 </div>
                 <div className="relative overflow-hidden rounded-lg">
@@ -344,7 +344,7 @@ export function WimHofMethod() {
                   <div className="absolute inset-0 border border-green-500/20 rounded-lg" />
                   <div className="relative p-2">
                     <p className="text-[10px] text-green-400 font-medium">Step 3: Recovery</p>
-                    <p className="text-[9px] text-gray-400">Deep breath in, hold 15 seconds</p>
+                    <p className="text-[9px] text-[var(--viz-muted)]">Deep breath in, hold 15 seconds</p>
                   </div>
                 </div>
               </motion.div>
@@ -356,7 +356,7 @@ export function WimHofMethod() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                 <span className="text-cyan-400 font-medium">Wim Hof:</span> "The cold is my teacher.
                 The breath is my tool. Together they unlock the body's hidden potential - reducing
                 inflammation, boosting immunity, and conquering stress."

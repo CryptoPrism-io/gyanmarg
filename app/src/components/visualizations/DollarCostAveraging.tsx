@@ -59,12 +59,12 @@ export function DollarCostAveraging() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-blue-400">Dollar Cost Averaging</h3>
-            <p className="text-[10px] text-gray-500">Invest consistently, regardless of price</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">Invest consistently, regardless of price</p>
           </div>
 
       {/* Investment slider */}
       <div className="w-full max-w-xs">
-        <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+        <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
           <span>Monthly investment</span>
           <span className="text-blue-400 font-bold">${monthlyInvestment}</span>
         </div>
@@ -141,10 +141,10 @@ export function DollarCostAveraging() {
       {/* Results grid */}
       <div className="w-full max-w-xs grid grid-cols-3 gap-2">
         <div className="bg-gray-500/10 border border-gray-500/30 rounded-xl p-2 text-center">
-          <p className="text-sm font-bold text-gray-400">
+          <p className="text-sm font-bold text-[var(--viz-muted)]">
             ${data.totalInvested.toLocaleString()}
           </p>
-          <p className="text-[8px] text-gray-500">Invested</p>
+          <p className="text-[8px] text-[var(--viz-muted)]">Invested</p>
         </div>
         <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-2 text-center">
           <p className="text-sm font-bold text-green-400">
@@ -179,7 +179,7 @@ export function DollarCostAveraging() {
       {/* Comparison toggle */}
       <button
         onClick={() => setShowComparison(!showComparison)}
-        className="text-xs text-gray-500 hover:text-gray-300"
+        className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
       >
         {showComparison ? '▼ Hide' : '▶ Compare to'} lump sum
       </button>
@@ -207,15 +207,15 @@ export function DollarCostAveraging() {
 
       {/* How it works */}
       <div className="w-full max-w-xs p-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl backdrop-blur-sm">
-        <p className="text-[10px] text-gray-500 mb-2">How DCA works:</p>
+        <p className="text-[10px] text-[var(--viz-muted)] mb-2">How DCA works:</p>
         <div className="space-y-1">
-          <div className="flex items-center gap-2 text-[10px] text-gray-400">
+          <div className="flex items-center gap-2 text-[10px] text-[var(--viz-muted)]">
             <span className="text-green-400">↓</span> Low prices = Buy more shares
           </div>
-          <div className="flex items-center gap-2 text-[10px] text-gray-400">
+          <div className="flex items-center gap-2 text-[10px] text-[var(--viz-muted)]">
             <span className="text-red-400">↑</span> High prices = Buy fewer shares
           </div>
-          <div className="flex items-center gap-2 text-[10px] text-gray-400">
+          <div className="flex items-center gap-2 text-[10px] text-[var(--viz-muted)]">
             <span className="text-blue-400">→</span> Result = Lower average cost
           </div>
         </div>
@@ -223,7 +223,7 @@ export function DollarCostAveraging() {
 
       {/* Key insight */}
       <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-4 max-w-xs backdrop-blur-sm">
-        <p className="text-xs text-gray-400 leading-relaxed">
+        <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
           <span className="text-blue-400 font-medium">Benjamin Graham:</span> "The investor's chief
           problem—and even his worst enemy—is likely to be himself." DCA removes emotion from
           investing and builds wealth systematically.

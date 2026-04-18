@@ -36,8 +36,8 @@ export function CookieJar() {
           {/* Header */}
           <div className="text-center">
             <p className="text-2xl mb-1">🍪</p>
-            <p className="text-sm font-medium text-gray-300">The Cookie Jar</p>
-            <p className="text-[10px] text-gray-500">
+            <p className="text-sm font-medium text-[var(--viz-secondary)]">The Cookie Jar</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">
               Your bank of past victories to draw strength from
             </p>
           </div>
@@ -66,7 +66,7 @@ export function CookieJar() {
 
           {/* Add cookie */}
           <div className="w-full max-w-xs">
-            <p className="text-[10px] text-gray-500 mb-2">Add a past victory:</p>
+            <p className="text-[10px] text-[var(--viz-muted)] mb-2">Add a past victory:</p>
             <div className="flex gap-2">
               <input
                 type="text"
@@ -74,7 +74,7 @@ export function CookieJar() {
                 onChange={(e) => setNewCookie(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && addCookie()}
                 placeholder="I overcame..."
-                className="flex-1 px-3 py-2 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-amber-500/50 focus:outline-none transition-colors"
+                className="flex-1 px-3 py-2 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-[var(--viz-secondary)] placeholder-gray-600 focus:border-amber-500/50 focus:outline-none transition-colors"
               />
               <button
                 onClick={addCookie}
@@ -92,7 +92,7 @@ export function CookieJar() {
                   onClick={() => {
                     setCookies((prev) => [...prev, sample]);
                   }}
-                  className="px-2 py-1 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded text-[8px] text-gray-500 hover:text-gray-400 hover:border-[var(--viz-border-light)] transition-colors"
+                  className="px-2 py-1 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded text-[8px] text-[var(--viz-muted)] hover:text-[var(--viz-muted)] hover:border-[var(--viz-border-light)] transition-colors"
                 >
                   + {sample.slice(0, 20)}...
                 </button>
@@ -107,7 +107,7 @@ export function CookieJar() {
               className={`w-full py-2 rounded-lg text-xs border transition-all ${
                 isStruggling
                   ? 'bg-red-500/20 border-red-500/30 text-red-400'
-                  : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-400 hover:border-[var(--viz-border-light)]'
+                  : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)]'
               }`}
             >
               {isStruggling ? "I'm struggling right now..." : 'Simulate: Feeling like quitting'}
@@ -139,7 +139,7 @@ export function CookieJar() {
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="relative z-10 p-3">
-                        <span className="text-xs text-gray-300">🍪 {cookie}</span>
+                        <span className="text-xs text-[var(--viz-secondary)]">🍪 {cookie}</span>
                       </div>
                     </motion.button>
                   ))}
@@ -165,12 +165,12 @@ export function CookieJar() {
           </AnimatePresence>
 
           {cookies.length === 0 && (
-            <p className="text-[10px] text-gray-500 text-center">
+            <p className="text-[10px] text-[var(--viz-muted)] text-center">
               Start filling your jar with past victories
             </p>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Can't Hurt Me" by David Goggins
           </p>
         </div>

@@ -46,8 +46,8 @@ export function JawDroppingMoment() {
               <div className="absolute inset-0 border border-rose-500/20 rounded-lg" />
               <div className="relative z-10">
                 <p className="text-2xl mb-2">💥</p>
-                <p className="text-xs text-gray-300 font-medium">Jaw-Dropping Moments</p>
-                <p className="text-[10px] text-gray-500 mt-1">
+                <p className="text-xs text-[var(--viz-secondary)] font-medium">Jaw-Dropping Moments</p>
+                <p className="text-[10px] text-[var(--viz-muted)] mt-1">
                   Emotionally charged events that audiences remember forever
                 </p>
               </div>
@@ -87,10 +87,10 @@ export function JawDroppingMoment() {
                   <p className="text-[10px] text-rose-400 uppercase tracking-wide">
                     {moment.speaker}
                   </p>
-                  <p className="text-sm text-gray-300 mt-1 font-medium">
+                  <p className="text-sm text-[var(--viz-secondary)] mt-1 font-medium">
                     {moment.moment}
                   </p>
-                  <p className="text-[10px] text-gray-500 mt-1">
+                  <p className="text-[10px] text-[var(--viz-muted)] mt-1">
                     Topic: {moment.topic}
                   </p>
                 </div>
@@ -108,13 +108,13 @@ export function JawDroppingMoment() {
                         <p className="text-[10px] text-rose-400 uppercase tracking-wide mb-1">
                           Why It Worked
                         </p>
-                        <p className="text-xs text-gray-300">{moment.impact}</p>
+                        <p className="text-xs text-[var(--viz-secondary)]">{moment.impact}</p>
                       </div>
                     </motion.div>
                   ) : (
                     <motion.button
                       onClick={() => setShowImpact(true)}
-                      className="w-full p-3 text-[10px] text-gray-500 hover:text-rose-400 transition-colors"
+                      className="w-full p-3 text-[10px] text-[var(--viz-muted)] hover:text-rose-400 transition-colors"
                     >
                       Reveal the impact →
                     </motion.button>
@@ -130,7 +130,7 @@ export function JawDroppingMoment() {
               <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
               <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
               <div className="relative z-10">
-                <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2 text-center">
+                <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2 text-center">
                   The Formula
                 </p>
                 <div className="flex items-center justify-center gap-2 text-xs">
@@ -153,7 +153,7 @@ export function JawDroppingMoment() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Talk Like TED" by Carmine Gallo
           </p>
         </div>

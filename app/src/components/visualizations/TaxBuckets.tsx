@@ -60,7 +60,7 @@ export function TaxBuckets() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               The wealthy don't earn more—they earn in the <span className="text-green-400">right buckets</span>.
             </p>
           </div>
@@ -84,7 +84,7 @@ export function TaxBuckets() {
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <span className="text-lg">{bucket.icon}</span>
-                        <span className={`text-sm font-medium ${isActive ? colors.text : 'text-gray-400'}`}>
+                        <span className={`text-sm font-medium ${isActive ? colors.text : 'text-[var(--viz-muted)]'}`}>
                           {bucket.name}
                         </span>
                       </div>
@@ -99,13 +99,13 @@ export function TaxBuckets() {
                         animate={{ opacity: 1, height: 'auto' }}
                         className="mt-3 space-y-2"
                       >
-                        <p className="text-[10px] text-gray-400">{bucket.description}</p>
+                        <p className="text-[10px] text-[var(--viz-muted)]">{bucket.description}</p>
 
                         <div className="bg-[var(--viz-inner)] backdrop-blur-sm rounded p-2">
-                          <p className="text-[10px] text-gray-500">Examples:</p>
+                          <p className="text-[10px] text-[var(--viz-muted)]">Examples:</p>
                           <div className="flex flex-wrap gap-1 mt-1">
                             {bucket.examples.map((ex, i) => (
-                              <span key={i} className="text-[10px] px-2 py-0.5 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded text-gray-400">
+                              <span key={i} className="text-[10px] px-2 py-0.5 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded text-[var(--viz-muted)]">
                                 {ex}
                               </span>
                             ))}
@@ -130,7 +130,7 @@ export function TaxBuckets() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-4">
-              <p className="text-xs text-gray-400 mb-3 text-center">
+              <p className="text-xs text-[var(--viz-muted)] mb-3 text-center">
                 $100,000 in each bucket keeps:
               </p>
               <div className="space-y-2">
@@ -140,7 +140,7 @@ export function TaxBuckets() {
                     <div className="w-24 h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden">
                       <div className="w-[70%] h-full bg-red-500" />
                     </div>
-                    <span className="text-xs text-gray-300">~$70,000</span>
+                    <span className="text-xs text-[var(--viz-secondary)]">~$70,000</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
@@ -149,7 +149,7 @@ export function TaxBuckets() {
                     <div className="w-24 h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden">
                       <div className="w-[75%] h-full bg-amber-500" />
                     </div>
-                    <span className="text-xs text-gray-300">~$75,000</span>
+                    <span className="text-xs text-[var(--viz-secondary)]">~$75,000</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
@@ -158,14 +158,14 @@ export function TaxBuckets() {
                     <div className="w-24 h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden">
                       <div className="w-full h-full bg-green-500" />
                     </div>
-                    <span className="text-xs text-gray-300">$100,000</span>
+                    <span className="text-xs text-[var(--viz-secondary)]">$100,000</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Tax-Free Wealth" by Tom Wheelwright
           </p>
         </div>

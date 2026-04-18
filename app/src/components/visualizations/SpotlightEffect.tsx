@@ -60,7 +60,7 @@ export function SpotlightEffect() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-amber-400">The Spotlight Effect</h3>
-            <p className="text-[10px] text-gray-500">You're not the center of everyone's attention</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">You're not the center of everyone's attention</p>
           </div>
 
           {/* Interactive spotlight */}
@@ -105,7 +105,7 @@ export function SpotlightEffect() {
 
           {/* Spotlight size control */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+            <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
               <span>Perceived attention on you</span>
               <span className="text-amber-400">{spotlightSize}%</span>
             </div>
@@ -148,8 +148,8 @@ export function SpotlightEffect() {
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
               <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative p-3">
-                <p className="text-xs text-gray-300 font-medium mb-1">Situation:</p>
-                <p className="text-xs text-gray-400">{scenario.situation}</p>
+                <p className="text-xs text-[var(--viz-secondary)] font-medium mb-1">Situation:</p>
+                <p className="text-xs text-[var(--viz-muted)]">{scenario.situation}</p>
               </div>
             </div>
 
@@ -158,7 +158,7 @@ export function SpotlightEffect() {
               <div className="absolute inset-0 border border-red-500/20 rounded-xl" />
               <div className="relative p-3">
                 <p className="text-xs text-red-400 font-medium mb-1">Your Fear:</p>
-                <p className="text-xs text-gray-400">{scenario.yourFear}</p>
+                <p className="text-xs text-[var(--viz-muted)]">{scenario.yourFear}</p>
               </div>
             </div>
 
@@ -167,7 +167,7 @@ export function SpotlightEffect() {
               <div className="absolute inset-0 border border-green-500/20 rounded-xl" />
               <div className="relative p-3">
                 <p className="text-xs text-green-400 font-medium mb-1">Reality:</p>
-                <p className="text-xs text-gray-400">{scenario.reality}</p>
+                <p className="text-xs text-[var(--viz-muted)]">{scenario.reality}</p>
               </div>
             </div>
 
@@ -177,7 +177,7 @@ export function SpotlightEffect() {
               <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative p-3">
                 <div className="flex justify-between text-[10px] mb-2">
-                  <span className="text-gray-500">Actual attention on you:</span>
+                  <span className="text-[var(--viz-muted)]">Actual attention on you:</span>
                   <span className="text-amber-400 font-bold">{scenario.percentage}%</span>
                 </div>
                 <div className="h-3 bg-gray-800/50 rounded-full overflow-hidden">
@@ -199,7 +199,7 @@ export function SpotlightEffect() {
               <div className="absolute inset-0 border border-amber-500/20 rounded-xl" />
               <div className="relative p-3">
                 <p className="text-xl font-bold text-amber-400">2x</p>
-                <p className="text-[9px] text-gray-500">We overestimate by 2x how much others notice us</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">We overestimate by 2x how much others notice us</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-xl text-center">
@@ -207,7 +207,7 @@ export function SpotlightEffect() {
               <div className="absolute inset-0 border border-blue-500/20 rounded-xl" />
               <div className="relative p-3">
                 <p className="text-xl font-bold text-blue-400">50%</p>
-                <p className="text-[9px] text-gray-500">People forget your "embarrassments" within hours</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">People forget your "embarrassments" within hours</p>
               </div>
             </div>
           </div>
@@ -217,7 +217,7 @@ export function SpotlightEffect() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                 <span className="text-amber-400 font-medium">Thomas Gilovich:</span> "We tend to believe
                 that others are paying more attention to us than they actually are. In reality, everyone
                 is the protagonist of their own story—not a supporting actor in yours."

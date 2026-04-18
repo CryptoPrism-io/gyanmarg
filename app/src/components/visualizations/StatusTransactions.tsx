@@ -38,7 +38,7 @@ export function StatusTransactions() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Every interaction involves status transactions.
             </p>
             <p className="text-[10px] text-amber-400">Learn to play any status consciously.</p>
@@ -53,7 +53,7 @@ export function StatusTransactions() {
                 className={`w-8 h-8 rounded-lg border text-xs backdrop-blur-sm ${
                   idx === activeScenario
                     ? 'bg-amber-500/20 border-amber-500/50 text-amber-400'
-                    : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-500 hover:border-[var(--viz-border-light)]'
+                    : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)]'
                 }`}
               >
                 {idx + 1}
@@ -66,7 +66,7 @@ export function StatusTransactions() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-3 text-center">
-              <p className="text-sm text-gray-300">{scenario.situation}</p>
+              <p className="text-sm text-[var(--viz-secondary)]">{scenario.situation}</p>
             </div>
           </div>
 
@@ -81,10 +81,10 @@ export function StatusTransactions() {
               }`}
               whileTap={{ scale: 0.98 }}
             >
-              <p className={`text-sm font-medium ${selectedStatus === 'high' ? 'text-blue-400' : 'text-gray-400'}`}>
+              <p className={`text-sm font-medium ${selectedStatus === 'high' ? 'text-blue-400' : 'text-[var(--viz-muted)]'}`}>
                 High Status
               </p>
-              <p className="text-[10px] text-gray-500">Confident, grounded</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Confident, grounded</p>
             </motion.button>
 
             <motion.button
@@ -96,10 +96,10 @@ export function StatusTransactions() {
               }`}
               whileTap={{ scale: 0.98 }}
             >
-              <p className={`text-sm font-medium ${selectedStatus === 'low' ? 'text-rose-400' : 'text-gray-400'}`}>
+              <p className={`text-sm font-medium ${selectedStatus === 'low' ? 'text-rose-400' : 'text-[var(--viz-muted)]'}`}>
                 Low Status
               </p>
-              <p className="text-[10px] text-gray-500">Deferential, small</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Deferential, small</p>
             </motion.button>
           </div>
 
@@ -126,7 +126,7 @@ export function StatusTransactions() {
                   {(selectedStatus === 'high' ? scenario.highStatus : scenario.lowStatus).map((behavior, idx) => (
                     <div key={idx} className="flex items-start gap-2">
                       <span className={selectedStatus === 'high' ? 'text-blue-400' : 'text-rose-400'}>•</span>
-                      <span className="text-xs text-gray-400">{behavior}</span>
+                      <span className="text-xs text-[var(--viz-muted)]">{behavior}</span>
                     </div>
                   ))}
                 </div>
@@ -139,14 +139,14 @@ export function StatusTransactions() {
             <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-3">
-              <p className="text-[10px] text-gray-400 text-center">
+              <p className="text-[10px] text-[var(--viz-muted)] text-center">
                 <span className="text-green-400">The secret:</span> Master players can play any status.
                 They choose the status that serves the interaction, not the one that's habitual.
               </p>
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Impro" by Keith Johnstone
           </p>
         </div>

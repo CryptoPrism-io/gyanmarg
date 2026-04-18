@@ -45,7 +45,7 @@ export function AssetLiability() {
               <div className="absolute inset-0 border border-green-500/20 rounded-lg" />
               <div className="relative z-10 p-3 text-center">
                 <p className="text-xs text-green-400 font-medium">ASSET</p>
-                <p className="text-[10px] text-gray-400 mt-1">
+                <p className="text-[10px] text-[var(--viz-muted)] mt-1">
                   Puts money IN your pocket
                 </p>
               </div>
@@ -55,7 +55,7 @@ export function AssetLiability() {
               <div className="absolute inset-0 border border-red-500/20 rounded-lg" />
               <div className="relative z-10 p-3 text-center">
                 <p className="text-xs text-red-400 font-medium">LIABILITY</p>
-                <p className="text-[10px] text-gray-400 mt-1">
+                <p className="text-[10px] text-[var(--viz-muted)] mt-1">
                   Takes money OUT of your pocket
                 </p>
               </div>
@@ -64,7 +64,7 @@ export function AssetLiability() {
 
           {/* Score */}
           <div className="text-center">
-            <p className="text-[10px] text-gray-500">
+            <p className="text-[10px] text-[var(--viz-muted)]">
               Score: {score.correct}/{score.total}
             </p>
           </div>
@@ -79,7 +79,7 @@ export function AssetLiability() {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm" />
                 <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                 <div className="relative z-10 p-3">
-                  <p className="text-xs text-gray-300 mb-2">{item.name}</p>
+                  <p className="text-xs text-[var(--viz-secondary)] mb-2">{item.name}</p>
 
                   {!revealed[item.name] ? (
                     <div className="flex gap-2">
@@ -111,7 +111,7 @@ export function AssetLiability() {
                       }`}>
                         {item.isAsset ? '✓ ASSET' : '✗ LIABILITY'}
                       </p>
-                      <p className="text-[10px] text-gray-400 mt-1">{item.why}</p>
+                      <p className="text-[10px] text-[var(--viz-muted)] mt-1">{item.why}</p>
                     </motion.div>
                   )}
                 </div>
@@ -130,7 +130,7 @@ export function AssetLiability() {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Rich Dad Poor Dad" by Robert Kiyosaki
           </p>
         </div>

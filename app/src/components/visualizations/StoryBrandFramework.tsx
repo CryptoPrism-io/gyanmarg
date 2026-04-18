@@ -96,7 +96,7 @@ export function StoryBrandFramework() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Every great story follows this pattern. So should your marketing.
             </p>
           </div>
@@ -111,7 +111,7 @@ export function StoryBrandFramework() {
                   key={idx}
                   onClick={() => setActiveStep(idx)}
                   className={`w-8 h-8 rounded-lg border text-xs font-medium transition-all backdrop-blur-sm ${
-                    isActive ? `${c.bg} ${c.border} ${c.text}` : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-500 hover:border-[var(--viz-border-light)]'
+                    isActive ? `${c.bg} ${c.border} ${c.text}` : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-[var(--viz-muted)] hover:border-[var(--viz-border-light)]'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -136,17 +136,17 @@ export function StoryBrandFramework() {
                 <span className={`text-lg font-bold ${colors.text}`}>{step.number}</span>
                 <span className={`text-sm font-medium ${colors.text}`}>{step.name}</span>
               </div>
-              <p className="text-xs text-gray-400 mb-3">{step.role}</p>
+              <p className="text-xs text-[var(--viz-muted)] mb-3">{step.role}</p>
 
               <div className="space-y-3">
                 <div>
-                  <p className="text-[10px] text-gray-500 uppercase">Ask yourself:</p>
-                  <p className="text-xs text-gray-300">{step.question}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] uppercase">Ask yourself:</p>
+                  <p className="text-xs text-[var(--viz-secondary)]">{step.question}</p>
                 </div>
 
                 <div className="bg-[var(--viz-inner)] rounded-lg p-2 backdrop-blur-sm">
-                  <p className="text-[10px] text-gray-500 uppercase">Example:</p>
-                  <p className="text-[10px] text-gray-400 italic">{step.example}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] uppercase">Example:</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] italic">{step.example}</p>
                 </div>
 
                 <div className="bg-red-500/[0.08] border border-red-500/20 rounded p-2 backdrop-blur-sm">
@@ -163,20 +163,20 @@ export function StoryBrandFramework() {
             <button
               onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
               disabled={activeStep === 0}
-              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
+              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-[var(--viz-muted)] disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
             >
               Previous
             </button>
             <button
               onClick={() => setActiveStep((prev) => Math.min(sbSteps.length - 1, prev + 1))}
               disabled={activeStep === sbSteps.length - 1}
-              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
+              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-[var(--viz-muted)] disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
             >
               Next
             </button>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Building a StoryBrand" by Donald Miller
           </p>
         </div>

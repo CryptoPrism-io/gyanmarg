@@ -119,12 +119,12 @@ export function PacifyingBehaviors() {
               </p>
               <div className="space-y-2">
                 <div>
-                  <p className="text-[10px] text-gray-500 uppercase">Indicates</p>
-                  <p className="text-xs text-gray-300">{behaviors[activeBehavior].meaning}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] uppercase">Indicates</p>
+                  <p className="text-xs text-[var(--viz-secondary)]">{behaviors[activeBehavior].meaning}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] text-gray-500 uppercase">Why it works</p>
-                  <p className="text-xs text-gray-400">{behaviors[activeBehavior].why}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] uppercase">Why it works</p>
+                  <p className="text-xs text-[var(--viz-muted)]">{behaviors[activeBehavior].why}</p>
                 </div>
               </div>
             </div>
@@ -138,7 +138,7 @@ export function PacifyingBehaviors() {
             </p>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "What Every BODY is Saying" by Joe Navarro
           </p>
         </div>

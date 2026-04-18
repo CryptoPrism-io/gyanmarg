@@ -61,7 +61,7 @@ export function ProteinSynthesis() {
           {/* Title */}
           <div className="text-center">
             <h3 className="text-sm font-bold text-green-400">Muscle Protein Synthesis</h3>
-            <p className="text-[10px] text-gray-500">Optimize protein timing for muscle growth</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">Optimize protein timing for muscle growth</p>
           </div>
 
           {/* Goal selector */}
@@ -71,7 +71,7 @@ export function ProteinSynthesis() {
               className={`px-4 py-2 rounded-lg text-xs backdrop-blur-sm transition-all ${
                 goal === 'maintain'
                   ? 'bg-blue-500/20 border border-blue-500/50 text-blue-400'
-                  : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile-md)]'
+                  : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile-md)]'
               }`}
             >
               Maintain (1.6g/kg)
@@ -81,7 +81,7 @@ export function ProteinSynthesis() {
               className={`px-4 py-2 rounded-lg text-xs backdrop-blur-sm transition-all ${
                 goal === 'build'
                   ? 'bg-green-500/20 border border-green-500/50 text-green-400'
-                  : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile-md)]'
+                  : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile-md)]'
               }`}
             >
               Build (2.0g/kg)
@@ -90,7 +90,7 @@ export function ProteinSynthesis() {
 
           {/* Body weight slider */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+            <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
               <span>Body weight</span>
               <span className="text-green-400 font-bold">{bodyWeight} kg</span>
             </div>
@@ -116,13 +116,13 @@ export function ProteinSynthesis() {
             <div className="absolute inset-0 border border-green-500/30 rounded-xl" />
             <div className="relative p-4">
               <p className="text-3xl font-bold text-green-400">{dailyProtein}g</p>
-              <p className="text-[10px] text-gray-500">Daily protein target</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Daily protein target</p>
             </div>
           </motion.div>
 
           {/* Meals slider */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+            <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
               <span>Meals per day</span>
               <span className="text-amber-400 font-bold">{meals} meals</span>
             </div>
@@ -139,7 +139,7 @@ export function ProteinSynthesis() {
 
           {/* MPS curve visualization */}
           <div className="w-full max-w-xs">
-            <p className="text-[10px] text-gray-500 mb-2 text-center">Protein Synthesis Throughout Day</p>
+            <p className="text-[10px] text-[var(--viz-muted)] mb-2 text-center">Protein Synthesis Throughout Day</p>
             <div className="relative h-24 overflow-hidden rounded-xl p-2">
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
               <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
@@ -189,7 +189,7 @@ export function ProteinSynthesis() {
 
           {/* Meal breakdown */}
           <div className="w-full max-w-xs">
-            <p className="text-[10px] text-gray-500 mb-2">Protein per meal:</p>
+            <p className="text-[10px] text-[var(--viz-muted)] mb-2">Protein per meal:</p>
             <div className="flex gap-2 justify-center">
               {mealTimings.map((meal, i) => (
                 <motion.div
@@ -203,7 +203,7 @@ export function ProteinSynthesis() {
                   <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                   <div className="relative p-2">
                     <p className="text-sm font-bold text-green-400">{meal.protein}g</p>
-                    <p className="text-[8px] text-gray-500">{meal.time}</p>
+                    <p className="text-[8px] text-[var(--viz-muted)]">{meal.time}</p>
                   </div>
                 </motion.div>
               ))}
@@ -217,7 +217,7 @@ export function ProteinSynthesis() {
               <div className="absolute inset-0 border border-green-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-green-400 font-medium">Per Meal</p>
-                <p className="text-[9px] text-gray-400">25-40g optimal for MPS</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">25-40g optimal for MPS</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg">
@@ -225,7 +225,7 @@ export function ProteinSynthesis() {
               <div className="absolute inset-0 border border-blue-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-blue-400 font-medium">Timing</p>
-                <p className="text-[9px] text-gray-400">Every 3-4 hours ideal</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Every 3-4 hours ideal</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg">
@@ -233,7 +233,7 @@ export function ProteinSynthesis() {
               <div className="absolute inset-0 border border-purple-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-purple-400 font-medium">Post-Workout</p>
-                <p className="text-[9px] text-gray-400">40g within 2 hours</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">40g within 2 hours</p>
               </div>
             </div>
             <div className="relative overflow-hidden rounded-lg">
@@ -241,7 +241,7 @@ export function ProteinSynthesis() {
               <div className="absolute inset-0 border border-amber-500/20 rounded-lg" />
               <div className="relative p-2">
                 <p className="text-[10px] text-amber-400 font-medium">Before Bed</p>
-                <p className="text-[9px] text-gray-400">Casein protein helps</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Casein protein helps</p>
               </div>
             </div>
           </div>
@@ -251,7 +251,7 @@ export function ProteinSynthesis() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
             <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <p className="text-xs text-[var(--viz-muted)] leading-relaxed">
                 <span className="text-green-400 font-medium">Dr. Peter Attia:</span> "The anabolic
                 response to protein is not just about total daily intake. Distribution matters—spreading
                 protein across meals maximizes muscle protein synthesis throughout the day."

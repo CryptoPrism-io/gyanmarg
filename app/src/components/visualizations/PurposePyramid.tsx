@@ -62,7 +62,7 @@ export function PurposePyramid() {
         <div className="flex flex-col items-center gap-4">
           {/* Header */}
           <div className="text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-[var(--viz-muted)]">
               Purpose powers sustained performance. But not all purposes are equal.
             </p>
           </div>
@@ -84,7 +84,7 @@ export function PurposePyramid() {
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
-                  <p className={`text-xs font-medium ${isSelected ? colors.text : 'text-gray-400'}`}>
+                  <p className={`text-xs font-medium ${isSelected ? colors.text : 'text-[var(--viz-muted)]'}`}>
                     {level.level}
                   </p>
                 </motion.button>
@@ -102,14 +102,14 @@ export function PurposePyramid() {
               <p className={`text-sm font-medium ${colorMap[purposeLevels[selectedLevel].color].text} mb-2`}>
                 {purposeLevels[selectedLevel].level}
               </p>
-              <p className="text-xs text-gray-400 mb-2">
+              <p className="text-xs text-[var(--viz-muted)] mb-2">
                 {purposeLevels[selectedLevel].description}
               </p>
               <div className="bg-[var(--viz-inner)] backdrop-blur-sm rounded p-2 mb-2">
-                <p className="text-[10px] text-gray-500">Example:</p>
-                <p className="text-xs text-gray-300 italic">"{purposeLevels[selectedLevel].example}"</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Example:</p>
+                <p className="text-xs text-[var(--viz-secondary)] italic">"{purposeLevels[selectedLevel].example}"</p>
               </div>
-              <p className="text-[10px] text-gray-500">
+              <p className="text-[10px] text-[var(--viz-muted)]">
                 Power: {purposeLevels[selectedLevel].power}
               </p>
             </motion.div>
@@ -117,12 +117,12 @@ export function PurposePyramid() {
 
           {/* Self-assessment */}
           <div className="w-full max-w-xs space-y-2">
-            <p className="text-[10px] text-gray-500">Analyze your purpose:</p>
+            <p className="text-[10px] text-[var(--viz-muted)]">Analyze your purpose:</p>
             <textarea
               value={userPurpose}
               onChange={(e) => { setUserPurpose(e.target.value); setShowAnalysis(false); }}
               placeholder="Write your purpose or 'why' here..."
-              className="w-full p-3 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-purple-500/50 focus:outline-none resize-none h-16"
+              className="w-full p-3 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg text-xs text-[var(--viz-secondary)] placeholder-gray-600 focus:border-purple-500/50 focus:outline-none resize-none h-16"
             />
             {userPurpose.length > 10 && !showAnalysis && (
               <motion.button
@@ -145,18 +145,18 @@ export function PurposePyramid() {
               <p className="text-xs text-purple-400 mb-2">
                 Your purpose sounds {purposeLevels[analyzeLevel()].level.toLowerCase()}:
               </p>
-              <p className="text-[10px] text-gray-400 mb-2">
+              <p className="text-[10px] text-[var(--viz-muted)] mb-2">
                 {purposeLevels[analyzeLevel()].power}
               </p>
               {analyzeLevel() > 0 && (
-                <p className="text-[10px] text-gray-500">
+                <p className="text-[10px] text-[var(--viz-muted)]">
                   To elevate: Try reframing around how your work helps others or contributes to something larger.
                 </p>
               )}
             </motion.div>
           )}
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Peak Performance" by Brad Stulberg
           </p>
         </div>

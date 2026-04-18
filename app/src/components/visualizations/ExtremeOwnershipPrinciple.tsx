@@ -49,7 +49,7 @@ export function ExtremeOwnershipPrinciple() {
           {/* Header */}
           <div className="w-full max-w-xs bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-4 text-center">
             <p className="text-xs text-slate-400 uppercase tracking-wide">Extreme Ownership</p>
-            <p className="text-sm text-gray-200 font-medium mt-2">
+            <p className="text-sm text-[var(--viz-secondary)] font-medium mt-2">
               "There are no bad teams, only bad leaders"
             </p>
           </div>
@@ -57,10 +57,10 @@ export function ExtremeOwnershipPrinciple() {
           {/* Scenario */}
           <div className="w-full max-w-xs">
             <div className="bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg p-4 mb-3">
-              <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-2">
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2">
                 Scenario {activeScenario + 1}/{scenarios.length}
               </p>
-              <p className="text-sm text-gray-300">{scenario.situation}</p>
+              <p className="text-sm text-[var(--viz-secondary)]">{scenario.situation}</p>
             </div>
 
             {/* Two response options */}
@@ -76,7 +76,7 @@ export function ExtremeOwnershipPrinciple() {
                 <p className="text-[10px] text-red-400 uppercase tracking-wide mb-2">
                   Victim Mindset
                 </p>
-                <p className="text-[10px] text-gray-400">{scenario.victim}</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">{scenario.victim}</p>
               </motion.div>
 
               {/* Owner response */}
@@ -95,7 +95,7 @@ export function ExtremeOwnershipPrinciple() {
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="text-[10px] text-gray-300"
+                    className="text-[10px] text-[var(--viz-secondary)]"
                   >
                     {scenario.owner}
                   </motion.p>
@@ -112,7 +112,7 @@ export function ExtremeOwnershipPrinciple() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               onClick={nextScenario}
-              className="px-4 py-2 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 hover:text-gray-300"
+              className="px-4 py-2 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] rounded-lg text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
             >
               Next scenario
             </motion.button>
@@ -125,7 +125,7 @@ export function ExtremeOwnershipPrinciple() {
             </p>
           </div>
 
-          <p className="text-[10px] text-gray-500 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             From "Extreme Ownership" by Jocko Willink
           </p>
         </div>
