@@ -6,7 +6,7 @@ import { useAuthContext } from '@/contexts/AuthContext';
 import { useProgressStore } from '@/store/progressStore';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 import { useUserStore } from '@/store/userStore';
-import { FreeTrialGate } from '@/components/organisms/FreeTrialGate';
+import { BetaAccessGate } from '@/components/organisms/BetaAccessGate';
 import { getDailyQuote } from '@/data/quotes';
 
 const fadeIn = {
@@ -248,9 +248,9 @@ export function Dashboard() {
 
       </main>
 
-      {/* FreeTrialGate — triggered from upgrade banner "Start Free Trial" */}
+      {/* Beta Access Gate — triggered from upgrade banner */}
       {isPaywallOpen && (
-        <FreeTrialGate onClose={() => setIsPaywallOpen(false)} />
+        <BetaAccessGate onClose={() => setIsPaywallOpen(false)} />
       )}
     </div>
   );

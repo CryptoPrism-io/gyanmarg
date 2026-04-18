@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, X, ChevronRight } from 'lucide-react';
-import { FreeTrialGate } from '@/components/organisms/FreeTrialGate';
+import { BetaAccessGate } from '@/components/organisms/BetaAccessGate';
 import { useUserStore } from '@/store/userStore';
 import {
   HabitLoopDiagram,
@@ -485,9 +485,9 @@ export function ExplorePage() {
         )}
       </div>
 
-      {/* ── FreeTrialGate (triggered from viz inline paywall preview) */}
+      {/* ── Beta Access Gate (triggered from viz inline paywall preview) */}
       {showRealPaywall && (
-        <FreeTrialGate onClose={() => { setShowRealPaywall(false); }} />
+        <BetaAccessGate onClose={() => { setShowRealPaywall(false); }} />
       )}
 
       {/* ── Viz Modal ─────────────────────────────────────────────────────── */}

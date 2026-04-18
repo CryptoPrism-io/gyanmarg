@@ -17,3 +17,4 @@ export { DailyPowerMeter } from './DailyPowerMeter';
 export { ShareableAchievementCard } from './ShareableAchievementCard';
 export { Leaderboard } from './Leaderboard';
 export { PaywallGate } from './PaywallGate';
+export { BetaAccessGate } from './BetaAccessGate';

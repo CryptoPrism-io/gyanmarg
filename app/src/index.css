@@ -1186,3 +1186,13 @@ select:-webkit-autofill {
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================
+   LIGHT MODE — Module image filter test
+   Inverts dark zen art to look like light ink-on-paper
+   ============================================ */
+[data-theme="light"] .module-cover-img,
+[data-theme="light"] .level-cover-img {
+  filter: invert(0.92) hue-rotate(180deg) saturate(0.75) brightness(1.05);
+  transition: filter 0.3s ease;
+}

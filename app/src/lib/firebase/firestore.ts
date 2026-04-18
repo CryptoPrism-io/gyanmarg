@@ -228,3 +228,33 @@ export function timestampToISO(timestamp: Timestamp | null | undefined): string 
   if (!timestamp) return null;
   return timestamp.toDate().toISOString();
 }
+
+const BETA_USERS_COLLECTION = 'betaUsers';
+
+export interface BetaUserData {
+  uid: string;
+  name: string;
+  email: string;
+  age: string;
+  gender: string;
+}
+
+/**
+ * Save a beta user signup to Firestore
+ */
+export async function saveBetaUser(data: BetaUserData): Promise<void> {
+  const db = getFirestoreDb();
+  if (!db) return; // Silently skip if Firebase not configured
+
+  try {
+    const docRef = doc(db, BETA_USERS_COLLECTION, data.uid);
+    await setDoc(docRef, {
+      ...data,
+      signedUpAt: serverTimestamp(),
+    });
+    console.log('[Firestore] Beta user saved:', data.uid);
+  } catch (error) {
+    console.error('[Firestore] Error saving beta user:', error);
+    // Don't throw — beta save failure shouldn't block access grant
+  }
+}

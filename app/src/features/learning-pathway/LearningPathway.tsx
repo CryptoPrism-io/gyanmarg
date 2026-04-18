@@ -19,7 +19,7 @@ import { useProgressStore } from '@/store/progressStore';
 import { useUserStore } from '@/store/userStore';
 import { useAuthGate } from '@/hooks/useAuthGate';
 import { usePaywall } from '@/hooks/usePaywall';
-import { FreeTrialGate } from '@/components/organisms/FreeTrialGate';
+import { BetaAccessGate } from '@/components/organisms/BetaAccessGate';
 // ModuleLayout removed — using editorial layout directly
 import { getVizForLevel } from '@/data/vizLevelMap';
 import { NetflixLevelCard, GlassLessonRow, NetflixModuleCard, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
@@ -29,7 +29,7 @@ import { SignInGate } from '@/components/organisms';
 import type { PathwayLevel, PathwayLesson } from '@/types';
 import { modules } from '@/data/modules';
 import { moduleCategories, getCategoriesWithModules, getCategoryForModule } from '@/data/categories';
-import { getModuleImage, getLevelImage } from '@/lib/moduleImages';
+import { getModuleImage, getLevelImage, getModuleImageByTheme } from '@/lib/moduleImages';
 import { getFlashcardCountForLesson, hasFlashcardsForLessons } from '@/data/lesson-flashcard-map';
 import type { SpacedRepetitionCard } from '@/types';
 
@@ -54,6 +54,8 @@ export function LearningPathway() {
   const favoriteModules = useUserStore((s) => s.favoriteModules);
   const toggleFavoriteModule = useUserStore((s) => s.toggleFavoriteModule);
   const isFavoriteModule = useUserStore((s) => s.isFavoriteModule);
+  const _themeSetting = useUserStore((s) => s.settings.theme);
+  const theme = document.documentElement.getAttribute('data-theme') ?? 'dark';
   const { canAccessLesson, showPaywall, closePaywall, paywallModuleId } = usePaywall();
 
   // URL params for deep linking: /pathway/:moduleId/:levelId/:lessonId
@@ -617,7 +619,7 @@ export function LearningPathway() {
                   id={mod.id}
                   title={mod.title}
                   subtitle={mod.subtitle}
-                  image={getModuleImage(mod.id)}
+                  image={getModuleImageByTheme(mod.id, theme)}
                   progress={getModuleProgress(mod.id)}
                   lessonsCount={getModuleLessonsCount(mod.id)}
                   xpTotal={getModuleTotalXP(mod.id)}
@@ -715,25 +717,25 @@ export function LearningPathway() {
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="relative rounded-3xl border border-lavender/20 overflow-hidden mb-6"
+                      className="relative rounded-3xl border border-lavender/20 overflow-hidden mb-6 bg-surface"
                     >
                       {/* Module Image Background */}
                       <div
-                        className="absolute inset-0 z-0 opacity-20 blur-sm"
+                        className="absolute inset-0 z-0 opacity-10 dark:opacity-20 blur-sm"
                         style={{
                           backgroundImage: `url(${getModuleImage(selectedModule.id)})`,
                           backgroundSize: 'cover',
                           backgroundPosition: 'center top',
                         }}
                       />
-                      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/60 via-background/85 to-background" />
+                      <div className="absolute inset-0 z-0 bg-gradient-to-b from-surface/70 via-surface/90 to-surface dark:from-background/60 dark:via-background/85 dark:to-background" />
 
                       {/* Content */}
                       <div className="relative z-10 p-4 md:p-6">
                         {/* Module Header with Completion % on top right */}
                         <div className="flex flex-col md:flex-row md:items-start gap-4 mb-5">
                           <img
-                            src={getModuleImage(selectedModule.id)}
+                            src={getModuleImageByTheme(selectedModule.id, theme)}
                             alt={selectedModule.title}
                             className="w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover border-2 border-lavender/30 flex-shrink-0 shadow-lg"
                           />
@@ -763,7 +765,7 @@ export function LearningPathway() {
                         </div>
 
                         {/* Skills You'll Learn */}
-                        <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] mb-4">
+                        <div className="p-3 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.06] mb-4">
                           <h4 className="text-xs font-semibold text-text-primary mb-2 flex items-center gap-2">
                             <Zap className="w-3.5 h-3.5 text-lavender" />
                             Skills You'll Learn
@@ -811,7 +813,7 @@ export function LearningPathway() {
                         </div>
 
                         {/* Source Books (at bottom) */}
-                        <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                        <div className="p-3 rounded-xl bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.06]">
                           <h4 className="text-xs font-semibold text-text-primary mb-2 flex items-center gap-2">
                             <BookOpen className="w-3.5 h-3.5 text-lavender" />
                             Source Books
@@ -865,18 +867,18 @@ export function LearningPathway() {
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="relative rounded-3xl border border-golden/20 overflow-hidden mb-6 scroll-mt-20"
+                      className="relative rounded-3xl border border-white/[0.08] overflow-hidden mb-6 scroll-mt-20 bg-surface"
                     >
                       {/* Level Image Background */}
                       <div
-                        className="absolute inset-0 z-0 opacity-20"
+                        className="absolute inset-0 z-0 opacity-10 dark:opacity-20"
                         style={{
                           backgroundImage: `url(${getLevelImage(selectedLevel.id, selectedModule.id)})`,
                           backgroundSize: 'cover',
                           backgroundPosition: 'center top',
                         }}
                       />
-                      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/80 via-background/95 to-background" />
+                      <div className="absolute inset-0 z-0 bg-gradient-to-b from-surface/70 via-surface/90 to-surface dark:from-background/80 dark:via-background/95 dark:to-background" />
 
                       {/* Content */}
                       <div className="relative z-10 p-4 md:p-6">
@@ -894,10 +896,10 @@ export function LearningPathway() {
                           <img
                             src={getLevelImage(selectedLevel.id, selectedModule.id)}
                             alt={selectedLevel.title}
-                            className="w-full md:w-48 aspect-video md:h-28 rounded-2xl object-cover border-2 border-golden/30 flex-shrink-0 shadow-lg"
+                            className="level-cover-img w-full md:w-48 aspect-video md:h-28 rounded-2xl object-cover border-2 border-golden/30 flex-shrink-0 shadow-lg"
                           />
                           <div className="flex-1 min-w-0">
-                            <div className="inline-block text-[10px] font-bold tracking-wider text-golden bg-golden/15 px-2.5 py-1 rounded mb-2">
+                            <div className="inline-block text-[10px] font-bold tracking-wider text-lavender bg-lavender/10 border border-lavender/20 px-2.5 py-1 rounded-full mb-2">
                               LEVEL {pathwayLevels.findIndex(l => l.id === selectedLevel.id) + 1}
                             </div>
                             <h2 className="text-xl md:text-2xl font-bold text-text-primary mb-2">
@@ -1117,12 +1119,12 @@ export function LearningPathway() {
           <div className="px-4 py-3">
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-[11px] text-text-muted">{pathwayProgress.completedLessons.length} lessons completed</span>
-              <span className="text-[11px] text-text-muted tabular-nums">{Math.min(Math.round((pathwayProgress.completedLessons.length / 100) * 100), 100)}%</span>
+              <span className="text-[11px] text-text-muted tabular-nums">{totalModuleLessons > 0 ? Math.min(Math.round((pathwayProgress.completedLessons.length / totalModuleLessons) * 100), 100) : 0}%</span>
             </div>
             <div className="h-[3px] rounded-full bg-black/[0.06] dark:bg-white/[0.06] overflow-hidden">
               <div
                 className="h-full rounded-full bg-lavender transition-all duration-700"
-                style={{ width: `${Math.min((pathwayProgress.completedLessons.length / 100) * 100, 100)}%` }}
+                style={{ width: `${totalModuleLessons > 0 ? Math.min((pathwayProgress.completedLessons.length / totalModuleLessons) * 100, 100) : 0}%` }}
               />
             </div>
           </div>
@@ -1149,13 +1151,9 @@ export function LearningPathway() {
         />
       )}
 
-      {/* Free Trial Gate */}
+      {/* Beta Access Gate */}
       {paywallModuleId !== null && (
-        <FreeTrialGate
-          moduleId={paywallModuleId}
-          moduleName={modules.find(m => m.id === paywallModuleId)?.title}
-          onClose={closePaywall}
-        />
+        <BetaAccessGate onClose={closePaywall} />
       )}
     </>
   );

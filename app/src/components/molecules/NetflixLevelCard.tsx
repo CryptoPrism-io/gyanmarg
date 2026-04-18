@@ -26,7 +26,6 @@ export function NetflixLevelCard({
   hasVizReward = false,
   onClick,
 }: NetflixLevelCardProps) {
-  // Strip "Level X:" prefix from title if present
   const displayTitle = title.replace(/^Level\s*\d+:\s*/i, '');
 
   return (
@@ -39,7 +38,7 @@ export function NetflixLevelCard({
         transition-all duration-300
         ${isLocked
           ? 'cursor-not-allowed border-white/[0.08]'
-          : 'cursor-pointer border-white/[0.08] hover:border-white/20 hover:shadow-[0_16px_32px_rgba(0,0,0,0.4)]'
+          : 'cursor-pointer border-white/[0.08] hover:border-white/20 hover:shadow-[0_8px_24px_rgba(0,0,0,0.15)]'
         }
         w-[130px] md:w-[160px]
       `}
@@ -51,20 +50,20 @@ export function NetflixLevelCard({
           alt={title}
           loading="lazy"
           className={`
-            w-full h-full object-cover transition-transform duration-400
+            level-cover-img w-full h-full object-cover transition-transform duration-400
             ${isLocked ? 'brightness-[0.7]' : 'hover:scale-108'}
           `}
         />
 
         {/* Level badge */}
-        <div className="absolute bottom-2 left-2 text-[9px] font-bold tracking-wider text-white/80 bg-black/30 px-2 py-1 rounded backdrop-blur-sm border border-white/10">
-          LEVEL {levelNumber}
+        <div className="absolute bottom-1.5 left-1.5 flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
+          <span className="text-[8px] font-bold tracking-wider text-white/90">LVL {levelNumber}</span>
         </div>
 
         {/* Lock icon */}
         {isLocked && (
-          <div className="absolute top-2 right-2 w-7 h-7 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
-            <Lock className="w-3.5 h-3.5 text-white/80" />
+          <div className="absolute top-2 right-2 w-6 h-6 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center">
+            <Lock className="w-3 h-3 text-white" />
           </div>
         )}
 
@@ -84,23 +83,13 @@ export function NetflixLevelCard({
         )}
       </div>
 
-      {/* Info section - Premium Glassmorphism */}
-      <div
-        className="
-          relative p-2 md:p-2.5
-          bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-black/30
-          backdrop-blur-xl border-t border-white/10
-          shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),inset_0_-2px_8px_rgba(0,0,0,0.3),inset_0_2px_4px_rgba(0,0,0,0.2)]
-        "
-      >
-        {/* Top highlight */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-
-        <h4 className="text-[11px] md:text-xs font-semibold mb-1.5 truncate bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent">
+      {/* Info section */}
+      <div className="relative p-2 md:p-2.5 bg-surface border-t border-white/[0.08]">
+        <h4 className="text-[11px] md:text-xs font-semibold mb-1 truncate text-text-primary">
           {displayTitle}
         </h4>
 
-        <div className="flex items-center gap-2 text-[9px] md:text-[10px] text-white/50">
+        <div className="flex items-center gap-2 text-[9px] md:text-[10px] text-text-muted">
           <span>{lessonsCount} lessons</span>
           <span className="bg-gradient-to-r from-golden to-golden-light bg-clip-text text-transparent font-semibold">
             {xpTotal} XP
@@ -109,7 +98,7 @@ export function NetflixLevelCard({
 
         {/* Progress bar */}
         {progress > 0 && !isLocked && (
-          <div className="h-[3px] bg-surface rounded-full mt-2 overflow-hidden">
+          <div className="h-[2px] bg-white/[0.08] rounded-full mt-1.5 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}

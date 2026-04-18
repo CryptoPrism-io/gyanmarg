@@ -5,7 +5,8 @@ import type { ModuleCategory } from '@/types';
 import type { ModuleConfig } from '@/data/modules';
 import { NetflixModuleCard } from './NetflixModuleCard';
 import { ComingSoonModuleCard } from './ComingSoonModuleCard';
-import { getModuleImage } from '@/lib/moduleImages';
+import { getModuleImageByTheme } from '@/lib/moduleImages';
+import { useUserStore } from '@/store/userStore';
 
 interface CategorySectionProps {
   category: ModuleCategory;
@@ -32,6 +33,8 @@ export function CategorySection({
   isFavoriteModule,
   onToggleFavorite,
 }: CategorySectionProps) {
+  const _themeSetting = useUserStore(s => s.settings.theme);
+  const theme = document.documentElement.getAttribute('data-theme') ?? 'dark';
   const availableCount = modules.filter(m => m.isAvailable).length;
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -113,7 +116,7 @@ export function CategorySection({
                 id={mod.id}
                 title={mod.title}
                 subtitle={mod.subtitle}
-                image={getModuleImage(mod.id)}
+                image={getModuleImageByTheme(mod.id, theme)}
                 progress={getModuleProgress(mod.id)}
                 lessonsCount={getModuleLessonsCount(mod.id)}
                 xpTotal={getModuleTotalXP(mod.id)}
@@ -128,7 +131,7 @@ export function CategorySection({
                 id={mod.id}
                 title={mod.title}
                 subtitle={mod.subtitle}
-                image={getModuleImage(mod.id)}
+                image={getModuleImageByTheme(mod.id, theme)}
                 color={mod.color}
                 isActive={selectedModuleId === mod.id}
                 onClick={() => onComingSoonModuleSelect(mod.id)}

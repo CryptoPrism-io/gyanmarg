@@ -1985,9 +1985,31 @@ export const levelImages: Record<string, string> = {
   'prod-level10': levelProd10,
 };
 
+// Light mode module images — loaded via glob
+const lightModuleImports = import.meta.glob<{ default: string }>(
+  '../assets/ai-images/modules-light/*.webp',
+  { eager: true }
+);
+const lightModuleImages: Record<string, string> = {};
+for (const [path, mod] of Object.entries(lightModuleImports)) {
+  // path: "../assets/ai-images/modules-light/module-finance-investing.webp"
+  const id = path.split('/').pop()!.replace(/^module-/, '').replace(/\.webp$/, '');
+  lightModuleImages[id] = mod.default;
+}
+
 // Helper to get module image with fallback
 export function getModuleImage(moduleId: string): string {
   return moduleImages[moduleId] || modulePersonalDevelopment;
+}
+
+// Returns light-mode image if available, else falls back to dark image
+export function getLightModuleImage(moduleId: string): string {
+  return lightModuleImages[moduleId] || getModuleImage(moduleId);
+}
+
+// Returns correct image for current theme
+export function getModuleImageByTheme(moduleId: string, theme: string): string {
+  return theme === 'light' ? getLightModuleImage(moduleId) : getModuleImage(moduleId);
 }
 
 // Helper to get level image with module fallback
