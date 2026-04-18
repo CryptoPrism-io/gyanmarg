@@ -1990,11 +1990,28 @@ const lightModuleImports = import.meta.glob<{ default: string }>(
   '../assets/ai-images/modules-light/*.webp',
   { eager: true }
 );
-const lightModuleImages: Record<string, string> = {};
+
+// filename-derived key → light image URL
+const lightByFilename: Record<string, string> = {};
 for (const [path, mod] of Object.entries(lightModuleImports)) {
-  // path: "../assets/ai-images/modules-light/module-finance-investing.webp"
-  const id = path.split('/').pop()!.replace(/^module-/, '').replace(/\.webp$/, '');
-  lightModuleImages[id] = mod.default;
+  const key = path.split('/').pop()!.replace(/^module-/, '').replace(/\.webp$/, '');
+  lightByFilename[key] = mod.default;
+}
+
+// Module IDs whose filenames don't match the module ID directly
+const lightAliases: Record<string, string> = {
+  'ai-ml':         'ai-machine-learning',
+  'negotiation':   'negotiation-influence',
+  'bruce-lee':     'bruce-lee-philosophy',
+  'blockchain':    'blockchain-web3',
+  'psychology':    'psychology-decisions',
+  'python-data':   'python-data-science',
+};
+
+const lightModuleImages: Record<string, string> = {};
+for (const [moduleId] of Object.entries(moduleImages)) {
+  const key = lightAliases[moduleId] ?? moduleId;
+  if (lightByFilename[key]) lightModuleImages[moduleId] = lightByFilename[key];
 }
 
 // Helper to get module image with fallback
