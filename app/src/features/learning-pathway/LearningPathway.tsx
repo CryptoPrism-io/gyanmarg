@@ -54,8 +54,8 @@ export function LearningPathway() {
   const favoriteModules = useUserStore((s) => s.favoriteModules);
   const toggleFavoriteModule = useUserStore((s) => s.toggleFavoriteModule);
   const isFavoriteModule = useUserStore((s) => s.isFavoriteModule);
-  const _themeSetting = useUserStore((s) => s.settings.theme);
-  const theme = document.documentElement.getAttribute('data-theme') ?? 'dark';
+  const storedTheme = useUserStore((s) => s.settings.theme);
+  const theme = storedTheme === 'light' ? 'light' : storedTheme === 'dark' ? 'dark' : (document.documentElement.getAttribute('data-theme') ?? 'dark');
   const { canAccessLesson, showPaywall, closePaywall, paywallModuleId } = usePaywall();
 
   // URL params for deep linking: /pathway/:moduleId/:levelId/:lessonId

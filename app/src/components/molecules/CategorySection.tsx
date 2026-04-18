@@ -33,8 +33,8 @@ export function CategorySection({
   isFavoriteModule,
   onToggleFavorite,
 }: CategorySectionProps) {
-  const _themeSetting = useUserStore(s => s.settings.theme);
-  const theme = document.documentElement.getAttribute('data-theme') ?? 'dark';
+  const storedTheme = useUserStore(s => s.settings.theme);
+  const theme = storedTheme === 'light' ? 'light' : storedTheme === 'dark' ? 'dark' : (document.documentElement.getAttribute('data-theme') ?? 'dark');
   const availableCount = modules.filter(m => m.isAvailable).length;
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
