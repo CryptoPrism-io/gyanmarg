@@ -49,12 +49,12 @@ export function TaxBuckets() {
   void _taxedNowAfter; void _taxedLaterAfter; void _neverTaxedAfter;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -76,7 +76,7 @@ export function TaxBuckets() {
                   key={idx}
                   onClick={() => setActiveBucket(isActive ? null : idx)}
                   className={`w-full relative overflow-hidden rounded-lg text-left transition-all ${
-                    isActive ? `${colors.bg} ${colors.border}` : 'bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15]'
+                    isActive ? `${colors.bg} ${colors.border}` : 'bg-[var(--viz-tile)] border border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
                   }`}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -101,11 +101,11 @@ export function TaxBuckets() {
                       >
                         <p className="text-[10px] text-gray-400">{bucket.description}</p>
 
-                        <div className="bg-black/30 backdrop-blur-sm rounded p-2">
+                        <div className="bg-[var(--viz-inner)] backdrop-blur-sm rounded p-2">
                           <p className="text-[10px] text-gray-500">Examples:</p>
                           <div className="flex flex-wrap gap-1 mt-1">
                             {bucket.examples.map((ex, i) => (
-                              <span key={i} className="text-[10px] px-2 py-0.5 bg-white/[0.05] border border-white/[0.08] rounded text-gray-400">
+                              <span key={i} className="text-[10px] px-2 py-0.5 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded text-gray-400">
                                 {ex}
                               </span>
                             ))}
@@ -128,7 +128,7 @@ export function TaxBuckets() {
           {/* Visual comparison */}
           <div className="w-full max-w-xs relative overflow-hidden rounded-lg">
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-4">
               <p className="text-xs text-gray-400 mb-3 text-center">
                 $100,000 in each bucket keeps:
@@ -137,7 +137,7 @@ export function TaxBuckets() {
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] text-red-400">Taxed Now:</span>
                   <div className="flex items-center gap-2">
-                    <div className="w-24 h-2 bg-white/[0.05] rounded-full overflow-hidden">
+                    <div className="w-24 h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden">
                       <div className="w-[70%] h-full bg-red-500" />
                     </div>
                     <span className="text-xs text-gray-300">~$70,000</span>
@@ -146,7 +146,7 @@ export function TaxBuckets() {
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] text-amber-400">Taxed Later:</span>
                   <div className="flex items-center gap-2">
-                    <div className="w-24 h-2 bg-white/[0.05] rounded-full overflow-hidden">
+                    <div className="w-24 h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden">
                       <div className="w-[75%] h-full bg-amber-500" />
                     </div>
                     <span className="text-xs text-gray-300">~$75,000</span>
@@ -155,7 +155,7 @@ export function TaxBuckets() {
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] text-green-400">Never Taxed:</span>
                   <div className="flex items-center gap-2">
-                    <div className="w-24 h-2 bg-white/[0.05] rounded-full overflow-hidden">
+                    <div className="w-24 h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden">
                       <div className="w-full h-full bg-green-500" />
                     </div>
                     <span className="text-xs text-gray-300">$100,000</span>

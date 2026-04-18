@@ -53,12 +53,12 @@ export function SunkCostFallacy() {
   const scenario = scenarios[activeScenario];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-red-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -84,7 +84,7 @@ export function SunkCostFallacy() {
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border backdrop-blur-sm ${
                   activeScenario === index
                     ? 'bg-amber-500/15 text-amber-400 border-amber-500/30'
-                    : 'text-white/50 hover:text-white/70 border-transparent'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
               >
                 {s.title}
@@ -96,18 +96,18 @@ export function SunkCostFallacy() {
           <div className="w-full max-w-xs space-y-3">
             {/* Investment */}
             <div
-              className="relative overflow-hidden rounded-xl p-3 border border-white/[0.08]"
+              className="relative overflow-hidden rounded-xl p-3 border border-[var(--viz-border)]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
               }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              <p className="text-[10px] text-white/50 uppercase tracking-wide mb-1">Already Invested</p>
-              <p className="text-sm text-white/80">{scenario.invested}</p>
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-1">Already Invested</p>
+              <p className="text-sm text-[var(--viz-secondary)]">{scenario.invested}</p>
             </div>
 
             {/* Arrow down */}
-            <div className="text-center text-white/40">|</div>
+            <div className="text-center text-[var(--viz-muted)]">|</div>
 
             {/* Reality */}
             <div
@@ -123,7 +123,7 @@ export function SunkCostFallacy() {
 
             {/* Question */}
             <div className="text-center py-2">
-              <p className="text-sm text-white/60">What should you do?</p>
+              <p className="text-sm text-[var(--viz-secondary)]">What should you do?</p>
             </div>
 
             {/* Choices */}
@@ -133,7 +133,7 @@ export function SunkCostFallacy() {
                 className={`relative overflow-hidden w-full p-3 rounded-xl text-left text-xs transition-all border ${
                   showAnswer
                     ? 'border-red-500/50 text-red-400'
-                    : 'border-white/[0.08] text-white/60 hover:border-white/20'
+                    : 'border-[var(--viz-border)] text-[var(--viz-secondary)] hover:border-white/20'
                 }`}
                 style={{
                   background: showAnswer
@@ -151,7 +151,7 @@ export function SunkCostFallacy() {
                 className={`relative overflow-hidden w-full p-3 rounded-xl text-left text-xs transition-all border ${
                   showAnswer
                     ? 'border-green-500/50 text-green-400'
-                    : 'border-white/[0.08] text-white/60 hover:border-white/20'
+                    : 'border-[var(--viz-border)] text-[var(--viz-secondary)] hover:border-white/20'
                 }`}
                 style={{
                   background: showAnswer
@@ -171,20 +171,20 @@ export function SunkCostFallacy() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-white/[0.08]"
+              className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-[var(--viz-border)]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
               }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              <p className="text-xs text-white/60">
+              <p className="text-xs text-[var(--viz-secondary)]">
                 <span className="text-amber-400 font-medium">Key insight:</span> Past costs are gone forever.
                 Only future costs and benefits should influence decisions.
               </p>
             </motion.div>
           )}
 
-          <p className="text-[10px] text-white/50 text-center max-w-xs">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center max-w-xs">
             The money/time is already spent. Don't let it trap you.
           </p>
         </div>

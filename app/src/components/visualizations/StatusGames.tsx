@@ -36,12 +36,12 @@ export function StatusGames() {
   const [selected, setSelected] = useState<'dominance' | 'prestige' | null>(null);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-red-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -59,7 +59,7 @@ export function StatusGames() {
               className={`p-4 rounded-lg border transition-all backdrop-blur-sm ${
                 selected === 'dominance'
                   ? 'bg-red-500/[0.12] border-red-500/50'
-                  : 'bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15]'
+                  : 'bg-[var(--viz-tile)] border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
               }`}
               whileTap={{ scale: 0.98 }}
             >
@@ -74,7 +74,7 @@ export function StatusGames() {
               className={`p-4 rounded-lg border transition-all backdrop-blur-sm ${
                 selected === 'prestige'
                   ? 'bg-green-500/[0.12] border-green-500/50'
-                  : 'bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15]'
+                  : 'bg-[var(--viz-tile)] border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
               }`}
               whileTap={{ scale: 0.98 }}
             >
@@ -116,7 +116,7 @@ export function StatusGames() {
                   ))}
                 </div>
 
-                <div className="bg-black/20 rounded-lg p-3 space-y-2 backdrop-blur-sm">
+                <div className="bg-[var(--viz-inner)] rounded-lg p-3 space-y-2 backdrop-blur-sm">
                   <div className="flex justify-between">
                     <span className="text-[10px] text-gray-500">Short-term:</span>
                     <span className="text-[10px] text-gray-300">{outcomes[selected].shortTerm}</span>
@@ -125,7 +125,7 @@ export function StatusGames() {
                     <span className="text-[10px] text-gray-500">Long-term:</span>
                     <span className="text-[10px] text-gray-300">{outcomes[selected].longTerm}</span>
                   </div>
-                  <div className="pt-2 border-t border-white/[0.1]">
+                  <div className="pt-2 border-t border-[var(--viz-border-light)]">
                     <p className="text-[10px] text-gray-400">{outcomes[selected].sustainability}</p>
                   </div>
                 </div>
@@ -135,8 +135,8 @@ export function StatusGames() {
 
           {/* Key insight */}
           <div className="w-full max-w-xs relative overflow-hidden rounded-lg">
-            <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-3">
               <p className="text-[10px] text-gray-400 text-center">
                 <span className="text-amber-400">Key insight:</span> Dominance works in zero-sum games.

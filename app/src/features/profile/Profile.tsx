@@ -6,35 +6,24 @@ const SpacedRepetitionInline = lazy(() =>
 );
 import {
   User,
-  Trophy,
-  Flame,
   Star,
   BookOpen,
-  Target,
-  Shield,
+  Trophy,
+  Flame,
   Download,
   Upload,
   Trash2,
   AlertTriangle,
   CheckCircle,
-  HardDrive,
   RefreshCw,
-  Cloud,
-  CloudOff,
   LogOut,
   RotateCw,
   ExternalLink,
-  Info,
   ChevronRight,
   Share2,
-  TrendingUp,
   Award,
   Settings,
   Bookmark,
-  Bell,
-  Clock,
-  Layers,
-  CheckCircle2,
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserStore } from '@/store/userStore';
@@ -47,7 +36,6 @@ import { GoogleSignInButton, BadgeCard, RichMarkdown } from '@/components/molecu
 import { Button } from '@/components/atoms';
 import { ShareableAchievementCard } from '@/components/organisms';
 import { BADGES } from '@/data/badges';
-import { achievements } from '@/data/achievements';
 import { modules } from '@/data/modules';
 import { moduleCategories, getCategoryForModule } from '@/data/categories';
 import { APP_VERSION } from '@/lib/version';
@@ -283,9 +271,6 @@ export function Profile() {
     const cards = filterModule ? starredCards.filter((c) => c.moduleId === filterModule) : starredCards;
     return [...cards].sort((a, b) => new Date(b.starredAt).getTime() - new Date(a.starredAt).getTime());
   }, [starredCards, filterModule]);
-
-  // Unlocked achievements
-  const unlockedAchievements = userProgress.achievements || [];
 
   // Current streak
   const currentStreak = consecutiveLogins || userProgress.currentStreak || 0;
@@ -582,7 +567,7 @@ export function Profile() {
     { id: 'main' as const, label: 'Overview', icon: User },
     { id: 'badges' as const, label: 'Badges', icon: Award },
     { id: 'saved' as const, label: 'Saved', icon: Bookmark },
-    { id: 'review' as const, label: 'Review', icon: Layers },
+    { id: 'review' as const, label: 'Review', icon: BookOpen },
     { id: 'settings' as const, label: 'Settings', icon: Settings },
   ];
 
@@ -595,27 +580,27 @@ export function Profile() {
   };
 
   return (
-    <div className="pb-28">
-      {/* Editorial Profile Header */}
-      <div className="px-6 pt-10 pb-0 max-w-3xl mx-auto">
-        <h1 className="text-[2.6rem] font-serif tracking-[-0.02em] leading-none text-text-primary">
+    <div className="pb-24">
+      {/* Header */}
+      <div className="px-5 pt-7 pb-0 max-w-3xl mx-auto">
+        <h1 className="text-[2rem] font-serif tracking-[-0.02em] leading-none text-text-primary">
           {profile?.name || user?.displayName || 'Reader'}
         </h1>
-        <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-text-muted mt-2.5">
+        <p className="text-[9px] uppercase tracking-[0.32em] font-bold text-sunrise mt-2">
           {tabSubtitle[activeView]}
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto px-6">
-      {/* ── EDITORIAL TAB BAR ── */}
-      <div className="flex gap-5 mt-6 mb-8 border-b border-white/[0.08]">
+      <div className="max-w-3xl mx-auto px-5">
+      {/* ── TAB BAR ── */}
+      <div className="flex gap-4 mt-4 mb-5 border-b border-black/[0.06] dark:border-white/[0.08]">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveView(tab.id)}
-            className={`relative pb-3 text-[10px] uppercase tracking-[0.22em] font-bold transition-colors whitespace-nowrap ${
+            className={`relative pb-2.5 text-[9px] uppercase tracking-[0.2em] font-bold transition-colors whitespace-nowrap ${
               activeView === tab.id
-                ? 'text-golden'
+                ? 'text-sunrise'
                 : 'text-text-muted hover:text-text-primary'
             }`}
           >
@@ -623,7 +608,7 @@ export function Profile() {
             {activeView === tab.id && (
               <motion.div
                 layoutId="tab-indicator"
-                className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-golden to-sunrise rounded-full"
+                className="absolute bottom-0 left-0 right-0 h-[2px] bg-sunrise rounded-full"
               />
             )}
           </button>
@@ -647,84 +632,73 @@ export function Profile() {
 
               {/* Identity Banner */}
               <motion.div variants={itemVariants}>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-elevated/70 backdrop-blur-sm">
-                  {/* Ambient glows */}
-                  <div className="absolute -top-8 -right-8 w-48 h-48 bg-golden/[0.08] rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute -bottom-6 -left-6 w-36 h-36 bg-lavender/[0.08] rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-golden/20 to-transparent" />
-
-                  <div className="relative p-5">
-                    {/* Avatar + Name */}
-                    <div className="flex items-start gap-4 mb-5">
+                <div className="rounded-2xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden">
+                  <div className="p-4">
+                    {/* Avatar + Name row */}
+                    <div className="flex items-center gap-3 mb-3">
                       {user?.photoURL ? (
-                        <img src={user.photoURL} alt="" className="w-[60px] h-[60px] rounded-2xl border-2 border-golden/40 shadow-golden" referrerPolicy="no-referrer" />
+                        <img src={user.photoURL} alt="" className="w-12 h-12 rounded-xl border border-black/[0.08] dark:border-white/10" referrerPolicy="no-referrer" />
                       ) : (
-                        <div className="w-[60px] h-[60px] rounded-2xl bg-gradient-to-br from-golden/30 to-sunrise/20 border-2 border-golden/40 flex items-center justify-center shadow-golden">
-                          <User className="w-7 h-7 text-golden" />
+                        <div className="w-12 h-12 rounded-xl bg-sunrise/15 border border-sunrise/25 flex items-center justify-center shrink-0">
+                          <User className="w-6 h-6 text-sunrise" />
                         </div>
                       )}
                       <div className="flex-1 min-w-0">
-                        <h2 className="text-xl font-display font-bold text-text-primary truncate leading-tight">
+                        <h2 className="text-base font-bold text-text-primary truncate leading-tight">
                           {profile?.name || user?.displayName || 'Learner'}
                         </h2>
-                        <p className={`text-[13px] font-semibold ${learnerTitle.color} mt-0.5`}>{learnerTitle.title}</p>
-                        <div className="flex items-center gap-3 mt-1.5">
-                          <span className="text-[11px] text-text-muted bg-white/[0.05] px-2 py-0.5 rounded-full border border-white/[0.08]">Lv. {userProgress.level}</span>
-                          {isConfigured && user && (
-                            <span className="flex items-center gap-1 text-[11px] text-text-muted">
-                              {syncError ? <CloudOff className="w-3 h-3 text-coral" /> : <Cloud className="w-3 h-3 text-sage" />}
-                              {formatLastSync()}
-                            </span>
-                          )}
-                        </div>
+                        <p className={`text-[11px] font-semibold ${learnerTitle.color}`}>{learnerTitle.title}</p>
                       </div>
                       <button
                         onClick={handleShareCard}
                         disabled={isSharing}
-                        className="w-9 h-9 rounded-xl bg-golden/10 border border-golden/25 flex items-center justify-center hover:bg-golden/20 active:scale-95 transition-all disabled:opacity-50"
+                        className="w-8 h-8 rounded-lg bg-black/[0.04] dark:bg-white/[0.06] flex items-center justify-center hover:bg-black/[0.08] active:scale-95 transition-all disabled:opacity-50"
+                        title="Share stats"
                       >
-                        <Share2 className="w-4 h-4 text-golden" />
+                        <Share2 className="w-3.5 h-3.5 text-text-muted" />
                       </button>
                     </div>
 
-                    {/* XP Progress bar */}
-                    <div className="mb-4">
-                      <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-[11px] font-semibold text-golden/80">Level {userProgress.level}</span>
-                        <span className="text-[11px] text-text-muted">{xpProgress} / 500 XP</span>
+                    {/* XP bar */}
+                    <div className="mb-3">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[10px] font-semibold text-sunrise">Lv. {userProgress.level}</span>
+                        <span className="text-[10px] text-text-muted tabular-nums">{xpProgress} / 500 XP</span>
                       </div>
-                      <div className="h-[5px] rounded-full bg-white/[0.06] overflow-hidden">
+                      <div className="h-[3px] rounded-full bg-black/[0.06] dark:bg-white/[0.06] overflow-hidden">
                         <motion.div
-                          className="h-full rounded-full bg-gradient-to-r from-golden to-sunrise"
+                          className="h-full rounded-full bg-sunrise"
                           initial={{ width: 0 }}
                           animate={{ width: `${getLevelProgress()}%` }}
-                          transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.3 }}
+                          transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
                         />
                       </div>
                     </div>
 
-                    {/* 4 stats */}
+                    {/* 4 icon stats — 1×4 grid */}
                     <div className="grid grid-cols-4 gap-2">
                       {[
-                        { icon: <Trophy className="w-3.5 h-3.5" />, value: userProgress.xp.toLocaleString(), label: 'XP', color: 'text-golden', bg: 'bg-golden/[0.08] border-golden/15' },
-                        { icon: <Flame className="w-3.5 h-3.5" />, value: currentStreak, label: 'Streak', color: 'text-coral', bg: 'bg-coral/[0.08] border-coral/15' },
-                        { icon: <BookOpen className="w-3.5 h-3.5" />, value: userProgress.lessonsCompleted.length, label: 'Reads', color: 'text-sage', bg: 'bg-sage/[0.08] border-sage/15' },
-                        { icon: <TrendingUp className="w-3.5 h-3.5" />, value: longestStreak || currentStreak, label: 'Best', color: 'text-lavender', bg: 'bg-lavender/[0.08] border-lavender/15' },
-                      ].map((stat) => (
-                        <div key={stat.label} className={`text-center rounded-xl p-2.5 border ${stat.bg}`}>
-                          <div className={`${stat.color} flex justify-center mb-1`}>{stat.icon}</div>
-                          <p className="text-sm font-display font-bold text-text-primary tabular-nums">{stat.value}</p>
-                          <p className="text-[10px] text-text-muted mt-0.5 font-medium">{stat.label}</p>
+                        { Icon: Trophy,   value: userProgress.xp.toLocaleString(),          label: 'XP',     iconCls: 'text-golden',   bg: 'bg-amber-50  dark:bg-golden/[0.10]' },
+                        { Icon: Flame,    value: currentStreak,                              label: 'Streak', iconCls: 'text-coral',    bg: 'bg-red-50    dark:bg-coral/[0.10]'  },
+                        { Icon: BookOpen, value: userProgress.lessonsCompleted.length,        label: 'Reads',  iconCls: 'text-sage',     bg: 'bg-green-50  dark:bg-sage/[0.10]'  },
+                        { Icon: Star,     value: longestStreak || currentStreak,             label: 'Best',   iconCls: 'text-lavender', bg: 'bg-purple-50 dark:bg-lavender/[0.10]' },
+                      ].map((s) => (
+                        <div key={s.label} className={`text-center rounded-xl py-2.5 px-1 ${s.bg}`}>
+                          <div className="flex justify-center mb-1">
+                            <s.Icon className={`w-4 h-4 ${s.iconCls}`} />
+                          </div>
+                          <p className="text-sm font-bold text-text-primary tabular-nums leading-none">{s.value}</p>
+                          <p className="text-[9px] text-text-muted mt-0.5 font-medium uppercase tracking-wide">{s.label}</p>
                         </div>
                       ))}
                     </div>
 
-                    {/* Weekly activity dots */}
-                    <div className="mt-4 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                      <span className="text-[10px] text-text-muted font-semibold uppercase tracking-widest">This Week</span>
+                    {/* Weekly dots */}
+                    <div className="mt-3 pt-3 border-t border-black/[0.05] dark:border-white/[0.05] flex items-center justify-between">
+                      <span className="text-[9px] text-text-muted font-semibold uppercase tracking-widest">This Week</span>
                       <div className="flex items-center gap-1">
                         {weeklyActivity.map((active, i) => (
-                          <div key={i} className={`w-[26px] h-[26px] rounded-lg flex items-center justify-center text-[9px] font-bold transition-all ${active ? 'bg-golden/25 text-golden border border-golden/40 shadow-golden' : 'bg-white/[0.03] text-text-muted/30 border border-white/[0.05]'}`}>
+                          <div key={i} className={`w-6 h-6 rounded-md flex items-center justify-center text-[8px] font-bold transition-all ${active ? 'bg-sunrise/20 text-sunrise border border-sunrise/30' : 'bg-black/[0.03] dark:bg-white/[0.03] text-text-muted/40 border border-black/[0.05] dark:border-white/[0.05]'}`}>
                             {orderedLabels[i]}
                           </div>
                         ))}
@@ -734,102 +708,86 @@ export function Profile() {
                 </div>
               </motion.div>
 
-              {/* Up Next — 2 items only */}
-              <motion.div variants={itemVariants} className="space-y-3">
-                <div className="flex items-center gap-2 px-0.5">
-                  <div className="w-[3px] h-4 rounded-full bg-gradient-to-b from-golden to-sunrise" />
-                  <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.18em]">Up Next</h3>
-                </div>
-                <div className="grid grid-cols-2 gap-2.5">
-                  {continueInfo && (
-                    <button
-                      onClick={() => navigate(`/pathway/${continueInfo.module.id}`)}
-                      className="text-left rounded-2xl border border-golden/20 bg-gradient-to-br from-golden/[0.07] via-elevated/50 to-transparent p-4 hover:border-golden/35 hover:from-golden/[0.10] active:scale-[0.98] transition-all group"
-                    >
-                      <div className="w-9 h-9 rounded-xl bg-golden/15 border border-golden/25 flex items-center justify-center mb-3 group-hover:bg-golden/25 transition-colors">
-                        <BookOpen className="w-4 h-4 text-golden" />
-                      </div>
-                      <p className="text-xs font-bold text-text-primary truncate leading-tight">{continueInfo.module.title}</p>
-                      <p className="text-[11px] text-text-muted mt-0.5 truncate">{continueInfo.lesson.title}</p>
-                      <div className="flex items-center gap-1 mt-2.5 text-golden text-[11px] font-semibold">
-                        Continue <ChevronRight className="w-3 h-3" />
-                      </div>
-                    </button>
-                  )}
-                  {nextBadge && (
-                    <button
-                      onClick={() => setActiveView('badges')}
-                      className="text-left rounded-2xl border border-lavender/20 bg-gradient-to-br from-lavender/[0.07] via-elevated/50 to-transparent p-4 hover:border-lavender/35 active:scale-[0.98] transition-all group"
-                    >
-                      <div className="w-9 h-9 rounded-xl bg-lavender/15 border border-lavender/25 flex items-center justify-center mb-3 text-lg group-hover:bg-lavender/25 transition-colors">
-                        {nextBadge.badge.icon}
-                      </div>
-                      <p className="text-xs font-bold text-text-primary truncate leading-tight">{nextBadge.badge.name}</p>
-                      <div className="mt-2.5">
-                        <div className="h-1.5 rounded-full bg-white/[0.07] overflow-hidden">
-                          <motion.div
-                            className="h-full rounded-full bg-lavender"
-                            initial={{ width: 0 }}
-                            animate={{ width: `${nextBadge.progress}%` }}
-                            transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.4 }}
-                          />
-                        </div>
-                        <p className="text-[10px] text-lavender/70 font-semibold mt-1">{Math.round(nextBadge.progress)}% there</p>
-                      </div>
-                    </button>
-                  )}
+              {/* Up Next */}
+              <motion.div variants={itemVariants} className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-[2px] h-3.5 rounded-full bg-sunrise" />
+                  <h3 className="text-[9px] font-bold text-text-primary uppercase tracking-[0.2em]">Up Next</h3>
                 </div>
 
-                {/* Weekly Challenge + Achievements row */}
-                <div className="grid grid-cols-2 gap-2.5">
-                  <Link to="/challenges" className="block">
-                    <div className="rounded-2xl border border-sunrise/20 bg-gradient-to-br from-sunrise/[0.07] via-elevated/50 to-transparent p-4 hover:border-sunrise/35 active:scale-[0.98] transition-all h-full">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Target className="w-4 h-4 text-sunrise" />
-                        <span className="text-xs font-bold text-text-primary">Weekly</span>
+                {continueInfo && (
+                  <button
+                    onClick={() => navigate(`/pathway/${continueInfo.module.id}`)}
+                    className="w-full text-left rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden flex active:scale-[0.99] transition-all"
+                  >
+                    <div className="w-[3px] bg-sunrise shrink-0" />
+                    <div className="p-3 flex-1 min-w-0">
+                      <p className="text-[10px] text-sunrise font-semibold uppercase tracking-wide mb-0.5">{continueInfo.module.title}</p>
+                      <p className="text-sm font-semibold text-text-primary truncate leading-snug">{continueInfo.lesson.title}</p>
+                      <p className="text-[11px] text-sunrise font-medium mt-1.5">Continue →</p>
+                    </div>
+                  </button>
+                )}
+
+                {nextBadge && (
+                  <button
+                    onClick={() => setActiveView('badges')}
+                    className="w-full text-left rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden flex active:scale-[0.99] transition-all"
+                  >
+                    <div className="w-[3px] bg-lavender shrink-0" />
+                    <div className="p-3 flex-1 min-w-0">
+                      <p className="text-[10px] text-lavender font-semibold uppercase tracking-wide mb-0.5">Badge Progress</p>
+                      <p className="text-sm font-semibold text-text-primary truncate">{nextBadge.badge.name}</p>
+                      <div className="mt-1.5 h-1 rounded-full bg-black/[0.06] dark:bg-white/[0.07] overflow-hidden">
+                        <motion.div className="h-full rounded-full bg-lavender" initial={{ width: 0 }} animate={{ width: `${nextBadge.progress}%` }} transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.3 }} />
                       </div>
-                      <p className="text-[11px] text-text-muted">Earn bonus XP</p>
+                      <p className="text-[10px] text-text-muted mt-1">{Math.round(nextBadge.progress)}%</p>
+                    </div>
+                  </button>
+                )}
+
+                <div className="grid grid-cols-2 gap-2">
+                  <Link to="/challenges" className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden flex active:scale-[0.99] transition-all">
+                    <div className="w-[3px] bg-sage shrink-0" />
+                    <div className="p-3">
+                      <p className="text-[10px] text-sage font-semibold uppercase tracking-wide">Weekly</p>
+                      <p className="text-xs font-semibold text-text-primary mt-0.5">Earn XP</p>
                     </div>
                   </Link>
-
-                  <button onClick={() => setActiveView('badges')} className="text-left rounded-2xl border border-white/10 bg-white/[0.02] p-4 hover:border-white/15 hover:bg-white/[0.04] active:scale-[0.98] transition-all">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-4 h-4 text-golden" />
-                      <span className="text-xs font-bold text-text-primary">Badges</span>
+                  <button onClick={() => setActiveView('badges')} className="text-left rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden flex active:scale-[0.99] transition-all">
+                    <div className="w-[3px] bg-golden shrink-0" />
+                    <div className="p-3">
+                      <p className="text-[10px] text-golden font-semibold uppercase tracking-wide">Badges</p>
+                      <p className="text-xs font-semibold text-text-primary mt-0.5">{unlockedBadges.length} / {BADGES.length}</p>
                     </div>
-                    <p className="text-[11px] text-text-muted">{unlockedAchievements.length} / {achievements.length} earned</p>
                   </button>
                 </div>
               </motion.div>
 
-              {/* Journey Map — top 8 by progress */}
-              <motion.div variants={itemVariants} className="space-y-3">
-                <div className="flex items-center gap-2 px-0.5">
-                  <div className="w-[3px] h-4 rounded-full bg-gradient-to-b from-lavender to-sky" />
-                  <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.18em]">Your Journey</h3>
+              {/* Journey */}
+              <motion.div variants={itemVariants} className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-[2px] h-3.5 rounded-full bg-lavender" />
+                  <h3 className="text-[9px] font-bold text-text-primary uppercase tracking-[0.2em]">Your Journey</h3>
                 </div>
-                <div className="rounded-2xl border border-white/[0.08] bg-elevated/40 overflow-hidden divide-y divide-white/[0.05]">
+                <div className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm divide-y divide-black/[0.04] dark:divide-white/[0.04] overflow-hidden">
                   {categoryProgress
                     .sort((a, b) => b.progress - a.progress)
-                    .slice(0, 8)
+                    .slice(0, 6)
                     .map((cat, idx) => (
-                      <div key={cat.id} className="p-3.5 hover:bg-white/[0.02] transition-colors">
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-2.5">
-                            <span className="text-base">{cat.icon}</span>
-                            <div>
-                              <span className="text-xs font-semibold text-text-primary">{cat.name}</span>
-                              <p className="text-[10px] text-text-muted mt-0.5">{cat.completedLessons} / {cat.totalLessons} lessons</p>
-                            </div>
-                          </div>
-                          <span className={`text-xs font-bold ${categoryTextColor[cat.color] || 'text-text-muted'}`}>{cat.progress}%</span>
+                      <div key={cat.id} className="px-3 py-2.5">
+                        <div className="flex items-center gap-2.5 mb-1.5">
+                          <span className="text-sm leading-none">{cat.icon}</span>
+                          <span className="text-xs font-semibold text-text-primary flex-1 truncate">{cat.name}</span>
+                          <span className="text-[10px] text-text-muted tabular-nums">{cat.completedLessons}/{cat.totalLessons}</span>
+                          <span className={`text-[10px] font-bold tabular-nums ${categoryTextColor[cat.color] || 'text-text-muted'}`}>{cat.progress}%</span>
                         </div>
-                        <div className="h-[3px] rounded-full bg-white/[0.06] overflow-hidden">
+                        <div className="h-[2px] rounded-full bg-black/[0.06] dark:bg-white/[0.06] overflow-hidden">
                           <motion.div
-                            className={`h-full rounded-full ${categoryBarColor[cat.color] || 'bg-golden'}`}
+                            className={`h-full rounded-full ${categoryBarColor[cat.color] || 'bg-sunrise'}`}
                             initial={{ width: 0 }}
                             animate={{ width: `${cat.progress}%` }}
-                            transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.05 * idx }}
+                            transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.04 * idx }}
                           />
                         </div>
                       </div>
@@ -837,16 +795,11 @@ export function Profile() {
                 </div>
               </motion.div>
 
-              {/* Version & Changelog */}
-              <motion.div variants={itemVariants} className="flex items-center justify-center gap-3 pt-2">
-                <Link to="/changelog" className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] transition-colors">
-                  <span className="text-[11px] font-mono text-text-muted">v{APP_VERSION}</span>
-                  <span className="text-[11px] text-text-muted/60">·</span>
-                  <span className="text-[11px] text-golden/80">What's new</span>
-                </Link>
+              <motion.div variants={itemVariants} className="flex justify-center">
+                <Link to="/changelog" className="text-[10px] text-text-muted hover:text-sunrise transition-colors font-mono">v{APP_VERSION} · What's new</Link>
               </motion.div>
 
-              <div className="h-4" />
+              <div className="h-2" />
             </motion.div>
           )}
 
@@ -854,38 +807,26 @@ export function Profile() {
           {/* TAB: ACHIEVEMENTS (badges)               */}
           {/* ════════════════════════════════════════ */}
           {activeView === 'badges' && (
-            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-6">
-              {/* Overall progress */}
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-4">
+              {/* Collection summary */}
               <motion.div variants={itemVariants}>
-                <div className="rounded-2xl border border-white/[0.08] bg-elevated/50 p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em]">Collection</span>
-                    <span className="text-sm font-bold text-golden">{totalBadgeProgress}%</span>
+                <div className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[9px] font-bold text-text-primary uppercase tracking-[0.2em]">Collection</span>
+                    <span className="text-xs font-bold text-sunrise">{totalBadgeProgress}%</span>
                   </div>
-                  <div className="h-[5px] rounded-full bg-white/[0.06] overflow-hidden mb-3">
-                    <motion.div
-                      className="h-full rounded-full bg-gradient-to-r from-amber-700 via-golden to-sunrise"
-                      initial={{ width: 0 }}
-                      animate={{ width: `${totalBadgeProgress}%` }}
-                      transition={{ type: 'spring', stiffness: 60, damping: 20, delay: 0.2 }}
-                    />
+                  <div className="h-[2px] rounded-full bg-black/[0.06] dark:bg-white/[0.06] overflow-hidden mb-2.5">
+                    <motion.div className="h-full rounded-full bg-sunrise" initial={{ width: 0 }} animate={{ width: `${totalBadgeProgress}%` }} transition={{ type: 'spring', stiffness: 60, damping: 20, delay: 0.2 }} />
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex gap-1.5">
                     {['bronze', 'silver', 'gold', 'platinum', 'diamond'].map((tier) => {
                       const tierBadges = BADGES.filter(b => b.tier === tier);
                       const tierUnlocked = tierBadges.filter(b => unlockedBadges.some(ub => ub.id === b.id));
-                      const tierColors: Record<string, string> = {
-                        bronze: 'text-amber-600', silver: 'text-slate-400', gold: 'text-yellow-400',
-                        platinum: 'text-cyan-300', diamond: 'text-purple-400',
-                      };
-                      const tierBgs: Record<string, string> = {
-                        bronze: 'bg-amber-600/10', silver: 'bg-slate-400/10', gold: 'bg-yellow-400/10',
-                        platinum: 'bg-cyan-300/10', diamond: 'bg-purple-400/10',
-                      };
+                      const tierColors: Record<string, string> = { bronze: 'text-amber-600', silver: 'text-slate-400', gold: 'text-yellow-500', platinum: 'text-cyan-400', diamond: 'text-purple-400' };
                       return (
-                        <div key={tier} className={`px-2 py-1 rounded-lg ${tierBgs[tier]}`}>
-                          <p className={`text-[10px] font-bold ${tierColors[tier]} text-center`}>{tierUnlocked.length}/{tierBadges.length}</p>
-                          <p className={`text-[9px] ${tierColors[tier]} opacity-70 capitalize text-center mt-0.5`}>{tier}</p>
+                        <div key={tier} className="flex-1 text-center">
+                          <p className={`text-[10px] font-bold ${tierColors[tier]}`}>{tierUnlocked.length}/{tierBadges.length}</p>
+                          <p className={`text-[8px] ${tierColors[tier]} opacity-60 capitalize`}>{tier}</p>
                         </div>
                       );
                     })}
@@ -895,21 +836,17 @@ export function Profile() {
 
               {/* Hall of Fame */}
               {hallOfFame.length > 0 && (
-                <motion.div variants={itemVariants} className="space-y-2.5">
-                  <div className="flex items-center gap-2 px-0.5">
-                    <div className="w-[3px] h-4 rounded-full bg-gradient-to-b from-golden to-amber-600" />
-                    <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.18em]">Hall of Fame</h3>
+                <motion.div variants={itemVariants} className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-[2px] h-3.5 rounded-full bg-golden" />
+                    <h3 className="text-[9px] font-bold text-text-primary uppercase tracking-[0.2em]">Hall of Fame</h3>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     {hallOfFame.map((badge) => (
                       <div key={badge.id} className="relative group">
                         <BadgeCard badge={badge} unlocked={true} size="hero" />
-                        <button
-                          onClick={() => setShareableBadge(badge)}
-                          className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity z-10 w-8 h-8 rounded-lg bg-golden/20 border border-golden/30 flex items-center justify-center hover:bg-golden/30"
-                          title="Share this achievement"
-                        >
-                          <Share2 className="w-4 h-4 text-golden" />
+                        <button onClick={() => setShareableBadge(badge)} className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity z-10 w-7 h-7 rounded-lg bg-golden/20 border border-golden/30 flex items-center justify-center" title="Share">
+                          <Share2 className="w-3.5 h-3.5 text-golden" />
                         </button>
                       </div>
                     ))}
@@ -919,41 +856,24 @@ export function Profile() {
 
               {/* Skill Trees */}
               {skillTrees.map((tree) => {
-                const treeBadges = BADGES
-                  .filter(b => tree.categories.includes(b.category))
-                  .sort((a, b) => a.requirement.value - b.requirement.value);
+                const treeBadges = BADGES.filter(b => tree.categories.includes(b.category)).sort((a, b) => a.requirement.value - b.requirement.value);
                 if (treeBadges.length === 0) return null;
                 const treeUnlocked = treeBadges.filter(b => unlockedBadges.some(ub => ub.id === b.id)).length;
                 return (
-                  <motion.div key={tree.key} variants={itemVariants} className="space-y-2">
-                    <div className="flex items-center justify-between px-0.5">
-                      <h3 className="text-[11px] font-bold text-text-primary flex items-center gap-2 uppercase tracking-[0.15em]">
-                        <span className="text-sm">{tree.icon}</span>
-                        {tree.label}
+                  <motion.div key={tree.key} variants={itemVariants} className="space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <h3 className={`text-[9px] font-bold uppercase tracking-[0.2em] flex items-center gap-1.5 ${tree.color}`}>
+                        <span>{tree.icon}</span>{tree.label}
                       </h3>
-                      <span className={`text-[11px] font-bold ${tree.color} px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.08]`}>{treeUnlocked}/{treeBadges.length}</span>
+                      <span className={`text-[9px] font-bold ${tree.color}`}>{treeUnlocked}/{treeBadges.length}</span>
                     </div>
-                    <div className={`rounded-2xl border ${tree.borderColor} bg-elevated/40 p-3 space-y-1.5`}>
+                    <div className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm p-2.5 space-y-1">
                       {treeBadges.map((badge, idx) => {
                         const unlocked = unlockedBadges.find(b => b.id === badge.id);
-                        const isNextToEarn = !unlocked && (idx === 0 || unlockedBadges.some(ub => ub.id === treeBadges[idx - 1]?.id));
+                        const isNext = !unlocked && (idx === 0 || unlockedBadges.some(ub => ub.id === treeBadges[idx - 1]?.id));
                         return (
-                          <div key={badge.id} className="relative">
-                            {idx > 0 && (
-                              <div className={`absolute -top-1.5 left-[22px] w-px h-1.5 ${unlocked ? 'bg-white/15' : 'bg-white/[0.04]'}`} />
-                            )}
-                            <div className={isNextToEarn ? 'relative' : ''}>
-                              {isNextToEarn && (
-                                <div className="absolute -inset-px rounded-xl ring-1 ring-golden/30 animate-pulse pointer-events-none" />
-                              )}
-                              <BadgeCard
-                                badge={unlocked || badge}
-                                unlocked={!!unlocked}
-                                progress={!unlocked ? getBadgeProgress(badge.id) : undefined}
-                                size="sm"
-                                showProgress={true}
-                              />
-                            </div>
+                          <div key={badge.id} className={isNext ? 'ring-1 ring-sunrise/30 rounded-xl' : ''}>
+                            <BadgeCard badge={unlocked || badge} unlocked={!!unlocked} progress={!unlocked ? getBadgeProgress(badge.id) : undefined} size="sm" showProgress={true} />
                           </div>
                         );
                       })}
@@ -963,13 +883,12 @@ export function Profile() {
               })}
 
               {unlockedBadges.length === 0 && (
-                <motion.div variants={itemVariants} className="text-center py-8">
-                  <div className="text-4xl mb-3">🎯</div>
-                  <p className="text-sm text-white/40 mb-1">Your trophy room is empty</p>
-                  <p className="text-xs text-white/25">Complete lessons and maintain streaks to earn badges</p>
+                <motion.div variants={itemVariants} className="text-center py-10">
+                  <p className="text-3xl mb-2">🎯</p>
+                  <p className="text-sm text-text-muted">No badges yet — complete lessons to earn them</p>
                 </motion.div>
               )}
-              <div className="h-4" />
+              <div className="h-2" />
             </motion.div>
           )}
 
@@ -1018,54 +937,40 @@ export function Profile() {
           {/* TAB: REVIEW (spaced repetition)          */}
           {/* ════════════════════════════════════════ */}
           {activeView === 'review' && (
-            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-5">
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-3">
               <motion.div variants={itemVariants}>
-                <div className="relative overflow-hidden rounded-3xl border border-lavender/20 bg-elevated/60 backdrop-blur-sm">
-                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-lavender/[0.07] rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lavender/20 to-transparent" />
-                  <div className="relative p-5">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Layers className="w-4 h-4 text-lavender" />
-                      <h2 className="text-base font-display font-bold text-text-primary">Review Cards</h2>
-                    </div>
-                    <p className="text-[11px] text-text-muted mb-5">Spaced repetition — reinforce what you've learned</p>
-
+                <div className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden">
+                  <div className="flex items-center gap-2 px-4 py-3 border-b border-black/[0.05] dark:border-white/[0.05]">
+                    <div className="w-[2px] h-3.5 rounded-full bg-lavender" />
+                    <span className="text-[9px] font-bold text-text-primary uppercase tracking-[0.2em]">Review Cards</span>
+                  </div>
+                  <div className="p-4">
                     {dueCardCount > 0 ? (
-                      <div className="space-y-4">
-                        <div className="flex items-center gap-4 p-4 rounded-2xl bg-lavender/[0.08] border border-lavender/20">
-                          <div className="w-14 h-14 rounded-2xl bg-lavender/20 border border-lavender/30 flex items-center justify-center shrink-0">
-                            <span className="text-2xl font-display font-bold text-lavender">{dueCardCount}</span>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3 p-3 rounded-xl bg-lavender/[0.07] border border-lavender/15">
+                          <div className="w-12 h-12 rounded-xl bg-lavender/15 flex items-center justify-center shrink-0">
+                            <span className="text-xl font-bold text-lavender">{dueCardCount}</span>
                           </div>
                           <div>
-                            <p className="text-sm font-bold text-text-primary">
-                              {dueCardCount} card{dueCardCount !== 1 ? 's' : ''} due
-                            </p>
-                            <p className="text-[11px] text-text-muted mt-0.5">Complete all → earn <span className="text-golden font-semibold">+75 XP bonus</span></p>
+                            <p className="text-sm font-bold text-text-primary">{dueCardCount} card{dueCardCount !== 1 ? 's' : ''} due</p>
+                            <p className="text-[11px] text-text-muted mt-0.5">Earn <span className="text-sunrise font-semibold">+75 XP</span> for completing all</p>
                           </div>
                         </div>
-                        <Button
-                          variant="primary"
-                          size="md"
-                          onClick={() => setShowReviewSession(true)}
-                          className="w-full gap-2 justify-center"
-                        >
-                          <Layers className="w-4 h-4" />
-                          Start Review Session
+                        <Button variant="primary" size="md" onClick={() => setShowReviewSession(true)} className="w-full gap-2 justify-center">
+                          Start Review
                         </Button>
                       </div>
                     ) : (
-                      <div className="flex flex-col items-center py-10 text-center">
-                        <div className="w-16 h-16 rounded-2xl bg-sage/15 border border-sage/25 flex items-center justify-center mb-4">
-                          <CheckCircle2 className="w-8 h-8 text-sage" />
-                        </div>
+                      <div className="flex flex-col items-center py-8 text-center">
+                        <p className="text-3xl mb-2">✅</p>
                         <p className="text-sm font-bold text-text-primary">All caught up!</p>
-                        <p className="text-[11px] text-text-muted mt-1.5">No cards due right now. Check back later.</p>
+                        <p className="text-[11px] text-text-muted mt-1">No cards due right now.</p>
                       </div>
                     )}
                   </div>
                 </div>
               </motion.div>
-              <div className="h-4" />
+              <div className="h-2" />
             </motion.div>
           )}
 
@@ -1073,128 +978,97 @@ export function Profile() {
           {/* TAB: SETTINGS                            */}
           {/* ════════════════════════════════════════ */}
           {activeView === 'settings' && (
-            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-3">
+            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-2.5">
+
               {/* Cloud Sync */}
               {isConfigured && (
                 <motion.div variants={itemVariants}>
-                  <div className="rounded-2xl border border-white/10 bg-elevated/60 p-5">
-                    <div className="flex items-center gap-2 mb-4">
-                      <div className="w-[3px] h-4 rounded-full bg-sage" />
-                      <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em] flex items-center gap-1.5">
-                        <Cloud className="w-3.5 h-3.5 text-sage" />
-                        Cloud Sync
-                      </h3>
+                  <div className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden">
+                    <div className="flex items-center gap-2 px-4 py-2.5 border-b border-black/[0.05] dark:border-white/[0.05]">
+                      <div className="w-[2px] h-3.5 rounded-full bg-sage" />
+                      <span className="text-[9px] font-bold text-text-primary uppercase tracking-[0.2em]">Cloud Sync</span>
                     </div>
-                    {user ? (
-                      <>
-                        <div className="flex items-center gap-3 mb-4 p-3 rounded-xl bg-white/[0.03] border border-white/[0.07]">
-                          {user.photoURL ? (
-                            <img src={user.photoURL} alt="" className="w-9 h-9 rounded-xl border border-white/10" referrerPolicy="no-referrer" />
-                          ) : (
-                            <div className="w-9 h-9 rounded-xl bg-golden/20 border border-golden/25 flex items-center justify-center">
-                              <User className="w-4 h-4 text-golden" />
+                    <div className="p-3">
+                      {user ? (
+                        <>
+                          <div className="flex items-center gap-3 mb-3">
+                            {user.photoURL ? (
+                              <img src={user.photoURL} alt="" className="w-8 h-8 rounded-lg border border-black/[0.08] dark:border-white/10" referrerPolicy="no-referrer" />
+                            ) : (
+                              <div className="w-8 h-8 rounded-lg bg-sunrise/10 flex items-center justify-center"><User className="w-4 h-4 text-sunrise" /></div>
+                            )}
+                            <div className="flex-1 min-w-0">
+                              <p className="text-xs font-bold text-text-primary truncate">{user.displayName || 'User'}</p>
+                              <p className="text-[10px] text-text-muted truncate">{user.email}</p>
                             </div>
-                          )}
-                          <div className="flex-1">
-                            <p className="text-xs font-bold text-text-primary">{user.displayName || 'User'}</p>
-                            <p className="text-[11px] text-text-muted">{user.email}</p>
+                            <div className={`w-1.5 h-1.5 rounded-full ${syncError ? 'bg-coral' : 'bg-sage'}`} />
                           </div>
-                          <div className={`w-2 h-2 rounded-full ${syncError ? 'bg-coral' : 'bg-sage'}`} />
-                        </div>
-                        <div className="flex gap-2">
-                          <button onClick={syncNow} disabled={isSyncing} className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs bg-sage/10 text-sage border border-sage/25 hover:bg-sage/20 active:scale-95 transition-all disabled:opacity-50">
-                            <RefreshCw className={`w-3 h-3 ${isSyncing ? 'animate-spin' : ''}`} />
-                            {isSyncing ? 'Syncing...' : `Sync (${formatLastSync()})`}
-                          </button>
-                          <Button variant="glass" size="sm" onClick={signOut} className="gap-2">
-                            <LogOut className="w-3.5 h-3.5" />
-                            Sign Out
-                          </Button>
-                        </div>
-                      </>
-                    ) : (
-                      <GoogleSignInButton variant="primary" size="md" label="Sign in with Google" />
-                    )}
+                          <div className="flex gap-2">
+                            <button onClick={syncNow} disabled={isSyncing} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs bg-sage/10 text-sage border border-sage/20 hover:bg-sage/15 active:scale-95 transition-all disabled:opacity-50">
+                              <RefreshCw className={`w-3 h-3 ${isSyncing ? 'animate-spin' : ''}`} />
+                              {isSyncing ? 'Syncing...' : `Sync (${formatLastSync()})`}
+                            </button>
+                            <Button variant="glass" size="sm" onClick={signOut} className="gap-1.5">
+                              <LogOut className="w-3 h-3" />Sign Out
+                            </Button>
+                          </div>
+                        </>
+                      ) : (
+                        <GoogleSignInButton variant="primary" size="md" label="Sign in with Google" />
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               )}
 
               {/* Backup & Restore */}
               <motion.div variants={itemVariants}>
-                <div className="rounded-2xl border border-white/10 bg-elevated/60 p-5">
-                  <div className="flex items-center justify-between mb-4">
+                <div className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden">
+                  <div className="flex items-center justify-between px-4 py-2.5 border-b border-black/[0.05] dark:border-white/[0.05]">
                     <div className="flex items-center gap-2">
-                      <div className="w-[3px] h-4 rounded-full bg-sage" />
-                      <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em] flex items-center gap-1.5">
-                        <Shield className="w-3.5 h-3.5 text-sage" />
-                        Backup & Restore
-                      </h3>
+                      <div className="w-[2px] h-3.5 rounded-full bg-golden" />
+                      <span className="text-[9px] font-bold text-text-primary uppercase tracking-[0.2em]">Backup & Restore</span>
                     </div>
-                    <span className="flex items-center gap-1.5 text-[11px] text-text-muted bg-white/[0.04] px-2 py-1 rounded-lg border border-white/[0.07]">
-                      <HardDrive className="w-3 h-3" />
-                      {calculateStorageSize()} KB
-                    </span>
+                    <span className="text-[9px] text-text-muted font-mono">{calculateStorageSize()} KB</span>
                   </div>
-                  <div className="flex gap-2 mb-4">
-                    <Button variant={exportStatus === 'success' ? 'primary' : 'glass'} size="sm" onClick={handleExport} disabled={exportStatus !== 'idle'} className="gap-2 flex-1">
-                      {exportStatus === 'success' ? <CheckCircle className="w-3.5 h-3.5" /> : <Download className="w-3.5 h-3.5" />}
-                      {exportStatus === 'success' ? 'Done!' : 'Export'}
-                    </Button>
-                    <input type="file" ref={fileInputRef} onChange={handleFileSelect} accept=".json" className="hidden" />
-                    <Button variant="glass" size="sm" onClick={() => fileInputRef.current?.click()} disabled={importStatus === 'confirm' || importStatus === 'success'} className="gap-2 flex-1">
-                      <Upload className="w-3.5 h-3.5" />
-                      Import
-                    </Button>
+                  <div className="p-3 space-y-2">
+                    <div className="flex gap-2">
+                      <Button variant={exportStatus === 'success' ? 'primary' : 'glass'} size="sm" onClick={handleExport} disabled={exportStatus !== 'idle'} className="gap-1.5 flex-1">
+                        {exportStatus === 'success' ? <CheckCircle className="w-3 h-3" /> : <Download className="w-3 h-3" />}
+                        {exportStatus === 'success' ? 'Done!' : 'Export'}
+                      </Button>
+                      <input type="file" ref={fileInputRef} onChange={handleFileSelect} accept=".json" className="hidden" />
+                      <Button variant="glass" size="sm" onClick={() => fileInputRef.current?.click()} disabled={importStatus === 'confirm' || importStatus === 'success'} className="gap-1.5 flex-1">
+                        <Upload className="w-3 h-3" />Import
+                      </Button>
+                    </div>
+                    <AnimatePresence mode="wait">
+                      {importStatus === 'confirm' && pendingImportData && (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="bg-sunrise/10 border border-sunrise/25 rounded-lg p-3">
+                          <p className="text-xs text-sunrise mb-2">Restore from {new Date(pendingImportData.exportDate).toLocaleDateString()}?</p>
+                          <div className="flex gap-2">
+                            <Button variant="primary" size="sm" onClick={confirmImport}>Confirm</Button>
+                            <Button variant="glass" size="sm" onClick={() => { setPendingImportData(null); setImportStatus('idle'); }}>Cancel</Button>
+                          </div>
+                        </motion.div>
+                      )}
+                      {importStatus === 'success' && (<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs text-sage flex items-center gap-1.5 p-2"><CheckCircle className="w-3 h-3" /> Restored! Reloading...</motion.div>)}
+                      {importStatus === 'error' && (<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs text-coral flex items-center gap-1.5 p-2"><AlertTriangle className="w-3 h-3" /> {importError || 'Import failed'}</motion.div>)}
+                    </AnimatePresence>
                   </div>
-                  <AnimatePresence mode="wait">
-                    {importStatus === 'confirm' && pendingImportData && (
-                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="bg-golden/10 border border-golden/30 rounded-xl p-3 mb-3">
-                        <p className="text-xs text-golden mb-2">Restore from {new Date(pendingImportData.exportDate).toLocaleDateString()}?</p>
-                        <div className="flex gap-2">
-                          <Button variant="primary" size="sm" onClick={confirmImport}>Confirm</Button>
-                          <Button variant="glass" size="sm" onClick={() => { setPendingImportData(null); setImportStatus('idle'); }}>Cancel</Button>
-                        </div>
-                      </motion.div>
-                    )}
-                    {importStatus === 'success' && (
-                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-sage/10 border border-sage/30 rounded-xl p-3 mb-3">
-                        <p className="text-xs text-sage flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5" /> Restored! Reloading...</p>
-                      </motion.div>
-                    )}
-                    {importStatus === 'error' && (
-                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-coral/10 border border-coral/30 rounded-xl p-3 mb-3">
-                        <p className="text-xs text-coral flex items-center gap-1.5"><AlertTriangle className="w-3.5 h-3.5" /> {importError || 'Import failed'}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </div>
               </motion.div>
 
               {/* Appearance */}
               <motion.div variants={itemVariants}>
-                <div className="rounded-2xl border border-white/10 bg-elevated/60 p-5">
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-[3px] h-4 rounded-full bg-golden" />
-                    <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em] flex items-center gap-1.5">
-                      <Settings className="w-3.5 h-3.5 text-golden" />
-                      Appearance
-                    </h3>
+                <div className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden">
+                  <div className="flex items-center gap-2 px-4 py-2.5 border-b border-black/[0.05] dark:border-white/[0.05]">
+                    <div className="w-[2px] h-3.5 rounded-full bg-lavender" />
+                    <span className="text-[9px] font-bold text-text-primary uppercase tracking-[0.2em]">Appearance</span>
                   </div>
-                  <div className="flex gap-2">
-                    {([
-                      { value: 'dark' as const, label: 'Dark' },
-                      { value: 'light' as const, label: 'Light' },
-                      { value: 'system' as const, label: 'System' },
-                    ]).map((opt) => (
-                      <button
-                        key={opt.value}
-                        onClick={() => updateSettings({ theme: opt.value })}
-                        className={`flex-1 py-3 px-3 rounded-xl text-xs font-bold transition-all border active:scale-95 ${
-                          settings.theme === opt.value
-                            ? 'bg-golden/15 border-golden/35 text-golden'
-                            : 'bg-white/[0.03] border-white/[0.08] text-text-muted hover:bg-white/[0.06]'
-                        }`}
-                      >
+                  <div className="p-3 flex gap-2">
+                    {([{ value: 'dark' as const, label: 'Dark' }, { value: 'light' as const, label: 'Light' }, { value: 'system' as const, label: 'System' }]).map((opt) => (
+                      <button key={opt.value} onClick={() => updateSettings({ theme: opt.value })} className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all active:scale-95 ${settings.theme === opt.value ? 'bg-sunrise text-white' : 'bg-black/[0.04] dark:bg-white/[0.06] text-text-muted hover:text-text-primary'}`}>
                         {opt.label}
                       </button>
                     ))}
@@ -1204,74 +1078,47 @@ export function Profile() {
 
               {/* Learning Preferences */}
               <motion.div variants={itemVariants}>
-                <div className="rounded-2xl border border-white/10 bg-elevated/60 p-5">
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-[3px] h-4 rounded-full bg-lavender" />
-                    <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em] flex items-center gap-1.5">
-                      <BookOpen className="w-3.5 h-3.5 text-lavender" />
-                      Learning Preferences
-                    </h3>
+                <div className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden">
+                  <div className="flex items-center gap-2 px-4 py-2.5 border-b border-black/[0.05] dark:border-white/[0.05]">
+                    <div className="w-[2px] h-3.5 rounded-full bg-sage" />
+                    <span className="text-[9px] font-bold text-text-primary uppercase tracking-[0.2em]">Learning</span>
                   </div>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-4">
+                  <div className="p-3">
+                    <div className="flex items-center justify-between gap-3">
                       <div className="flex-1">
-                        <p className="text-xs font-bold text-text-primary">Express Learning Mode</p>
-                        <p className="text-[11px] text-text-muted mt-0.5">Bite-sized lessons (2-5 min) instead of full sessions</p>
+                        <p className="text-xs font-bold text-text-primary">Express Mode</p>
+                        <p className="text-[10px] text-text-muted mt-0.5">Shorter lessons (2-5 min)</p>
                       </div>
-                      <button
-                        onClick={() => updateSettings({ microLearningMode: !settings.microLearningMode })}
-                        className={`relative shrink-0 inline-flex h-6 w-11 items-center rounded-full transition-colors ${settings.microLearningMode ? 'bg-lavender' : 'bg-white/[0.12]'}`}
-                      >
-                        <span className={`inline-block h-5 w-5 transform rounded-full bg-white shadow-sm transition-transform ${settings.microLearningMode ? 'translate-x-5' : 'translate-x-0.5'}`} />
+                      <button onClick={() => updateSettings({ microLearningMode: !settings.microLearningMode })} className={`relative shrink-0 inline-flex h-5 w-9 items-center rounded-full transition-colors ${settings.microLearningMode ? 'bg-sage' : 'bg-black/[0.1] dark:bg-white/[0.12]'}`}>
+                        <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform ${settings.microLearningMode ? 'translate-x-4' : 'translate-x-0.5'}`} />
                       </button>
                     </div>
-                    {settings.microLearningMode && (
-                      <div className="p-3 rounded-xl bg-lavender/[0.08] border border-lavender/20">
-                        <p className="text-[11px] text-lavender font-medium">⚡ Express Mode active: See shorter versions of lessons optimized for quick learning</p>
-                      </div>
-                    )}
                   </div>
                 </div>
               </motion.div>
 
-              {/* Notification Preferences */}
+              {/* Notifications */}
               <motion.div variants={itemVariants}>
-                <div className="rounded-2xl border border-white/10 bg-elevated/60 p-5">
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-[3px] h-4 rounded-full bg-coral" />
-                    <h3 className="text-[11px] font-bold text-text-primary uppercase tracking-[0.15em] flex items-center gap-1.5">
-                      <Bell className="w-3.5 h-3.5 text-coral" />
-                      Notifications
-                    </h3>
+                <div className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden">
+                  <div className="flex items-center gap-2 px-4 py-2.5 border-b border-black/[0.05] dark:border-white/[0.05]">
+                    <div className="w-[2px] h-3.5 rounded-full bg-coral" />
+                    <span className="text-[9px] font-bold text-text-primary uppercase tracking-[0.2em]">Notifications</span>
                   </div>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-4">
+                  <div className="p-3 space-y-3">
+                    <div className="flex items-center justify-between gap-3">
                       <div className="flex-1">
                         <p className="text-xs font-bold text-text-primary">Daily Streak Reminder</p>
-                        <p className="text-[11px] text-text-muted mt-0.5">Get daily notifications to keep your streak alive</p>
+                        <p className="text-[10px] text-text-muted mt-0.5">Keep your streak alive</p>
                       </div>
-                      <button
-                        onClick={() => toggleNotifications(!notificationSchedule.enabled)}
-                        className={`relative shrink-0 inline-flex h-6 w-11 items-center rounded-full transition-colors ${notificationSchedule.enabled ? 'bg-sage' : 'bg-white/[0.12]'}`}
-                      >
-                        <span className={`inline-block h-5 w-5 transform rounded-full bg-white shadow-sm transition-transform ${notificationSchedule.enabled ? 'translate-x-5' : 'translate-x-0.5'}`} />
+                      <button onClick={() => toggleNotifications(!notificationSchedule.enabled)} className={`relative shrink-0 inline-flex h-5 w-9 items-center rounded-full transition-colors ${notificationSchedule.enabled ? 'bg-sage' : 'bg-black/[0.1] dark:bg-white/[0.12]'}`}>
+                        <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform ${notificationSchedule.enabled ? 'translate-x-4' : 'translate-x-0.5'}`} />
                       </button>
                     </div>
                     {notificationSchedule.enabled && (
-                      <div className="border-t border-white/[0.06] pt-4">
-                        <label className="flex items-center gap-2 mb-2">
-                          <Clock className="w-3.5 h-3.5 text-text-muted" />
-                          <span className="text-xs font-bold text-text-primary">Preferred Time</span>
-                        </label>
-                        <input
-                          type="time"
-                          value={notificationSchedule.scheduledTime}
-                          onChange={(e) => setNotificationTime(e.target.value)}
-                          className="w-full px-3 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-text-primary text-sm focus:outline-none focus:border-sage/50 transition-colors"
-                        />
-                        <p className="text-[11px] text-text-muted mt-2">
-                          Reminder at {notificationSchedule.scheduledTime} · {notificationSchedule.timezone}
-                        </p>
+                      <div className="border-t border-black/[0.05] dark:border-white/[0.05] pt-3">
+                        <p className="text-[10px] text-text-muted mb-1.5">Reminder time</p>
+                        <input type="time" value={notificationSchedule.scheduledTime} onChange={(e) => setNotificationTime(e.target.value)} className="w-full px-3 py-2 rounded-lg bg-black/[0.04] dark:bg-white/[0.05] border border-black/[0.07] dark:border-white/[0.08] text-text-primary text-sm focus:outline-none focus:border-sage/50 transition-colors" />
+                        <p className="text-[9px] text-text-muted mt-1">{notificationSchedule.timezone}</p>
                       </div>
                     )}
                   </div>
@@ -1280,59 +1127,45 @@ export function Profile() {
 
               {/* Danger Zone */}
               <motion.div variants={itemVariants}>
-                <div className="rounded-2xl border border-coral/20 bg-coral/[0.03] p-5">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-[3px] h-4 rounded-full bg-coral" />
-                    <h3 className="text-[11px] font-bold text-coral uppercase tracking-[0.15em] flex items-center gap-1.5">
-                      <AlertTriangle className="w-3.5 h-3.5" />
-                      Danger Zone
-                    </h3>
+                <div className="rounded-xl border border-coral/20 bg-coral/[0.02] overflow-hidden">
+                  <div className="flex items-center gap-2 px-4 py-2.5 border-b border-coral/10">
+                    <div className="w-[2px] h-3.5 rounded-full bg-coral" />
+                    <span className="text-[9px] font-bold text-coral uppercase tracking-[0.2em]">Danger Zone</span>
                   </div>
-                  <p className="text-[11px] text-text-muted mb-4">Permanently delete all progress. Cannot be undone.</p>
-                  <AnimatePresence>
-                    {showResetConfirm ? (
-                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="bg-coral/10 border border-coral/30 rounded-xl p-4">
-                        <p className="text-xs text-coral font-medium mb-3">Are you sure? All progress will be permanently deleted.</p>
-                        <div className="flex gap-2">
-                          <Button variant="primary" size="sm" onClick={handleReset} className="bg-coral hover:bg-coral/80">Delete Everything</Button>
-                          <Button variant="glass" size="sm" onClick={() => setShowResetConfirm(false)}>Cancel</Button>
-                        </div>
-                      </motion.div>
-                    ) : (
-                      <Button variant="glass" size="sm" onClick={() => setShowResetConfirm(true)} className="gap-2 text-coral border-coral/30 hover:bg-coral/10">
-                        <Trash2 className="w-3.5 h-3.5" />
-                        Reset All Data
-                      </Button>
-                    )}
-                  </AnimatePresence>
+                  <div className="p-3">
+                    <AnimatePresence>
+                      {showResetConfirm ? (
+                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+                          <p className="text-xs text-coral mb-2">All progress permanently deleted. Are you sure?</p>
+                          <div className="flex gap-2">
+                            <Button variant="primary" size="sm" onClick={handleReset} className="bg-coral hover:bg-coral/80">Delete Everything</Button>
+                            <Button variant="glass" size="sm" onClick={() => setShowResetConfirm(false)}>Cancel</Button>
+                          </div>
+                        </motion.div>
+                      ) : (
+                        <Button variant="glass" size="sm" onClick={() => setShowResetConfirm(true)} className="gap-1.5 text-coral border-coral/25 hover:bg-coral/10">
+                          <Trash2 className="w-3 h-3" />Reset All Data
+                        </Button>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
               </motion.div>
 
               {/* App Info */}
-              <motion.div variants={itemVariants}>
-                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] px-4 py-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Info className="w-3.5 h-3.5 text-golden" />
-                      <span className="text-xs font-mono text-text-muted">v{APP_VERSION}</span>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button variant="glass" size="sm" onClick={handleHardRefresh} disabled={isRefreshing} className="gap-1.5 text-[11px]">
-                        <RotateCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin' : ''}`} />
-                        {isRefreshing ? 'Updating...' : 'Update'}
-                      </Button>
-                      <Link to="/changelog">
-                        <Button variant="glass" size="sm" className="gap-1.5 text-[11px]">
-                          <ExternalLink className="w-3 h-3" />
-                          Changelog
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
+              <motion.div variants={itemVariants} className="flex items-center justify-between px-1">
+                <span className="text-[10px] font-mono text-text-muted">v{APP_VERSION}</span>
+                <div className="flex gap-2">
+                  <button onClick={handleHardRefresh} disabled={isRefreshing} className="text-[10px] text-text-muted hover:text-sunrise transition-colors flex items-center gap-1">
+                    <RotateCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin' : ''}`} />{isRefreshing ? 'Updating...' : 'Update'}
+                  </button>
+                  <Link to="/changelog" className="text-[10px] text-text-muted hover:text-sunrise transition-colors flex items-center gap-1">
+                    <ExternalLink className="w-3 h-3" />Changelog
+                  </Link>
                 </div>
               </motion.div>
 
-              <div className="h-4" />
+              <div className="h-2" />
             </motion.div>
           )}
 

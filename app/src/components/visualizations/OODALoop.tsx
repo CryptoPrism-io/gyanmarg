@@ -63,12 +63,12 @@ export function OODALoop() {
   const stage = stages[activeStage];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -76,7 +76,7 @@ export function OODALoop() {
           <div className="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
             <RefreshCw className="w-4 h-4 text-purple-400" />
           </div>
-          <h3 className="text-sm font-medium text-white/90">OODA Loop</h3>
+          <h3 className="text-sm font-medium text-[var(--viz-secondary)]">OODA Loop</h3>
         </div>
 
         <div className="flex flex-col items-center gap-4">
@@ -171,7 +171,7 @@ export function OODALoop() {
                 <h3 className="text-lg font-bold mb-2" style={{ color: stage.color }}>
                   {stage.name}
                 </h3>
-                <p className="text-xs text-white/60 mb-3">{stage.description}</p>
+                <p className="text-xs text-[var(--viz-secondary)] mb-3">{stage.description}</p>
 
                 <div className="space-y-1">
                   {stage.examples.map((example, idx) => (
@@ -180,7 +180,7 @@ export function OODALoop() {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.1 }}
-                      className="text-[10px] text-white/50 bg-black/20 px-2 py-1 rounded"
+                      className="text-[10px] text-[var(--viz-muted)] bg-[var(--viz-inner)] px-2 py-1 rounded"
                     >
                       {example}
                     </motion.div>
@@ -196,7 +196,7 @@ export function OODALoop() {
             className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
               isAutoPlaying
                 ? 'bg-green-500/10 border-green-500/30 text-green-400'
-                : 'border-white/[0.08] text-white/50 hover:text-white/80'
+                : 'border-[var(--viz-border)] text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]'
             }`}
           >
             {isAutoPlaying ? '⏸ Auto-playing' : '▶ Auto-play'}
@@ -208,17 +208,17 @@ export function OODALoop() {
               className="absolute inset-0"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="relative p-3 text-center">
-              <p className="text-xs text-white/60">
+              <p className="text-xs text-[var(--viz-secondary)]">
                 <span className="text-blue-400 font-medium">Key insight:</span> The side that
                 cycles through OODA faster gains the advantage. Speed of adaptation beats raw power.
               </p>
             </div>
           </div>
 
-          <p className="text-[10px] text-white/50 text-center max-w-xs">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center max-w-xs">
             Click stages to explore • John Boyd (Fighter Pilot Strategist)
           </p>
         </div>

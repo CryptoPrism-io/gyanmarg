@@ -146,12 +146,12 @@ export function CompoundInterest() {
   const selectedData = selectedYear !== null ? data[selectedYear] : null;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -365,7 +365,7 @@ export function CompoundInterest() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                className="absolute top-2 left-2 bg-black/90 border border-green-500/30 rounded-lg p-2"
+                className="absolute top-2 left-2 bg-[var(--viz-inner-dark)] border border-green-500/30 rounded-lg p-2"
               >
                 <p className="text-[10px] text-gray-400">Year {selectedData.year}</p>
                 <p className="text-sm font-bold text-green-400">{formatCurrency(selectedData.compound)}</p>
@@ -394,7 +394,7 @@ export function CompoundInterest() {
       <div className="w-full max-w-sm space-y-3 px-2">
         {/* Principal and Monthly in grid */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 backdrop-blur-sm">
+          <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
               <span className="text-[10px] text-gray-500">💰 Starting</span>
               <span className="text-sm font-bold text-green-400">${principal.toLocaleString()}</span>
@@ -411,7 +411,7 @@ export function CompoundInterest() {
             />
           </div>
 
-          <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 backdrop-blur-sm">
+          <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
               <span className="text-[10px] text-gray-500">📅 Monthly</span>
               <span className="text-sm font-bold text-green-400">${monthlyAdd.toLocaleString()}</span>
@@ -431,7 +431,7 @@ export function CompoundInterest() {
 
         {/* Rate and Years in grid */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 backdrop-blur-sm">
+          <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
               <span className="text-[10px] text-gray-500">📈 Return</span>
               <span className="text-sm font-bold text-amber-400">{rate}%</span>
@@ -448,7 +448,7 @@ export function CompoundInterest() {
             />
           </div>
 
-          <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 backdrop-blur-sm">
+          <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-3 backdrop-blur-sm">
             <div className="flex justify-between items-center mb-2">
               <span className="text-[10px] text-gray-500">⏱️ Years</span>
               <span className="text-sm font-bold text-blue-400">{years}</span>
@@ -469,7 +469,7 @@ export function CompoundInterest() {
 
       {/* Visual breakdown - pie chart style */}
       <div className="w-full max-w-sm">
-        <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 backdrop-blur-sm">
+        <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-4 backdrop-blur-sm">
           <div className="flex items-center justify-center gap-4">
             {/* Simple bar breakdown */}
             <div className="flex-1">
@@ -481,7 +481,7 @@ export function CompoundInterest() {
                   animate={{ width: `${(totalContributions / maxValue) * 100}%` }}
                   transition={{ duration: 1, delay: 0.5 }}
                 >
-                  <span className="text-[9px] text-white font-medium px-1 truncate">
+                  <span className="text-[9px] text-[var(--viz-text)] font-medium px-1 truncate">
                     {formatCurrency(totalContributions)}
                   </span>
                 </motion.div>
@@ -492,7 +492,7 @@ export function CompoundInterest() {
                   animate={{ width: `${(interestEarned / maxValue) * 100}%` }}
                   transition={{ duration: 1, delay: 0.8 }}
                 >
-                  <span className="text-[9px] text-white font-medium px-1 truncate">
+                  <span className="text-[9px] text-[var(--viz-text)] font-medium px-1 truncate">
                     {formatCurrency(interestEarned)}
                   </span>
                 </motion.div>

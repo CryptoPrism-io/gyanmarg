@@ -266,12 +266,12 @@ export function TacticalEmpathy() {
   // Intro phase - technique overview
   if (phase === 'intro') {
     return (
-      <div className="relative overflow-hidden rounded-2xl">
+      <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
         {/* Dark Glassmorphism background - 88% transparent */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
-        <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
         <div className="relative z-10 p-5">
           <div className="flex flex-col items-center gap-4">
@@ -318,7 +318,7 @@ export function TacticalEmpathy() {
             {/* Start button */}
             <motion.button
               onClick={() => setPhase('scenario')}
-              className="mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white text-sm font-medium"
+              className="mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-[var(--viz-text)] text-sm font-medium"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -344,8 +344,8 @@ export function TacticalEmpathy() {
         {/* Dark Glassmorphism background - 88% transparent */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
-        <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
         <div className="relative z-10 p-5">
           <div className="flex flex-col items-center gap-5">
@@ -357,7 +357,7 @@ export function TacticalEmpathy() {
               <div className="text-6xl mb-4">
                 {score >= 80 ? '🏆' : score >= 60 ? '🎯' : '💪'}
               </div>
-              <h3 className="text-lg font-bold text-white mb-1">Training Complete!</h3>
+              <h3 className="text-lg font-bold text-[var(--viz-text)] mb-1">Training Complete!</h3>
               <p className="text-xs text-gray-400">
                 {score >= 80 ? 'FBI Negotiator Level!' : score >= 60 ? 'Solid Foundation!' : 'Keep Practicing!'}
               </p>
@@ -366,16 +366,16 @@ export function TacticalEmpathy() {
             {/* Stats */}
             <div className="w-full max-w-xs grid grid-cols-2 gap-3">
               <div className="relative overflow-hidden rounded-xl">
-                <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-                <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+                <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+                <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
                 <div className="relative z-10 p-3 text-center">
                   <p className="text-2xl font-bold text-blue-400">{score}%</p>
                   <p className="text-[10px] text-gray-500">Rapport Score</p>
                 </div>
               </div>
               <div className="relative overflow-hidden rounded-xl">
-                <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-                <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+                <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+                <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
                 <div className="relative z-10 p-3 text-center">
                   <p className="text-2xl font-bold text-purple-400">{techniquesLearned}/5</p>
                   <p className="text-[10px] text-gray-500">Techniques Used</p>
@@ -404,8 +404,8 @@ export function TacticalEmpathy() {
 
             {/* Key insight */}
             <div className="relative overflow-hidden rounded-xl max-w-xs">
-              <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-              <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+              <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative z-10 p-4">
                 <p className="text-xs text-gray-400 leading-relaxed">
                   <span className="text-blue-400 font-medium">Chris Voss:</span> "Tactical empathy
@@ -435,8 +435,8 @@ export function TacticalEmpathy() {
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4 w-full max-w-sm mx-auto">
@@ -445,13 +445,13 @@ export function TacticalEmpathy() {
             <div className="flex items-center gap-2">
               <span className="text-lg">{scenario.icon}</span>
               <div>
-                <p className="text-xs font-medium text-white">{scenario.title}</p>
+                <p className="text-xs font-medium text-[var(--viz-text)]">{scenario.title}</p>
                 <p className="text-[9px] text-gray-500">{scenario.context}</p>
               </div>
             </div>
             <div className="text-right">
               <p className="text-[9px] text-gray-500">Rapport</p>
-              <div className="w-16 h-2 bg-black/30 rounded-full overflow-hidden">
+              <div className="w-16 h-2 bg-[var(--viz-inner)] rounded-full overflow-hidden">
                 <motion.div
                   className="h-full rounded-full"
                   style={{
@@ -482,8 +482,8 @@ export function TacticalEmpathy() {
 
           {/* Chat conversation */}
           <div className="w-full relative overflow-hidden rounded-xl min-h-[160px]">
-            <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative z-10 p-3">
               <div className="space-y-2">
                 {scenario.messages.map((msg, i) => (
@@ -507,7 +507,7 @@ export function TacticalEmpathy() {
                         className={`max-w-[80%] px-3 py-2 rounded-xl text-xs ${
                           msg.sender === 'you'
                             ? 'bg-blue-500/20 border border-blue-500/30 text-blue-100'
-                            : 'bg-black/30 text-gray-300'
+                            : 'bg-[var(--viz-inner)] text-gray-300'
                         }`}
                       >
                         {msg.text}
@@ -536,7 +536,7 @@ export function TacticalEmpathy() {
                     animate={{ opacity: 1 }}
                     className="flex justify-start"
                   >
-                    <div className="px-3 py-2 bg-black/30 rounded-xl">
+                    <div className="px-3 py-2 bg-[var(--viz-inner)] rounded-xl">
                       <div className="flex gap-1">
                         {[0, 1, 2].map((i) => (
                           <motion.div
@@ -558,7 +558,7 @@ export function TacticalEmpathy() {
                     animate={{ opacity: 1, y: 0 }}
                     className="flex justify-start"
                   >
-                    <div className="max-w-[80%] px-3 py-2 rounded-xl text-xs bg-black/30 text-gray-300">
+                    <div className="max-w-[80%] px-3 py-2 rounded-xl text-xs bg-[var(--viz-inner)] text-gray-300">
                       {scenario.choices[selectedChoice].isCorrect
                         ? scenario.goodOutcome
                         : scenario.badOutcome}
@@ -588,8 +588,8 @@ export function TacticalEmpathy() {
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                   >
-                    <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.05] transition-all" />
-                    <div className="absolute inset-0 border border-white/[0.1] rounded-xl hover:border-white/[0.2] transition-all" />
+                    <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all" />
+                    <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-xl hover:border-white/[0.2] transition-all" />
                     <div className="relative z-10 p-3">
                       <p className="text-xs text-gray-300">{choice.text}</p>
                       <div className="flex items-center gap-1 mt-1">

@@ -77,12 +77,12 @@ export function FeynmanTechnique() {
   const currentStep = steps[activeStep];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -168,7 +168,7 @@ export function FeynmanTechnique() {
               <div
                 key={step.id}
                 className={`text-[8px] text-center w-14 ${
-                  activeStep === index ? 'text-white font-medium' : 'text-white/50'
+                  activeStep === index ? 'text-[var(--viz-text)] font-medium' : 'text-[var(--viz-muted)]'
                 }`}
               >
                 {step.title.split(' ')[0]}
@@ -183,14 +183,14 @@ export function FeynmanTechnique() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-white/[0.08]"
+              className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <div className="text-sm font-bold mb-1" style={{ color: currentStep.color }}>
                 Step {currentStep.number}: {currentStep.title}
               </div>
-              <p className="text-xs text-white/60 mb-2">{currentStep.description}</p>
+              <p className="text-xs text-[var(--viz-secondary)] mb-2">{currentStep.description}</p>
               <div
                 className="inline-block text-[10px] px-2 py-1 rounded-full"
                 style={{
@@ -209,14 +209,14 @@ export function FeynmanTechnique() {
             disabled={isAnimating}
             className={`text-xs px-4 py-2 rounded-lg transition-all ${
               isAnimating
-                ? 'bg-white/[0.04] text-white/50 cursor-not-allowed border border-white/[0.06]'
+                ? 'bg-[var(--viz-tile)] text-[var(--viz-muted)] cursor-not-allowed border border-[var(--viz-border)]'
                 : 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 border border-blue-500/30'
             }`}
           >
             {isAnimating ? 'Playing...' : 'Watch the process'}
           </button>
 
-          <p className="text-[10px] text-white/50 text-center max-w-xs italic">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center max-w-xs italic">
             "If you can't explain it simply, you don't understand it well enough." - Richard Feynman
           </p>
         </div>

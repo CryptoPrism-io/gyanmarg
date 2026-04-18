@@ -85,12 +85,12 @@ export function StoryBrandFramework() {
   const colors = colorMap[step.color];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-emerald-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -111,7 +111,7 @@ export function StoryBrandFramework() {
                   key={idx}
                   onClick={() => setActiveStep(idx)}
                   className={`w-8 h-8 rounded-lg border text-xs font-medium transition-all backdrop-blur-sm ${
-                    isActive ? `${c.bg} ${c.border} ${c.text}` : 'bg-white/[0.03] border-white/[0.08] text-gray-500 hover:border-white/[0.15]'
+                    isActive ? `${c.bg} ${c.border} ${c.text}` : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-500 hover:border-[var(--viz-border-light)]'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -144,7 +144,7 @@ export function StoryBrandFramework() {
                   <p className="text-xs text-gray-300">{step.question}</p>
                 </div>
 
-                <div className="bg-black/20 rounded-lg p-2 backdrop-blur-sm">
+                <div className="bg-[var(--viz-inner)] rounded-lg p-2 backdrop-blur-sm">
                   <p className="text-[10px] text-gray-500 uppercase">Example:</p>
                   <p className="text-[10px] text-gray-400 italic">{step.example}</p>
                 </div>
@@ -163,14 +163,14 @@ export function StoryBrandFramework() {
             <button
               onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
               disabled={activeStep === 0}
-              className="px-3 py-1.5 bg-white/[0.05] border border-white/[0.1] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-white/[0.08]"
+              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
             >
               Previous
             </button>
             <button
               onClick={() => setActiveStep((prev) => Math.min(sbSteps.length - 1, prev + 1))}
               disabled={activeStep === sbSteps.length - 1}
-              className="px-3 py-1.5 bg-white/[0.05] border border-white/[0.1] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-white/[0.08]"
+              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
             >
               Next
             </button>

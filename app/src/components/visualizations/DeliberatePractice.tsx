@@ -91,12 +91,12 @@ export function DeliberatePractice() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -105,8 +105,8 @@ export function DeliberatePractice() {
             <Trophy className="w-5 h-5 text-green-400" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white/90">Deliberate Practice</h3>
-            <p className="text-[10px] text-white/50">Quality vs. Quantity of practice</p>
+            <h3 className="text-sm font-semibold text-[var(--viz-secondary)]">Deliberate Practice</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">Quality vs. Quantity of practice</p>
           </div>
         </div>
 
@@ -118,7 +118,7 @@ export function DeliberatePractice() {
                 key={p.id}
                 onClick={() => setSelectedType(index)}
                 className={`px-3 py-2 rounded-xl transition-all border ${
-                  selectedType === index ? '' : 'text-white/50 hover:text-white/80 border-white/[0.08]'
+                  selectedType === index ? '' : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-[var(--viz-border)]'
                 }`}
                 style={{
                   backgroundColor: selectedType === index ? p.color + '20' : undefined,
@@ -135,10 +135,10 @@ export function DeliberatePractice() {
 
           {/* Skill growth visualization */}
           <div className="w-full max-w-xs">
-            <div className="relative h-44 border border-white/[0.08] rounded-2xl overflow-hidden p-4" style={{ background: 'linear-gradient(180deg, rgba(10,10,11,0.8) 0%, rgba(17,17,19,0.9) 100%)' }}>
+            <div className="relative h-44 border border-[var(--viz-border)] rounded-2xl overflow-hidden p-4" style={{ background: 'linear-gradient(180deg, rgba(10,10,11,0.8) 0%, rgba(17,17,19,0.9) 100%)' }}>
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               {/* Y-axis labels */}
-              <div className="absolute left-2 top-6 bottom-6 flex flex-col justify-between text-[8px] text-white/50">
+              <div className="absolute left-2 top-6 bottom-6 flex flex-col justify-between text-[8px] text-[var(--viz-muted)]">
                 <span>World-class</span>
                 <span>Expert</span>
                 <span>Advanced</span>
@@ -150,7 +150,7 @@ export function DeliberatePractice() {
               <svg className="absolute left-12 right-4 top-6 bottom-6" viewBox="0 0 100 100" preserveAspectRatio="none">
                 {/* Grid lines */}
                 {[20, 40, 60, 80].map(y => (
-                  <line key={y} x1="0" y1={y} x2="100" y2={y} stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
+                  <line key={y} x1="0" y1={y} x2="100" y2={y} stroke="var(--viz-grid-faint)" strokeWidth="0.5" />
                 ))}
 
                 {/* All practice type curves */}
@@ -192,7 +192,7 @@ export function DeliberatePractice() {
               </svg>
 
               {/* X-axis label */}
-              <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] text-white/50">
+              <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] text-[var(--viz-muted)]">
                 Hours of practice →
               </div>
 
@@ -210,7 +210,7 @@ export function DeliberatePractice() {
 
           {/* Hours control */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between items-center text-[10px] text-white/50 mb-1">
+            <div className="flex justify-between items-center text-[10px] text-[var(--viz-muted)] mb-1">
               <span>Hours practiced</span>
               <span className="font-mono">{hours.toLocaleString()} hrs</span>
             </div>
@@ -225,7 +225,7 @@ export function DeliberatePractice() {
               className="w-full disabled:opacity-50"
               style={{ accentColor: type.color }}
             />
-            <div className="flex justify-between text-[8px] text-white/40 mt-1">
+            <div className="flex justify-between text-[8px] text-[var(--viz-muted)] mt-1">
               <span>100</span>
               <span>5,000</span>
               <span>10,000</span>
@@ -262,7 +262,7 @@ export function DeliberatePractice() {
                     <p className="text-sm font-semibold" style={{ color: type.color }}>
                       {type.name}
                     </p>
-                    <p className="text-[10px] text-white/50">{type.description}</p>
+                    <p className="text-[10px] text-[var(--viz-muted)]">{type.description}</p>
                   </div>
                 </div>
               </div>
@@ -270,7 +270,7 @@ export function DeliberatePractice() {
               {/* Skill meter */}
               <div className="mb-3">
                 <div className="flex justify-between text-[10px] mb-1">
-                  <span className="text-white/50">Skill level</span>
+                  <span className="text-[var(--viz-muted)]">Skill level</span>
                   <span style={{ color: type.color }}>{getSkillLabel(skillLevel)}</span>
                 </div>
                 <div className="h-3 rounded-full overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
@@ -280,7 +280,7 @@ export function DeliberatePractice() {
                     animate={{ width: `${skillLevel}%` }}
                   />
                 </div>
-                <div className="flex justify-between text-[9px] text-white/40 mt-0.5">
+                <div className="flex justify-between text-[9px] text-[var(--viz-muted)] mt-0.5">
                   <span>0</span>
                   <span>{skillLevel}/100</span>
                 </div>
@@ -297,7 +297,7 @@ export function DeliberatePractice() {
                     className="flex items-center gap-2 text-[10px]"
                   >
                     <span style={{ color: type.color }}>✓</span>
-                    <span className="text-white/60">{char}</span>
+                    <span className="text-[var(--viz-secondary)]">{char}</span>
                   </motion.div>
                 ))}
               </div>
@@ -307,7 +307,7 @@ export function DeliberatePractice() {
           {/* Show examples toggle */}
           <button
             onClick={() => setShowExamples(!showExamples)}
-            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
           >
             {showExamples ? '▼ Hide' : '▶ Show'} examples
           </button>
@@ -337,7 +337,7 @@ export function DeliberatePractice() {
           {/* Comparison toggle */}
           <button
             onClick={() => setShowComparison(!showComparison)}
-            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
           >
             {showComparison ? '▼ Hide' : '▶ Show'} 10K hours comparison
           </button>
@@ -348,11 +348,11 @@ export function DeliberatePractice() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="w-full max-w-xs border border-white/[0.08] rounded-xl p-3 relative overflow-hidden"
+                className="w-full max-w-xs border border-[var(--viz-border)] rounded-xl p-3 relative overflow-hidden"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                <p className="text-[10px] text-white/50 mb-3 text-center">After 10,000 hours of practice:</p>
+                <p className="text-[10px] text-[var(--viz-muted)] mb-3 text-center">After 10,000 hours of practice:</p>
                 <div className="space-y-2">
                   {practiceTypes.map(p => (
                     <div key={p.id} className="flex items-center gap-2">
@@ -360,7 +360,7 @@ export function DeliberatePractice() {
                       <div className="flex-1">
                         <div className="flex justify-between text-[10px] mb-0.5">
                           <span style={{ color: p.color }}>{p.name}</span>
-                          <span className="text-white/50">{p.improvement}%</span>
+                          <span className="text-[var(--viz-muted)]">{p.improvement}%</span>
                         </div>
                         <div className="h-2 rounded-full overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
                           <motion.div
@@ -381,23 +381,23 @@ export function DeliberatePractice() {
           {hours > 1000 && (
             <button
               onClick={reset}
-              className="text-xs text-white/40 hover:text-white/60 transition-colors"
+              className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
             >
               ↻ Reset
             </button>
           )}
 
           {/* Key insight */}
-          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+          <div className="relative overflow-hidden border border-[var(--viz-border)] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-green-400 font-medium">Anders Ericsson:</span> "It's not 10,000
               hours of practice that creates expertise—it's 10,000 hours of <em>deliberate</em> practice.
               The quality of practice matters more than quantity."
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From Peak by Anders Ericsson
           </p>
         </div>

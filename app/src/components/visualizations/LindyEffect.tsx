@@ -39,12 +39,12 @@ export function LindyEffect() {
   const selected = items.filter(i => selectedItems.includes(i.id));
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glass layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -56,8 +56,8 @@ export function LindyEffect() {
             <Clock className="w-4 h-4 text-amber-400" />
           </div>
           <div>
-            <h3 className="text-sm font-medium text-white/90">Lindy Effect</h3>
-            <p className="text-[10px] text-white/50">From Nassim Taleb's Antifragile</p>
+            <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Lindy Effect</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">From Nassim Taleb's Antifragile</p>
           </div>
         </div>
 
@@ -65,7 +65,7 @@ export function LindyEffect() {
           {/* Timeline visualization */}
           <div className="w-full max-w-xs">
             <div
-              className="relative h-32 border border-white/[0.08] rounded-lg p-4 overflow-hidden"
+              className="relative h-32 border border-[var(--viz-border)] rounded-lg p-4 overflow-hidden"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -77,12 +77,12 @@ export function LindyEffect() {
               </div>
 
               {/* Past label */}
-              <div className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] text-white/50 [writing-mode:vertical-lr] rotate-180">
+              <div className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] text-[var(--viz-muted)] [writing-mode:vertical-lr] rotate-180">
                 PAST
               </div>
 
               {/* Future label */}
-              <div className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-white/50 [writing-mode:vertical-lr]">
+              <div className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-[var(--viz-muted)] [writing-mode:vertical-lr]">
                 FUTURE
               </div>
 
@@ -123,7 +123,7 @@ export function LindyEffect() {
 
                     {/* Label */}
                     <div
-                      className="absolute text-[10px] font-medium text-white whitespace-nowrap"
+                      className="absolute text-[10px] font-medium text-[var(--viz-text)] whitespace-nowrap"
                       style={{ left: '50%', transform: 'translateX(-50%)' }}
                     >
                       {item.name}
@@ -136,18 +136,18 @@ export function LindyEffect() {
             <div className="flex justify-center gap-4 mt-2 text-[10px]">
               <div className="flex items-center gap-1">
                 <div className="w-3 h-3 rounded bg-blue-500" />
-                <span className="text-white/50">Age (survived)</span>
+                <span className="text-[var(--viz-muted)]">Age (survived)</span>
               </div>
               <div className="flex items-center gap-1">
                 <div className="w-3 h-3 rounded bg-green-500" />
-                <span className="text-white/50">Expected future</span>
+                <span className="text-[var(--viz-muted)]">Expected future</span>
               </div>
             </div>
           </div>
 
           {/* Item selector */}
           <div className="w-full max-w-xs">
-            <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">
+            <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2">
               Select up to 3 to compare:
             </p>
             <div className="grid grid-cols-2 gap-2">
@@ -158,21 +158,21 @@ export function LindyEffect() {
                   className={`relative p-2 rounded-lg border text-left text-xs transition-all overflow-hidden ${
                     selectedItems.includes(item.id)
                       ? 'bg-amber-500/10 border-amber-500/30'
-                      : 'border-white/[0.08] hover:border-white/[0.15]'
+                      : 'border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
                   }`}
                   style={!selectedItems.includes(item.id) ? { background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' } : undefined}
                   whileTap={{ scale: 0.98 }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <div className="flex justify-between items-center">
-                    <span className={selectedItems.includes(item.id) ? 'text-amber-400' : 'text-white/80'}>
+                    <span className={selectedItems.includes(item.id) ? 'text-amber-400' : 'text-[var(--viz-secondary)]'}>
                       {item.name}
                     </span>
-                    <span className="text-[10px] text-white/50">
+                    <span className="text-[10px] text-[var(--viz-muted)]">
                       {item.age > 100 ? `${(item.age / 1000).toFixed(1)}k` : item.age}y
                     </span>
                   </div>
-                  <p className="text-[10px] text-white/40">{item.category}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">{item.category}</p>
                 </motion.button>
               ))}
             </div>
@@ -181,16 +181,16 @@ export function LindyEffect() {
           {/* Comparison */}
           {selected.length > 1 && (
             <div
-              className="relative w-full max-w-xs border border-white/[0.08] rounded-lg p-3 overflow-hidden"
+              className="relative w-full max-w-xs border border-[var(--viz-border)] rounded-lg p-3 overflow-hidden"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2">
                 Expected additional lifespan:
               </p>
               {selected.map(item => (
                 <div key={item.id} className="flex justify-between text-xs mb-1">
-                  <span className="text-white/60">{item.name}</span>
+                  <span className="text-[var(--viz-secondary)]">{item.name}</span>
                   <span className="text-green-400">+{item.expectedLife.toLocaleString()} years</span>
                 </div>
               ))}
@@ -199,11 +199,11 @@ export function LindyEffect() {
 
           {/* Key insight */}
           <div
-            className="relative border border-white/[0.08] rounded-lg p-3 max-w-xs text-center overflow-hidden"
+            className="relative border border-[var(--viz-border)] rounded-lg p-3 max-w-xs text-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-amber-400 font-medium">Lindy Effect:</span> For non-perishable
               things, every day of survival increases expected future lifespan. Old books that
               survived will likely outlast new bestsellers.

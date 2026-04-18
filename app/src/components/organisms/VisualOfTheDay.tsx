@@ -372,8 +372,8 @@ export function VisualOfTheDay() {
         <p className="text-xs text-text-secondary">{dailyViz.description}</p>
       </div>
 
-      {/* Visualization */}
-      <div className="flex justify-center">
+      {/* Visualization — always rendered on dark surface since all viz components use hardcoded dark colours */}
+      <div className="rounded-xl bg-neutral-900 overflow-hidden -mx-1">
         <DailyComponent />
       </div>
 

@@ -49,12 +49,12 @@ export function Logotherapy() {
   const source = meaningSources[activeSource];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -63,8 +63,8 @@ export function Logotherapy() {
             <Compass className="w-5 h-5 text-amber-400" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white/90">Logotherapy</h3>
-            <p className="text-[10px] text-white/50">Finding meaning in life</p>
+            <h3 className="text-sm font-semibold text-[var(--viz-secondary)]">Logotherapy</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">Finding meaning in life</p>
           </div>
         </div>
 
@@ -75,7 +75,7 @@ export function Logotherapy() {
             <p className="text-xs text-purple-400 font-medium">
               "He who has a WHY to live can bear almost any HOW"
             </p>
-            <p className="text-[10px] text-white/50 mt-1">— Nietzsche (quoted by Frankl)</p>
+            <p className="text-[10px] text-[var(--viz-muted)] mt-1">— Nietzsche (quoted by Frankl)</p>
           </div>
 
           {/* Three sources visualization */}
@@ -85,7 +85,7 @@ export function Logotherapy() {
               <path
                 d="M 40 130 Q 140 20 240 130"
                 fill="none"
-                stroke="rgba(255,255,255,0.1)"
+                stroke="var(--viz-grid)"
                 strokeWidth="2"
               />
 
@@ -177,14 +177,14 @@ export function Logotherapy() {
                     <h3 className="text-sm font-bold" style={{ color: source.color }}>
                       {source.name}
                     </h3>
-                    <p className="text-[10px] text-white/50">{source.description}</p>
+                    <p className="text-[10px] text-[var(--viz-muted)]">{source.description}</p>
                   </div>
                 </div>
 
                 <div className="space-y-1.5 mb-3">
-                  <p className="text-[10px] text-white/50 uppercase tracking-wide">Examples:</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide">Examples:</p>
                   {source.examples.map((ex, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs text-white/60">
+                    <div key={idx} className="flex items-center gap-2 text-xs text-[var(--viz-secondary)]">
                       <span style={{ color: source.color }}>•</span>
                       {ex}
                     </div>
@@ -192,8 +192,8 @@ export function Logotherapy() {
                 </div>
 
                 <div className="p-2 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
-                  <p className="text-[10px] text-white/50">Frankl's words:</p>
-                  <p className="text-xs text-white/80 italic">"{source.frankl}"</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">Frankl's words:</p>
+                  <p className="text-xs text-[var(--viz-secondary)] italic">"{source.frankl}"</p>
                 </div>
               </div>
             </motion.div>
@@ -202,7 +202,7 @@ export function Logotherapy() {
           {/* The Existential Vacuum toggle */}
           <button
             onClick={() => setShowVoid(!showVoid)}
-            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
           >
             {showVoid ? '▼ Hide' : '▶ Show'} the existential vacuum
           </button>
@@ -218,7 +218,7 @@ export function Logotherapy() {
                 <div className="relative overflow-hidden p-3 bg-red-500/10 border border-red-500/30 rounded-xl">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <p className="text-[10px] text-red-400 font-medium mb-1">The Existential Vacuum</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     When meaning is absent, we fill the void with pleasure, power, or distraction.
                     This leads to depression, aggression, and addiction—the "mass neurotic triad."
                   </p>
@@ -226,7 +226,7 @@ export function Logotherapy() {
                 <div className="relative overflow-hidden p-3 bg-green-500/10 border border-green-500/30 rounded-xl">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <p className="text-[10px] text-green-400 font-medium mb-1">The Cure</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     Meaning cannot be invented—it must be discovered. Look for it in creating,
                     experiencing, or your attitude toward suffering.
                   </p>
@@ -236,16 +236,16 @@ export function Logotherapy() {
           </AnimatePresence>
 
           {/* Key insight */}
-          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+          <div className="relative overflow-hidden border border-[var(--viz-border)] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-amber-400 font-medium">Viktor Frankl:</span> "Everything can be
               taken from a man but one thing: the last of the human freedoms—to choose one's attitude
               in any given set of circumstances."
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">From Man's Search for Meaning</p>
+          <p className="text-[10px] text-[var(--viz-muted)]">From Man's Search for Meaning</p>
         </div>
       </div>
     </div>

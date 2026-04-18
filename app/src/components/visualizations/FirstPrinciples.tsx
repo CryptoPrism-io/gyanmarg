@@ -70,12 +70,12 @@ export function FirstPrinciples() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -100,8 +100,8 @@ export function FirstPrinciples() {
                 }}
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border ${
                   activeExample === index
-                    ? 'text-white'
-                    : 'text-white/50 hover:text-white/80 border-transparent'
+                    ? 'text-[var(--viz-text)]'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
                 style={{
                   backgroundColor: activeExample === index ? `${ex.color}20` : undefined,
@@ -130,7 +130,7 @@ export function FirstPrinciples() {
               <button
                 onClick={nextStep}
                 disabled={revealStep > example.firstPrinciples.length}
-                className="text-white/50 hover:text-white transition-colors disabled:opacity-50"
+                className="text-[var(--viz-muted)] hover:text-[var(--viz-text)] transition-colors disabled:opacity-50"
               >
                 &darr; Break it down &darr;
               </button>
@@ -144,7 +144,7 @@ export function FirstPrinciples() {
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="relative overflow-hidden rounded-xl p-2 text-xs text-white/80 flex items-start gap-2 border border-white/[0.08]"
+                    className="relative overflow-hidden rounded-xl p-2 text-xs text-[var(--viz-secondary)] flex items-start gap-2 border border-[var(--viz-border)]"
                     style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                   >
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -174,7 +174,7 @@ export function FirstPrinciples() {
                   <p className="text-[10px] uppercase tracking-wide mb-1" style={{ color: example.color }}>
                     First Principles Result
                   </p>
-                  <p className="text-xs text-white/80">{example.result}</p>
+                  <p className="text-xs text-[var(--viz-secondary)]">{example.result}</p>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -192,8 +192,8 @@ export function FirstPrinciples() {
               ) : (
                 <button
                   onClick={resetExample}
-                  className="text-xs px-4 py-2 border border-white/[0.08]
-                           text-white/60 rounded-lg hover:border-white/20 transition-all"
+                  className="text-xs px-4 py-2 border border-[var(--viz-border)]
+                           text-[var(--viz-secondary)] rounded-lg hover:border-white/20 transition-all"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 >
                   Try again
@@ -204,17 +204,17 @@ export function FirstPrinciples() {
 
           {/* Framework */}
           <div
-            className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-white/[0.08]"
+            className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-amber-400 font-medium">The method:</span> Question every
               assumption until you reach fundamental truths, then reason up from there.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/50 text-center italic">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center italic">
             "Boil things down to fundamental truths" - Elon Musk
           </p>
         </div>

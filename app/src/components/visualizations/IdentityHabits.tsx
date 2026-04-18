@@ -39,12 +39,12 @@ export function IdentityHabits() {
   const [showTransformation, setShowTransformation] = useState(false);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -53,8 +53,8 @@ export function IdentityHabits() {
             <User className="w-5 h-5 text-green-400" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white/90">Identity-Based Habits</h3>
-            <p className="text-[10px] text-white/50">Change who you are, not what you do</p>
+            <h3 className="text-sm font-semibold text-[var(--viz-secondary)]">Identity-Based Habits</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">Change who you are, not what you do</p>
           </div>
         </div>
 
@@ -109,7 +109,7 @@ export function IdentityHabits() {
               >
                 ←
               </motion.div>
-              <span className="text-[8px] text-white/50 rotate-90 whitespace-nowrap">
+              <span className="text-[8px] text-[var(--viz-muted)] rotate-90 whitespace-nowrap">
                 {showTransformation ? 'Identity-Based' : 'Outcome-Based'}
               </span>
             </div>
@@ -122,7 +122,7 @@ export function IdentityHabits() {
               className={`px-3 py-1.5 rounded-lg text-xs transition-all border ${
                 !showTransformation
                   ? 'bg-red-500/20 text-red-400 border-red-500/50'
-                  : 'text-white/50 border-white/[0.08]'
+                  : 'text-[var(--viz-muted)] border-[var(--viz-border)]'
               }`}
             >
               Outcome-Based
@@ -132,7 +132,7 @@ export function IdentityHabits() {
               className={`px-3 py-1.5 rounded-lg text-xs transition-all border ${
                 showTransformation
                   ? 'bg-green-500/20 text-green-400 border-green-500/50'
-                  : 'text-white/50 border-white/[0.08]'
+                  : 'text-[var(--viz-muted)] border-[var(--viz-border)]'
               }`}
             >
               Identity-Based
@@ -157,17 +157,17 @@ export function IdentityHabits() {
                 <p className="text-sm font-medium mb-1" style={{ color: layers.find(l => l.id === selectedLayer)?.color }}>
                   {layers.find(l => l.id === selectedLayer)?.name}
                 </p>
-                <p className="text-xs text-white/60 mb-2">
+                <p className="text-xs text-[var(--viz-secondary)] mb-2">
                   {layers.find(l => l.id === selectedLayer)?.description}
                 </p>
                 <div className="grid grid-cols-2 gap-2 text-[10px]">
                   <div className="p-2 bg-red-500/10 rounded-lg">
                     <p className="text-red-400 mb-1">Outcome focus:</p>
-                    <p className="text-white/60">{layers.find(l => l.id === selectedLayer)?.example.outcome}</p>
+                    <p className="text-[var(--viz-secondary)]">{layers.find(l => l.id === selectedLayer)?.example.outcome}</p>
                   </div>
                   <div className="p-2 bg-green-500/10 rounded-lg">
                     <p className="text-green-400 mb-1">Identity focus:</p>
-                    <p className="text-white/60">{layers.find(l => l.id === selectedLayer)?.example.identity}</p>
+                    <p className="text-[var(--viz-secondary)]">{layers.find(l => l.id === selectedLayer)?.example.identity}</p>
                   </div>
                 </div>
               </motion.div>
@@ -175,7 +175,7 @@ export function IdentityHabits() {
           </AnimatePresence>
 
           {/* Comparison */}
-          <div className="w-full max-w-xs border border-white/[0.08] rounded-xl p-3 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+          <div className="w-full max-w-xs border border-[var(--viz-border)] rounded-xl p-3 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <AnimatePresence mode="wait">
               {!showTransformation ? (
@@ -186,7 +186,7 @@ export function IdentityHabits() {
                   exit={{ opacity: 0 }}
                 >
                   <p className="text-xs text-red-400 font-medium mb-2">Outcome-Based (Outside → In)</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     "I want to lose weight" → Focus on the goal, motivation fades when it gets hard,
                     identity stays the same.
                   </p>
@@ -199,7 +199,7 @@ export function IdentityHabits() {
                   exit={{ opacity: 0 }}
                 >
                   <p className="text-xs text-green-400 font-medium mb-2">Identity-Based (Inside → Out)</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     "I am a healthy person" → Each action is a vote for your identity, habits become
                     part of who you are.
                   </p>
@@ -209,16 +209,16 @@ export function IdentityHabits() {
           </div>
 
           {/* Key insight */}
-          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+          <div className="relative overflow-hidden border border-[var(--viz-border)] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-green-400 font-medium">James Clear:</span> "The ultimate form of
               intrinsic motivation is when a habit becomes part of your identity. True behavior change
               is identity change."
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From Atomic Habits by James Clear
           </p>
         </div>

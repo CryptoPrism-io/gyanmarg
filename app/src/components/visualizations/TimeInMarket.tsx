@@ -69,12 +69,12 @@ export function TimeInMarket() {
   const percentLost = ((difference / holdValue) * 100).toFixed(0);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glass layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -86,8 +86,8 @@ export function TimeInMarket() {
             <TrendingUp className="w-4 h-4 text-green-400" />
           </div>
           <div>
-            <h3 className="text-sm font-medium text-white/90">Time in Market</h3>
-            <p className="text-[10px] text-white/50">J.P. Morgan Research</p>
+            <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Time in Market</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">J.P. Morgan Research</p>
           </div>
         </div>
 
@@ -95,7 +95,7 @@ export function TimeInMarket() {
           {/* Growth visualization */}
           <div className="w-full max-w-xs">
             <div
-              className="relative h-40 border border-white/[0.08] rounded-lg overflow-hidden p-4"
+              className="relative h-40 border border-[var(--viz-border)] rounded-lg overflow-hidden p-4"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -130,7 +130,7 @@ export function TimeInMarket() {
               </div>
 
               {/* Year indicator */}
-              <div className="absolute top-2 right-2 text-xs text-white/50">
+              <div className="absolute top-2 right-2 text-xs text-[var(--viz-muted)]">
                 Year {years}/30
               </div>
             </div>
@@ -141,12 +141,12 @@ export function TimeInMarket() {
             <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 text-center">
               <p className="text-[10px] text-green-400 uppercase tracking-wide">Buy & Hold</p>
               <p className="text-lg font-bold text-green-400">{formatMoney(holdValue)}</p>
-              <p className="text-[10px] text-white/50">Stayed invested</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Stayed invested</p>
             </div>
             <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3 text-center">
               <p className="text-[10px] text-amber-400 uppercase tracking-wide">Market Timer</p>
               <p className="text-lg font-bold text-amber-400">{formatMoney(timeValue)}</p>
-              <p className="text-[10px] text-white/50">Missed {missedDays} best days</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Missed {missedDays} best days</p>
             </div>
           </div>
 
@@ -173,7 +173,7 @@ export function TimeInMarket() {
             {(isRunning || years > 0) && (
               <button
                 onClick={reset}
-                className="px-4 py-2 border border-white/[0.15] text-white/60
+                className="px-4 py-2 border border-[var(--viz-border-light)] text-[var(--viz-secondary)]
                          rounded-lg text-xs hover:border-white/[0.25] transition-all"
               >
                 Reset
@@ -183,22 +183,22 @@ export function TimeInMarket() {
 
           {/* Key stat */}
           <div
-            className="relative w-full max-w-xs border border-white/[0.08] rounded-lg p-3 overflow-hidden"
+            className="relative w-full max-w-xs border border-[var(--viz-border)] rounded-lg p-3 overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-[10px] text-white/50 mb-2">Missing the best days:</p>
+            <p className="text-[10px] text-[var(--viz-muted)] mb-2">Missing the best days:</p>
             <div className="space-y-1 text-xs">
               <div className="flex justify-between">
-                <span className="text-white/60">Miss 10 best days</span>
+                <span className="text-[var(--viz-secondary)]">Miss 10 best days</span>
                 <span className="text-amber-400">-50% returns</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-white/60">Miss 20 best days</span>
+                <span className="text-[var(--viz-secondary)]">Miss 20 best days</span>
                 <span className="text-red-400">-70% returns</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-white/60">Miss 30 best days</span>
+                <span className="text-[var(--viz-secondary)]">Miss 30 best days</span>
                 <span className="text-red-400">-83% returns</span>
               </div>
             </div>
@@ -206,18 +206,18 @@ export function TimeInMarket() {
 
           {/* Key insight */}
           <div
-            className="relative border border-white/[0.08] rounded-lg p-3 max-w-xs text-center overflow-hidden"
+            className="relative border border-[var(--viz-border)] rounded-lg p-3 max-w-xs text-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-green-400 font-medium">Lesson:</span> The best days often
               follow the worst. If you're out of the market trying to time it, you'll miss
               the recovery.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/50">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             "Time in the market beats timing the market"
           </p>
         </div>

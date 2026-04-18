@@ -39,12 +39,12 @@ export function PacifyingBehaviors() {
   const [activeBehavior, setActiveBehavior] = useState(0);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-yellow-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -111,8 +111,8 @@ export function PacifyingBehaviors() {
             animate={{ opacity: 1, y: 0 }}
             className="relative overflow-hidden w-full max-w-xs rounded-lg p-4"
           >
-            <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10">
               <p className="text-sm text-amber-400 font-medium mb-2">
                 {behaviors[activeBehavior].action}

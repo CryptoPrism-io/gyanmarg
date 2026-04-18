@@ -48,12 +48,12 @@ export function ParetoPrinciple() {
   const example = examples[activeExample];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -69,7 +69,7 @@ export function ParetoPrinciple() {
         <div className="flex flex-col items-center gap-4">
           {/* Main Visualization */}
           <div
-            className="relative w-72 h-48 rounded-xl border border-white/[0.08] overflow-hidden"
+            className="relative w-72 h-48 rounded-xl border border-[var(--viz-border)] overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -78,8 +78,8 @@ export function ParetoPrinciple() {
               {/* Grid lines */}
               {[20, 40, 60, 80].map((pos) => (
                 <g key={pos}>
-                  <line x1={pos} y1="0" x2={pos} y2="100" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
-                  <line x1="0" y1={pos} x2="100" y2={pos} stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" />
+                  <line x1={pos} y1="0" x2={pos} y2="100" stroke="var(--viz-grid-faint)" strokeWidth="0.5" />
+                  <line x1="0" y1={pos} x2="100" y2={pos} stroke="var(--viz-grid-faint)" strokeWidth="0.5" />
                 </g>
               ))}
             </svg>
@@ -88,9 +88,9 @@ export function ParetoPrinciple() {
             <div className="absolute inset-0 flex items-end justify-center gap-8 p-4">
               {/* Input (Effort/Causes) */}
               <div className="flex flex-col items-center gap-2">
-                <div className="text-[10px] text-white/60">Input</div>
+                <div className="text-[10px] text-[var(--viz-secondary)]">Input</div>
                 <div
-                  className="relative w-20 h-32 rounded-lg overflow-hidden border border-white/[0.08]"
+                  className="relative w-20 h-32 rounded-lg overflow-hidden border border-[var(--viz-border)]"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.2) 100%)' }}
                 >
                   <motion.div
@@ -100,7 +100,7 @@ export function ParetoPrinciple() {
                     animate={{ height: showAnimation ? '80%' : '80%' }}
                     transition={{ duration: 1, delay: 0.5 }}
                   >
-                    <div className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-white/60">
+                    <div className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-[var(--viz-secondary)]">
                       80%
                     </div>
                   </motion.div>
@@ -111,17 +111,17 @@ export function ParetoPrinciple() {
                     animate={{ height: showAnimation ? '20%' : '20%' }}
                     transition={{ duration: 1 }}
                   >
-                    <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white">
+                    <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[10px] font-bold text-[var(--viz-text)]">
                       20%
                     </div>
                   </motion.div>
                 </div>
-                <div className="text-[9px] text-white/50">Effort</div>
+                <div className="text-[9px] text-[var(--viz-muted)]">Effort</div>
               </div>
 
               {/* Arrow */}
               <motion.div
-                className="flex items-center text-white/50"
+                className="flex items-center text-[var(--viz-muted)]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
@@ -131,9 +131,9 @@ export function ParetoPrinciple() {
 
               {/* Output (Results) */}
               <div className="flex flex-col items-center gap-2">
-                <div className="text-[10px] text-white/60">Output</div>
+                <div className="text-[10px] text-[var(--viz-secondary)]">Output</div>
                 <div
-                  className="relative w-20 h-32 rounded-lg overflow-hidden border border-white/[0.08]"
+                  className="relative w-20 h-32 rounded-lg overflow-hidden border border-[var(--viz-border)]"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.2) 100%)' }}
                 >
                   <motion.div
@@ -143,7 +143,7 @@ export function ParetoPrinciple() {
                     animate={{ height: showAnimation ? '20%' : '20%' }}
                     transition={{ duration: 1, delay: 1 }}
                   >
-                    <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white/60">
+                    <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[10px] font-bold text-[var(--viz-secondary)]">
                       20%
                     </div>
                   </motion.div>
@@ -154,12 +154,12 @@ export function ParetoPrinciple() {
                     animate={{ height: showAnimation ? '80%' : '80%' }}
                     transition={{ duration: 1, delay: 0.5 }}
                   >
-                    <div className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-white">
+                    <div className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-bold text-[var(--viz-text)]">
                       80%
                     </div>
                   </motion.div>
                 </div>
-                <div className="text-[9px] text-white/50">Results</div>
+                <div className="text-[9px] text-[var(--viz-muted)]">Results</div>
               </div>
             </div>
 
@@ -187,8 +187,8 @@ export function ParetoPrinciple() {
                 }}
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border ${
                   activeExample === index
-                    ? 'bg-white/10 text-white'
-                    : 'text-white/50 hover:text-white/80 border-transparent'
+                    ? 'bg-white/10 text-[var(--viz-text)]'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
                 style={{
                   borderColor: activeExample === index ? ex.color : 'transparent',
@@ -208,7 +208,7 @@ export function ParetoPrinciple() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-white/[0.08]"
+              className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -221,21 +221,21 @@ export function ParetoPrinciple() {
                     className="w-2 h-2 rounded-full mt-1 shrink-0"
                     style={{ backgroundColor: example.color }}
                   />
-                  <p className="text-xs text-white/80">{example.vital}</p>
+                  <p className="text-xs text-[var(--viz-secondary)]">{example.vital}</p>
                 </div>
                 <div className="flex items-start gap-2">
                   <div
                     className="w-2 h-2 rounded-full mt-1 shrink-0"
                     style={{ backgroundColor: `${example.color}40` }}
                   />
-                  <p className="text-xs text-white/50">{example.trivial}</p>
+                  <p className="text-xs text-[var(--viz-muted)]">{example.trivial}</p>
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
 
           {/* Action insight */}
-          <div className="text-xs text-white/50 text-center max-w-xs">
+          <div className="text-xs text-[var(--viz-muted)] text-center max-w-xs">
             <span className="text-amber-400 font-medium">Key insight:</span> Focus your energy on the vital few, not the trivial many.
           </div>
         </div>

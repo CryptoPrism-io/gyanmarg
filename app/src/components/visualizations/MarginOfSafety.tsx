@@ -25,12 +25,12 @@ export function MarginOfSafety() {
   const isOverpriced = margin < 0;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -38,7 +38,7 @@ export function MarginOfSafety() {
           <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
             <Shield className="w-4 h-4 text-green-400" />
           </div>
-          <h3 className="text-sm font-medium text-white/90">Margin of Safety</h3>
+          <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Margin of Safety</h3>
         </div>
 
         <div className="flex flex-col items-center gap-4">
@@ -51,7 +51,7 @@ export function MarginOfSafety() {
                 className={`text-xs px-3 py-1.5 rounded-full transition-all border ${
                   activeInvestment === index
                     ? 'bg-blue-500/20 text-blue-400 border-blue-500/30'
-                    : 'text-white/50 hover:text-white/80 border-transparent'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
               >
                 {inv.name}
@@ -66,7 +66,7 @@ export function MarginOfSafety() {
                 className="absolute inset-0"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               />
-              <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+              <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
               <div className="relative h-full p-4">
@@ -136,15 +136,15 @@ export function MarginOfSafety() {
           <div className="w-full max-w-xs space-y-2">
             <div className="flex items-center gap-2 text-[10px]">
               <div className="w-3 h-3 rounded bg-green-500/30 border border-green-500" />
-              <span className="text-white/60">25%+ margin = Good buy</span>
+              <span className="text-[var(--viz-secondary)]">25%+ margin = Good buy</span>
             </div>
             <div className="flex items-center gap-2 text-[10px]">
               <div className="w-3 h-3 rounded bg-amber-500/30 border border-amber-500" />
-              <span className="text-white/60">0-25% margin = Risky</span>
+              <span className="text-[var(--viz-secondary)]">0-25% margin = Risky</span>
             </div>
             <div className="flex items-center gap-2 text-[10px]">
               <div className="w-3 h-3 rounded bg-red-500/30 border border-red-500" />
-              <span className="text-white/60">Negative margin = Avoid</span>
+              <span className="text-[var(--viz-secondary)]">Negative margin = Avoid</span>
             </div>
           </div>
 
@@ -154,17 +154,17 @@ export function MarginOfSafety() {
               className="absolute inset-0"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="relative p-3 text-center">
-              <p className="text-xs text-white/60">
+              <p className="text-xs text-[var(--viz-secondary)]">
                 <span className="text-green-400 font-medium">Ben Graham:</span> Buy when price is
                 significantly below intrinsic value. The margin protects against errors and bad luck.
               </p>
             </div>
           </div>
 
-          <p className="text-[10px] text-white/50">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From The Intelligent Investor
           </p>
         </div>

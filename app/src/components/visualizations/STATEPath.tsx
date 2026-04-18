@@ -60,12 +60,12 @@ export function STATEPath() {
   const colors = colorMap[step.color];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -79,7 +79,7 @@ export function STATEPath() {
                   key={idx}
                   onClick={() => setActiveStep(idx)}
                   className={`w-10 h-12 rounded-lg border-2 flex items-center justify-center transition-all backdrop-blur-sm ${
-                    isActive ? `${c.bg} ${c.border}` : 'border-white/[0.1] bg-white/[0.03]'
+                    isActive ? `${c.bg} ${c.border}` : 'border-[var(--viz-border-light)] bg-[var(--viz-tile)]'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -107,7 +107,7 @@ export function STATEPath() {
               <p className="text-xs text-gray-400 mt-1 mb-3">{step.description}</p>
 
               <div className="relative overflow-hidden rounded-lg p-3 mb-3">
-                <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
+                <div className="absolute inset-0 bg-[var(--viz-inner)] backdrop-blur-sm" />
                 <div className="relative z-10">
                   <p className="text-[10px] text-gray-500 uppercase mb-1">Example</p>
                   <p className="text-xs text-gray-300 italic">"{step.example}"</p>
@@ -125,14 +125,14 @@ export function STATEPath() {
             <button
               onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
               disabled={activeStep === 0}
-              className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.1] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-white/[0.05] transition-all"
+              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all"
             >
               ← Previous
             </button>
             <button
               onClick={() => setActiveStep((prev) => Math.min(stateSteps.length - 1, prev + 1))}
               disabled={activeStep === stateSteps.length - 1}
-              className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.1] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-white/[0.05] transition-all"
+              className="px-3 py-1.5 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 disabled:opacity-50 backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all"
             >
               Next →
             </button>

@@ -35,19 +35,19 @@ export function FortyPercentRule() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-red-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
           {/* The rule */}
           <div className="w-full max-w-xs relative overflow-hidden rounded-lg">
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.1] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-lg" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
             <div className="relative z-10 p-4 text-center">
               <p className="text-xs text-gray-500 uppercase tracking-wide">The 40% Rule</p>
@@ -67,7 +67,7 @@ export function FortyPercentRule() {
               <path
                 d="M 20 90 A 80 80 0 0 1 180 90"
                 fill="none"
-                stroke="rgba(255,255,255,0.05)"
+                stroke="var(--viz-grid-faint)"
                 strokeWidth="12"
                 strokeLinecap="round"
               />
@@ -175,7 +175,7 @@ export function FortyPercentRule() {
                 </div>
                 <button
                   onClick={reset}
-                  className="w-full py-2 bg-white/[0.03] border border-white/[0.08] rounded-lg text-gray-400 text-xs hover:border-white/[0.15] transition-colors"
+                  className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-gray-400 text-xs hover:border-[var(--viz-border-light)] transition-colors"
                 >
                   Reset
                 </button>

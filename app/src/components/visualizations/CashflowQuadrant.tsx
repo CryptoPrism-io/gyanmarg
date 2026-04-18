@@ -52,12 +52,12 @@ export function CashflowQuadrant() {
   const [activeQuadrant, setActiveQuadrant] = useState<string | null>(null);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -72,8 +72,8 @@ export function CashflowQuadrant() {
                   key={q.id}
                   onClick={() => setActiveQuadrant(isActive ? null : q.id)}
                   className={`relative overflow-hidden p-4 rounded-lg transition-all ${
-                    isActive ? colors.bg : 'bg-white/[0.03]'
-                  } ${isActive ? colors.border : 'border border-white/[0.08]'}`}
+                    isActive ? colors.bg : 'bg-[var(--viz-tile)]'
+                  } ${isActive ? colors.border : 'border border-[var(--viz-border)]'}`}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

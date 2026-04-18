@@ -51,12 +51,12 @@ export function PurposePyramid() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -79,7 +79,7 @@ export function PurposePyramid() {
                   key={idx}
                   onClick={() => setSelectedLevel(isSelected ? null : idx)}
                   className={`${widths[idx]} mx-auto py-3 px-4 rounded-lg border backdrop-blur-sm transition-all ${
-                    isSelected ? `${colors.bg} ${colors.border}` : 'bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15]'
+                    isSelected ? `${colors.bg} ${colors.border}` : 'bg-[var(--viz-tile)] border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
                   }`}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
@@ -105,7 +105,7 @@ export function PurposePyramid() {
               <p className="text-xs text-gray-400 mb-2">
                 {purposeLevels[selectedLevel].description}
               </p>
-              <div className="bg-black/20 backdrop-blur-sm rounded p-2 mb-2">
+              <div className="bg-[var(--viz-inner)] backdrop-blur-sm rounded p-2 mb-2">
                 <p className="text-[10px] text-gray-500">Example:</p>
                 <p className="text-xs text-gray-300 italic">"{purposeLevels[selectedLevel].example}"</p>
               </div>
@@ -122,7 +122,7 @@ export function PurposePyramid() {
               value={userPurpose}
               onChange={(e) => { setUserPurpose(e.target.value); setShowAnalysis(false); }}
               placeholder="Write your purpose or 'why' here..."
-              className="w-full p-3 bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-purple-500/50 focus:outline-none resize-none h-16"
+              className="w-full p-3 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-purple-500/50 focus:outline-none resize-none h-16"
             />
             {userPurpose.length > 10 && !showAnalysis && (
               <motion.button

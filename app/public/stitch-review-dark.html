@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#e6c183",
+                        "surface-container-high": "#2b2a28",
+                        "surface-container-highest": "#363433",
+                        "primary-fixed-dim": "#e6c183",
+                        "on-primary-fixed-variant": "#5b4311",
+                        "on-primary-container": "#503907",
+                        "inverse-surface": "#e6e1df",
+                        "surface-container": "#211f1e",
+                        "secondary-container": "#4d4843",
+                        "tertiary": "#cbc5c2",
+                        "on-surface": "#e6e1df",
+                        "on-secondary-fixed": "#1e1b17",
+                        "surface-bright": "#3b3937",
+                        "on-secondary": "#34302b",
+                        "tertiary-container": "#aca7a4",
+                        "on-primary-fixed": "#271900",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1d1b1a",
+                        "on-tertiary-container": "#3f3d3a",
+                        "surface-variant": "#363433",
+                        "primary-container": "#c5a368",
+                        "on-background": "#e6e1df",
+                        "secondary-fixed-dim": "#cdc5be",
+                        "error": "#ffb4ab",
+                        "secondary": "#cdc5be",
+                        "tertiary-fixed": "#e7e1de",
+                        "outline-variant": "#4d463a",
+                        "on-surface-variant": "#d1c5b5",
+                        "inverse-primary": "#755a26",
+                        "surface": "#141312",
+                        "surface-tint": "#e6c183",
+                        "on-tertiary-fixed": "#1d1b19",
+                        "on-tertiary": "#32302e",
+                        "primary-fixed": "#ffdea8",
+                        "inverse-on-surface": "#32302f",
+                        "on-tertiary-fixed-variant": "#494644",
+                        "on-secondary-fixed-variant": "#4a4641",
+                        "surface-dim": "#141312",
+                        "secondary-fixed": "#e9e1da",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#9a8f81",
+                        "tertiary-fixed-dim": "#cbc5c2",
+                        "surface-container-lowest": "#0f0e0d",
+                        "on-error": "#690005",
+                        "on-primary": "#422d00",
+                        "on-secondary-container": "#beb7b0",
+                        "background": "#141312"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0D0C0B;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .serif { font-family: 'Noto Serif', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .golden-wash {
+            background: linear-gradient(45deg, #e6c183 0%, #c5a368 100%);
+        }
+        .glass-nav {
+            background: rgba(33, 31, 30, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface min-h-screen pb-24">
+<!-- TOP APP BAR -->
+<header class="flex justify-between items-center w-full px-6 py-4 bg-[#141312]">
+<span class="font-serif text-[#C5A368] uppercase tracking-[0.2em] text-lg">THE ARCHIVE</span>
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="portrait of a focused intellectual man in a library setting with warm atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQm5XXxwDxOPBVV1ZqC1AfNKpqP9ITngShnvPyfrFIgigjHDC3dV56HwFaOwjILZpe5zBnsFy2riSH9mhbRMjjUwDbZx9EhQ9ho7joGWjyGTo9lghBkuBvSMHjDHWpESiy-Lvy3uew7_8xcT5nV39x_jNPiPjSIKB0afrseUkB23uAqRS_WVfn9-RjSmXY9aTt8TqBrzoG24gsmpuMh6rcBZa3DTqhWmFC_pm5SPGIGW3uMNCuXs3CEkV7N3-gjIUryUicm-6G2jRe"/>
+</div>
+</header>
+<main class="max-w-screen-md mx-auto px-6 pt-8 space-y-12">
+<!-- HEADER SECTION -->
+<section class="flex justify-between items-start">
+<div class="space-y-1">
+<h1 class="serif italic text-6xl tracking-tight text-on-surface">Revisit</h1>
+<p class="text-[10px] font-label font-bold tracking-[0.2em] text-[#8A847E] uppercase">STRENGTHEN YOUR KNOWLEDGE</p>
+</div>
+<div class="flex items-center space-x-2 bg-surface-container-low px-3 py-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] font-label font-bold tracking-widest text-[#8A847E] uppercase">Caught up</span>
+</div>
+</section>
+<!-- MASTERY SECTION -->
+<section class="flex flex-col items-center justify-center space-y-8">
+<div class="relative w-48 h-48 flex items-center justify-center">
+<!-- SVG Progress Ring -->
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle cx="96" cy="96" fill="transparent" r="90" stroke="#262422" stroke-width="1"></circle>
+<circle cx="96" cy="96" fill="transparent" r="90" stroke="#C5A368" stroke-dasharray="565" stroke-dashoffset="565" stroke-width="1"></circle>
+</svg>
+<div class="text-center">
+<span class="serif text-5xl text-primary">0%</span>
+<p class="text-[10px] font-label tracking-widest text-[#8A847E] uppercase mt-1">Mastery</p>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 w-full max-w-sm pt-4 border-t border-[#262422]/30">
+<div class="text-center">
+<p class="serif text-xl text-on-surface">0</p>
+<p class="text-[9px] font-label tracking-widest text-[#8A847E] uppercase">Unlocked</p>
+</div>
+<div class="text-center border-x border-[#262422]/30">
+<p class="serif text-xl text-on-surface">0</p>
+<p class="text-[9px] font-label tracking-widest text-[#8A847E] uppercase">Mastered</p>
+</div>
+<div class="text-center">
+<p class="serif text-xl text-on-surface">12</p>
+<p class="text-[9px] font-label tracking-widest text-[#8A847E] uppercase">Reviews</p>
+</div>
+</div>
+</section>
+<!-- CTA SECTION -->
+<section>
+<button class="w-full bg-[#1A1816] py-5 transition-all active:scale-[0.98] group flex items-center justify-center space-x-3">
+<span class="text-primary font-label tracking-[0.15em] text-sm uppercase">Review 5 Due Cards</span>
+<span class="material-symbols-outlined text-primary text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</section>
+<!-- DUE NOW SECTION -->
+<section class="space-y-6">
+<div class="flex items-center space-x-2 pb-2 border-b border-[#262422]">
+<span class="material-symbols-outlined text-primary text-sm">local_fire_department</span>
+<h3 class="text-[10px] font-label font-bold tracking-[0.2em] text-on-surface uppercase">Due Now</h3>
+</div>
+<div class="space-y-4">
+<!-- Due Card 1 -->
+<div class="flex items-center justify-between p-6 bg-surface-container/40 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent"></div>
+<div class="flex items-center space-x-5 relative z-10">
+<span class="text-2xl">🏛️</span>
+<div>
+<h4 class="serif text-lg text-on-surface">Stoicism</h4>
+<p class="text-[10px] font-label tracking-wider text-[#8A847E] uppercase">4/12 Mastered</p>
+</div>
+</div>
+<div class="bg-primary text-on-primary px-2 py-0.5 text-[10px] font-bold z-10">3</div>
+</div>
+<!-- Due Card 2 -->
+<div class="flex items-center justify-between p-6 bg-surface-container/40 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent"></div>
+<div class="flex items-center space-x-5 relative z-10">
+<span class="text-2xl">🎻</span>
+<div>
+<h4 class="serif text-lg text-on-surface">Music Theory</h4>
+<p class="text-[10px] font-label tracking-wider text-[#8A847E] uppercase">0/8 Mastered</p>
+</div>
+</div>
+<div class="bg-primary text-on-primary px-2 py-0.5 text-[10px] font-bold z-10">2</div>
+</div>
+</div>
+</section>
+<!-- CAUGHT UP SECTION -->
+<section class="space-y-6">
+<div class="flex items-center space-x-2 pb-2 border-b border-[#262422]">
+<span class="material-symbols-outlined text-[#8A847E] text-sm">check_circle</span>
+<h3 class="text-[10px] font-label font-bold tracking-[0.2em] text-[#8A847E] uppercase">Caught Up</h3>
+</div>
+<div class="space-y-4 opacity-50">
+<div class="flex items-center justify-between p-6 bg-surface-container-low">
+<div class="flex items-center space-x-5">
+<span class="text-2xl grayscale">☕</span>
+<div>
+<h4 class="serif text-lg text-on-surface">Espresso Craft</h4>
+<p class="text-[10px] font-label tracking-wider text-[#8A847E] uppercase">100% Complete</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-emerald-500 text-lg">verified</span>
+</div>
+</div>
+</section>
+<!-- LOCKED SECTION -->
+<section class="space-y-4">
+<div class="flex items-center space-x-2 pb-2 border-b border-[#262422]">
+<span class="material-symbols-outlined text-[#8A847E] text-sm">lock</span>
+<h3 class="text-[10px] font-label font-bold tracking-[0.2em] text-[#8A847E] uppercase">Locked (4 topics)</h3>
+</div>
+<div class="flex flex-wrap gap-3">
+<div class="px-4 py-2 bg-surface-container-lowest border border-[#262422] flex items-center space-x-2 grayscale opacity-40">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="text-[10px] font-label tracking-widest uppercase">Quantum Physics</span>
+</div>
+<div class="px-4 py-2 bg-surface-container-lowest border border-[#262422] flex items-center space-x-2 grayscale opacity-40">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="text-[10px] font-label tracking-widest uppercase">Ancient Egypt</span>
+</div>
+<div class="px-4 py-2 bg-surface-container-lowest border border-[#262422] flex items-center space-x-2 grayscale opacity-40">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="text-[10px] font-label tracking-widest uppercase">Botany</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BOTTOM NAV BAR -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 pb-safe px-8 glass-nav z-50">
+<div class="flex flex-col items-center justify-center text-[#3B3937]">
+<span class="material-symbols-outlined">home_storage</span>
+</div>
+<!-- Revisit Tab Active -->
+<div class="flex flex-col items-center justify-center text-[#E6C183] scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#3B3937]">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#3B3937]">
+<span class="material-symbols-outlined">settings</span>
+</div>
+</nav>
+</body></html>

@@ -56,12 +56,12 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
   const currentExample = activeExample !== null ? examples[activeExample] : null;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -74,7 +74,7 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
               Two Systems of Thinking
             </span>
           </div>
-          <p className="text-xs text-white/50">From "Thinking, Fast and Slow" by Daniel Kahneman</p>
+          <p className="text-xs text-[var(--viz-muted)]">From "Thinking, Fast and Slow" by Daniel Kahneman</p>
         </div>
 
         {/* System comparison */}
@@ -89,7 +89,7 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
               <Zap className="w-5 h-5 text-amber-400" />
               <span className="font-bold text-amber-400">System 1</span>
             </div>
-            <ul className="text-xs text-white/60 space-y-1">
+            <ul className="text-xs text-[var(--viz-secondary)] space-y-1">
               <li>Fast & automatic</li>
               <li>Intuitive</li>
               <li>Effortless</li>
@@ -108,7 +108,7 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
               <Brain className="w-5 h-5 text-blue-400" />
               <span className="font-bold text-blue-400">System 2</span>
             </div>
-            <ul className="text-xs text-white/60 space-y-1">
+            <ul className="text-xs text-[var(--viz-secondary)] space-y-1">
               <li>Slow & deliberate</li>
               <li>Analytical</li>
               <li>Effortful</li>
@@ -120,22 +120,22 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
 
         {/* Flow diagram */}
         <div
-          className="relative h-24 mb-6 rounded-xl border border-white/[0.08] overflow-hidden"
+          className="relative h-24 mb-6 rounded-xl border border-[var(--viz-border)] overflow-hidden"
           style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.1) 100%)' }}
         >
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           <svg className="w-full h-full" viewBox="0 0 300 80">
             {/* Input */}
-            <rect x="10" y="25" width="60" height="30" rx="4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" />
-            <text x="40" y="45" fontSize="10" fill="rgba(255,255,255,0.8)" textAnchor="middle">
+            <rect x="10" y="25" width="60" height="30" rx="4" fill="var(--viz-grid)" stroke="var(--viz-line)" />
+            <text x="40" y="45" fontSize="10" fill="var(--viz-text)" textAnchor="middle">
               Stimulus
             </text>
 
             {/* Arrow to split */}
-            <path d="M 70 40 L 100 40" stroke="rgba(255,255,255,0.3)" strokeWidth="2" markerEnd="url(#arrowhead)" />
+            <path d="M 70 40 L 100 40" stroke="var(--viz-line)" strokeWidth="2" markerEnd="url(#arrowhead)" />
 
             {/* Split point */}
-            <circle cx="110" cy="40" r="8" fill="rgba(255,255,255,0.2)" />
+            <circle cx="110" cy="40" r="8" fill="var(--viz-line-light)" />
 
             {/* Arrow to System 1 */}
             <motion.path
@@ -194,7 +194,7 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
             {/* Arrow marker */}
             <defs>
               <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.3)" />
+                <polygon points="0 0, 10 3.5, 0 7" fill="var(--viz-line)" />
               </marker>
             </defs>
           </svg>
@@ -202,8 +202,8 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
 
         {/* Interactive Examples */}
         {interactive && (
-          <div className="border-t border-white/[0.06] pt-4">
-            <p className="text-xs text-white/50 mb-3 text-center">
+          <div className="border-t border-[var(--viz-border)] pt-4">
+            <p className="text-xs text-[var(--viz-muted)] mb-3 text-center">
               Test yourself: Which system gives the correct answer?
             </p>
 
@@ -217,7 +217,7 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
                       setActiveExample(i);
                       resetExample();
                     }}
-                    className="relative overflow-hidden w-full text-left rounded-xl p-3 text-xs text-white/80 transition-colors border border-white/[0.08] hover:border-white/20"
+                    className="relative overflow-hidden w-full text-left rounded-xl p-3 text-xs text-[var(--viz-secondary)] transition-colors border border-[var(--viz-border)] hover:border-white/20"
                     style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                     whileHover={{ x: 4 }}
                   >
@@ -237,11 +237,11 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
                 >
                   {/* Question */}
                   <div
-                    className="relative overflow-hidden rounded-xl p-4 border border-white/[0.08]"
+                    className="relative overflow-hidden rounded-xl p-4 border border-[var(--viz-border)]"
                     style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                   >
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                    <p className="text-sm text-white">{currentExample?.question}</p>
+                    <p className="text-sm text-[var(--viz-text)]">{currentExample?.question}</p>
                   </div>
 
                   {/* Answer options */}
@@ -255,7 +255,7 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
                         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
                         <Zap className="w-4 h-4 text-amber-400 mx-auto mb-1" />
                         <p className="text-xs text-amber-400 font-medium">System 1</p>
-                        <p className="text-xs text-white/50 mt-1">{currentExample?.system1Answer}</p>
+                        <p className="text-xs text-[var(--viz-muted)] mt-1">{currentExample?.system1Answer}</p>
                       </button>
                       <button
                         onClick={() => handleGuess(2)}
@@ -265,7 +265,7 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
                         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
                         <Brain className="w-4 h-4 text-blue-400 mx-auto mb-1" />
                         <p className="text-xs text-blue-400 font-medium">System 2</p>
-                        <p className="text-xs text-white/50 mt-1">{currentExample?.system2Answer}</p>
+                        <p className="text-xs text-[var(--viz-muted)] mt-1">{currentExample?.system2Answer}</p>
                       </button>
                     </div>
                   ) : (
@@ -301,7 +301,7 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
                       </div>
 
                       {/* Explanation */}
-                      <p className="text-xs text-white/60">{currentExample?.explanation}</p>
+                      <p className="text-xs text-[var(--viz-secondary)]">{currentExample?.explanation}</p>
 
                       {/* Navigation */}
                       <div className="flex gap-2">
@@ -310,7 +310,7 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
                             setActiveExample(null);
                             resetExample();
                           }}
-                          className="flex-1 py-2 text-white text-xs rounded-lg transition-colors border border-white/[0.08] hover:border-white/20"
+                          className="flex-1 py-2 text-[var(--viz-text)] text-xs rounded-lg transition-colors border border-[var(--viz-border)] hover:border-white/20"
                           style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)' }}
                         >
                           Back to Examples
@@ -321,7 +321,7 @@ export function System1vs2Diagram({ interactive = true }: System1vs2DiagramProps
                               setActiveExample(activeExample + 1);
                               resetExample();
                             }}
-                            className="flex-1 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs
+                            className="flex-1 py-2 bg-amber-600 hover:bg-amber-700 text-[var(--viz-text)] text-xs
                                      rounded-lg transition-colors"
                           >
                             Next Example

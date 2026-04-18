@@ -111,7 +111,7 @@ export function PWAInstallPrompt() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 100, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md bg-[#111113] border border-white/10 rounded-2xl overflow-hidden"
+              className="w-full max-w-md bg-neutral-900 border border-white/10 rounded-2xl overflow-hidden"
             >
               {/* Header */}
               <div className="relative p-6 pb-4">
@@ -183,7 +183,7 @@ export function PWAInstallPrompt() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 100, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md bg-[#111113] border border-white/10 rounded-2xl overflow-hidden"
+              className="w-full max-w-md bg-neutral-900 border border-white/10 rounded-2xl overflow-hidden"
             >
               {/* Header */}
               <div className="relative p-6 pb-4">

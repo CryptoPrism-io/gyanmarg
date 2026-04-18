@@ -67,12 +67,12 @@ export function AnchoringBias() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -80,7 +80,7 @@ export function AnchoringBias() {
           <div className="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
             <Anchor className="w-4 h-4 text-purple-400" />
           </div>
-          <h3 className="text-sm font-medium text-white/90">Anchoring Bias</h3>
+          <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Anchoring Bias</h3>
         </div>
 
         <div className="flex flex-col items-center gap-4">
@@ -96,7 +96,7 @@ export function AnchoringBias() {
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border ${
                   activeScenario === index
                     ? 'bg-purple-500/20 text-purple-400 border-purple-500/30'
-                    : 'text-white/50 hover:text-white/80 border-transparent'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
               >
                 {s.context}
@@ -110,10 +110,10 @@ export function AnchoringBias() {
               className="absolute inset-0"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="relative p-4 text-center">
-              <p className="text-sm text-white/80">{scenario.context}</p>
+              <p className="text-sm text-[var(--viz-secondary)]">{scenario.context}</p>
             </div>
           </div>
 
@@ -143,7 +143,7 @@ export function AnchoringBias() {
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-xs text-white/60 text-center">
+                  <p className="text-xs text-[var(--viz-secondary)] text-center">
                     What do you think is fair value?
                   </p>
                   <input
@@ -206,7 +206,7 @@ export function AnchoringBias() {
                     ? 'bg-amber-500/10 border-amber-500/30'
                     : 'bg-green-500/10 border-green-500/30'
                 }`}>
-                  <p className="text-xs text-white/80">
+                  <p className="text-xs text-[var(--viz-secondary)]">
                     {Math.abs(userEstimate - scenario.anchorValue) < Math.abs(scenario.actualValue - scenario.anchorValue)
                       ? '⚠️ You were anchored! Your estimate stayed close to the initial number.'
                       : '✓ Good awareness! You adjusted away from the anchor.'}
@@ -219,15 +219,15 @@ export function AnchoringBias() {
                     className="absolute inset-0"
                     style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                   />
-                  <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                  <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                   <div className="relative p-3">
-                    <p className="text-xs text-white/60">{scenario.explanation}</p>
+                    <p className="text-xs text-[var(--viz-secondary)]">{scenario.explanation}</p>
                   </div>
                 </div>
 
                 <button
                   onClick={nextScenario}
-                  className="w-full py-2 text-xs text-white/50 hover:text-white/80"
+                  className="w-full py-2 text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
                 >
                   Try another scenario →
                 </button>
@@ -241,17 +241,17 @@ export function AnchoringBias() {
               className="absolute inset-0"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="relative p-3 text-center">
-              <p className="text-xs text-white/60">
+              <p className="text-xs text-[var(--viz-secondary)]">
                 <span className="text-purple-400 font-medium">Defense:</span> Always research
                 independently BEFORE seeing any numbers. Set your own anchor first.
               </p>
             </div>
           </div>
 
-          <p className="text-[10px] text-white/50">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From Never Split the Difference & Thinking Fast and Slow
           </p>
         </div>

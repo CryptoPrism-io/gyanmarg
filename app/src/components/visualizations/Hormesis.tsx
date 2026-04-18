@@ -117,12 +117,12 @@ export function Hormesis() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-red-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -131,8 +131,8 @@ export function Hormesis() {
             <Activity className="w-5 h-5 text-green-400" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white/90">Hormesis</h3>
-            <p className="text-[10px] text-white/50">The dose makes the medicine</p>
+            <h3 className="text-sm font-semibold text-[var(--viz-secondary)]">Hormesis</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">The dose makes the medicine</p>
           </div>
         </div>
 
@@ -149,7 +149,7 @@ export function Hormesis() {
                 className={`px-3 py-2 rounded-xl transition-all border ${
                   activeStressor === index
                     ? 'bg-green-500/20 text-green-400 border-green-500/50'
-                    : 'text-white/50 hover:text-white/80 border-white/[0.08] hover:border-white/20'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-[var(--viz-border)] hover:border-white/20'
                 }`}
                 whileTap={{ scale: 0.95 }}
               >
@@ -161,7 +161,7 @@ export function Hormesis() {
 
           {/* Hormesis curve visualization */}
           <div className="w-full max-w-xs">
-            <div className="relative border border-white/[0.08] rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(180deg, rgba(10,10,11,0.8) 0%, rgba(17,17,19,0.9) 100%)' }}>
+            <div className="relative border border-[var(--viz-border)] rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(180deg, rgba(10,10,11,0.8) 0%, rgba(17,17,19,0.9) 100%)' }}>
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <svg viewBox="0 0 300 130" className="w-full">
                 {/* Zone backgrounds */}
@@ -170,8 +170,8 @@ export function Hormesis() {
                 <rect x="225" y="10" width="75" height="100" fill="#EF444415" />
 
                 {/* Baseline */}
-                <line x1="0" y1="90" x2="300" y2="90" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeDasharray="4" />
-                <text x="295" y="88" fill="rgba(255,255,255,0.3)" fontSize="8" textAnchor="end">baseline</text>
+                <line x1="0" y1="90" x2="300" y2="90" stroke="var(--viz-grid)" strokeWidth="1" strokeDasharray="4" />
+                <text x="295" y="88" fill="var(--viz-line)" fontSize="8" textAnchor="end">baseline</text>
 
                 {/* The hormesis curve */}
                 <path
@@ -246,7 +246,7 @@ export function Hormesis() {
 
           {/* Dose slider */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between items-center text-[10px] text-white/50 mb-1">
+            <div className="flex justify-between items-center text-[10px] text-[var(--viz-muted)] mb-1">
               <span>Dose / Intensity</span>
               <span style={{ color: zone.color }} className="font-medium">{zone.name}</span>
             </div>
@@ -260,7 +260,7 @@ export function Hormesis() {
               className="w-full disabled:opacity-50"
               style={{ accentColor: zone.color }}
             />
-            <div className="flex justify-between text-[8px] text-white/40 mt-1">
+            <div className="flex justify-between text-[8px] text-[var(--viz-muted)] mt-1">
               <span>None 🛋️</span>
               <span>Optimal ✨</span>
               <span>Extreme ⚠️</span>
@@ -299,14 +299,14 @@ export function Hormesis() {
                   <p className="text-sm font-semibold" style={{ color: zone.color }}>
                     {stressor.examples[zone.index].level}
                   </p>
-                  <p className="text-[10px] text-white/50">{stressor.name}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">{stressor.name}</p>
                 </div>
               </div>
-              <p className="text-xs text-white/80 mb-3">
+              <p className="text-xs text-[var(--viz-secondary)] mb-3">
                 {stressor.examples[zone.index].effect}
               </p>
-              <div className="pt-3 border-t border-white/[0.08]">
-                <p className="text-[10px] text-white/50">Optimal dose:</p>
+              <div className="pt-3 border-t border-[var(--viz-border)]">
+                <p className="text-[10px] text-[var(--viz-muted)]">Optimal dose:</p>
                 <p className="text-[10px]" style={{ color: zone.color }}>
                   {stressor.optimalRange}
                 </p>
@@ -317,7 +317,7 @@ export function Hormesis() {
           {/* Science toggle */}
           <button
             onClick={() => setShowScience(!showScience)}
-            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
           >
             {showScience ? '▼ Hide' : '▶ Show'} the science
           </button>
@@ -333,12 +333,12 @@ export function Hormesis() {
                 <div className="relative overflow-hidden p-3 bg-green-500/10 border border-green-500/30 rounded-xl">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <p className="text-[10px] text-green-400 font-medium mb-1">🔬 Mechanism</p>
-                  <p className="text-[10px] text-white/60">{stressor.science}</p>
+                  <p className="text-[10px] text-[var(--viz-secondary)]">{stressor.science}</p>
                 </div>
                 <div className="relative overflow-hidden p-3 bg-purple-500/10 border border-purple-500/30 rounded-xl">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <p className="text-[10px] text-purple-400 font-medium mb-1">📈 The Hormetic Response</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     Low doses stimulate beneficial adaptive responses. High doses overwhelm
                     repair mechanisms and cause damage.
                   </p>
@@ -346,7 +346,7 @@ export function Hormesis() {
                 <div className="relative overflow-hidden p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <p className="text-[10px] text-amber-400 font-medium mb-1">⚡ Adaptation</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     The body "overcompensates" for mild stress, becoming stronger than before.
                     This is the foundation of all training.
                   </p>
@@ -356,16 +356,16 @@ export function Hormesis() {
           </AnimatePresence>
 
           {/* Key insight */}
-          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+          <div className="relative overflow-hidden border border-[var(--viz-border)] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-green-400 font-medium">The Hormesis Principle:</span> Small doses
               of stress make you stronger. The dose makes the poison—and the medicine. What doesn't
               kill you (in the right amount) truly makes you stronger.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             Nietzsche / Nassim Taleb / Exercise Science
           </p>
         </div>

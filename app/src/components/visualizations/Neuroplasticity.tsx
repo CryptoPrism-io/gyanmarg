@@ -133,12 +133,12 @@ export function Neuroplasticity() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-pink-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -153,7 +153,7 @@ export function Neuroplasticity() {
 
         <div className="flex flex-col items-center gap-5">
           {/* Neural network visualization */}
-          <div className="relative w-72 h-56 rounded-2xl overflow-hidden border border-white/[0.08]"
+          <div className="relative w-72 h-56 rounded-2xl overflow-hidden border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -235,7 +235,7 @@ export function Neuroplasticity() {
                     transition={{ duration: 0.3 }}
                   >
                     {isEndpoint && (
-                      <span className="text-[8px] text-white font-medium">
+                      <span className="text-[8px] text-[var(--viz-text)] font-medium">
                         {neuron.label.charAt(0)}
                       </span>
                     )}
@@ -243,7 +243,7 @@ export function Neuroplasticity() {
 
                   {/* Label */}
                   {isEndpoint && (
-                    <span className="absolute -bottom-4 text-[8px] text-white/50 whitespace-nowrap">
+                    <span className="absolute -bottom-4 text-[8px] text-[var(--viz-muted)] whitespace-nowrap">
                       {neuron.label}
                     </span>
                   )}
@@ -252,35 +252,35 @@ export function Neuroplasticity() {
             })}
 
             {/* Legend */}
-            <div className="absolute bottom-2 left-2 text-[8px] text-white/40">
+            <div className="absolute bottom-2 left-2 text-[8px] text-[var(--viz-muted)]">
               {'Signal: Cue → Action → Result'}
             </div>
           </div>
 
           {/* Stats */}
           <div className="flex gap-3">
-            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-white/[0.08]"
+            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <p className="text-xl font-bold text-purple-400">{practiceCount}</p>
-              <p className="text-[10px] text-white/50">Practice sessions</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Practice sessions</p>
             </div>
-            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-white/[0.08]"
+            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <p className="text-xl font-bold text-amber-400">{connections.length}</p>
-              <p className="text-[10px] text-white/50">Connections</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Connections</p>
             </div>
-            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-white/[0.08]"
+            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <p className="text-xl font-bold" style={{ color: getStrengthColor(avgStrength) }}>
                 {avgStrength.toFixed(1)}x
               </p>
-              <p className="text-[10px] text-white/50">Avg strength</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Avg strength</p>
             </div>
           </div>
 
@@ -288,15 +288,15 @@ export function Neuroplasticity() {
           <div className="flex gap-4 text-[10px]">
             <div className="flex items-center gap-1">
               <div className="w-6 h-1 rounded bg-gray-500" />
-              <span className="text-white/50">Weak</span>
+              <span className="text-[var(--viz-muted)]">Weak</span>
             </div>
             <div className="flex items-center gap-1">
               <div className="w-6 h-1.5 rounded bg-amber-500" />
-              <span className="text-white/50">Medium</span>
+              <span className="text-[var(--viz-muted)]">Medium</span>
             </div>
             <div className="flex items-center gap-1">
               <div className="w-6 h-2 rounded bg-green-500" />
-              <span className="text-white/50">Strong</span>
+              <span className="text-[var(--viz-muted)]">Strong</span>
             </div>
           </div>
 
@@ -320,7 +320,7 @@ export function Neuroplasticity() {
               style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.1) 0%, rgba(168,85,247,0.02) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent" />
-              <p className="text-xs text-white/60">
+              <p className="text-xs text-[var(--viz-secondary)]">
                 {practiceCount < 5 && 'New pathways forming...'}
                 {practiceCount >= 5 && practiceCount < 15 && 'Connections strengthening with repetition'}
                 {practiceCount >= 15 && practiceCount < 30 && 'Pathways becoming more efficient'}
@@ -332,7 +332,7 @@ export function Neuroplasticity() {
           {/* Science toggle */}
           <button
             onClick={() => setShowScience(!showScience)}
-            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
           >
             {showScience ? 'Hide' : 'Show'} the science
           </button>
@@ -343,26 +343,26 @@ export function Neuroplasticity() {
               animate={{ opacity: 1, height: 'auto' }}
               className="w-full max-w-xs space-y-2"
             >
-              <div className="relative overflow-hidden p-3 rounded-lg border border-white/[0.08]"
+              <div className="relative overflow-hidden p-3 rounded-lg border border-[var(--viz-border)]"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <p className="text-[10px] text-purple-400 font-medium mb-1">Hebbian Learning</p>
-                <p className="text-[10px] text-white/50">"Neurons that fire together, wire together"</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">"Neurons that fire together, wire together"</p>
               </div>
-              <div className="relative overflow-hidden p-3 rounded-lg border border-white/[0.08]"
+              <div className="relative overflow-hidden p-3 rounded-lg border border-[var(--viz-border)]"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <p className="text-[10px] text-purple-400 font-medium mb-1">Long-Term Potentiation</p>
-                <p className="text-[10px] text-white/50">Repeated activation strengthens synaptic connections</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Repeated activation strengthens synaptic connections</p>
               </div>
-              <div className="relative overflow-hidden p-3 rounded-lg border border-white/[0.08]"
+              <div className="relative overflow-hidden p-3 rounded-lg border border-[var(--viz-border)]"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <p className="text-[10px] text-purple-400 font-medium mb-1">Myelination</p>
-                <p className="text-[10px] text-white/50">Practice wraps pathways in myelin, making signals 100x faster</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Practice wraps pathways in myelin, making signals 100x faster</p>
               </div>
             </motion.div>
           )}
@@ -370,25 +370,25 @@ export function Neuroplasticity() {
           {practiceCount > 0 && (
             <button
               onClick={reset}
-              className="text-xs text-white/40 hover:text-white/60 transition-colors"
+              className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
             >
               Reset network
             </button>
           )}
 
           {/* Key insight */}
-          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-white/[0.08]"
+          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-purple-400 font-medium">The truth about talent:</span> What looks
               like natural ability is usually thousands of hours of practice that built neural highways.
               Your brain physically changes with deliberate repetition.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             Based on neuroscience research on skill acquisition
           </p>
         </div>

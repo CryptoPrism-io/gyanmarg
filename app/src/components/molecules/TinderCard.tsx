@@ -60,14 +60,14 @@ const contentThemes = [
   { accent: 'bg-coral/15 border-coral/25', accentText: 'text-coral', icon: Rocket, label: 'Focus' },
 ];
 
-// Solid opaque backgrounds per card type — no transparency, no bleed-through
+// Solid opaque backgrounds per card type — inline styles to bypass light-mode CSS override
 const cardBackgrounds: Record<CardContent['type'], string> = {
-  overview: 'bg-[#1A1610]',
-  content: 'bg-elevated',
-  quiz: 'bg-[#18161E]',
-  takeaway: 'bg-[#151A15]',
-  action: 'bg-[#1A1610]',
-  visualization: 'bg-[#161020]',
+  overview: '#1A1610',
+  content: '',        // uses bg-elevated class (adaptive)
+  quiz: '#18161E',
+  takeaway: '#151A15',
+  action: '#1A1610',
+  visualization: '#161020',
 };
 
 // Stack positioning for page-like effect (x-axis offset - left to right natural flow)
@@ -247,8 +247,8 @@ export function TinderCard({
       : card.type === 'visualization' ? 'Reward'
       : card.type);
 
-  // Solid opaque background
-  const cardBg = cardBackgrounds[card.type];
+  // Solid opaque background — hex value for inline style, empty string falls back to bg-elevated class
+  const cardBgHex = cardBackgrounds[card.type];
 
   const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const { offset, velocity } = info;
@@ -285,7 +285,7 @@ export function TinderCard({
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.9}
         onDragEnd={handleDragEnd}
-        style={isTop ? { x: dragX, rotate } : {}}
+        style={isTop ? { x: dragX, rotate, ...(cardBgHex ? { backgroundColor: cardBgHex } : {}) } : (cardBgHex ? { backgroundColor: cardBgHex } : {})}
         initial={{
           scale: style.scale,
           x: style.x,
@@ -312,7 +312,7 @@ export function TinderCard({
         }}
         className={`
           relative w-full max-w-md mx-4 ${card.type === 'visualization' ? 'h-full' : 'h-[500px]'} rounded-2xl border border-white/10
-          ${cardBg}
+          ${card.type === 'content' ? 'bg-elevated' : ''}
           shadow-xl cursor-grab active:cursor-grabbing
           touch-none select-none flex flex-col
         `}

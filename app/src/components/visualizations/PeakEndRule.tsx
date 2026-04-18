@@ -50,12 +50,12 @@ export function PeakEndRule() {
   const maxValue = 10;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -81,7 +81,7 @@ export function PeakEndRule() {
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border backdrop-blur-sm ${
                   activeExperience === index
                     ? 'bg-blue-500/15 text-blue-400 border-blue-500/30'
-                    : 'text-white/50 hover:text-white/70 border-transparent'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
               >
                 {e.name}
@@ -91,9 +91,9 @@ export function PeakEndRule() {
 
           {/* Experience timeline chart */}
           <div className="w-full max-w-xs">
-            <p className="text-[10px] text-white/50 text-center mb-2">Experience over time (1-10)</p>
+            <p className="text-[10px] text-[var(--viz-muted)] text-center mb-2">Experience over time (1-10)</p>
             <div
-              className="relative overflow-hidden h-32 flex items-end gap-1 rounded-xl p-3 border border-white/[0.08]"
+              className="relative overflow-hidden h-32 flex items-end gap-1 rounded-xl p-3 border border-[var(--viz-border)]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
               }}
@@ -137,11 +137,11 @@ export function PeakEndRule() {
             <div className="flex justify-center gap-4 mt-2">
               <div className="flex items-center gap-1">
                 <div className="w-2 h-2 rounded-full bg-green-500" />
-                <span className="text-[10px] text-white/50">Peak</span>
+                <span className="text-[10px] text-[var(--viz-muted)]">Peak</span>
               </div>
               <div className="flex items-center gap-1">
                 <div className="w-2 h-2 rounded-full bg-amber-500" />
-                <span className="text-[10px] text-white/50">End</span>
+                <span className="text-[10px] text-[var(--viz-muted)]">End</span>
               </div>
             </div>
           </div>
@@ -164,17 +164,17 @@ export function PeakEndRule() {
             >
               <div className="grid grid-cols-2 gap-3">
                 <div
-                  className="relative overflow-hidden rounded-xl p-3 text-center border border-white/[0.08]"
+                  className="relative overflow-hidden rounded-xl p-3 text-center border border-[var(--viz-border)]"
                   style={{
                     background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                   }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                  <p className="text-[10px] text-white/50 uppercase tracking-wide mb-1">
+                  <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-1">
                     Actual Average
                   </p>
-                  <p className="text-xl font-bold text-white/60">{exp.actualAvg.toFixed(1)}</p>
-                  <p className="text-[10px] text-white/40">objective experience</p>
+                  <p className="text-xl font-bold text-[var(--viz-secondary)]">{exp.actualAvg.toFixed(1)}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">objective experience</p>
                 </div>
                 <div
                   className="relative overflow-hidden rounded-xl p-3 text-center border border-amber-500/30"
@@ -192,16 +192,16 @@ export function PeakEndRule() {
               </div>
 
               <div
-                className="relative overflow-hidden rounded-xl p-3 text-center border border-white/[0.08]"
+                className="relative overflow-hidden rounded-xl p-3 text-center border border-[var(--viz-border)]"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                 }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                <p className="text-xs text-white/60">
+                <p className="text-xs text-[var(--viz-secondary)]">
                   <span className="text-amber-400 font-medium">Peak:</span> {exp.peakMoment}/10 +{' '}
                   <span className="text-amber-400 font-medium">End:</span> {exp.endMoment}/10 ={' '}
-                  <span className="text-white font-medium">Memory: {exp.rememberedAs}/10</span>
+                  <span className="text-[var(--viz-text)] font-medium">Memory: {exp.rememberedAs}/10</span>
                 </p>
               </div>
             </motion.div>
@@ -209,21 +209,21 @@ export function PeakEndRule() {
 
           {/* Practical application */}
           <div
-            className="relative overflow-hidden rounded-xl p-3 max-w-xs border border-white/[0.08]"
+            className="relative overflow-hidden rounded-xl p-3 max-w-xs border border-[var(--viz-border)]"
             style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
             }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">Apply this:</p>
-            <ul className="text-xs text-white/60 space-y-1">
+            <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2">Apply this:</p>
+            <ul className="text-xs text-[var(--viz-secondary)] space-y-1">
               <li>* End presentations on a high note</li>
               <li>* Create peak moments in experiences</li>
               <li>* A great dessert saves an okay meal</li>
             </ul>
           </div>
 
-          <p className="text-[10px] text-white/50 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             Daniel Kahneman - Thinking, Fast and Slow
           </p>
         </div>

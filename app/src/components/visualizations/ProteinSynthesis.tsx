@@ -49,12 +49,12 @@ export function ProteinSynthesis() {
   }, [mealTimings]);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-5">
@@ -71,7 +71,7 @@ export function ProteinSynthesis() {
               className={`px-4 py-2 rounded-lg text-xs backdrop-blur-sm transition-all ${
                 goal === 'maintain'
                   ? 'bg-blue-500/20 border border-blue-500/50 text-blue-400'
-                  : 'bg-white/[0.05] border border-white/[0.1] text-gray-400 hover:bg-white/[0.08]'
+                  : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile-md)]'
               }`}
             >
               Maintain (1.6g/kg)
@@ -81,7 +81,7 @@ export function ProteinSynthesis() {
               className={`px-4 py-2 rounded-lg text-xs backdrop-blur-sm transition-all ${
                 goal === 'build'
                   ? 'bg-green-500/20 border border-green-500/50 text-green-400'
-                  : 'bg-white/[0.05] border border-white/[0.1] text-gray-400 hover:bg-white/[0.08]'
+                  : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile-md)]'
               }`}
             >
               Build (2.0g/kg)
@@ -142,7 +142,7 @@ export function ProteinSynthesis() {
             <p className="text-[10px] text-gray-500 mb-2 text-center">Protein Synthesis Throughout Day</p>
             <div className="relative h-24 overflow-hidden rounded-xl p-2">
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
-              <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+              <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <svg viewBox="0 0 280 80" className="relative w-full h-full">
                 {/* MPS curve */}
                 <path
@@ -200,7 +200,7 @@ export function ProteinSynthesis() {
                   transition={{ delay: i * 0.1 }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
-                  <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                  <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                   <div className="relative p-2">
                     <p className="text-sm font-bold text-green-400">{meal.protein}g</p>
                     <p className="text-[8px] text-gray-500">{meal.time}</p>
@@ -249,7 +249,7 @@ export function ProteinSynthesis() {
           {/* Key insight */}
           <div className="relative max-w-xs overflow-hidden rounded-xl">
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
               <p className="text-xs text-gray-400 leading-relaxed">
                 <span className="text-green-400 font-medium">Dr. Peter Attia:</span> "The anabolic

@@ -60,12 +60,12 @@ export function TheDip() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-red-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -73,7 +73,7 @@ export function TheDip() {
           <div className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center">
             <TrendingDown className="w-4 h-4 text-amber-400" />
           </div>
-          <h3 className="text-sm font-medium text-white/90">The Dip</h3>
+          <h3 className="text-sm font-medium text-[var(--viz-secondary)]">The Dip</h3>
         </div>
 
         <div className="flex flex-col items-center gap-4">
@@ -94,7 +94,7 @@ export function TheDip() {
               <text x="250" y="25" fill="#22C55E" fontSize="8">Mastery</text>
 
               {/* Quit/Push zones */}
-              <text x="100" y="75" fill="rgba(255,255,255,0.4)" fontSize="7">Most quit here</text>
+              <text x="100" y="75" fill="var(--viz-secondary)" fontSize="7">Most quit here</text>
               <circle cx="150" cy="70" r="4" fill="#EF4444" />
             </svg>
           </div>
@@ -106,14 +106,14 @@ export function TheDip() {
                 className="absolute inset-0"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               />
-              <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+              <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <div className="relative p-4">
-                <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">
+                <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2">
                   Scenario {activeScenario + 1}/{scenarios.length}
                 </p>
-                <h3 className="text-sm font-medium text-white/90 mb-2">{scenario.title}</h3>
-                <p className="text-xs text-white/60">{scenario.description}</p>
+                <h3 className="text-sm font-medium text-[var(--viz-secondary)] mb-2">{scenario.title}</h3>
+                <p className="text-xs text-[var(--viz-secondary)]">{scenario.description}</p>
               </div>
             </div>
           </div>
@@ -171,12 +171,12 @@ export function TheDip() {
                 }}>
                   {scenario.verdict === 'push' ? '💪 Push through' : '🚪 Quit strategically'}
                 </p>
-                <p className="text-xs text-white/60">{scenario.reason}</p>
+                <p className="text-xs text-[var(--viz-secondary)]">{scenario.reason}</p>
               </div>
 
               <button
                 onClick={nextScenario}
-                className="w-full py-2 text-xs text-white/50 hover:text-white/80 transition-colors"
+                className="w-full py-2 text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
               >
                 Next scenario →
               </button>
@@ -189,10 +189,10 @@ export function TheDip() {
               className="absolute inset-0"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="relative p-3 text-center">
-              <p className="text-xs text-white/60">
+              <p className="text-xs text-[var(--viz-secondary)]">
                 <span className="text-amber-400 font-medium">Key insight:</span> Winners quit the
                 right things at the right time. The Dip is a test—only push through if you can
                 become the best.
@@ -200,7 +200,7 @@ export function TheDip() {
             </div>
           </div>
 
-          <p className="text-[10px] text-white/50">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From The Dip by Seth Godin
           </p>
         </div>

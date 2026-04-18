@@ -73,12 +73,12 @@ export function SecondOrderThinking() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -100,8 +100,8 @@ export function SecondOrderThinking() {
                 onClick={() => selectScenario(index)}
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border backdrop-blur-sm ${
                   activeScenario === index
-                    ? 'bg-white/10 text-white border-white/20'
-                    : 'text-white/50 hover:text-white/70 border-transparent hover:border-white/10'
+                    ? 'bg-white/10 text-[var(--viz-text)] border-white/20'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent hover:border-[var(--viz-border-light)]'
                 }`}
                 style={{
                   borderColor: activeScenario === index ? s.color : undefined,
@@ -131,25 +131,25 @@ export function SecondOrderThinking() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="relative overflow-hidden w-full p-3 rounded-xl border border-white/[0.08]"
+              className="relative overflow-hidden w-full p-3 rounded-xl border border-[var(--viz-border)]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
               }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <div className="flex items-center justify-between mb-1">
-                <span className="text-[10px] text-white/50 uppercase tracking-wide">
+                <span className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide">
                   {scenario.firstOrder.label}
                 </span>
                 <span className="text-lg">{scenario.firstOrder.emotion}</span>
               </div>
-              <p className="text-xs text-white/80">{scenario.firstOrder.result}</p>
+              <p className="text-xs text-[var(--viz-secondary)]">{scenario.firstOrder.result}</p>
             </motion.div>
 
             {/* Arrow */}
             <motion.div
               animate={{ opacity: visibleOrder >= 2 ? 1 : 0.3 }}
-              className="text-white/50"
+              className="text-[var(--viz-muted)]"
             >
               Then what?
             </motion.div>
@@ -161,19 +161,19 @@ export function SecondOrderThinking() {
                   initial={{ opacity: 0, scale: 0.9, y: -10 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  className="relative overflow-hidden w-full p-3 rounded-xl border border-white/[0.08]"
+                  className="relative overflow-hidden w-full p-3 rounded-xl border border-[var(--viz-border)]"
                   style={{
                     background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                   }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] text-white/50 uppercase tracking-wide">
+                    <span className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide">
                       {scenario.secondOrder.label}
                     </span>
                     <span className="text-lg">{scenario.secondOrder.emotion}</span>
                   </div>
-                  <p className="text-xs text-white/80">{scenario.secondOrder.result}</p>
+                  <p className="text-xs text-[var(--viz-secondary)]">{scenario.secondOrder.result}</p>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -183,7 +183,7 @@ export function SecondOrderThinking() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: visibleOrder >= 3 ? 1 : 0.3 }}
-                className="text-white/50"
+                className="text-[var(--viz-muted)]"
               >
                 And then?
               </motion.div>
@@ -235,14 +235,14 @@ export function SecondOrderThinking() {
             ) : (
               <button
                 onClick={reset}
-                className="text-xs px-4 py-2 bg-white/[0.04] border-white/10 text-white/50 hover:text-white/70 rounded-lg transition-all backdrop-blur-sm border"
+                className="text-xs px-4 py-2 bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] rounded-lg transition-all backdrop-blur-sm border"
               >
                 Reset
               </button>
             )}
           </div>
 
-          <p className="text-[10px] text-white/50 text-center max-w-xs">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center max-w-xs">
             <span className="text-amber-400 font-medium">Second-order thinking:</span> Always ask "And then what?" to see beyond immediate consequences.
           </p>
         </div>

@@ -47,12 +47,12 @@ export function UltradianRhythms() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -75,7 +75,7 @@ export function UltradianRhythms() {
                 cy="96"
                 r="88"
                 fill="none"
-                stroke="rgba(255,255,255,0.08)"
+                stroke="var(--viz-grid)"
                 strokeWidth="12"
               />
               {/* Progress arc */}
@@ -98,7 +98,7 @@ export function UltradianRhythms() {
               <p className="text-3xl font-bold" style={{ color: phase.color }}>
                 {minutes}
               </p>
-              <p className="text-[10px] text-white/50">minutes</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">minutes</p>
               <p className="text-xs font-medium mt-2" style={{ color: phase.color }}>
                 {phase.name}
               </p>
@@ -131,7 +131,7 @@ export function UltradianRhythms() {
               <div
                 key={p.name}
                 className={`relative overflow-hidden p-2 rounded-lg text-center border ${
-                  phase.name === p.name ? 'border-white/20' : 'border-white/[0.08]'
+                  phase.name === p.name ? 'border-white/20' : 'border-[var(--viz-border)]'
                 }`}
                 style={{
                   background: phase.name === p.name
@@ -140,30 +140,30 @@ export function UltradianRhythms() {
                 }}
               >
                 {phase.name === p.name && (
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
                 )}
                 <div className="w-2 h-2 rounded-full mx-auto mb-1" style={{ backgroundColor: p.color }} />
                 <p className="text-[10px] font-medium" style={{ color: p.color }}>{p.name}</p>
-                <p className="text-[8px] text-white/50">{p.time}</p>
+                <p className="text-[8px] text-[var(--viz-muted)]">{p.time}</p>
               </div>
             ))}
           </div>
 
           {/* Stats */}
           <div className="flex gap-4 text-center">
-            <div className="relative overflow-hidden px-4 py-2 rounded-xl border border-white/[0.08]"
+            <div className="relative overflow-hidden px-4 py-2 rounded-xl border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <p className="text-xl font-bold text-green-400">{cycles}</p>
-              <p className="text-[10px] text-white/50">Cycles completed</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Cycles completed</p>
             </div>
-            <div className="relative overflow-hidden px-4 py-2 rounded-xl border border-white/[0.08]"
+            <div className="relative overflow-hidden px-4 py-2 rounded-xl border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <p className="text-xl font-bold text-blue-400">{cycles * 50}</p>
-              <p className="text-[10px] text-white/50">Peak focus minutes</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Peak focus minutes</p>
             </div>
           </div>
 
@@ -181,8 +181,8 @@ export function UltradianRhythms() {
             </button>
             <button
               onClick={reset}
-              className="px-4 py-2 border border-white/[0.08] text-white/60
-                       rounded-lg text-xs hover:border-white/20 hover:text-white/80 transition-all"
+              className="px-4 py-2 border border-[var(--viz-border)] text-[var(--viz-secondary)]
+                       rounded-lg text-xs hover:border-white/20 hover:text-[var(--viz-secondary)] transition-all"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               Reset
@@ -190,18 +190,18 @@ export function UltradianRhythms() {
           </div>
 
           {/* Key insight */}
-          <div className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-white/[0.08]"
+          <div className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-green-400 font-medium">Science:</span> Your brain naturally
               cycles through 90-minute ultradian rhythms. Work with them: focus hard for 90 min,
               then rest for 20.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             Based on sleep & performance research
           </p>
         </div>

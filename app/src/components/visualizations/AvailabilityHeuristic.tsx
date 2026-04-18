@@ -52,12 +52,12 @@ export function AvailabilityHeuristic() {
   const maxDeaths = Math.max(comparison.scary.deaths, comparison.mundane.deaths);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glass layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-red-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -69,8 +69,8 @@ export function AvailabilityHeuristic() {
             <AlertTriangle className="w-4 h-4 text-purple-400" />
           </div>
           <div>
-            <h3 className="text-sm font-medium text-white/90">Availability Heuristic</h3>
-            <p className="text-[10px] text-white/50">From Thinking, Fast and Slow</p>
+            <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Availability Heuristic</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">From Thinking, Fast and Slow</p>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ export function AvailabilityHeuristic() {
             <p className="text-[10px] text-purple-400 uppercase tracking-wide mb-1">
               Question {activeComparison + 1}/{comparisons.length}
             </p>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-[var(--viz-secondary)]">
               Which causes more deaths annually (US)?
             </p>
           </div>
@@ -90,24 +90,24 @@ export function AvailabilityHeuristic() {
             <div className="w-full max-w-xs space-y-2">
               <motion.button
                 onClick={() => handleGuess('scary')}
-                className="relative w-full p-3 border border-white/[0.08] rounded-lg
+                className="relative w-full p-3 border border-[var(--viz-border)] rounded-lg
                          text-left hover:border-purple-500/30 transition-all overflow-hidden"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                <span className="text-sm text-white/80">{comparison.scary.name}</span>
+                <span className="text-sm text-[var(--viz-secondary)]">{comparison.scary.name}</span>
               </motion.button>
 
               <motion.button
                 onClick={() => handleGuess('mundane')}
-                className="relative w-full p-3 border border-white/[0.08] rounded-lg
+                className="relative w-full p-3 border border-[var(--viz-border)] rounded-lg
                          text-left hover:border-purple-500/30 transition-all overflow-hidden"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                <span className="text-sm text-white/80">{comparison.mundane.name}</span>
+                <span className="text-sm text-[var(--viz-secondary)]">{comparison.mundane.name}</span>
               </motion.button>
             </div>
           )}
@@ -139,10 +139,10 @@ export function AvailabilityHeuristic() {
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="text-red-400">{comparison.scary.name}</span>
-                      <span className="text-white/50">{comparison.scary.deaths.toLocaleString()}/year</span>
+                      <span className="text-[var(--viz-muted)]">{comparison.scary.deaths.toLocaleString()}/year</span>
                     </div>
                     <div
-                      className="h-4 rounded-full border border-white/[0.08] overflow-hidden"
+                      className="h-4 rounded-full border border-[var(--viz-border)] overflow-hidden"
                       style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                     >
                       <motion.div
@@ -159,10 +159,10 @@ export function AvailabilityHeuristic() {
                   <div>
                     <div className="flex justify-between text-xs mb-1">
                       <span className="text-green-400">{comparison.mundane.name}</span>
-                      <span className="text-white/50">{comparison.mundane.deaths.toLocaleString()}/year</span>
+                      <span className="text-[var(--viz-muted)]">{comparison.mundane.deaths.toLocaleString()}/year</span>
                     </div>
                     <div
-                      className="h-4 rounded-full border border-white/[0.08] overflow-hidden"
+                      className="h-4 rounded-full border border-[var(--viz-border)] overflow-hidden"
                       style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                     >
                       <motion.div
@@ -178,11 +178,11 @@ export function AvailabilityHeuristic() {
 
                 {/* Ratio */}
                 <div
-                  className="relative text-center p-2 border border-white/[0.08] rounded-lg overflow-hidden"
+                  className="relative text-center p-2 border border-[var(--viz-border)] rounded-lg overflow-hidden"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                  <p className="text-xs text-white/60">
+                  <p className="text-xs text-[var(--viz-secondary)]">
                     <span className="text-green-400 font-bold">
                       {Math.round(comparison.mundane.deaths / comparison.scary.deaths)}x
                     </span> more deadly, but feels less scary
@@ -191,7 +191,7 @@ export function AvailabilityHeuristic() {
 
                 <button
                   onClick={nextComparison}
-                  className="w-full py-2 text-xs text-white/50 hover:text-white/70"
+                  className="w-full py-2 text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
                 >
                   Next comparison
                 </button>
@@ -201,11 +201,11 @@ export function AvailabilityHeuristic() {
 
           {/* Key insight */}
           <div
-            className="relative border border-white/[0.08] rounded-lg p-3 max-w-xs text-center overflow-hidden"
+            className="relative border border-[var(--viz-border)] rounded-lg p-3 max-w-xs text-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-purple-400 font-medium">The bias:</span> We judge probability
               by how easily examples come to mind. Vivid, emotional events (sharks, planes) feel
               more common than mundane killers.

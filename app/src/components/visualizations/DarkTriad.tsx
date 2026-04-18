@@ -62,12 +62,12 @@ export function DarkTriad() {
   const [showDefense, setShowDefense] = useState(false);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-red-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -76,8 +76,8 @@ export function DarkTriad() {
             <AlertTriangle className="w-5 h-5 text-red-400" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white/90">The Dark Triad</h3>
-            <p className="text-[10px] text-white/50">Recognizing toxic personality traits</p>
+            <h3 className="text-sm font-semibold text-[var(--viz-secondary)]">The Dark Triad</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">Recognizing toxic personality traits</p>
           </div>
         </div>
 
@@ -89,7 +89,7 @@ export function DarkTriad() {
               <path
                 d="M 100 10 L 180 160 L 20 160 Z"
                 fill="none"
-                stroke="rgba(255,255,255,0.1)"
+                stroke="var(--viz-grid)"
                 strokeWidth="2"
               />
 
@@ -158,10 +158,10 @@ export function DarkTriad() {
               </g>
 
               {/* Center label */}
-              <text x="100" y="95" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="10" fontWeight="bold">
+              <text x="100" y="95" textAnchor="middle" fill="var(--viz-muted)" fontSize="10" fontWeight="bold">
                 DARK
               </text>
-              <text x="100" y="108" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="10" fontWeight="bold">
+              <text x="100" y="108" textAnchor="middle" fill="var(--viz-muted)" fontSize="10" fontWeight="bold">
                 TRIAD
               </text>
             </svg>
@@ -211,14 +211,14 @@ export function DarkTriad() {
                       <h3 className="text-sm font-bold" style={{ color: traits[activeTrait].color }}>
                         {traits[activeTrait].name}
                       </h3>
-                      <p className="text-[10px] text-white/50">{traits[activeTrait].core}</p>
+                      <p className="text-[10px] text-[var(--viz-muted)]">{traits[activeTrait].core}</p>
                     </div>
                   </div>
 
                   <div className="space-y-1.5 mb-3">
-                    <p className="text-[10px] text-white/50 uppercase tracking-wide">Warning Signs:</p>
+                    <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide">Warning Signs:</p>
                     {traits[activeTrait].signs.map((sign, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-white/60">
+                      <div key={idx} className="flex items-start gap-2 text-xs text-[var(--viz-secondary)]">
                         <span style={{ color: traits[activeTrait].color }}>•</span>
                         {sign}
                       </div>
@@ -227,7 +227,7 @@ export function DarkTriad() {
 
                   <button
                     onClick={() => setShowDefense(!showDefense)}
-                    className="text-[10px] text-white/50 hover:text-white/80"
+                    className="text-[10px] text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
                   >
                     {showDefense ? '▼ Hide' : '🛡️ Show'} defense strategy
                   </button>
@@ -252,9 +252,9 @@ export function DarkTriad() {
 
           {/* General info when none selected */}
           {activeTrait === null && (
-            <div className="w-full max-w-xs p-3 border border-white/[0.08] rounded-xl relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+            <div className="w-full max-w-xs p-3 border border-[var(--viz-border)] rounded-xl relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              <p className="text-xs text-white/60 text-center">
+              <p className="text-xs text-[var(--viz-secondary)] text-center">
                 Click a trait to learn its characteristics and defense strategies.
                 These traits exist on a spectrum—everyone has some degree of each.
               </p>
@@ -262,16 +262,16 @@ export function DarkTriad() {
           )}
 
           {/* Key insight */}
-          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+          <div className="relative overflow-hidden border border-[var(--viz-border)] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-red-400 font-medium">Why learn this?</span> These personality
               types are overrepresented in positions of power. Recognizing them early protects you
               from manipulation and exploitation.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">From Dark Psychology Research</p>
+          <p className="text-[10px] text-[var(--viz-muted)]">From Dark Psychology Research</p>
         </div>
       </div>
     </div>

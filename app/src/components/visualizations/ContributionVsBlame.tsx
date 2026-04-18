@@ -22,19 +22,19 @@ export function ContributionVsBlame() {
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-red-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
           {/* Toggle */}
           <div className="relative overflow-hidden flex rounded-lg p-1">
-            <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <button
               onClick={() => setPerspective('blame')}
               className={`relative z-10 px-4 py-2 rounded-lg text-xs transition-all ${
@@ -80,8 +80,8 @@ export function ContributionVsBlame() {
                   key={idx}
                   className="relative overflow-hidden p-3 rounded-lg"
                 >
-                  <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-                  <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                  <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+                  <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                   <p className="relative z-10 text-xs text-gray-400 italic">"{statement}"</p>
                 </div>
               ))}
@@ -102,8 +102,8 @@ export function ContributionVsBlame() {
                   key={idx}
                   className="relative overflow-hidden p-3 rounded-lg"
                 >
-                  <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-                  <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                  <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+                  <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                   <p className="relative z-10 text-xs text-green-400">{question}</p>
                 </div>
               ))}
@@ -114,7 +114,7 @@ export function ContributionVsBlame() {
                   value={myContribution}
                   onChange={(e) => setMyContribution(e.target.value)}
                   placeholder="I contributed by..."
-                  className="w-full p-3 bg-white/[0.03] border border-white/[0.08] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-green-500/50 focus:outline-none resize-none h-20 backdrop-blur-sm"
+                  className="w-full p-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-green-500/50 focus:outline-none resize-none h-20 backdrop-blur-sm"
                 />
               </div>
 

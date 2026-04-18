@@ -67,12 +67,12 @@ export function MereExposure() {
   const allRated = Object.keys(ratings).length === 4;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -88,10 +88,10 @@ export function MereExposure() {
         <div className="flex flex-col items-center gap-4">
           {/* Phase indicator */}
           <div className="flex gap-4">
-            <div className={`text-xs ${phase === 'exposure' ? 'text-blue-400' : 'text-white/40'}`}>
+            <div className={`text-xs ${phase === 'exposure' ? 'text-blue-400' : 'text-[var(--viz-muted)]'}`}>
               1. Exposure Phase
             </div>
-            <div className={`text-xs ${phase === 'rating' ? 'text-amber-400' : 'text-white/40'}`}>
+            <div className={`text-xs ${phase === 'rating' ? 'text-amber-400' : 'text-[var(--viz-muted)]'}`}>
               2. Rating Phase
             </div>
           </div>
@@ -125,7 +125,7 @@ export function MereExposure() {
               >
                 Start experiment
               </button>
-              <p className="text-[10px] text-white/50 mt-2">
+              <p className="text-[10px] text-[var(--viz-muted)] mt-2">
                 Watch the shapes flash by (takes ~10 seconds)
               </p>
             </div>
@@ -138,7 +138,7 @@ export function MereExposure() {
               animate={{ opacity: 1 }}
               className="w-full max-w-xs"
             >
-              <p className="text-xs text-center text-white/60 mb-4">
+              <p className="text-xs text-center text-[var(--viz-secondary)] mb-4">
                 Rate how much you <span className="text-amber-400">like</span> each shape (1-5)
               </p>
 
@@ -146,13 +146,13 @@ export function MereExposure() {
                 {shapes.map(shape => (
                   <div
                     key={shape.id}
-                    className="relative overflow-hidden flex items-center justify-between rounded-xl p-3 border border-white/[0.08]"
+                    className="relative overflow-hidden flex items-center justify-between rounded-xl p-3 border border-[var(--viz-border)]"
                     style={{
                       background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                     }}
                   >
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-                    <span className="text-2xl text-white/80">{shape.symbol}</span>
+                    <span className="text-2xl text-[var(--viz-secondary)]">{shape.symbol}</span>
                     <div className="flex gap-1">
                       {[1, 2, 3, 4, 5].map(n => (
                         <button
@@ -161,7 +161,7 @@ export function MereExposure() {
                           className={`w-8 h-8 rounded text-xs transition-all border ${
                             ratings[shape.id] === n
                               ? 'bg-amber-500/20 border-amber-500/50 text-amber-400'
-                              : 'border-white/10 text-white/50 hover:border-white/20'
+                              : 'border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:border-white/20'
                           }`}
                           style={{
                             background: ratings[shape.id] !== n
@@ -198,7 +198,7 @@ export function MereExposure() {
                   {shapes.map(shape => (
                     <div key={shape.id}>
                       <span className="text-lg">{shape.symbol}</span>
-                      <p className="text-[10px] text-white/50">Seen {shape.exposures}x</p>
+                      <p className="text-[10px] text-[var(--viz-muted)]">Seen {shape.exposures}x</p>
                       <p className="text-xs text-amber-400">Rated {ratings[shape.id]}</p>
                     </div>
                   ))}
@@ -206,13 +206,13 @@ export function MereExposure() {
               </div>
 
               <div
-                className="relative overflow-hidden rounded-xl p-3 text-center border border-white/[0.08]"
+                className="relative overflow-hidden rounded-xl p-3 text-center border border-[var(--viz-border)]"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                 }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                <p className="text-xs text-white/60">
+                <p className="text-xs text-[var(--viz-secondary)]">
                   <span className="text-green-400 font-medium">Did you notice?</span> You likely
                   rated shapes you saw <span className="text-amber-400">more frequently</span> higher!
                   This happens unconsciously.
@@ -221,7 +221,7 @@ export function MereExposure() {
 
               <button
                 onClick={startExposure}
-                className="w-full text-xs text-white/50 hover:text-white/70 py-2 transition-colors"
+                className="w-full text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] py-2 transition-colors"
               >
                 ~ Try again
               </button>
@@ -230,20 +230,20 @@ export function MereExposure() {
 
           {/* Explanation */}
           <div
-            className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-white/[0.08]"
+            className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-[var(--viz-border)]"
             style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
             }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-blue-400 font-medium">The Mere Exposure Effect:</span>{' '}
               We prefer things simply because we've been exposed to them more often.
               Familiarity breeds liking.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/50 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             Robert Zajonc (1968) - Explains advertising, music taste, attraction
           </p>
         </div>

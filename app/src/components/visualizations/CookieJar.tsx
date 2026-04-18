@@ -24,12 +24,12 @@ export function CookieJar() {
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-amber-600/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -74,7 +74,7 @@ export function CookieJar() {
                 onChange={(e) => setNewCookie(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && addCookie()}
                 placeholder="I overcame..."
-                className="flex-1 px-3 py-2 bg-white/[0.03] border border-white/[0.08] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-amber-500/50 focus:outline-none transition-colors"
+                className="flex-1 px-3 py-2 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-amber-500/50 focus:outline-none transition-colors"
               />
               <button
                 onClick={addCookie}
@@ -92,7 +92,7 @@ export function CookieJar() {
                   onClick={() => {
                     setCookies((prev) => [...prev, sample]);
                   }}
-                  className="px-2 py-1 bg-white/[0.03] border border-white/[0.08] rounded text-[8px] text-gray-500 hover:text-gray-400 hover:border-white/[0.15] transition-colors"
+                  className="px-2 py-1 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded text-[8px] text-gray-500 hover:text-gray-400 hover:border-[var(--viz-border-light)] transition-colors"
                 >
                   + {sample.slice(0, 20)}...
                 </button>
@@ -107,7 +107,7 @@ export function CookieJar() {
               className={`w-full py-2 rounded-lg text-xs border transition-all ${
                 isStruggling
                   ? 'bg-red-500/20 border-red-500/30 text-red-400'
-                  : 'bg-white/[0.03] border-white/[0.08] text-gray-400 hover:border-white/[0.15]'
+                  : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-400 hover:border-[var(--viz-border-light)]'
               }`}
             >
               {isStruggling ? "I'm struggling right now..." : 'Simulate: Feeling like quitting'}
@@ -134,7 +134,7 @@ export function CookieJar() {
                       className={`w-full relative overflow-hidden rounded-lg text-left transition-all ${
                         selectedCookie === cookie
                           ? 'bg-green-500/20 border border-green-500/30'
-                          : 'bg-white/[0.03] border border-white/[0.08] hover:border-amber-500/30'
+                          : 'bg-[var(--viz-tile)] border border-[var(--viz-border)] hover:border-amber-500/30'
                       }`}
                       whileTap={{ scale: 0.98 }}
                     >

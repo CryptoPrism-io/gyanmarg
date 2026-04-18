@@ -11,7 +11,7 @@ export function BlogArticlePage() {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-[#0A0A0B] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-zinc-950 text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-semibold mb-4">Article Not Found</h1>
           <Link to="/blog" className="text-amber-500 hover:underline">
@@ -23,7 +23,7 @@ export function BlogArticlePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0B] text-white relative">
+    <div className="min-h-screen bg-zinc-950 text-white relative">
       {/* Animated Background */}
       <div className="animated-gradient-bg">
         <div className="wave-orb wave-orb-1" />

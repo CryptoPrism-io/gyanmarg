@@ -48,12 +48,12 @@ export function RegretMinimization() {
   const decision = decisions[activeDecision];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -79,7 +79,7 @@ export function RegretMinimization() {
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border backdrop-blur-sm ${
                   activeDecision === index
                     ? 'bg-blue-500/15 text-blue-400 border-blue-500/30'
-                    : 'text-white/50 hover:text-white/70 border-transparent'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
               >
                 {d.scenario.split(' ').slice(0, 2).join(' ')}...
@@ -91,13 +91,13 @@ export function RegretMinimization() {
           <div className="w-full max-w-xs space-y-4">
             {/* Current scenario */}
             <div
-              className="relative overflow-hidden rounded-xl p-4 text-center border border-white/[0.08]"
+              className="relative overflow-hidden rounded-xl p-4 text-center border border-[var(--viz-border)]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
               }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              <p className="text-sm text-white/80 font-medium">{decision.scenario}</p>
+              <p className="text-sm text-[var(--viz-secondary)] font-medium">{decision.scenario}</p>
             </div>
 
             {/* Timeline visualization */}
@@ -107,14 +107,14 @@ export function RegretMinimization() {
                   <div className="w-8 h-8 rounded-full bg-blue-500/15 border border-blue-500/30 flex items-center justify-center mb-1">
                     <span className="text-xs text-blue-400">Now</span>
                   </div>
-                  <p className="text-[10px] text-white/50">Today</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">Today</p>
                 </div>
                 <div className="flex-1 h-0.5 bg-gradient-to-r from-blue-500/30 via-white/10 to-amber-500/30 mx-2" />
                 <div className="text-center">
                   <div className="w-8 h-8 rounded-full bg-amber-500/15 border border-amber-500/30 flex items-center justify-center mb-1">
                     <span className="text-xs text-amber-400">80</span>
                   </div>
-                  <p className="text-[10px] text-white/50">Future</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">Future</p>
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export function RegretMinimization() {
             {/* Choices */}
             <div className="space-y-2">
               <motion.div
-                className="relative overflow-hidden p-3 rounded-xl border border-white/[0.08]"
+                className="relative overflow-hidden p-3 rounded-xl border border-[var(--viz-border)]"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                 }}
@@ -130,16 +130,16 @@ export function RegretMinimization() {
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
                 <div className="flex items-start gap-2">
-                  <span className="text-white/50">~</span>
+                  <span className="text-[var(--viz-muted)]">~</span>
                   <div>
-                    <p className="text-[10px] text-white/50 uppercase tracking-wide">Safe Choice</p>
-                    <p className="text-xs text-white/60">{decision.safeChoice}</p>
+                    <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide">Safe Choice</p>
+                    <p className="text-xs text-[var(--viz-secondary)]">{decision.safeChoice}</p>
                   </div>
                 </div>
               </motion.div>
 
               <motion.div
-                className="relative overflow-hidden p-3 rounded-xl border border-white/[0.08]"
+                className="relative overflow-hidden p-3 rounded-xl border border-[var(--viz-border)]"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                 }}
@@ -150,7 +150,7 @@ export function RegretMinimization() {
                   <span className="text-amber-400">*</span>
                   <div>
                     <p className="text-[10px] text-amber-400 uppercase tracking-wide">Bold Choice</p>
-                    <p className="text-xs text-white/80">{decision.boldChoice}</p>
+                    <p className="text-xs text-[var(--viz-secondary)]">{decision.boldChoice}</p>
                   </div>
                 </div>
               </motion.div>
@@ -184,7 +184,7 @@ export function RegretMinimization() {
                       <p className="text-[10px] text-amber-400 uppercase tracking-wide mb-1">
                         Your 80-year-old self says:
                       </p>
-                      <p className="text-xs text-white/80 italic">
+                      <p className="text-xs text-[var(--viz-secondary)] italic">
                         "{decision.age80Perspective}"
                       </p>
                     </div>
@@ -196,20 +196,20 @@ export function RegretMinimization() {
 
           {/* Framework explanation */}
           <div
-            className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-white/[0.08]"
+            className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-[var(--viz-border)]"
             style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
             }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-blue-400 font-medium">Key insight:</span> Minimize
               regrets of <span className="text-amber-400">inaction</span>, not action.
               We rarely regret trying, but often regret not trying.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/50 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             Jeff Bezos used this to decide to start Amazon
           </p>
         </div>

@@ -40,12 +40,12 @@ export function ZeigarnikEffect() {
   const mentalLoad = incompleteTasks.length * 20;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -62,7 +62,7 @@ export function ZeigarnikEffect() {
           {/* Brain visualization */}
           <div className="relative">
             <div
-              className="w-24 h-24 rounded-full flex items-center justify-center border border-white/[0.08]"
+              className="w-24 h-24 rounded-full flex items-center justify-center border border-[var(--viz-border)]"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
               }}
@@ -121,7 +121,7 @@ export function ZeigarnikEffect() {
             }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
-            <p className="text-xs text-white/80">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-amber-400 font-medium">The Zeigarnik Effect:</span> Your brain
               keeps <span className="text-amber-400">open loops</span> running for unfinished tasks,
               consuming mental energy even when you're not working on them.
@@ -131,8 +131,8 @@ export function ZeigarnikEffect() {
           {/* Task list */}
           <div className="w-full max-w-xs space-y-2">
             <div className="flex justify-between items-center mb-2">
-              <p className="text-[10px] text-white/50 uppercase tracking-wide">Your open loops</p>
-              <p className="text-[10px] text-white/50">
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide">Your open loops</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">
                 {incompleteTasks.length} open / {completeTasks.length} closed
               </p>
             </div>
@@ -144,7 +144,7 @@ export function ZeigarnikEffect() {
                 className={`relative overflow-hidden w-full p-2 rounded-xl border text-left text-xs transition-all flex items-center gap-2 ${
                   task.status === 'complete'
                     ? 'border-green-500/30 text-green-400/70 line-through'
-                    : 'border-white/[0.08] text-white/80 hover:border-amber-500/30'
+                    : 'border-[var(--viz-border)] text-[var(--viz-secondary)] hover:border-amber-500/30'
                 }`}
                 style={{
                   background: task.status === 'complete'
@@ -179,14 +179,14 @@ export function ZeigarnikEffect() {
 
           {/* Action items */}
           <div
-            className="relative overflow-hidden rounded-xl p-3 max-w-xs border border-white/[0.08]"
+            className="relative overflow-hidden rounded-xl p-3 max-w-xs border border-[var(--viz-border)]"
             style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
             }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">Close the loops by:</p>
-            <ul className="text-xs text-white/60 space-y-1">
+            <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2">Close the loops by:</p>
+            <ul className="text-xs text-[var(--viz-secondary)] space-y-1">
               <li>* <span className="text-green-400">Complete</span> the task</li>
               <li>* <span className="text-blue-400">Schedule</span> it for later</li>
               <li>* <span className="text-amber-400">Write it down</span> to externalize it</li>
@@ -198,13 +198,13 @@ export function ZeigarnikEffect() {
           {completeTasks.length > 0 && (
             <button
               onClick={resetDemo}
-              className="text-xs text-white/50 hover:text-white/70 transition-colors"
+              className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
             >
               ~ Reset demo
             </button>
           )}
 
-          <p className="text-[10px] text-white/50 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             Click tasks to complete them - Bluma Zeigarnik (1927)
           </p>
         </div>

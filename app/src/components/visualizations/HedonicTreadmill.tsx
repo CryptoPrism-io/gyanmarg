@@ -87,12 +87,12 @@ export function HedonicTreadmill() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -100,13 +100,13 @@ export function HedonicTreadmill() {
           <div className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center">
             <TrendingUp className="w-4 h-4 text-amber-400" />
           </div>
-          <h3 className="text-sm font-medium text-white/90">Hedonic Treadmill</h3>
+          <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Hedonic Treadmill</h3>
         </div>
 
         <div className="flex flex-col items-center gap-4">
           {/* Happiness meter */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between text-[10px] text-white/50 mb-2">
+            <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-2">
               <span>😢 Unhappy</span>
               <span>😊 Happy</span>
             </div>
@@ -118,7 +118,7 @@ export function HedonicTreadmill() {
                   className="absolute inset-0"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 />
-                <div className="absolute inset-0 border border-white/[0.08] rounded-full" />
+                <div className="absolute inset-0 border border-[var(--viz-border)] rounded-full" />
                 <motion.div
                   className="absolute top-0 left-0 bottom-0 rounded-full"
                   style={{ backgroundColor: getHappinessColor() }}
@@ -146,7 +146,7 @@ export function HedonicTreadmill() {
 
             {/* Baseline label */}
             <div className="text-center mt-8 mb-2">
-              <span className="text-[10px] text-white/50">↑ Baseline (50%)</span>
+              <span className="text-[10px] text-[var(--viz-muted)]">↑ Baseline (50%)</span>
             </div>
           </div>
 
@@ -162,7 +162,7 @@ export function HedonicTreadmill() {
                 <span className="text-sm text-amber-400">{lastEvent}</span>
                 {isAdapting && (
                   <motion.p
-                    className="text-[10px] text-white/50 mt-1"
+                    className="text-[10px] text-[var(--viz-muted)] mt-1"
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
                   >
@@ -171,7 +171,7 @@ export function HedonicTreadmill() {
                 )}
               </motion.div>
             ) : (
-              <p className="text-xs text-white/40">Click an event to see the effect</p>
+              <p className="text-xs text-[var(--viz-muted)]">Click an event to see the effect</p>
             )}
           </div>
 
@@ -188,9 +188,9 @@ export function HedonicTreadmill() {
                   className="absolute inset-0"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 />
-                <div className="absolute inset-0 border border-white/[0.08] rounded-lg hover:border-green-500/30 transition-colors" />
+                <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg hover:border-green-500/30 transition-colors" />
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                <span className="relative text-white/80">{event.label}</span>
+                <span className="relative text-[var(--viz-secondary)]">{event.label}</span>
               </motion.button>
             ))}
           </div>
@@ -199,7 +199,7 @@ export function HedonicTreadmill() {
           {happiness !== BASELINE && (
             <button
               onClick={resetDemo}
-              className="text-xs text-white/50 hover:text-white/80 transition-colors"
+              className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
             >
               ↻ Reset
             </button>
@@ -210,7 +210,7 @@ export function HedonicTreadmill() {
             <div className="absolute inset-0 bg-amber-500/10" />
             <div className="absolute inset-0 border border-amber-500/30 rounded-lg" />
             <div className="relative p-3">
-              <p className="text-xs text-white/80 text-center">
+              <p className="text-xs text-[var(--viz-secondary)] text-center">
                 <span className="text-amber-400 font-medium">Watch:</span> No matter what
                 good things happen, happiness returns to baseline. This is why more money,
                 stuff, or success rarely leads to lasting happiness.
@@ -224,10 +224,10 @@ export function HedonicTreadmill() {
               className="absolute inset-0"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="relative p-3 text-center">
-              <p className="text-xs text-white/60">
+              <p className="text-xs text-[var(--viz-secondary)]">
                 <span className="text-green-400 font-medium">Solution:</span> Focus on
                 experiences, relationships, and purpose—things that raise your
                 <span className="text-amber-400"> baseline</span>, not temporary spikes.
@@ -235,7 +235,7 @@ export function HedonicTreadmill() {
             </div>
           </div>
 
-          <p className="text-[10px] text-white/50 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             Research by Brickman & Campbell
           </p>
         </div>

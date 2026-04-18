@@ -75,12 +75,12 @@ export function LadderOfInference() {
   const [showReflexive, setShowReflexive] = useState(false);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -88,7 +88,7 @@ export function LadderOfInference() {
           <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
             <Layers className="w-4 h-4 text-blue-400" />
           </div>
-          <h3 className="text-sm font-medium text-white/90">Ladder of Inference</h3>
+          <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Ladder of Inference</h3>
         </div>
 
         <div className="flex flex-col items-center gap-4">
@@ -136,7 +136,7 @@ export function LadderOfInference() {
                         : 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                     }}
                   >
-                    <div className={`absolute inset-0 border rounded-lg ${highlightedStep === step.level ? 'border-white/30' : 'border-white/[0.08]'}`} />
+                    <div className={`absolute inset-0 border rounded-lg ${highlightedStep === step.level ? 'border-white/30' : 'border-[var(--viz-border)]'}`} />
                     <div className="relative flex items-center gap-2">
                       <div
                         className="w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold"
@@ -157,7 +157,7 @@ export function LadderOfInference() {
             </div>
 
             {/* Arrow indicator */}
-            <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between py-4 -ml-6 text-white/40">
+            <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between py-4 -ml-6 text-[var(--viz-muted)]">
               <span className="text-[10px]">↑</span>
               <span className="text-[10px] [writing-mode:vertical-lr] rotate-180">Climb up</span>
               <span className="text-[10px]">↑</span>
@@ -178,14 +178,14 @@ export function LadderOfInference() {
                   className="absolute inset-0"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 />
-                <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <div className="relative p-3">
                   {(() => {
                     const step = ladderSteps.find(s => s.level === highlightedStep)!;
                     return (
                       <>
-                        <p className="text-xs text-white/60 mb-2">{step.description}</p>
+                        <p className="text-xs text-[var(--viz-secondary)] mb-2">{step.description}</p>
                         <div
                           className="p-2 rounded text-xs border"
                           style={{
@@ -194,7 +194,7 @@ export function LadderOfInference() {
                             color: step.color,
                           }}
                         >
-                          <span className="text-white/50">Example:</span> "{step.example}"
+                          <span className="text-[var(--viz-muted)]">Example:</span> "{step.example}"
                         </div>
                       </>
                     );
@@ -210,7 +210,7 @@ export function LadderOfInference() {
             className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
               showReflexive
                 ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
-                : 'border-white/[0.08] text-white/50 hover:text-white/80'
+                : 'border-[var(--viz-border)] text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]'
             }`}
           >
             {showReflexive ? '✓ ' : ''}Show reflexive loop
@@ -222,11 +222,11 @@ export function LadderOfInference() {
               className="absolute inset-0"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="relative p-3">
-              <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">How to use this:</p>
-              <ul className="text-xs text-white/60 space-y-1">
+              <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2">How to use this:</p>
+              <ul className="text-xs text-[var(--viz-secondary)] space-y-1">
                 <li>• When in conflict, <span className="text-green-400">climb down</span> to observable facts</li>
                 <li>• Ask: "What data led me to this conclusion?"</li>
                 <li>• Check if your assumptions are valid</li>
@@ -234,7 +234,7 @@ export function LadderOfInference() {
             </div>
           </div>
 
-          <p className="text-[10px] text-white/50 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             Chris Argyris • Hover/tap to explore each step
           </p>
         </div>

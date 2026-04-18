@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Polymind - Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --bg-warm: #FAF9F6;
+            --border-hairline: #E5E5E5;
+            --text-main: #1A1A1A;
+            --text-muted: #717171;
+            --accent-gold: #F59E0B;
+        }
+        @layer base {
+            body {
+                @apply bg-[var(--bg-warm)] text-[var(--text-main)] font-['Inter'] antialiased;
+            }
+        }
+        .hairline {
+            border: 0.5px solid var(--border-hairline);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F59E0B',
+                        surface: '#FAF9F6',
+                        border: '#E5E5E5'
+                    },
+                    borderRadius: {
+                        'none': '0',
+                        'sm': '2px',
+                        'md': '4px',
+                        'lg': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="pb-24">
+<header class="sticky top-0 z-50 bg-[var(--bg-warm)]/90 backdrop-blur-md border-b border-[var(--border-hairline)] px-6 h-14 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[var(--accent-gold)] text-[20px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-bold tracking-widest uppercase">Polymind</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-semibold text-[var(--text-muted)] tracking-tighter uppercase">XP</span>
+<span class="text-xs font-bold tabular-nums">332</span>
+</div>
+<button class="flex items-center">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+</div>
+</header>
+<main class="max-w-screen-md mx-auto px-6 py-8 flex flex-col gap-10">
+<section class="space-y-1">
+<h1 class="text-2xl font-light tracking-tight">Good morning, <span class="font-bold">Alex</span></h1>
+<p class="text-xs text-[var(--text-muted)] uppercase tracking-widest">Your reading desk</p>
+</section>
+<section class="pt-6 border-t border-[var(--border-hairline)]">
+<p class="text-lg leading-relaxed font-light italic text-[var(--text-main)]">
+                “The mind is not a vessel to be filled, but a fire to be kindled.”
+            </p>
+<p class="text-[10px] text-[var(--text-muted)] mt-3 uppercase tracking-[0.2em] font-medium">— Plutarch</p>
+</section>
+<section class="hairline bg-white p-6 relative">
+<div class="flex flex-col gap-8">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-semibold mb-1">Philosophy 101</p>
+<h2 class="text-xl font-bold tracking-tight">The Stoic Mindset</h2>
+</div>
+<div class="hairline p-2">
+<span class="material-symbols-outlined text-sm">bookmark</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-bold uppercase tracking-tighter">Chapter 3</span>
+<span class="text-[10px] font-bold tabular-nums">65%</span>
+</div>
+<div class="h-[1px] bg-[var(--border-hairline)] w-full">
+<div class="h-full bg-[var(--accent-gold)]" style="width: 65%"></div>
+</div>
+</div>
+<button class="bg-[var(--text-main)] text-white text-[10px] uppercase tracking-widest font-bold py-3 px-6 w-fit transition-all active:opacity-80">
+                    Resume Reading
+                </button>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="hairline bg-white p-6 flex flex-col items-center">
+<div class="w-full flex justify-between items-center mb-8">
+<span class="text-[10px] font-bold uppercase tracking-widest">Daily Power</span>
+<span class="text-[10px] font-bold text-[var(--accent-gold)] tabular-nums">27%</span>
+</div>
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+<circle class="text-[var(--bg-warm)]" cx="50" cy="50" fill="none" r="48" stroke="currentColor" stroke-width="1.5"></circle>
+<circle class="text-[var(--accent-gold)]" cx="50" cy="50" fill="none" r="48" stroke="currentColor" stroke-dasharray="301.59" stroke-dashoffset="220" stroke-width="1.5"></circle>
+</svg>
+<span class="absolute text-xl font-bold tabular-nums">27</span>
+</div>
+<div class="grid grid-cols-4 gap-4 mt-10 w-full pt-6 border-t border-[var(--border-hairline)]">
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-[var(--accent-gold)] text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[8px] font-bold uppercase text-[var(--text-muted)]">Read</span>
+</div>
+<div class="flex flex-col items-center gap-2 grayscale opacity-30">
+<span class="material-symbols-outlined text-lg">psychology</span>
+<span class="text-[8px] font-bold uppercase text-[var(--text-muted)]">Review</span>
+</div>
+<div class="flex flex-col items-center gap-2 grayscale opacity-30">
+<span class="material-symbols-outlined text-lg">emoji_events</span>
+<span class="text-[8px] font-bold uppercase text-[var(--text-muted)]">Quiz</span>
+</div>
+<div class="flex flex-col items-center gap-2 grayscale opacity-30">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+<span class="text-[8px] font-bold uppercase text-[var(--text-muted)]">Streak</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-px bg-[var(--border-hairline)] hairline">
+<button class="bg-white p-5 flex items-center justify-between group active:bg-[var(--bg-warm)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-lg font-light">menu_book</span>
+<div class="text-left">
+<p class="text-xs font-bold uppercase tracking-tight">Start Reading</p>
+<p class="text-[10px] text-[var(--text-muted)]">Daily Curated</p>
+</div>
+</div>
+<span class="text-[9px] font-bold border border-[var(--accent-gold)] text-[var(--accent-gold)] px-2 py-0.5">+50 XP</span>
+</button>
+<button class="bg-white p-5 flex items-center justify-between group active:bg-[var(--bg-warm)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-lg font-light">psychology_alt</span>
+<div class="text-left">
+<p class="text-xs font-bold uppercase tracking-tight">Quick Revisit</p>
+<p class="text-[10px] text-[var(--text-muted)]">Spaced Repetition</p>
+</div>
+</div>
+<span class="w-5 h-5 flex items-center justify-center text-[10px] font-bold bg-[var(--bg-warm)] hairline">3</span>
+</button>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-[var(--bg-warm)]/90 backdrop-blur-md border-t border-[var(--border-hairline)] px-6 pb-8 pt-3 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-[22px] text-[var(--accent-gold)]" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter text-[var(--accent-gold)]">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[var(--text-muted)]">
+<span class="material-symbols-outlined text-[22px]">local_library</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Library</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[var(--text-muted)]">
+<span class="material-symbols-outlined text-[22px]">history_edu</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Revisit</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[var(--text-muted)]">
+<span class="material-symbols-outlined text-[22px]">person</span>
+<span class="text-[9px] font-bold uppercase tracking-tighter">Profile</span>
+</button>
+</nav>
+
+</body></html>

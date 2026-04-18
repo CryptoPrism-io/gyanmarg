@@ -98,12 +98,12 @@ export function DunningKrugerCurve() {
   const activeData = stages.find((s) => s.id === activeStage);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-red-500/[0.03] via-transparent to-emerald-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -119,7 +119,7 @@ export function DunningKrugerCurve() {
         <div className="flex flex-col items-center gap-4">
           {/* Main Chart */}
           <div
-            className="relative w-72 h-48 rounded-xl border border-white/[0.08] overflow-hidden"
+            className="relative w-72 h-48 rounded-xl border border-[var(--viz-border)] overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -136,14 +136,14 @@ export function DunningKrugerCurve() {
               </defs>
 
               {/* Axis */}
-              <line x1="5" y1="95" x2="95" y2="95" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
-              <line x1="5" y1="95" x2="5" y2="5" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
+              <line x1="5" y1="95" x2="95" y2="95" stroke="var(--viz-grid)" strokeWidth="0.5" />
+              <line x1="5" y1="95" x2="5" y2="5" stroke="var(--viz-grid)" strokeWidth="0.5" />
 
               {/* The curve (background) */}
               <path
                 d={curvePath}
                 fill="none"
-                stroke="rgba(255,255,255,0.1)"
+                stroke="var(--viz-grid)"
                 strokeWidth="1"
               />
 
@@ -200,10 +200,10 @@ export function DunningKrugerCurve() {
             </svg>
 
             {/* Axis labels */}
-            <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[8px] text-white/50">
+            <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[8px] text-[var(--viz-muted)]">
               KNOWLEDGE / EXPERIENCE &rarr;
             </div>
-            <div className="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 text-[8px] text-white/50 whitespace-nowrap">
+            <div className="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 text-[8px] text-[var(--viz-muted)] whitespace-nowrap">
               CONFIDENCE &rarr;
             </div>
 
@@ -250,14 +250,14 @@ export function DunningKrugerCurve() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-white/[0.08]"
+                className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-[var(--viz-border)]"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <div className="text-sm font-bold mb-1" style={{ color: activeData.color }}>
                   {activeData.label}
                 </div>
-                <p className="text-xs text-white/60">{activeData.description}</p>
+                <p className="text-xs text-[var(--viz-secondary)]">{activeData.description}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -268,7 +268,7 @@ export function DunningKrugerCurve() {
             disabled={isPlaying}
             className={`text-xs px-4 py-2 rounded-lg transition-all ${
               isPlaying
-                ? 'bg-white/[0.04] text-white/50 cursor-not-allowed border border-white/[0.06]'
+                ? 'bg-[var(--viz-tile)] text-[var(--viz-muted)] cursor-not-allowed border border-[var(--viz-border)]'
                 : 'bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border border-amber-500/30'
             }`}
           >

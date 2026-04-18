@@ -48,12 +48,12 @@ export function SpotlightEffect() {
   const scenario = scenarios[currentScenario];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-5">
@@ -64,7 +64,7 @@ export function SpotlightEffect() {
           </div>
 
           {/* Interactive spotlight */}
-          <div className="relative w-56 h-56 rounded-full overflow-hidden border border-white/[0.1] backdrop-blur-sm bg-black/[0.3]">
+          <div className="relative w-56 h-56 rounded-full overflow-hidden border border-[var(--viz-border-light)] backdrop-blur-sm bg-black/[0.3]">
             {/* Grid of "people" */}
             <div className="absolute inset-0 grid grid-cols-5 grid-rows-5 gap-2 p-4">
               {Array.from({ length: 25 }).map((_, i) => {
@@ -97,7 +97,7 @@ export function SpotlightEffect() {
 
             {/* Center label */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full border border-white/[0.1]">
+              <div className="bg-[var(--viz-inner-dark)] backdrop-blur-sm px-3 py-1 rounded-full border border-[var(--viz-border-light)]">
                 <p className="text-xs text-amber-400 font-bold">YOU</p>
               </div>
             </div>
@@ -131,7 +131,7 @@ export function SpotlightEffect() {
                 key={i}
                 onClick={() => setCurrentScenario(i)}
                 className={`w-3 h-3 rounded-full transition-all ${
-                  currentScenario === i ? 'bg-amber-400' : 'bg-white/[0.1] hover:bg-white/[0.2]'
+                  currentScenario === i ? 'bg-amber-400' : 'bg-[var(--viz-tile-md)] hover:bg-[var(--viz-tile-md)]'
                 }`}
               />
             ))}
@@ -146,7 +146,7 @@ export function SpotlightEffect() {
           >
             <div className="relative overflow-hidden rounded-xl">
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
-              <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+              <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative p-3">
                 <p className="text-xs text-gray-300 font-medium mb-1">Situation:</p>
                 <p className="text-xs text-gray-400">{scenario.situation}</p>
@@ -174,7 +174,7 @@ export function SpotlightEffect() {
             {/* Actual attention bar */}
             <div className="relative overflow-hidden rounded-xl">
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
-              <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+              <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative p-3">
                 <div className="flex justify-between text-[10px] mb-2">
                   <span className="text-gray-500">Actual attention on you:</span>
@@ -215,7 +215,7 @@ export function SpotlightEffect() {
           {/* Key insight */}
           <div className="relative max-w-xs overflow-hidden rounded-xl">
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
               <p className="text-xs text-gray-400 leading-relaxed">
                 <span className="text-amber-400 font-medium">Thomas Gilovich:</span> "We tend to believe

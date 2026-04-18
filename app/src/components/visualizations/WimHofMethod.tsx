@@ -96,12 +96,12 @@ export function WimHofMethod() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-5">
@@ -121,7 +121,7 @@ export function WimHofMethod() {
                     ? 'border-cyan-400 bg-cyan-400/20'
                     : r < round || phase === 'complete'
                     ? 'border-green-500 bg-green-500/20'
-                    : 'border-white/[0.1] bg-white/[0.03]'
+                    : 'border-[var(--viz-border-light)] bg-[var(--viz-tile)]'
                 }`}
               >
                 {r < round || phase === 'complete' ? (
@@ -267,7 +267,7 @@ export function WimHofMethod() {
             {(rounds.length > 0 || breathCount > 0) && phase !== 'complete' && (
               <button
                 onClick={reset}
-                className="px-4 py-3 bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] text-gray-400 rounded-xl text-xs hover:bg-white/[0.08]"
+                className="px-4 py-3 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] text-gray-400 rounded-xl text-xs hover:bg-[var(--viz-tile-md)]"
               >
                 Reset
               </button>
@@ -354,7 +354,7 @@ export function WimHofMethod() {
           {/* Key insight */}
           <div className="relative max-w-xs overflow-hidden rounded-xl">
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
               <p className="text-xs text-gray-400 leading-relaxed">
                 <span className="text-cyan-400 font-medium">Wim Hof:</span> "The cold is my teacher.

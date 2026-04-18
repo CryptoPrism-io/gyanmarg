@@ -133,12 +133,12 @@ export function KnowledgeIllusion() {
   const confidenceDrop = initialConfidence - finalConfidence;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-violet-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -164,8 +164,8 @@ export function KnowledgeIllusion() {
                   currentChallenge === i
                     ? 'bg-purple-500/20 border-2 border-purple-500 shadow-lg shadow-purple-500/20'
                     : phase === 'rate'
-                    ? 'bg-white/[0.02] hover:bg-white/[0.04] border border-white/[0.08] hover:border-white/[0.15]'
-                    : 'bg-white/[0.01] border border-white/[0.05] opacity-50 cursor-not-allowed'
+                    ? 'bg-[var(--viz-tile)] hover:bg-[var(--viz-tile)] border border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
+                    : 'bg-[var(--viz-tile)] border border-white/[0.05] opacity-50 cursor-not-allowed'
                 }`}
               >
                 {c.icon}
@@ -194,8 +194,8 @@ export function KnowledgeIllusion() {
             </div>
 
             <div className="relative overflow-hidden p-4 rounded-xl">
-              <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
-              <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+              <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative z-10">
                 <p className="text-[10px] text-gray-500 mb-2 text-center">
                   Rate your understanding before trying to explain:
@@ -235,7 +235,7 @@ export function KnowledgeIllusion() {
 
             <motion.button
               onClick={startThinking}
-              className="w-full py-4 rounded-xl text-sm font-semibold bg-purple-500 text-white"
+              className="w-full py-4 rounded-xl text-sm font-semibold bg-purple-500 text-[var(--viz-text)]"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -372,8 +372,8 @@ export function KnowledgeIllusion() {
 
             {/* Updated confidence */}
             <div className="relative overflow-hidden p-3 rounded-xl">
-              <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
-              <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+              <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative z-10">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-[10px] text-gray-500">Your updated confidence:</span>
@@ -399,7 +399,7 @@ export function KnowledgeIllusion() {
 
             <motion.button
               onClick={goToCompare}
-              className="w-full py-3 rounded-xl text-sm font-semibold bg-purple-500 text-white"
+              className="w-full py-3 rounded-xl text-sm font-semibold bg-purple-500 text-[var(--viz-text)]"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -508,8 +508,8 @@ export function KnowledgeIllusion() {
 
           {/* Key insight */}
           <div className="relative overflow-hidden rounded-xl p-4 max-w-sm">
-            <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative z-10">
               <p className="text-xs text-gray-400 leading-relaxed text-center">
                 <span className="text-purple-400 font-medium">Steven Sloman:</span> "We think we know more

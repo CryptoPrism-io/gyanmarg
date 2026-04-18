@@ -45,12 +45,12 @@ export function InversionThinking() {
   const example = examples[activeExample];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -75,8 +75,8 @@ export function InversionThinking() {
                 }}
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border backdrop-blur-sm ${
                   activeExample === index
-                    ? 'bg-white/10 text-white'
-                    : 'text-white/50 hover:text-white/70 border-transparent'
+                    ? 'bg-white/10 text-[var(--viz-text)]'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
                 style={{
                   borderColor: activeExample === index ? ex.color : 'transparent',
@@ -110,7 +110,7 @@ export function InversionThinking() {
             {/* Toggle */}
             <div className="flex justify-center mb-4">
               <div
-                className="flex rounded-lg p-1 border border-white/[0.08]"
+                className="flex rounded-lg p-1 border border-[var(--viz-border)]"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                 }}
@@ -118,7 +118,7 @@ export function InversionThinking() {
                 <button
                   onClick={() => setShowInverted(false)}
                   className={`text-xs px-3 py-1.5 rounded-md transition-all ${
-                    !showInverted ? 'bg-white/10 text-white' : 'text-white/50'
+                    !showInverted ? 'bg-white/10 text-[var(--viz-text)]' : 'text-[var(--viz-muted)]'
                   }`}
                 >
                   Forward
@@ -126,7 +126,7 @@ export function InversionThinking() {
                 <button
                   onClick={() => setShowInverted(true)}
                   className={`text-xs px-3 py-1.5 rounded-md transition-all ${
-                    showInverted ? 'bg-white/10 text-white' : 'text-white/50'
+                    showInverted ? 'bg-white/10 text-[var(--viz-text)]' : 'text-[var(--viz-muted)]'
                   }`}
                 >
                   Invert
@@ -152,7 +152,7 @@ export function InversionThinking() {
                     className={`relative overflow-hidden p-2 rounded-lg text-xs border ${
                       showInverted
                         ? 'border-red-500/30 text-red-400'
-                        : 'border-white/[0.08] text-white/80'
+                        : 'border-[var(--viz-border)] text-[var(--viz-secondary)]'
                     }`}
                     style={{
                       background: showInverted
@@ -170,17 +170,17 @@ export function InversionThinking() {
 
           {/* Insight */}
           <div
-            className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-white/[0.08]"
+            className="relative overflow-hidden rounded-xl p-3 max-w-xs text-center border border-[var(--viz-border)]"
             style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
             }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-[10px] text-white/50 uppercase tracking-wide mb-1">Insight</p>
-            <p className="text-xs text-white/80">{example.insight}</p>
+            <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-1">Insight</p>
+            <p className="text-xs text-[var(--viz-secondary)]">{example.insight}</p>
           </div>
 
-          <p className="text-[10px] text-white/50 text-center max-w-xs">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center max-w-xs">
             <span className="text-amber-400">Charlie Munger:</span> "Invert, always invert."
           </p>
         </div>

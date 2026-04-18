@@ -1,0 +1,170 @@
+[
+  {
+    "front": "According to Sir John Glubb's \"The Fate of Empires,\" what are the six distinct phases that empires consistently pass through in their lifecycle?",
+    "back": "Glubb identified the Ages of Pioneers, Conquests, Commerce, Affluence, Intellect, and Decadence. This cycle typically spans about 250 years, or ten generations.",
+    "difficulty": "beginner",
+    "tags": ["glubb-pasha", "empire-lifecycle", "historical-patterns"]
+  },
+  {
+    "front": "Beyond mere size, what five core characteristics do historians generally agree define a true empire?",
+    "back": "Empires are characterized by territorial scale, central authority, military dominance, economic extraction (from periphery to center), and cultural integration.",
+    "difficulty": "beginner",
+    "tags": ["empire-definition", "core-principles", "political-science"]
+  },
+  {
+    "front": "Jared Diamond argued that geographic luck was crucial for early civilizations. What three critical problems did major rivers solve for nascent empires?",
+    "back": "Rivers provided reliable agriculture (fertile floodplains), efficient transportation (for trade, taxes, troops), and rapid communication, enabling large-scale organized societies.",
+    "difficulty": "beginner",
+    "tags": ["geography", "jared-diamond", "river-civilizations", "nile"]
+  },
+  {
+    "front": "Describe the \"Conqueror\" leadership archetype in empire building, using Cyrus the Great's approach to Babylon as an example.",
+    "back": "Conquerors expand through force and charisma, often during the Age of Conquests. Cyrus the Great used tolerance as a weapon, freeing Babylon's population and respecting local customs to turn conquered peoples into willing subjects.",
+    "difficulty": "intermediate",
+    "tags": ["leadership", "cyrus-the-great", "empire-building", "strategy"]
+  },
+  {
+    "front": "What organizational innovation made the Roman legion superior to the Greek phalanx, allowing it to adapt to diverse battlefield conditions?",
+    "back": "The Roman legion's genius was modularity. Divided into independent sub-units (centuries, cohorts), it could split, recombine, and adapt to changing battlefield dynamics in ways a rigid phalanx could not.",
+    "difficulty": "intermediate",
+    "tags": ["military-innovation", "roman-legion", "organizational-design", "flexibility"]
+  },
+  {
+    "front": "Summarize Ibn Khaldun's pattern of fiscal crisis in empires, and how it leads from prosperity to collapse.",
+    "back": "Khaldun observed that new dynasties start with low taxes, leading to prosperity. Over time, the ruling class's spending rises, taxes increase, productive citizens flee, and the tax base shrinks, eventually causing fiscal crisis and military weakness.",
+    "difficulty": "advanced",
+    "tags": ["ibn-khaldun", "fiscal-crisis", "empire-decline", "economics"]
+  },
+  {
+    "front": "According to Joseph Tainter, when does an empire's cultural cohesion fail, making collapse inevitable despite military strength?",
+    "back": "Cultural cohesion fails when citizens stop believing in the shared story and conclude that the costs of maintaining the empire (taxes, military service) outweigh its benefits, leading them to \"opt out\" of civic life.",
+    "difficulty": "intermediate",
+    "tags": ["cultural-cohesion", "joseph-tainter", "empire-collapse", "civic-virtue"]
+  },
+  {
+    "front": "What is the most important, counterintuitive lesson about imperial decline, according to the \"Fall Playbook\" lesson?",
+    "back": "Decline is almost always invisible from inside the empire, because the benefits of past successes mask current deterioration. By the time decline becomes obvious, it is usually too late to reverse.",
+    "difficulty": "beginner",
+    "tags": ["empire-decline", "leadership-lessons", "self-diagnosis", "organizational-health"]
+  },
+  {
+    "front": "How did the Nile's unique flooding pattern compare to other major rivers, and why was this so critical for Egyptian civilization's longevity?",
+    "back": "Unlike the unpredictable Tigris-Euphrates or violent Yellow River, the Nile's annual floods were remarkably predictable and gentle, reliably depositing fertile silt. This allowed Egypt to build a stable, self-sustaining agricultural system for millennia.",
+    "difficulty": "beginner",
+    "tags": ["nile-river", "egyptian-civilization", "geography", "predictability"]
+  },
+  {
+    "front": "What was the concept of *ma'at* in the pharaoh system, and how did it function as the operating principle for Egyptian governance?",
+    "back": "*Ma'at* represented cosmic order, truth, justice, and balance. The pharaoh's primary duty was to maintain it through effective governance, ensuring the Nile flooded, justice was fair, and the state functioned, motivating subjects to comply.",
+    "difficulty": "intermediate",
+    "tags": ["pharaoh-system", "ma'at", "egyptian-governance", "cosmic-order"]
+  },
+  {
+    "front": "Who primarily built the Great Pyramids of Egypt, and what does archaeological evidence reveal about their working conditions and organization?",
+    "back": "The pyramids were built mostly by conscripted farmers during the Nile's flood season, not slaves. Evidence shows they were well-fed, received medical care, and were organized into modular, competing teams with strong identity.",
+    "difficulty": "beginner",
+    "tags": ["egyptian-pyramids", "project-management", "labor-force", "ancient-history"]
+  },
+  {
+    "front": "How did the decentralized city-state model of Sumer, in contrast to Egypt's unified state, paradoxically drive innovation and the birth of civilization?",
+    "back": "Constant competition between independent Sumerian city-states over resources, land, and trade routes fostered a \"necessity is the mother of invention\" dynamic, driving innovation in engineering, administration, and cultural development.",
+    "difficulty": "advanced",
+    "tags": ["sumerian-civilization", "city-states", "innovation", "competition"]
+  },
+  {
+    "front": "Compare Sargon of Akkad's and Hammurabi of Babylon's approaches to empire building, and what lesson can be drawn about speed versus permanence.",
+    "back": "Sargon used fast conquest and forceful centralization. Hammurabi used patient alliance-building, economic development, and legal frameworks. History suggests speed wins territory, but patience and institutional building lead to greater permanence.",
+    "difficulty": "advanced",
+    "tags": ["sargon-of-akkad", "hammurabi", "empire-building", "leadership-strategy"]
+  },
+  {
+    "front": "The \"eye for an eye\" principle (*lex talionis*) from Hammurabi's Code often seems barbaric to modern eyes. Why was it actually progressive in its historical context?",
+    "back": "Before codified law, vengeance could escalate into generations-long blood feuds. *Lex talionis* was a restraint, setting a maximum penalty of proportional restitution, preventing disproportionate retaliation.",
+    "difficulty": "intermediate",
+    "tags": ["hammurabis-code", "lex-talionis", "legal-history", "justice"]
+  },
+  {
+    "front": "What practical problem led to the invention of writing in Sumer, and who were its primary innovators?",
+    "back": "Writing was invented by temple accountants and administrators to manage the complexity of a large-scale economy, specifically for record-keeping of grain, livestock, and rations. It was an accidental byproduct of bookkeeping.",
+    "difficulty": "beginner",
+    "tags": ["invention-of-writing", "cuneiform", "sumer", "bureaucracy", "accounting"]
+  },
+  {
+    "front": "What long-term, unintended consequence did Mesopotamia's advanced irrigation systems inadvertently create, leading to a decline in agricultural productivity?",
+    "back": "Mesopotamian irrigation systems inadvertently caused salinization. As water evaporated from fields, it left behind salt deposits that gradually poisoned the soil, leading to declining crop yields and a shift to more salt-tolerant plants.",
+    "difficulty": "intermediate",
+    "tags": ["mesopotamia", "irrigation", "salinization", "unintended-consequences"]
+  },
+  {
+    "front": "Why did Athenian democracy rely heavily on sortition (lottery) for most public offices rather than elections, and what did they believe it achieved?",
+    "back": "Athenians believed elections favored the wealthy and eloquent, leading to an aristocracy. Sortition, by contrast, gave every citizen an equal chance to serve, preventing the formation of a permanent political class and ensuring broader participation.",
+    "difficulty": "intermediate",
+    "tags": ["athenian-democracy", "sortition", "elections", "political-theory"]
+  },
+  {
+    "front": "What was Sparta's \"Helot Problem,\" and how did it fundamentally shape their extreme militaristic society?",
+    "back": "Sparta brutally subjugated the Helots, a vastly larger population of state-owned serfs. Sparta's entire militaristic culture, including the Agoge and constant military readiness, was primarily designed to maintain domination over and suppress potential Helot revolts.",
+    "difficulty": "intermediate",
+    "tags": ["sparta", "helots", "militarism", "social-control"]
+  },
+  {
+    "front": "During the Persian Wars, what strategic insight by Themistocles proved most critical to the Greek victory, especially at the Battle of Salamis?",
+    "back": "Themistocles convinced Athens to invest its newly discovered silver mine revenues in building a powerful fleet of 200 triremes. This naval strength allowed the Greeks to defeat the much larger Persian fleet in the narrow straits of Salamis.",
+    "difficulty": "advanced",
+    "tags": ["persian-wars", "themisto
+
+cles", "naval-strategy", "battle-of-salamis"]
+  },
+  {
+    "front": "Beyond military conquest, what was Alexander the Great's most significant and lasting cultural legacy across the vast territories he conquered?",
+    "back": "Alexander deliberately pursued cultural fusion, blending Greek and Eastern civilizations into a new cosmopolitan \"Hellenistic\" culture. This spread Greek language, philosophy, and science, while absorbing Eastern influences, creating a world that shaped the Mediterranean for centuries.",
+    "difficulty": "intermediate",
+    "tags": ["alexander-the-great", "hellenistic-culture", "cultural-fusion", "legacy"]
+  },
+  {
+    "front": "What is the central insight of Socrates's philosophical method, and why did he famously declare, \"I know that I know nothing\"?",
+    "back": "The Socratic Method's core insight is that wisdom begins with recognizing the limits of one's own knowledge. Socrates's declaration was not false modesty, but a principle that genuine understanding starts with acknowledging what you don't know, prompting deeper inquiry.",
+    "difficulty": "beginner",
+    "tags": ["socrates", "socratic-method", "philosophy", "self-knowledge"]
+  },
+  {
+    "front": "How did Plato and Aristotle fundamentally differ in their approaches to acquiring true knowledge and understanding reality?",
+    "back": "Plato believed true knowledge came from rational intuition of eternal Forms, transcending the physical world. Aristotle argued knowledge begins with empirical observation of physical objects, organized by reason and logic.",
+    "difficulty": "advanced",
+    "tags": ["plato", "aristotle", "epistemology", "forms", "empiricism"]
+  },
+  {
+    "front": "Ancient Greek ideas did not directly jump to the modern world. Identify three civilizations that played crucial roles in preserving, developing, and transmitting this legacy to medieval Europe.",
+    "back": "Rome absorbed Greek culture wholesale. The Byzantine Empire preserved Greek texts for a millennium. Islamic civilization translated, studied, and developed Greek philosophical and scientific works, which later returned to Europe.",
+    "difficulty": "advanced",
+    "tags": ["greek-legacy", "cultural-transmission", "islamic-golden-age", "byzantine-empire"]
+  },
+  {
+    "front": "What was the revolutionary function of the \"Tribunes of the Plebs\" in the Roman Republic, and how did their power protect the common people?",
+    "back": "Tribunes were sacrosanct officials with the power of *veto* (\"I forbid\"), allowing them to block any action by any magistrate, including consuls. This gave the plebeians a direct check on aristocratic power, preventing tyranny.",
+    "difficulty": "intermediate",
+    "tags": ["roman-republic", "tribunes", "veto-power", "checks-and-balances"]
+  },
+  {
+    "front": "Was Julius Caesar a visionary reformer who recognized the Republic was already dead, or a power-hungry tyrant who destroyed liberty for personal glory?",
+    "back": "This question remains debated. He introduced significant reforms like the Julian Calendar and citizenship expansion, but his dictatorship ultimately led to the Republic's demise and paved the way for permanent monarchy under Augustus.",
+    "difficulty": "advanced",
+    "tags": ["julius-caesar", "roman-republic", "leadership-ethics", "political-collapse"]
+  },
+  {
+    "front": "How did Augustus (Octavian) manage to establish absolute rule while maintaining the *fiction* that he was restoring the Roman Republic?",
+    "back": "Augustus never called himself king or emperor. Instead, he accumulated multiple traditional Republican offices and titles (like *princeps* and *tribunicia potestas*) that collectively gave him absolute power, allowing Romans to believe the Republic still existed.",
+    "difficulty": "advanced",
+    "tags": ["augustus", "roman-empire", "political-strategy", "princeps"]
+  },
+  {
+    "front": "What three fundamental pillars allowed the Pax Romana to achieve two centuries of unprecedented peace and prosperity across the Roman Empire?",
+    "back": "The Pax Romana rested on military security (legions, roads), economic integration (common currency, trade networks, suppression of piracy), and a common legal framework (Roman law, *ius gentium*).",
+    "difficulty": "intermediate",
+    "tags": ["pax-romana", "roman-empire", "stability", "prosperity"]
+  },
+  {
+    "front": "What was the *ius gentium* (law of nations) in Roman law, and why was its development particularly significant for a vast, multiethnic empire?",
+    "back": "The *ius gentium* was a set of legal principles considered applicable to all peoples, regardless of citizenship or local custom. It provided a common, universal legal framework that scaled across the diverse empire, recognizing shared rights and obligations for all human beings.",
+    "difficulty": "advanced",
+    "tags": ["roman-law", "ius-gentium", "international-law", "legal-principles"]

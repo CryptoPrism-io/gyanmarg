@@ -76,12 +76,12 @@ export function CialdiniPrinciples() {
   const principle = principles[activePrinciple];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-pink-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -90,8 +90,8 @@ export function CialdiniPrinciples() {
             <Shield className="w-5 h-5 text-purple-400" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white/90">6 Weapons of Influence</h3>
-            <p className="text-[10px] text-white/50">Cialdini's persuasion principles</p>
+            <h3 className="text-sm font-semibold text-[var(--viz-secondary)]">6 Weapons of Influence</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">Cialdini's persuasion principles</p>
           </div>
         </div>
 
@@ -131,11 +131,11 @@ export function CialdiniPrinciples() {
               })}
 
               {/* Center */}
-              <circle cx="100" cy="100" r="30" fill="rgba(17,17,19,0.9)" stroke="rgba(255,255,255,0.1)" strokeWidth="2" />
+              <circle cx="100" cy="100" r="30" fill="rgba(17,17,19,0.9)" stroke="var(--viz-grid)" strokeWidth="2" />
               <text x="100" y="95" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">
                 6 WEAPONS
               </text>
-              <text x="100" y="108" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="7">
+              <text x="100" y="108" textAnchor="middle" fill="var(--viz-muted)" fontSize="7">
                 of Influence
               </text>
 
@@ -153,7 +153,7 @@ export function CialdiniPrinciples() {
                     y1={y1}
                     x2={x2}
                     y2={y2}
-                    stroke="rgba(255,255,255,0.1)"
+                    stroke="var(--viz-grid)"
                     strokeWidth="1"
                   />
                 );
@@ -203,20 +203,20 @@ export function CialdiniPrinciples() {
                     <h3 className="text-sm font-bold" style={{ color: principle.color }}>
                       {principle.name}
                     </h3>
-                    <p className="text-[10px] text-white/50">Principle #{activePrinciple + 1}</p>
+                    <p className="text-[10px] text-[var(--viz-muted)]">Principle #{activePrinciple + 1}</p>
                   </div>
                 </div>
 
-                <p className="text-xs text-white/80 mb-3">{principle.description}</p>
+                <p className="text-xs text-[var(--viz-secondary)] mb-3">{principle.description}</p>
 
                 <div className="p-2 rounded-lg mb-3" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
-                  <p className="text-[10px] text-white/50 mb-1">Example:</p>
-                  <p className="text-xs text-white/60">{principle.example}</p>
+                  <p className="text-[10px] text-[var(--viz-muted)] mb-1">Example:</p>
+                  <p className="text-xs text-[var(--viz-secondary)]">{principle.example}</p>
                 </div>
 
                 <button
                   onClick={() => setShowDefense(!showDefense)}
-                  className="text-[10px] text-white/50 hover:text-white/80"
+                  className="text-[10px] text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
                 >
                   {showDefense ? '▼ Hide' : '🛡️ Show'} defense
                 </button>
@@ -239,16 +239,16 @@ export function CialdiniPrinciples() {
           </AnimatePresence>
 
           {/* Key insight */}
-          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+          <div className="relative overflow-hidden border border-[var(--viz-border)] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-purple-400 font-medium">Robert Cialdini:</span> "The same
               principles that arm the compliance professionals can be used by us to defend ourselves."
               Know these weapons to use them ethically and defend against manipulation.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">From Influence by Robert Cialdini</p>
+          <p className="text-[10px] text-[var(--viz-muted)]">From Influence by Robert Cialdini</p>
         </div>
       </div>
     </div>

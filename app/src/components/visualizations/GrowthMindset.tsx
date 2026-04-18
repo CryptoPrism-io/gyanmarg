@@ -66,12 +66,12 @@ export function GrowthMindset() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -85,13 +85,13 @@ export function GrowthMindset() {
         </div>
 
         {/* Description */}
-        <p className="text-[11px] text-white/50 mb-5 leading-relaxed">
+        <p className="text-[11px] text-[var(--viz-muted)] mb-5 leading-relaxed">
           Those with growth mindset see abilities as developable through effort. Fixed mindset sees them as innate and unchangeable.
         </p>
 
         {/* Challenge scenario */}
         <div className="w-full max-w-xs mx-auto">
-          <div className="relative overflow-hidden rounded-xl p-4 text-center mb-4 border border-white/[0.08]"
+          <div className="relative overflow-hidden rounded-xl p-4 text-center mb-4 border border-[var(--viz-border)]"
             style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
             }}
@@ -100,8 +100,8 @@ export function GrowthMindset() {
             <p className="text-[10px] text-amber-400/80 uppercase tracking-wider mb-2 font-medium">
               Scenario {activeChallenge + 1}/{challenges.length}
             </p>
-            <p className="text-sm text-white/90 font-medium">{challenge.situation}</p>
-            <p className="text-[10px] text-white/40 mt-2">How do you respond?</p>
+            <p className="text-sm text-[var(--viz-secondary)] font-medium">{challenge.situation}</p>
+            <p className="text-[10px] text-[var(--viz-muted)] mt-2">How do you respond?</p>
           </div>
 
           {/* Mindset choices */}
@@ -114,7 +114,7 @@ export function GrowthMindset() {
                   ? 'border-red-500/50'
                   : selectedMindset === 'growth'
                   ? 'opacity-40 border-white/[0.05]'
-                  : 'border-white/[0.08] hover:border-red-500/30'
+                  : 'border-[var(--viz-border)] hover:border-red-500/30'
               }`}
               style={{
                 background: selectedMindset === 'fixed'
@@ -131,7 +131,7 @@ export function GrowthMindset() {
               <p className="text-[10px] text-red-400 uppercase tracking-wide mb-1.5 font-semibold">
                 Fixed Mindset
               </p>
-              <p className="text-[11px] text-white/60 leading-relaxed">{challenge.fixedResponse}</p>
+              <p className="text-[11px] text-[var(--viz-secondary)] leading-relaxed">{challenge.fixedResponse}</p>
             </motion.button>
 
             {/* Growth mindset */}
@@ -142,7 +142,7 @@ export function GrowthMindset() {
                   ? 'border-emerald-500/50'
                   : selectedMindset === 'fixed'
                   ? 'opacity-40 border-white/[0.05]'
-                  : 'border-white/[0.08] hover:border-emerald-500/30'
+                  : 'border-[var(--viz-border)] hover:border-emerald-500/30'
               }`}
               style={{
                 background: selectedMindset === 'growth'
@@ -159,7 +159,7 @@ export function GrowthMindset() {
               <p className="text-[10px] text-emerald-400 uppercase tracking-wide mb-1.5 font-semibold">
                 Growth Mindset
               </p>
-              <p className="text-[11px] text-white/60 leading-relaxed">{challenge.growthResponse}</p>
+              <p className="text-[11px] text-[var(--viz-secondary)] leading-relaxed">{challenge.growthResponse}</p>
             </motion.button>
           </div>
 
@@ -182,7 +182,7 @@ export function GrowthMindset() {
               <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${
                 selectedMindset === 'growth' ? 'via-emerald-400/30' : 'via-amber-400/30'
               } to-transparent`} />
-              <p className="text-[11px] text-white/70">
+              <p className="text-[11px] text-[var(--viz-secondary)]">
                 {selectedMindset === 'growth' ? (
                   <><span className="text-emerald-400">✓</span> Growth mindset leads to more learning and resilience</>
                 ) : (
@@ -191,7 +191,7 @@ export function GrowthMindset() {
               </p>
               <button
                 onClick={nextChallenge}
-                className="mt-2 text-[10px] text-white/40 hover:text-white/70 transition-colors font-medium"
+                className="mt-2 text-[10px] text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors font-medium"
               >
                 Next scenario →
               </button>
@@ -201,7 +201,7 @@ export function GrowthMindset() {
 
         {/* Comparison chart */}
         <div className="w-full max-w-xs mx-auto mt-5">
-          <div className="relative overflow-hidden rounded-xl border border-white/[0.08]"
+          <div className="relative overflow-hidden rounded-xl border border-[var(--viz-border)]"
             style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.1) 100%)',
             }}
@@ -209,25 +209,25 @@ export function GrowthMindset() {
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
             {/* Header row */}
-            <div className="grid grid-cols-3 text-[10px] border-b border-white/[0.06]">
-              <div className="p-2.5 text-white/30 font-medium"></div>
-              <div className="p-2.5 text-red-400/80 text-center border-l border-white/[0.06] font-semibold">Fixed</div>
-              <div className="p-2.5 text-emerald-400/80 text-center border-l border-white/[0.06] font-semibold">Growth</div>
+            <div className="grid grid-cols-3 text-[10px] border-b border-[var(--viz-border)]">
+              <div className="p-2.5 text-[var(--viz-muted)] font-medium"></div>
+              <div className="p-2.5 text-red-400/80 text-center border-l border-[var(--viz-border)] font-semibold">Fixed</div>
+              <div className="p-2.5 text-emerald-400/80 text-center border-l border-[var(--viz-border)] font-semibold">Growth</div>
             </div>
 
             {/* Data rows */}
             {comparisons.map((comp, idx) => (
               <div key={idx} className="grid grid-cols-3 text-[10px] border-b border-white/[0.04] last:border-0">
-                <div className="p-2.5 text-white/60 font-medium">{comp.aspect}</div>
-                <div className="p-2.5 text-white/40 text-center border-l border-white/[0.04]">{comp.fixed}</div>
-                <div className="p-2.5 text-white/70 text-center border-l border-white/[0.04]">{comp.growth}</div>
+                <div className="p-2.5 text-[var(--viz-secondary)] font-medium">{comp.aspect}</div>
+                <div className="p-2.5 text-[var(--viz-muted)] text-center border-l border-white/[0.04]">{comp.fixed}</div>
+                <div className="p-2.5 text-[var(--viz-secondary)] text-center border-l border-white/[0.04]">{comp.growth}</div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Source */}
-        <div className="mt-4 pt-4 border-t border-white/[0.06]">
+        <div className="mt-4 pt-4 border-t border-[var(--viz-border)]">
           <div className="flex items-center justify-center gap-1.5">
             <Sparkles className="w-3 h-3 text-amber-500/50" />
             <p className="text-[10px] text-amber-500/60 font-medium">

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Polymind — Editorial Dark</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "brand-bg": "#0D0C0B",
+                        "brand-gold": "#C5A368",
+                        "brand-text": "#E8E1DD",
+                        "brand-muted": "#8A847E",
+                        "brand-border": "#262422"
+                    },
+                    fontFamily: {
+                        serif: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-brand-bg text-brand-text font-sans selection:bg-brand-gold selection:text-brand-bg;
+            }
+        }
+        .serif-italic { font-style: italic; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased pb-24 overflow-x-hidden">
+<header class="w-full flex justify-between items-center px-6 pt-8 pb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-brand-gold scale-90" style="font-variation-settings: 'FILL' 1;">colors_spark</span>
+<span class="font-serif italic text-lg tracking-tight">Polymind</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-[10px] uppercase tracking-[0.2em] font-semibold text-brand-muted">332 XP</div>
+<span class="material-symbols-outlined text-brand-text text-xl">search</span>
+</div>
+</header>
+<main class="px-6 space-y-16 mt-8">
+<section class="relative">
+<div class="w-12 h-[1px] bg-brand-gold mb-8"></div>
+<h2 class="text-4xl md:text-6xl font-serif leading-[1.1] tracking-tight mb-6">
+                “The mind is not a <span class="serif-italic">vessel</span> to be filled, but a <span class="text-brand-gold">fire</span> to be kindled.”
+            </h2>
+<div class="flex items-center gap-4">
+<span class="text-[11px] uppercase tracking-[0.3em] font-semibold text-brand-muted">— Plutarch</span>
+</div>
+</section>
+<section class="grid grid-cols-12 gap-y-12">
+<div class="col-span-12 md:col-span-4 self-end">
+<h1 class="text-xs uppercase tracking-[0.4em] font-bold text-brand-muted mb-2">Issue No. 04</h1>
+<p class="text-2xl font-serif">Good morning, Alex.</p>
+<p class="text-sm text-brand-muted mt-1 italic">Your reading desk awaits.</p>
+</div>
+<div class="col-span-12 md:col-start-6 md:col-span-7">
+<div class="group cursor-pointer">
+<div class="flex justify-between items-end mb-4">
+<div>
+<p class="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-gold mb-1">Philosophy 101</p>
+<h3 class="text-3xl font-serif tracking-tight group-hover:text-brand-gold transition-colors">The Stoic Mindset</h3>
+</div>
+<span class="text-sm font-serif italic text-brand-muted mb-1">p. 24</span>
+</div>
+<div class="w-full h-[1px] bg-brand-border relative overflow-hidden mb-6">
+<div class="absolute left-0 top-0 h-full bg-brand-gold transition-all duration-700" style="width: 65%;"></div>
+</div>
+<div class="flex justify-between items-center">
+<div class="text-[11px] text-brand-muted tracking-wide font-light">
+                            RESUMING CHAPTER 3: INTERNAL CONTROL
+                        </div>
+<button class="flex items-center gap-2 group">
+<span class="text-xs uppercase tracking-widest font-bold">Resume</span>
+<span class="material-symbols-outlined text-sm translate-y-[1px] transition-transform group-hover:translate-x-1">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-12 gap-y-12 border-t border-brand-border pt-12">
+<div class="col-span-12 md:col-span-5 flex flex-col gap-8">
+<div class="flex items-end gap-4">
+<span class="text-6xl font-serif leading-none">27%</span>
+<span class="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-muted pb-2">Daily Momentum</span>
+</div>
+<div class="grid grid-cols-2 gap-y-6 gap-x-12">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-brand-gold text-lg" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<div class="text-[11px] uppercase tracking-wider font-semibold">Lesson</div>
+</div>
+<div class="flex items-center gap-3 opacity-30">
+<span class="material-symbols-outlined text-lg">psychology</span>
+<div class="text-[11px] uppercase tracking-wider font-semibold">Review</div>
+</div>
+<div class="flex items-center gap-3 opacity-30">
+<span class="material-symbols-outlined text-lg">emoji_events</span>
+<div class="text-[11px] uppercase tracking-wider font-semibold">Challenge</div>
+</div>
+<div class="flex items-center gap-3 opacity-30">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<div class="text-[11px] uppercase tracking-wider font-semibold">Streak</div>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-start-7 md:col-span-6 space-y-8">
+<div class="group flex justify-between items-start cursor-pointer border-b border-brand-border pb-6 transition-colors hover:border-brand-gold">
+<div class="flex gap-6">
+<span class="text-sm font-serif italic text-brand-muted">01.</span>
+<div>
+<h4 class="text-lg font-serif mb-1">Start Daily Reading</h4>
+<p class="text-xs text-brand-muted tracking-wide">Curated selections for your growth.</p>
+</div>
+</div>
+<div class="text-[10px] uppercase font-bold tracking-tighter text-brand-gold">+50 XP</div>
+</div>
+<div class="group flex justify-between items-start cursor-pointer border-b border-brand-border pb-6 transition-colors hover:border-brand-gold">
+<div class="flex gap-6">
+<span class="text-sm font-serif italic text-brand-muted">02.</span>
+<div>
+<h4 class="text-lg font-serif mb-1">Quick Revisit</h4>
+<p class="text-xs text-brand-muted tracking-wide">3 concepts due for recollection.</p>
+</div>
+</div>
+<div class="w-2 h-2 rounded-full bg-brand-gold mt-2"></div>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full bg-brand-bg/95 backdrop-blur-sm border-t border-brand-border px-8 pt-4 pb-8 flex justify-between items-center z-50">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-brand-gold" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="text-[9px] uppercase tracking-[0.2em] font-bold text-brand-gold">Index</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-brand-muted" href="#">
+<span class="material-symbols-outlined group-hover:text-brand-text transition-colors">auto_stories</span>
+<span class="text-[9px] uppercase tracking-[0.2em] font-bold group-hover:text-brand-text">Archive</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-brand-muted" href="#">
+<span class="material-symbols-outlined group-hover:text-brand-text transition-colors">history_edu</span>
+<span class="text-[9px] uppercase tracking-[0.2em] font-bold group-hover:text-brand-text">Reflect</span>
+</a>
+<a class="flex flex-col items-center gap-1 group text-brand-muted" href="#">
+<span class="material-symbols-outlined group-hover:text-brand-text transition-colors">person_outline</span>
+<span class="text-[9px] uppercase tracking-[0.2em] font-bold group-hover:text-brand-text">Profile</span>
+</a>
+</nav>
+
+</body></html>

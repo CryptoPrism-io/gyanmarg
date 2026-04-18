@@ -62,12 +62,12 @@ export function ForgettingCurveDiagram({
   }));
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-emerald-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -85,7 +85,7 @@ export function ForgettingCurveDiagram({
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 border backdrop-blur-sm ${
               showWithSR
                 ? 'bg-green-500/15 border-green-500/30 text-green-400 shadow-[0_0_12px_rgba(34,197,94,0.15)]'
-                : 'bg-white/[0.04] border-white/10 text-white/50 hover:bg-white/[0.08] hover:text-white/70'
+                : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile-md)] hover:text-[var(--viz-secondary)]'
             }`}
           >
             <RefreshCw className="w-3.5 h-3.5" />
@@ -94,7 +94,7 @@ export function ForgettingCurveDiagram({
         </div>
 
         {/* Graph Container */}
-        <div className="rounded-xl bg-black/30 border border-white/[0.06] p-3 mb-4">
+        <div className="rounded-xl bg-[var(--viz-inner)] border border-[var(--viz-border)] p-3 mb-4">
           <svg width={width} height={height} className="overflow-visible mx-auto block">
             {/* Grid lines */}
             {[0, 25, 50, 75, 100].map((y) => (
@@ -104,14 +104,14 @@ export function ForgettingCurveDiagram({
                   y1={padding.top + ((100 - y) / 100) * graphHeight}
                   x2={width - padding.right}
                   y2={padding.top + ((100 - y) / 100) * graphHeight}
-                  stroke="rgba(255,255,255,0.05)"
+                  stroke="var(--viz-grid-faint)"
                   strokeDasharray="2 4"
                 />
                 <text
                   x={padding.left - 8}
                   y={padding.top + ((100 - y) / 100) * graphHeight + 4}
                   fontSize="10"
-                  fill="rgba(255,255,255,0.4)"
+                  fill="var(--viz-secondary)"
                   textAnchor="end"
                 >
                   {y}%
@@ -126,7 +126,7 @@ export function ForgettingCurveDiagram({
                 x={padding.left + (i * graphWidth) / 2}
                 y={height - 10}
                 fontSize="10"
-                fill="rgba(255,255,255,0.4)"
+                fill="var(--viz-secondary)"
                 textAnchor="middle"
               >
                 {label}
@@ -139,7 +139,7 @@ export function ForgettingCurveDiagram({
               y1={padding.top}
               x2={padding.left}
               y2={height - padding.bottom}
-              stroke="rgba(255,255,255,0.1)"
+              stroke="var(--viz-grid)"
               strokeWidth={2}
             />
             <line
@@ -147,7 +147,7 @@ export function ForgettingCurveDiagram({
               y1={height - padding.bottom}
               x2={width - padding.right}
               y2={height - padding.bottom}
-              stroke="rgba(255,255,255,0.1)"
+              stroke="var(--viz-grid)"
               strokeWidth={2}
             />
 
@@ -156,7 +156,7 @@ export function ForgettingCurveDiagram({
               x={15}
               y={height / 2}
               fontSize="10"
-              fill="rgba(255,255,255,0.5)"
+              fill="var(--viz-muted)"
               textAnchor="middle"
               transform={`rotate(-90, 15, ${height / 2})`}
             >
@@ -239,7 +239,7 @@ export function ForgettingCurveDiagram({
         <div className="flex items-center justify-center gap-6 mb-4">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
-            <span className="text-xs text-white/60">Without review</span>
+            <span className="text-xs text-[var(--viz-secondary)]">Without review</span>
           </div>
           {showWithSR && (
             <motion.div
@@ -248,7 +248,7 @@ export function ForgettingCurveDiagram({
               animate={{ opacity: 1, x: 0 }}
             >
               <div className="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]" />
-              <span className="text-xs text-white/60">With spaced repetition</span>
+              <span className="text-xs text-[var(--viz-secondary)]">With spaced repetition</span>
             </motion.div>
           )}
         </div>
@@ -273,7 +273,7 @@ export function ForgettingCurveDiagram({
                 <TrendingUp className="w-4 h-4 rotate-180" />
                 <span className="text-lg font-bold drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">~20%</span>
               </div>
-              <p className="text-[10px] text-white/50">Without review</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Without review</p>
             </div>
             <div
               className="relative overflow-hidden rounded-xl p-3 text-center border border-emerald-500/20"
@@ -287,7 +287,7 @@ export function ForgettingCurveDiagram({
                 <TrendingUp className="w-4 h-4" />
                 <span className="text-lg font-bold drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]">~90%</span>
               </div>
-              <p className="text-[10px] text-white/50">With spaced repetition</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">With spaced repetition</p>
             </div>
           </motion.div>
         )}

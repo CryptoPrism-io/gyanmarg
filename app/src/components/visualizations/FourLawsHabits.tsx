@@ -87,12 +87,12 @@ export function FourLawsHabits() {
   const law = laws[activeLaw];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -101,8 +101,8 @@ export function FourLawsHabits() {
             <RefreshCw className="w-5 h-5 text-amber-400" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white/90">Four Laws of Behavior Change</h3>
-            <p className="text-[10px] text-white/50">The habit loop framework</p>
+            <h3 className="text-sm font-semibold text-[var(--viz-secondary)]">Four Laws of Behavior Change</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">The habit loop framework</p>
           </div>
         </div>
 
@@ -170,18 +170,18 @@ export function FourLawsHabits() {
               })}
 
               {/* Center */}
-              <circle cx="100" cy="100" r="25" fill="rgba(17,17,19,0.9)" stroke="rgba(255,255,255,0.1)" strokeWidth="2" />
+              <circle cx="100" cy="100" r="25" fill="rgba(17,17,19,0.9)" stroke="var(--viz-grid)" strokeWidth="2" />
               <text x="100" y="98" fill="#fff" fontSize="8" textAnchor="middle" fontWeight="bold">
                 HABIT
               </text>
-              <text x="100" y="108" fill="rgba(255,255,255,0.5)" fontSize="7" textAnchor="middle">
+              <text x="100" y="108" fill="var(--viz-muted)" fontSize="7" textAnchor="middle">
                 LOOP
               </text>
 
               {/* Arrows */}
               <defs>
                 <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-                  <polygon points="0 0, 6 3, 0 6" fill="rgba(255,255,255,0.5)" />
+                  <polygon points="0 0, 6 3, 0 6" fill="var(--viz-muted)" />
                 </marker>
               </defs>
             </svg>
@@ -194,7 +194,7 @@ export function FourLawsHabits() {
               className={`px-4 py-2 rounded-lg text-xs font-medium border transition-all ${
                 mode === 'good'
                   ? 'bg-green-500/20 text-green-400 border-green-500/50'
-                  : 'text-white/50 border-white/[0.08]'
+                  : 'text-[var(--viz-muted)] border-[var(--viz-border)]'
               }`}
             >
               ✓ Build Good Habit
@@ -204,7 +204,7 @@ export function FourLawsHabits() {
               className={`px-4 py-2 rounded-lg text-xs font-medium border transition-all ${
                 mode === 'bad'
                   ? 'bg-red-500/20 text-red-400 border-red-500/50'
-                  : 'text-white/50 border-white/[0.08]'
+                  : 'text-[var(--viz-muted)] border-[var(--viz-border)]'
               }`}
             >
               ✗ Break Bad Habit
@@ -234,7 +234,7 @@ export function FourLawsHabits() {
                     <p className="text-sm font-bold" style={{ color: law.color }}>
                       Law {law.number}: {law.name}
                     </p>
-                    <p className="text-[10px] text-white/50">{law.question}</p>
+                    <p className="text-[10px] text-[var(--viz-muted)]">{law.question}</p>
                   </div>
                 </div>
 
@@ -248,7 +248,7 @@ export function FourLawsHabits() {
                   </p>
                   <div className="space-y-1">
                     {(mode === 'good' ? law.good.tactics : law.bad.tactics).map((tactic, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-[10px] text-white/60">
+                      <div key={idx} className="flex items-center gap-2 text-[10px] text-[var(--viz-secondary)]">
                         <span className={mode === 'good' ? 'text-green-400' : 'text-red-400'}>→</span>
                         {tactic}
                       </div>
@@ -260,16 +260,16 @@ export function FourLawsHabits() {
           </AnimatePresence>
 
           {/* Summary */}
-          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+          <div className="relative overflow-hidden border border-[var(--viz-border)] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-amber-400 font-medium">The Formula:</span> Every habit is a
               feedback loop—Cue triggers Craving, which motivates Response, which provides Reward,
               which reinforces the Cue. Master all four to master your habits.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">From Atomic Habits by James Clear</p>
+          <p className="text-[10px] text-[var(--viz-muted)]">From Atomic Habits by James Clear</p>
         </div>
       </div>
     </div>

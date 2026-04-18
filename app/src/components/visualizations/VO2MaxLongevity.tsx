@@ -30,12 +30,12 @@ export function VO2MaxLongevity() {
   const level = levels[selectedLevel];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glass layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-emerald-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -47,8 +47,8 @@ export function VO2MaxLongevity() {
             <Heart className="w-4 h-4 text-green-400" />
           </div>
           <div>
-            <h3 className="text-sm font-medium text-white/90">VO2 Max & Longevity</h3>
-            <p className="text-[10px] text-white/50">From Outlive by Peter Attia</p>
+            <h3 className="text-sm font-medium text-[var(--viz-secondary)]">VO2 Max & Longevity</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">From Outlive by Peter Attia</p>
           </div>
         </div>
 
@@ -56,7 +56,7 @@ export function VO2MaxLongevity() {
           {/* VO2 Max visualization */}
           <div className="w-full max-w-xs">
             <div
-              className="relative h-40 border border-white/[0.08] rounded-lg overflow-hidden"
+              className="relative h-40 border border-[var(--viz-border)] rounded-lg overflow-hidden"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -91,7 +91,7 @@ export function VO2MaxLongevity() {
               </motion.div>
 
               {/* Y-axis label */}
-              <div className="absolute left-2 top-2 text-[10px] text-white/50">
+              <div className="absolute left-2 top-2 text-[10px] text-[var(--viz-muted)]">
                 Life expectancy
               </div>
             </div>
@@ -104,21 +104,21 @@ export function VO2MaxLongevity() {
                   onClick={() => setSelectedLevel(index)}
                   className={`flex-1 py-1 text-[10px] transition-all ${
                     selectedLevel === index
-                      ? 'text-white'
-                      : 'text-white/40 hover:text-white/60'
+                      ? 'text-[var(--viz-text)]'
+                      : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]'
                   }`}
                 >
                   {l.vo2max}
                 </button>
               ))}
             </div>
-            <p className="text-center text-[10px] text-white/50">VO2 Max (ml/kg/min)</p>
+            <p className="text-center text-[10px] text-[var(--viz-muted)]">VO2 Max (ml/kg/min)</p>
           </div>
 
           {/* Current stats */}
           <div className="w-full max-w-xs grid grid-cols-2 gap-3">
             <div
-              className="relative border border-white/[0.08] rounded-lg p-3 text-center overflow-hidden"
+              className="relative border border-[var(--viz-border)] rounded-lg p-3 text-center overflow-hidden"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -129,17 +129,17 @@ export function VO2MaxLongevity() {
               }}>
                 {level.vo2max}
               </p>
-              <p className="text-[10px] text-white/50">VO2 Max</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">VO2 Max</p>
             </div>
             <div
-              className="relative border border-white/[0.08] rounded-lg p-3 text-center overflow-hidden"
+              className="relative border border-[var(--viz-border)] rounded-lg p-3 text-center overflow-hidden"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <p className="text-2xl font-bold text-red-400">
                 {level.mortalityRisk > 50 ? '+' : '-'}{Math.abs(100 - level.mortalityRisk)}%
               </p>
-              <p className="text-[10px] text-white/50">
+              <p className="text-[10px] text-[var(--viz-muted)]">
                 {level.mortalityRisk > 50 ? 'Mortality risk' : 'Risk reduction'}
               </p>
             </div>
@@ -157,7 +157,7 @@ export function VO2MaxLongevity() {
             }}>
               {level.label}
             </p>
-            <p className="text-xs text-white/60">{level.description}</p>
+            <p className="text-xs text-[var(--viz-secondary)]">{level.description}</p>
           </div>
 
           {/* Training zones toggle */}
@@ -177,15 +177,15 @@ export function VO2MaxLongevity() {
               {trainingZones.map((zone) => (
                 <div
                   key={zone.name}
-                  className="relative p-2 border border-white/[0.08] rounded-lg overflow-hidden"
+                  className="relative p-2 border border-[var(--viz-border)] rounded-lg overflow-hidden"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-xs font-medium text-blue-400">{zone.name}</span>
-                    <span className="text-[10px] text-white/50">{zone.hr} max HR</span>
+                    <span className="text-[10px] text-[var(--viz-muted)]">{zone.hr} max HR</span>
                   </div>
-                  <p className="text-[10px] text-white/60">{zone.benefit}</p>
+                  <p className="text-[10px] text-[var(--viz-secondary)]">{zone.benefit}</p>
                   <p className="text-[10px] text-green-400 mt-1">Goal: {zone.weekly}/week</p>
                 </div>
               ))}
@@ -194,11 +194,11 @@ export function VO2MaxLongevity() {
 
           {/* Key insight */}
           <div
-            className="relative border border-white/[0.08] rounded-lg p-3 max-w-xs text-center overflow-hidden"
+            className="relative border border-[var(--viz-border)] rounded-lg p-3 max-w-xs text-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-green-400 font-medium">Peter Attia:</span> VO2 Max is the
               single strongest predictor of longevity. Moving from low to above average fitness
               reduces mortality risk by 60%.

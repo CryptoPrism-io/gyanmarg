@@ -113,12 +113,12 @@ export function LossAversion() {
   const netResult = simulatedResults.wins * gamble.gain - simulatedResults.losses * gamble.loss;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-red-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -146,7 +146,7 @@ export function LossAversion() {
                 className={`relative overflow-hidden w-8 h-8 rounded-lg text-xs font-medium transition-all border ${
                   activeGamble === index
                     ? 'bg-amber-500/20 text-amber-400 border-amber-500/50'
-                    : 'text-white/50 border-white/[0.08] hover:border-white/20'
+                    : 'text-[var(--viz-muted)] border-[var(--viz-border)] hover:border-white/20'
                 }`}
                 style={{
                   background: activeGamble === index
@@ -165,14 +165,14 @@ export function LossAversion() {
 
           {/* Loss aversion visualization */}
           <div className="w-full max-w-xs">
-            <div className="relative h-36 rounded-2xl overflow-hidden border border-white/[0.08]"
+            <div className="relative h-36 rounded-2xl overflow-hidden border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
               {/* Center line (neutral) */}
               <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-white/20" />
-              <span className="absolute left-1/2 top-2 -translate-x-1/2 text-[8px] text-white/50">Neutral</span>
+              <span className="absolute left-1/2 top-2 -translate-x-1/2 text-[8px] text-[var(--viz-muted)]">Neutral</span>
 
               {/* Loss side - actual value */}
               <motion.div
@@ -224,7 +224,7 @@ export function LossAversion() {
               <div className="absolute bottom-2 right-3 text-[10px] text-green-400 font-medium">GAINS</div>
             </div>
 
-            <p className="text-center text-[10px] text-white/50 mt-2">
+            <p className="text-center text-[10px] text-[var(--viz-muted)] mt-2">
               Dashed line shows psychological weight of loss (2x actual)
             </p>
           </div>
@@ -244,14 +244,14 @@ export function LossAversion() {
                 <p className="text-[10px] text-amber-400 uppercase tracking-wide mb-2">
                   Scenario {activeGamble + 1} of {gambles.length}
                 </p>
-                <p className="text-sm text-white/90 mb-2">{gamble.description}</p>
+                <p className="text-sm text-[var(--viz-secondary)] mb-2">{gamble.description}</p>
                 <div className="flex justify-center gap-4 text-[10px]">
-                  <span className="text-white/50">
+                  <span className="text-[var(--viz-muted)]">
                     EV: <span className={gamble.expectedValue >= 0 ? 'text-green-400' : 'text-red-400'}>
                       ${gamble.expectedValue >= 0 ? '+' : ''}{gamble.expectedValue}
                     </span>
                   </span>
-                  <span className="text-white/50">
+                  <span className="text-[var(--viz-muted)]">
                     Ratio: <span className="text-amber-400">{lossAversionRatio}:1</span>
                   </span>
                 </div>
@@ -307,7 +307,7 @@ export function LossAversion() {
                     <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${
                       userChoice === 'take' ? 'via-green-400/20' : 'via-red-400/20'
                     } to-transparent`} />
-                    <p className="text-[10px] text-white/50 mb-1">Your choice</p>
+                    <p className="text-[10px] text-[var(--viz-muted)] mb-1">Your choice</p>
                     <p className="text-sm font-medium" style={{
                       color: userChoice === 'take' ? '#22C55E' : '#EF4444'
                     }}>
@@ -328,7 +328,7 @@ export function LossAversion() {
                     <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${
                       gamble.mostPeopleChoice === 'take' ? 'via-green-400/20' : 'via-red-400/20'
                     } to-transparent`} />
-                    <p className="text-[10px] text-white/50 mb-1">Most people</p>
+                    <p className="text-[10px] text-[var(--viz-muted)] mb-1">Most people</p>
                     <p className="text-sm font-medium" style={{
                       color: gamble.mostPeopleChoice === 'take' ? '#22C55E' : '#EF4444'
                     }}>
@@ -342,18 +342,18 @@ export function LossAversion() {
                   style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(245,158,11,0.02) 100%)' }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
-                  <p className="text-xs text-white/80 leading-relaxed">
+                  <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
                     {gamble.insight}
                   </p>
                 </div>
 
                 {/* Simulation */}
                 {userChoice === 'take' && (
-                  <div className="relative overflow-hidden rounded-xl p-3 border border-white/[0.08]"
+                  <div className="relative overflow-hidden rounded-xl p-3 border border-[var(--viz-border)]"
                     style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                   >
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                    <p className="text-[10px] text-white/50 mb-2 text-center">
+                    <p className="text-[10px] text-[var(--viz-muted)] mb-2 text-center">
                       What if you played 20 times?
                     </p>
 
@@ -361,17 +361,17 @@ export function LossAversion() {
                       <div className="flex justify-between items-center mb-2">
                         <div className="text-center">
                           <p className="text-green-400 font-bold">{simulatedResults.wins}</p>
-                          <p className="text-[9px] text-white/50">Wins</p>
+                          <p className="text-[9px] text-[var(--viz-muted)]">Wins</p>
                         </div>
                         <div className="text-center">
                           <p className={`font-bold ${netResult >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                             ${netResult >= 0 ? '+' : ''}{netResult}
                           </p>
-                          <p className="text-[9px] text-white/50">Net</p>
+                          <p className="text-[9px] text-[var(--viz-muted)]">Net</p>
                         </div>
                         <div className="text-center">
                           <p className="text-red-400 font-bold">{simulatedResults.losses}</p>
-                          <p className="text-[9px] text-white/50">Losses</p>
+                          <p className="text-[9px] text-[var(--viz-muted)]">Losses</p>
                         </div>
                       </div>
                     )}
@@ -390,7 +390,7 @@ export function LossAversion() {
 
                 <button
                   onClick={nextGamble}
-                  className="w-full py-2 text-xs text-white/50 hover:text-white/80 transition-colors"
+                  className="w-full py-2 text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
                 >
                   Next scenario
                 </button>
@@ -401,7 +401,7 @@ export function LossAversion() {
           {/* Science toggle */}
           <button
             onClick={() => setShowScience(!showScience)}
-            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
           >
             {showScience ? 'Hide' : 'Show'} the science
           </button>
@@ -419,7 +419,7 @@ export function LossAversion() {
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-400/30 to-transparent" />
                   <p className="text-[10px] text-red-400 font-medium mb-1">Brain's Loss Response</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     The amygdala (fear center) activates more strongly for losses than the reward
                     centers do for equivalent gains.
                   </p>
@@ -429,7 +429,7 @@ export function LossAversion() {
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
                   <p className="text-[10px] text-amber-400 font-medium mb-1">The 2:1 Ratio</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     Research shows people need potential gains to be about 2x the potential loss
                     before they'll accept an even-odds bet.
                   </p>
@@ -439,7 +439,7 @@ export function LossAversion() {
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
                   <p className="text-[10px] text-blue-400 font-medium mb-1">Real-World Impact</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     Loss aversion explains why people hold losing stocks too long and sell winners
                     too early—the "disposition effect."
                   </p>
@@ -449,18 +449,18 @@ export function LossAversion() {
           </AnimatePresence>
 
           {/* Key insight */}
-          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-white/[0.08]"
+          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-red-400 font-medium">Kahneman & Tversky:</span> "Losses loom
               larger than gains." The pain of losing $100 is psychologically about twice as intense
               as the pleasure of gaining $100.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From Thinking, Fast and Slow by Daniel Kahneman
           </p>
         </div>

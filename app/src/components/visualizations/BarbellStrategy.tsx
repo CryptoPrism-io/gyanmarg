@@ -59,12 +59,12 @@ export function BarbellStrategy() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glass layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-red-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -76,8 +76,8 @@ export function BarbellStrategy() {
             <Dumbbell className="w-4 h-4 text-amber-400" />
           </div>
           <div>
-            <h3 className="text-sm font-medium text-white/90">Barbell Strategy</h3>
-            <p className="text-[10px] text-white/50">From Antifragile by Nassim Taleb</p>
+            <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Barbell Strategy</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">From Antifragile by Nassim Taleb</p>
           </div>
         </div>
 
@@ -94,7 +94,7 @@ export function BarbellStrategy() {
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border ${
                   activePortfolio === index
                     ? 'bg-amber-500/20 text-amber-400 border-amber-500/30'
-                    : 'text-white/50 hover:text-white/70 border-transparent'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
               >
                 {p.name}
@@ -114,7 +114,7 @@ export function BarbellStrategy() {
                 animate={{ scale: portfolio.safe > 0 ? 1 : 0.5 }}
               >
                 <div
-                  className="rounded-full bg-green-500 flex items-center justify-center text-xs font-bold text-white"
+                  className="rounded-full bg-green-500 flex items-center justify-center text-xs font-bold text-[var(--viz-text)]"
                   style={{
                     width: `${Math.max(32, portfolio.safe * 0.6)}px`,
                     height: `${Math.max(32, portfolio.safe * 0.6)}px`,
@@ -131,7 +131,7 @@ export function BarbellStrategy() {
                 animate={{ scale: portfolio.medium > 0 ? 1 : 0.5, opacity: portfolio.medium > 0 ? 1 : 0.3 }}
               >
                 <div
-                  className="rounded-full bg-amber-500 flex items-center justify-center text-xs font-bold text-white"
+                  className="rounded-full bg-amber-500 flex items-center justify-center text-xs font-bold text-[var(--viz-text)]"
                   style={{
                     width: `${Math.max(24, portfolio.medium * 0.5)}px`,
                     height: `${Math.max(24, portfolio.medium * 0.5)}px`,
@@ -148,7 +148,7 @@ export function BarbellStrategy() {
                 animate={{ scale: portfolio.aggressive > 0 ? 1 : 0.5 }}
               >
                 <div
-                  className="rounded-full bg-red-500 flex items-center justify-center text-xs font-bold text-white"
+                  className="rounded-full bg-red-500 flex items-center justify-center text-xs font-bold text-[var(--viz-text)]"
                   style={{
                     width: `${Math.max(32, portfolio.aggressive * 0.6)}px`,
                     height: `${Math.max(32, portfolio.aggressive * 0.6)}px`,
@@ -163,11 +163,11 @@ export function BarbellStrategy() {
 
           {/* Description */}
           <div
-            className="relative border border-white/[0.08] rounded-lg p-3 w-full max-w-xs text-center overflow-hidden"
+            className="relative border border-[var(--viz-border)] rounded-lg p-3 w-full max-w-xs text-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">{portfolio.description}</p>
+            <p className="text-xs text-[var(--viz-secondary)]">{portfolio.description}</p>
           </div>
 
           {/* Black swan simulation */}
@@ -187,7 +187,7 @@ export function BarbellStrategy() {
             >
               <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 text-center">
                 <p className="text-xs text-red-400 mb-1">Black Swan: Market crash!</p>
-                <p className="text-[10px] text-white/50">Safe: -5% | Medium: -50% | Aggressive: -80%</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">Safe: -5% | Medium: -50% | Aggressive: -80%</p>
               </div>
 
               {/* Results comparison */}
@@ -200,13 +200,13 @@ export function BarbellStrategy() {
                     <div
                       key={p.id}
                       className={`relative p-2 rounded-lg border overflow-hidden ${
-                        isActive ? 'border-amber-500/30' : 'border-white/[0.08]'
+                        isActive ? 'border-amber-500/30' : 'border-[var(--viz-border)]'
                       }`}
                       style={!isActive ? { background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' } : undefined}
                     >
                       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                       <div className="flex justify-between items-center">
-                        <span className={`text-xs ${isActive ? 'text-amber-400' : 'text-white/60'}`}>
+                        <span className={`text-xs ${isActive ? 'text-amber-400' : 'text-[var(--viz-secondary)]'}`}>
                           {p.name}
                         </span>
                         <span className={`text-xs font-bold ${
@@ -238,7 +238,7 @@ export function BarbellStrategy() {
 
               <button
                 onClick={() => setShowScenario(false)}
-                className="w-full py-2 text-xs text-white/50 hover:text-white/70"
+                className="w-full py-2 text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
               >
                 Reset
               </button>
@@ -247,11 +247,11 @@ export function BarbellStrategy() {
 
           {/* Key insight */}
           <div
-            className="relative border border-white/[0.08] rounded-lg p-3 max-w-xs text-center overflow-hidden"
+            className="relative border border-[var(--viz-border)] rounded-lg p-3 max-w-xs text-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-amber-400 font-medium">Taleb:</span> The barbell survives
               black swans. You can't lose more than the aggressive portion, but you capture
               unlimited upside.

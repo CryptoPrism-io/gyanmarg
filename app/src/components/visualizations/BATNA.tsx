@@ -64,12 +64,12 @@ export function BATNA() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glass layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -81,8 +81,8 @@ export function BATNA() {
             <Scale className="w-4 h-4 text-blue-400" />
           </div>
           <div>
-            <h3 className="text-sm font-medium text-white/90">BATNA Analysis</h3>
-            <p className="text-[10px] text-white/50">Harvard Negotiation Project</p>
+            <h3 className="text-sm font-medium text-[var(--viz-secondary)]">BATNA Analysis</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">Harvard Negotiation Project</p>
           </div>
         </div>
 
@@ -99,7 +99,7 @@ export function BATNA() {
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border ${
                   activeScenario === index
                     ? 'bg-blue-500/20 text-blue-400 border-blue-500/30'
-                    : 'text-white/50 hover:text-white/70 border-transparent'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
               >
                 {s.situation.split(' ')[0]}
@@ -110,12 +110,12 @@ export function BATNA() {
           {/* Negotiation situation */}
           <div className="w-full max-w-xs space-y-3">
             <div
-              className="relative border border-white/[0.08] rounded-lg p-4 text-center overflow-hidden"
+              className="relative border border-[var(--viz-border)] rounded-lg p-4 text-center overflow-hidden"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              <p className="text-sm font-medium text-white/80 mb-2">{scenario.situation}</p>
-              <p className="text-xs text-white/50">{scenario.yourPosition}</p>
+              <p className="text-sm font-medium text-[var(--viz-secondary)] mb-2">{scenario.situation}</p>
+              <p className="text-xs text-[var(--viz-muted)]">{scenario.yourPosition}</p>
             </div>
 
             {/* Their offer */}
@@ -144,7 +144,7 @@ export function BATNA() {
                 animate={{ opacity: 1, y: 0 }}
                 className="space-y-2"
               >
-                <p className="text-[10px] text-white/50 uppercase tracking-wide">
+                <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide">
                   Your alternatives (BATNAs):
                 </p>
                 {scenario.batnas.map((batna, idx) => (
@@ -156,14 +156,14 @@ export function BATNA() {
                     className={`relative p-2 rounded-lg border flex justify-between items-center overflow-hidden ${
                       batna.value === scenario.bestBatna
                         ? 'bg-green-500/10 border-green-500/30'
-                        : 'border-white/[0.08]'
+                        : 'border-[var(--viz-border)]'
                     }`}
                     style={batna.value !== scenario.bestBatna ? { background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' } : undefined}
                   >
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                    <span className="text-xs text-white/80">{batna.option}</span>
+                    <span className="text-xs text-[var(--viz-secondary)]">{batna.option}</span>
                     <span className={`text-xs font-medium ${
-                      batna.value === scenario.bestBatna ? 'text-green-400' : 'text-white/50'
+                      batna.value === scenario.bestBatna ? 'text-green-400' : 'text-[var(--viz-muted)]'
                     }`}>
                       ${batna.value.toLocaleString()}
                       {batna.value === scenario.bestBatna && ' - Best'}
@@ -179,7 +179,7 @@ export function BATNA() {
                   <p className="text-lg font-bold text-green-400">
                     ${scenario.bestBatna.toLocaleString()}
                   </p>
-                  <p className="text-[10px] text-white/50 mt-1">
+                  <p className="text-[10px] text-[var(--viz-muted)] mt-1">
                     Walk away if offer is below this
                   </p>
                 </div>
@@ -215,7 +215,7 @@ export function BATNA() {
                         : 'bg-amber-500/10 border-amber-500/30'
                     }`}
                   >
-                    <p className="text-xs text-white/80">
+                    <p className="text-xs text-[var(--viz-secondary)]">
                       {shouldAccept
                         ? `Offer ($${scenario.theirOffer.toLocaleString()}) beats your best BATNA ($${scenario.bestBatna.toLocaleString()}). Accept makes sense.`
                         : `Offer ($${scenario.theirOffer.toLocaleString()}) is worse than your best BATNA ($${scenario.bestBatna.toLocaleString()}). Walking away is stronger.`}
@@ -228,17 +228,17 @@ export function BATNA() {
 
           {/* Key insight */}
           <div
-            className="relative border border-white/[0.08] rounded-lg p-3 max-w-xs text-center overflow-hidden"
+            className="relative border border-[var(--viz-border)] rounded-lg p-3 max-w-xs text-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-blue-400 font-medium">Power tip:</span> Your negotiation power
               = strength of your BATNA. Always improve alternatives before negotiating.
             </p>
           </div>
 
-          <p className="text-[10px] text-white/50">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             Best Alternative To Negotiated Agreement
           </p>
         </div>

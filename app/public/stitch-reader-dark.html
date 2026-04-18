@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@300;400;500;600;700&amp;family=Noto+Serif:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#211f1e",
+                        "surface-dim": "#141312",
+                        "secondary-container": "#4d4843",
+                        "on-surface": "#e6e1df",
+                        "surface-tint": "#e6c183",
+                        "tertiary-container": "#aca7a4",
+                        "on-primary": "#422d00",
+                        "surface-container-highest": "#363433",
+                        "on-tertiary": "#32302e",
+                        "surface-bright": "#3b3937",
+                        "on-secondary-fixed-variant": "#4a4641",
+                        "primary-fixed-dim": "#e6c183",
+                        "on-secondary-container": "#beb7b0",
+                        "secondary-fixed-dim": "#cdc5be",
+                        "primary-fixed": "#ffdea8",
+                        "tertiary": "#cbc5c2",
+                        "secondary": "#cdc5be",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0f0e0d",
+                        "inverse-primary": "#755a26",
+                        "outline": "#9a8f81",
+                        "on-secondary-fixed": "#1e1b17",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#34302b",
+                        "inverse-on-surface": "#32302f",
+                        "on-tertiary-container": "#3f3d3a",
+                        "outline-variant": "#4d463a",
+                        "surface-variant": "#363433",
+                        "surface": "#0d0c0b",
+                        "primary": "#e6c183",
+                        "on-primary-fixed": "#271900",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#d1c5b5",
+                        "inverse-surface": "#e6e1df",
+                        "background": "#0d0c0b",
+                        "primary-container": "#c5a368",
+                        "surface-container-high": "#2b2a28",
+                        "on-primary-fixed-variant": "#5b4311",
+                        "on-tertiary-fixed-variant": "#494644",
+                        "tertiary-fixed": "#e7e1de",
+                        "secondary-fixed": "#e9e1da",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1d1b1a",
+                        "tertiary-fixed-dim": "#cbc5c2",
+                        "on-background": "#e6e1df",
+                        "on-tertiary-fixed": "#1d1b19",
+                        "on-primary-container": "#503907"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Playfair Display", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0d0c0b;
+            color: #e6e1df;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary-container/30">
+<!-- PROGRESS BAR (Top Edge) -->
+<div class="fixed top-0 left-0 w-full h-[2px] z-[60] bg-surface-container-highest">
+<div class="h-full bg-primary-container w-[37.5%]"></div>
+</div>
+<!-- TOP APP BAR -->
+<header class="fixed top-0 w-full z-50 bg-[#141312]/70 backdrop-blur-xl flex justify-between items-center px-8 py-6 w-full h-20">
+<div class="flex items-center gap-6">
+<button class="active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="close">close</span>
+</button>
+<div class="hidden md:flex flex-col">
+<span class="text-[10px] uppercase tracking-[0.2em] text-outline">Philosophy 101 → Chapter 3</span>
+</div>
+</div>
+<div class="text-xs font-bold uppercase tracking-[0.2em] text-[#E6C183] font-['Noto_Serif']">
+            LESSON 01
+        </div>
+<div class="flex items-center gap-4">
+<span class="text-[10px] uppercase tracking-[0.2em] text-outline font-medium">MODULE 04</span>
+</div>
+</header>
+<!-- MAIN IMMERSIVE CANVAS -->
+<main class="relative h-screen w-full flex items-center justify-center px-6 overflow-hidden">
+<!-- CARD COUNTER (Top-left relative to layout) -->
+<div class="absolute top-28 left-8 md:left-12">
+<span class="text-[11px] font-medium tracking-widest text-[#8A847E]">3 OF 8</span>
+</div>
+<!-- CONTENT CARD -->
+<article class="max-w-2xl w-full relative z-10">
+<!-- Bookmark Interaction -->
+<button class="absolute -top-4 -right-4 p-2 text-outline hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-2xl" data-icon="bookmark">bookmark</span>
+</button>
+<div class="space-y-8">
+<!-- Label -->
+<div class="flex items-center gap-4">
+<span class="text-[11px] font-bold uppercase tracking-[0.3em] text-primary">INSIGHT</span>
+<div class="h-[1px] w-12 bg-outline-variant/30"></div>
+</div>
+<!-- Heading -->
+<h1 class="font-headline text-5xl md:text-6xl text-on-surface leading-tight tracking-tight">
+                    The Power of <br/>
+<span class="italic text-primary-fixed-dim">Negative Visualization</span>
+</h1>
+<!-- Body -->
+<div class="text-[15px] md:text-[17px] leading-[1.75] text-[#e6e1df]/90 max-w-prose space-y-6 font-light">
+<p>
+                        The Stoic practice of <em class="text-primary-container not-italic font-medium">Premeditatio Malorum</em> is not a descent into pessimism, but a sophisticated psychological tool for resilience. By mentally rehearsing potential hardships, we strip them of their power to surprise us.
+                    </p>
+<p>
+                        Consider the things you hold most dear. Imagine, for a fleeting moment, their absence. This contrast doesn't breed fear; it illuminates the profound value of your present reality, transforming dull routine into vivid appreciation.
+                    </p>
+</div>
+</div>
+</article>
+<!-- SCROLL INDICATOR (Right Edge) -->
+<div class="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 flex flex-col gap-3 items-center">
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="w-[3px] h-6 rounded-full bg-primary-container"></div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+</div>
+<!-- SCROLL CUE (Bottom Center) -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+<span class="text-[10px] uppercase tracking-[0.2em] text-outline">scroll up</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="expand_less">expand_less</span>
+</div>
+</main>
+<!-- DECORATIVE BACKGROUND ELEMENTS -->
+<div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+<!-- Subtle Gradient Glow -->
+<div class="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-[40vw] h-[40vw] bg-surface-container/20 blur-[100px] rounded-full"></div>
+<!-- Texture Overlay -->
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBpq7QJRFag79akgiRLkyQapv-v2Vh6aRzfbJrQ1TNs2pz5MGN3Ca-R429RHigOrUMIvAlib1rnL21w2OmtBNvC84ZFJ9BXAyEOnbTVs07tOTvlcvSEZ9xuw4cDe3s_j8OLK1Dywi74X30oIq0jEqVq0pq5SQ4pSKhfRRu7iS5rcnhzm6vEu2yFRfriHhvUNUI_4Lf42URrVYVdNBputs6T9Pq1yJZiXLX1xY_JdJ_qh1MZLPjWtex49ww6Z67JeSov8rc7J-qqalXY');"></div>
+</div>
+<!-- NAVIGATION DRAWER (Hidden by default, triggered by context if needed) -->
+<!-- Not rendered as per 'Linear/Transactional' suppression rule for this focused reader screen -->
+</body></html>

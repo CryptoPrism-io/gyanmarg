@@ -71,7 +71,7 @@ export function FreeTrialGate({ onClose, moduleId, moduleName }: FreeTrialGatePr
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-md bg-[#111113] border border-white/10 rounded-2xl p-6 shadow-2xl"
+            className="relative w-full max-w-md bg-neutral-900 border border-white/10 rounded-2xl p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}

@@ -337,7 +337,7 @@ export function ExplorePage() {
   const ActiveComponent = selectedViz?.component ?? null;
 
   return (
-    <div className="min-h-screen bg-[#0A0A0B]">
+    <div className="min-h-screen bg-base">
       {/* ── Editorial Header ────────────────────────────────────────────── */}
       <div className="px-4 pt-8 pb-6 max-w-5xl mx-auto">
         <motion.div
@@ -345,20 +345,20 @@ export function ExplorePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
         >
-          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-bold text-text-primary tracking-tight">
             Explore Ideas
           </h1>
-          <p className="mt-2 text-gray-400 text-sm sm:text-base">
+          <p className="mt-2 text-text-secondary text-sm sm:text-base">
             119 interactive visualizations across science, philosophy, psychology, and more
           </p>
           {/* Pro badge */}
           <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20">
-            <span className="text-amber-400 text-xs font-medium">
+            <span className="text-amber-500 text-xs font-medium">
               {FREE_VIZ_IDS.size} free
             </span>
-            <span className="text-gray-600 text-xs">·</span>
-            <Lock className="w-3 h-3 text-gray-500" />
-            <span className="text-gray-500 text-xs">
+            <span className="text-text-muted text-xs">·</span>
+            <Lock className="w-3 h-3 text-text-muted" />
+            <span className="text-text-muted text-xs">
               {vizList.length - FREE_VIZ_IDS.size} Pro
             </span>
           </div>
@@ -378,7 +378,7 @@ export function ExplorePage() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
                 activeCategory === 'all'
                   ? 'bg-amber-500 text-black'
-                  : 'bg-[#111113] text-gray-400 hover:text-white border border-white/5'
+                  : 'bg-elevated text-text-secondary hover:text-text-primary border border-black/5 dark:border-white/5'
               }`}
             >
               All
@@ -393,7 +393,7 @@ export function ExplorePage() {
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap flex items-center gap-1.5 ${
                     isActive
                       ? 'bg-amber-500 text-black'
-                      : 'bg-[#111113] text-gray-400 hover:text-white border border-white/5'
+                      : 'bg-elevated text-text-secondary hover:text-text-primary border border-black/5 dark:border-white/5'
                   }`}
                 >
                   {meta?.icon && <span>{meta.icon}</span>}
@@ -424,13 +424,13 @@ export function ExplorePage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: Math.min(idx * 0.04, 0.5) }}
-                className="relative group rounded-2xl bg-[#111113] border border-white/5 overflow-hidden hover:border-white/10 transition-colors"
+                className="relative group rounded-2xl bg-elevated border border-black/5 dark:border-white/5 overflow-hidden hover:border-black/10 dark:hover:border-white/10 transition-colors"
               >
                 {/* Lock overlay for non-free */}
                 {!isFree && (
-                  <div className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2 py-1 rounded-full bg-black/60 backdrop-blur-sm border border-white/10">
-                    <Lock className="w-3 h-3 text-amber-400" />
-                    <span className="text-amber-400 text-xs font-medium">Pro</span>
+                  <div className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2 py-1 rounded-full bg-base/80 backdrop-blur-sm border border-black/10 dark:border-white/10">
+                    <Lock className="w-3 h-3 text-amber-500" />
+                    <span className="text-amber-500 text-xs font-medium">Pro</span>
                   </div>
                 )}
 
@@ -446,23 +446,23 @@ export function ExplorePage() {
                     {catMeta?.icon} {catMeta?.label ?? viz.category}
                   </span>
 
-                  <h3 className="text-base font-semibold text-white leading-snug mb-1">
+                  <h3 className="text-base font-semibold text-text-primary leading-snug mb-1">
                     {viz.title}
                   </h3>
-                  <p className="text-sm text-gray-500 line-clamp-2 mb-4">
+                  <p className="text-sm text-text-secondary line-clamp-2 mb-4">
                     {viz.description}
                   </p>
 
                   <div className="flex items-center justify-between">
-                    <p className="text-xs text-gray-600 line-clamp-1 flex-1 mr-3">
+                    <p className="text-xs text-text-muted line-clamp-1 flex-1 mr-3">
                       {viz.source}
                     </p>
                     <button
                       onClick={() => handleOpen(viz)}
                       className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all shrink-0 ${
                         isFree
-                          ? 'bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 border border-amber-500/20'
-                          : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+                          ? 'bg-amber-500/10 text-amber-500 hover:bg-amber-500/20 border border-amber-500/20'
+                          : 'bg-black/5 dark:bg-white/5 text-text-secondary hover:bg-black/10 dark:hover:bg-white/10 border border-black/10 dark:border-white/10'
                       }`}
                     >
                       {isFree ? (
@@ -479,7 +479,7 @@ export function ExplorePage() {
         </motion.div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-16 text-gray-600">
+          <div className="text-center py-16 text-text-muted">
             No visualizations in this category yet.
           </div>
         )}
@@ -508,20 +508,20 @@ export function ExplorePage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.25, type: 'spring', stiffness: 300, damping: 28 }}
-              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[#111113] border border-white/10 shadow-2xl"
+              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-black/10 dark:border-white/10 shadow-2xl"
               onClick={e => e.stopPropagation()}
             >
               {/* Modal header */}
-              <div className="flex items-start justify-between p-5 border-b border-white/5">
+              <div className="flex items-start justify-between p-5 border-b border-black/5 dark:border-white/5">
                 <div>
-                  <h2 className="text-lg font-semibold text-white">
+                  <h2 className="text-lg font-semibold text-text-primary">
                     {selectedViz.title}
                   </h2>
-                  <p className="text-xs text-gray-500 mt-0.5">{selectedViz.source}</p>
+                  <p className="text-xs text-text-muted mt-0.5">{selectedViz.source}</p>
                 </div>
                 <button
                   onClick={handleClose}
-                  className="ml-4 p-1.5 rounded-xl text-gray-500 hover:text-white hover:bg-white/5 transition-colors"
+                  className="ml-4 p-1.5 rounded-xl text-text-muted hover:text-text-primary hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -533,9 +533,9 @@ export function ExplorePage() {
                 {showVizPaywall && (
                   <div className="flex flex-col items-center justify-center gap-3 py-6 text-center">
                     <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
-                      <Lock className="w-5 h-5 text-amber-400" />
+                      <Lock className="w-5 h-5 text-amber-500" />
                     </div>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-text-secondary">
                       Unlock lifetime access to all 119 visualizations for ₹999.
                     </p>
                     <button

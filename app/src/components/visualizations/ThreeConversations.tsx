@@ -36,12 +36,12 @@ export function ThreeConversations() {
   const [activeLayer, setActiveLayer] = useState<number | null>(null);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -66,7 +66,7 @@ export function ThreeConversations() {
                   onClick={() => setActiveLayer(isActive ? null : idx)}
                   className={`absolute left-1/2 -translate-x-1/2 ${yPositions[idx]} ${widths[idx]}
                     py-3 rounded-lg border transition-all backdrop-blur-sm ${
-                    isActive ? `${colors.bg} ${colors.border}` : 'bg-white/[0.05] border-white/[0.1]'
+                    isActive ? `${colors.bg} ${colors.border}` : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)]'
                   }`}
                   style={{ opacity: isActive ? 1 : opacities[idx] }}
                   whileHover={{ scale: 1.02 }}
@@ -113,8 +113,8 @@ export function ThreeConversations() {
 
           {/* Key insight */}
           <div className="relative overflow-hidden w-full max-w-xs rounded-lg p-3">
-            <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <p className="relative z-10 text-[10px] text-gray-400 text-center">
               💡 We often argue about "what happened" when the real issue is feelings or identity.
               Address all three layers.

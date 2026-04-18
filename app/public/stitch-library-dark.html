@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Polymind - Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-high": "#2c2927",
+                        "secondary": "#98d3b9",
+                        "tertiary": "#cec6ff",
+                        "surface-container": "#221f1d",
+                        "surface-variant": "#373432",
+                        "inverse-surface": "#e8e1dd",
+                        "tertiary-fixed-dim": "#c8bfff",
+                        "outline": "#a08e7a",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#2f2175",
+                        "surface-container-highest": "#373432",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#002116",
+                        "primary-fixed-dim": "#ffb95f",
+                        "on-primary": "#472a00",
+                        "surface": "#151311",
+                        "on-tertiary-fixed-variant": "#463a8d",
+                        "surface-container-lowest": "#100e0c",
+                        "on-secondary": "#003828",
+                        "surface-container-low": "#1d1b19",
+                        "inverse-on-surface": "#33302d",
+                        "on-background": "#e8e1dd",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#13503c",
+                        "on-surface": "#e8e1dd",
+                        "secondary-fixed-dim": "#98d3b9",
+                        "secondary-fixed": "#b3efd4",
+                        "tertiary-fixed": "#e5deff",
+                        "on-secondary-container": "#87c1a8",
+                        "secondary-container": "#13503c",
+                        "primary-container": "#f59e0b",
+                        "primary": "#ffc174",
+                        "on-tertiary-fixed": "#1a0261",
+                        "on-primary-fixed-variant": "#653e00",
+                        "on-primary-fixed": "#2a1700",
+                        "surface-bright": "#3c3936",
+                        "background": "#151311",
+                        "inverse-primary": "#855300",
+                        "surface-dim": "#151311",
+                        "surface-tint": "#ffb95f",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#b2a6ff",
+                        "on-surface-variant": "#d8c3ad",
+                        "on-primary-container": "#613b00",
+                        "outline-variant": "#534434",
+                        "primary-fixed": "#ffddb8",
+                        "on-tertiary-container": "#43378a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Playfair Display", "serif"],
+                        "brand": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Hide scrollbar for horizontal scrolling elements */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen selection:bg-primary-container/30">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0D0C0B] dark:bg-[#0D0C0B] flex justify-between items-center px-6 py-4">
+<button class="flex items-center justify-center hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[#C5A368] dark:text-[#C5A368]" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<h1 class="font-brand font-black tracking-tighter text-2xl text-[#C5A368]">Polymind</h1>
+<button class="flex items-center justify-center hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[#C5A368] dark:text-[#C5A368]" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-28 pb-36 px-6 max-w-3xl mx-auto flex flex-col gap-12">
+<!-- Header Section -->
+<header class="flex flex-col gap-2">
+<h2 class="font-headline italic text-5xl text-on-surface tracking-tight font-medium">Library</h2>
+<p class="font-label text-[10px] uppercase tracking-[0.25em] text-on-surface-variant font-medium opacity-80">
+                Explore 76 worlds of knowledge
+            </p>
+</header>
+<!-- Category Tabs -->
+<nav class="flex gap-8 overflow-x-auto no-scrollbar pb-1 border-b-[0.5px] border-surface-container-high/40">
+<button class="font-label text-[10px] uppercase tracking-widest text-[#C5A368] font-semibold border-b border-[#C5A368] pb-3 -mb-[1.5px] whitespace-nowrap">
+                All
+            </button>
+<button class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant font-medium pb-3 -mb-[1px] hover:text-on-surface transition-colors whitespace-nowrap">
+                Mind
+            </button>
+<button class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant font-medium pb-3 -mb-[1px] hover:text-on-surface transition-colors whitespace-nowrap">
+                Technology
+            </button>
+<button class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant font-medium pb-3 -mb-[1px] hover:text-on-surface transition-colors whitespace-nowrap">
+                Wealth
+            </button>
+<button class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant font-medium pb-3 -mb-[1px] hover:text-on-surface transition-colors whitespace-nowrap">
+                Spirit
+            </button>
+<button class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant font-medium pb-3 -mb-[1px] hover:text-on-surface transition-colors whitespace-nowrap">
+                Strategy
+            </button>
+</nav>
+<!-- Continue Reading Section -->
+<section class="flex flex-col gap-5">
+<div class="flex justify-between items-baseline">
+<h3 class="font-label text-[10px] uppercase tracking-[0.25em] text-on-surface-variant font-semibold">
+                    Continue Reading
+                </h3>
+<span class="bg-surface-container-low text-on-surface-variant text-[9px] uppercase tracking-wider px-2 py-1 rounded">
+                    1 in progress
+                </span>
+</div>
+<!-- Active Module Card (Glass/Tonal style) -->
+<div class="group relative flex gap-5 p-4 rounded bg-surface-container-low/80 backdrop-blur-md cursor-pointer hover:bg-surface-container transition-colors duration-300">
+<!-- Ambient glow behind card -->
+<div class="absolute inset-0 bg-gradient-to-br from-[#C5A368]/5 to-transparent rounded pointer-events-none"></div>
+<div class="w-24 h-24 shrink-0 rounded-sm overflow-hidden relative bg-surface-container-high">
+<img alt="Abstract dark gold geometric forms floating in deep space with cinematic ambient lighting" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" data-alt="Abstract dark gold geometric forms floating in deep space with cinematic ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9ARvtLvivoPJiu5N_rDnO9uqO4xA28dOjpY4Jx0EoEn1L-K_QaiDn4pHkoVGjz82vkA9hv5_gWGbH_7IyXdsSvmpXlF0O1kp0Ks8fwDgXA0ZTLpgzcmiiHPjc88VjFh_PVr2sKeR57V6GfCHzbTF1EJp79NVc9V2U8zdzv6sJVB1iaLCcSglYNVD3Kb4Usebw7PDitDf91blnprQkGjbY7AT7pSitonqSR6NOsW2xks7bGng392kgA7suMyTJCpfpbEJsScsvY3oo"/>
+</div>
+<div class="flex flex-col justify-center flex-1 py-1">
+<h4 class="font-headline text-xl text-on-surface leading-tight mb-2 group-hover:text-[#C5A368] transition-colors">
+                        The Architecture of Deep Focus
+                    </h4>
+<p class="font-label text-[9px] uppercase tracking-widest text-on-surface-variant mb-4">
+                        250 XP • 3/8 Lessons
+                    </p>
+<!-- Glowing Progress Bar -->
+<div class="relative w-full h-[2px] bg-surface-container-high rounded-full overflow-visible">
+<div class="absolute top-0 left-0 h-full bg-[#C5A368] w-[37%] rounded-full z-10"></div>
+<div class="absolute top-0 left-0 h-full bg-[#C5A368] blur-[2px] w-[37%] rounded-full opacity-60"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Mind & Performance -->
+<section class="flex flex-col gap-6">
+<div class="flex justify-between items-baseline border-b-[0.5px] border-surface-container-high/30 pb-3">
+<h3 class="font-headline text-2xl text-on-surface">Mind &amp; Performance</h3>
+<span class="font-label text-[9px] uppercase tracking-widest text-on-surface-variant">
+                    5 Available
+                </span>
+</div>
+<!-- Horizontal Scroll Cards -->
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-6 px-6">
+<!-- Card 1 -->
+<div class="w-[140px] shrink-0 flex flex-col gap-3 group cursor-pointer">
+<div class="aspect-square rounded-sm overflow-hidden bg-surface-container relative">
+<img alt="Wireframe of human brain glowing with subtle amber nodes against pure black background" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="Wireframe of human brain glowing with subtle amber nodes against pure black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATg4CnX_34gLZ8V9sVvT7kd7OWtGPyMloWsYxKDxyAicmGBipdCxuotgEjaI7LzWc8EtYrHFn6nXv8GnTVBJrP1wGR__xQ0lY_qrbXIgxxvH-WyKM9HdCLGPz-2gAOE23Ac5aa3wpVXfFv4EUKDVzZZmOPF5qEj_kRuc2IEV9k7zss9gT4OheXTiioBPmNZIWa22MDsFGD0R1l73PHXsN7m4OoDqrI6gRbayi4CS-_kt0hbYMPwH1rx6exXTbV7db6c7I-1axJpRdZ"/>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-headline text-base leading-snug text-on-surface group-hover:text-primary-container transition-colors">Neuroplasticity Fundamentals</h4>
+<p class="font-label text-[8px] uppercase tracking-widest text-on-surface-variant">150 XP • 5 Lessons</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="w-[140px] shrink-0 flex flex-col gap-3 group cursor-pointer">
+<div class="aspect-square rounded-sm overflow-hidden bg-surface-container relative">
+<img alt="Silhouette of person meditating on high peak against dark starry sky with subtle galaxy hues" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="Silhouette of person meditating on high peak against dark starry sky with subtle galaxy hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0HgJIVRuyGzDaGQ8SFnb2DjKZXmdbtrWaqeBAWVQYJtlI6CQsptBGUwsv6vmzs1v1PjxblyIeGIyJhDKk0uGF_9IFICJAkMARwpFpB1L1LVo4fy3IK68j9VfyvVmyVnudso1OiC_eAN5Lo3iJbRsY04KGmTe0tVzA1PngISln3YTs8Yn7KFqPWksLC8bD-JBNVRVHBmT3x0RRAqXO3BqdDz3V_4gumY1qM4Pc60FZoZRjL_hHBM_9RWEJqRfNT9Usaz207mXmTJEX"/>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-headline text-base leading-snug text-on-surface group-hover:text-primary-container transition-colors">The Void State Meditation</h4>
+<p class="font-label text-[8px] uppercase tracking-widest text-on-surface-variant">300 XP • 12 Lessons</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="w-[140px] shrink-0 flex flex-col gap-3 group cursor-pointer">
+<div class="aspect-square rounded-sm overflow-hidden bg-surface-container relative">
+<img alt="Minimalist abstract dark marble texture with veins of subtle gold and deep shadows" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="Minimalist abstract dark marble texture with veins of subtle gold and deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfBY96F8yagPOoQRTS5f-La8z0IQG2UxalS0_b7d9HU6aIC1trhxNdKhG-NT0LZAZ-AG7hiL87EvRDszYL15Mn13PyrLsHZhLeNhgBq3UWba25ROutUpfczd_NFcqVehtq23VWvf-HXZCs3kWSa21fJclBoDjqUFGPj80UFPG3FNHUbZtRZdBsnXB9i0E_kobNLpJXTQT900Q2edb-uFwNDuniAImh6YK-E5B1XinGoqDOxTn6VK4gX7ocPWhyrnuuHLV07fW7_9TG"/>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-headline text-base leading-snug text-on-surface group-hover:text-primary-container transition-colors">Cognitive Endurance</h4>
+<p class="font-label text-[8px] uppercase tracking-widest text-on-surface-variant">200 XP • 7 Lessons</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Wealth & Systems -->
+<section class="flex flex-col gap-6">
+<div class="flex justify-between items-baseline border-b-[0.5px] border-surface-container-high/30 pb-3">
+<h3 class="font-headline text-2xl text-on-surface">Wealth &amp; Systems</h3>
+<span class="font-label text-[9px] uppercase tracking-widest text-on-surface-variant">
+                    3 Available
+                </span>
+</div>
+<!-- Horizontal Scroll Cards -->
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-6 px-6">
+<!-- Card 1 -->
+<div class="w-[140px] shrink-0 flex flex-col gap-3 group cursor-pointer">
+<div class="aspect-square rounded-sm overflow-hidden bg-surface-container relative">
+<img alt="Macro shot of intricate mechanical watch gears in warm dim lighting casting deep shadows" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="Macro shot of intricate mechanical watch gears in warm dim lighting casting deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD9CpD1FmoAQqu1rAXunDimOJfKryEQgjI_qSVLACwSwj2u5st8-bmTdDI3o_MsFcpTn5cxfwPFpEd6mFwDbee1X9GTKDXc-Blk8i7CciWDxrsqRjRQiqmWSPE5e7oPXFDwY_vo1BeJEtu1uXeMmIxvPSRldXaV6OcHx8fmVMS7ZYv8ug_LFeW04A4NLJyjF9VHyKtiG6Xym95XvKBWAMRu8B0hYza0b0ZqNboRhbiDUopyXhbi9yGSeSOpNd4Gvzjg5Kbf9iYxvv4"/>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-headline text-base leading-snug text-on-surface group-hover:text-primary-container transition-colors">Compound Mechanics</h4>
+<p class="font-label text-[8px] uppercase tracking-widest text-on-surface-variant">450 XP • 15 Lessons</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="w-[140px] shrink-0 flex flex-col gap-3 group cursor-pointer">
+<div class="aspect-square rounded-sm overflow-hidden bg-surface-container relative">
+<img alt="Abstract dark monolithic structures rising against a stormy muted twilight sky" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="Abstract dark monolithic structures rising against a stormy muted twilight sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsm-mSJBFZeVU00mlz5DN-5pB3cWhL2fBuDjc_nCDRZBQQjr3ou9OwA89sMs4u-1eZX9VT5l665qNSe1IcOvCTzDMssy3abxQM7wdMWVU0uEBdLnQgJwFdGW8cPQobZymf0RanspFZi3n9CC795MuqMJqZQHRuIKw6zm5PjwfIa-E0GfWK_qUfv-waj-d4mcf7gWW1_3luzR64-S2aQu3xMwaHg7p9g_LBMWiIJZHWQdoWM6A4ivwASBWRO0up_ttKH6p2fKLLP-m-"/>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-headline text-base leading-snug text-on-surface group-hover:text-primary-container transition-colors">Asymmetric Upside</h4>
+<p class="font-label text-[8px] uppercase tracking-widest text-on-surface-variant">220 XP • 8 Lessons</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#1D1B19]/80 backdrop-blur-xl rounded-t-3xl shadow-[0_-4px_40px_rgba(21,19,17,0.4)] md:hidden">
+<!-- Active Nav Item (Library) -->
+<button class="flex flex-col items-center justify-center bg-[#F59E0B]/10 text-[#F59E0B] rounded-xl px-4 py-2 scale-90 duration-200 transition-all cursor-pointer">
+<span class="material-symbols-outlined mb-1 text-xl" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-brand text-[10px] uppercase tracking-widest">Library</span>
+</button>
+<!-- Inactive Nav Items -->
+<button class="flex flex-col items-center justify-center text-[#D8C3AD] opacity-60 hover:bg-white/5 transition-all rounded-xl px-4 py-2 cursor-pointer">
+<span class="material-symbols-outlined mb-1 text-xl" style="font-variation-settings: 'FILL' 0;">center_focus_strong</span>
+<span class="font-brand text-[10px] uppercase tracking-widest">Focus</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#D8C3AD] opacity-60 hover:bg-white/5 transition-all rounded-xl px-4 py-2 cursor-pointer">
+<span class="material-symbols-outlined mb-1 text-xl" style="font-variation-settings: 'FILL' 0;">explore</span>
+<span class="font-brand text-[10px] uppercase tracking-widest">Discover</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#D8C3AD] opacity-60 hover:bg-white/5 transition-all rounded-xl px-4 py-2 cursor-pointer">
+<span class="material-symbols-outlined mb-1 text-xl" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-brand text-[10px] uppercase tracking-widest">Profile</span>
+</button>
+</nav>
+</body></html>

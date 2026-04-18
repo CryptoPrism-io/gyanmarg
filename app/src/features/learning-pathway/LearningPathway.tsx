@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Legacy Lucide imports — kept for sub-components that still use them
 import {
   BookOpen,
-  Sparkles,
   ChevronLeft,
   ChevronRight,
   ArrowRight,
@@ -23,8 +22,7 @@ import { usePaywall } from '@/hooks/usePaywall';
 import { FreeTrialGate } from '@/components/organisms/FreeTrialGate';
 // ModuleLayout removed — using editorial layout directly
 import { getVizForLevel } from '@/data/vizLevelMap';
-import { GlassCard, NetflixLevelCard, GlassLessonRow, NetflixModuleCard, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
-import { ProgressBar } from '@/components/atoms';
+import { NetflixLevelCard, GlassLessonRow, NetflixModuleCard, CategoryTabBar, CategorySection, ComingSoonModuleDetails } from '@/components/molecules';
 import { LessonViewer } from '@/components/organisms/LessonViewer';
 import { QuickReviseOverlay } from '@/components/organisms/QuickReviseOverlay';
 import { SignInGate } from '@/components/organisms';
@@ -1038,15 +1036,12 @@ export function LearningPathway() {
 
         {/* Empty State - No Module Selected */}
         {!selectedModule && !selectedComingSoonModule && (
-          <GlassCard className="text-center py-8">
-            <Sparkles className="w-10 h-10 mx-auto text-lavender mb-3" />
-            <h3 className="text-base font-semibold text-text-primary mb-1">
-              Click any module to explore
-            </h3>
-            <p className="text-xs text-text-muted max-w-sm mx-auto">
-              {modules.filter(m => m.isAvailable).length} available modules • {modules.filter(m => !m.isAvailable).length} coming soon
+          <div className="rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm px-5 py-6 text-center">
+            <p className="text-sm font-medium text-text-primary">Select a module above</p>
+            <p className="text-[11px] text-text-muted mt-1">
+              {modules.filter(m => m.isAvailable).length} available · {modules.filter(m => !m.isAvailable).length} coming soon
             </p>
-          </GlassCard>
+          </div>
         )}
 
         {/* Completed Modules Section */}
@@ -1111,30 +1106,27 @@ export function LearningPathway() {
         )}
 
         {/* Overall Stats */}
-        <GlassCard className="mt-6">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-lavender/10 border border-lavender/20 flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-lavender" />
-              </div>
-              <div>
-                <p className="font-medium text-text-primary">Overall Progress</p>
-                <p className="text-sm text-text-muted">
-                  {pathwayProgress.completedLessons.length} lessons completed
-                </p>
-              </div>
-            </div>
-            <span className="text-2xl font-display font-bold text-golden">
-              {pathwayProgress.totalXP} XP
-            </span>
+        <div className="mt-4 rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm overflow-hidden">
+          {/* Header bar */}
+          <div className="flex items-center px-4 py-3 border-b border-black/[0.04] dark:border-white/[0.05]">
+            <div className="w-[2px] h-3.5 rounded-full bg-lavender mr-2.5 shrink-0" />
+            <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-text-muted flex-1">Overall Progress</span>
+            <span className="text-sm font-bold text-golden tabular-nums">{pathwayProgress.totalXP.toLocaleString()} XP</span>
           </div>
-          <ProgressBar
-            value={Math.min((pathwayProgress.completedLessons.length / 100) * 100, 100)}
-            variant="gradient"
-            size="md"
-            animated
-          />
-        </GlassCard>
+          {/* Progress */}
+          <div className="px-4 py-3">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[11px] text-text-muted">{pathwayProgress.completedLessons.length} lessons completed</span>
+              <span className="text-[11px] text-text-muted tabular-nums">{Math.min(Math.round((pathwayProgress.completedLessons.length / 100) * 100), 100)}%</span>
+            </div>
+            <div className="h-[3px] rounded-full bg-black/[0.06] dark:bg-white/[0.06] overflow-hidden">
+              <div
+                className="h-full rounded-full bg-lavender transition-all duration-700"
+                style={{ width: `${Math.min((pathwayProgress.completedLessons.length / 100) * 100, 100)}%` }}
+              />
+            </div>
+          </div>
+        </div>
         </div>
       </div>
 

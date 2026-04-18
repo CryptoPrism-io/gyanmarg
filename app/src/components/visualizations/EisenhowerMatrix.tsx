@@ -57,12 +57,12 @@ export function EisenhowerMatrix() {
   const activeData = quadrants.find((q) => q.id === activeQuadrant);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] via-transparent to-red-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -77,11 +77,11 @@ export function EisenhowerMatrix() {
 
         <div className="flex flex-col items-center gap-4">
           {/* Axis labels */}
-          <div className="text-[10px] text-white/60 font-medium">&larr; URGENT &rarr;</div>
+          <div className="text-[10px] text-[var(--viz-secondary)] font-medium">&larr; URGENT &rarr;</div>
 
           <div className="flex items-center gap-2">
             {/* Y-axis label */}
-            <div className="text-[10px] text-white/60 font-medium -rotate-90 whitespace-nowrap">
+            <div className="text-[10px] text-[var(--viz-secondary)] font-medium -rotate-90 whitespace-nowrap">
               &larr; IMPORTANT &rarr;
             </div>
 
@@ -116,7 +116,7 @@ export function EisenhowerMatrix() {
                     >
                       {quadrant.label}
                     </div>
-                    <div className="text-[10px] text-white/60">{quadrant.action}</div>
+                    <div className="text-[10px] text-[var(--viz-secondary)]">{quadrant.action}</div>
 
                     {/* Corner indicator */}
                     {isActive && (
@@ -133,7 +133,7 @@ export function EisenhowerMatrix() {
           </div>
 
           {/* Quadrant labels on sides */}
-          <div className="flex justify-center gap-8 text-[9px] text-white/50">
+          <div className="flex justify-center gap-8 text-[9px] text-[var(--viz-muted)]">
             <span>Important + Urgent</span>
             <span>Important + Not Urgent</span>
           </div>
@@ -146,14 +146,14 @@ export function EisenhowerMatrix() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-white/[0.08]"
+                className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-[var(--viz-border)]"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <div className="text-sm font-bold mb-1" style={{ color: activeData.color }}>
                   {activeData.action}
                 </div>
-                <p className="text-xs text-white/60 mb-3">{activeData.description}</p>
+                <p className="text-xs text-[var(--viz-secondary)] mb-3">{activeData.description}</p>
                 <div className="flex flex-wrap justify-center gap-1">
                   {activeData.examples.map((example, idx) => (
                     <span
@@ -172,7 +172,7 @@ export function EisenhowerMatrix() {
             )}
           </AnimatePresence>
 
-          <p className="text-[10px] text-white/50 text-center max-w-xs">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center max-w-xs">
             <span className="text-green-400 font-medium">Pro tip:</span> Spend most time in Quadrant 2 (Schedule) to prevent Quadrant 1 crises.
           </p>
         </div>

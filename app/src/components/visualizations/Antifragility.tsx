@@ -111,12 +111,12 @@ export function Antifragility() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] via-transparent to-red-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -132,7 +132,7 @@ export function Antifragility() {
         <div className="flex flex-col items-center gap-5">
           {/* Stress meter visualization */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between items-center text-[10px] text-white/50 mb-2">
+            <div className="flex justify-between items-center text-[10px] text-[var(--viz-muted)] mb-2">
               <span>Environmental Stress</span>
               <span className={
                 stressLevel > 70 ? 'text-red-400 font-bold' :
@@ -143,7 +143,7 @@ export function Antifragility() {
             </div>
 
             {/* Stress history graph */}
-            <div className="relative h-16 rounded-xl overflow-hidden mb-3 border border-white/[0.08]"
+            <div className="relative h-16 rounded-xl overflow-hidden mb-3 border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -156,7 +156,7 @@ export function Antifragility() {
                     y1={`${100 - y}%`}
                     x2="100%"
                     y2={`${100 - y}%`}
-                    stroke="rgba(255,255,255,0.08)"
+                    stroke="var(--viz-grid)"
                     strokeWidth="1"
                   />
                 ))}
@@ -197,7 +197,7 @@ export function Antifragility() {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="absolute top-1 left-1/2 -translate-x-1/2 px-2 py-1 bg-red-500/80 rounded text-[10px] text-white font-medium"
+                    className="absolute top-1 left-1/2 -translate-x-1/2 px-2 py-1 bg-red-500/80 rounded text-[10px] text-[var(--viz-text)] font-medium"
                   >
                     {activeEvent}!
                   </motion.div>
@@ -218,7 +218,7 @@ export function Antifragility() {
               disabled={isSimulating}
               className="w-full accent-amber-500 disabled:opacity-50"
             />
-            <div className="flex justify-between text-[8px] text-white/40 mt-1">
+            <div className="flex justify-between text-[8px] text-[var(--viz-muted)] mt-1">
               <span>Calm</span>
               <span>Turbulent</span>
               <span>Chaos</span>
@@ -270,10 +270,10 @@ export function Antifragility() {
                     <p className="text-xs font-semibold mt-2" style={{ color: entity.color }}>
                       {entity.name}
                     </p>
-                    <p className="text-[9px] text-white/50 capitalize">{entity.type}</p>
+                    <p className="text-[9px] text-[var(--viz-muted)] capitalize">{entity.type}</p>
 
                     {/* Health indicator */}
-                    <div className="mt-2 h-2 rounded-full overflow-hidden border border-white/[0.08]"
+                    <div className="mt-2 h-2 rounded-full overflow-hidden border border-[var(--viz-border)]"
                       style={{ background: 'rgba(0,0,0,0.3)' }}
                     >
                       <motion.div
@@ -293,27 +293,27 @@ export function Antifragility() {
           </div>
 
           {/* Stress response explanation */}
-          <div className="relative overflow-hidden w-full max-w-xs rounded-xl p-3 border border-white/[0.08]"
+          <div className="relative overflow-hidden w-full max-w-xs rounded-xl p-3 border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2 text-center">
+            <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2 text-center">
               Response to stress
             </p>
             <div className="grid grid-cols-3 gap-2 text-center">
               <div>
                 <p className="text-red-400 text-xs font-medium">Fragile</p>
-                <p className="text-[9px] text-white/50">Breaks down</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Breaks down</p>
                 <p className="text-red-400 text-[10px]">Health decreases</p>
               </div>
               <div>
                 <p className="text-blue-400 text-xs font-medium">Robust</p>
-                <p className="text-[9px] text-white/50">Stays same</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Stays same</p>
                 <p className="text-blue-400 text-[10px]">Constant</p>
               </div>
               <div>
                 <p className="text-green-400 text-xs font-medium">Antifragile</p>
-                <p className="text-[9px] text-white/50">Gets stronger</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Gets stronger</p>
                 <p className="text-green-400 text-[10px]">Health increases</p>
               </div>
             </div>
@@ -321,7 +321,7 @@ export function Antifragility() {
 
           {/* Stress event buttons */}
           <div className="w-full max-w-xs">
-            <p className="text-[10px] text-white/50 mb-2 text-center">Trigger stress event:</p>
+            <p className="text-[10px] text-[var(--viz-muted)] mb-2 text-center">Trigger stress event:</p>
             <div className="flex flex-wrap justify-center gap-1">
               {stressEvents.map((event) => (
                 <motion.button
@@ -329,7 +329,7 @@ export function Antifragility() {
                   onClick={() => triggerStressEvent(event)}
                   disabled={isSimulating}
                   className="relative overflow-hidden px-2 py-1 text-[10px] rounded-lg
-                           border border-white/[0.08]
+                           border border-[var(--viz-border)]
                            hover:border-red-500/50 transition-all disabled:opacity-50"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                   whileTap={{ scale: 0.95 }}
@@ -356,8 +356,8 @@ export function Antifragility() {
             </motion.button>
             <button
               onClick={reset}
-              className="px-4 py-3 border border-white/[0.08] text-white/60
-                       rounded-xl text-xs hover:border-white/20 hover:text-white/80 transition-all"
+              className="px-4 py-3 border border-[var(--viz-border)] text-[var(--viz-secondary)]
+                       rounded-xl text-xs hover:border-white/20 hover:text-[var(--viz-secondary)] transition-all"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               Reset
@@ -367,7 +367,7 @@ export function Antifragility() {
           {/* Real world examples toggle */}
           <button
             onClick={() => setShowExamples(!showExamples)}
-            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
           >
             {showExamples ? 'Hide' : 'Show'} real-world examples
           </button>
@@ -388,7 +388,7 @@ export function Antifragility() {
                     {entity.examples.map((ex, idx) => (
                       <div
                         key={idx}
-                        className="relative overflow-hidden text-[9px] p-1.5 rounded-lg border border-white/[0.08]"
+                        className="relative overflow-hidden text-[9px] p-1.5 rounded-lg border border-[var(--viz-border)]"
                         style={{
                           color: entity.color,
                           background: 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%)',
@@ -404,18 +404,18 @@ export function Antifragility() {
           </AnimatePresence>
 
           {/* Key insight */}
-          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-white/[0.08]"
+          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-green-400 font-medium">Nassim Taleb:</span> "Some things benefit
               from shocks; they thrive and grow when exposed to volatility, randomness, disorder.
               Antifragility is beyond resilience—it loves chaos."
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From Antifragile by Nassim Nicholas Taleb
           </p>
         </div>

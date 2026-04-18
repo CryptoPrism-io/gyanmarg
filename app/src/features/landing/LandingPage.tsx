@@ -250,7 +250,7 @@ export function LandingPage() {
   void handleInstallClick;
 
   return (
-    <div className="min-h-screen bg-[#0A0A0B] text-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-zinc-950 text-white overflow-x-hidden relative">
       {/* ===== ANIMATED GRADIENT BACKGROUND ===== */}
       <div className="animated-gradient-bg">
         <div className="wave-orb wave-orb-1" />
@@ -281,7 +281,7 @@ export function LandingPage() {
 
       {/* ===== HEADER - Floating Glass Navbar ===== */}
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
-        <div className="bg-[#0A0A0B]/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]">
+        <div className="bg-zinc-950/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]">
           <div className="px-4 sm:px-6 h-14 flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
@@ -312,7 +312,7 @@ export function LandingPage() {
                   </svg>
                 </button>
                 <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="bg-[#111113]/95 border border-white/10 rounded-xl py-2 min-w-[160px] shadow-2xl backdrop-blur-xl">
+                  <div className="bg-neutral-900/95 border border-white/10 rounded-xl py-2 min-w-[160px] shadow-2xl backdrop-blur-xl">
                     <a href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 text-xs text-gray-300 hover:text-amber-400 hover:bg-amber-500/5 transition">
                       <span className="w-1 h-1 rounded-full bg-amber-500/50" />
                       Blog
@@ -359,7 +359,7 @@ export function LandingPage() {
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
-            className="md:hidden bg-[#0A0A0B]/95 backdrop-blur-xl border-t border-white/5 rounded-b-2xl overflow-hidden"
+            className="md:hidden bg-zinc-950/95 backdrop-blur-xl border-t border-white/5 rounded-b-2xl overflow-hidden"
           >
             <nav className="flex flex-col p-4 gap-1">
               {/* Page sections */}
@@ -872,8 +872,8 @@ export function LandingPage() {
                 className="group cursor-pointer"
               >
                 <Link to="/dashboard" className="block">
-                  <div className="bg-[#111113] border border-white/5 rounded-xl overflow-hidden transition-all duration-300 hover:border-amber-500/30 hover:shadow-lg hover:shadow-amber-500/5">
-                    <div className="aspect-[4/3] overflow-hidden bg-[#0a0a0b] relative">
+                  <div className="bg-neutral-900 border border-white/5 rounded-xl overflow-hidden transition-all duration-300 hover:border-amber-500/30 hover:shadow-lg hover:shadow-amber-500/5">
+                    <div className="aspect-[4/3] overflow-hidden bg-zinc-950 relative">
                       <img
                         src={domain.image}
                         alt={domain.title}

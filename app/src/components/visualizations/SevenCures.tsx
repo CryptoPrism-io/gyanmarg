@@ -78,12 +78,12 @@ export function SevenCures() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -106,7 +106,7 @@ export function SevenCures() {
                     ? `${colorMap[c.color].bg} ${colorMap[c.color].border} ${colorMap[c.color].text}`
                     : completed.includes(c.number)
                     ? 'bg-green-500/20 border-green-500/50 text-green-400'
-                    : 'bg-white/[0.03] border-white/[0.1] text-gray-500 hover:bg-white/[0.05]'
+                    : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-gray-500 hover:bg-[var(--viz-tile)]'
                 }`}
               >
                 {completed.includes(c.number) ? '✓' : c.number}
@@ -138,7 +138,7 @@ export function SevenCures() {
                 className={`w-full py-2 rounded-lg text-xs border transition-all backdrop-blur-sm ${
                   completed.includes(cure.number)
                     ? 'bg-green-500/20 border-green-500/50 text-green-400'
-                    : 'bg-white/[0.03] border-white/[0.1] text-gray-400 hover:bg-white/[0.05] hover:border-white/[0.15]'
+                    : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile)] hover:border-[var(--viz-border-light)]'
                 }`}
               >
                 {completed.includes(cure.number) ? '✓ Practicing this' : 'Mark as practicing'}

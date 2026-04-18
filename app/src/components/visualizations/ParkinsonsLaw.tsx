@@ -60,12 +60,12 @@ export function ParkinsonsLaw() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -73,7 +73,7 @@ export function ParkinsonsLaw() {
           <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
             <Clock className="w-4 h-4 text-blue-400" />
           </div>
-          <h3 className="text-sm font-medium text-white/90">Parkinson's Law</h3>
+          <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Parkinson's Law</h3>
         </div>
 
         <div className="flex flex-col items-center gap-4">
@@ -90,7 +90,7 @@ export function ParkinsonsLaw() {
                 className={`text-xs px-3 py-1.5 rounded-full transition-all border ${
                   deadline === d
                     ? 'bg-amber-500/20 text-amber-400 border-amber-500/30'
-                    : 'text-white/50 hover:text-white/80 border-transparent disabled:opacity-50'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent disabled:opacity-50'
                 }`}
               >
                 {deadlineConfig[d].label}
@@ -102,7 +102,7 @@ export function ParkinsonsLaw() {
           <div className="w-full max-w-xs space-y-4">
             {/* Time remaining */}
             <div>
-              <div className="flex justify-between text-[10px] text-white/50 mb-1">
+              <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
                 <span>Time Remaining</span>
                 <span>{Math.round(timeLeft)}%</span>
               </div>
@@ -111,7 +111,7 @@ export function ParkinsonsLaw() {
                   className="absolute inset-0"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 />
-                <div className="absolute inset-0 border border-white/[0.08] rounded-full" />
+                <div className="absolute inset-0 border border-[var(--viz-border)] rounded-full" />
                 <motion.div
                   className="absolute top-0 left-0 bottom-0 rounded-full bg-blue-500"
                   style={{ width: `${timeLeft}%` }}
@@ -121,7 +121,7 @@ export function ParkinsonsLaw() {
 
             {/* Work completed */}
             <div>
-              <div className="flex justify-between text-[10px] text-white/50 mb-1">
+              <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
                 <span>Work Completed</span>
                 <span>{Math.round(workDone)}%</span>
               </div>
@@ -130,7 +130,7 @@ export function ParkinsonsLaw() {
                   className="absolute inset-0"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 />
-                <div className="absolute inset-0 border border-white/[0.08] rounded-full" />
+                <div className="absolute inset-0 border border-[var(--viz-border)] rounded-full" />
                 <motion.div
                   className="absolute top-0 left-0 bottom-0 rounded-full"
                   style={{
@@ -148,7 +148,7 @@ export function ParkinsonsLaw() {
                   className="absolute inset-0"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 />
-                <div className="absolute inset-0 border border-white/[0.08] rounded-full" />
+                <div className="absolute inset-0 border border-[var(--viz-border)] rounded-full" />
                 <div
                   className="absolute top-0 bottom-0 bg-red-500/20 rounded-l-full"
                   style={{ width: `${config.procrastination}%` }}
@@ -181,7 +181,7 @@ export function ParkinsonsLaw() {
               ? 'bg-red-500/10 border-red-500/30 text-red-400'
               : isRunning && timeLeft < config.procrastination
               ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
-              : 'bg-white/[0.03] border-white/[0.08] text-white/60'
+              : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-[var(--viz-secondary)]'
           }`}>
             {!isRunning && workDone >= 100 ? '✓ Completed!' :
              !isRunning && timeLeft === 0 ? '✗ Deadline missed!' :
@@ -203,7 +203,7 @@ export function ParkinsonsLaw() {
             ) : (
               <button
                 onClick={reset}
-                className="px-4 py-2 border border-white/[0.08] text-white/60
+                className="px-4 py-2 border border-[var(--viz-border)] text-[var(--viz-secondary)]
                          rounded-lg text-xs hover:border-white/20 transition-all"
               >
                 Reset
@@ -217,17 +217,17 @@ export function ParkinsonsLaw() {
               className="absolute inset-0"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <div className="relative p-3 text-center">
-              <p className="text-xs text-white/60">
+              <p className="text-xs text-[var(--viz-secondary)]">
                 <span className="text-amber-400 font-medium">Notice:</span> With shorter deadlines,
                 work starts earlier. Tighter constraints = less procrastination.
               </p>
             </div>
           </div>
 
-          <p className="text-[10px] text-white/50 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             "Work expands to fill the time available" — Cyril Parkinson
           </p>
         </div>

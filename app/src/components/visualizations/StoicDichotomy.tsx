@@ -64,12 +64,12 @@ export function StoicDichotomy() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-cyan-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-5">
@@ -122,8 +122,8 @@ export function StoicDichotomy() {
 
             {/* Not in Your Control */}
             <div className="relative overflow-hidden p-3 rounded-xl min-h-[140px]">
-              <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
-              <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+              <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+              <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
               <div className="relative z-10">
                 <p className="text-[10px] text-gray-400 font-bold text-center mb-2">❌ NOT IN YOUR CONTROL</p>
                 <div className="space-y-1">
@@ -160,7 +160,7 @@ export function StoicDichotomy() {
                     className={`px-2 py-1 rounded text-[10px] border transition-all ${
                       selectedItem?.text === item
                         ? 'bg-amber-500/20 border-amber-500 text-amber-400'
-                        : 'bg-white/[0.02] border-white/[0.08] text-gray-400 hover:border-white/[0.15] hover:bg-white/[0.04]'
+                        : 'bg-[var(--viz-tile)] border-[var(--viz-border)] text-gray-400 hover:border-[var(--viz-border-light)] hover:bg-[var(--viz-tile)]'
                     }`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -191,8 +191,8 @@ export function StoicDichotomy() {
                   setSelectedItem(null);
                 }}
                 className="relative overflow-hidden px-4 py-2 rounded-lg text-xs text-gray-400">
-                <div className="absolute inset-0 bg-white/[0.04]" />
-                <div className="absolute inset-0 border border-white/[0.1] rounded-lg" />
+                <div className="absolute inset-0 bg-[var(--viz-tile)]" />
+                <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-lg" />
                 <span className="relative z-10">❌ Not in Control</span>
               </button>
             </div>
@@ -217,8 +217,8 @@ export function StoicDichotomy() {
                   <button
                     onClick={reset}
                     className="relative overflow-hidden px-4 py-2 rounded-lg text-xs text-gray-300">
-                    <div className="absolute inset-0 bg-white/[0.02]" />
-                    <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                    <div className="absolute inset-0 bg-[var(--viz-tile)]" />
+                    <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                     <span className="relative z-10">Try Again</span>
                   </button>
                 </div>
@@ -245,8 +245,8 @@ export function StoicDichotomy() {
                   </div>
                 </div>
                 <div className="relative overflow-hidden p-3 rounded-xl">
-                  <div className="absolute inset-0 bg-white/[0.02]" />
-                  <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+                  <div className="absolute inset-0 bg-[var(--viz-tile)]" />
+                  <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
                   <div className="relative z-10">
                     <p className="text-[10px] text-gray-400 font-medium">Accept what you cannot:</p>
                     <p className="text-[10px] text-gray-500">
@@ -260,8 +260,8 @@ export function StoicDichotomy() {
 
           {/* Key insight */}
           <div className="relative overflow-hidden rounded-xl p-4 max-w-xs">
-            <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative z-10">
               <p className="text-xs text-gray-400 leading-relaxed">
                 <span className="text-blue-400 font-medium">Marcus Aurelius:</span> "You have power over

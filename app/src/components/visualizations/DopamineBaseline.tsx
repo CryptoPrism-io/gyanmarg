@@ -160,12 +160,12 @@ export function DopamineBaseline() {
   const baselineColor = baseline >= 50 ? '#22C55E' : baseline >= 40 ? '#F59E0B' : '#EF4444';
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -181,7 +181,7 @@ export function DopamineBaseline() {
         <div className="flex flex-col items-center gap-5">
           {/* Graph visualization */}
           <div className="w-full max-w-xs">
-            <div className="relative h-32 rounded-xl p-3 overflow-hidden border border-white/[0.08]"
+            <div className="relative h-32 rounded-xl p-3 overflow-hidden border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -203,7 +203,7 @@ export function DopamineBaseline() {
                     y1={100 - y}
                     x2="280"
                     y2={100 - y}
-                    stroke="rgba(255,255,255,0.08)"
+                    stroke="var(--viz-grid)"
                     strokeWidth="1"
                   />
                 ))}
@@ -238,7 +238,7 @@ export function DopamineBaseline() {
               </svg>
 
               {/* Y-axis labels */}
-              <div className="absolute left-0 top-3 bottom-3 flex flex-col justify-between text-[8px] text-white/40">
+              <div className="absolute left-0 top-3 bottom-3 flex flex-col justify-between text-[8px] text-[var(--viz-muted)]">
                 <span>High</span>
                 <span>Low</span>
               </div>
@@ -256,7 +256,7 @@ export function DopamineBaseline() {
 
           {/* Current stats */}
           <div className="flex gap-3">
-            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-white/[0.08]"
+            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -267,9 +267,9 @@ export function DopamineBaseline() {
               >
                 {baseline}%
               </motion.p>
-              <p className="text-[10px] text-white/50">Baseline</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Baseline</p>
             </div>
-            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-white/[0.08]"
+            <div className="relative overflow-hidden text-center px-4 py-2 rounded-xl border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -279,7 +279,7 @@ export function DopamineBaseline() {
               }}>
                 {Math.round(currentValue)}%
               </p>
-              <p className="text-[10px] text-white/50">Current</p>
+              <p className="text-[10px] text-[var(--viz-muted)]">Current</p>
             </div>
           </div>
 
@@ -313,10 +313,10 @@ export function DopamineBaseline() {
                     }`}>
                       {lastActivity.name}
                     </p>
-                    <p className="text-[10px] text-white/50">{lastActivity.description}</p>
+                    <p className="text-[10px] text-[var(--viz-muted)]">{lastActivity.description}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs text-white/60">
+                    <p className="text-xs text-[var(--viz-secondary)]">
                       Baseline: <span style={{ color: lastActivity.baselineEffect > 0 ? '#22C55E' : '#EF4444' }}>
                         {lastActivity.baselineEffect > 0 ? '+' : ''}{lastActivity.baselineEffect}
                       </span>
@@ -348,7 +348,7 @@ export function DopamineBaseline() {
                   >
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
                     <span className="text-xl block mb-1">{activity.icon}</span>
-                    <span className="text-[10px] text-white/60">{activity.name.split(' ')[0]}</span>
+                    <span className="text-[10px] text-[var(--viz-secondary)]">{activity.name.split(' ')[0]}</span>
                   </motion.button>
                 ))}
               </div>
@@ -373,7 +373,7 @@ export function DopamineBaseline() {
                   >
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
                     <span className="text-xl block mb-1">{activity.icon}</span>
-                    <span className="text-[10px] text-white/60">{activity.name.split(' ')[0]}</span>
+                    <span className="text-[10px] text-[var(--viz-secondary)]">{activity.name.split(' ')[0]}</span>
                   </motion.button>
                 ))}
               </div>
@@ -382,7 +382,7 @@ export function DopamineBaseline() {
 
           {/* Session stats */}
           {(totalActivities.healthy > 0 || totalActivities.unhealthy > 0) && (
-            <div className="relative overflow-hidden w-full max-w-xs flex justify-between items-center px-3 py-2 rounded-lg border border-white/[0.08]"
+            <div className="relative overflow-hidden w-full max-w-xs flex justify-between items-center px-3 py-2 rounded-lg border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -392,7 +392,7 @@ export function DopamineBaseline() {
               </div>
               <button
                 onClick={reset}
-                className="text-[10px] text-white/50 hover:text-white/80"
+                className="text-[10px] text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
               >
                 Reset
               </button>
@@ -400,11 +400,11 @@ export function DopamineBaseline() {
           )}
 
           {/* Key insight */}
-          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-white/[0.08]"
+          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-purple-400 font-medium">Dr. Andrew Huberman:</span> "Your baseline
               level of dopamine determines your overall sense of motivation and wellbeing. Frequent
               high-spike activities <span className="text-red-400">lower your baseline</span>, making
@@ -413,7 +413,7 @@ export function DopamineBaseline() {
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             Based on Huberman Lab Podcast research
           </p>
         </div>

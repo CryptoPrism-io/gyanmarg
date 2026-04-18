@@ -75,12 +75,12 @@ export function CircleOfControl() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glassmorphism layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -89,8 +89,8 @@ export function CircleOfControl() {
             <Target className="w-5 h-5 text-green-400" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white/90">Circle of Control</h3>
-            <p className="text-[10px] text-white/50">Stoic focus exercise</p>
+            <h3 className="text-sm font-semibold text-[var(--viz-secondary)]">Circle of Control</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">Stoic focus exercise</p>
           </div>
         </div>
 
@@ -134,7 +134,7 @@ export function CircleOfControl() {
             </motion.div>
 
             {/* Labels */}
-            <span className="absolute top-3 left-1/2 -translate-x-1/2 text-[10px] text-white/50 font-medium">
+            <span className="absolute top-3 left-1/2 -translate-x-1/2 text-[10px] text-[var(--viz-muted)] font-medium">
               CONCERN
             </span>
             <span className="absolute top-11 left-1/2 -translate-x-1/2 text-[10px] text-amber-400 font-medium">
@@ -192,9 +192,9 @@ export function CircleOfControl() {
                     {zones[selectedZone].name}
                   </span>
                 </div>
-                <p className="text-[10px] text-white/60">{zones[selectedZone].description}</p>
-                <div className="mt-2 pt-2 border-t border-white/[0.08]">
-                  <p className="text-[9px] text-white/50">Examples:</p>
+                <p className="text-[10px] text-[var(--viz-secondary)]">{zones[selectedZone].description}</p>
+                <div className="mt-2 pt-2 border-t border-[var(--viz-border)]">
+                  <p className="text-[9px] text-[var(--viz-muted)]">Examples:</p>
                   <div className="flex flex-wrap gap-1 mt-1">
                     {getZoneItems(selectedZone).slice(0, 3).map(item => (
                       <span
@@ -229,15 +229,15 @@ export function CircleOfControl() {
                   />
                 </div>
 
-                <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 text-center mb-3" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+                <div className="relative overflow-hidden border border-[var(--viz-border)] rounded-xl p-4 text-center mb-3" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                  <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">
+                  <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2">
                     Item {currentIndex + 1} of {items.length}
                   </p>
-                  <p className="text-sm text-white/80 font-medium">"{currentItem.text}"</p>
+                  <p className="text-sm text-[var(--viz-secondary)] font-medium">"{currentItem.text}"</p>
                 </div>
 
-                <p className="text-xs text-white/50 text-center mb-3">
+                <p className="text-xs text-[var(--viz-muted)] text-center mb-3">
                   Where does this belong?
                 </p>
 
@@ -272,7 +272,7 @@ export function CircleOfControl() {
               className="w-full max-w-xs space-y-4"
             >
               {/* Score */}
-              <div className="relative overflow-hidden text-center p-4 border border-white/[0.08] rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+              <div className="relative overflow-hidden text-center p-4 border border-[var(--viz-border)] rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <motion.p
                   className="text-4xl font-bold text-green-400"
@@ -281,13 +281,13 @@ export function CircleOfControl() {
                 >
                   {getScore()}/{items.length}
                 </motion.p>
-                <p className="text-xs text-white/50">correctly placed</p>
+                <p className="text-xs text-[var(--viz-muted)]">correctly placed</p>
               </div>
 
               {/* Energy focus analysis */}
-              <div className="relative overflow-hidden p-3 border border-white/[0.08] rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+              <div className="relative overflow-hidden p-3 border border-[var(--viz-border)] rounded-xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">
+                <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2">
                   Where you focused energy:
                 </p>
                 <div className="space-y-2">
@@ -326,7 +326,7 @@ export function CircleOfControl() {
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-white/80 flex-1">{item.text}</span>
+                        <span className="text-[var(--viz-secondary)] flex-1">{item.text}</span>
                         <span
                           className="text-[10px] px-2 py-0.5 rounded-full ml-2"
                           style={{
@@ -349,7 +349,7 @@ export function CircleOfControl() {
 
               <button
                 onClick={reset}
-                className="w-full py-2 text-xs text-white/50 hover:text-white/80 transition-colors"
+                className="w-full py-2 text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
               >
                 ↻ Try again
               </button>
@@ -359,7 +359,7 @@ export function CircleOfControl() {
           {/* Wisdom toggle */}
           <button
             onClick={() => setShowWisdom(!showWisdom)}
-            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
           >
             {showWisdom ? '▼ Hide' : '▶ Show'} Stoic wisdom
           </button>
@@ -375,7 +375,7 @@ export function CircleOfControl() {
                 <div className="relative overflow-hidden p-3 bg-green-500/10 border border-green-500/30 rounded-xl">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <p className="text-[10px] text-green-400 font-medium mb-1">🎯 Focus on Control</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     Proactive people expand their Circle of Control by taking responsibility
                     for their choices.
                   </p>
@@ -383,15 +383,15 @@ export function CircleOfControl() {
                 <div className="relative overflow-hidden p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <p className="text-[10px] text-amber-400 font-medium mb-1">🤝 Influence Wisely</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     Work through your Circle of Control to expand your Circle of Influence
                     over time.
                   </p>
                 </div>
                 <div className="relative overflow-hidden p-3 bg-gray-500/10 border border-gray-500/30 rounded-xl">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                  <p className="text-[10px] text-white/60 font-medium mb-1">🌍 Release Concern</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)] font-medium mb-1">🌍 Release Concern</p>
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     Worrying about what you can't control wastes energy and shrinks your
                     effectiveness.
                   </p>
@@ -401,16 +401,16 @@ export function CircleOfControl() {
           </AnimatePresence>
 
           {/* Key insight */}
-          <div className="relative overflow-hidden border border-white/[0.08] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+          <div className="relative overflow-hidden border border-[var(--viz-border)] rounded-xl p-4 max-w-xs" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-green-400 font-medium">Epictetus:</span> "Make the best use of
               what is in your power, and take the rest as it happens. Some things are up to us
               and some things are not."
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From Stephen Covey & Stoic Philosophy
           </p>
         </div>

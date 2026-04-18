@@ -87,12 +87,12 @@ export function BoxBreathing() {
   const position = getBoxPosition();
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-5">
@@ -110,8 +110,8 @@ export function BoxBreathing() {
                 onClick={() => !isActive && setDuration(d)}
                 className={`w-10 h-10 rounded-lg text-xs font-bold transition-all backdrop-blur-sm ${
                   duration === d
-                    ? 'bg-blue-500/80 text-white border border-blue-400/50'
-                    : 'bg-white/[0.05] border border-white/[0.1] text-gray-400 hover:bg-white/[0.08]'
+                    ? 'bg-blue-500/80 text-[var(--viz-text)] border border-blue-400/50'
+                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-400 hover:bg-[var(--viz-tile-md)]'
                 } ${isActive ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {d}s
@@ -219,7 +219,7 @@ export function BoxBreathing() {
           {/* Breath counter */}
           {breathCount > 0 && (
             <div className="text-center">
-              <p className="text-2xl font-bold text-white">{breathCount}</p>
+              <p className="text-2xl font-bold text-[var(--viz-text)]">{breathCount}</p>
               <p className="text-[10px] text-gray-500">breath cycles completed</p>
             </div>
           )}
@@ -245,8 +245,8 @@ export function BoxBreathing() {
             {(breathCount > 0 || progress > 0) && (
               <button
                 onClick={reset}
-                className="px-4 py-3 bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] text-gray-400
-                         rounded-xl text-xs hover:bg-white/[0.08] transition-all"
+                className="px-4 py-3 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] text-gray-400
+                         rounded-xl text-xs hover:bg-[var(--viz-tile-md)] transition-all"
               >
                 Reset
               </button>
@@ -292,7 +292,7 @@ export function BoxBreathing() {
           {/* Key insight */}
           <div className="relative max-w-xs overflow-hidden rounded-xl">
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
               <p className="text-xs text-gray-400 leading-relaxed">
                 <span className="text-blue-400 font-medium">Navy SEAL Protocol:</span> Box breathing is

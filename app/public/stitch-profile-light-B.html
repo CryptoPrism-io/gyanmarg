@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Polymind Profile | Alex</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#FAF9F6",
+                        main: "#1A1A1A",
+                        muted: "#717171",
+                        accent: "#F59E0B",
+                        border: "#E5E5E5"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"]
+                    },
+                    borderWidth: {
+                        'hairline': '0.5px'
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background text-main font-sans antialiased;
+            }
+            h1, h2, h3, .heading-300 {
+                @apply font-light;
+            }
+            .label-600 {
+                @apply font-semibold uppercase tracking-widest text-[10px];
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-32">
+<header class="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-hairline px-6 h-16 flex justify-between items-center">
+<span class="material-symbols-outlined text-main" data-icon="menu">menu</span>
+<span class="label-600 text-main">Polymind</span>
+<span class="material-symbols-outlined text-main" data-icon="settings">settings</span>
+</header>
+<main class="max-w-screen-md mx-auto px-6 pt-12 space-y-24">
+<section class="space-y-4">
+<h1 class="text-7xl md:text-8xl tracking-tight text-main -ml-1">Alex</h1>
+<div class="label-600 text-muted">New Explorer</div>
+</section>
+<nav class="flex gap-10 border-b border-hairline overflow-x-auto no-scrollbar">
+<button class="pb-4 label-600 text-accent border-b border-accent">Overview</button>
+<button class="pb-4 label-600 text-muted hover:text-main transition-colors">Badges</button>
+<button class="pb-4 label-600 text-muted hover:text-main transition-colors">Saved</button>
+<button class="pb-4 label-600 text-muted hover:text-main transition-colors">Settings</button>
+</nav>
+<section class="grid grid-cols-2 md:grid-cols-4 gap-y-12">
+<div class="space-y-1 border-l border-hairline pl-4">
+<div class="text-4xl font-light">332</div>
+<div class="label-600 text-muted">XP</div>
+</div>
+<div class="space-y-1 border-l border-hairline pl-4">
+<div class="text-4xl font-light">1</div>
+<div class="label-600 text-muted">Streak</div>
+</div>
+<div class="space-y-1 border-l border-hairline pl-4">
+<div class="text-4xl font-light">2</div>
+<div class="label-600 text-muted">Lessons</div>
+</div>
+<div class="space-y-1 border-l border-hairline pl-4">
+<div class="text-4xl font-light">1</div>
+<div class="label-600 text-muted">Best</div>
+</div>
+</section>
+<section class="space-y-10">
+<h2 class="label-600 text-muted">Weekly Momentum</h2>
+<div class="flex justify-between max-w-sm">
+<div class="flex flex-col items-center gap-4">
+<span class="label-600 text-[8px]">M</span>
+<div class="w-1.5 h-1.5 rounded-full bg-accent"></div>
+</div>
+<div class="flex flex-col items-center gap-4">
+<span class="label-600 text-[8px] text-border">T</span>
+<div class="w-1.5 h-1.5 rounded-full bg-border"></div>
+</div>
+<div class="flex flex-col items-center gap-4">
+<span class="label-600 text-[8px] text-border">W</span>
+<div class="w-1.5 h-1.5 rounded-full bg-border"></div>
+</div>
+<div class="flex flex-col items-center gap-4">
+<span class="label-600 text-[8px] text-border">T</span>
+<div class="w-1.5 h-1.5 rounded-full bg-border"></div>
+</div>
+<div class="flex flex-col items-center gap-4">
+<span class="label-600 text-[8px] text-border">F</span>
+<div class="w-1.5 h-1.5 rounded-full bg-border"></div>
+</div>
+<div class="flex flex-col items-center gap-4">
+<span class="label-600 text-[8px] text-border">S</span>
+<div class="w-1.5 h-1.5 rounded-full bg-border"></div>
+</div>
+<div class="flex flex-col items-center gap-4">
+<span class="label-600 text-[8px] text-border">S</span>
+<div class="w-1.5 h-1.5 rounded-full bg-border"></div>
+</div>
+</div>
+</section>
+<section class="space-y-10">
+<h2 class="label-600 text-muted">Resume Practice</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="border border-hairline p-8 flex flex-col justify-between h-56 rounded-[4px]">
+<div>
+<div class="label-600 text-accent mb-2">Core Study</div>
+<h3 class="text-2xl font-light text-main">Personal Development</h3>
+</div>
+<button class="w-fit px-6 py-2 border border-accent text-accent label-600 hover:bg-accent hover:text-white transition-all rounded-[4px]">
+                        Continue
+                    </button>
+</div>
+<div class="border border-hairline p-8 flex flex-col justify-between h-56 rounded-[4px]">
+<div>
+<div class="label-600 text-muted mb-2">Current Focus</div>
+<h3 class="text-2xl font-light text-main">Triple Threat</h3>
+<div class="mt-4 flex items-center gap-3">
+<div class="flex-1 h-[1px] bg-border relative">
+<div class="absolute inset-y-0 left-0 bg-accent w-[35%]"></div>
+</div>
+<span class="label-600 text-[8px] text-muted">35%</span>
+</div>
+</div>
+<button class="w-fit px-6 py-2 border border-accent text-accent label-600 hover:bg-accent hover:text-white transition-all rounded-[4px]">
+                        Continue
+                    </button>
+</div>
+</div>
+</section>
+<section class="space-y-10">
+<h2 class="label-600 text-muted">Learning Path</h2>
+<div class="space-y-0 border-t border-hairline">
+<div class="flex items-center justify-between py-6 border-b border-hairline">
+<div class="flex items-center gap-4">
+<div class="w-1 h-1 bg-accent rounded-full"></div>
+<span class="text-sm font-light">Foundations of Logic</span>
+</div>
+<span class="label-600 text-accent">100%</span>
+</div>
+<div class="flex items-center justify-between py-6 border-b border-hairline">
+<div class="flex items-center gap-4">
+<div class="w-1 h-1 bg-accent rounded-full"></div>
+<span class="text-sm font-light">Cognitive Biases</span>
+</div>
+<span class="label-600 text-main">64%</span>
+</div>
+<div class="flex items-center justify-between py-6 border-b border-hairline">
+<div class="flex items-center gap-4">
+<div class="w-1 h-1 bg-border rounded-full"></div>
+<span class="text-sm font-light">Systems Thinking</span>
+</div>
+<span class="label-600 text-muted">12%</span>
+</div>
+<div class="flex items-center justify-between py-6 border-b border-hairline opacity-50">
+<div class="flex items-center gap-4">
+<div class="w-1 h-1 bg-border rounded-full"></div>
+<span class="text-sm font-light">Mental Models II</span>
+</div>
+<span class="label-600 text-muted">Locked</span>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full bg-background/90 backdrop-blur-md border-t border-hairline h-20 px-6 flex justify-around items-center z-50">
+<div class="flex flex-col items-center gap-1 text-muted">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="label-600 text-[8px]">Library</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-muted">
+<span class="material-symbols-outlined" data-icon="center_focus_strong">center_focus_strong</span>
+<span class="label-600 text-[8px]">Focus</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-muted">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="label-600 text-[8px]">Discover</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-main">
+<span class="material-symbols-outlined fill-1" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="label-600 text-[8px]">Profile</span>
+<div class="w-1 h-1 bg-accent rounded-full mt-0.5"></div>
+</div>
+</nav>
+
+</body></html>

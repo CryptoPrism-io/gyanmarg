@@ -48,12 +48,12 @@ export function EnergyPyramid() {
   const [activeLevel, setActiveLevel] = useState<number | null>(null);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -76,7 +76,7 @@ export function EnergyPyramid() {
                   key={idx}
                   onClick={() => setActiveLevel(isActive ? null : idx)}
                   className={`${widths[idx]} py-3 rounded-lg border backdrop-blur-sm transition-all ${
-                    isActive ? `${colors.bg} ${colors.border}` : 'bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15]'
+                    isActive ? `${colors.bg} ${colors.border}` : 'bg-[var(--viz-tile)] border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
                   }`}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -121,7 +121,7 @@ export function EnergyPyramid() {
           )}
 
           {/* Key insight */}
-          <div className="w-full max-w-xs bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-lg p-3">
+          <div className="w-full max-w-xs bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg p-3">
             <p className="text-[10px] text-gray-400 text-center">
               <span className="text-amber-400">Key insight:</span> Physical energy is the foundation.
               Without it, the other levels collapse. Start from the bottom up.

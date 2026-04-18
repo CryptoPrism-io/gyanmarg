@@ -52,12 +52,12 @@ export function CircleOfCompetence() {
   const activeData = circles.find((c) => c.id === activeCircle);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -127,7 +127,7 @@ export function CircleOfCompetence() {
             onClick={() => setActiveCircle(circle.id)}
             className={`text-[10px] px-3 py-1.5 rounded-full transition-all duration-200 border ${
               activeCircle === circle.id
-                ? 'bg-white/10 text-white border-current'
+                ? 'bg-white/10 text-[var(--viz-text)] border-current'
                 : 'text-gray-500 hover:text-gray-300 border-transparent hover:border-gray-600'
             }`}
             style={{
@@ -148,7 +148,7 @@ export function CircleOfCompetence() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="bg-white/[0.03] border border-white/[0.08] rounded-lg p-4 max-w-xs text-center backdrop-blur-sm"
+            className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg p-4 max-w-xs text-center backdrop-blur-sm"
           >
             <div
               className="text-sm font-bold mb-1"

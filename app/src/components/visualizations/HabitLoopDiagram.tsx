@@ -91,12 +91,12 @@ export function HabitLoopDiagram({
   const activeStageData = stages.find((s) => s.id === activeStage);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -129,7 +129,7 @@ export function HabitLoopDiagram({
 
           {/* Main center circle */}
           <motion.div
-            className="relative rounded-full border-2 border-white/10"
+            className="relative rounded-full border-2 border-[var(--viz-border-light)]"
             style={{
               width: config.circle,
               height: config.circle,
@@ -154,7 +154,7 @@ export function HabitLoopDiagram({
         {/* Center text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10">
           <motion.div
-            className="text-sm font-bold text-white"
+            className="text-sm font-bold text-[var(--viz-text)]"
             animate={{
               scale: isPlaying ? [1, 1.05, 1] : 1,
               opacity: isPlaying ? [0.8, 1, 0.8] : 1,
@@ -275,7 +275,7 @@ export function HabitLoopDiagram({
               }}
             >
               <span
-                className={`text-xs font-bold ${isActive ? 'text-white' : ''}`}
+                className={`text-xs font-bold ${isActive ? 'text-[var(--viz-text)]' : ''}`}
                 style={{ color: isActive ? 'white' : stage.color }}
               >
                 {stage.label.slice(0, 1)}
@@ -284,7 +284,7 @@ export function HabitLoopDiagram({
                 <motion.span
                   initial={{ opacity: 0, y: -2 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-[8px] text-white/80 font-medium"
+                  className="text-[8px] text-[var(--viz-secondary)] font-medium"
                 >
                   {index + 1}
                 </motion.span>
@@ -303,7 +303,7 @@ export function HabitLoopDiagram({
               onClick={() => handleNodeClick(stage.id)}
               className={`text-xs px-2 py-1 rounded-full transition-all ${
                 activeStage === stage.id
-                  ? 'bg-white/10 text-white'
+                  ? 'bg-white/10 text-[var(--viz-text)]'
                   : 'text-gray-500 hover:text-gray-300'
               }`}
               style={{
@@ -325,7 +325,7 @@ export function HabitLoopDiagram({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="bg-white/[0.03] border border-white/[0.08] rounded-lg p-4 max-w-xs text-center backdrop-blur-sm"
+            className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg p-4 max-w-xs text-center backdrop-blur-sm"
           >
             <div
               className="text-sm font-bold mb-1"
@@ -344,7 +344,7 @@ export function HabitLoopDiagram({
         onClick={handlePlayPause}
         className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
           isPlaying
-            ? 'bg-white/10 text-white border border-white/20'
+            ? 'bg-white/10 text-[var(--viz-text)] border border-white/20'
             : 'bg-amber-500/20 text-amber-400 border border-amber-500/30 hover:bg-amber-500/30'
         }`}
         whileHover={{ scale: 1.05 }}

@@ -45,12 +45,12 @@ export function BuyVsBuild() {
   const [activeRow, setActiveRow] = useState<number | null>(null);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -91,8 +91,8 @@ export function BuyVsBuild() {
                 onClick={() => setActiveRow(activeRow === idx ? null : idx)}
                 className={`w-full relative overflow-hidden rounded-lg text-left transition-all ${
                   activeRow === idx
-                    ? 'bg-white/[0.05] border border-white/[0.15]'
-                    : 'bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.12]'
+                    ? 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)]'
+                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
                 }`}
                 whileTap={{ scale: 0.98 }}
               >
@@ -100,14 +100,14 @@ export function BuyVsBuild() {
                   <p className="text-xs text-gray-300 font-medium mb-2">{comp.factor}</p>
                   <div className="grid grid-cols-2 gap-2">
                     <div className={`p-2 rounded text-center ${
-                      comp.winner === 'build' ? 'bg-amber-500/20' : 'bg-white/[0.03]'
+                      comp.winner === 'build' ? 'bg-amber-500/20' : 'bg-[var(--viz-tile)]'
                     }`}>
                       <p className={`text-[10px] ${comp.winner === 'build' ? 'text-amber-400' : 'text-gray-500'}`}>
                         {comp.build}
                       </p>
                     </div>
                     <div className={`p-2 rounded text-center ${
-                      comp.winner === 'buy' ? 'bg-green-500/20' : 'bg-white/[0.03]'
+                      comp.winner === 'buy' ? 'bg-green-500/20' : 'bg-[var(--viz-tile)]'
                     }`}>
                       <p className={`text-[10px] ${comp.winner === 'buy' ? 'text-green-400' : 'text-gray-500'}`}>
                         {comp.buy}
@@ -122,7 +122,7 @@ export function BuyVsBuild() {
           {/* Score */}
           <div className="w-full max-w-xs relative overflow-hidden rounded-lg">
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-3">
               <div className="flex justify-between items-center">
                 <div className="text-center">

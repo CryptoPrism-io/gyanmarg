@@ -64,12 +64,12 @@ export function NVCFourSteps() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-rose-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -87,7 +87,7 @@ export function NVCFourSteps() {
                   className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all backdrop-blur-sm ${
                     idx <= activeStep
                       ? `${c.bg} ${c.border} ${c.text}`
-                      : 'border-white/[0.1] text-gray-600 bg-white/[0.02]'
+                      : 'border-[var(--viz-border-light)] text-gray-600 bg-[var(--viz-tile)]'
                   }`}
                 >
                   <span className="text-sm font-bold">{s.num}</span>
@@ -126,7 +126,7 @@ export function NVCFourSteps() {
             {!showGood ? (
               <button
                 onClick={() => setShowGood(true)}
-                className="w-full py-3 bg-white/[0.03] border border-white/[0.08] rounded-lg text-xs text-gray-400 hover:border-green-500/30 hover:bg-white/[0.05] backdrop-blur-sm transition-all"
+                className="w-full py-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-gray-400 hover:border-green-500/30 hover:bg-[var(--viz-tile)] backdrop-blur-sm transition-all"
               >
                 Reveal the NVC way →
               </button>
@@ -162,7 +162,7 @@ export function NVCFourSteps() {
                   </p>
                   <button
                     onClick={reset}
-                    className="px-4 py-2 bg-white/[0.03] border border-white/[0.1] rounded-lg text-xs text-gray-400 backdrop-blur-sm hover:bg-white/[0.05] transition-all"
+                    className="px-4 py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 backdrop-blur-sm hover:bg-[var(--viz-tile)] transition-all"
                   >
                     Start Over
                   </button>

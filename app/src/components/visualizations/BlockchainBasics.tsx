@@ -44,12 +44,12 @@ export function BlockchainBasics() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-5">
@@ -88,8 +88,8 @@ export function BlockchainBasics() {
                     </>
                   ) : (
                     <>
-                      <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
-                      <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                      <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+                      <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                     </>
                   )}
 
@@ -183,8 +183,8 @@ export function BlockchainBasics() {
                 </>
               ) : (
                 <>
-                  <div className="absolute inset-0 bg-white/[0.02]" />
-                  <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                  <div className="absolute inset-0 bg-[var(--viz-tile)]" />
+                  <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                 </>
               )}
               <span className="relative z-10">🔓 {showTamper ? 'Hide' : 'Try'} Tampering</span>
@@ -245,8 +245,8 @@ export function BlockchainBasics() {
 
           {/* How it works */}
           <div className="relative overflow-hidden w-full max-w-xs p-3 rounded-xl">
-            <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative z-10">
               <p className="text-[10px] text-gray-500 mb-2">Why it's secure:</p>
               <div className="space-y-1 text-[10px] text-gray-400">
@@ -261,8 +261,8 @@ export function BlockchainBasics() {
 
           {/* Key insight */}
           <div className="relative overflow-hidden rounded-xl p-4 max-w-xs">
-            <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative z-10">
               <p className="text-xs text-gray-400 leading-relaxed">
                 <span className="text-amber-400 font-medium">Satoshi Nakamoto:</span> "The root problem

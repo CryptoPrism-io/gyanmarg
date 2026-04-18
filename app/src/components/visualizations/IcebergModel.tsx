@@ -61,12 +61,12 @@ export function IcebergModel() {
   const activeData = layers.find((l) => l.id === activeLayer);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-sky-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -190,7 +190,7 @@ export function IcebergModel() {
             className={`text-xs px-4 py-2 rounded-lg transition-all border backdrop-blur-sm ${
               showAll
                 ? 'bg-sky-500/15 text-sky-400 border-sky-500/30 shadow-[0_0_12px_rgba(56,189,248,0.15)]'
-                : 'bg-white/[0.04] border-white/10 text-white/50 hover:bg-white/[0.08] hover:text-white/70'
+                : 'bg-[var(--viz-tile)] border-[var(--viz-border-light)] text-[var(--viz-muted)] hover:bg-[var(--viz-tile-md)] hover:text-[var(--viz-secondary)]'
             }`}
           >
             {showAll ? 'Hide underwater' : 'See below the surface'}
@@ -204,7 +204,7 @@ export function IcebergModel() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-white/[0.08]"
+                className="relative overflow-hidden rounded-xl p-4 max-w-xs text-center border border-[var(--viz-border)]"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                 }}
@@ -213,7 +213,7 @@ export function IcebergModel() {
                 <div className="text-sm font-bold mb-1" style={{ color: activeData.color }}>
                   {activeData.label}
                 </div>
-                <p className="text-xs text-white/60 mb-3">{activeData.description}</p>
+                <p className="text-xs text-[var(--viz-secondary)] mb-3">{activeData.description}</p>
                 <div className="flex flex-wrap justify-center gap-1">
                   {activeData.items.map((item, idx) => (
                     <span
@@ -232,7 +232,7 @@ export function IcebergModel() {
             )}
           </AnimatePresence>
 
-          <p className="text-[10px] text-white/50 text-center max-w-xs">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center max-w-xs">
             Click on each layer to explore what's hidden beneath success.
           </p>
         </div>

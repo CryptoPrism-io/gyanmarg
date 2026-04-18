@@ -133,12 +133,12 @@ export function ActivationEnergy() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -161,7 +161,7 @@ export function ActivationEnergy() {
                 className={`relative overflow-hidden px-3 py-2 rounded-xl transition-all border ${
                   activeHabit === index
                     ? 'bg-amber-500/20 text-amber-400 border-amber-500/50'
-                    : 'text-white/50 hover:text-white/80 border-white/[0.08] hover:border-white/20'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-[var(--viz-border)] hover:border-white/20'
                 }`}
                 style={{
                   background: activeHabit === index
@@ -181,7 +181,7 @@ export function ActivationEnergy() {
 
           {/* Energy hill visualization */}
           <div className="w-full max-w-xs">
-            <div className="relative rounded-2xl overflow-hidden border border-white/[0.08]"
+            <div className="relative rounded-2xl overflow-hidden border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -194,13 +194,13 @@ export function ActivationEnergy() {
                     y1={y}
                     x2="300"
                     y2={y}
-                    stroke="rgba(255,255,255,0.08)"
+                    stroke="var(--viz-grid)"
                     strokeWidth="0.5"
                   />
                 ))}
 
                 {/* Ground line */}
-                <line x1="0" y1="150" x2="300" y2="150" stroke="rgba(255,255,255,0.2)" strokeWidth="2" />
+                <line x1="0" y1="150" x2="300" y2="150" stroke="var(--viz-line)" strokeWidth="2" />
 
                 {/* Energy hill */}
                 <motion.path
@@ -296,7 +296,7 @@ export function ActivationEnergy() {
 
           {/* Friction meter comparison */}
           <div className="w-full max-w-xs space-y-2">
-            <div className="flex justify-between text-[10px] text-white/50">
+            <div className="flex justify-between text-[10px] text-[var(--viz-muted)]">
               <span>Activation Energy Required</span>
               <span className={frictionReduced ? 'text-green-400' : 'text-amber-400'}>
                 {currentFriction}%
@@ -306,8 +306,8 @@ export function ActivationEnergy() {
             {/* Before/After comparison */}
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="text-[9px] text-white/50 w-12">Before:</span>
-                <div className="flex-1 h-3 rounded-full border border-white/[0.08] overflow-hidden"
+                <span className="text-[9px] text-[var(--viz-muted)] w-12">Before:</span>
+                <div className="flex-1 h-3 rounded-full border border-[var(--viz-border)] overflow-hidden"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 >
                   <motion.div
@@ -319,8 +319,8 @@ export function ActivationEnergy() {
                 <span className="text-[9px] text-amber-400 w-8">{habit.friction}%</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[9px] text-white/50 w-12">After:</span>
-                <div className="flex-1 h-3 rounded-full border border-white/[0.08] overflow-hidden"
+                <span className="text-[9px] text-[var(--viz-muted)] w-12">After:</span>
+                <div className="flex-1 h-3 rounded-full border border-[var(--viz-border)] overflow-hidden"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 >
                   <motion.div
@@ -333,8 +333,8 @@ export function ActivationEnergy() {
               </div>
             </div>
 
-            <p className="text-[10px] text-center text-white/50">
-              Reduction: <span className={frictionReduced ? 'text-green-400' : 'text-white/60'}>
+            <p className="text-[10px] text-center text-[var(--viz-muted)]">
+              Reduction: <span className={frictionReduced ? 'text-green-400' : 'text-[var(--viz-secondary)]'}>
                 {Math.round(((habit.friction - habit.reducedFriction) / habit.friction) * 100)}% less effort
               </span>
             </p>
@@ -379,7 +379,7 @@ export function ActivationEnergy() {
                       className="flex items-start gap-2"
                     >
                       <span className="text-green-400 text-[10px]">+</span>
-                      <span className="text-xs text-white/80">{tip}</span>
+                      <span className="text-xs text-[var(--viz-secondary)]">{tip}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -403,42 +403,42 @@ export function ActivationEnergy() {
           </AnimatePresence>
 
           {/* Atomic Habits principle */}
-          <div className="relative overflow-hidden w-full max-w-xs rounded-xl p-3 border border-white/[0.08]"
+          <div className="relative overflow-hidden w-full max-w-xs rounded-xl p-3 border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2">The 3rd Law of Behavior Change</p>
+            <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2">The 3rd Law of Behavior Change</p>
             <div className="grid grid-cols-2 gap-2 text-center">
               <div className="relative overflow-hidden p-2 rounded-lg border border-green-500/20"
                 style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(34,197,94,0.02) 100%)' }}
               >
                 <p className="text-green-400 text-xs font-medium">Good habits</p>
-                <p className="text-[10px] text-white/60">Make it easy</p>
-                <p className="text-[9px] text-white/50">Friction decreases</p>
+                <p className="text-[10px] text-[var(--viz-secondary)]">Make it easy</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Friction decreases</p>
               </div>
               <div className="relative overflow-hidden p-2 rounded-lg border border-red-500/20"
                 style={{ background: 'linear-gradient(135deg, rgba(239,68,68,0.1) 0%, rgba(239,68,68,0.02) 100%)' }}
               >
                 <p className="text-red-400 text-xs font-medium">Bad habits</p>
-                <p className="text-[10px] text-white/60">Make it hard</p>
-                <p className="text-[9px] text-white/50">Friction increases</p>
+                <p className="text-[10px] text-[var(--viz-secondary)]">Make it hard</p>
+                <p className="text-[9px] text-[var(--viz-muted)]">Friction increases</p>
               </div>
             </div>
           </div>
 
           {/* Key insight */}
-          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-white/[0.08]"
+          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-amber-400 font-medium">James Clear:</span> "The most effective form
               of motivation is progress. Small environmental changes that reduce friction make the
               right behaviors effortless and the wrong behaviors impossible."
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From Atomic Habits by James Clear
           </p>
         </div>

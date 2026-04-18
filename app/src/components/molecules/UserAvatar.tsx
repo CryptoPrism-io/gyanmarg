@@ -128,7 +128,7 @@ export function UserAvatar({
             transition={{ duration: 0.15 }}
             className="absolute right-0 top-full mt-2 w-64 z-50"
           >
-            <div className="bg-[#111113] border border-gray-800 rounded-xl shadow-xl overflow-hidden">
+            <div className="bg-neutral-900 border border-gray-800 rounded-xl shadow-xl overflow-hidden">
               {/* User Info Header */}
               <div className="px-4 py-3 border-b border-gray-800">
                 <div className="flex items-center gap-3">

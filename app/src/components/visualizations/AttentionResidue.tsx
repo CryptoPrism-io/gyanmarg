@@ -46,12 +46,12 @@ export function AttentionResidue() {
   const task = tasks[currentTask];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glass layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -63,8 +63,8 @@ export function AttentionResidue() {
             <Brain className="w-4 h-4 text-blue-400" />
           </div>
           <div>
-            <h3 className="text-sm font-medium text-white/90">Attention Residue</h3>
-            <p className="text-[10px] text-white/50">From Deep Work by Cal Newport</p>
+            <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Attention Residue</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">From Deep Work by Cal Newport</p>
           </div>
         </div>
 
@@ -108,12 +108,12 @@ export function AttentionResidue() {
 
           {/* Focus quality meter */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between text-[10px] text-white/50 mb-1">
+            <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
               <span>Focus Quality</span>
               <span>{focusQuality}%</span>
             </div>
             <div
-              className="h-3 rounded-full border border-white/[0.08] overflow-hidden"
+              className="h-3 rounded-full border border-[var(--viz-border)] overflow-hidden"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <motion.div
@@ -129,7 +129,7 @@ export function AttentionResidue() {
 
           {/* Task switcher */}
           <div className="w-full max-w-xs">
-            <p className="text-[10px] text-white/50 uppercase tracking-wide mb-2 text-center">
+            <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide mb-2 text-center">
               Switch tasks to see residue build up
             </p>
             <div className="grid grid-cols-2 gap-2">
@@ -140,7 +140,7 @@ export function AttentionResidue() {
                   className={`relative p-2 rounded-lg border text-xs transition-all overflow-hidden ${
                     currentTask === index
                       ? 'border-2'
-                      : 'border-white/[0.08] hover:border-white/[0.15]'
+                      : 'border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
                   }`}
                   style={{
                     borderColor: currentTask === index ? t.color : undefined,
@@ -160,7 +160,7 @@ export function AttentionResidue() {
           {/* Switch history */}
           {taskHistory.length > 0 && (
             <div className="w-full max-w-xs">
-              <p className="text-[10px] text-white/50 mb-2">
+              <p className="text-[10px] text-[var(--viz-muted)] mb-2">
                 Task switches: {taskHistory.length} (each leaves residue)
               </p>
               <div className="flex flex-wrap gap-1">
@@ -203,11 +203,11 @@ export function AttentionResidue() {
 
           {/* Key insight */}
           <div
-            className="relative border border-white/[0.08] rounded-lg p-3 max-w-xs text-center overflow-hidden"
+            className="relative border border-[var(--viz-border)] rounded-lg p-3 max-w-xs text-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-blue-400 font-medium">Cal Newport:</span> Every task switch
               leaves "attention residue" that reduces cognitive capacity. Batch similar tasks,
               minimize switches.

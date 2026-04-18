@@ -60,12 +60,12 @@ export function BlackSwan() {
   const event = events[selectedEvent];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-gray-500/[0.03] via-transparent to-red-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-5">
@@ -136,7 +136,7 @@ export function BlackSwan() {
 
             {/* Black Swan badge */}
             <motion.div
-              className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/60 backdrop-blur-sm border border-white/[0.1] rounded-full"
+              className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-[var(--viz-inner-dark)] backdrop-blur-sm border border-[var(--viz-border-light)] rounded-full"
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
@@ -155,7 +155,7 @@ export function BlackSwan() {
                     ? e.type === 'positive'
                       ? 'bg-green-500/20 border border-green-500/50 text-green-400'
                       : 'bg-red-500/20 border border-red-500/50 text-red-400'
-                    : 'bg-white/[0.05] border border-white/[0.1] text-gray-500 hover:bg-white/[0.08]'
+                    : 'bg-[var(--viz-tile)] border border-[var(--viz-border-light)] text-gray-500 hover:bg-[var(--viz-tile-md)]'
                 }`}
               >
                 {e.year}
@@ -197,7 +197,7 @@ export function BlackSwan() {
                   </div>
 
                   <div className="space-y-2">
-                    <div className="p-2 bg-white/[0.05] backdrop-blur-sm rounded-lg border border-white/[0.08]">
+                    <div className="p-2 bg-[var(--viz-tile)] backdrop-blur-sm rounded-lg border border-[var(--viz-border)]">
                       <p className="text-[10px] text-gray-500">Impact:</p>
                       <p className="text-xs text-gray-300">{event.impact}</p>
                     </div>
@@ -246,7 +246,7 @@ export function BlackSwan() {
                     className="relative overflow-hidden rounded-lg"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
-                    <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+                    <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
                     <div className="relative p-2 flex items-center gap-2">
                       <span className="text-xl">{c.icon}</span>
                       <div>
@@ -283,7 +283,7 @@ export function BlackSwan() {
           {/* Key insight */}
           <div className="relative max-w-xs overflow-hidden rounded-xl">
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-xl" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-xl" />
             <div className="relative p-4">
               <p className="text-xs text-gray-400 leading-relaxed">
                 <span className="text-gray-200 font-medium">Nassim Taleb:</span> "The strategy for life is

@@ -64,12 +64,12 @@ export function WorkRestCycle() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -82,7 +82,7 @@ export function WorkRestCycle() {
           </div>
 
           {/* Wave visualization */}
-          <div className="w-full max-w-xs h-24 bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-lg p-3 relative overflow-hidden">
+          <div className="w-full max-w-xs h-24 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg p-3 relative overflow-hidden">
             <svg viewBox="0 0 200 60" className="w-full h-full">
               {/* Baseline */}
               <line x1="0" y1="30" x2="200" y2="30" stroke="#374151" strokeWidth="1" />
@@ -128,7 +128,7 @@ export function WorkRestCycle() {
                     <span className="text-blue-400">Deep Work Sprint</span>
                     <span className="text-gray-400">{formatTime(workTime)} / {formatTime(WORK_DURATION)}</span>
                   </div>
-                  <div className="h-2 bg-white/[0.05] rounded-full overflow-hidden">
+                  <div className="h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-blue-500"
                       style={{ width: `${workProgress}%` }}
@@ -144,7 +144,7 @@ export function WorkRestCycle() {
                     <span className="text-green-400">Recovery Break</span>
                     <span className="text-gray-400">{formatTime(restTime)} / {formatTime(REST_DURATION)}</span>
                   </div>
-                  <div className="h-2 bg-white/[0.05] rounded-full overflow-hidden">
+                  <div className="h-2 bg-[var(--viz-tile)] rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-green-500"
                       style={{ width: `${restProgress}%` }}
@@ -172,7 +172,7 @@ export function WorkRestCycle() {
             ) : (
               <button
                 onClick={reset}
-                className="px-6 py-2 bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] rounded-lg text-sm text-gray-400"
+                className="px-6 py-2 bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border-light)] rounded-lg text-sm text-gray-400"
               >
                 Reset
               </button>
@@ -189,7 +189,7 @@ export function WorkRestCycle() {
           )}
 
           {/* Key principle */}
-          <div className="w-full max-w-xs bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-lg p-3">
+          <div className="w-full max-w-xs bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg p-3">
             <p className="text-[10px] text-gray-400 text-center">
               <span className="text-purple-400">The principle:</span> 90 minutes work, 20 minutes rest.
               Energy is not linear—it must be rhythmically renewed.

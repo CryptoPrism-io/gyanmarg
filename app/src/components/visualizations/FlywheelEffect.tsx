@@ -86,12 +86,12 @@ export function FlywheelEffect() {
   const phaseColor = phaseColors[currentPhase];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-emerald-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -199,18 +199,18 @@ export function FlywheelEffect() {
                 >
                   {pushes}
                 </motion.p>
-                <p className="text-[10px] text-white/50">pushes</p>
+                <p className="text-[10px] text-[var(--viz-muted)]">pushes</p>
               </div>
             </div>
           </div>
 
           {/* Momentum meter */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between text-[10px] text-white/50 mb-1">
+            <div className="flex justify-between text-[10px] text-[var(--viz-muted)] mb-1">
               <span>Momentum</span>
               <span style={{ color: phaseColor }}>{momentum.toFixed(1)}x</span>
             </div>
-            <div className="h-3 rounded-full border border-white/[0.08] overflow-hidden"
+            <div className="h-3 rounded-full border border-[var(--viz-border)] overflow-hidden"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <motion.div
@@ -247,11 +247,11 @@ export function FlywheelEffect() {
                 borderColor: `${phaseColor}50`,
               }}
             >
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
               <p className="text-sm font-medium" style={{ color: phaseColor }}>
                 {recentMilestone.label}
               </p>
-              <p className="text-xs text-white/60">{recentMilestone.insight}</p>
+              <p className="text-xs text-[var(--viz-secondary)]">{recentMilestone.insight}</p>
             </motion.div>
           )}
 
@@ -283,12 +283,12 @@ export function FlywheelEffect() {
             <p className="text-sm font-medium mb-1" style={{ color: phaseColor }}>
               {milestones[currentPhase]?.label || 'Not Started'}
             </p>
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               {milestones[currentPhase]?.insight || 'Click the button to start pushing.'}
             </p>
             {pushes > 0 && (
-              <div className="mt-3 pt-3 border-t border-white/[0.08]">
-                <p className="text-[10px] text-white/50">
+              <div className="mt-3 pt-3 border-t border-[var(--viz-border)]">
+                <p className="text-[10px] text-[var(--viz-muted)]">
                   Momentum per push: <span style={{ color: phaseColor }}>+{(0.1 + pushes * 0.05).toFixed(2)}</span>
                   {pushes > 10 && <span className="text-green-400 ml-2">({((pushes * 0.05) / 0.1 * 100).toFixed(0)}% more efficient than push #1!)</span>}
                 </p>
@@ -299,7 +299,7 @@ export function FlywheelEffect() {
           {/* Real world examples */}
           <button
             onClick={() => setShowExamples(!showExamples)}
-            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
           >
             {showExamples ? 'Hide' : 'See'} real-world flywheels
           </button>
@@ -313,12 +313,12 @@ export function FlywheelEffect() {
               {realWorldExamples.map((ex, i) => (
                 <div
                   key={i}
-                  className="relative overflow-hidden p-3 rounded-lg border border-white/[0.08]"
+                  className="relative overflow-hidden p-3 rounded-lg border border-[var(--viz-border)]"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   <p className="text-xs font-medium text-amber-400 mb-1">{ex.company}</p>
-                  <p className="text-[10px] text-white/60">{ex.flywheel}</p>
+                  <p className="text-[10px] text-[var(--viz-secondary)]">{ex.flywheel}</p>
                 </div>
               ))}
             </motion.div>
@@ -327,25 +327,25 @@ export function FlywheelEffect() {
           {pushes > 0 && (
             <button
               onClick={reset}
-              className="text-xs text-white/40 hover:text-white/60 transition-colors"
+              className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
             >
               Reset flywheel
             </button>
           )}
 
           {/* Key insight */}
-          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-white/[0.08]"
+          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-green-400 font-medium">Jim Collins:</span> "No matter how dramatic
               the end result, good-to-great transformations never happen in one fell swoop. There's
               no single defining action, no miracle moment. It's a cumulative process—push by push."
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From Good to Great by Jim Collins
           </p>
         </div>

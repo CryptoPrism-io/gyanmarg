@@ -42,12 +42,12 @@ export function YesAndPrinciple() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -59,7 +59,7 @@ export function YesAndPrinciple() {
           </div>
 
           {/* Mode toggle */}
-          <div className="flex bg-white/[0.03] rounded-lg p-1 border border-white/[0.08] backdrop-blur-sm">
+          <div className="flex bg-[var(--viz-tile)] rounded-lg p-1 border border-[var(--viz-border)] backdrop-blur-sm">
             <button
               onClick={() => setMode('learn')}
               className={`px-4 py-2 rounded-lg text-xs transition-all ${
@@ -156,7 +156,7 @@ export function YesAndPrinciple() {
                   value={userInput}
                   onChange={(e) => setUserInput(e.target.value)}
                   placeholder="Yes! And..."
-                  className="w-full p-3 bg-white/[0.03] border border-white/[0.08] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-green-500/50 focus:outline-none resize-none h-20 backdrop-blur-sm"
+                  className="w-full p-3 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-lg text-xs text-gray-300 placeholder-gray-600 focus:border-green-500/50 focus:outline-none resize-none h-20 backdrop-blur-sm"
                 />
               </div>
 
@@ -175,7 +175,7 @@ export function YesAndPrinciple() {
 
               <button
                 onClick={nextScene}
-                className="w-full py-2 bg-white/[0.05] border border-white/[0.1] rounded-lg text-xs text-gray-400 backdrop-blur-sm hover:bg-white/[0.08]"
+                className="w-full py-2 bg-[var(--viz-tile)] border border-[var(--viz-border-light)] rounded-lg text-xs text-gray-400 backdrop-blur-sm hover:bg-[var(--viz-tile-md)]"
               >
                 New Prompt
               </button>
@@ -184,8 +184,8 @@ export function YesAndPrinciple() {
 
           {/* Key insight */}
           <div className="w-full max-w-xs relative overflow-hidden rounded-lg">
-            <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <div className="relative z-10 p-3">
               <p className="text-[10px] text-gray-400 text-center">
                 <span className="text-purple-400">Beyond improv:</span> "Yes, And" works in brainstorms,

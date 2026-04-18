@@ -70,12 +70,12 @@ export function FlowStateDiagram() {
   const currentZone = zones.find((z) => z.id === getCurrentZone());
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.03] via-transparent to-amber-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -91,7 +91,7 @@ export function FlowStateDiagram() {
         <div className="flex flex-col items-center gap-4">
           {/* Main Diagram */}
           <div
-            className="relative w-64 h-64 rounded-xl border border-white/[0.08] overflow-hidden"
+            className="relative w-64 h-64 rounded-xl border border-[var(--viz-border)] overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -113,14 +113,14 @@ export function FlowStateDiagram() {
               />
 
               {/* Axis lines */}
-              <line x1="0" y1="100" x2="100" y2="100" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
-              <line x1="0" y1="100" x2="0" y2="0" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
+              <line x1="0" y1="100" x2="100" y2="100" stroke="var(--viz-grid)" strokeWidth="0.5" />
+              <line x1="0" y1="100" x2="0" y2="0" stroke="var(--viz-grid)" strokeWidth="0.5" />
 
               {/* Grid */}
               {[25, 50, 75].map((pos) => (
                 <g key={pos}>
-                  <line x1={pos} y1="0" x2={pos} y2="100" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" strokeDasharray="2" />
-                  <line x1="0" y1={pos} x2="100" y2={pos} stroke="rgba(255,255,255,0.05)" strokeWidth="0.5" strokeDasharray="2" />
+                  <line x1={pos} y1="0" x2={pos} y2="100" stroke="var(--viz-grid-faint)" strokeWidth="0.5" strokeDasharray="2" />
+                  <line x1="0" y1={pos} x2="100" y2={pos} stroke="var(--viz-grid-faint)" strokeWidth="0.5" strokeDasharray="2" />
                 </g>
               ))}
             </svg>
@@ -167,18 +167,18 @@ export function FlowStateDiagram() {
             />
 
             {/* Axis labels */}
-            <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] text-white/50 pointer-events-none">
+            <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] text-[var(--viz-muted)] pointer-events-none">
               SKILL LEVEL &rarr;
             </div>
-            <div className="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 text-[9px] text-white/50 whitespace-nowrap pointer-events-none">
+            <div className="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 text-[9px] text-[var(--viz-muted)] whitespace-nowrap pointer-events-none">
               CHALLENGE &rarr;
             </div>
           </div>
 
           {/* Sliders */}
           <div className="w-full max-w-xs space-y-3">
-            <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-              <div className="flex justify-between text-xs text-white/60 mb-1">
+            <div className="p-3 rounded-xl bg-[var(--viz-tile)] border border-[var(--viz-border)]">
+              <div className="flex justify-between text-xs text-[var(--viz-secondary)] mb-1">
                 <span>Skill Level</span>
                 <span className="text-blue-400">{skillLevel}%</span>
               </div>
@@ -191,8 +191,8 @@ export function FlowStateDiagram() {
                 className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer accent-blue-500 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-blue-500 [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(59,130,246,0.5)]"
               />
             </div>
-            <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-              <div className="flex justify-between text-xs text-white/60 mb-1">
+            <div className="p-3 rounded-xl bg-[var(--viz-tile)] border border-[var(--viz-border)]">
+              <div className="flex justify-between text-xs text-[var(--viz-secondary)] mb-1">
                 <span>Challenge Level</span>
                 <span className="text-amber-400">{challengeLevel}%</span>
               </div>
@@ -213,18 +213,18 @@ export function FlowStateDiagram() {
               key={currentZone.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="relative overflow-hidden text-center p-3 rounded-xl max-w-xs border border-white/[0.08]"
+              className="relative overflow-hidden text-center p-3 rounded-xl max-w-xs border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <div className="text-sm font-bold mb-1" style={{ color: currentZone.color }}>
                 Current State: {currentZone.label}
               </div>
-              <p className="text-xs text-white/60">{currentZone.description}</p>
+              <p className="text-xs text-[var(--viz-secondary)]">{currentZone.description}</p>
             </motion.div>
           )}
 
-          <p className="text-[10px] text-white/50 text-center">
+          <p className="text-[10px] text-[var(--viz-muted)] text-center">
             Adjust the sliders to explore different mental states
           </p>
         </div>

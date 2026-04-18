@@ -21,19 +21,19 @@ export function SafetyRestoration() {
   const [selectedTool, setSelectedTool] = useState<number | null>(null);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
           {/* Phase toggle */}
           <div className="relative overflow-hidden flex rounded-lg p-1">
-            <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-sm" />
-            <div className="absolute inset-0 border border-white/[0.08] rounded-lg" />
+            <div className="absolute inset-0 bg-[var(--viz-tile)] backdrop-blur-sm" />
+            <div className="absolute inset-0 border border-[var(--viz-border)] rounded-lg" />
             <button
               onClick={() => { setPhase('detect'); setDetectedSignal(null); }}
               className={`relative z-10 px-4 py-2 rounded-lg text-xs transition-all ${
@@ -92,7 +92,7 @@ export function SafetyRestoration() {
                         ? signal.type === 'silence'
                           ? 'bg-blue-500/20 border-blue-500/50'
                           : 'bg-red-500/20 border-red-500/50'
-                        : 'bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15]'
+                        : 'bg-[var(--viz-tile)] border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
                     }`}
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.01] to-transparent" />
@@ -147,7 +147,7 @@ export function SafetyRestoration() {
                     className={`relative overflow-hidden w-full p-3 rounded-lg border text-left transition-all ${
                       selectedTool === idx
                         ? 'bg-green-500/10 border-green-500/50'
-                        : 'bg-white/[0.03] border-white/[0.08] hover:border-white/[0.15]'
+                        : 'bg-[var(--viz-tile)] border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
                     }`}
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.01] to-transparent" />
@@ -160,7 +160,7 @@ export function SafetyRestoration() {
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
-                          className="mt-2 p-2 bg-black/30 rounded text-[10px] text-gray-400 italic backdrop-blur-sm"
+                          className="mt-2 p-2 bg-[var(--viz-inner)] rounded text-[10px] text-gray-400 italic backdrop-blur-sm"
                         >
                           "{tool.example}"
                         </motion.div>

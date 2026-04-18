@@ -81,12 +81,12 @@ export function ConfirmationBias() {
     : 0;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Glass layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-pink-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -98,8 +98,8 @@ export function ConfirmationBias() {
             <Eye className="w-4 h-4 text-purple-400" />
           </div>
           <div>
-            <h3 className="text-sm font-medium text-white/90">Confirmation Bias</h3>
-            <p className="text-[10px] text-white/50">From Thinking, Fast and Slow</p>
+            <h3 className="text-sm font-medium text-[var(--viz-secondary)]">Confirmation Bias</h3>
+            <p className="text-[10px] text-[var(--viz-muted)]">From Thinking, Fast and Slow</p>
           </div>
         </div>
 
@@ -116,7 +116,7 @@ export function ConfirmationBias() {
                 className={`text-[10px] px-3 py-1.5 rounded-full transition-all border ${
                   activeScenario === index
                     ? 'bg-purple-500/20 text-purple-400 border-purple-500/30'
-                    : 'text-white/50 hover:text-white/70 border-transparent'
+                    : 'text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] border-transparent'
                 }`}
               >
                 {s.belief.split(' ').slice(0, 3).join(' ')}...
@@ -132,7 +132,7 @@ export function ConfirmationBias() {
 
           {/* Evidence cards */}
           <div className="w-full max-w-xs space-y-2">
-            <p className="text-[10px] text-white/50 uppercase tracking-wide">
+            <p className="text-[10px] text-[var(--viz-muted)] uppercase tracking-wide">
               Evidence ({revealedEvidence.length}/{scenario.evidence.length}) - Select what you'd focus on:
             </p>
 
@@ -149,13 +149,13 @@ export function ConfirmationBias() {
                     className={`relative w-full p-2 rounded-lg border text-left text-xs transition-all overflow-hidden ${
                       selectedEvidence.includes(evidence.id)
                         ? 'bg-white/10 border-white/30'
-                        : 'border-white/[0.08] hover:border-white/[0.15]'
+                        : 'border-[var(--viz-border)] hover:border-[var(--viz-border-light)]'
                     } ${showAnalysis ? 'cursor-default' : 'cursor-pointer'}`}
                     style={!selectedEvidence.includes(evidence.id) ? { background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' } : undefined}
                   >
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                     <div className="flex items-center justify-between">
-                      <span className={selectedEvidence.includes(evidence.id) ? 'text-white' : 'text-white/60'}>
+                      <span className={selectedEvidence.includes(evidence.id) ? 'text-[var(--viz-text)]' : 'text-[var(--viz-secondary)]'}>
                         {evidence.text}
                       </span>
                       {showAnalysis && (
@@ -175,8 +175,8 @@ export function ConfirmationBias() {
             {revealedEvidence.length < scenario.evidence.length && !showAnalysis && (
               <button
                 onClick={revealNext}
-                className="w-full py-2 border border-dashed border-white/[0.15] rounded-lg
-                         text-xs text-white/50 hover:text-white/70 hover:border-white/[0.25]"
+                className="w-full py-2 border border-dashed border-[var(--viz-border-light)] rounded-lg
+                         text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] hover:border-white/[0.25]"
               >
                 Reveal next evidence
               </button>
@@ -203,11 +203,11 @@ export function ConfirmationBias() {
             >
               {/* Bias meter */}
               <div
-                className="relative border border-white/[0.08] rounded-lg p-3 overflow-hidden"
+                className="relative border border-[var(--viz-border)] rounded-lg p-3 overflow-hidden"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                <p className="text-[10px] text-white/50 mb-2 text-center">Your selection bias</p>
+                <p className="text-[10px] text-[var(--viz-muted)] mb-2 text-center">Your selection bias</p>
                 <div
                   className="h-4 rounded-full overflow-hidden flex"
                   style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
@@ -242,7 +242,7 @@ export function ConfirmationBias() {
 
               <button
                 onClick={reset}
-                className="w-full py-2 text-xs text-white/50 hover:text-white/70"
+                className="w-full py-2 text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)]"
               >
                 Try again
               </button>
@@ -251,11 +251,11 @@ export function ConfirmationBias() {
 
           {/* Key insight */}
           <div
-            className="relative border border-white/[0.08] rounded-lg p-3 max-w-xs text-center overflow-hidden"
+            className="relative border border-[var(--viz-border)] rounded-lg p-3 max-w-xs text-center overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60">
+            <p className="text-xs text-[var(--viz-secondary)]">
               <span className="text-purple-400 font-medium">Defense:</span> Actively seek
               disconfirming evidence. Ask "What would prove me wrong?"
             </p>

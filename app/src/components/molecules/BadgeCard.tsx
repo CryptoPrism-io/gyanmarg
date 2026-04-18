@@ -1,5 +1,14 @@
 import { motion } from 'framer-motion';
-import type { Badge } from '@/data/badges';
+import {
+  Flame,
+  BookOpen,
+  Zap,
+  BookMarked,
+  RotateCw,
+  Award,
+  type LucideIcon,
+} from 'lucide-react';
+import type { Badge, BadgeCategory } from '@/data/badges';
 
 interface BadgeCardProps {
   badge: Badge;
@@ -9,51 +18,57 @@ interface BadgeCardProps {
   showProgress?: boolean;
 }
 
+// ── Category → Icon mapping ──────────────────────────────────────────────────
+const categoryIconMap: Record<BadgeCategory, LucideIcon> = {
+  streak:  Flame,
+  module:  BookOpen,
+  xp:      Zap,
+  lesson:  BookMarked,
+  review:  RotateCw,
+  special: Award,
+};
+
+// ── Tier colour tokens ────────────────────────────────────────────────────────
 const tierColors = {
   bronze: {
-    bg: 'from-amber-800/30 to-amber-900/10',
-    border: 'border-amber-700/25',
-    text: 'text-amber-500',
-    bar: 'bg-amber-500',
-    glow: 'shadow-amber-500/15',
-    ring: 'ring-amber-500/20',
-    shimmer: false,
+    stripe: 'bg-amber-500',
+    text:   'text-amber-500',
+    icon:   'text-amber-500',
+    bar:    'bg-amber-500',
+    pill:   'bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400',
+    ring:   'ring-amber-500/20',
   },
   silver: {
-    bg: 'from-slate-400/20 to-slate-600/10',
-    border: 'border-slate-400/25',
-    text: 'text-slate-300',
-    bar: 'bg-slate-400',
-    glow: 'shadow-slate-400/15',
-    ring: 'ring-slate-400/20',
-    shimmer: false,
+    stripe: 'bg-slate-400',
+    text:   'text-slate-400',
+    icon:   'text-slate-400',
+    bar:    'bg-slate-400',
+    pill:   'bg-slate-100 text-slate-600 dark:bg-slate-400/10 dark:text-slate-300',
+    ring:   'ring-slate-400/20',
   },
   gold: {
-    bg: 'from-yellow-500/25 to-amber-600/10',
-    border: 'border-yellow-500/30',
-    text: 'text-yellow-400',
-    bar: 'bg-yellow-400',
-    glow: 'shadow-yellow-500/20',
-    ring: 'ring-yellow-400/25',
-    shimmer: false,
+    stripe: 'bg-yellow-500',
+    text:   'text-yellow-500',
+    icon:   'text-yellow-500',
+    bar:    'bg-yellow-500',
+    pill:   'bg-yellow-50 text-yellow-600 dark:bg-yellow-500/10 dark:text-yellow-400',
+    ring:   'ring-yellow-500/20',
   },
   platinum: {
-    bg: 'from-cyan-400/20 to-teal-500/10',
-    border: 'border-cyan-400/30',
-    text: 'text-cyan-300',
-    bar: 'bg-cyan-400',
-    glow: 'shadow-cyan-400/20',
-    ring: 'ring-cyan-300/25',
-    shimmer: true,
+    stripe: 'bg-cyan-500',
+    text:   'text-cyan-500',
+    icon:   'text-cyan-500',
+    bar:    'bg-cyan-500',
+    pill:   'bg-cyan-50 text-cyan-600 dark:bg-cyan-500/10 dark:text-cyan-400',
+    ring:   'ring-cyan-500/20',
   },
   diamond: {
-    bg: 'from-purple-500/25 to-violet-600/10',
-    border: 'border-purple-400/30',
-    text: 'text-purple-300',
-    bar: 'bg-purple-400',
-    glow: 'shadow-purple-500/25',
-    ring: 'ring-purple-400/30',
-    shimmer: true,
+    stripe: 'bg-purple-500',
+    text:   'text-purple-500',
+    icon:   'text-purple-500',
+    bar:    'bg-purple-500',
+    pill:   'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-400',
+    ring:   'ring-purple-500/20',
   },
 };
 
@@ -62,7 +77,7 @@ function timeAgo(dateStr: string): string {
   const days = Math.floor(diff / 86400000);
   if (days === 0) return 'Today';
   if (days === 1) return 'Yesterday';
-  if (days < 7) return `${days}d ago`;
+  if (days < 7)  return `${days}d ago`;
   if (days < 30) return `${Math.floor(days / 7)}w ago`;
   if (days < 365) return `${Math.floor(days / 30)}mo ago`;
   return `${Math.floor(days / 365)}y ago`;
@@ -76,47 +91,38 @@ export default function BadgeCard({
   showProgress = true,
 }: BadgeCardProps) {
   const tier = tierColors[badge.tier];
+  const Icon = categoryIconMap[badge.category];
   const isHero = size === 'hero';
 
-  // --- HERO variant (for Hall of Fame featured badges) ---
+  // ── HERO variant (Hall of Fame) ───────────────────────────────────────────
   if (isHero) {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 24 }}
-        className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${tier.bg} border ${tier.border} ${tier.glow} shadow-xl p-5`}
+        transition={{ type: 'spring', stiffness: 220, damping: 26 }}
+        className="relative overflow-hidden rounded-xl bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm flex"
       >
-        {/* Shimmer overlay for platinum/diamond */}
-        {tier.shimmer && (
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <motion.div
-              className="absolute -inset-full bg-gradient-to-r from-transparent via-white/[0.04] to-transparent skew-x-12"
-              animate={{ x: ['-200%', '200%'] }}
-              transition={{ duration: 3, repeat: Infinity, repeatDelay: 2, ease: 'linear' }}
-            />
-          </div>
-        )}
+        {/* Left tier stripe */}
+        <div className={`w-[3px] shrink-0 ${tier.stripe}`} />
 
-        {/* Decorative glows */}
-        <div className={`absolute -top-8 -right-8 w-28 h-28 rounded-full blur-3xl opacity-20 bg-gradient-to-br ${tier.bg}`} />
-        <div className={`absolute -bottom-8 -left-8 w-20 h-20 rounded-full blur-2xl opacity-15 bg-gradient-to-br ${tier.bg}`} />
-
-        <div className="relative flex items-center gap-4">
-          {/* Large icon */}
-          <div className="text-5xl shrink-0 drop-shadow-lg">
-            {badge.icon}
+        <div className="flex items-center gap-3.5 p-4 flex-1 min-w-0">
+          {/* Icon box */}
+          <div className={`w-11 h-11 rounded-xl bg-black/[0.04] dark:bg-white/[0.05] ring-1 ${tier.ring} flex items-center justify-center shrink-0`}>
+            <Icon className={`w-5 h-5 ${tier.icon}`} />
           </div>
+
+          {/* Text */}
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 mb-1">
-              <h3 className="text-lg font-display font-bold text-text-primary truncate">{badge.name}</h3>
-              <span className={`shrink-0 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${tier.text} bg-black/25 border ${tier.border}`}>
+            <div className="flex items-center gap-2 mb-0.5">
+              <h3 className="text-sm font-semibold text-text-primary truncate">{badge.name}</h3>
+              <span className={`shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-px rounded-full ${tier.pill}`}>
                 {badge.tier}
               </span>
             </div>
-            <p className="text-xs text-white/50 leading-relaxed">{badge.description}</p>
+            <p className="text-[11px] text-text-secondary leading-relaxed truncate">{badge.description}</p>
             {badge.unlockedAt && (
-              <p className="text-[10px] text-white/30 mt-1.5">Earned {timeAgo(badge.unlockedAt)}</p>
+              <p className="text-[10px] text-text-muted mt-0.5">Earned {timeAgo(badge.unlockedAt)}</p>
             )}
           </div>
         </div>
@@ -124,104 +130,82 @@ export default function BadgeCard({
     );
   }
 
-  // --- STANDARD variants (sm, md, lg) ---
+  // ── STANDARD variants (sm, md, lg) ───────────────────────────────────────
   const compact = size === 'sm';
-  const large = size === 'lg';
+  const large   = size === 'lg';
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.92 }}
+      initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ type: 'spring', stiffness: 250, damping: 22 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 24 }}
       className={`
-        relative overflow-hidden rounded-xl
-        ${compact ? 'p-3' : large ? 'p-4' : 'p-3.5'}
-        ${unlocked
-          ? `bg-gradient-to-br ${tier.bg} border ${tier.border} ${tier.glow} shadow-lg hover:shadow-xl`
-          : 'bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.1]'
-        }
-        transition-all duration-300 group
+        relative overflow-hidden rounded-xl flex
+        bg-surface border border-black/[0.06] dark:border-white/[0.07] shadow-sm
+        ${unlocked ? '' : 'opacity-50'}
+        transition-opacity duration-300
       `}
     >
-      {/* Shimmer for unlocked platinum/diamond */}
-      {unlocked && tier.shimmer && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            className="absolute -inset-full bg-gradient-to-r from-transparent via-white/[0.03] to-transparent skew-x-12"
-            animate={{ x: ['-200%', '200%'] }}
-            transition={{ duration: 4, repeat: Infinity, repeatDelay: 3, ease: 'linear' }}
-          />
-        </div>
-      )}
+      {/* Left tier stripe — only for unlocked */}
+      {unlocked && <div className={`w-[2px] shrink-0 ${tier.stripe}`} />}
+      {!unlocked && <div className="w-[2px] shrink-0 bg-black/[0.06] dark:bg-white/[0.06]" />}
 
-      <div className="relative flex items-center gap-3">
-        {/* Icon */}
+      <div className={`flex items-center gap-3 flex-1 min-w-0 ${compact ? 'p-2.5' : large ? 'p-4' : 'p-3'}`}>
+        {/* Icon box */}
         <div className={`
-          ${compact ? 'text-2xl w-10 h-10' : large ? 'text-3xl w-14 h-14' : 'text-2xl w-11 h-11'}
-          shrink-0 rounded-xl flex items-center justify-center
+          ${compact ? 'w-8 h-8' : large ? 'w-12 h-12' : 'w-9 h-9'}
+          shrink-0 rounded-lg flex items-center justify-center
           ${unlocked
-            ? `bg-white/[0.06] ring-1 ${tier.ring}`
-            : 'bg-white/[0.03] ring-1 ring-white/[0.05]'
+            ? `bg-black/[0.04] dark:bg-white/[0.05] ring-1 ${tier.ring}`
+            : 'bg-black/[0.03] dark:bg-white/[0.03]'
           }
-          transition-all duration-300
         `}>
-          <span className={unlocked ? '' : 'grayscale opacity-25'}>
-            {badge.icon}
-          </span>
+          <Icon className={`${compact ? 'w-3.5 h-3.5' : large ? 'w-5 h-5' : 'w-4 h-4'} ${unlocked ? tier.icon : 'text-text-muted'}`} />
         </div>
 
         {/* Info */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">
-            <h3 className={`${compact ? 'text-xs' : 'text-sm'} font-semibold truncate ${unlocked ? 'text-text-primary' : 'text-white/35'}`}>
+            <h3 className={`${compact ? 'text-xs' : 'text-sm'} font-semibold truncate text-text-primary`}>
               {badge.name}
             </h3>
-            <span className={`
-              shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-px rounded-full
-              ${unlocked
-                ? `${tier.text} bg-black/20`
-                : 'text-white/20 bg-white/[0.03]'
-              }
-            `}>
-              {badge.tier}
-            </span>
+            {unlocked && (
+              <span className={`shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-px rounded-full ${tier.pill}`}>
+                {badge.tier}
+              </span>
+            )}
           </div>
 
-          {/* Unlocked: show relative time */}
+          {/* Unlocked: earned date */}
           {unlocked && badge.unlockedAt && (
-            <p className="text-[10px] text-white/30 mt-0.5">{timeAgo(badge.unlockedAt)}</p>
+            <p className="text-[10px] text-text-muted mt-0.5">{timeAgo(badge.unlockedAt)}</p>
           )}
 
-          {/* Locked: show progress bar */}
+          {/* Locked: progress bar */}
           {!unlocked && showProgress && (
             <div className="mt-1.5">
               <div className="flex items-center gap-2">
-                <div className="flex-1 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+                <div className="flex-1 h-1 rounded-full bg-black/[0.06] dark:bg-white/[0.06] overflow-hidden">
                   <motion.div
-                    className={`h-full rounded-full ${progress > 0 ? tier.bar : ''} ${progress >= 75 ? 'opacity-100' : 'opacity-70'}`}
+                    className={`h-full rounded-full ${progress > 0 ? tier.bar : 'bg-text-muted/30'}`}
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
                     transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.2 }}
                   />
                 </div>
-                <span className={`text-[10px] font-medium shrink-0 ${progress >= 75 ? tier.text : 'text-white/30'}`}>
+                <span className="text-[10px] font-medium shrink-0 text-text-muted tabular-nums">
                   {Math.round(progress)}%
                 </span>
               </div>
             </div>
           )}
 
-          {/* Locked with 0 progress: show description */}
+          {/* Locked with no progress: description */}
           {!unlocked && (!showProgress || progress === 0) && (
-            <p className="text-[10px] text-white/20 mt-0.5 truncate">{badge.description}</p>
+            <p className="text-[10px] text-text-muted mt-0.5 truncate">{badge.description}</p>
           )}
         </div>
       </div>
-
-      {/* Decorative glow - unlocked only */}
-      {unlocked && (
-        <div className={`absolute -bottom-4 -right-4 w-16 h-16 rounded-full blur-2xl opacity-15 bg-gradient-to-br ${tier.bg}`} />
-      )}
     </motion.div>
   );
 }

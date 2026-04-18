@@ -91,12 +91,12 @@ export function BeWater() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-cyan-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-5">
@@ -468,7 +468,7 @@ export function BeWater() {
           key={`challenge-${scenario.id}`}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3 backdrop-blur-sm"
+          className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-3 backdrop-blur-sm"
         >
           <p className="text-[10px] text-gray-500 uppercase tracking-wide mb-1">
             {scenario.icon} Challenge: {scenario.name}
@@ -520,7 +520,7 @@ export function BeWater() {
       </div>
 
       {/* Bruce Lee quote */}
-      <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 max-w-xs backdrop-blur-sm">
+      <div className="bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl p-4 max-w-xs backdrop-blur-sm">
         <p className="text-xs text-gray-300 italic text-center leading-relaxed">
           "Empty your mind. Be formless, shapeless—like water. Water can flow, or it can crash.
           Be water, my friend."
@@ -541,7 +541,7 @@ export function BeWater() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="p-2 bg-white/[0.03] border border-white/[0.08] rounded-xl text-center backdrop-blur-sm"
+            className="p-2 bg-[var(--viz-tile)] border border-[var(--viz-border)] rounded-xl text-center backdrop-blur-sm"
           >
             <span className="text-lg">{p.icon}</span>
             <p className="text-[10px] text-blue-400 font-medium">{p.title}</p>

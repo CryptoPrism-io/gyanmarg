@@ -130,12 +130,12 @@ export function SleepArchitecture() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.03] via-transparent to-blue-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         {/* Header */}
@@ -151,13 +151,13 @@ export function SleepArchitecture() {
         <div className="flex flex-col items-center gap-5">
           {/* Hypnogram visualization */}
           <div className="w-full max-w-xs">
-            <div className="flex justify-between items-center text-[10px] text-white/50 mb-2">
+            <div className="flex justify-between items-center text-[10px] text-[var(--viz-muted)] mb-2">
               <span>10 PM</span>
               <span className="text-purple-400 font-medium">Sleep Hypnogram</span>
               <span>6 AM</span>
             </div>
 
-            <div className="relative h-32 rounded-xl overflow-hidden border border-white/[0.08]"
+            <div className="relative h-32 rounded-xl overflow-hidden border border-[var(--viz-border)]"
               style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%)' }}
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -175,7 +175,7 @@ export function SleepArchitecture() {
               ))}
 
               {/* Y-axis labels */}
-              <div className="absolute left-1 top-0 bottom-0 flex flex-col justify-between py-2 text-[7px] text-white/40">
+              <div className="absolute left-1 top-0 bottom-0 flex flex-col justify-between py-2 text-[7px] text-[var(--viz-muted)]">
                 <span>Awake</span>
                 <span>Light</span>
                 <span>REM</span>
@@ -192,7 +192,7 @@ export function SleepArchitecture() {
                     y1="0"
                     x2={(cycle * 56)}
                     y2="100"
-                    stroke="rgba(255,255,255,0.1)"
+                    stroke="var(--viz-grid)"
                     strokeWidth="0.5"
                     strokeDasharray="2,2"
                   />
@@ -251,7 +251,7 @@ export function SleepArchitecture() {
               />
 
               {/* Cycle indicators */}
-              <div className="absolute top-1 right-2 text-[8px] text-white/50">
+              <div className="absolute top-1 right-2 text-[8px] text-[var(--viz-muted)]">
                 Cycle {currentCycle}/5
               </div>
             </div>
@@ -278,12 +278,12 @@ export function SleepArchitecture() {
                     <p className="text-sm font-semibold" style={{ color: currentStage.color }}>
                       {currentStage.name}
                     </p>
-                    <p className="text-[10px] text-white/50">{currentStage.duration} of night</p>
+                    <p className="text-[10px] text-[var(--viz-muted)]">{currentStage.duration} of night</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-white">{hoursSlept}h</p>
-                  <p className="text-[10px] text-white/50">slept</p>
+                  <p className="text-lg font-bold text-[var(--viz-text)]">{hoursSlept}h</p>
+                  <p className="text-[10px] text-[var(--viz-muted)]">slept</p>
                 </div>
               </div>
 
@@ -291,7 +291,7 @@ export function SleepArchitecture() {
                 {currentStage.benefits.slice(0, 4).map((benefit, idx) => (
                   <div
                     key={idx}
-                    className="text-[10px] text-white/60 flex items-center gap-1"
+                    className="text-[10px] text-[var(--viz-secondary)] flex items-center gap-1"
                   >
                     <span style={{ color: currentStage.color }}>•</span>
                     {benefit}
@@ -303,8 +303,8 @@ export function SleepArchitecture() {
 
           {/* Stage time breakdown */}
           <div className="w-full max-w-xs">
-            <p className="text-[10px] text-white/50 mb-2 text-center">Time in each stage</p>
-            <div className="flex gap-1 h-8 rounded-lg overflow-hidden border border-white/[0.08]">
+            <p className="text-[10px] text-[var(--viz-muted)] mb-2 text-center">Time in each stage</p>
+            <div className="flex gap-1 h-8 rounded-lg overflow-hidden border border-[var(--viz-border)]">
               {stages.map((stage, idx) => {
                 const minutes = stageTime[idx] || 0;
                 const percentage = currentPosition > 0 ? (minutes / (parseFloat(hoursSlept) * 60)) * 100 : 0;
@@ -318,7 +318,7 @@ export function SleepArchitecture() {
                     onClick={() => setSelectedStage(selectedStage === idx ? null : idx)}
                   >
                     {percentage > 15 && (
-                      <span className="absolute inset-0 flex items-center justify-center text-[8px] text-white font-medium">
+                      <span className="absolute inset-0 flex items-center justify-center text-[8px] text-[var(--viz-text)] font-medium">
                         {Math.round(minutes)}m
                       </span>
                     )}
@@ -333,7 +333,7 @@ export function SleepArchitecture() {
                     className="w-2 h-2 rounded-full"
                     style={{ backgroundColor: stage.color }}
                   />
-                  <span className="text-[8px] text-white/50">{stage.shortName}</span>
+                  <span className="text-[8px] text-[var(--viz-muted)]">{stage.shortName}</span>
                 </div>
               ))}
             </div>
@@ -356,8 +356,8 @@ export function SleepArchitecture() {
             {currentPosition > 0 && (
               <button
                 onClick={reset}
-                className="px-4 py-3 border border-white/[0.08] text-white/60
-                         rounded-xl text-xs hover:border-white/20 hover:text-white/80 transition-all"
+                className="px-4 py-3 border border-[var(--viz-border)] text-[var(--viz-secondary)]
+                         rounded-xl text-xs hover:border-white/20 hover:text-[var(--viz-secondary)] transition-all"
                 style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
               >
                 Reset
@@ -368,7 +368,7 @@ export function SleepArchitecture() {
           {/* Sleep science toggle */}
           <button
             onClick={() => setShowDetails(!showDetails)}
-            className="text-xs text-white/50 hover:text-white/80 transition-colors"
+            className="text-xs text-[var(--viz-muted)] hover:text-[var(--viz-secondary)] transition-colors"
           >
             {showDetails ? 'Hide' : 'Show'} sleep science
           </button>
@@ -386,7 +386,7 @@ export function SleepArchitecture() {
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent" />
                   <p className="text-[10px] text-purple-400 font-medium mb-1">Deep Sleep Pattern</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     Deep sleep is concentrated in the first half of the night. Go to bed early to maximize it.
                   </p>
                 </div>
@@ -395,7 +395,7 @@ export function SleepArchitecture() {
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-400/30 to-transparent" />
                   <p className="text-[10px] text-green-400 font-medium mb-1">REM Pattern</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     REM increases toward morning. Cutting sleep short means losing crucial REM time for memory.
                   </p>
                 </div>
@@ -404,7 +404,7 @@ export function SleepArchitecture() {
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
                   <p className="text-[10px] text-blue-400 font-medium mb-1">Sleep Cycles</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     Each cycle is ~90 minutes. Plan sleep in cycles: 6h (4 cycles), 7.5h (5 cycles), 9h (6 cycles).
                   </p>
                 </div>
@@ -413,7 +413,7 @@ export function SleepArchitecture() {
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400/30 to-transparent" />
                   <p className="text-[10px] text-amber-400 font-medium mb-1">Sleep Debt</p>
-                  <p className="text-[10px] text-white/60">
+                  <p className="text-[10px] text-[var(--viz-secondary)]">
                     You can't "catch up" on sleep. Missing deep sleep or REM causes irreversible cognitive loss.
                   </p>
                 </div>
@@ -422,18 +422,18 @@ export function SleepArchitecture() {
           </AnimatePresence>
 
           {/* Key insight */}
-          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-white/[0.08]"
+          <div className="relative overflow-hidden rounded-xl p-4 max-w-xs border border-[var(--viz-border)]"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <p className="text-xs text-white/60 leading-relaxed">
+            <p className="text-xs text-[var(--viz-secondary)] leading-relaxed">
               <span className="text-purple-400 font-medium">Matthew Walker:</span> "Sleep is the single
               most effective thing we can do to reset our brain and body health each day. It's not
               optional—it's your life-support system."
             </p>
           </div>
 
-          <p className="text-[10px] text-white/40">
+          <p className="text-[10px] text-[var(--viz-muted)]">
             From Why We Sleep by Matthew Walker
           </p>
         </div>

@@ -50,12 +50,12 @@ export function StressRecoveryBalance() {
   const colors = colorMap[zone.color];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <div className="relative overflow-hidden rounded-2xl bg-[var(--viz-bg)]">
       {/* Dark Glassmorphism background - 88% transparent */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.12] via-black/[0.08] to-black/[0.05] backdrop-blur-md" />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-green-500/[0.02]" />
-      <div className="absolute inset-0 border border-white/[0.1] rounded-2xl" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 border border-[var(--viz-border-light)] rounded-2xl" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--viz-line)] to-transparent" />
 
       <div className="relative z-10 p-5">
         <div className="flex flex-col items-center gap-4">
@@ -74,7 +74,7 @@ export function StressRecoveryBalance() {
 
             {/* Balance beam */}
             <motion.div
-              className="absolute bottom-5 left-0 right-0 h-3 bg-white/[0.15] rounded-full origin-center"
+              className="absolute bottom-5 left-0 right-0 h-3 bg-[var(--viz-tile-md)] rounded-full origin-center"
               style={{ transform: `rotate(${(stress - 50) * 0.3}deg)` }}
             >
               {/* Stress weight */}
@@ -139,7 +139,7 @@ export function StressRecoveryBalance() {
                 className={`p-2 rounded-lg border text-center backdrop-blur-sm ${
                   z.name === zone.name
                     ? `${colorMap[z.color].bg} ${colorMap[z.color].border}`
-                    : 'bg-white/[0.03] border-white/[0.08]'
+                    : 'bg-[var(--viz-tile)] border-[var(--viz-border)]'
                 }`}
               >
                 <p className={`text-[10px] ${z.name === zone.name ? colorMap[z.color].text : 'text-gray-500'}`}>
@@ -150,7 +150,7 @@ export function StressRecoveryBalance() {
           </div>
 
           {/* Key insight */}
-          <div className="w-full max-w-xs bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-lg p-3">
+          <div className="w-full max-w-xs bg-[var(--viz-tile)] backdrop-blur-sm border border-[var(--viz-border)] rounded-lg p-3">
             <p className="text-[10px] text-gray-400 text-center">
               <span className="text-purple-400">Elite secret:</span> Growth doesn't happen during stress—
               it happens during recovery. But you need the stress first to trigger adaptation.

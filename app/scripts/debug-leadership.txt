@@ -1,0 +1,84 @@
+[
+  {
+    "front": "What is the key distinction Peter Drucker made between \"management\" and \"leadership,\" and why does an organization need both?",
+    "back": "Management is \"doing things right\" (optimizing systems, efficiency), while leadership is \"doing the right things\" (choosing direction, inspiring change). Organizations need both to be efficient in execution and effective in strategy.",
+    "difficulty": "beginner",
+    "tags": ["leadership-management", "drucker", "core-principles"]
+  },
+  {
+    "front": "Beyond a title, what are the three core functions leaders perform to create environments where others can do their best work?",
+    "back": "Leaders provide direction (clarify vision), create alignment (unite diverse people), and build commitment (foster motivation). These functions enable collective achievement beyond individual effort.",
+    "difficulty": "beginner",
+    "tags": ["leadership-functions", "vision", "alignment", "commitment"]
+  },
+  {
+    "front": "According to Sylvia Ann Hewlett, what is the most significant pillar of executive presence, and how can a leader cultivate it under pressure?",
+    "back": "Gravitas is the most significant pillar (67%). Leaders cultivate it through grace under fire, decisiveness without arrogance, and emotional intelligence, demonstrating composure and competence when stakes are high.",
+    "difficulty": "intermediate",
+    "tags": ["executive-presence", "gravitas", "composure"]
+  },
+  {
+    "front": "What is the crucial difference between \"Type 1\" and \"Type 2\" decisions, and why should leaders avoid treating Type 2 decisions like Type 1?",
+    "back": "Type 1 decisions are irreversible or very costly to reverse, requiring careful analysis. Type 2 decisions are reversible and low-cost. Treating Type 2 decisions as Type 1 leads to analysis paralysis, organizational sclerosis, and missed opportunities.",
+    "difficulty": "intermediate",
+    "tags": ["decision-making", "type-1-type-2", "analysis-paralysis"]
+  },
+  {
+    "front": "Explain the \"Stockdale Paradox\" and why it's a vital mindset for leaders navigating severe crises.",
+    "back": "The Stockdale Paradox requires leaders to simultaneously confront the brutal facts of their current reality (no matter how grim) while maintaining unwavering faith that they will ultimately prevail. This dual mindset fosters realism without despair, enabling resilience.",
+    "difficulty": "advanced",
+    "tags": ["crisis-leadership", "stockdale-paradox", "resilience"]
+  },
+  {
+    "front": "Daniel Goleman's model of Emotional Intelligence identifies five key components. Which of these is considered the foundational pillar for all others?",
+    "back": "Self-awareness is the foundational pillar. It's the ability to recognize and understand your own emotions, strengths, weaknesses, and values, which is necessary before you can effectively regulate, empathize, or build social skills.",
+    "difficulty": "beginner",
+    "tags": ["emotional-intelligence", "self-awareness", "goleman"]
+  },
+  {
+    "front": "What is the difference between \"internal\" and \"external\" self-awareness, and why is the latter particularly crucial for a leader's growth?",
+    "back": "Internal self-awareness is how clearly you see your own values and reactions. External self-awareness is understanding how others perceive you. External self-awareness is crucial for leaders to identify blind spots and understand their true impact on the team, driving targeted growth.",
+    "difficulty": "intermediate",
+    "tags": ["self-awareness", "external-perception", "leadership-growth"]
+  },
+  {
+    "front": "How does \"cognitive reappraisal\" serve as an effective strategy for emotional regulation when a leader faces a stressful situation?",
+    "back": "Cognitive reappraisal involves reinterpreting the meaning of an emotional situation to change one's emotional response. Instead of seeing a setback as a disaster, reframing it as a learning opportunity helps a leader maintain composure and respond thoughtfully rather than reactively.",
+    "difficulty": "advanced",
+    "tags": ["emotional-regulation", "cognitive-reappraisal", "stress-management"]
+  },
+  {
+    "front": "Beyond just \"being nice,\" how does demonstrating \"compassionate empathy\" make a leader more impactful?",
+    "back": "Compassionate empathy goes beyond understanding (cognitive) or feeling (emotional) what another experiences; it moves the leader to take action to help. This active response builds deep trust, fosters loyalty, and translates empathy into tangible support for the team.",
+    "difficulty": "intermediate",
+    "tags": ["empathy", "compassionate-leadership", "trust-building"]
+  },
+  {
+    "front": "What is \"emotional contagion,\" and what responsibility does it place on leaders regarding their emotional displays?",
+    "back": "Emotional contagion is the unconscious tendency for emotions to spread within a group. Leaders have a profound responsibility to manage their emotional displays, as their moods (positive or negative) can significantly influence the entire team's emotional climate, morale, and performance.",
+    "difficulty": "beginner",
+    "tags": ["emotional-contagion", "leadership-impact", "team-dynamics"]
+  },
+  {
+    "front": "Why is storytelling a more powerful leadership tool for inspiration and connection than simply presenting facts and figures?",
+    "back": "Stories tap into emotions and activate more areas of the brain, making messages more memorable and relatable. They create shared meaning, foster empathy, and can trigger neurochemicals like oxytocin, making an audience more receptive and inclined to act.",
+    "difficulty": "intermediate",
+    "tags": ["storytelling", "inspiration", "emotional-connection"]
+  },
+  {
+    "front": "According to Robert Cialdini, what is the principle of \"Commitment and Consistency,\" and how can a leader ethically leverage it?",
+    "back": "This principle states people align actions with public commitments. Leaders can ethically leverage it by seeking small, initial agreements (e.g., \"Do you agree quality matters?\") before requesting larger actions, building a pathway for consistent behavior.",
+    "difficulty": "intermediate",
+    "tags": ["persuasion", "cialdini", "commitment-consistency"]
+  },
+  {
+    "front": "When navigating difficult conversations, how does \"active listening\" contribute to building psychological safety and achieving better outcomes?",
+    "back": "Active listening involves fully concentrating, withholding judgment, and reflecting what's heard. It signals respect and genuine concern, making the speaker feel valued and safe to share, which is crucial for fostering shared understanding and constructive resolution in high-stakes discussions.",
+    "difficulty": "beginner",
+    "tags": ["active-listening", "difficult-conversations", "psychological-safety"]
+  },
+  {
+    "front": "How do Edward T. Hall's concepts of \"high-context\" and \"low-context\" communication cultures influence a global leader's approach to messaging?",
+    "back": "High-context cultures rely on implicit cues and shared understanding, while low-context cultures are direct and explicit. Global leaders must adapt by being more direct in low-context settings and more attuned to non-verbal cues and relationships in high-context ones to avoid misunderstandings.",
+    "difficulty": "advanced",
+    "tags": ["cross-cultural-communication", "high-low-context", "global-leadership"]

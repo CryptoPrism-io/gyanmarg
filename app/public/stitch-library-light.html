@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Polymind Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ffddb8",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-highest": "#e3e2e0",
+                        "surface-dim": "#dbdad7",
+                        "inverse-surface": "#2f312f",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "inverse-primary": "#ffb95f",
+                        "surface-variant": "#e3e2e0",
+                        "outline": "#867461",
+                        "on-primary-container": "#613b00",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-background": "#1a1c1a",
+                        "error-container": "#ffdad6",
+                        "surface": "#faf9f6",
+                        "primary": "#855300",
+                        "tertiary-fixed": "#e3e2e2",
+                        "on-primary-fixed": "#2a1700",
+                        "on-surface-variant": "#534434",
+                        "on-surface": "#1a1c1a",
+                        "primary-container": "#f59e0b",
+                        "secondary": "#5f5e5e",
+                        "on-primary-fixed-variant": "#653e00",
+                        "secondary-container": "#e2dfde",
+                        "outline-variant": "#d8c3ad",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#ffb95f",
+                        "tertiary": "#5e5e5e",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-container-high": "#e9e8e5",
+                        "surface-container": "#efeeeb",
+                        "surface-tint": "#855300",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "background": "#faf9f6",
+                        "on-secondary-container": "#636262",
+                        "surface-container-low": "#f4f3f1",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-on-surface": "#f2f1ee",
+                        "tertiary-container": "#b2b1b1",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-bright": "#faf9f6",
+                        "on-tertiary-container": "#434444"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "2px",
+                        "lg": "4px",
+                        "xl": "8px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .hairline { border-width: 0.5px; }
+        .material-symbols-outlined { font-size: 20px; vertical-align: middle; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-14 bg-surface border-b-[0.5px] border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface" data-icon="menu">menu</span>
+<span class="font-light tracking-[0.3em] text-sm text-on-surface">POLYMIND</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-surface" data-icon="search">search</span>
+<span class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] font-semibold text-primary-container">332 XP</span>
+</div>
+</header>
+<main class="pt-20 pb-24 px-6 max-w-screen-md mx-auto">
+<!-- Category Tabs -->
+<nav class="flex gap-8 overflow-x-auto no-scrollbar mb-10 pb-2">
+<div class="flex flex-col gap-2 shrink-0">
+<span class="font-semibold text-[10px] uppercase tracking-[0.2em] text-primary-container">All</span>
+<div class="h-[1px] w-full bg-primary-container"></div>
+</div>
+<span class="font-semibold text-[10px] uppercase tracking-[0.2em] text-secondary shrink-0">Mind</span>
+<span class="font-semibold text-[10px] uppercase tracking-[0.2em] text-secondary shrink-0">Technology</span>
+<span class="font-semibold text-[10px] uppercase tracking-[0.2em] text-secondary shrink-0">Wealth</span>
+<span class="font-semibold text-[10px] uppercase tracking-[0.2em] text-secondary shrink-0">Spirit</span>
+</nav>
+<!-- Continue Reading Section -->
+<section class="mb-12">
+<h2 class="font-semibold text-[10px] uppercase tracking-[0.2em] text-secondary mb-6">Continue Reading</h2>
+<div class="hairline border-outline-variant bg-surface-container-lowest p-6 rounded-lg">
+<div class="flex flex-col gap-1 mb-8">
+<h3 class="text-3xl font-light tracking-tight text-on-surface">The Architecture of Deep Focus</h3>
+<p class="text-secondary text-sm">Chapter 3: Flow States</p>
+</div>
+<div class="mb-8">
+<div class="h-[0.5px] w-full bg-outline-variant relative">
+<div class="absolute top-0 left-0 h-full bg-primary-container w-[40%]"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] font-semibold uppercase tracking-widest text-secondary">Progress</span>
+<span class="text-[10px] font-semibold uppercase tracking-widest text-primary-container">40%</span>
+</div>
+</div>
+<button class="bg-on-surface text-surface py-3 px-8 text-[10px] font-semibold uppercase tracking-[0.2em] rounded-[2px] hover:bg-primary-container transition-colors duration-300">
+                    Resume Reading
+                </button>
+</div>
+</section>
+<!-- Mind & Performance Section -->
+<section class="mb-12">
+<div class="flex justify-between items-baseline mb-6 border-b-[0.5px] border-outline-variant pb-4">
+<h2 class="font-semibold text-[10px] uppercase tracking-[0.2em] text-on-surface">Mind &amp; Performance</h2>
+<span class="font-semibold text-[10px] uppercase tracking-[0.2em] text-secondary">5 Available</span>
+</div>
+<!-- Module Card Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Card 1 -->
+<div class="hairline border-outline-variant bg-surface-container-lowest overflow-hidden flex flex-col group cursor-pointer rounded-lg">
+<div class="aspect-square bg-surface-container-high overflow-hidden">
+<img alt="Neuroplasticity" class="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="Abstract minimalist photography of architectural lines and soft shadows representing neural networks and structure" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQWhrG-yMihPzDMyYXnlTNsxJpTW83PdZSQgJA5BIBjLpd90YTwRA3SAjIbgIBmOcH-Kv8N1y9guExMLGRKflgWcmgT9_9cP4kKUM_YMdJEM0flJazonsEqOJBW_T7cgXzYFXyFFLylD-rTMt3slzVe5rvxkP1XMOutV6QXVGretJiBYmmcqe5c0wXEjcUZ8J21b3J8icXhG282OyLGfaVBeFQXLOj71wb6DjfoK01B3hn818yu0e7EoeTlLlN-mC4poBpa9r7_xUN"/>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<h4 class="font-semibold text-sm leading-tight text-on-surface">Neuroplasticity Fundamentals</h4>
+<p class="text-[10px] font-semibold uppercase tracking-widest text-secondary">1,245 XP · 24 Lessons</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="hairline border-outline-variant bg-surface-container-lowest overflow-hidden flex flex-col group cursor-pointer rounded-lg">
+<div class="aspect-square bg-surface-container-high overflow-hidden">
+<img alt="Meditation" class="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="Minimalist scene of a single ripple in a still dark pool of water under soft atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTDzkFXp57ze_x1bCGX_fzSc5SlieUznyqJKbvt3izDhlAWptv67ZAW42RtfTkoJv1MQRv7OUwZq2wm9YDCSJNVcEVfnWKXdx6hJKtnE9RFXqEYj-JHoDbkQo5VUeTQUQklhJ8dkFuHsmP79ssdK5hLT2xKRevzsCiCPMqxJ1EWkj3OCBrsa99IXdKf-ESyh8DLH68Ibg_ZwO9pZFkstLnlxidpBl4i285bi0ggCP1gGovN4iCZgH-mwgWK7hZG6PoOOPeUHJ1Uu3Q"/>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<h4 class="font-semibold text-sm leading-tight text-on-surface">The Void State Meditation</h4>
+<p class="text-[10px] font-semibold uppercase tracking-widest text-secondary">850 XP · 12 Lessons</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="hairline border-outline-variant bg-surface-container-lowest overflow-hidden flex flex-col group cursor-pointer rounded-lg">
+<div class="aspect-square bg-surface-container-high overflow-hidden">
+<img alt="Cognitive Load" class="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="Architectural detail of clean white concrete stairs creating a rhythmic geometric pattern of light and shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVE_B8Wac1gu-ki2UvgOsBA5Md0aT8-URvLmzCUHCl9euEawS2XS6SzMDrymre1o-NqGC5sN1XY8mD1Czsj3Y9MHvP61GI_8BIG_7enSFFF6Fx1e15dZucyvBaFfEMPRfPcYzuf2ipobca_ReliXo8lPxkstAR36Hj7zmVdi8xaSGDUrjtA8Gzf-1gp6y4Onlh9LOMWmKveTCcnu07FOU6ydXgrZtsJNppFDu5gi2bcbNPmXXzmUDgWMEClInI3x5NdlH5KJXsb0PI"/>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<h4 class="font-semibold text-sm leading-tight text-on-surface">Managing Cognitive Load</h4>
+<p class="text-[10px] font-semibold uppercase tracking-widest text-secondary">1,100 XP · 18 Lessons</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="hairline border-outline-variant bg-surface-container-lowest overflow-hidden flex flex-col group cursor-pointer rounded-lg">
+<div class="aspect-square bg-surface-container-high overflow-hidden">
+<img alt="Circadian Rhythms" class="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="Minimalist design aesthetic with a simple sphere and a single bar of golden sunlight hitting a textured off-white wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSKXHUfr36jHh8LSeC-GJclNfOsKkeaSfY-GWkQb4SgqJ-0wZkuLAFxmBQz7ROjiuLD2GkjUiNJyjEQt4h66pZJPNknM4UAYF3Mj09COAWmpyz6bKj5ks7JG5WcbSdT4zYqDxRaUHQJoCylvWLKmBm5o8pVeAtHABBBpIXbnxppyOzgq6wdXH-grtwdiXYxpf9rTcaDEHQVPcD9jC3ZHKRPA75B1uVNCmEOw4AIWfu1-hHqNo1fFzpYN9lwqqf_KQkb6vCqUeIWbMw"/>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<h4 class="font-semibold text-sm leading-tight text-on-surface">Circadian Rhythm Sync</h4>
+<p class="text-[10px] font-semibold uppercase tracking-widest text-secondary">920 XP · 10 Lessons</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 bg-surface border-t-[0.5px] border-outline-variant">
+<div class="text-primary-container flex flex-col items-center justify-center gap-1">
+<span class="material-symbols-outlined" data-icon="local_library">local_library</span>
+<span class="font-['Inter'] uppercase tracking-[0.1em] text-[10px] font-semibold">Library</span>
+</div>
+<div class="text-secondary flex flex-col items-center justify-center gap-1 hover:text-on-surface transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="center_focus_strong">center_focus_strong</span>
+<span class="font-['Inter'] uppercase tracking-[0.1em] text-[10px] font-semibold">Focus</span>
+</div>
+<div class="text-secondary flex flex-col items-center justify-center gap-1 hover:text-on-surface transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-['Inter'] uppercase tracking-[0.1em] text-[10px] font-semibold">Discover</span>
+</div>
+<div class="text-secondary flex flex-col items-center justify-center gap-1 hover:text-on-surface transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] uppercase tracking-[0.1em] text-[10px] font-semibold">Profile</span>
+</div>
+</nav>
+</body></html>
