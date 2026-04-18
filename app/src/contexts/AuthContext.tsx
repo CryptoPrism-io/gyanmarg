@@ -64,17 +64,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
   // Debounced sync function ref
   const debouncedSyncRef = useRef<(() => void) | null>(null);
 
-  // Track if we've already synced on this session (to avoid duplicate syncs)
-  // IMPORTANT: Store in localStorage instead of ref so it persists across page reloads
+  // Track if we've already synced in this session (to avoid reload loops)
+  // sessionStorage: persists through window.location.reload() in the same tab,
+  // but clears when the tab/app is closed — prevents the flag from getting stuck
+  // across sessions and blocking future syncs.
   const getHasAutoSynced = useCallback(() => {
-    return localStorage.getItem('gyanmarg-has-auto-synced') === 'true';
+    return sessionStorage.getItem('gyanmarg-has-auto-synced') === 'true';
   }, []);
 
   const setHasAutoSynced = useCallback((value: boolean) => {
     if (value) {
-      localStorage.setItem('gyanmarg-has-auto-synced', 'true');
+      sessionStorage.setItem('gyanmarg-has-auto-synced', 'true');
     } else {
-      localStorage.removeItem('gyanmarg-has-auto-synced');
+      sessionStorage.removeItem('gyanmarg-has-auto-synced');
     }
   }, []);
 
