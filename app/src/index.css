@@ -1195,3 +1195,8 @@ select:-webkit-autofill {
   filter: invert(0.92) hue-rotate(180deg) saturate(0.75) brightness(1.05);
   transition: filter 0.3s ease;
 }
+
+[data-theme="light"] .module-light-img {
+  filter: saturate(1.2) brightness(1.08) contrast(1.05);
+  transition: filter 0.3s ease;
+}

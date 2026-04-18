@@ -737,7 +737,7 @@ export function LearningPathway() {
                           <img
                             src={getModuleImageByTheme(selectedModule.id, theme)}
                             alt={selectedModule.title}
-                            className="w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover border-2 border-lavender/30 flex-shrink-0 shadow-lg"
+                            className="module-light-img w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover border-2 border-lavender/30 flex-shrink-0 shadow-lg"
                           />
                           <div className="flex-1 min-w-0">
                             <div className="flex items-start justify-between gap-4">
