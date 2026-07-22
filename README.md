@@ -131,18 +131,36 @@ npm run preview
 
 ### Automatic (CI/CD)
 
-Push to `master` triggers `.github/workflows/deploy.yml`, which builds `app/` and
-deploys to Firebase Hosting site `ai-polymind`. Authentication is keyless
-(Workload Identity Federation) — there is no service-account key to rotate.
+Push to `master` triggers `.github/workflows/deploy.yml`: one build, two targets.
+
+| Target | Serves | Auth |
+|---|---|---|
+| Firebase Hosting `ai-polymind` | `index.html` + `public/` | Workload Identity Federation |
+| S3 `gyanmarg-prod` + CloudFront `E1XLQPBNNEVOB8` | all hashed assets | AWS OIDC |
+
+Both are keyless — there is no service-account key or access key to rotate. The
+asset split keeps Firebase inside the Spark plan's daily transfer cap, which the
+full ~105 MB payload would otherwise exhaust in roughly 180 cold visits. See
+`CLAUDE.md` for the two constraints that make it work.
 
 The workflow is path-filtered: it only runs for changes under `app/**`,
 `firebase.json`, `firestore.rules`, or the workflow itself.
 
 ### Manual
 
+Prefer CI. A manual deploy must set `VITE_ASSET_BASE` and push the assets to S3 —
+building without it produces same-origin asset URLs, and since `firebase.json` no
+longer uploads `assets/`, the result is a white screen in production.
+
 ```bash
 cd app
-npm run build
+VITE_ASSET_BASE=https://d38xyhaonwcjz3.cloudfront.net/ npm run build
+
+# assets first — the HTML below references them
+aws s3 sync dist/ s3://gyanmarg-prod/ --exclude "*.html" \r
+  --cache-control "public,max-age=31536000,immutable"
+aws cloudfront create-invalidation --distribution-id E1XLQPBNNEVOB8 --paths "/" "/index.html"
+
 cd ..
 npx firebase-tools deploy --only hosting:ai-polymind --project social-data-pipeline-and-push
 ```
