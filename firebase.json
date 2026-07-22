@@ -18,19 +18,21 @@
     "site": "ai-polymind",
     "public": "app/dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "assets/**"],
+    "redirects": [
+      {
+        "source": "/assets/**",
+        "destination": "https://d38xyhaonwcjz3.cloudfront.net/assets/:splat",
+        "type": 302
+      }
+    ],
     "rewrites": [
       { "source": "**", "destination": "/index.html" }
     ],
     "headers": [
       {
-        "source": "/assets/**",
-        "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-        ]
-      },
-      {
         "source": "/**",
         "headers": [
+          { "key": "Cache-Control", "value": "no-cache" },
           { "key": "X-Frame-Options", "value": "DENY" },
           { "key": "X-Content-Type-Options", "value": "nosniff" },
           { "key": "X-XSS-Protection", "value": "1; mode=block" }
