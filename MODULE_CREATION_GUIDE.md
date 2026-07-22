@@ -4,7 +4,7 @@
 
 **Polymind** (Gyanmarg) is a gamified learning platform that transforms ebooks into interactive learning pathways using spaced repetition, active recall, and interleaving techniques.
 
-**Live App**: https://gyanmarg-963362833537.us-central1.run.app
+**Live App**: https://ai-polymind.web.app
 **Tech Stack**: React 19, TypeScript (strict), Vite, Zustand, TailwindCSS
 **Content Format**: Multi-level pathways with lessons, quizzes, and exercises
 
