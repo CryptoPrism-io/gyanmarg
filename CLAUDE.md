@@ -31,7 +31,12 @@ The project is on the Firebase **Spark** plan, which caps Hosting transfer per d
 Two things this depends on — don't break them:
 
 - **`public/` must stay same-origin.** A service worker can only control the origin it's served from, so `sw.js` has to come from Firebase; a cross-origin `manifest.json` breaks PWA install. This is why the config uses `renderBuiltUrl` rather than `base`.
-- **CloudFront must return CORS headers** (`Managed-CORS-and-SecurityHeadersPolicy`). ES modules are always fetched with CORS semantics cross-origin, so without `Access-Control-Allow-Origin` every script fails and the page white-screens.
+- **CloudFront must return `Access-Control-Allow-Origin` *and* `Vary: Origin`.** ES modules are always fetched with CORS semantics cross-origin, so a missing header white-screens the whole app — React never mounts. This needs **all three** of the following. A response headers policy alone is **not** sufficient: it only emits the header when the request carries `Origin`, so CloudFront happily serves a cached no-CORS copy to a browser that did send one.
+  1. CORS on the bucket — `aws s3api put-bucket-cors --bucket gyanmarg-prod`
+  2. Origin request policy `Managed-CORS-S3Origin` (`88a5eaf4-…`) so `Origin` reaches S3
+  3. A cache policy with `Origin` in the cache key (`gyanmarg-assets-cache-origin-aware`, `1ea49a2f-…`) — this is what produces `Vary: Origin`
+
+  Verify with a **real browser**, never `curl`. `curl -I` with an `Origin` header returned `Access-Control-Allow-Origin: *` while production was white-screened, because curl happened to hit a cache variant that had it. The only trustworthy check is that `document.getElementById('root').children.length > 0`.
 
 Assets are deployed **before** the HTML that references them, and the asset sync is additive (no `--delete`) so a cached `index.html` can't be left pointing at deleted objects.
 
