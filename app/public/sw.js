@@ -1,4 +1,4 @@
-const CACHE_NAME = 'polymind-v2';
+const CACHE_NAME = 'polymind-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -45,6 +45,26 @@ self.addEventListener('fetch', (event) => {
   if (url.pathname.startsWith('/src/') || url.pathname.startsWith('/node_modules/') ||
       url.pathname.startsWith('/@') || url.pathname.includes('?t=') ||
       url.pathname.endsWith('.ts') || url.pathname.endsWith('.tsx')) return;
+
+  // Navigation requests go to the network first, bypassing the HTTP cache, so a
+  // new deploy is picked up on the next load. Cache-first here would pin users
+  // to a stale index.html — and therefore to old asset hashes — indefinitely.
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request.url, { cache: 'reload', credentials: 'same-origin' })
+        .then((response) => {
+          if (response && response.status === 200) {
+            const responseClone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put('/index.html', responseClone);
+            });
+          }
+          return response;
+        })
+        .catch(() => caches.match('/index.html'))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {

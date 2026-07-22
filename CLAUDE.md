@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Polymind** (Gyanmarg) — Gamified learning platform transforming 45+ ebooks into interactive experiences using spaced repetition, active recall, and interleaving.
 
-**Live**: https://gyanmarg-963362833537.us-central1.run.app
+**Live**: https://ai-polymind.web.app
 
 ## Development Commands
 
@@ -21,7 +21,7 @@ npm run lint         # ESLint
 npm run preview      # Preview production build
 ```
 
-**Deployment**: Push to `master` triggers GitHub Actions → GCP Cloud Run.
+**Deployment**: Push to `master` (paths `app/**`, `firebase.json`, `firestore.rules`) triggers GitHub Actions → Firebase Hosting site `ai-polymind`, authenticated with keyless WIF.
 
 ## Tech Stack
 

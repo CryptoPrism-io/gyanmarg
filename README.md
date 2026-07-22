@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://gyanmarg-963362833537.us-central1.run.app">Live Demo</a> •
+  <a href="https://ai-polymind.web.app">Live Demo</a> •
   <a href="#features">Features</a> •
   <a href="#installation">Installation</a> •
   <a href="#tech-stack">Tech Stack</a>
@@ -67,7 +67,7 @@
 
 ## Live Demo
 
-**🌐 [https://gyanmarg-963362833537.us-central1.run.app](https://gyanmarg-963362833537.us-central1.run.app)**
+**🌐 [https://ai-polymind.web.app](https://ai-polymind.web.app)**
 
 ### Install as App
 
@@ -90,9 +90,8 @@
 | **Animations** | Framer Motion |
 | **Routing** | React Router DOM 7.1 |
 | **Icons** | Lucide React |
-| **Deployment** | GCP Cloud Run |
+| **Deployment** | Firebase Hosting |
 | **CI/CD** | GitHub Actions |
-| **Container** | Docker + Nginx |
 
 ---
 
@@ -132,23 +131,20 @@ npm run preview
 
 ### Automatic (CI/CD)
 
-Push to `master` branch triggers automatic deployment to GCP Cloud Run via GitHub Actions.
+Push to `master` triggers `.github/workflows/deploy.yml`, which builds `app/` and
+deploys to Firebase Hosting site `ai-polymind`. Authentication is keyless
+(Workload Identity Federation) — there is no service-account key to rotate.
 
-### Manual Docker
+The workflow is path-filtered: it only runs for changes under `app/**`,
+`firebase.json`, `firestore.rules`, or the workflow itself.
+
+### Manual
 
 ```bash
 cd app
-docker build -t gyanmarg .
-docker run -p 8080:8080 gyanmarg
-```
-
-### Manual GCP
-
-```bash
-gcloud run deploy gyanmarg \
-  --source . \
-  --region us-central1 \
-  --allow-unauthenticated
+npm run build
+cd ..
+npx firebase-tools deploy --only hosting:ai-polymind --project social-data-pipeline-and-push
 ```
 
 ---
@@ -163,14 +159,12 @@ gyanmarg/
 │   │   ├── icons/        # PWA icons
 │   │   ├── manifest.json # PWA manifest
 │   │   └── sw.js         # Service worker
-│   ├── src/
-│   │   ├── components/   # UI components (atoms/molecules/organisms)
-│   │   ├── features/     # Feature modules
-│   │   ├── data/         # Content & pathways
-│   │   ├── store/        # Zustand stores
-│   │   └── types/        # TypeScript types
-│   ├── Dockerfile
-│   └── nginx.conf
+│   └── src/
+│       ├── components/   # UI components (atoms/molecules/organisms)
+│       ├── features/     # Feature modules
+│       ├── data/         # Content & pathways
+│       ├── store/        # Zustand stores
+│       └── types/        # TypeScript types
 ├── docs/
 └── README.md
 ```
