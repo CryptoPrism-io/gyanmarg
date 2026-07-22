@@ -20,8 +20,8 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "assets/**"],
     "redirects": [
       {
-        "source": "/assets/**",
-        "destination": "https://d38xyhaonwcjz3.cloudfront.net/assets/:splat",
+        "regex": "^/assets/(?P<file>.*)$",
+        "destination": "https://d38xyhaonwcjz3.cloudfront.net/assets/:file",
         "type": 302
       }
     ],
