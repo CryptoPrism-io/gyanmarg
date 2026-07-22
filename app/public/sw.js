@@ -85,8 +85,15 @@ self.addEventListener('fetch', (event) => {
 
       // Not in cache - fetch from network
       return fetch(event.request).then((response) => {
-        // Don't cache non-successful responses
-        if (!response || response.status !== 200 || response.type !== 'basic') {
+        // Don't cache non-successful or opaque responses. 'cors' must be allowed:
+        // hashed assets are served from CloudFront, so they arrive as cross-origin
+        // CORS responses. Accepting only 'basic' would silently drop every asset
+        // from the cache and disable offline support entirely.
+        if (
+          !response ||
+          response.status !== 200 ||
+          (response.type !== 'basic' && response.type !== 'cors')
+        ) {
           return response;
         }
 
