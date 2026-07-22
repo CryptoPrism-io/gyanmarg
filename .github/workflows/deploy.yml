@@ -1,4 +1,12 @@
-name: Deploy to Firebase Hosting
+name: Deploy
+
+# Split deploy. Firebase Hosting serves index.html and public/ from the canonical,
+# auth-authorized origin; CloudFront serves the hashed assets. See vite.config.ts
+# for why public/ stays on Firebase.
+#
+# Step order is load-bearing: assets go to S3/CloudFront FIRST, then the HTML that
+# references them goes to Firebase. Reversing it publishes an index.html whose
+# assets 404 until the sync catches up.
 
 on:
   push:
@@ -14,10 +22,14 @@ on:
 env:
   PROJECT_ID: social-data-pipeline-and-push
   HOSTING_TARGET: ai-polymind
+  AWS_REGION: us-east-1
+  S3_BUCKET: gyanmarg-prod
+  CLOUDFRONT_DISTRIBUTION_ID: E1XLQPBNNEVOB8
+  ASSET_BASE: https://d38xyhaonwcjz3.cloudfront.net/
 
 jobs:
-  deploy-firebase:
-    name: Deploy to Firebase Hosting
+  deploy:
+    name: Build once, deploy assets to CloudFront and HTML to Firebase
     runs-on: ubuntu-latest
 
     permissions:
@@ -27,15 +39,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      # Keyless WIF. Reuses the pool that already exists in this GCP project
-      # (projects/963362833537/.../workloadIdentityPools/github) — no key file.
-      # google-github-actions/auth writes ADC, which firebase-tools picks up.
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
-          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -52,6 +55,7 @@ jobs:
         working-directory: ./app
         env:
           NODE_OPTIONS: --max-old-space-size=4096
+          VITE_ASSET_BASE: ${{ env.ASSET_BASE }}
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
           VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
           VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
@@ -60,8 +64,57 @@ jobs:
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
         run: npm run build
 
+      - name: Fail if index.html does not reference CloudFront
+        working-directory: ./app
+        run: |
+          if ! grep -q "${ASSET_BASE}assets/" dist/index.html; then
+            echo "::error::Build did not rewrite asset URLs to ${ASSET_BASE}."
+            echo "Firebase would serve the whole payload and blow the free-tier cap."
+            grep -o 'src="[^"]*"' dist/index.html | head
+            exit 1
+          fi
+          echo "Asset URLs correctly point at ${ASSET_BASE}"
+
+      # --- 1. Assets first ---------------------------------------------------
+      - name: Authenticate to AWS
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::405633560616:role/gha-gyanmarg-deploy
+          aws-region: ${{ env.AWS_REGION }}
+
+      # Additive on purpose — no --delete. Pruning here would remove the assets a
+      # still-cached index.html is asking for, during the window before Firebase
+      # publishes the new HTML. Stale objects are cents; a broken page is not.
+      - name: Sync hashed assets (long cache)
+        working-directory: ./app
+        run: |
+          aws s3 sync dist/ "s3://${S3_BUCKET}/" \
+            --exclude "*.html" \
+            --cache-control "public,max-age=31536000,immutable"
+
+      - name: Sync HTML (no cache, keeps CloudFront usable as a standalone fallback)
+        working-directory: ./app
+        run: |
+          aws s3 sync dist/ "s3://${S3_BUCKET}/" \
+            --exclude "*" --include "*.html" \
+            --content-type "text/html; charset=utf-8" \
+            --cache-control "public,max-age=0,must-revalidate"
+
+      - name: Invalidate CloudFront HTML
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" \
+            --paths "/" "/index.html"
+
+      # --- 2. Then the HTML that points at them ------------------------------
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
       - name: Deploy to Firebase Hosting
         run: npx firebase-tools deploy --only hosting:${{ env.HOSTING_TARGET }} --project ${{ env.PROJECT_ID }}
 
       - name: Show deployment URL
-        run: echo "Deployed to https://${{ env.HOSTING_TARGET }}.web.app"
+        run: echo "Deployed to https://${{ env.HOSTING_TARGET }}.web.app (assets via ${ASSET_BASE})"
