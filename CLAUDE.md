@@ -21,7 +21,19 @@ npm run lint         # ESLint
 npm run preview      # Preview production build
 ```
 
-**Deployment**: Push to `master` (paths `app/**`, `firebase.json`, `firestore.rules`) triggers GitHub Actions → Firebase Hosting site `ai-polymind`, authenticated with keyless WIF.
+**Deployment**: Push to `master` (paths `app/**`, `firebase.json`, `firestore.rules`) triggers GitHub Actions. One build, two targets:
+
+- **Firebase Hosting** (`ai-polymind`) serves `index.html` and `public/` — keyless WIF, no service-account key.
+- **S3 + CloudFront** (`gyanmarg-prod` / `E1XLQPBNNEVOB8`) serves all hashed assets — keyless AWS OIDC.
+
+The project is on the Firebase **Spark** plan, which caps Hosting transfer per day. The ~105 MB payload (839 webp) would exhaust that in ~180 cold visits, so `vite.config.ts` rewrites built-asset URLs to CloudFront via `renderBuiltUrl` when `VITE_ASSET_BASE` is set. Firebase then serves ~2 KB per visit.
+
+Two things this depends on — don't break them:
+
+- **`public/` must stay same-origin.** A service worker can only control the origin it's served from, so `sw.js` has to come from Firebase; a cross-origin `manifest.json` breaks PWA install. This is why the config uses `renderBuiltUrl` rather than `base`.
+- **CloudFront must return CORS headers** (`Managed-CORS-and-SecurityHeadersPolicy`). ES modules are always fetched with CORS semantics cross-origin, so without `Access-Control-Allow-Origin` every script fails and the page white-screens.
+
+Assets are deployed **before** the HTML that references them, and the asset sync is additive (no `--delete`) so a cached `index.html` can't be left pointing at deleted objects.
 
 ## Tech Stack
 
