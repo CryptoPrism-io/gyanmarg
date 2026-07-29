@@ -8,7 +8,7 @@ import { useProgressStore } from '@/store/progressStore';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 import { useUserStore } from '@/store/userStore';
 import { BetaAccessGate } from '@/components/organisms/BetaAccessGate';
-import { getDailyQuote } from '@/data/quotes';
+import { QuoteSection } from '@/components/molecules/QuoteSection';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 12 },
@@ -48,7 +48,6 @@ export function Dashboard() {
     return 'Good evening';
   }, []);
 
-  const dailyQuote = getDailyQuote();
   const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
 
   // Daily power: calculate which activities are done
@@ -86,21 +85,7 @@ export function Dashboard() {
       <main className="px-6 space-y-16 mt-8 max-w-3xl mx-auto">
 
         {/* === HERO QUOTE === */}
-        <motion.section initial="hidden" animate="visible" variants={fadeIn}>
-          <div className="w-12 h-[1px] bg-[var(--color-accent)] mb-8" />
-          <h2 className="text-3xl md:text-5xl font-serif leading-[1.1] tracking-tight mb-6">
-            &ldquo;{dailyQuote.text.split(' ').map((word, i) => {
-              // Highlight a keyword in gold (first word > 5 chars)
-              if (i === Math.floor(dailyQuote.text.split(' ').length / 3) && word.length > 4) {
-                return <span key={i} className="text-[var(--color-accent)] italic">{word} </span>;
-              }
-              return word + ' ';
-            })}&rdquo;
-          </h2>
-          <span className="text-[11px] uppercase tracking-[0.3em] font-semibold text-[var(--color-text-muted)]">
-            — {dailyQuote.author}
-          </span>
-        </motion.section>
+        <QuoteSection />
 
         {/* === GREETING + RESUME === */}
         <motion.section
