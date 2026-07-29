@@ -62,7 +62,7 @@ function QuoteHistory({ onClose }: { onClose: () => void }) {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 40, opacity: 0 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
-        className="relative w-full sm:max-w-lg max-h-[75vh] sm:max-h-[70vh] rounded-t-2xl sm:rounded-2xl bg-surface border border-white/10 overflow-hidden flex flex-col"
+        className="relative w-full sm:max-w-5xl max-h-[85vh] sm:max-h-[80vh] rounded-t-2xl sm:rounded-2xl bg-surface border border-white/10 overflow-hidden flex flex-col"
       >
         <div className="flex items-center justify-between p-4 border-b border-white/5">
           <p className="text-sm font-semibold text-text-primary">Quote History</p>
@@ -70,9 +70,10 @@ function QuoteHistory({ onClose }: { onClose: () => void }) {
             <Icon name="close" size={18} className="text-text-muted" />
           </button>
         </div>
-        <div className="overflow-y-auto flex-1 p-4 space-y-4">
+        <div className="overflow-y-auto flex-1 p-4 sm:p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {pastQuotes.map(({ date, quote }, i) => (
-            <div key={i} className="pb-4 border-b border-white/5 last:border-0">
+            <div key={i} className="pb-4 border-b border-white/5 last:border-0 sm:border-0 sm:bg-white/[0.02] sm:rounded-xl sm:p-4">
               <p className="text-[10px] uppercase tracking-[0.15em] text-text-muted/50 mb-1">
                 {formatQuoteDate(date)}
               </p>
@@ -85,6 +86,7 @@ function QuoteHistory({ onClose }: { onClose: () => void }) {
               </p>
             </div>
           ))}
+        </div>
         </div>
       </motion.div>
     </motion.div>
