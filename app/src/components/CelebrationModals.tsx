@@ -7,8 +7,6 @@ import { useProgressStore, usePendingLevelUp, usePendingVizUnlock } from '@/stor
 import { AchievementUnlock } from '@/components/organisms/AchievementUnlock';
 import { LevelUpModal } from '@/components/organisms/LevelUpModal';
 import { VizUnlockModal } from '@/components/organisms/VizUnlockModal';
-import DailyRewardModal from '@/components/organisms/DailyRewardModal';
-
 export default function CelebrationModals() {
   const pendingAchievement = usePendingAchievement();
   const pendingLevelUp = usePendingLevelUp();
@@ -31,25 +29,6 @@ export default function CelebrationModals() {
     moduleId: string;
     levelId: string;
   } | null>(null);
-
-  const [showDailyReward, setShowDailyReward] = useState(false);
-  const [dailyRewardData, setDailyRewardData] = useState<{
-    streak: number;
-    reward: number;
-  } | null>(null);
-
-  const checkDailyLogin = useUserStore((s) => s.checkDailyLogin);
-
-  useEffect(() => {
-    const result = checkDailyLogin();
-    if (result.isNewDay && result.reward !== null) {
-      setDailyRewardData({
-        streak: result.streak,
-        reward: result.reward,
-      });
-      setShowDailyReward(true);
-    }
-  }, []);
 
   useEffect(() => {
     celebrationQueue.initialize((event: CelebrationEvent) => {
@@ -119,12 +98,6 @@ export default function CelebrationModals() {
 
   return (
     <>
-      <DailyRewardModal
-        isOpen={showDailyReward}
-        onClose={() => setShowDailyReward(false)}
-        streak={dailyRewardData?.streak || 1}
-        reward={dailyRewardData?.reward || 0}
-      />
       <AchievementUnlock
         isOpen={showAchievement}
         onClose={handleAchievementClose}

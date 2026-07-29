@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, useInView, useSpring, useTransform } from 'framer-motion';
+import { motion, useInView, useSpring, useTransform } from 'framer-motion';
 import {
   ArrowRight,
   Play,
@@ -8,9 +8,7 @@ import {
   Trophy,
   Menu,
   X,
-  Share,
-  Plus,
-  Smartphone,
+
   CheckCircle2,
   XCircle,
   Clock,
@@ -75,72 +73,6 @@ import domainPhilosophy from '@/assets/ai-images/domains/domain-philosophy.webp'
 import domainWriting from '@/assets/ai-images/domains/domain-writing.webp';
 import domainScience from '@/assets/ai-images/domains/domain-science.webp';
 import domainCreativity from '@/assets/ai-images/domains/domain-creativity.webp';
-
-// Extend window for PWA functions
-declare global {
-  interface Window {
-    deferredInstallPrompt: Event | null;
-    triggerPWAInstall: () => Promise<{ success: boolean; reason: string }>;
-  }
-}
-
-// PWA Install Hook
-function useInstallPrompt() {
-  const [isInstalled, setIsInstalled] = useState(false);
-  const [isIOS, setIsIOS] = useState(false);
-  const [canInstall, setCanInstall] = useState(false);
-
-  useEffect(() => {
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
-      || (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
-
-    if (isStandalone) {
-      setIsInstalled(true);
-      return;
-    }
-
-    const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    setIsIOS(iOS);
-
-    const checkPrompt = () => {
-      const hasPrompt = !!window.deferredInstallPrompt;
-      setCanInstall(hasPrompt);
-    };
-
-    checkPrompt();
-
-    const onReady = () => setCanInstall(true);
-    const onInstalled = () => {
-      setIsInstalled(true);
-      setCanInstall(false);
-    };
-
-    window.addEventListener('pwainstallready', onReady);
-    window.addEventListener('pwainstalled', onInstalled);
-
-    const interval = setInterval(checkPrompt, 1000);
-
-    return () => {
-      window.removeEventListener('pwainstallready', onReady);
-      window.removeEventListener('pwainstalled', onInstalled);
-      clearInterval(interval);
-    };
-  }, []);
-
-  const install = async (): Promise<boolean> => {
-    if (typeof window.triggerPWAInstall === 'function') {
-      const result = await window.triggerPWAInstall();
-      if (result.success) {
-        setIsInstalled(true);
-        setCanInstall(false);
-      }
-      return result.success;
-    }
-    return false;
-  };
-
-  return { canInstall, isInstalled, isIOS, install };
-}
 
 // ===== POLYMIND STORYBRAND DATA =====
 
@@ -236,9 +168,7 @@ const domainCards = [
 
 export function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showIOSModal, setShowIOSModal] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const { canInstall, isIOS, install } = useInstallPrompt();
   const { user } = useAuth();
 
   // Track scroll position for parallax effect on multilingual text
@@ -247,21 +177,6 @@ export function LandingPage() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleInstallClick = async () => {
-    if (isIOS) {
-      setShowIOSModal(true);
-    } else if (canInstall) {
-      const installed = await install();
-      if (!installed) {
-        setShowIOSModal(true);
-      }
-    } else {
-      setShowIOSModal(true);
-    }
-  };
-  // Keep handleInstallClick available for future PWA install button
-  void handleInstallClick;
 
   return (
     <div className="min-h-screen bg-base text-white overflow-x-hidden relative">
@@ -1123,124 +1038,6 @@ export function LandingPage() {
           </div>
         </div>
       </footer>
-
-      {/* ===== iOS Install Modal ===== */}
-      <AnimatePresence>
-        {showIOSModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
-            onClick={() => setShowIOSModal(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md glass-heavy border border-white/10 rounded-2xl overflow-hidden"
-            >
-              <div className="relative p-6 pb-4">
-                <button
-                  onClick={() => setShowIOSModal(false)}
-                  className="absolute top-4 right-4 p-2 text-white/50 hover:text-white transition-colors"
-                >
-                  <X size={20} />
-                </button>
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center">
-                    <Smartphone size={28} className="text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white">Install Polymind</h3>
-                    <p className="text-white/60 text-sm">Add to your device</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="px-6 pb-6 space-y-4">
-                {isIOS ? (
-                  <>
-                    <p className="text-white/70 text-sm mb-4">On iPhone/iPad (Safari only):</p>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-amber-500 font-semibold">1</span>
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Tap the Share button</p>
-                        <p className="text-white/60 text-sm flex items-center gap-2 mt-1">
-                          <Share size={16} /> at the bottom of Safari
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-amber-500 font-semibold">2</span>
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Tap "Add to Home Screen"</p>
-                        <p className="text-white/60 text-sm flex items-center gap-2 mt-1">
-                          <Plus size={16} /> Scroll down to find it
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-amber-500 font-semibold">3</span>
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Tap "Add"</p>
-                        <p className="text-white/60 text-sm mt-1">The app will appear on your home screen</p>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-white/70 text-sm mb-4">On Desktop (Chrome/Edge):</p>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-amber-500 font-semibold">1</span>
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Look for the install icon</p>
-                        <p className="text-white/60 text-sm mt-1">In the address bar (right side) or browser menu</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-amber-500 font-semibold">2</span>
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Click "Install" or menu → "Install app"</p>
-                        <p className="text-white/60 text-sm mt-1">Chrome: ⋮ → "Install Polymind..."</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-amber-500 font-semibold">3</span>
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">On Android</p>
-                        <p className="text-white/60 text-sm mt-1">Tap ⋮ → "Add to Home screen" or "Install app"</p>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              <div className="p-4 bg-white/5">
-                <button
-                  onClick={() => setShowIOSModal(false)}
-                  className="w-full py-3 px-4 bg-amber-500 hover:bg-amber-400 text-black font-semibold rounded-xl transition-colors"
-                >
-                  Got it!
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

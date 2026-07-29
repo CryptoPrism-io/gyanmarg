@@ -24,8 +24,6 @@ import { AuthProvider } from '@/contexts/AuthContext';
 // Celebration Modals (lazy-loaded — only rendered on user interaction)
 const CelebrationModals = lazy(() => import('@/components/CelebrationModals'));
 
-// PWA Install Prompt
-import { PWAInstallPrompt } from '@/components/molecules/PWAInstallPrompt';
 
 // Templates
 import { PageLayout } from '@/components/templates';
@@ -410,7 +408,6 @@ function App() {
           <Suspense fallback={null}>
             <CelebrationModals />
           </Suspense>
-          <PWAInstallPrompt />
         </AuthProvider>
       </ErrorBoundary>
     </BrowserRouter>
