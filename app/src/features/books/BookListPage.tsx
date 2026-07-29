@@ -136,7 +136,7 @@ export function BookListPage() {
   });
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white relative">
+    <div className="min-h-screen bg-base text-white relative">
       {/* ===== ANIMATED GRADIENT BACKGROUND ===== */}
       <div className="animated-gradient-bg">
         <div className="wave-orb wave-orb-1" />

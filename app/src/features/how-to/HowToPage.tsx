@@ -22,7 +22,7 @@ import { DemoFlashCard, DemoTinderStack, BlogEmbed } from '@/components/molecule
 
 export function HowToPage() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-white relative">
+    <div className="min-h-screen bg-base text-white relative">
       {/* Animated Background */}
       <div className="animated-gradient-bg">
         <div className="wave-orb wave-orb-1" />

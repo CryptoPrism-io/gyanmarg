@@ -346,9 +346,9 @@ For usage guidelines, visit polymind.app/brand-kit`);
 
 export function BrandKitPage() {
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-base">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-zinc-950/90 backdrop-blur-xl border-b border-white/10">
+      <header className="sticky top-0 z-50 bg-base/90 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
             <ArrowLeft className="w-4 h-4" />
@@ -540,7 +540,7 @@ export function BrandKitPage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="rounded-xl bg-white/[0.02] border border-white/10 p-8">
               <div className="relative inline-block p-8 border-2 border-dashed border-golden/30">
-                <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px] text-golden bg-zinc-950 px-1">
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px] text-golden bg-base px-1">
                   1x height
                 </div>
                 <PolymindLogo size="xl" />

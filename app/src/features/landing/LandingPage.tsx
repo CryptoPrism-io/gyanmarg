@@ -264,7 +264,7 @@ export function LandingPage() {
   void handleInstallClick;
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-base text-white overflow-x-hidden relative">
       {/* ===== ANIMATED GRADIENT BACKGROUND ===== */}
       <div className="animated-gradient-bg">
         <div className="wave-orb wave-orb-1" />
@@ -295,7 +295,7 @@ export function LandingPage() {
 
       {/* ===== HEADER - Floating Glass Navbar ===== */}
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
-        <div className="bg-zinc-950/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]">
+        <div className="bg-base/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]">
           <div className="px-4 sm:px-6 h-14 flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
@@ -308,10 +308,10 @@ export function LandingPage() {
             <nav className="hidden md:flex items-center">
               {/* Page sections */}
               <div className="flex items-center bg-white/[0.03] rounded-xl px-1 py-1">
-                <a href="#problem" className="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition-all">Why</a>
-                <a href="#what" className="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition-all">What</a>
-                <a href="#solution" className="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition-all">How</a>
-                <a href="#results" className="px-3 py-1.5 text-xs font-medium text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition-all">Results</a>
+                <a href="#problem" className="px-3 py-1.5 text-xs font-medium text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition-all">Why</a>
+                <a href="#what" className="px-3 py-1.5 text-xs font-medium text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition-all">What</a>
+                <a href="#solution" className="px-3 py-1.5 text-xs font-medium text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition-all">How</a>
+                <a href="#results" className="px-3 py-1.5 text-xs font-medium text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition-all">Results</a>
               </div>
 
               {/* Divider */}
@@ -326,17 +326,17 @@ export function LandingPage() {
                   </svg>
                 </button>
                 <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="bg-neutral-900/95 border border-white/10 rounded-xl py-2 min-w-[160px] shadow-2xl backdrop-blur-xl">
-                    <a href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 text-xs text-gray-300 hover:text-amber-400 hover:bg-amber-500/5 transition">
-                      <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                  <div className="bg-elevated/95 border border-white/10 rounded-xl py-2 min-w-[160px] shadow-2xl backdrop-blur-xl">
+                    <a href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 text-xs text-text-muted hover:text-accent hover:bg-accent-subtle transition">
+                      <span className="w-1 h-1 rounded-full bg-accent/50" />
                       Blog
                     </a>
-                    <a href="/science" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 text-xs text-gray-300 hover:text-amber-400 hover:bg-amber-500/5 transition">
-                      <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                    <a href="/science" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 text-xs text-text-muted hover:text-accent hover:bg-accent-subtle transition">
+                      <span className="w-1 h-1 rounded-full bg-accent/50" />
                       Research
                     </a>
-                    <a href="/how-to" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 text-xs text-gray-300 hover:text-amber-400 hover:bg-amber-500/5 transition">
-                      <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                    <a href="/how-to" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 text-xs text-text-muted hover:text-accent hover:bg-accent-subtle transition">
+                      <span className="w-1 h-1 rounded-full bg-accent/50" />
                       How-To Guide
                     </a>
                   </div>
@@ -373,15 +373,15 @@ export function LandingPage() {
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
-            className="md:hidden bg-zinc-950/95 backdrop-blur-xl border-t border-white/5 rounded-b-2xl overflow-hidden"
+            className="md:hidden bg-base/95 backdrop-blur-xl border-t border-white/5 rounded-b-2xl overflow-hidden"
           >
             <nav className="flex flex-col p-4 gap-1">
               {/* Page sections */}
               <div className="grid grid-cols-4 gap-1 mb-3">
-                <a href="#problem" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">Why</a>
-                <a href="#what" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">What</a>
-                <a href="#solution" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">How</a>
-                <a href="#results" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">Results</a>
+                <a href="#problem" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition">Why</a>
+                <a href="#what" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition">What</a>
+                <a href="#solution" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition">How</a>
+                <a href="#results" onClick={() => setMobileMenuOpen(false)} className="text-center px-2 py-2 text-xs text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition">Results</a>
               </div>
 
               {/* Divider */}
@@ -389,17 +389,17 @@ export function LandingPage() {
 
               {/* Resources */}
               <div className="space-y-1">
-                <p className="text-[10px] text-gray-500 uppercase tracking-wider px-2 mb-2">Resources</p>
-                <a href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">
-                  <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                <p className="text-[10px] text-text-muted uppercase tracking-wider px-2 mb-2">Resources</p>
+                <a href="/blog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-2 py-2 text-xs text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition">
+                  <span className="w-1 h-1 rounded-full bg-accent/50" />
                   Blog
                 </a>
-                <a href="/science" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">
-                  <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                <a href="/science" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-2 py-2 text-xs text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition">
+                  <span className="w-1 h-1 rounded-full bg-accent/50" />
                   Research
                 </a>
-                <a href="/how-to" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-2 py-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 rounded-lg transition">
-                  <span className="w-1 h-1 rounded-full bg-amber-500/50" />
+                <a href="/how-to" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-2 py-2 text-xs text-text-muted hover:text-accent hover:bg-accent-subtle rounded-lg transition">
+                  <span className="w-1 h-1 rounded-full bg-accent/50" />
                   How-To Guide
                 </a>
               </div>
@@ -536,7 +536,7 @@ export function LandingPage() {
             alt=""
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#0A0A0B]/60 to-[#0A0A0B]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-base via-base/60 to-base" />
         </div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
           {/* Problem-aware badge */}
@@ -886,8 +886,8 @@ export function LandingPage() {
                 className="group cursor-pointer"
               >
                 <Link to="/dashboard" className="block">
-                  <div className="bg-neutral-900 border border-white/5 rounded-xl overflow-hidden transition-all duration-300 hover:border-amber-500/30 hover:shadow-lg hover:shadow-amber-500/5">
-                    <div className="aspect-[4/3] overflow-hidden bg-zinc-950 relative">
+                  <div className="bg-elevated border border-white/5 rounded-xl overflow-hidden transition-all duration-300 hover:border-amber-500/30 hover:shadow-lg hover:shadow-amber-500/5">
+                    <div className="aspect-[4/3] overflow-hidden bg-base relative">
                       <img
                         src={domain.image}
                         alt={domain.title}
@@ -941,7 +941,7 @@ export function LandingPage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className={`glass rounded-2xl p-6 ${
-                  t.featured ? 'border-2 border-amber-500/30 shadow-lg shadow-amber-500/10' : 'border border-gray-800'
+                  t.featured ? 'border-2 border-amber-500/30 shadow-lg shadow-amber-500/10' : 'border border-default'
                 }`}
               >
                 {/* Before state */}
@@ -1027,7 +1027,7 @@ export function LandingPage() {
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/50 to-[#111113]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-elevated via-elevated/50 to-elevated" />
         </div>
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="text-3xl md:text-5xl font-serif mb-6">
