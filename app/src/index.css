@@ -14,12 +14,12 @@
 
   /* ========== EDITORIAL DARK (Default) ========== */
 
-  /* Surfaces — layered obsidian */
-  --bg-base-rgb: 20 19 18;
-  --bg-elevated-rgb: 33 31 29;
-  --bg-surface-rgb: 43 42 39;
-  --bg-overlay-rgb: 55 52 50;
-  --bg-highlight-rgb: 59 57 55;
+  /* Surfaces — layered obsidian (widened hierarchy for depth) */
+  --bg-base-rgb: 18 17 16;
+  --bg-elevated-rgb: 30 28 26;
+  --bg-surface-rgb: 44 42 39;
+  --bg-overlay-rgb: 56 54 50;
+  --bg-highlight-rgb: 66 63 59;
 
   /* Text */
   --color-text-primary: #E6E1DF;
@@ -41,9 +41,9 @@
 
   /* Borders */
   --color-border: #262422;
-  --color-border-subtle: rgba(230,225,223,0.06);
-  --color-border-default: rgba(230,225,223,0.08);
-  --color-border-strong: rgba(230,225,223,0.12);
+  --color-border-subtle: rgba(230,225,223,0.08);
+  --color-border-default: rgba(230,225,223,0.12);
+  --color-border-strong: rgba(230,225,223,0.18);
   --color-border-accent: rgba(197,163,104,0.3);
   --color-border-ghost: rgba(77,70,58,0.15);
 
@@ -315,19 +315,47 @@
 [data-theme="light"] [class*="bg-\[#0"] {
   background-color: rgb(var(--bg-elevated-rgb)) !important;
 }
+/* bg-zinc-950 (#09090B) used in LandingPage — flip to light bg */
+[data-theme="light"] .bg-zinc-950 {
+  background-color: rgb(var(--bg-base-rgb)) !important;
+}
+[data-theme="light"] .bg-zinc-900 {
+  background-color: rgb(var(--bg-elevated-rgb)) !important;
+}
 
 /* Amber/yellow text — illegible on warm-cream light backgrounds
-   amber-400 (#FBBF24) and amber-300 need to be darkened */
-[data-theme="light"] .text-amber-400 { color: #92400e !important; }
+   Full coverage for all amber/yellow variants used across components */
+[data-theme="light"] .text-amber-200 { color: #d97706 !important; }
 [data-theme="light"] .text-amber-300 { color: #b45309 !important; }
+[data-theme="light"] .text-amber-400 { color: #92400e !important; }
+[data-theme="light"] .text-amber-500 { color: #78350f !important; }
+[data-theme="light"] .text-amber-600 { color: #451a03 !important; }
 [data-theme="light"] .text-yellow-400 { color: #92400e !important; }
 [data-theme="light"] .text-yellow-300 { color: #b45309 !important; }
 /* Amber borders also need darkening */
 [data-theme="light"] .border-amber-400 { border-color: #b45309 !important; }
+[data-theme="light"] .border-amber-200 { border-color: #d97706 !important; }
+[data-theme="light"] .border-amber-300 { border-color: #b45309 !important; }
 [data-theme="light"] .border-amber-500\/30 { border-color: rgba(146,64,14,0.4) !important; }
+[data-theme="light"] .border-amber-500\/20 { border-color: rgba(146,64,14,0.3) !important; }
 /* Amber bg tints — bump opacity for visibility */
+[data-theme="light"] .bg-amber-400\/10 { background-color: rgba(146,64,14,0.08) !important; }
+[data-theme="light"] .bg-amber-400\/20 { background-color: rgba(146,64,14,0.12) !important; }
 [data-theme="light"] .bg-amber-500\/10 { background-color: rgba(146,64,14,0.08) !important; }
 [data-theme="light"] .bg-amber-500\/20 { background-color: rgba(146,64,14,0.12) !important; }
+[data-theme="light"] .bg-amber-500\/30 { background-color: rgba(146,64,14,0.18) !important; }
+[data-theme="light"] .bg-amber-500 { background-color: #d97706 !important; }
+[data-theme="light"] .bg-amber-400 { background-color: #e5a00b !important; }
+/* Amber gradient buttons — darken for light bg */
+[data-theme="light"] .from-amber-500 { --tw-gradient-from: #d97706 !important; }
+[data-theme="light"] .to-amber-600 { --tw-gradient-to: #b45309 !important; }
+[data-theme="light"] .from-amber-400 { --tw-gradient-from: #e5a00b !important; }
+[data-theme="light"] .to-amber-500 { --tw-gradient-to: #d97706 !important; }
+[data-theme="light"] .to-amber-400 { --tw-gradient-to: #e5a00b !important; }
+/* Hover state amber overrides */
+[data-theme="light"] .hover\:bg-amber-400:hover { background-color: #e5a00b !important; }
+[data-theme="light"] .hover\:text-amber-400:hover { color: #92400e !important; }
+[data-theme="light"] .group:hover .group-hover\:text-amber-400 { color: #92400e !important; }
 
 /* Inline-style hex amber/orange — CSS class rules cannot override inline styles,
    but attribute selectors can. Covers all common amber hex values used in viz components. */

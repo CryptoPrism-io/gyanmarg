@@ -438,7 +438,7 @@ export function ReelReader() {
 
   if (!mod || !lesson || !card) {
     return (
-      <div className="min-h-screen bg-zinc-950 flex items-center justify-center">
+      <div className="min-h-screen bg-base flex items-center justify-center">
         <div className="text-center">
           <p className="text-white/50 mb-4">Lesson not found</p>
           <button onClick={() => navigate('/lab')} className="text-amber-400 hover:underline">Back to Lab</button>
@@ -457,7 +457,7 @@ export function ReelReader() {
 
   return (
     <div
-      className="fixed inset-0 bg-zinc-950 overflow-hidden select-none"
+      className="fixed inset-0 bg-base overflow-hidden select-none"
       style={{ touchAction: 'none' }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
@@ -668,7 +668,7 @@ function HookSlide({ lesson, levelImg }: { lesson: PathwayLesson; levelImg?: str
 // ============================================================================
 function ImageSlide({ src, caption }: { src: string; caption?: string }) {
   return (
-    <div className="relative w-full h-full bg-zinc-950">
+    <div className="relative w-full h-full bg-base">
       <motion.img
         initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}
