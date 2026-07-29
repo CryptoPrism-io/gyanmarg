@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp } from 'lucide-react';
+import { springLight } from '@/lib/animations';
 
 interface Event {
   id: string;
@@ -123,7 +124,7 @@ export function HedonicTreadmill() {
                   className="absolute top-0 left-0 bottom-0 rounded-full"
                   style={{ backgroundColor: getHappinessColor() }}
                   animate={{ width: `${happiness}%` }}
-                  transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+                  transition={springLight}
                 />
               </div>
 

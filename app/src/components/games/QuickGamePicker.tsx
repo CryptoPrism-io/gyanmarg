@@ -6,6 +6,7 @@ import { useProgressStore } from '@/store/progressStore';
 import { useGameStore } from '@/store/gameStore';
 import { GAME_INFO } from '@/types/game';
 import type { PathwayLesson } from '@/types';
+import { springQuick } from '@/lib/animations';
 import { ApplyItGame } from './ApplyItGame';
 import { MatchPairsGame } from './MatchPairsGame';
 import { HangmanGame } from './HangmanGame';
@@ -63,7 +64,7 @@ export function QuickGamePicker({ lesson, onFinish }: QuickGamePickerProps) {
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+           transition={springQuick}
           className="w-16 h-16 rounded-full bg-golden/20 border border-golden/30 flex items-center justify-center mb-4"
         >
           <Sparkles className="w-8 h-8 text-golden" />

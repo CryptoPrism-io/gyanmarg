@@ -38,6 +38,48 @@ export const springLoose: Transition = {
   damping: 28,
 };
 
+export const springSnap: Transition = {
+  type: 'spring',
+  stiffness: 400,
+  damping: 17,
+};
+
+export const springQuick: Transition = {
+  type: 'spring',
+  stiffness: 400,
+  damping: 15,
+};
+
+export const springNav: Transition = {
+  type: 'spring',
+  stiffness: 500,
+  damping: 30,
+};
+
+export const springSoft: Transition = {
+  type: 'spring',
+  stiffness: 300,
+  damping: 15,
+};
+
+export const springWobble: Transition = {
+  type: 'spring',
+  stiffness: 100,
+  damping: 20,
+};
+
+export const springLight: Transition = {
+  type: 'spring',
+  stiffness: 100,
+  damping: 15,
+};
+
+export const springSlow: Transition = {
+  type: 'spring',
+  stiffness: 80,
+  damping: 20,
+};
+
 export const fadeTransition: Transition = {
   duration: 0.2,
   ease: 'easeOut',

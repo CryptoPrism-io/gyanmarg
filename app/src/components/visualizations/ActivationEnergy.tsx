@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap } from 'lucide-react';
+import { springSmooth } from '@/lib/animations';
 
 interface Habit {
   id: string;
@@ -263,7 +264,7 @@ export function ActivationEnergy() {
                     cx: ballPosition.x,
                     cy: ballPosition.y,
                   }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  transition={springSmooth}
                 />
 
                 {/* Ball glow */}

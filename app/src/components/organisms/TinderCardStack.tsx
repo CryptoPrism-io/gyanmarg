@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, Sparkles, RotateCcw, ChevronRight, Brain } from 'lucide-react';
+import { springSoft } from '@/lib/animations';
 import { TinderCard } from '@/components/molecules/TinderCard';
 import { FloatingXP } from '@/components/atoms/FloatingXP';
 import { useProgressStore } from '@/store/progressStore';
@@ -321,7 +322,7 @@ export function TinderCardStack({
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                    transition={springSoft}
                     className="relative w-16 h-16 mx-auto mb-4 rounded-full bg-golden/20 flex items-center justify-center"
                   >
                     <Sparkles className="w-8 h-8 text-golden" />

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
+import { springBouncy } from '@/lib/animations';
 import { Trophy, Flame, BookOpen, Clock, Crown } from 'lucide-react';
 import { getAIUsersWithProgress } from '@/data/aiUsers';
 
@@ -131,7 +132,7 @@ export function Leaderboard({
 
   const tabVariants = {
     hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } },
+    visible: { opacity: 1, y: 0, transition: springBouncy },
   };
 
   return (

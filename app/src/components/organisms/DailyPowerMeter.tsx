@@ -1,5 +1,6 @@
 import { useMemo, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { springBouncy, springSmooth } from '@/lib/animations';
 import { Zap, Star, Check, Trophy, BookOpen } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
@@ -106,7 +107,7 @@ export function DailyPowerMeter() {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+      transition={springBouncy}
       className="relative"
     >
       {/* Celebration burst when 100% */}
@@ -190,7 +191,7 @@ export function DailyPowerMeter() {
                     className="absolute -top-1 -right-1 w-3 h-3 bg-sage rounded-full flex items-center justify-center"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                     transition={springSmooth}
                   >
                     <Check className="w-1.5 h-1.5 text-white" />
                   </motion.div>

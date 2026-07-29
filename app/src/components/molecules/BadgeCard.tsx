@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { springSlow } from '@/lib/animations';
 import {
   Flame,
   BookOpen,
@@ -190,7 +191,7 @@ export default function BadgeCard({
                     className={`h-full rounded-full ${progress > 0 ? tier.bar : 'bg-text-muted/30'}`}
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
-                    transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.2 }}
+                    transition={{ ...springSlow, delay: 0.2 }}
                   />
                 </div>
                 <span className="text-[10px] font-medium shrink-0 text-text-muted tabular-nums">

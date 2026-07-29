@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
 import { motion } from 'framer-motion';
+import { springSnap } from '@/lib/animations';
 
 type CardVariant = 'default' | 'glass' | 'elevated' | 'accent' | 'outlined';
 
@@ -70,7 +71,7 @@ export function Card({
         whileHover: {
           y: -2,
           scale: 1.01,
-          transition: { type: 'spring', stiffness: 400, damping: 17 },
+          transition: springSnap,
         },
         whileTap: onClick ? { scale: 0.99 } : {},
       }

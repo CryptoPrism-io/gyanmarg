@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Clock, BookMarked, ChevronRight } from 'lucide-react';
+import { springBouncy } from '@/lib/animations';
 import { getModuleMetaById } from '@/data/modules-meta';
 import type { LessonBookmark } from '@/types';
 
@@ -59,7 +60,7 @@ export function ResumeCard({ bookmark }: ResumeCardProps) {
       onClick={handleResume}
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+      transition={springBouncy}
       className="w-full group"
     >
       {/* Gradient Background */}

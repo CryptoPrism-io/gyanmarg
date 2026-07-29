@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { springNav } from '@/lib/animations';
 import { Icon } from '@/components/atoms/Icon';
 import { useProgressStore } from '@/store/progressStore';
 import { useAuth } from '@/hooks';
@@ -58,7 +59,7 @@ export function Navbar() {
                     <motion.div
                       layoutId="navbar-indicator"
                       className="absolute bottom-0 left-3 right-3 h-[2px] bg-[var(--color-accent)]"
-                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                      transition={springNav}
                     />
                   )}
                 </Link>
@@ -124,7 +125,7 @@ export function MobileNav() {
                 <motion.div
                   layoutId="mobile-nav-indicator"
                   className="w-6 h-[2px] bg-[var(--color-accent)] mb-0.5"
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  transition={springNav}
                 />
               )}
               <Icon

@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RotateCcw, Sparkles, ArrowRight, Zap, AlertCircle } from 'lucide-react';
+import { springBouncy } from '@/lib/animations';
 
 interface FlashCardProps {
   front: string;
@@ -126,7 +127,7 @@ export function RatingButtons({ onRate, disabled = false }: RatingButtonsProps) 
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -16 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+        transition={springBouncy}
         className="flex gap-2 mt-4"
       >
         {buttons.map((btn) => (

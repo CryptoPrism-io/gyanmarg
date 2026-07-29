@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { springLight } from '@/lib/animations';
 import html2canvas from 'html2canvas';
 import {
   Download,
@@ -115,7 +116,7 @@ export function ShareableAchievementCard({
               <motion.div
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
-                transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+                transition={springLight}
                 className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br ${badgeColor} flex items-center justify-center text-3xl sm:text-4xl shadow-2xl border-2 border-white/10 mx-auto`}
               >
                 ⭐

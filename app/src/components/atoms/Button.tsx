@@ -1,5 +1,6 @@
 import { forwardRef, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
+import { springSnap } from '@/lib/animations';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'success' | 'glass';
 type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
@@ -95,7 +96,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         whileHover={isDisabled ? {} : { scale: 1.02, y: -1 }}
         whileTap={isDisabled ? {} : { scale: 0.98 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+        transition={springSnap}
         className={`
           relative inline-flex items-center justify-center font-medium
           transition-all duration-200 ease-out

@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Brain, Sparkles, ChevronRight } from 'lucide-react';
+import { springSoft } from '@/lib/animations';
 import { FlashCard, RatingButtons } from '@/components/molecules/FlashCard';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 import { useProgressStore } from '@/store/progressStore';
@@ -288,7 +289,7 @@ export function QuickReviseOverlay({
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                  transition={springSoft}
                   className="relative w-16 h-16 mx-auto mb-4 rounded-full bg-golden/20 flex items-center justify-center"
                 >
                   <Brain className="w-8 h-8 text-golden" />

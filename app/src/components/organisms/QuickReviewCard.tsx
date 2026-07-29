@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Brain, Clock, Zap, BookOpen, ChevronRight } from 'lucide-react';
+import { springBouncy } from '@/lib/animations';
 import { useSpacedRepetitionStore } from '@/store/spacedRepetitionStore';
 
 /**
@@ -47,7 +48,7 @@ export function QuickReviewCard() {
     <motion.div
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+      transition={springBouncy}
       className="w-full group"
     >
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-lavender/15 via-purple-500/10 to-pink-500/10 border border-lavender/20 hover:border-lavender/40 transition-all duration-300 p-4 sm:p-5 shadow-lg hover:shadow-xl hover:shadow-lavender/10">

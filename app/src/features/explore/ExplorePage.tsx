@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Unlock, X, ChevronRight } from 'lucide-react';
+import { springGentle } from '@/lib/animations';
 import { BetaAccessGate } from '@/components/organisms/BetaAccessGate';
 import { useUserStore } from '@/store/userStore';
 import { useProgressStore } from '@/store/progressStore';
@@ -506,7 +507,7 @@ export function ExplorePage() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.25, type: 'spring', stiffness: 300, damping: 28 }}
+              transition={{ duration: 0.25, ...springGentle }}
               className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-elevated border border-black/10 dark:border-white/10 shadow-2xl"
               onClick={e => e.stopPropagation()}
             >

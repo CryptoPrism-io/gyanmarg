@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Activity } from 'lucide-react';
+import { springWobble } from '@/lib/animations';
 
 interface Stressor {
   id: string;
@@ -210,7 +211,7 @@ export function Hormesis() {
                     cx: 10 + (doseLevel / 100) * 280,
                     cy: getCurveY(doseLevel),
                   }}
-                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                  transition={springWobble}
                 />
                 <motion.circle
                   r="12"
@@ -220,7 +221,7 @@ export function Hormesis() {
                     cx: 10 + (doseLevel / 100) * 280,
                     cy: getCurveY(doseLevel),
                   }}
-                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                  transition={springWobble}
                 >
                   <animate attributeName="r" values="10;16;10" dur="1.5s" repeatCount="indefinite" />
                 </motion.circle>

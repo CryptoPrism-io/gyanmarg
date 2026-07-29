@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Sparkles, Brain } from 'lucide-react';
+import { springSoft } from '@/lib/animations';
 import { Icon } from '@/components/atoms/Icon';
 import { useProgressStore } from '@/store/progressStore';
 import { useCardStack } from '@/hooks/useCardStack';
@@ -497,7 +498,7 @@ export function ReelsCardStack({
             ) : showingCompletion ? (
               <div className="relative glass rounded-2xl p-6 border border-golden/30">
                 <CelebrationBurst />
-                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={springSoft}
                   className="relative w-16 h-16 mx-auto mb-4 rounded-full bg-golden/20 flex items-center justify-center">
                   <Sparkles className="w-8 h-8 text-golden" />
                 </motion.div>

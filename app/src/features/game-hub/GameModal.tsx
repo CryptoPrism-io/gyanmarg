@@ -11,7 +11,7 @@ import { ApplyItGame } from '@/components/games/ApplyItGame';
 import { MatchPairsGame } from '@/components/games/MatchPairsGame';
 import { HangmanGame } from '@/components/games/HangmanGame';
 import { CrosswordGame } from '@/components/games/CrosswordGame';
-import { springStiff } from '@/lib/animations';
+import { springStiff, springQuick } from '@/lib/animations';
 
 const FULL_PLAY_XP = 100;
 const HIGH_SCORE_BONUS = 25;
@@ -139,7 +139,7 @@ export function GameModal({ isOpen, onClose, levelId, levelTitle, gameType, cont
                 <motion.div
                   initial={{ scale: 0, rotate: -10 }}
                   animate={{ scale: 1, rotate: 0 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                  transition={springQuick}
                   className="relative w-24 h-24 mb-6 rounded-2xl flex items-center justify-center shadow-xl"
                   style={{
                     background: result.score >= 90

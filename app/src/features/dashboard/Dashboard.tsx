@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { springGentle } from '@/lib/animations';
 import { Icon } from '@/components/atoms/Icon';
 import { useAuthContext } from '@/contexts/AuthContext';
 import { useProgressStore } from '@/store/progressStore';
@@ -11,7 +12,7 @@ import { getDailyQuote } from '@/data/quotes';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 28 } },
+  visible: { opacity: 1, y: 0, transition: springGentle },
 };
 
 export function Dashboard() {

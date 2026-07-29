@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy } from 'lucide-react';
+import { springWobble } from '@/lib/animations';
 
 interface PracticeType {
   id: string;
@@ -174,7 +175,7 @@ export function DeliberatePractice() {
                     cx: Math.min(95, hours / 100),
                     cy: 100 - skillLevel,
                   }}
-                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                   transition={springWobble}
                 />
                 <motion.circle
                   r="10"
@@ -184,7 +185,7 @@ export function DeliberatePractice() {
                     cx: Math.min(95, hours / 100),
                     cy: 100 - skillLevel,
                   }}
-                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                  transition={springWobble}
                 >
                   <animate attributeName="r" values="8;14;8" dur="1.5s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.3;0.1;0.3" dur="1.5s" repeatCount="indefinite" />

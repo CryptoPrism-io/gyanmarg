@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useCallback, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { springLoose, springWobble, springSlow } from '@/lib/animations';
 
 const SpacedRepetitionInline = lazy(() =>
   import('@/features/spaced-repetition/SpacedRepetition').then((m) => ({ default: m.SpacedRepetition }))
@@ -69,7 +70,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 350, damping: 28 } },
+  visible: { opacity: 1, y: 0, transition: springLoose },
 };
 
 // --- Dynamic learner title based on behavior ---
@@ -670,7 +671,7 @@ export function Profile() {
                           className="h-full rounded-full bg-sunrise"
                           initial={{ width: 0 }}
                           animate={{ width: `${getLevelProgress()}%` }}
-                          transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
+                           transition={{ ...springWobble, delay: 0.2 }}
                         />
                       </div>
                     </div>
@@ -739,7 +740,7 @@ export function Profile() {
                       <p className="text-[10px] text-lavender font-semibold uppercase tracking-wide mb-0.5">Badge Progress</p>
                       <p className="text-sm font-semibold text-text-primary truncate">{nextBadge.badge.name}</p>
                       <div className="mt-1.5 h-1 rounded-full bg-black/[0.06] dark:bg-white/[0.07] overflow-hidden">
-                        <motion.div className="h-full rounded-full bg-lavender" initial={{ width: 0 }} animate={{ width: `${nextBadge.progress}%` }} transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.3 }} />
+                        <motion.div className="h-full rounded-full bg-lavender" initial={{ width: 0 }} animate={{ width: `${nextBadge.progress}%` }} transition={{ ...springSlow, delay: 0.3 }} />
                       </div>
                       <p className="text-[10px] text-text-muted mt-1">{Math.round(nextBadge.progress)}%</p>
                     </div>
@@ -787,7 +788,7 @@ export function Profile() {
                             className={`h-full rounded-full ${categoryBarColor[cat.color] || 'bg-sunrise'}`}
                             initial={{ width: 0 }}
                             animate={{ width: `${cat.progress}%` }}
-                            transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.04 * idx }}
+                            transition={{ ...springSlow, delay: 0.04 * idx }}
                           />
                         </div>
                       </div>
