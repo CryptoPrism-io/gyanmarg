@@ -4,6 +4,67 @@ export interface Quote {
   source?: string;
 }
 
+export interface AuthorInfo {
+  bio: string;
+  years?: string;
+}
+
+export const authorInfo: Record<string, AuthorInfo> = {
+  'Bruce Lee': { bio: 'Martial artist, actor, and philosopher who bridged Eastern and Western thinking.', years: '1940–1973' },
+  'James Clear': { bio: 'Author and habits researcher focused on systems for continuous improvement.', years: 'b. 1986' },
+  'Cal Newport': { bio: 'Computer science professor and author on deep work and digital minimalism.', years: 'b. 1982' },
+  'Daniel Kahneman': { bio: 'Nobel-winning psychologist who pioneered behavioral economics.', years: 'b. 1934' },
+  'Nassim Nicholas Taleb': { bio: 'Scholar, risk analyst, and author on uncertainty, antifragility, and probability.', years: 'b. 1960' },
+  'Benjamin Graham': { bio: 'Father of value investing and mentor to Warren Buffett.', years: '1894–1976' },
+  'Chris Voss': { bio: 'Former FBI hostage negotiator and author on high-stakes negotiation tactics.', years: 'b. 1957' },
+  'Viktor Frankl': { bio: 'Psychiatrist, Holocaust survivor, and founder of logotherapy.', years: '1905–1997' },
+  'Mark Manson': { bio: 'Author and blogger known for counterintuitive self-help grounded in psychology.', years: 'b. 1984' },
+  'Carol Dweck': { bio: 'Stanford psychologist who pioneered the growth vs. fixed mindset theory.', years: 'b. 1946' },
+  'Robert Cialdini': { bio: 'Social psychologist who identified the six universal principles of persuasion.', years: 'b. 1945' },
+  'Marcus Aurelius': { bio: 'Roman emperor and Stoic philosopher whose Meditations remain a timeless manual on resilience.', years: '121–180 CE' },
+  'Seneca': { bio: 'Roman Stoic philosopher, statesman, and playwright who wrote on ethics, time, and the good life.', years: '4 BCE–65 CE' },
+  'Epictetus': { bio: 'Former slave turned Stoic philosopher who taught that peace comes from controlling our judgments.', years: '50–135 CE' },
+  'Matthew Walker': { bio: 'Neuroscientist and sleep researcher, author of Why We Sleep.', years: 'b. 1973' },
+  'Peter Attia': { bio: 'Physician focused on longevity, performance, and the science of extending healthspan.', years: 'b. 1973' },
+  'Wim Hof': { bio: 'Extreme athlete known for his cold-exposure and breathing method.', years: 'b. 1959' },
+  'Dr. Andrew Huberman': { bio: 'Stanford neuroscientist who translates brain science into practical protocols.', years: 'b. 1975' },
+  'Warren Buffett': { bio: 'Legendary investor and CEO of Berkshire Hathaway, known for value investing.', years: 'b. 1930' },
+  'Charlie Munger': { bio: 'Investor, vice-chairman of Berkshire Hathaway, and advocate of mental models.', years: '1924–2023' },
+  'Naval Ravikant': { bio: 'Entrepreneur, angel investor, and philosopher of wealth, happiness, and technology.', years: 'b. 1974' },
+  'Ray Dalio': { bio: 'Founder of Bridgewater Associates and author of Principles.', years: 'b. 1949' },
+  'Jeff Bezos': { bio: 'Founder of Amazon and Blue Origin, pioneer of e-commerce and cloud computing.', years: 'b. 1964' },
+  'Elon Musk': { bio: 'Entrepreneur behind Tesla, SpaceX, and xAI, focused on sustainable energy and space exploration.', years: 'b. 1971' },
+  'Steve Jobs': { bio: 'Co-founder of Apple, pioneer of personal computing, smartphones, and digital publishing.', years: '1955–2011' },
+  'Albert Einstein': { bio: 'Theoretical physicist who developed relativity and reshaped modern physics.', years: '1879–1955' },
+  'Richard Feynman': { bio: 'Nobel-winning physicist known for quantum electrodynamics and gift for teaching.', years: '1918–1988' },
+  'Carl Sagan': { bio: 'Astronomer, cosmologist, and science communicator who brought the universe to the public.', years: '1934–1996' },
+  'Lao Tzu': { bio: 'Ancient Chinese philosopher and founder of Taoism, author of the Tao Te Ching.', years: 'c. 6th century BCE' },
+  'Buddha': { bio: 'Spiritual teacher whose teachings on suffering and liberation founded Buddhism.', years: 'c. 5th century BCE' },
+  'Confucius': { bio: 'Chinese philosopher whose teachings on ethics, family, and governance shaped East Asian civilization.', years: '551–479 BCE' },
+  'Aristotle': { bio: 'Greek philosopher whose work shaped Western logic, ethics, biology, and political theory.', years: '384–322 BCE' },
+  'Socrates': { bio: 'Athenian philosopher who pioneered the Socratic method of questioning.', years: '470–399 BCE' },
+  'Friedrich Nietzsche': { bio: 'German philosopher who challenged morality, religion, and the foundations of Western thought.', years: '1844–1900' },
+  'Rumi': { bio: 'Persian poet, scholar, and Sufi mystic whose verses speak of love, loss, and transcendence.', years: '1207–1273' },
+  'Miyamoto Musashi': { bio: 'Legendary Japanese swordsman, ronin, and author of The Book of Five Rings.', years: '1584–1645' },
+  'Sun Tzu': { bio: 'Ancient Chinese military strategist and author of The Art of War.', years: 'c. 5th century BCE' },
+  'Seth Godin': { bio: 'Marketing thinker, entrepreneur, and author on tribes, permission marketing, and the dip.', years: 'b. 1960' },
+  'Tim Ferriss': { bio: 'Author, investor, and experimenter in lifestyle design and performance optimization.', years: 'b. 1977' },
+  'Ryan Holiday': { bio: 'Author and marketer who brought Stoic philosophy to modern audiences.', years: 'b. 1987' },
+  'Simon Sinek': { bio: 'Author and leadership consultant known for the Golden Circle and Start with Why.', years: 'b. 1973' },
+  'Brené Brown': { bio: 'Researcher on vulnerability, courage, and shame whose TED talk is among the most viewed.', years: 'b. 1965' },
+  'Jordan Peterson': { bio: 'Clinical psychologist and author who writes on meaning, responsibility, and psychological development.', years: 'b. 1962' },
+  'David Goggins': { bio: 'Retired Navy SEAL and ultramarathon runner known for extreme mental toughness.', years: 'b. 1975' },
+  'Jocko Willink': { bio: 'Retired Navy SEAL officer and author on leadership, discipline, and extreme ownership.', years: 'b. 1971' },
+  'Cicero': { bio: 'Roman statesman, orator, and philosopher who shaped Western political thought.', years: '106–43 BCE' },
+  'Leonardo da Vinci': { bio: 'Renaissance polymath — artist, inventor, anatomist, and engineer.', years: '1452–1519' },
+  'Benjamin Franklin': { bio: 'Founding Father, inventor, diplomat, and publisher who embodied American self-improvement.', years: '1706–1790' },
+  'Theodore Roosevelt': { bio: '26th U.S. president, conservationist, and advocate of the strenuous life.', years: '1858–1919' },
+  'Winston Churchill': { bio: 'British prime minister who led the UK through WWII, and Nobel-winning writer.', years: '1874–1965' },
+  'Mahatma Gandhi': { bio: 'Leader of India\'s nonviolent independence movement, inspiring civil rights globally.', years: '1869–1948' },
+  'Nelson Mandela': { bio: 'Anti-apartheid revolutionary and South Africa\'s first Black president.', years: '1918–2013' },
+  'Martin Luther King Jr.': { bio: 'Baptist minister and civil rights leader who advanced equality through nonviolence.', years: '1929–1968' },
+};
+
 export const quotes: Quote[] = [
   // Featured - Bruce Lee (index 0 - today's anchor)
   { text: "Absorb what is useful, discard what is useless, add what is uniquely your own.", author: "Bruce Lee" },
