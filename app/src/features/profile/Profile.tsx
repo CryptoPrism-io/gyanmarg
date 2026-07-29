@@ -223,7 +223,6 @@ export function Profile() {
 
   // Stores
   const profile = useUserStore((s) => s.profile);
-  const consecutiveLogins = useUserStore((s) => s.consecutiveLogins);
   const userProgress = useProgressStore((s) => s.userProgress);
   const getLevelProgress = useProgressStore((s) => s.getLevelProgress);
   const unlockedBadges = useProgressStore((s) => s.unlockedBadges);
@@ -275,7 +274,7 @@ export function Profile() {
   }, [starredCards, filterModule]);
 
   // Current streak
-  const currentStreak = consecutiveLogins || userProgress.currentStreak || 0;
+  const currentStreak = userProgress?.currentStreak || 0;
 
   // --- Computed: Categories explored ---
   const categoriesExplored = useMemo(() => {

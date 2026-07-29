@@ -89,7 +89,6 @@ const CHANGELOG: ChangelogEntry[] = [
     type: 'major',
     title: 'Gamification 2.0',
     changes: [
-      'Daily login rewards system with streak bonuses',
       'Badge collection system with 50+ achievements',
       'Mobile-optimized flashcard interface with swipe gestures',
       'Streak freeze system (1 freeze per week)',

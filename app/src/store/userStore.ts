@@ -34,12 +34,6 @@ interface UserState {
   // Free trial
   trialStartDate: string | null; // ISO date string when trial started, null = not started
 
-  // Daily login tracking
-  lastLoginDate: string | null; // ISO date string (YYYY-MM-DD)
-  consecutiveLogins: number;
-  dailyRewardClaimed: boolean;
-  totalLogins: number;
-
   // Actions
   setProfile: (profile: UserProfile) => void;
   updateProfile: (updates: Partial<UserProfile>) => void;
@@ -71,10 +65,6 @@ interface UserState {
   toggleFavoriteModule: (moduleId: string) => void;
   isFavoriteModule: (moduleId: string) => boolean;
 
-  // Daily login actions
-  checkDailyLogin: () => { isNewDay: boolean; reward: number | null; streak: number };
-  claimDailyReward: () => void;
-
   // Free trial actions
   startTrial: () => void;
   isTrialActive: () => boolean;
@@ -87,16 +77,6 @@ const defaultSettings: UserSettings = {
   soundEnabled: true,
   dailyReminder: null,
 };
-
-// Helper function to calculate daily reward based on streak
-function calculateDailyReward(streak: number): number {
-  if (streak === 1) return 50;
-  if (streak === 2) return 75;
-  if (streak === 3) return 100; // + streak freeze (handled separately)
-  if (streak >= 7) return 250; // + badge for week (handled separately)
-  // Days 4-6
-  return 100 + (streak - 3) * 25;
-}
 
 export const useUserStore = create<UserState>()(
   persist(
@@ -113,10 +93,6 @@ export const useUserStore = create<UserState>()(
       hasLifetimeAccess: false,
       favoriteModules: [],
       trialStartDate: null,
-      lastLoginDate: null,
-      consecutiveLogins: 0,
-      dailyRewardClaimed: false,
-      totalLogins: 0,
 
       setProfile: (profile) => set({ profile }),
 
@@ -222,65 +198,6 @@ export const useUserStore = create<UserState>()(
 
       isFavoriteModule: (moduleId) =>
         get().favoriteModules.includes(moduleId),
-
-      // Daily login actions
-      checkDailyLogin: () => {
-        const state = get();
-        const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-        const lastLogin = state.lastLoginDate;
-
-        // First time login
-        if (!lastLogin) {
-          set({
-            lastLoginDate: today,
-            consecutiveLogins: 1,
-            dailyRewardClaimed: false,
-            totalLogins: 1,
-          });
-          return { isNewDay: true, reward: 50, streak: 1 };
-        }
-
-        // Already logged in today
-        if (lastLogin === today) {
-          return {
-            isNewDay: false,
-            reward: state.dailyRewardClaimed ? null : calculateDailyReward(state.consecutiveLogins),
-            streak: state.consecutiveLogins,
-          };
-        }
-
-        // New day - check if streak continues
-        const lastDate = new Date(lastLogin);
-        const currentDate = new Date(today);
-        const diffTime = currentDate.getTime() - lastDate.getTime();
-        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-        let newStreak = state.consecutiveLogins;
-        if (diffDays === 1) {
-          // Consecutive day
-          newStreak = state.consecutiveLogins + 1;
-        } else if (diffDays > 1) {
-          // Streak broken
-          newStreak = 1;
-        }
-
-        set({
-          lastLoginDate: today,
-          consecutiveLogins: newStreak,
-          dailyRewardClaimed: false,
-          totalLogins: state.totalLogins + 1,
-        });
-
-        return {
-          isNewDay: true,
-          reward: calculateDailyReward(newStreak),
-          streak: newStreak,
-        };
-      },
-
-      claimDailyReward: () => {
-        set({ dailyRewardClaimed: true });
-      },
 
       // Free trial actions
       startTrial: () => {

@@ -22,8 +22,6 @@ export { default as BadgeCard } from './BadgeCard';
 // Review Gate
 export { ReviewGateBanner, ReviewWarningBanner } from './ReviewGateBanner';
 
-// PWA
-export { PWAInstallPrompt } from './PWAInstallPrompt';
 
 // Auth
 export { GoogleSignInButton } from './GoogleSignInButton';
