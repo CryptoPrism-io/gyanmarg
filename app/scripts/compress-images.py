@@ -22,11 +22,12 @@ SCRIPT_DIR = Path(__file__).parent
 APP_DIR = SCRIPT_DIR.parent
 LEVELS_DIR = APP_DIR / "src" / "assets" / "ai-images" / "levels"
 MODULES_DIR = APP_DIR / "src" / "assets" / "ai-images" / "modules"
+LANDING_DIR = APP_DIR / "src" / "assets" / "ai-images" / "landing"
 
 # Target max dimension and quality
 MAX_WIDTH = 800  # Max width for level images
 MAX_HEIGHT = 600  # Max height
-QUALITY = 75  # WebP quality (0-100)
+QUALITY = 65  # WebP quality (0-100)
 
 
 def compress_image(input_path: Path, max_width: int = MAX_WIDTH, max_height: int = MAX_HEIGHT, quality: int = QUALITY):
@@ -92,6 +93,9 @@ def main():
 
     # Compress module images (medium size)
     compress_directory(MODULES_DIR, max_width=800, max_height=600)
+
+    # Compress landing images
+    compress_directory(LANDING_DIR, max_width=1200, max_height=900)
 
     print("\nDone!")
 

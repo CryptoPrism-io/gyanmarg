@@ -24,6 +24,16 @@ import { UserAvatar } from '@/components/molecules';
 import { useAuth } from '@/hooks';
 import { PolymindLogo } from '@/components/brand';
 
+// Preload hero image as soon as this module loads
+const _preloadHero = (src: string) => {
+  if (typeof document === 'undefined') return;
+  const link = document.createElement('link');
+  link.rel = 'preload';
+  link.as = 'image';
+  link.href = src;
+  document.head.appendChild(link);
+};
+
 // Animated Counter Component
 function AnimatedCounter({ value, suffix = '' }: { value: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -49,6 +59,10 @@ import featureSpacedRepetition from '@/assets/ai-images/landing/feature-spaced-r
 import featureVisualLearning from '@/assets/ai-images/landing/feature-visual-learning.webp';
 import featureGamification from '@/assets/ai-images/landing/feature-gamification.webp';
 import ctaSectionBg from '@/assets/ai-images/landing/cta-section-bg.webp';
+
+// Preload hero/hero images at module load time (before React render)
+_preloadHero(heroMain);
+_preloadHero(heroBooksTransform);
 
 // Domain images
 import domainPsychology from '@/assets/ai-images/domains/domain-psychology.webp';

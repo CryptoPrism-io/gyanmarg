@@ -37,8 +37,9 @@ import { GoogleSignInButton, BadgeCard, RichMarkdown } from '@/components/molecu
 import { Button } from '@/components/atoms';
 import { ShareableAchievementCard } from '@/components/organisms';
 import { BADGES } from '@/data/badges';
-import { modules } from '@/data/modules';
+import { modulesMeta, type ModuleMeta } from '@/data/modules-meta';
 import { moduleCategories, getCategoryForModule } from '@/data/categories';
+import { modules } from '@/data/modules';
 import { APP_VERSION } from '@/lib/version';
 
 // Storage keys for all stores
@@ -151,7 +152,7 @@ const cardTypeColors: Record<string, string> = {
 
 function SavedCardItem({ card, onUnstar }: { card: StarredCard; onUnstar: () => void }) {
   const [expanded, setExpanded] = useState(false);
-  const mod = modules.find((m) => m.id === card.moduleId);
+  const mod = modulesMeta.find((m) => m.id === card.moduleId);
   const colorClass = cardTypeColors[card.cardType] || cardTypeColors.content;
 
   return (
@@ -266,7 +267,7 @@ export function Profile() {
   const [shareableBadge, setShareableBadge] = useState<(typeof BADGES)[number] | null>(null);
   const modulesWithCards = useMemo(() => {
     const ids = [...new Set(starredCards.map((c) => c.moduleId))];
-    return ids.map((id) => modules.find((m) => m.id === id)).filter((m): m is typeof modules[number] => !!m);
+    return ids.map((id) => modulesMeta.find((m) => m.id === id)).filter((m): m is ModuleMeta => !!m);
   }, [starredCards]);
   const filteredCards = useMemo(() => {
     const cards = filterModule ? starredCards.filter((c) => c.moduleId === filterModule) : starredCards;

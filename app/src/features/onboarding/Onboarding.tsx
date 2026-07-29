@@ -15,7 +15,7 @@ import { useAuthContext } from '@/contexts/AuthContext';
 import { OnboardingLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { Button } from '@/components/atoms';
-import { modules } from '@/data/modules';
+import { modulesMeta } from '@/data/modules-meta';
 import { moduleCategories } from '@/data/categories';
 
 // Build a lookup: moduleId → category name + emoji icon
@@ -27,7 +27,7 @@ for (const cat of moduleCategories) {
 }
 
 // Only show available modules in the picker
-const availableModules = modules.filter((m) => m.isAvailable);
+const availableModules = modulesMeta.filter((m) => m.isAvailable);
 
 // Step 0 = login/skip, Step 1 = name, Step 2 = modules, Step 3 = confirm
 const TOTAL_STEPS = 4;

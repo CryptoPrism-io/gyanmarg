@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Star, Trash2, BookOpen } from 'lucide-react';
 import { useProgressStore } from '@/store/progressStore';
 import type { StarredCard } from '@/store/progressStore';
-import { modules } from '@/data/modules';
+import { modulesMeta } from '@/data/modules-meta';
 import { RichMarkdown } from '@/components/molecules/RichMarkdown';
 
 const cardTypeLabels: Record<string, string> = {
@@ -24,7 +24,7 @@ const cardTypeColors: Record<string, string> = {
 
 function SavedCardItem({ card, onUnstar }: { card: StarredCard; onUnstar: () => void }) {
   const [expanded, setExpanded] = useState(false);
-  const mod = modules.find((m) => m.id === card.moduleId);
+  const mod = modulesMeta.find((m) => m.id === card.moduleId);
   const colorClass = cardTypeColors[card.cardType] || cardTypeColors.content;
 
   return (
@@ -99,8 +99,8 @@ export function SavedCards() {
   const modulesWithCards = useMemo(() => {
     const ids = [...new Set(starredCards.map((c) => c.moduleId))];
     return ids
-      .map((id) => modules.find((m) => m.id === id))
-      .filter((m): m is typeof modules[number] => m !== undefined);
+      .map((id) => modulesMeta.find((m) => m.id === id))
+      .filter((m): m is NonNullable<typeof m> => m !== undefined);
   }, [starredCards]);
 
   // Filtered cards
