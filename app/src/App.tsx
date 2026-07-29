@@ -30,9 +30,6 @@ import { PWAInstallPrompt } from '@/components/molecules/PWAInstallPrompt';
 // Templates
 import { PageLayout } from '@/components/templates';
 
-// Critical path - loaded immediately
-import { LandingPage } from '@/features/landing/LandingPage';
-
 // Code-split routes - lazy loaded for better performance
 const Dashboard = lazy(() => import('@/features/dashboard/Dashboard').then(m => ({ default: m.Dashboard })));
 const LearningPathway = lazy(() => import('@/features/learning-pathway/LearningPathway').then(m => ({ default: m.LearningPathway })));
@@ -46,6 +43,9 @@ const BlogArticlePage = lazy(() => import('@/features/blog/BlogArticlePage').the
 const HowToPage = lazy(() => import('@/features/how-to/HowToPage').then(m => ({ default: m.HowToPage })));
 const BrandKitPage = lazy(() => import('@/features/brand-kit/BrandKitPage').then(m => ({ default: m.BrandKitPage })));
 const ChangelogPage = lazy(() => import('@/features/changelog/ChangelogPage').then(m => ({ default: m.ChangelogPage })));
+
+// Landing Page
+const LandingPage = lazy(() => import('@/features/landing/LandingPage').then(m => ({ default: m.LandingPage })));
 
 // Legal Pages
 const PrivacyPolicy = lazy(() => import('@/features/legal/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
@@ -267,7 +267,9 @@ function AppRoutes() {
         path="/"
         element={
           <PageTransition>
-            <LandingPage />
+            <Suspense fallback={<PageLoader />}>
+              <LandingPage />
+            </Suspense>
           </PageTransition>
         }
       />
