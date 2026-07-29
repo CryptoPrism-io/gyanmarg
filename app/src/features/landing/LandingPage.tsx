@@ -738,7 +738,7 @@ export function LandingPage() {
                 <img src={featureSpacedRepetition} alt="Spaced Repetition" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-400 flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-[#111113]">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-400 flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-default">
                   <Brain size={20} className="text-black" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Immersive Reading</h3>
@@ -759,7 +759,7 @@ export function LandingPage() {
                 <img src={featureVisualLearning} alt="Visual Learning" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-[#252528] flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-[#1A1A1D] shadow-lg">
+                <div className="w-12 h-12 rounded-xl bg-elevated flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-default shadow-lg">
                   <Target size={20} className="text-amber-500" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Cross-Domain Discovery</h3>
@@ -780,7 +780,7 @@ export function LandingPage() {
                 <img src={featureGamification} alt="Gamification" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-[#252528] flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-[#1A1A1D] shadow-lg">
+                <div className="w-12 h-12 rounded-xl bg-elevated flex items-center justify-center mb-4 -mt-10 relative z-10 border-4 border-default shadow-lg">
                   <Trophy size={20} className="text-lavender" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Your Pace, Your Path</h3>

@@ -22,6 +22,7 @@ import { Button, Badge, ProgressBar } from '@/components/atoms';
 import { Modal } from '@/components/organisms';
 import { challengePool } from '@/data/challengePool';
 import type { EnhancedDailyChallenge } from '@/types';
+import { staggerContainer, staggerItem } from '@/lib/animations';
 
 // Configuration
 const LESSONS_TO_UNLOCK_CHALLENGES = 3; // Complete 3 lessons to unlock challenges
@@ -34,24 +35,8 @@ const difficultyColors = {
   hard: { bg: 'bg-coral/10', border: 'border-coral/30', text: 'text-coral' },
 };
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: 'spring', stiffness: 300, damping: 24 },
-  },
-};
+const containerVariants = staggerContainer(0.1);
+const itemVariants = staggerItem(20);
 
 // Count words in text
 function countWords(text: string): number {

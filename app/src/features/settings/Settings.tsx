@@ -28,6 +28,7 @@ import { Button } from '@/components/atoms';
 import { BADGES } from '@/data/badges';
 import { APP_VERSION, BUILD_DATE } from '@/lib/version';
 import { Link } from 'react-router-dom';
+import { staggerItem } from '@/lib/animations';
 
 // Storage keys for all stores
 const STORAGE_KEYS = {
@@ -56,10 +57,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } },
-};
+const itemVariants = staggerItem(20);
 
 export function Settings() {
   const [exportStatus, setExportStatus] = useState<'idle' | 'success' | 'error'>('idle');

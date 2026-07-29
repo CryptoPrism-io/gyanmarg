@@ -377,9 +377,7 @@
 
 /* Gradient text in light mode: use accent instead of golden */
 [data-theme="light"] .heading-gradient,
-[data-theme="light"] .heading-gradient-warm,
-[data-theme="light"] .polymind-brand-text,
-[data-theme="light"] .polymind-brand-text-3d {
+[data-theme="light"] .polymind-brand-text {
   background: var(--color-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -528,26 +526,6 @@ h3.gradient {
   background-clip: text;
 }
 
-.heading-gradient-warm {
-  background: linear-gradient(135deg, #FF9B71 0%, #F7C948 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.heading-gradient-cool {
-  background: linear-gradient(135deg, #9B8FE8 0%, #6EC6FF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.heading-gradient-sage {
-  background: linear-gradient(135deg, #7CB69D 0%, #A8D4BB 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
 
 /* Polymind Brand Text - Premium gradient with depth */
 .polymind-brand-text {
@@ -559,18 +537,6 @@ h3.gradient {
   position: relative;
 }
 
-/* Alternative with more pronounced inner shadow effect using pseudo-element */
-.polymind-brand-text-3d {
-  background: linear-gradient(180deg, #FDE68A 0%, #F59E0B 50%, #B45309 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.2),
-    0 2px 4px rgba(0, 0, 0, 0.15),
-    0 0 20px rgba(245, 158, 11, 0.3);
-  filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.35));
-}
 
 /* ============================================
    FORM ELEMENTS

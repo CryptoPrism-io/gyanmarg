@@ -11,6 +11,9 @@ import { getVizForLevel } from '@/data/vizLevelMap';
 import type { NotificationSchedule } from '@/lib/notifications';
 import { getDefaultSchedule } from '@/lib/notifications';
 
+const XP_PER_LEVEL = 500;
+const VIZ_PURCHASE_COST = 5000;
+
 // Starred cards — saved from lesson card flow
 export interface StarredCard {
   cardId: string;        // unique card ID from useCardStack
@@ -199,7 +202,7 @@ export const useProgressStore = create<ProgressState>()(
         set((state) => {
           const newXP = state.userProgress.xp + amount;
           const oldLevel = state.userProgress.level;
-          const newLevel = Math.floor(newXP / 500) + 1;
+          const newLevel = Math.floor(newXP / XP_PER_LEVEL) + 1;
 
           // Detect level up
           const leveledUp = newLevel > oldLevel;
@@ -239,12 +242,12 @@ export const useProgressStore = create<ProgressState>()(
 
       getXPForNextLevel: () => {
         const { level } = get().userProgress;
-        return level * 500;
+        return level * XP_PER_LEVEL;
       },
 
       getCurrentLevelXP: () => {
         const { xp, level } = get().userProgress;
-        return xp - (level - 1) * 500;
+        return xp - (level - 1) * XP_PER_LEVEL;
       },
 
       getLevelProgress: () => {
@@ -259,7 +262,7 @@ export const useProgressStore = create<ProgressState>()(
       addMicroXP: (amount) =>
         set((state) => {
           const newXP = state.userProgress.xp + amount;
-          const newLevel = Math.floor(newXP / 500) + 1;
+          const newLevel = Math.floor(newXP / XP_PER_LEVEL) + 1;
 
           // Update weekly challenge if tracking XP
           let updatedWeekly = state.weeklyChallenge;
@@ -294,7 +297,7 @@ export const useProgressStore = create<ProgressState>()(
         set((state) => {
           const newXP = state.userProgress.xp + xpReward;
           const oldLevel = state.userProgress.level;
-          const newLevel = Math.floor(newXP / 500) + 1;
+          const newLevel = Math.floor(newXP / XP_PER_LEVEL) + 1;
           const leveledUp = newLevel > oldLevel;
 
           // Update weekly challenge if tracking lessons
@@ -413,7 +416,7 @@ export const useProgressStore = create<ProgressState>()(
         set((state) => {
           const newXP = state.userProgress.xp + xpReward;
           const oldLevel = state.userProgress.level;
-          const newLevel = Math.floor(newXP / 500) + 1;
+          const newLevel = Math.floor(newXP / XP_PER_LEVEL) + 1;
           const leveledUp = newLevel > oldLevel;
 
           // Trigger Firebase sync
@@ -573,7 +576,7 @@ export const useProgressStore = create<ProgressState>()(
           const reward = state.weeklyChallenge.xpReward;
           const newXP = state.userProgress.xp + reward;
           const oldLevel = state.userProgress.level;
-          const newLevel = Math.floor(newXP / 500) + 1;
+          const newLevel = Math.floor(newXP / XP_PER_LEVEL) + 1;
           const leveledUp = newLevel > oldLevel;
 
           return {
@@ -662,7 +665,7 @@ export const useProgressStore = create<ProgressState>()(
         set((state) => {
           const newXP = state.userProgress.xp + xpReward;
           const oldLevel = state.userProgress.level;
-          const newLevel = Math.floor(newXP / 500) + 1;
+          const newLevel = Math.floor(newXP / XP_PER_LEVEL) + 1;
           const leveledUp = newLevel > oldLevel;
 
           // Trigger Firebase sync
@@ -806,7 +809,7 @@ export const useProgressStore = create<ProgressState>()(
         set((state) => {
           const newXP = state.userProgress.xp - amount;
           // Level safeguard: never go below current level
-          const newLevel = Math.max(Math.floor(newXP / 500) + 1, state.userProgress.level);
+          const newLevel = Math.max(Math.floor(newXP / XP_PER_LEVEL) + 1, state.userProgress.level);
 
           return {
             userProgress: {
@@ -822,11 +825,10 @@ export const useProgressStore = create<ProgressState>()(
 
       purchaseViz: (vizId: string) => {
         const state = get();
-        const VIZ_COST = 5000;
-        if (state.userProgress.xp < VIZ_COST) return false;
+        if (state.userProgress.xp < VIZ_PURCHASE_COST) return false;
         if (state.unlockedVisualizations.includes(vizId)) return true;
         set((s) => ({
-          userProgress: { ...s.userProgress, xp: s.userProgress.xp - VIZ_COST },
+          userProgress: { ...s.userProgress, xp: s.userProgress.xp - VIZ_PURCHASE_COST },
           unlockedVisualizations: [...s.unlockedVisualizations, vizId],
         }));
         return true;

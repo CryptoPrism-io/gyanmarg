@@ -9,6 +9,7 @@ import { GAME_INFO } from '@/types/game';
 import type { PathwayLesson, PathwayLevel } from '@/types';
 import type { GameType, GameContent } from '@/types/game';
 import { GameModal } from './GameModal';
+import { springStiff } from '@/lib/animations';
 
 interface SelectedGame {
   levelId: string;
@@ -247,7 +248,7 @@ export function GameHub() {
                 key={group.moduleId}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: gi * 0.05, type: 'spring', stiffness: 300, damping: 24 }}
+                transition={{ delay: gi * 0.05, ...springStiff }}
               >
                 <div className="flex items-center gap-2.5 mb-3">
                   <span className="text-xl">{group.moduleIcon}</span>

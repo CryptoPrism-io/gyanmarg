@@ -4,6 +4,7 @@ import { Sparkles, HelpCircle } from 'lucide-react';
 import { calculateGameScore } from '@/lib/gameScoring';
 import type { GameComponentProps } from '@/types/game';
 import { HINT_COST } from '@/types/game';
+import { springStiff } from '@/lib/animations';
 
 export function ApplyItGame({ content, quickPlay, onComplete, onUseHint, hintsRemaining }: GameComponentProps) {
   const allScenarios = content.scenarios ?? [];
@@ -86,7 +87,7 @@ export function ApplyItGame({ content, quickPlay, onComplete, onUseHint, hintsRe
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -30 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+          transition={springStiff}
           className="flex flex-col"
         >
           <div className="p-3.5 rounded-xl bg-elevated/60 border border-white/[0.06] mb-3">

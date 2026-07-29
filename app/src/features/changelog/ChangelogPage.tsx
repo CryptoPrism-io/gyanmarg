@@ -4,6 +4,7 @@ import { PageLayout } from '@/components/templates';
 import { Button } from '@/components/atoms';
 import { Link } from 'react-router-dom';
 import { APP_VERSION } from '@/lib/version';
+import { staggerItem } from '@/lib/animations';
 
 interface ChangelogEntry {
   version: string;
@@ -173,10 +174,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } },
-};
+const itemVariants = staggerItem(20);
 
 export function ChangelogPage() {
   return (

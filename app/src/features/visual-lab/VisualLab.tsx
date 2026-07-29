@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useProgressStore } from '@/store/progressStore';
 import { vizLevelMap } from '@/data/vizLevelMap';
 import { getModuleById } from '@/data/modules';
+import { staggerItem } from '@/lib/animations';
 import {
   HabitLoopDiagram,
   ForgettingCurveDiagram,
@@ -1541,10 +1542,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } },
-};
+const itemVariants = staggerItem(20);
 
 // First 5 visualizations are free starter visuals
 const FREE_STARTER_VISUALS = [

@@ -5,6 +5,7 @@ import { ModuleLayout } from '@/components/templates';
 import { GlassCard } from '@/components/molecules';
 import { Modal } from '@/components/organisms';
 import { Button } from '@/components/atoms';
+import { slideInLeft } from '@/lib/animations';
 
 const colorMap: Record<string, { bg: string; border: string; text: string; bar: string }> = {
   orange: { bg: 'bg-sunrise/10', border: 'border-sunrise/30', text: 'text-sunrise', bar: 'bg-sunrise' },
@@ -94,14 +95,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { type: 'spring', stiffness: 300, damping: 24 },
-  },
-};
+const itemVariants = slideInLeft;
 
 export function KnowledgeMap() {
   const [selectedConnection, setSelectedConnection] = useState<typeof connections[0] | null>(null);

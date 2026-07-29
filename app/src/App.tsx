@@ -9,6 +9,9 @@ import {
 } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
+// Error Boundary
+import { ErrorBoundary } from '@/components/atoms/ErrorBoundary';
+
 // Analytics
 import { analytics } from '@/lib/analytics';
 
@@ -548,11 +551,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <AppRoutes />
-        <CelebrationModals />
-        <PWAInstallPrompt />
-      </AuthProvider>
+      <ErrorBoundary>
+        <AuthProvider>
+          <AppRoutes />
+          <CelebrationModals />
+          <PWAInstallPrompt />
+        </AuthProvider>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }
