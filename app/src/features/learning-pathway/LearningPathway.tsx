@@ -943,10 +943,10 @@ export function LearningPathway() {
                                       });
                                     } : undefined}
                                   />
-                                  {/* Subtle paywall lock badge for lessons requiring purchase */}
+                                  {/* Paywall lock badge for lessons requiring purchase */}
                                   {paywallLocked && (
-                                    <div className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full bg-white/5 border border-white/10 pointer-events-none">
-                                      <Lock className="w-3 h-3 text-white/40" />
+                                    <div className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full bg-golden/15 border border-golden/25 pointer-events-none">
+                                      <Lock className="w-3 h-3 text-golden/70" />
                                     </div>
                                   )}
                                 </div>

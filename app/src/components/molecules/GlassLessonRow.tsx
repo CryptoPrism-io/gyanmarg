@@ -57,7 +57,7 @@ export function GlassLessonRow({
         relative flex items-center gap-3 md:gap-4 p-3 md:p-3.5 rounded-xl
         border transition-all duration-200 bg-surface
         ${isLocked
-          ? 'opacity-50 cursor-not-allowed border-white/[0.05]'
+          ? 'cursor-not-allowed border-white/[0.05]'
           : 'cursor-pointer border-white/[0.08] hover:border-lavender/30 hover:shadow-sm'
         }
       `}
@@ -70,7 +70,9 @@ export function GlassLessonRow({
             ? 'bg-gradient-to-br from-sage to-sage-dark text-white'
             : isInProgress
               ? 'bg-gradient-to-br from-blue-500 to-blue-400 text-white'
-              : 'bg-white/[0.06] text-text-muted'
+              : isLocked
+                ? 'bg-white/[0.03] text-text-muted/50'
+                : 'bg-white/[0.06] text-text-muted'
           }
         `}
       >
@@ -78,19 +80,19 @@ export function GlassLessonRow({
       </div>
 
       {/* Type icon */}
-      <div className={`w-9 h-9 flex items-center justify-center rounded-lg flex-shrink-0 ${config.bgClass}`}>
-        <TypeIcon className={`w-4 h-4 ${config.textClass}`} />
+      <div className={`w-9 h-9 flex items-center justify-center rounded-lg flex-shrink-0 ${isLocked ? config.bgClass.replace('/15', '/8') : config.bgClass}`}>
+        <TypeIcon className={`w-4 h-4 ${isLocked ? config.textClass + '/50' : config.textClass}`} />
       </div>
 
       {/* Lesson content */}
-      <div className="flex-1 min-w-0">
-        <h4 className="text-sm font-semibold mb-1 text-text-primary truncate">
+      <div className={`flex-1 min-w-0 ${isLocked ? 'opacity-50' : ''}`}>
+        <h4 className={`text-sm font-semibold mb-1 truncate ${isLocked ? 'text-text-muted' : 'text-text-primary'}`}>
           {title}
         </h4>
-        <div className="flex items-center gap-3 text-xs text-text-muted">
+        <div className={`flex items-center gap-3 text-xs ${isLocked ? 'text-text-muted/60' : 'text-text-muted'}`}>
           <span>{duration} min</span>
-          <span className="text-golden font-semibold">{xpReward} XP</span>
-          <span className={`px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-bold ${config.bgClass} ${config.textClass}`}>
+          <span className={`font-semibold ${isLocked ? 'text-golden/50' : 'text-golden'}`}>{xpReward} XP</span>
+          <span className={`px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-bold ${isLocked ? config.bgClass.replace('/15', '/8') + ' opacity-50' : config.bgClass + ' ' + config.textClass}`}>
             {config.label}
           </span>
         </div>
@@ -117,7 +119,7 @@ export function GlassLessonRow({
           </button>
         )}
         {isLocked ? (
-          <Lock className="w-4 h-4 text-text-muted" />
+          <Lock className="w-4 h-4 text-text-muted/40" />
         ) : (
           <div className="w-8 h-8 flex items-center justify-center bg-lavender/10 border border-lavender/20 rounded-full">
             <Play className="w-3 h-3 text-lavender ml-0.5" fill="currentColor" />

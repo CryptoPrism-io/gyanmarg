@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { PolymindLogo } from '@/components/brand/PolymindLogo';
 import {
   BrowserRouter,
@@ -15,22 +15,17 @@ import { ErrorBoundary } from '@/components/atoms/ErrorBoundary';
 // Analytics
 import { analytics } from '@/lib/analytics';
 
-// Celebration Queue
-import { celebrationQueue, type CelebrationEvent } from '@/lib/celebrationQueue';
-
 // Store
-import { useUserStore, usePendingAchievement } from '@/store/userStore';
-import { useProgressStore, usePendingLevelUp, usePendingVizUnlock } from '@/store/progressStore';
+import { useUserStore } from '@/store/userStore';
 
 // Auth
 import { AuthProvider } from '@/contexts/AuthContext';
 
-// Celebration Components
-import { AchievementUnlock, LevelUpModal, VizUnlockModal } from '@/components/organisms';
-import DailyRewardModal from '@/components/organisms/DailyRewardModal';
+// Celebration Modals (lazy-loaded — only rendered on user interaction)
+const CelebrationModals = lazy(() => import('@/components/CelebrationModals'));
 
 // PWA Install Prompt
-import { PWAInstallPrompt } from '@/components/molecules';
+import { PWAInstallPrompt } from '@/components/molecules/PWAInstallPrompt';
 
 // Templates
 import { PageLayout } from '@/components/templates';
@@ -72,150 +67,6 @@ function PageLoader() {
     <div className="min-h-screen bg-base flex items-center justify-center">
       <PolymindLogo size="lg" variant="simple" animated />
     </div>
-  );
-}
-
-// Global Celebration Modals
-function CelebrationModals() {
-  const pendingAchievement = usePendingAchievement();
-  const pendingLevelUp = usePendingLevelUp();
-  const pendingVizUnlock = usePendingVizUnlock();
-  const clearPendingAchievement = useUserStore((s) => s.clearPendingAchievement);
-  const clearPendingLevelUp = useProgressStore((s) => s.clearPendingLevelUp);
-  const clearPendingVizUnlock = useProgressStore((s) => s.clearPendingVizUnlock);
-
-  const [showAchievement, setShowAchievement] = useState(false);
-  const [showLevelUp, setShowLevelUp] = useState(false);
-  const [showVizUnlock, setShowVizUnlock] = useState(false);
-  const [currentAchievement, setCurrentAchievement] = useState<{
-    id: string;
-    name: string;
-    xpReward: number;
-  } | null>(null);
-  const [currentLevel, setCurrentLevel] = useState<number>(1);
-  const [currentVizUnlock, setCurrentVizUnlock] = useState<{
-    vizId: string;
-    moduleId: string;
-    levelId: string;
-  } | null>(null);
-
-  // Daily reward state
-  const [showDailyReward, setShowDailyReward] = useState(false);
-  const [dailyRewardData, setDailyRewardData] = useState<{
-    streak: number;
-    reward: number;
-  } | null>(null);
-
-  const checkDailyLogin = useUserStore((s) => s.checkDailyLogin);
-
-  // Check daily login on mount
-  useEffect(() => {
-    const result = checkDailyLogin();
-    if (result.isNewDay && result.reward !== null) {
-      setDailyRewardData({
-        streak: result.streak,
-        reward: result.reward,
-      });
-      setShowDailyReward(true);
-    }
-  }, []); // Only run once on mount
-
-  // Initialize celebration queue
-  useEffect(() => {
-    celebrationQueue.initialize((event: CelebrationEvent) => {
-      if (event.type === 'achievement') {
-        setCurrentAchievement({
-          id: event.payload.id,
-          name: event.payload.name,
-          xpReward: event.payload.xpReward,
-        });
-        setShowAchievement(true);
-      } else if (event.type === 'levelUp') {
-        setCurrentLevel(event.payload.newLevel);
-        setShowLevelUp(true);
-      } else if (event.type === 'vizUnlock') {
-        setCurrentVizUnlock(event.payload);
-        setShowVizUnlock(true);
-      }
-    });
-
-    return () => celebrationQueue.destroy();
-  }, []);
-
-  // Handle pending achievement - enqueue instead of showing immediately
-  useEffect(() => {
-    if (pendingAchievement) {
-      // Just use the pending achievement directly - it's already the right shape
-      celebrationQueue.enqueue({
-        type: 'achievement',
-        payload: pendingAchievement,
-      });
-      clearPendingAchievement();
-    }
-  }, [pendingAchievement, clearPendingAchievement]);
-
-  // Handle pending level up - enqueue instead of auto-clearing
-  // NOW ENABLED: Modal queue system prevents blocking during lessons
-  useEffect(() => {
-    if (pendingLevelUp) {
-      celebrationQueue.enqueue({
-        type: 'levelUp',
-        payload: { newLevel: pendingLevelUp },
-      });
-      clearPendingLevelUp();
-    }
-  }, [pendingLevelUp, clearPendingLevelUp]);
-
-  // Handle pending viz unlock — enqueue as celebration
-  useEffect(() => {
-    if (pendingVizUnlock) {
-      celebrationQueue.enqueue({
-        type: 'vizUnlock',
-        payload: pendingVizUnlock,
-      });
-      clearPendingVizUnlock();
-    }
-  }, [pendingVizUnlock, clearPendingVizUnlock]);
-
-  const handleAchievementClose = () => {
-    setShowAchievement(false);
-    celebrationQueue.onCelebrationClosed();
-  };
-
-  const handleLevelUpClose = () => {
-    setShowLevelUp(false);
-    celebrationQueue.onCelebrationClosed();
-  };
-
-  const handleVizUnlockClose = () => {
-    setShowVizUnlock(false);
-    celebrationQueue.onCelebrationClosed();
-  };
-
-  return (
-    <>
-      <DailyRewardModal
-        isOpen={showDailyReward}
-        onClose={() => setShowDailyReward(false)}
-        streak={dailyRewardData?.streak || 1}
-        reward={dailyRewardData?.reward || 0}
-      />
-      <AchievementUnlock
-        isOpen={showAchievement}
-        onClose={handleAchievementClose}
-        achievement={currentAchievement}
-      />
-      <LevelUpModal
-        isOpen={showLevelUp}
-        onClose={handleLevelUpClose}
-        newLevel={currentLevel}
-      />
-      <VizUnlockModal
-        isOpen={showVizUnlock}
-        onClose={handleVizUnlockClose}
-        vizUnlock={currentVizUnlock}
-      />
-    </>
   );
 }
 
@@ -554,7 +405,9 @@ function App() {
       <ErrorBoundary>
         <AuthProvider>
           <AppRoutes />
-          <CelebrationModals />
+          <Suspense fallback={null}>
+            <CelebrationModals />
+          </Suspense>
           <PWAInstallPrompt />
         </AuthProvider>
       </ErrorBoundary>
