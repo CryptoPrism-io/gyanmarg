@@ -137,10 +137,6 @@ const events = {
   habitLogged: (habitId: string) =>
     track('habit_logged', { habit_id: habitId }),
 
-  // PWA
-  pwaInstallPromptShown: () => track('pwa_install_prompt_shown'),
-  pwaInstalled: () => track('pwa_installed'),
-
   // Content
   blogArticleViewed: (articleId: string) =>
     track('blog_article_viewed', { article_id: articleId }),
