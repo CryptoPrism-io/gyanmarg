@@ -52,6 +52,9 @@ const TermsOfService = lazy(() => import('@/features/legal/TermsOfService').then
 // Explore Page
 const ExplorePage = lazy(() => import('@/features/explore/ExplorePage').then(m => ({ default: m.ExplorePage })));
 
+// Public lesson preview — no auth required
+const PreviewLesson = lazy(() => import('@/features/preview/PreviewLesson').then(m => ({ default: m.PreviewLesson })));
+
 // Experimental Features
 const ReelReader = lazy(() => import('@/features/experimental/ReelReader').then(m => ({ default: m.ReelReader })));
 const LabHub = lazy(() => import('@/features/experimental/LabHub'));
@@ -259,6 +262,18 @@ function AppRoutes() {
         }
       />
 
+
+      {/* Public lesson preview — no auth required */}
+      <Route
+        path="/preview/:moduleId/:lessonId"
+        element={
+          <PageTransition>
+            <Suspense fallback={<PageLoader />}>
+              <PreviewLesson />
+            </Suspense>
+          </PageTransition>
+        }
+      />
 
       {/* Landing Page */}
       <Route
