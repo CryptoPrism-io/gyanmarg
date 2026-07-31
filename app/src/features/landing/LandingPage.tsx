@@ -36,7 +36,9 @@ const _preloadHero = (src: string) => {
 function AnimatedCounter({ value, suffix = '' }: { value: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const spring = useSpring(0, { mass: 0.8, stiffness: 75, damping: 15 });
+  // If already in the viewport on mount, render the final value immediately
+  // (no "0" flash for above-fold stats). Below-fold stats still animate on scroll.
+  const spring = useSpring(isInView ? value : 0, { mass: 0.8, stiffness: 75, damping: 15 });
   const display = useTransform(spring, (current) =>
     Math.round(current).toLocaleString() + suffix
   );
@@ -152,18 +154,18 @@ const successBenefits = [
   { icon: Trophy, text: 'See patterns across fields that specialists miss entirely' },
 ];
 
-// Knowledge Domains with AI images
+// Knowledge Domains with AI images + deep-linked module
 const domainCards = [
-  { title: 'Psychology', subtitle: 'Kahneman, Cialdini, Ariely', image: domainPsychology },
-  { title: 'AI & Technology', subtitle: 'Machine learning, future of tech', image: domainAI },
-  { title: 'Wealth Building', subtitle: 'Buffett, Dalio, Graham', image: domainWealth },
-  { title: 'Productivity', subtitle: 'Deep work, habits, focus', image: domainProductivity },
-  { title: 'Health & Longevity', subtitle: 'Attia, Huberman, biohacking', image: domainHealth },
-  { title: 'Leadership', subtitle: 'Management, influence, teams', image: domainLeadership },
-  { title: 'Philosophy', subtitle: 'Stoicism, meaning, wisdom', image: domainPhilosophy },
-  { title: 'Writing', subtitle: 'Storytelling, persuasion', image: domainWriting },
-  { title: 'Science', subtitle: 'Physics, biology, neuroscience', image: domainScience },
-  { title: 'Creativity', subtitle: 'Innovation, design thinking', image: domainCreativity },
+  { title: 'Psychology', subtitle: 'Kahneman, Cialdini, Ariely', image: domainPsychology, moduleId: 'psychology' },
+  { title: 'AI & Technology', subtitle: 'Machine learning, future of tech', image: domainAI, moduleId: 'ai-ml' },
+  { title: 'Wealth Building', subtitle: 'Buffett, Dalio, Graham', image: domainWealth, moduleId: 'wealth-building' },
+  { title: 'Productivity', subtitle: 'Deep work, habits, focus', image: domainProductivity, moduleId: 'productivity-systems' },
+  { title: 'Health & Longevity', subtitle: 'Attia, Huberman, biohacking', image: domainHealth, moduleId: 'body-longevity' },
+  { title: 'Leadership', subtitle: 'Management, influence, teams', image: domainLeadership, moduleId: 'leadership' },
+  { title: 'Philosophy', subtitle: 'Stoicism, meaning, wisdom', image: domainPhilosophy, moduleId: 'stoicism' },
+  { title: 'Writing', subtitle: 'Storytelling, persuasion', image: domainWriting, moduleId: 'writing-storytelling' },
+  { title: 'Science', subtitle: 'Physics, biology, neuroscience', image: domainScience, moduleId: 'physics-engineering' },
+  { title: 'Creativity', subtitle: 'Innovation, design thinking', image: domainCreativity, moduleId: 'creative-writing' },
 ];
 
 export function LandingPage() {
@@ -800,7 +802,7 @@ export function LandingPage() {
                 transition={{ delay: i * 0.05 }}
                 className="group cursor-pointer"
               >
-                <Link to="/dashboard" className="block">
+                <Link to={`/pathway/${domain.moduleId}`} className="block">
                   <div className="bg-elevated border border-white/5 rounded-xl overflow-hidden transition-all duration-300 hover:border-amber-500/30 hover:shadow-lg hover:shadow-amber-500/5">
                     <div className="aspect-[4/3] overflow-hidden bg-base relative">
                       <img
