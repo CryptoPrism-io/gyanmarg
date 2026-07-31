@@ -86,7 +86,7 @@ Here is where evolution enters: **DNA replication is not perfect.** Mistakes (mu
 
 Remarkably, you share about 60% of your genes with fruit flies and 85% with mice. These shared genes perform essential functions that have been conserved across hundreds of millions of years of evolution.`,
       keyTakeaway: "DNA is both the instruction manual for building organisms and the mechanism of heredity that allows evolution to occur through accumulated changes.",
-      actionItem: "If you unwound all the DNA in one of your cells, it would stretch about 2 meters. You have approximately 37 trillion cells. That is enough DNA to reach from Earth to the Sun and back 100 times.",
+      actionItem: "If you unwound all the DNA in one of your cells, it would stretch about 2 meters. You have approximately 37 trillion cells. That is enough DNA to reach from Earth to the Sun and back nearly 250 times.",
     },
   },
   {
@@ -128,13 +128,13 @@ Life on Earth can be visualized as a vast, branching tree. Every species alive t
 
 **The Three Domains of Life** represent the deepest divisions. Bacteria and Archaea are single-celled organisms without nuclei. Eukarya includes all organisms with complex cells containing nuclei — from yeast to redwood trees to humans.
 
-An extraordinary event occurred about 2 billion years ago: **endosymbiosis**. A bacterium that could perform photosynthesis was engulfed by another cell but not digested. Instead, it became a symbiotic partner, eventually evolving into chloroplasts — the organelles that allow plants to capture sunlight. Similarly, oxygen-breathing bacteria became mitochondria, the powerhouses of cells. You carry the descendants of ancient bacteria inside every one of your cells.
+An extraordinary event occurred roughly 1.5-2 billion years ago: **endosymbiosis**. A bacterium that could perform photosynthesis was engulfed by another cell but not digested. Instead, it became a symbiotic partner, eventually evolving into chloroplasts — the organelles that allow plants to capture sunlight (this plastid event occurred somewhat later, about 1.2-1.5 billion years ago). Similarly, oxygen-breathing bacteria became mitochondria, the powerhouses of cells. You carry the descendants of ancient bacteria inside every one of your cells.
 
 **Mass extinctions** have repeatedly pruned the tree of life. The Permian extinction 252 million years ago killed 96% of marine species. The asteroid impact 66 million years ago ended the dinosaurs' reign (except for birds, which are living dinosaurs). Each extinction opened ecological niches for survivors to fill, driving rapid diversification.
 
 Fossil records, comparative anatomy, and DNA sequencing all converge on the same tree of life. For example, humans are more closely related to chimpanzees than chimpanzees are to gorillas — our lineages split only 6-7 million years ago, while the chimp-gorilla split occurred 10 million years ago.
 
-> The evolutionary biologist Theodosius Dobzhansky observed that humans have terrible sinuses because we evolved from ancestors that walked on all fours. Our upright posture changed drainage angles, but evolution works with existing structures, not optimal redesigns.
+> The evolutionary biologist Theodosius Dobzhansky (often quoted informally) pointed out that humans have notoriously troublesome sinuses — a trait he attributed to the legacy of our quadrupedal ancestors. Our upright posture changed drainage angles, and evolution works with existing structures, not optimal redesigns. (It's an engaging illustration of evolutionary constraints, though the precise sinus claim is an informal observation rather than a formal finding.)
 
 **You are related to every living thing.** The bacteria in your gut, the trees outside, the birds in the sky — all are your cousins, separated by varying degrees of evolutionary time. This is not metaphor. It is genetic fact.`,
       keyTakeaway: "All life on Earth descended from a single common ancestor, making every organism your relative in a vast family tree spanning billions of years.",
@@ -248,6 +248,8 @@ Hand-in-hand with cell biology is **genetics**, the study of heredity and the va
 Throughout this level, we'll explore the intricate structures within cells, unravel the mysteries of DNA and RNA, understand how proteins are made, and investigate the remarkable processes of cell division that allow life to grow, repair, and reproduce. Prepare to see life from a whole new, microscopic perspective!
 
 > "Cells are immortal. It is only the fluid in which they float that degenerates, dies, and must be renewed." — Alexis Carrel
+
+(This famous claim was later shown to be mistaken: normal cells have a finite replicative limit — the **Hayflick limit** — before they senesce. Carrel\'s "immortal" chick-heart cultures were later suspected to have been contaminated by fresh cells. The quote remains a historical landmark, but cell immortality applies only to certain cancer cell lines and germ cells, not ordinary body cells.)
 
 **Key Concept**: Cells are the basic structural, functional, and biological unit of all known organisms, and genetics is the study of how traits are inherited through the information encoded in DNA.`,
       keyTakeaway: 'Cells are the fundamental units of life, and genetics explains the inheritance and variation of traits through the blueprint of DNA.',
@@ -609,7 +611,7 @@ You are a lead genetic architect at BioGen Corp, tasked with investigating a str
 **Observations from the Lab:**
 
 1.  **Microscopic Analysis**: Electron microscopy reveals that the cells possess a nucleus, mitochondria, endoplasmic reticulum, and ribosomes. However, the mitochondria appear unusually small and fewer in number than typical human cells.
-2.  **DNA Sequencing**: Analysis of the cell's nuclear DNA shows a specific mutation: a single base pair substitution (an A replaced by a T) occurred in the coding region of a gene responsible for producing a crucial mitochondrial enzyme. The original DNA template strand segment for this enzyme was: \`3'- T A C C G A G C A T T -5'\`. The mutated segment is now: \`3'- T A C C G T G C A T T -5'\`.
+2.  **DNA Sequencing**: Analysis of the cell's nuclear DNA shows a specific mutation: a single base pair substitution (a C replaced by a T) occurred in the coding region of a gene responsible for producing a crucial mitochondrial enzyme. The original DNA template strand segment for this enzyme was: \`3'- T A C C G A G C A T T -5'\`. The mutated segment is now: \`3'- T A C T G A G C A T T -5'\`.
 3.  **Protein Assay**: The enzyme produced from the mutated gene is indeed non-functional.
 4.  **Cell Division Study**: When attempting to divide, the cells frequently get stuck in metaphase, and if they do proceed, the resulting daughter cells often have an uneven distribution of chromosomes.
 
@@ -640,9 +642,9 @@ Based on the observations, answer the following questions:
     *   Original DNA template: \`3'- T A C C G A G C A T T -5'\`
     *   Original mRNA: \`5'- A U G G C U C G U A A -3'\`
     *   Original Amino Acids: Met - Ala - Arg - Stop
-    *   Mutated DNA template: \`3'- T A C C G T G C A T T -5'\`
-    *   Mutated mRNA: \`5'- A U G G C A C G U A A -3'\`
-    *   Mutated Amino Acids: Met - Ala - Thr - Stop
+    *   Mutated DNA template: \`3'- T A C T G A G C A T T -5'\`
+    *   Mutated mRNA: \`5'- A U G A C U C G U A A -3'\`
+    *   Mutated Amino Acids: Met - Thr - Arg - Stop
     *   Type of Mutation: Missense mutation (a single base change resulted in a different amino acid, Alanine changed to Threonine).
 3.  **Mitochondrial/Enzyme Problem**: The missense mutation changed a crucial amino acid in the mitochondrial enzyme. This likely altered the enzyme's 3D structure, rendering it non-functional. Since mitochondria rely on these enzymes for energy production, a faulty enzyme would impair mitochondrial function, leading to their small size and reduced number.
 4.  **Cell Division Issue**: The cells are likely failing during **mitosis**. The arrest in metaphase and uneven chromosome distribution strongly suggest a problem with the **spindle fibers** or the **centrosomes** that organize them. Spindle fibers are responsible for attaching to chromosomes at the metaphase plate and pulling sister chromatids apart during anaphase. If they are faulty, chromosomes cannot align or separate correctly, leading to metaphase arrest and aneuploidy (uneven chromosome numbers) in daughter cells.
@@ -787,7 +789,7 @@ Consider an example: a small, camouflaged mouse that successfully hides from pre
 
 ## Examples of Adaptations
 
-*   **Mimicry**: The Viceroy butterfly, though palatable to birds, mimics the appearance of the unpalatable Monarch butterfly (Batesian mimicry). This adaptation reduces predation risk for the Viceroy because predators learn to avoid both.
+*   **Mimicry**: The Viceroy butterfly closely resembles the Monarch butterfly, and both species are distasteful to predators — a classic example of **Müllerian mimicry**, where two unpalatable species reinforce each other's warning signal. (Earlier textbooks described this as Batesian mimicry, but research since the 1990s showed the Viceroy is itself unpalatable.)
 *   **Camouflage**: Many species, like chameleons or arctic foxes, have evolved coloration or patterns that blend seamlessly with their surroundings, helping them avoid predators or ambush prey.
 *   **Specialized Feeding Structures**: The diverse beak shapes of Darwin's finches are classic examples of adaptations for consuming specific types of food (e.g., crushing seeds, probing for insects, grasping cactus flowers).
 *   **Physiological Adaptations**: The ability of many marine mammals, like seals, to hold their breath for extended periods and dive to great depths is a physiological adaptation for aquatic life.
@@ -1083,7 +1085,7 @@ Based on the principles of evolution and natural selection you've learned, consi
 ### Part 1: Divergence and Speciation
 
 *   **Question 1**: Describe how **natural selection** might drive the original Seed-Eater population to diverge into distinct populations across the three main habitats (coastal, forest, scrubland). What specific **adaptations** would you expect to see in terms of beak morphology, diet, and foraging behavior in each habitat?
-*   **Question 2**: Explain how **allopatric speciation** could occur between these diverging populations, even though they are on the same island. What reproductive barriers might arise?
+*   **Question 2**: Explain how **sympatric speciation** could occur between these diverging populations on the same island. Since the populations share the same geography, what **reproductive barriers** (e.g., habitat, behavioral, or temporal isolation) might arise to reduce gene flow between them?
 
 ### Part 2: Arms Races and Sexual Selection
 
@@ -1098,7 +1100,7 @@ Based on the principles of evolution and natural selection you've learned, consi
 *   **Interactions**: Consider how different selective pressures (food, predators, parasites) interact.
 
 This challenge requires you to synthesize multiple concepts from this level. There isn't one single "right" answer, but rather a logical application of evolutionary principles to predict outcomes. Good luck!`,
-      keyTakeaway: 'The diverse selective pressures on Volcania, including varied food sources, predators, and parasites, will drive natural selection, potentially leading to adaptation, allopatric speciation, evolutionary arms races, and shifts in sexual selection among the Seed-Eater birds.',
+      keyTakeaway: 'The diverse selective pressures on Volcania, including varied food sources, predators, and parasites, will drive natural selection, potentially leading to adaptation, sympatric speciation, evolutionary arms races, and shifts in sexual selection among the Seed-Eater birds.',
       actionItem: 'Write a detailed response (1-2 paragraphs per question) outlining your hypotheses for each of the four questions in the "The Island of Divergence: A Challenge" scenario. Be sure to use specific evolutionary terms learned in this level.',
       quiz: {
         question: 'In the Volcania scenario, if the coastal Seed-Eaters develop very strong, thick beaks for cracking nuts, and the forest Seed-Eaters develop slender, probing beaks for insects, what primary evolutionary process is at play?',
@@ -1287,7 +1289,7 @@ Evidence for the "Out of Africa" model comes primarily from two powerful sources
 
 Genetic evidence provides even more compelling support. Studies of **mitochondrial DNA (mtDNA)** and **Y-chromosome DNA** have been instrumental. mtDNA is inherited solely from the mother, and the Y-chromosome solely from the father, allowing scientists to trace direct ancestral lines. By analyzing genetic variations in contemporary human populations worldwide, researchers can construct phylogenetic trees that consistently show the deepest genetic roots within Africa. All non-African populations descend from a small group that left Africa, exhibiting less genetic diversity than African populations, a pattern consistent with a founder effect during migration.
 
-The initial major dispersal out of Africa is estimated to have occurred between 60,000 and 70,000 years ago, possibly along coastal routes. From the Middle East, *Homo sapiens* expanded into Asia, reaching Australia by at least 50,000 years ago (evidence from Mungo Man in Australia). The colonization of Europe occurred later, around 45,000-40,000 years ago, leading to interactions and eventual replacement of Neanderthal populations. Finally, the Americas were populated via the Bering land bridge, with the earliest widely accepted evidence placing human presence there around 15,000 years ago, though some sites suggest earlier migrations.
+The initial major dispersal out of Africa is estimated to have occurred between 60,000 and 70,000 years ago, possibly along coastal routes. From the Middle East, *Homo sapiens* expanded into Asia, reaching Australia by at least 65,000 years ago (evidence from the Madjedbebe rock shelter in Arnhem Land; the famous "Mungo Man" remains are somewhat younger, around 42,000 years old). The colonization of Europe occurred later, around 45,000-40,000 years ago, leading to interactions and eventual replacement of Neanderthal populations. Finally, the Americas were populated via the Bering land bridge, with the earliest widely accepted evidence placing human presence there around 15,000 years ago, though some sites suggest earlier migrations.
 
 > "Genetics tells us where we came from, and archaeology tells us what we did when we got there." — Spencer Wells
 
@@ -2401,7 +2403,7 @@ The life cycle of a virus generally involves several steps:
 2.  **Entry**: The virus or its genetic material enters the host cell.
 3.  **Replication**: The viral genetic material takes over the host cell's machinery to synthesize viral components (proteins and nucleic acids).
 4.  **Assembly**: New viral particles are assembled from the newly synthesized components.
-5.  **Release**: New virions exit the host cell, often lysing (bursting) it in the process (the **lytic cycle**), or budding off without immediately killing the cell (the **lysogenic cycle** or persistent infection).
+5.  **Release**: New virions exit the host cell, often lysing (bursting) it in the process (the **lytic cycle**), or budding off through the cell membrane without immediately killing it — as enveloped viruses do. Separately, some viruses (e.g., bacteriophages) can enter a **lysogenic cycle**, in which their genome integrates into the host chromosome and is copied along with it until a later trigger switches them to the lytic cycle.
 
 The impact of viruses on human health is profound. Historically, viral diseases like smallpox caused immense suffering and death. The development of the smallpox vaccine by **Edward Jenner** in 1796 marked a pivotal moment in medicine, demonstrating the power of vaccination to prevent viral infections. Today, we contend with viruses causing influenza, HIV, measles, Ebola, and more recently, SARS-CoV-2 (COVID-19). Viral infections are a constant reminder of the dynamic interplay between hosts and pathogens.
 

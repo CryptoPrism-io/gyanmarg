@@ -123,7 +123,7 @@ The combination of these three pillars was so successful that many believed fund
 
 > "The more important fundamental laws and facts of physical science have all been discovered, and these are so firmly established that the possibility of their ever being supplanted is exceedingly remote."
 
-Lord Kelvin reportedly spoke of just "two small clouds" on the horizon of classical physics. Those two clouds -- **blackbody radiation** and the **photoelectric effect** -- would soon unleash a revolution that shattered the clockwork universe forever.
+Lord Kelvin reportedly spoke of just "two small clouds" on the horizon of classical physics. Those two clouds -- **the failed Michelson-Morley experiment to detect the luminiferous ether** and **blackbody radiation** -- would soon unleash a revolution that shattered the clockwork universe forever.
 
 ### Why This Matters for Quantum
 
@@ -381,7 +381,7 @@ Einstein received the **1921 Nobel Prize in Physics** not for relativity, but fo
 
 Here is a problem that should keep you up at night: **according to classical physics, atoms cannot exist.**
 
-That is not an exaggeration. Classical electromagnetism makes a clear, unambiguous prediction: any electron orbiting a nucleus should continuously radiate energy (because accelerating charges emit electromagnetic radiation), spiral inward, and crash into the nucleus in approximately **10^-11 seconds** -- about a hundred-trillionth of a second.
+That is not an exaggeration. Classical electromagnetism makes a clear, unambiguous prediction: any electron orbiting a nucleus should continuously radiate energy (because accelerating charges emit electromagnetic radiation), spiral inward, and crash into the nucleus in approximately **10^-11 seconds** -- about one hundred-billionth of a second.
 
 Yet here you are, made of atoms, reading this lesson. Clearly, something is very wrong with the classical picture.
 
@@ -573,7 +573,7 @@ There is no sharp line between "quantum" and "classical." The transition is grad
 Recent experiments have demonstrated quantum effects in increasingly large systems:
 
 - **2019**: Quantum interference observed with molecules of **2,000 atoms** (University of Vienna)
-- **2021**: Entanglement demonstrated between **two vibrating drumheads** visible to the naked eye (but at near absolute zero)
+- **2021**: Entanglement demonstrated between **two micromechanical drumheads** — oscillators tens of micrometers across, each containing trillions of atoms, cooled to near absolute zero (Kotler et al., *Science*)
 
 The boundary is being pushed, but the classical world emerges naturally from the quantum world through the smallness of Planck\'s constant and the relentless efficiency of decoherence.
 
@@ -705,9 +705,9 @@ This experiment has been successfully performed with photons, electrons, neutron
       overview: 'Discover how a young French aristocrat named Louis de Broglie made one of the most audacious proposals in physics history: if light can be a particle, then particles must be waves. His equation changed everything.',
       mainContent: `## The Aristocrat Who Gave Matter Waves
 
-In **1924**, a French prince pursuing his PhD made a proposal so bold that his thesis committee did not know what to do with it. They sent it to Einstein for evaluation. Einstein read it and declared it "a first feeble ray of light on this worst of our physics enigmas."
+In **1924**, a young French duke pursuing his PhD made a proposal so bold that his thesis committee did not know what to do with it. They sent it to Einstein for evaluation. Einstein read it and declared it "a first feeble ray of light on this worst of our physics enigmas."
 
-That prince was **Louis de Broglie**, and his idea was breathtakingly simple:
+That duke was **Louis de Broglie**, and his idea was breathtakingly simple:
 
 **If light (a wave) can behave as a particle, then particles (matter) must also behave as waves.**
 
@@ -895,7 +895,7 @@ How can something be both a wave and a particle? These seem like contradictory p
 
 ### Bohr\'s Resolution: Complementarity
 
-In **1927**, at the **Solvay Conference** (one of the most important scientific meetings in history), **Niels Bohr** proposed the **complementarity principle**:
+In **September 1927**, at the **Como Conference**, **Niels Bohr** first proposed the **complementarity principle** — a view he then defended against Einstein\'s challenges at the **Solvay Conference** that October:
 
 **Wave and particle are complementary descriptions of the same quantum entity. They are not contradictory -- they are two complete, mutually exclusive views that together provide a full picture of reality.**
 
@@ -1270,7 +1270,7 @@ For a classical-sized object, the paths near the classical trajectory have ampli
 
 For a quantum-sized object, many paths contribute significantly, and the resulting probability distribution can look very non-classical.
 
-> "It is not that the world is not strange -- the world is much stranger than you can suppose." -- Attributed to J.B.S. Haldane, but equally applicable to Feynman\'s formulation
+> "I think I can safely say that nobody understands quantum mechanics." -- Richard Feynman, on why the quantum world resists our everyday intuitions
 
 ### The Rules of Quantum Mechanics (Feynman\'s Summary)
 
@@ -1433,7 +1433,7 @@ Decoherence doesn\'t tell us *which* outcome occurs. It tells us *why* we never 
 
 ### Why It Still Matters
 
-Schrödinger\'s cat isn\'t just a historical curiosity. The question it raises -- **where does the quantum world end and the classical world begin?** -- remains one of the deepest unsolved problems in physics. Modern experiments have demonstrated superposition in increasingly large objects: molecules with over 2,000 atoms (2019), mechanical oscillators visible to the naked eye (2010), and even proposed experiments with microorganisms.
+Schrödinger\'s cat isn\'t just a historical curiosity. The question it raises -- **where does the quantum world end and the classical world begin?** -- remains one of the deepest unsolved problems in physics. Modern experiments have demonstrated superposition in increasingly large objects: molecules with over 2,000 atoms (2019), micromechanical oscillators cooled to near absolute zero (2010, 2021), and even proposed experiments with microorganisms.
 
 The boundary, if one exists, has not yet been found.`,
       keyTakeaway: 'Schrödinger\'s cat was designed to expose the absurdity of extending quantum superposition to everyday objects. Decoherence explains why we never observe macroscopic superpositions in practice, but the fundamental question of where quantum behavior ends remains open.',
@@ -4060,7 +4060,7 @@ On n qubits, the classical FFT takes O(n * 2^n) operations. The QFT takes only O
 | Break RSA-2048 | ~10^34 operations | ~millions of operations |
 | Time on best classical | Centuries | Hours (on future hardware) |
 
-**Current Status (2025):** No quantum computer has yet factored cryptographically relevant numbers. The largest number factored by Shor\'s algorithm on actual quantum hardware is 21 = 3 x 7 (using tricks to reduce qubit count). Breaking RSA-2048 would require roughly 4,000-20,000 error-corrected logical qubits — current machines have fewer than 1,500 noisy physical qubits.
+**Current Status (2025):** No quantum computer has yet factored cryptographically relevant numbers. The largest numbers factored by Shor\'s algorithm on actual quantum hardware are small composites (21, 35, and similar) demonstrated with techniques that reduce qubit counts. Breaking RSA-2048 would require roughly 4,000-20,000 error-corrected logical qubits — current machines have fewer than 1,500 noisy physical qubits.
 
 ## Post-Quantum Cryptography
 
@@ -4533,7 +4533,7 @@ The exchange picture of forces is one of QFT\'s great conceptual achievements:
 
 Despite being unobservable directly, virtual particles produce experimentally verified effects:
 
-**The Lamb Shift (1947):** Willis Lamb measured a tiny energy difference between two hydrogen electron states that should be identical according to Dirac\'s equation. The explanation: the electron interacts with virtual photons and virtual electron-positron pairs from the vacuum, slightly shifting its energy. QFT predicts this shift to 12 significant figures — one of the most precise predictions in physics.
+**The Lamb Shift (1947):** Willis Lamb measured a tiny energy difference between two hydrogen electron states that should be identical according to Dirac\'s equation. The explanation: the electron interacts with virtual photons and virtual electron-positron pairs from the vacuum, slightly shifting its energy. QFT predicts this shift with extraordinary precision, and the agreement with experiment is one of the great successes of the theory.
 
 **The Casimir Effect (1948):** Two uncharged metal plates placed extremely close together experience a tiny attractive force. Between the plates, only virtual photons with wavelengths that fit the gap can exist, while outside, all wavelengths contribute. The imbalance in vacuum energy creates measurable pressure. Lamoreaux confirmed this experimentally in 1997.
 
@@ -4622,7 +4622,7 @@ The simplest diagram (fewest vertices) gives the leading-order approximation. Ad
 
 **One-loop**: First quantum correction. Includes virtual particle-antiparticle pairs appearing and disappearing. This gives the anomalous magnetic moment and Lamb shift.
 
-**Two-loop and beyond**: Higher precision but dramatically harder calculations. The electron\'s magnetic moment has been computed to five loops (12,672 Feynman diagrams at the 4th order alone), matching experiment to 1 part in 10^10.
+**Two-loop and beyond**: Higher precision but dramatically harder calculations. The electron\'s magnetic moment has been computed to five loops (12,672 Feynman diagrams at the 5th order), matching experiment to 1 part in 10^10.
 
 ## The Power of the Approach
 
@@ -4687,7 +4687,7 @@ That is 12 fermions total. Each has an antiparticle, giving 24 matter particles.
 | 8 Gluons | Strong nuclear | 0 | ~10^-15 m (confined) |
 | Higgs | Mass mechanism | 125 GeV | ~10^-17 m |
 
-Total: 17 fundamental particles (or 25 counting antiparticles of fermions).
+Total: 17 fundamental particle types (12 fermions + 5 boson types, counting the 8 gluons as one type). Including the antiparticles of the fermions, that becomes 29 — and if you count the gluon color charges individually, the total reaches 61.
 
 ## The Three Forces
 
@@ -4750,7 +4750,7 @@ Active research programs seeking to extend the Standard Model include:
         question: 'How many fundamental particles are described by the Standard Model?',
         options: ['12', '17', '24', '61'],
         correct: 1,
-        explanation: 'The Standard Model describes 17 fundamental particles: 6 quarks, 6 leptons, 4 force-carrying gauge bosons (photon, W+, W-, Z), and the Higgs boson. Including antiparticles of fermions raises the count to 25, but there are 17 distinct types.'
+        explanation: 'The Standard Model describes 17 distinct particle types: 6 quarks, 6 leptons, and 5 boson types (photon, gluon, W±, Z, and the Higgs — counting the 8 gluons as one type). Including the antiparticles of the fermions brings the count to 29.'
       }
     }
   },
@@ -5238,7 +5238,7 @@ Today, many-worlds has significant support among theoretical physicists:
 - **David Deutsch** (Oxford): Built quantum computing theory partly on many-worlds foundations
 - **Max Tegmark** (MIT): Argues many-worlds is the simplest interpretation mathematically
 
-The 2011 poll at a quantum foundations conference showed **18% support** for many-worlds — second only to Copenhagen. Among quantum information theorists, support is even higher.
+The 2011 poll at a quantum foundations conference showed **24% support** for many-worlds — second only to Copenhagen. Among quantum information theorists, support is even higher.
 
 ## The Probability Problem
 
@@ -5320,7 +5320,7 @@ Today, Bohmian mechanics has a dedicated research community:
 - Numerical simulations show Bohmian trajectories reproducing all standard quantum predictions
 - The "Bohmian mechanics" research group publishes regularly in *Physical Review A* and *Journal of Physics A*
 
-In 2018, experiments by Steinberg\'s group at the University of Toronto used weak measurements to reconstruct average particle trajectories through a double-slit — and they matched Bohmian predictions.
+In 2011, experiments by Steinberg\'s group at the University of Toronto used weak measurements to reconstruct average particle trajectories through a double-slit — and they matched Bohmian predictions.
 
 ## Philosophical Significance
 
@@ -5398,7 +5398,7 @@ Even if you don\'t accept QBism, it offers a powerful lens:
 - It connects physics to **philosophy of mind** and **pragmatist philosophy**
 - It demonstrates that the "strangeness" of quantum mechanics may lie in our assumptions about objectivity, not in nature itself
 
-A 2019 survey by Schlosshauer, Kofler, and Zeilinger found QBism gaining ground among younger physicists, particularly those working in quantum information theory.`,
+The 2011 Schlosshauer, Kofler, and Zeilinger survey found QBism gaining ground among younger physicists, particularly those working in quantum information theory.`,
       keyTakeaway: 'QBism says quantum mechanics describes an individual agent\'s beliefs and experiences, not objective reality. Probabilities are personal, measurement is action, and the Born rule is a norm for rational belief-updating. It dissolves many quantum paradoxes by shifting the locus of quantum mechanics from the world to the agent.',
       actionItem: 'Today, notice one situation where your "probability assessment" of an outcome is personal — shaped by your unique experiences, not by objective data. Recognize that your expectations are beliefs, not facts, and see how this awareness changes your response.',
       quiz: {
@@ -6152,7 +6152,7 @@ In 2019, his team showed that brains of people in close relationships show corre
 Additional research:
 - **Mirror neurons** fire both when you perform an action and when you observe someone else performing it — creating a neural bridge between self and other
 - **Oxytocin**, the "bonding hormone," doesn\'t just create warm feelings — it synchronizes physiological states between people (heart rate, breathing patterns, cortisol levels)
-- **Heart Rate Variability (HRV) coherence** between close pairs has been documented by the HeartMath Institute, with partners\' heart rhythms entraining to each other at a distance
+- **Heart Rate Variability (HRV) coherence** between close pairs has been documented by the HeartMath Institute, which proposes that partners\' heart rhythms can entrain to each other — though the claim of entrainment across distance remains outside the mainstream scientific consensus
 
 ## Entanglement as Vulnerability
 

@@ -405,7 +405,7 @@ export const modules: ModuleConfig[] = [
     skills: ['Classical Mechanics', 'Thermodynamics', 'Electromagnetism', 'Quantum Basics'],
     features: ['Physics Simulator', 'Problem Solver', 'Concept Visualizer', 'Lab Experiments'],
     route: '/modules/physics-engineering',
-    isAvailable: true,
+    isAvailable: false,
     pathway: physicsEngineeringPathway,
   },
   {
@@ -540,7 +540,7 @@ export const modules: ModuleConfig[] = [
     skills: ['Lean Methodology', 'Product-Market Fit', 'Fundraising', 'Team Building'],
     features: ['Startup Canvas', 'Pitch Builder', 'Metric Dashboard', 'Investor Prep'],
     route: '/modules/startups-innovation',
-    isAvailable: true,
+    isAvailable: false,
     pathway: startupsInnovationPathway,
   },
   {
@@ -555,7 +555,7 @@ export const modules: ModuleConfig[] = [
     skills: ['Attachment Theory', 'Active Listening', 'Conflict Resolution', 'Social Intelligence'],
     features: ['Attachment Quiz', 'Conversation Guide', 'Relationship Tracker', 'Social Skills Lab'],
     route: '/modules/relationships-social',
-    isAvailable: true,
+    isAvailable: false,
     pathway: relationshipsSocialPathway,
   },
   {
@@ -615,7 +615,7 @@ export const modules: ModuleConfig[] = [
     skills: ['Pattern Recognition', 'Sacred Geometry', 'Mathematical Thinking', 'Number Theory'],
     features: ['Pattern Explorer', 'Geometry Visualizer', 'Math Puzzles', 'Fractal Generator'],
     route: '/modules/mathematics-patterns',
-    isAvailable: true,
+    isAvailable: false,
     pathway: mathematicsPatternsPathway,
   },
   // ============================================

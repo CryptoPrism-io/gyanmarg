@@ -37,10 +37,10 @@ const techniques = [
     title: 'Cross-Domain Reading',
     subtitle: 'The polymath advantage',
     color: 'amber',
-    description: 'Reading across multiple domains creates richer neural networks. When you connect Stoic philosophy to AI ethics, or neuroscience to leadership, your brain builds stronger, more flexible knowledge structures.',
+    description: 'Reading across multiple domains creates richer neural networks. When you connect Stoic philosophy to AI ethics, or neuroscience to leadership, your brain builds stronger, more flexible knowledge structures. Research on analogical transfer shows that knowledge applied to new contexts strengthens flexible problem-solving.',
     stats: [
-      { value: '43%', label: 'Better problem solving' },
-      { value: '3x', label: 'Better knowledge transfer' },
+      { value: 'Transfer', label: 'Knowledge applies across contexts' },
+      { value: 'Flexible', label: 'Analogies build connections' },
     ],
     howItWorks: [
       'Read psychology for 20 minutes',
@@ -75,7 +75,7 @@ const techniques = [
     title: 'Neuroplasticity',
     subtitle: 'Your brain grows by reading',
     color: 'lavender',
-    description: 'Every time you explore a new domain, your brain physically rewires. Neuroscience shows that diverse intellectual stimulation increases gray matter density and creates new neural pathways that enhance all thinking.',
+    description: 'Every time you explore a new domain, your brain physically rewires. Studies show that learning new skills and diverse intellectual stimulation can increase gray matter density and strengthen neural pathways throughout life.',
     stats: [
       { value: '14', label: 'Knowledge categories' },
       { value: '1000+', label: 'Authors distilled' },
@@ -96,8 +96,8 @@ const techniques = [
     color: 'coral',
     description: 'Research shows that curiosity activates the brain\'s reward system and enhances memory formation. When you read what genuinely interests you — across any domain — you absorb and retain far more.',
     stats: [
-      { value: '89%', label: 'Higher engagement' },
-      { value: '5x', label: 'More consistent readers' },
+      { value: 'Intrinsic', label: 'Motivation fuels retention' },
+      { value: 'Durable', label: 'Curiosity deepens memory' },
     ],
     howItWorks: [
       'Browse 76 domains freely',
