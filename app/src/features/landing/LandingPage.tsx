@@ -164,7 +164,7 @@ const domainCards = [
   { title: 'Leadership', subtitle: 'Management, influence, teams', image: domainLeadership, moduleId: 'leadership' },
   { title: 'Philosophy', subtitle: 'Stoicism, meaning, wisdom', image: domainPhilosophy, moduleId: 'stoicism' },
   { title: 'Writing', subtitle: 'Storytelling, persuasion', image: domainWriting, moduleId: 'writing-storytelling' },
-  { title: 'Science', subtitle: 'Physics, biology, neuroscience', image: domainScience, moduleId: 'physics-engineering' },
+  { title: 'Science', subtitle: 'Physics, biology, neuroscience', image: domainScience, moduleId: 'astronomy' },
   { title: 'Creativity', subtitle: 'Innovation, design thinking', image: domainCreativity, moduleId: 'creative-writing' },
 ];
 

@@ -107,7 +107,7 @@ Mastery:          Myelinated pathways → Automatic, unconscious
 
 ### Scientific Evidence
 
-Sara Lazar's groundbreaking 2012 Harvard study:
+Sara Lazar's team at Harvard published the landmark 8-week MBSR study (Hölzel et al., 2011):
 - 8 weeks of meditation
 - Measurable brain thickening in regions for learning, memory, and emotion regulation
 - Decreased gray matter in the amygdala (stress center)
@@ -162,16 +162,15 @@ Neuroplasticity is neutral—it strengthens whatever you practice:
       mainContent: `
 ## Debunking the "Peak at 25" Myth
 
-A massive 2025 lifespan study challenged the assumption that cognitive abilities peak in your mid-20s. Researchers identified **five major stages of brain-network organization**:
+A massive 2025 lifespan study challenged the assumption that cognitive abilities peak in your mid-20s. Researchers identified **four major stages of brain-network reorganization**:
 
-### The Five Transitions
+### The Four Transitions
 
 | Age | Transition | Brain Changes | Optimization Strategy |
 |-----|------------|---------------|----------------------|
 | **~9** | Childhood → Adolescence | Prefrontal development accelerates | Build learning foundations |
 | **~32** | Young Adult → Adult | Executive function peaks | Leverage for career building |
-| **~48** | Adult → Midlife | Crystallized intelligence rises | Deepen expertise |
-| **~66** | Midlife → Senior | Wisdom networks strengthen | Mentor and synthesize |
+| **~66** | Adult → Senior | Wisdom networks strengthen | Mentor and synthesize |
 | **~83** | Senior → Elder | Selective optimization | Focus on meaningful activities |
 
 ### What Each Stage Optimizes
@@ -214,9 +213,9 @@ Low Reserve (vulnerable):
 - Sedentary lifestyle
 \`\`\`
 
-### The FINGER Study (2025)
+### The FINGER Study (published 2015)
 
-~2,000 participants in their 60s-70s spent 2 years:
+1,260 participants in their 60s-70s spent 2 years:
 - Doing aerobic exercise
 - Eating Mediterranean diet
 - Monitoring blood pressure
@@ -318,7 +317,7 @@ Different tasks require different brain states:
 - 4-7-8 breathing (4 in, 7 hold, 8 out)
 - Close eyes for 60 seconds
 - Nature exposure
-- Background alpha binaural beats
+- Binaural beats (aids relaxation for some; the entrainment evidence is mixed)
 
 **Alpha → Theta (Access deeper states):**
 - Guided meditation
@@ -399,10 +398,11 @@ Your PFC is powerful but fragile. It's the first brain region to go "offline" wh
 The PFC uses glucose for energy. Intensive self-control depletes this resource:
 
 **Roy Baumeister's research:**
-- Ego depletion is real
+- Proposed that ego depletion is real (self-control draws on a limited resource)
 - Willpower diminishes with use
-- Blood glucose correlates with self-control
-- Rest and nutrition restore capacity
+- Early work suggested blood glucose correlates with self-control
+
+> A note on the evidence: a large multi-lab preregistered replication (Hagger et al., 2016) failed to reproduce the ego-depletion effect, and the specific blood-glucose model is now widely rejected. The practical advice below — resting, managing stress, and keeping blood sugar stable — remains sound, but the "limited resource" framing is contested.
 
 ### Optimizing PFC Function
 
@@ -564,8 +564,8 @@ Active recall—retrieving information from memory—is dramatically more effect
 - Group B: Study → Test → Test → Test
 
 **Results after 1 week:**
-- Group A (passive review): 40% retention
-- Group B (active recall): 80% retention
+- Group A (passive review): ~40% retention
+- Group B (active recall): ~60% retention
 
 **Active recall is 2x more effective than re-reading.**
 
@@ -628,7 +628,7 @@ Re-reading creates a dangerous illusion:
 | Method | Time | Retention |
 |--------|------|-----------|
 | Re-reading 4x | 2 hours | ~40% |
-| Read once + 3 recalls | 1 hour | ~80% |
+| Read once + 3 recalls | 1 hour | ~60% |
 
 Active recall saves time AND improves results.
       `,
@@ -899,9 +899,9 @@ Sleep stages serve different functions:
 ### The Cost of Sleep Deprivation
 
 **Cognitive effects of 1 night poor sleep:**
-- Attention: ↓ 32%
-- Working memory: ↓ 38%
-- Mood: ↓ 31%
+- Attention: Significantly impaired
+- Working memory: Markedly reduced
+- Mood: Noticeably lower
 - Willpower: Severely impaired
 
 **Chronic sleep debt effects:**
@@ -979,7 +979,7 @@ Sleep stages serve different functions:
       mainContent: `
 ## Attention: Your Cognitive Bottleneck
 
-Your brain receives 11 million bits of sensory information per second. Conscious processing handles only ~50 bits per second.
+Your brain receives a vast amount of sensory information each moment — popular estimates put it in the range of 11 million bits per second, with conscious processing handling only a tiny fraction (~50 bits per second, per science writer Tor Nørretranders). These are illustrative figures rather than measured values, but the takeaway is well established: **conscious attention is a severe bottleneck.**
 
 **Attention is the filter that selects what matters.**
 
@@ -1143,8 +1143,8 @@ Technology exploits dopamine with **variable reward schedules**:
 - Rebuild motivation for difficult tasks
 
 **Natural dopamine boosters:**
-- Cold exposure (↑ 250% for hours)
-- Exercise (↑ 200%)
+- Cold exposure (popularly cited as boosting dopamine; the strongest direct evidence comes from animal studies, with the exact magnitude in humans still debated)
+- Exercise (consistently associated with dopamine release)
 - Sunlight exposure
 - Accomplishing challenging tasks
 - Social connection
@@ -1438,7 +1438,6 @@ Meditation has moved from ancient practice to scientifically validated brain tra
 | Posterior cingulate | ↑ Gray matter | Self-awareness |
 | Temporo-parietal junction | ↑ Gray matter | Empathy, perspective |
 | Amygdala | ↓ Gray matter | Stress, fear |
-| Brainstem | ↑ Gray matter | Neurotransmitter production |
 
 **These changes occurred in just 8 weeks with ~27 min/day practice.**
 
@@ -2439,7 +2438,7 @@ Your brain has two complementary modes:
 | **Newton** | Gravity | Apple tree (possibly) |
 | **Kekulé** | Benzene ring structure | Daydream of snake |
 | **Einstein** | Relativity | Imagining riding light beam |
-| **Edison** | Nap with ball bearings | Hypnagogia |
+| **Dalí** | Nap with keys/ball bearing dropping | Hypnagogia |
 
 ### The Creative Process
 
