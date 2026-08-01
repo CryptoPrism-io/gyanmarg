@@ -26,7 +26,7 @@ export const brainMasteryLessons: PathwayLesson[] = [
 Your brain contains approximately **86 billion neurons**, each connected to thousands of others through an estimated **100 trillion synapses**. This biological supercomputer:
 
 - Consumes 20% of your body's energy despite being only 2% of body weight
-- Processes information at speeds up to 120 meters per second
+- Transmits signals at up to ~120 meters per second along the fastest (heavily myelinated) fibers; most central signaling is far slower (roughly 1-10 m/s)
 - Creates your entire conscious experience of reality
 
 ### Why Brain Mastery Matters
@@ -45,10 +45,10 @@ Understanding your brain isn't academic—it's practical. Your brain determines:
 
 Recent research has shattered old myths:
 
-> "2025 felt like a turning point. We're increasingly learning how to repair, support, or even augment human cognition rather than merely observing how the brain works." — Stanford Neuroscience Research Review
+> "2025 felt like a turning point. We're increasingly learning how to repair, support, or even augment human cognition rather than merely observing how the brain works." — paraphrase of the research themes covered in this lesson
 
 **Key breakthroughs:**
-- Brain doesn't "peak in your mid-20s" — it reorganizes at ages 9, 32, 66, and 83
+- Brain doesn't "peak in your mid-20s" — a 2025 connectivity study proposed average network-reorganization windows near ages 9, 32, 66, and 83 (these are averages from one study, not fixed milestones; development is continuous and highly individual)
 - Neuroplasticity continues throughout life with the right stimuli
 - Meditation can physically thicken brain regions in just 8 weeks
 - Sleep is when critical brain "cleaning" occurs (glymphatic system)
@@ -74,11 +74,11 @@ Leonardo da Vinci's genius wasn't just curiosity—it was a brain optimized thro
       mainContent: `
 ## The Discovery That Changed Everything
 
-Until the 1990s, scientists believed adult brains were fixed. We now know your brain physically changes throughout life—a phenomenon called **neuroplasticity**.
+For much of the early-to-mid 20th century, scientists believed adult brains were largely fixed. Landmark work from the 1960s onward (Marian Diamond, Fernando Nottebohm, Michael Merzenich) overturned that view, and by the 1990s adult plasticity was broadly accepted. We now know your brain physically changes throughout life—a phenomenon called **neuroplasticity**.
 
 ### How Neuroplasticity Works
 
-**Hebbian Learning:** "Neurons that fire together, wire together"
+**Hebbian Learning:** "Neurons that fire together, wire together" — the principle originates with Donald Hebb (1949); the famous phrase was coined later by Carla Shatz.
 
 When you practice a skill:
 1. Specific neurons activate together
@@ -366,16 +366,16 @@ The **prefrontal cortex (PFC)**, located just behind your forehead, is what make
 
 ### The PFC: A Recent Evolution
 
-The human PFC is disproportionately large compared to other animals:
+A common claim — that the human prefrontal cortex is disproportionately large compared to other animals — is a myth. Comparative work (Semendeferi et al., 2002) shows the human frontal cortex is proportionally similar to other great apes; what sets humans apart is the organization and connectivity of that tissue, not its raw size.
 
 \`\`\`
-Human PFC:     ~30% of cortex  ████████████████████████████████
-Chimp PFC:     ~17% of cortex  ████████████████████
-Dog PFC:       ~7% of cortex   ████████
-Rat PFC:       ~3% of cortex   ███
+Human PFC:     ~36% of cortex  ████████████████████████████████████
+Chimp PFC:     ~35% of cortex  ███████████████████████████████████
+Bonobo PFC:    ~34% of cortex  ██████████████████████████████████
+Gorilla PFC:   ~33% of cortex  █████████████████████████████████
 \`\`\`
 
-This expanded PFC enables uniquely human abilities:
+This refined prefrontal network enables uniquely human abilities:
 - Long-term planning
 - Delaying gratification
 - Complex social behavior
@@ -661,14 +661,16 @@ Active recall saves time AND improves results.
 Hermann Ebbinghaus (1885) discovered that memory decays exponentially:
 
 \`\`\`
-100% ████████████████████████████████  Day 0
- 50% ████████████████                  Day 1
- 25% ████████                          Day 2
- 10% ████                              Week 1
-  5% ██                                Month 1
+100% ████████████████████████████████  0 min
+ 42% █████████████                    20 min
+ 44% ██████████████                   1 hour
+ 34% ██████████                       1 day
+ 25% ████████                         2 days
+ 21% ███████                          6 days
+ 20% ██████                           1 month
 \`\`\`
 
-Without review, you lose most of what you learn within days.
+These approximate the retention values from Ebbinghaus's original experiments: about 58% is forgotten within 20 minutes, and roughly two-thirds within a day. Without review, you lose most of what you learn within days.
 
 ### The Spacing Effect Solution
 
@@ -873,7 +875,7 @@ Discovered in 2012, the glymphatic system is your brain's "cleaning crew":
 
 \`\`\`
 During Wake:    Brain cells swollen, tight spaces
-During Sleep:   Brain cells shrink 60%, fluid flows through
+During Sleep:   Interstitial space expands ~60%, CSF fluid flows through
                 → Clears beta-amyloid (Alzheimer's protein)
                 → Removes metabolic waste
 \`\`\`
@@ -1130,7 +1132,7 @@ Technology exploits dopamine with **variable reward schedules**:
 | News feeds | Variable content | Endless scrolling |
 | Notifications | Random timing | Constant interruption |
 
-**Result: Baseline dopamine decreases, everything else feels boring.**
+**Proposed result: Baseline dopamine decreases, everything else feels boring.** (Note: the prediction-error signaling behind this is solid, but chronic tonic-dopamine downregulation from digital stimuli is a popularized hypothesis that remains contested in human research.)
 
 ### Dopamine Detox (The Science)
 
@@ -1341,7 +1343,7 @@ Don't rely on willpower—change the environment:
 
 ### The Phone Proximity Effect
 
-Stanford research: Phone presence reduces cognitive capacity even when:
+Research from the University of Texas at Austin (Ward, Duke & Gneezy, 2017): Phone presence reduces cognitive capacity even when:
 - Face down
 - On silent
 - In a bag
@@ -1528,7 +1530,7 @@ If exercise were a drug, it would be the most prescribed medication in history. 
 
 ### Neurogenesis: Growing New Brain Cells
 
-The hippocampus (memory center) grows new neurons throughout life. Exercise is the most potent neurogenesis trigger:
+The hippocampus is thought to grow new neurons throughout life, though the extent of adult human neurogenesis is actively debated (some recent studies question how much occurs in adult humans). What is well established: exercise reliably boosts BDNF and neurogenesis in animals, with strong indirect evidence for humans. Exercise is one of the most potent triggers:
 
 \`\`\`
 Sedentary:        Minimal new neurons
@@ -1555,9 +1557,8 @@ Combined cardio + learning: ↑↑↑↑ Neurons that survive and integrate
 ### The Research
 
 **Harvard's Nurses' Health Study:**
-- 18,000+ women followed for years
-- Most active = youngest brains
-- Difference: 2-3 years of brain age
+- Tens of thousands of women followed for years
+- Most active = slower cognitive decline (the widely cited "2-3 years of brain age" figure is an approximate gloss of that finding)
 
 **UCLA Kundalini Yoga Study:**
 - Women at risk for Alzheimer's
@@ -1955,14 +1956,13 @@ Research shows believing stress is harmful makes it harmful. Viewing stress as e
       mainContent: `
 ## The Neuroscience Revolution
 
-> "2025 felt like a turning point. We're increasingly learning how to repair, support, or even augment human cognition." — Stanford Neuroscience Review
+> "2025 felt like a turning point. We're increasingly learning how to repair, support, or even augment human cognition." — paraphrase of the research themes covered in this lesson
 
 ### Breakthrough 1: Brain Rejuvenation
 
 **Immune cell replacement study:**
 - Aging immune cells in brain replaced with younger, lab-grown versions
-- Restored brain function in aging mice
-- Implications: Potential reversal of cognitive aging
+- Restored brain function in aging mice (preliminary rodent result; the human "potential reversal of cognitive aging" is speculative extrapolation)
 
 ### Breakthrough 2: High-Density Brain-Computer Interfaces
 
@@ -2251,13 +2251,13 @@ Sleep consolidates motor and cognitive skills:
 
 ### Time to Expertise
 
-**Approximate timelines:**
+**Approximate, illustrative timelines** (popular approximations — Ericsson's research is about the quality of practice, not fixed hour thresholds per level):
 | Skill Level | Hours | Characteristics |
 |-------------|-------|-----------------|
-| Basic | 50 | Can perform with conscious effort |
-| Intermediate | 500 | Competent in common situations |
-| Advanced | 5,000 | Handle complexity, teach others |
-| Expert | 10,000+ | Peak performance, automaticity |
+| Basic | ~50 | Can perform with conscious effort |
+| Intermediate | ~500 | Competent in common situations |
+| Advanced | ~5,000 | Handle complexity, teach others |
+| Expert | ~10,000 | Peak performance, automaticity |
 
 **Note: These require deliberate practice. Casual practice may never reach mastery.**
       `,
@@ -2339,7 +2339,7 @@ Mihaly Csikszentmihalyi identified **flow** as the mental state where:
         Low Skill ←───→ High Skill
 \`\`\`
 
-**Sweet spot:** Challenge ~4% above current skill level
+**Sweet spot:** Challenge just slightly above current skill level — the challenge-skill balance concept (Csikszentmihalyi). A specific "4%" figure is a popularization without strong empirical support; the best-evidenced sweet spot for learning is ~85% accuracy (Wilson et al.).
 
 ### Engineering Flow
 
@@ -2436,7 +2436,7 @@ Your brain has two complementary modes:
 |---------|---------|-----------------|
 | **Archimedes** | Displacement principle | Bath |
 | **Newton** | Gravity | Apple tree (possibly) |
-| **Kekulé** | Benzene ring structure | Daydream of snake |
+| **Kekulé** | Benzene ring structure | Daydream of snake (widely retold, possibly apocryphal) |
 | **Einstein** | Relativity | Imagining riding light beam |
 | **Dalí** | Nap with keys/ball bearing dropping | Hypnagogia |
 

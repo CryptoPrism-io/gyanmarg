@@ -125,7 +125,7 @@ A neural network is just a ==fancy function== that does three things:
 
 That's it. No magic, no consciousness, just math.
 
-> **Did You Know:** The human brain has ~86 billion neurons. GPT-4 has ~1.7 trillion parameters. Size isn't everything - our brains are far more efficient!
+> **Did You Know:** The human brain has ~86 billion neurons. GPT-4's parameter count is undisclosed (reportedly in the ~1.7-1.8 trillion range, unconfirmed). Size isn't everything - our brains are far more efficient!
 
 ---
 
@@ -250,8 +250,8 @@ This doesn't make AI less impressive - it makes it MORE impressive that such sim
 - Learns: Actions that maximize reward
 - Example: Game-playing AI, robotics
 
-**Current State (2024):**
-- LLMs (ChatGPT) are narrow AI that *seem* general
+**Current State:**
+- LLMs (ChatGPT, Claude) are narrow AI that *seem* general
 - They're pattern matching, not understanding
 - Impressive but fundamentally limited`,
           keyTakeaway: 'We have narrow AI that\'s getting better, but true general intelligence remains elusive.',
@@ -290,21 +290,21 @@ This doesn't make AI less impressive - it makes it MORE impressive that such sim
 
 From the book by Kai-Fu Lee (AI expert) and Chen Qiufan (sci-fi author):
 
-**The 10 Scenarios:**
+**The 10 Scenarios (from the book's fictional stories):**
 
 1. **Deep Learning:** AI tutors that know students better than themselves
-2. **Computer Vision:** Autonomous everything - cars, drones, robots
+2. **Computer Vision:** Facial recognition, surveillance, and autonomous everything
 3. **NLP:** Real-time translation breaking language barriers
-4. **AI in Entertainment:** Personalized content created for you
-5. **AI in Finance:** Algorithmic everything - lending, insurance, investment
-6. **AI in Healthcare:** Early diagnosis, drug discovery, robot surgery
-7. **Autonomous Weapons:** The dark side we must prevent
-8. **AI Jobs Disruption:** What work will humans do?
-9. **AI & Happiness:** Can AI help us flourish?
-10. **AGI Possibility:** Will we create thinking machines?
+4. **AR/VR & Smart Devices:** Contactless, immersive interfaces
+5. **Autonomous Driving:** The long road to self-driving cars
+6. **AI in Finance:** Algorithmic everything - lending, insurance, investment
+7. **AI in Healthcare:** Early diagnosis, drug discovery, robot surgery
+8. **AI & Entertainment:** Deepfakes, personalized content, virtual idols
+9. **AI Jobs Disruption:** What work will humans do?
+10. **AI & Love/Happiness:** Can AI help us flourish?
 
 **Key Predictions:**
-- 50% of jobs significantly affected by 2041
+- ~40% of jobs significantly affected (the book's figure; "50%" is often misquoted)
 - AI tutors outperform human teachers in many subjects
 - Privacy as we know it will be unrecognizable
 - New jobs we can't imagine today
