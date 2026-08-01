@@ -107,7 +107,7 @@ These people weren\'t primitive. They had advanced urban planning, standardized 
 
 The **Vedas** (ancient sacred texts) contain the earliest written references:
 
-- **Rig Veda**: Describes *tapas* (disciplined austerity) and *dhyana* (meditation)
+- **Rig Veda**: Describes *tapas* (disciplined austerity) and visionary contemplation (the root *dhī*); the technical term *dhyāna* (meditation) first appears later, in the Upanishads
 - Focus on ritual, sacrifice, and connecting with cosmic forces
 - Yogic practices used by *rishis* (seers) to access higher states of consciousness
 
@@ -575,10 +575,10 @@ Everything you enjoy eventually changes or ends, causing pain.
 **The Mechanism:**
 You attach to impermanent things, believing they\'ll provide lasting happiness. When they inevitably change, you suffer.
 
-### 2. Tapaduhkha -- Suffering from Pursuit
+### 2. Tapaduhkha -- Suffering from Anguish
 
 **The Pattern:**
-The process of getting what you want is itself painful.
+*tāpa* literally means heat or anguish — the suffering that comes from painful experiences, and from the friction of pursuing fleeting pleasures as a mistaken cure for that unease.
 
 **Examples:**
 - Anxiety while pursuing a promotion
@@ -809,9 +809,7 @@ Later, **Hatha Yoga** (10th-15th century CE) formalized this balanced approach:
 - Integrated breath, posture, and meditation
 - Emphasized preparation over force
 
-The word "hatha" itself means:
-- **Ha** = Sun (active, heating)
-- **Tha** = Moon (receptive, cooling)
+The word "hatha" itself derives from the root *haṭh*, meaning "to force" or "to exert" — hence "forceful yoga." (The later esoteric interpretation — *ha* = sun, *tha* = moon, uniting opposites — is a popular reinterpretation, not the literal meaning, which is why this lesson groups it with hatha's active/effortful character.)
 
 The practice unites opposites -- effort and surrender, strength and flexibility, activity and rest.
 
@@ -1466,15 +1464,18 @@ These two forces work together like your two legs walking -- both are needed for
 
 ### The Two Levels (Sutras 1.15-1.16)
 
-**1. Lower Vairagya (Para-vairagya)**
-Detachment from objects you\'ve experienced:
+The Yoga Sutras describe two levels of vairagya. Note the Sanskrit: *apara* means "lower," *para* means "supreme."
+
+**1. Lower Vairagya (Apara-vairagya) — YS 1.15**
+Detachment from objects you\'ve experienced (seen/heard):
 - "I enjoyed that, but I don\'t need it to be happy"
 - "That was painful, but it doesn\'t define me"
+This is mastery over craving for things of this world.
 
-**2. Higher Vairagya (Apara-vairagya)**
-Detachment from things you\'ve only imagined:
-- Not driven by fantasies of future success
-- Not avoiding based on imagined disasters
+**2. Higher Vairagya (Para-vairagya) — YS 1.16**
+Supreme detachment: cessation of desire even for the sattva-guna (the finest qualities of nature itself):
+- Not just letting go of pleasures, but releasing the very pull of worldly qualities
+- Arises from knowledge of the indwelling Self (Purusha), not from suppressing imagined desires
 
 ## The Paradox: They Work Together
 
@@ -3533,8 +3534,7 @@ It\'s also the most relevant practice for modern life.
 - You can choose what to attend to
 - Internal stability despite external chaos
 
-**The Analogy (Sutra 2.54):**
-Like a tortoise withdrawing its limbs into its shell -- you can extend and engage, but also retract and protect.
+**The Analogy:** YS 2.54 defines pratyahara as the senses withdrawing from their objects "as it were, imitating the nature of the mind." A common traditional image for this — drawing on the Bhagavad Gita (2.58) — is a tortoise withdrawing its limbs into its shell: you can extend and engage, but also retract and protect.
 
 ## Why It Matters More Than Ever
 

@@ -27,14 +27,14 @@ The goal isn't just more years—it's more **healthy** years.
 
 ### The Four Horsemen of Chronic Disease
 
-Peter Attia identifies the four diseases that kill most people:
+Peter Attia identifies the "four horsemen" — the chronic disease categories responsible for most deaths in affluent societies (not exact mortality percentages, which vary by population and year):
 
-| Horseman | % of Deaths | Preventable? |
+| Horseman | Approx. share of US deaths | Preventable? |
 |----------|-------------|--------------|
-| Heart Disease | 30% | Largely yes |
-| Cancer | 25% | Partially |
-| Neurodegenerative | 10% | Partially |
-| Metabolic (Diabetes) | 15% | Largely yes |
+| Heart Disease | ~20% | Largely yes |
+| Cancer | ~18% | Partially |
+| Neurodegenerative | ~8% | Partially |
+| Metabolic (Diabetes) | ~3% | Largely yes |
 
 **Most chronic disease is lifestyle-driven and preventable.**
 
@@ -81,7 +81,7 @@ Most people's final decade:
     duration: 14,
     xpReward: 120,
     content: {
-      overview: 'Discover why VO2 max is the single best biomarker for predicting how long you\'ll live—and how to improve it.',
+      overview: 'Discover why VO2 max is one of the strongest predictors of how long you\'ll live—and how to improve it.',
       mainContent: `
 ## The King of Longevity Metrics
 
@@ -98,7 +98,7 @@ Research shows VO2 max is the **strongest predictor of all-cause mortality**:
 | 50-75% | Baseline |
 | Top 2.5% (elite) | 5x LOWER risk |
 
-**Moving from bottom 25% to top 25% = same as quitting smoking.**
+**Moving from bottom 25% to top 25% = comparable order of magnitude to quitting smoking.**
 
 ### VO2 Max by Age (mL/kg/min)
 
@@ -194,7 +194,7 @@ Benefits:
 - Not gasping between words
 
 **Method 2: Heart Rate**
-- 180 - age = approximate Zone 2 ceiling
+- 180 - age = a popular rule-of-thumb (Phil Maffetone's heuristic) for an approximate Zone 2 ceiling — not a validated formula
 - Or 60-70% of max heart rate
 
 **Method 3: Lactate Testing**
@@ -350,8 +350,8 @@ Per Night (7-8 hours):
 - Reaction time slowed
 
 **Chronic sleep debt:**
-- 4x cardiovascular risk
-- Higher cancer incidence
+- ~1.2-1.5x increased cardiovascular risk (meta-analyses of short sleep)
+- Higher cancer incidence (strongest link is night-shift work, classified as "probably carcinogenic")
 - Accelerated aging
 - Cognitive decline
 
@@ -519,7 +519,7 @@ Despite endless debate, longevity researchers agree on fundamentals:
 **4. Healthy fats**
 - Olive oil, avocado, nuts
 - Fatty fish (omega-3)
-- Limit seed oils
+- Limit highly processed fried foods and fat quality matters more than the specific oil — replacing saturated fat with unsaturated fats (including seed oils) is linked to better heart health
 - Avoid trans fats
 
 **5. Limit sugar and refined carbs**
@@ -573,7 +573,7 @@ More flexible, personalized:
 | Food | Issue | Alternative |
 |------|-------|-------------|
 | Sugar | Metabolic damage | Fruit, dark chocolate |
-| Seed oils | Inflammatory | Olive oil, butter |
+| Trans fats & heavily fried foods | Raise LDL, harm heart health | Olive oil, avocado, nuts |
 | Ultra-processed | Empty calories | Whole foods |
 | Alcohol | Toxic, disrupts sleep | Minimize or eliminate |
       `,
@@ -596,11 +596,11 @@ Fasting triggers cellular repair mechanisms that don't activate when constantly 
 
 ### Metabolic Switch
 
-After ~12 hours without food:
-- Glycogen depleted
-- Body shifts to fat burning
-- Ketones produced
-- Autophagy activates
+After roughly 12-16+ hours without food (timing varies by individual and activity level):
+- Glycogen stores significantly reduced (complete depletion takes 12-24+ hours depending on activity)
+- Body ramps up fat oxidation
+- Ketones begin to rise
+- Autophagy increases — deeper activation develops over longer fasts
 
 ### Types of Fasting
 
@@ -609,7 +609,7 @@ After ~12 hours without food:
 | **TRE** | Eat within 8-10 hour window | Metabolic health, sustainable |
 | **16:8** | 16 hours fast, 8 eat | Fat loss, insulin sensitivity |
 | **24-hour** | Full day fast weekly | Deeper autophagy |
-| **36-72 hour** | Extended fasts quarterly | Significant autophagy, stem cell renewal |
+| **36-72 hour** | Extended fasts quarterly | Deeper autophagy; stem-cell renewal shown in preliminary animal studies (not yet established in humans) |
 
 ### Autophagy: Cellular Cleanup
 
@@ -698,11 +698,11 @@ Bryan Johnson spends $2M+ yearly on his Blueprint protocol with a team of 30+ do
 
 ### His Reported Results
 
-- Biological age reversal (epigenetic clocks)
+- Biological age reversal (epigenetic clocks — contested single-subject claims)
 - VO2 max of a teenager
 - Inflammation markers of optimal
 - Cognition and sleep optimized
-- 160% increase in follistatin (gene therapy)
+- 160% increase in follistatin via experimental gene therapy (single-subject, unapproved/experimental intervention — not a general recommendation)
 
 ### The Core Protocol
 
@@ -798,7 +798,7 @@ Deliberate cold exposure triggers beneficial stress responses:
 **Cold triggers:**
 - Norepinephrine release (200-300% increase)
 - Brown fat activation
-- Dopamine increase (250% lasting hours)
+- Dopamine increase (plasma dopamine rises during immersion in a small study; lasting mood benefits are extrapolations)
 - Reduced inflammation
 - Improved insulin sensitivity
 
@@ -875,22 +875,22 @@ Finnish sauna research shows remarkable benefits:
 
 20+ years of data on 2,300+ men:
 
-| Sauna Frequency | Cardiovascular Death Risk |
+| Sauna Frequency | Cardiovascular Death Risk (observational) |
 |-----------------|---------------------------|
 | 1x/week | Baseline |
-| 2-3x/week | -27% |
-| 4-7x/week | -50% |
+| 2-3x/week | ~-23% |
+| 4-7x/week | ~-50% |
 
-**More sauna = substantially lower mortality.**
+**More sauna = substantially lower mortality.** (Note: this is an observational association, not proof of causation.)
 
 ### Mechanisms
 
 **Heat triggers:**
 - Heat shock proteins (cellular protection)
-- Growth hormone release
+- Growth hormone release (small studies; evidence limited)
 - Improved cardiovascular function
 - Reduced inflammation
-- Enhanced detoxification (sweating)
+- Sweating (aids thermoregulation; the body's actual "detox" is handled by the liver and kidneys)
 
 ### Heat Shock Proteins (HSPs)
 
@@ -1030,7 +1030,7 @@ Most supplements have limited evidence. Here's an honest assessment:
 | Supplement | Benefits | Dose |
 |------------|----------|------|
 | **Vitamin D** | Bone, immune, mood | 2000-5000 IU (test levels) |
-| **Omega-3** | Heart, brain, inflammation | 1-2g EPA+DHA |
+| **Omega-3** | Triglyceride lowering (strong); general heart-disease prevention in healthy people is not clearly supported by recent large trials | 1-2g EPA+DHA |
 | **Magnesium** | 300+ reactions, sleep | 300-400mg |
 | **Creatine** | Muscle, brain, energy | 5g daily |
 
@@ -1643,9 +1643,9 @@ Sprint/Power (optional):
 ## Your Second Brain
 
 Your gut contains:
-- 100 trillion bacteria (microbiome)
-- More neurons than spinal cord
-- Produces 90% of serotonin
+- ~30-38 trillion bacteria (revised estimate; the older "100 trillion" figure is outdated)
+- A network of ~500 million neurons (the enteric nervous system)
+- Produces ~90% of the body's serotonin (note: gut serotonin doesn't cross the blood-brain barrier, so its mood role is indirect)
 - Communicates directly with brain
 
 ### The Gut-Health Connection
@@ -1752,7 +1752,7 @@ The **suprachiasmatic nucleus (SCN)** in your brain:
 | 2-3 PM | Post-lunch dip (normal) |
 | 4-6 PM | Peak physical performance |
 | 9-11 PM | Melatonin rises, sleep prep |
-| 2-4 AM | Deepest sleep, growth hormone |
+| 2-4 AM | Melatonin peaks, core temperature lowest (deep sleep and growth-hormone pulses concentrate in the first third of the night) |
 
 ### Light as the Primary Zeitgeber
 
@@ -2006,7 +2006,7 @@ Habits that trigger other positive behaviors:
 **Chronological age:** Years since birth
 **Biological age:** How old your body functions
 
-These can differ by decades.
+These can differ by several years (occasionally more in specific cases) — the "decades apart" framing common in marketing is an overstatement.
 
 ### Epigenetic Clocks
 
@@ -2021,6 +2021,8 @@ DNA methylation patterns correlate with aging:
 - DunedinPACE (rate of aging)
 
 ### What Accelerates Biological Aging
+
+> Note: The year ranges below are rough, illustrative estimates assembled from population-level associations — not precise measurements for any individual.
 
 | Factor | Impact |
 |--------|--------|

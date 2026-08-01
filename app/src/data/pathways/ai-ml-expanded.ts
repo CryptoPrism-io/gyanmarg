@@ -489,7 +489,7 @@ They process text only (though multimodal models add images).
 ## The Context Window
 
 LLMs have limited "working memory"—the context window:
-- GPT-4: 128K tokens
+- GPT-4 Turbo / GPT-4o: 128K tokens
 - Claude: 200K tokens
 - Determines how much information they can consider simultaneously`,
       keyTakeaway: 'LLMs are pattern-matching systems trained on vast text data that develop remarkable language capabilities, but they lack true understanding and can hallucinate false information.',
@@ -684,7 +684,7 @@ ChatGPT and Claude are the leading AI assistants, each with unique strengths. Ma
 
 ### ChatGPT (OpenAI)
 - Strong at code and technical tasks
-- Extensive plugin ecosystem
+- Custom GPTs and Connectors ecosystem (the older Plugins were retired in 2024)
 - Image generation with DALL-E
 - Browsing capabilities
 - More willing to attempt edge cases
@@ -1486,7 +1486,7 @@ AI coding assistants have transformed software development. Used well, they dram
 - Natural language editing
 - Integrated chat and completion
 
-### Amazon CodeWhisperer
+### Amazon Q Developer (formerly CodeWhisperer)
 - AWS-focused suggestions
 - Security scanning
 - Free tier available
@@ -3094,7 +3094,7 @@ End-to-end AI development platforms:
 - AWS (SageMaker, Bedrock)
 - Google Cloud (Vertex AI)
 - Microsoft Azure (Azure AI)
-- DataBricks
+- Databricks
 
 ### Application Vendors
 AI-powered business applications:

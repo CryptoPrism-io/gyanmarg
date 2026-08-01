@@ -107,7 +107,7 @@ Multiple specialized agents collaborate:
 - Custom tool integration
 - Complex workflow orchestration
 
-### AutoGPT and Open Interpreters
+### AutoGPT and Open Interpreter
 - More autonomous operation
 - Self-directing goal pursuit
 - Community-driven development
@@ -605,9 +605,9 @@ Moving from digital to physical world:
 - Trained on robot data + internet data
 - Can generalize to new objects/tasks
 
-**1X NEO/Figure**:
+**Figure 01 and 1X NEO** (two distinct systems):
 - Humanoid robots
-- GPT-4 powered reasoning
+- Figure 01 uses OpenAI GPT-4 for reasoning; 1X NEO runs on 1X's own vision-language-motor models (not GPT-4)
 - Learning from demonstration
 
 ### Key Challenges
@@ -720,13 +720,15 @@ Image + Text → [Unified Model] → Response
 (Single model understands both natively)
 \`\`\`
 
-## Current Multi-Modal Leaders
+## Multi-Modal Leaders (2024-2025 era)
+
+> Note: AI models advance quickly; these were the leaders when this lesson was written. Frontier models (GPT-5, Claude 4.x, Gemini 2.5/3-class) have since superseded them.
 
 ### GPT-4o ("omni")
 - Native image, audio, text
 - Real-time voice conversation
 - Screen/image understanding
-- Fastest latency
+- Fastest latency among its generation
 
 ### Claude 3.5 Vision
 - Strong image analysis
@@ -872,17 +874,19 @@ Question → Extended Thinking → Answer
 - Self-checks and corrects
 - Dramatically better on math, coding, logic
 
-### Performance Gains
-| Task | GPT-4 | o1 |
+### Performance Gains (OpenAI's published o1 numbers)
+| Benchmark | GPT-4o | o1 |
 |------|-------|-----|
-| Math Olympiad | 13% | 83% |
-| PhD Science | 70% | 92% |
-| Competitive Coding | 11% | 62% |
+| AIME 2024 (math) | 13% | 83% |
+| GPQA Diamond (PhD science) | ~56% | ~78% |
+| Codeforces (competitive coding) | 11th percentile | 89th percentile |
 
-### o3 (2024-2025)
-Further improvements:
+### o3 (2025)
+Further improvements (2025 era):
 - Even better reasoning
 - Adjustable compute (think longer for harder problems)
+
+> Note: Frontline reasoning models have since moved on (GPT-5, Claude 4, Gemini 2.5 thinking modes); o1/o3 represent the 2024-2025 generation.
 - Approaching expert-level on benchmarks
 
 ## Chain-of-Thought Prompting
@@ -1207,12 +1211,12 @@ The open-source AI revolution enables running powerful models locally without AP
 
 ## The Open-Source Landscape
 
-### Leading Open Models (2025)
+### Leading Open Models (2025 era)
 
 **LLaMA 3.1 (Meta)**
 - 8B, 70B, 405B parameters
 - Competitive with GPT-4 class
-- Permissive license
+- Openly available under a custom license (not OSI-approved permissive: it restricts using outputs to improve other LLMs and requires a license above ~700M users)
 
 **Mistral**
 - Efficient architectures
@@ -1228,6 +1232,8 @@ The open-source AI revolution enables running powerful models locally without AP
 - Strong reasoning
 - Code specialization
 - Competitive benchmarks
+
+> These were the leading open models when the lesson was written (2025). The open-source landscape moves quickly — newer releases (e.g., Llama 4, Qwen 3, DeepSeek V3/R1, Mistral Large 2) have since arrived.
 
 ### Leaderboards
 - **LMSYS Chatbot Arena**: Human preference voting
