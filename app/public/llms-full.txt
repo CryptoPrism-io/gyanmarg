@@ -1,0 +1,68 @@
+# Polymind (Gyanmarg)
+
+> Polymind (Gyanmarg — Sanskrit for "Path of Knowledge") is a gamified learning platform that transforms 45+ curated ebooks into interactive experiences using spaced repetition, active recall, and interleaving. One system to make the world's most powerful ideas unforgettable.
+
+## Key facts
+- Type: Gamified edtech learning platform (web app / PWA)
+- Audience: lifelong learners who want to retain books and ideas
+- Live: https://ai-polymind.web.app
+- Learning science: spaced repetition (SM-2), active recall, interleaving
+- Gamification: XP & levels, achievements, daily challenges, streaks
+- Content: 45+ ebooks, 76 modules (37 fully available) across 14 categories
+- Platform: React 19 + TypeScript + Vite, installable PWA
+- Status: Live
+
+## Primary routes
+- Home: https://ai-polymind.web.app/
+- The Science: https://ai-polymind.web.app/science
+- Books: https://ai-polymind.web.app/books
+- Blog: https://ai-polymind.web.app/blog
+- How to Use: https://ai-polymind.web.app/how-to
+- Changelog: https://ai-polymind.web.app/changelog
+- Privacy: https://ai-polymind.web.app/privacy
+- Terms: https://ai-polymind.web.app/terms
+
+## The problem & solution
+- The problem: most people forget 90% of what they read within a week.
+- The solution: gamified microlearning with scientifically-proven retention techniques.
+- The result: knowledge that sticks, skills that compound.
+
+## Features
+
+### Evidence-based learning
+- Spaced repetition: SM-2 algorithm flashcards that optimize your review schedule.
+- Active recall: quizzes and challenges that force retrieval from memory.
+- Interleaving: mixed practice across topics for deeper understanding.
+
+### Gamification
+- XP & levels: earn experience points and level up as you learn (500 XP per level).
+- Achievements: unlock badges for milestones and streaks.
+- Daily challenges: keep your streak alive with daily learning goals.
+- Streak tracking with 1 freeze per week.
+
+## 10 flagship learning modules
+
+| Module | Description | Source material |
+|--------|-------------|-----------------|
+| Personal Development | Master your mindset | Atomic Habits, Deep Work, etc. |
+| AI & Machine Learning | Understand the future | Advanced AI concepts |
+| Wealth Building | Billionaire strategies | Dalio, Buffett, Munger |
+| Bruce Lee Philosophy | Way of the warrior | Tao of Jeet Kune Do |
+| Blockchain & Web3 | Decentralized tech | Crypto & DeFi |
+| Psychology & Decisions | Dark psychology | Body language, influence |
+| Python & Data Science | Code your insights | Programming mastery |
+| Mind Mastery | Learning how to learn | Meta-learning |
+| Temple Science | Ancient wisdom | Vedic knowledge |
+| Master Synthesis | Connect all knowledge | Integration |
+
+## Content catalog
+76 modules (37 fully available with complete pathway content; the rest show as "Coming Soon") across 14 categories: Mind & Performance, Technology & Code, Wealth & Power, Finance & Markets, Spirit & Body, Synthesis & Mastery, Science & Universe, Creative Arts, Strategy & Systems, History & Culture, Practical Mastery, Relationships & Society, Ancient Wisdom, Bharat Wisdom.
+
+Each module is structured as levels and lessons (intro, concept, exercise, quiz, reflection, challenge), each with an overview, markdown main content, key takeaway, action item, and quiz.
+
+## Technology
+React 19, TypeScript (strict), Vite 7.2, TailwindCSS 3.4, Zustand 4.5, Framer Motion, React Router DOM 7.1, Firebase (Firestore + Auth), PWA (service worker, installable). Deployed via Firebase Hosting + S3/CloudFront.
+
+## Contact
+- Product site: https://ai-polymind.web.app
+- The app routes (dashboard, pathway, lab, review, profile, challenges, settings, saved) require onboarding and render an authenticated experience.

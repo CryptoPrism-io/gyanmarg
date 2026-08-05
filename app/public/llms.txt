@@ -1,0 +1,34 @@
+# Polymind (Gyanmarg)
+
+> Polymind (Gyanmarg — Sanskrit for "Path of Knowledge") is a gamified learning platform that transforms 45+ curated ebooks into interactive experiences using spaced repetition, active recall, and interleaving. One system to make the world's most powerful ideas unforgettable.
+
+## Key facts
+- Type: Gamified edtech learning platform (web app / PWA)
+- Audience: lifelong learners who want to retain books and ideas
+- Live: https://ai-polymind.web.app
+- Learning science: spaced repetition (SM-2), active recall, interleaving
+- Gamification: XP & levels, achievements, daily challenges, streaks
+- Content: 45+ ebooks, 76 modules (37 fully available) across 14 categories
+- Platform: React 19 + TypeScript + Vite, installable PWA
+- Status: Live
+
+## Sections
+- [Home](https://ai-polymind.web.app/)
+- [The Science](https://ai-polymind.web.app/science)
+- [Books](https://ai-polymind.web.app/books)
+- [Blog](https://ai-polymind.web.app/blog)
+- [How to Use](https://ai-polymind.web.app/how-to)
+- [Changelog](https://ai-polymind.web.app/changelog)
+- [Privacy](https://ai-polymind.web.app/privacy)
+- [Terms](https://ai-polymind.web.app/terms)
+
+## Primary routes
+- https://ai-polymind.web.app/
+- https://ai-polymind.web.app/science
+- https://ai-polymind.web.app/books
+- https://ai-polymind.web.app/blog
+- https://ai-polymind.web.app/how-to
+
+## Contact / links
+- Product site: https://ai-polymind.web.app
+- (Support and terms available in-app and via the public pages above)

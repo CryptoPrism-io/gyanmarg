@@ -1,6 +1,9 @@
-# Polymind robots.txt
+# Polymind (Gyanmarg) robots.txt
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://polymind.app/sitemap.xml
+# Public marketing/content routes are all crawlable.
+# The app itself (/dashboard, /pathway, /lab, /profile, etc.) is auth-gated
+# behind onboarding — allow it but it won't render meaningful server HTML.
+Host: https://ai-polymind.web.app
+Sitemap: https://ai-polymind.web.app/sitemap.xml
