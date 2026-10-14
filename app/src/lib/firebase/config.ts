@@ -1,7 +1,6 @@
 // Firebase configuration and initialization
 import { initializeApp, getApps, type FirebaseApp } from 'firebase/app';
 import { getAuth, type Auth } from 'firebase/auth';
-import { getFirestore, type Firestore } from 'firebase/firestore';
 
 /**
  * Firebase configuration from environment variables
@@ -38,16 +37,15 @@ export function isFirebaseConfigured(): boolean {
 // Initialize Firebase app (singleton pattern)
 let app: FirebaseApp | null = null;
 let auth: Auth | null = null;
-let db: Firestore | null = null;
 
 /**
  * Initialize Firebase services
  * Returns null values if Firebase is not configured
  */
-export function initializeFirebase(): { app: FirebaseApp | null; auth: Auth | null; db: Firestore | null } {
+export function initializeFirebase(): { app: FirebaseApp | null; auth: Auth | null } {
   if (!isFirebaseConfigured()) {
     console.warn('[Firebase] Not configured. Set VITE_FIREBASE_* environment variables.');
-    return { app: null, auth: null, db: null };
+    return { app: null, auth: null };
   }
 
   // Check if already initialized
@@ -58,9 +56,8 @@ export function initializeFirebase(): { app: FirebaseApp | null; auth: Auth | nu
   }
 
   auth = getAuth(app);
-  db = getFirestore(app);
 
-  return { app, auth, db };
+  return { app, auth };
 }
 
 /**
@@ -71,16 +68,6 @@ export function getFirebaseAuth(): Auth | null {
     initializeFirebase();
   }
   return auth;
-}
-
-/**
- * Get Firestore instance
- */
-export function getFirestoreDb(): Firestore | null {
-  if (!db && isFirebaseConfigured()) {
-    initializeFirebase();
-  }
-  return db;
 }
 
 /**

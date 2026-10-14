@@ -3,7 +3,6 @@ export {
   initializeFirebase,
   isFirebaseConfigured,
   getFirebaseAuth,
-  getFirestoreDb,
   getFirebaseApp,
 } from './config';
 
