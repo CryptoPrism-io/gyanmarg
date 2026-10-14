@@ -3,14 +3,13 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 // Hashed build output (JS, CSS, and the ~72MB of module/level webp imported from
-// src) is served from CloudFront, so Firebase Hosting only ever serves index.html
-// and the handful of files in public/. That keeps us inside the Spark free tier's
-// daily transfer cap, which the full payload would otherwise exhaust in ~180 cold
-// visits. Unset in dev and for local builds, where everything stays same-origin.
+// src) is referenced by absolute CloudFront URL. CloudFront is now also the site's
+// own origin (Firebase Hosting is retired), so this is effectively same-origin;
+// it is kept so asset URLs stay stable. Unset in dev and for local builds.
 //
-// public/ deliberately does NOT move: a service worker can only control the origin
-// it is served from, so sw.js must stay on the Firebase origin, and a cross-origin
-// manifest.json breaks PWA install prompts in some browsers.
+// public/ files keep root-relative URLs: a service worker can only control the
+// origin it is served from, and a cross-origin manifest.json breaks PWA install
+// prompts in some browsers.
 const rawAssetBase = process.env.VITE_ASSET_BASE ?? ''
 const ASSET_BASE = rawAssetBase && !rawAssetBase.endsWith('/') ? `${rawAssetBase}/` : rawAssetBase
 

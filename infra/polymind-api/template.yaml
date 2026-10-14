@@ -1,0 +1,168 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Polymind user-data API - DynamoDB tables plus a Lambda Function URL that verifies Firebase ID tokens
+
+# Deploy (from infra/polymind-api):
+#   aws cloudformation package --template-file template.yaml --s3-bucket <artifact-bucket> \
+#     --s3-prefix polymind-api --output-template-file packaged.yaml
+#   aws cloudformation deploy --stack-name polymind-api --template-file packaged.yaml \
+#     --capabilities CAPABILITY_IAM
+
+Parameters:
+  FirebaseProjectId:
+    Type: String
+    Default: social-data-pipeline-and-push
+  AllowedOrigins:
+    Type: CommaDelimitedList
+    Default: https://d38xyhaonwcjz3.cloudfront.net,https://ai-polymind.web.app,http://localhost:5173
+
+Resources:
+  UsersTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      TableName: polymind-users
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: uid
+          AttributeType: S
+      KeySchema:
+        - AttributeName: uid
+          KeyType: HASH
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      DeletionProtectionEnabled: true
+      Tags:
+        - Key: product
+          Value: polymind
+
+  BetaUsersTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      TableName: polymind-beta-users
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: uid
+          AttributeType: S
+      KeySchema:
+        - AttributeName: uid
+          KeyType: HASH
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      DeletionProtectionEnabled: true
+      Tags:
+        - Key: product
+          Value: polymind
+
+  ApiLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/lambda/polymind-api
+      RetentionInDays: 30
+
+  ApiRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: polymind-api
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: Logs
+                Effect: Allow
+                Action: [logs:CreateLogStream, logs:PutLogEvents]
+                Resource: !Sub ${ApiLogGroup.Arn}:*
+              - Sid: UsersReadWrite
+                Effect: Allow
+                Action: [dynamodb:GetItem, dynamodb:PutItem]
+                Resource: !GetAtt UsersTable.Arn
+              - Sid: BetaWrite
+                Effect: Allow
+                Action: dynamodb:PutItem
+                Resource: !GetAtt BetaUsersTable.Arn
+
+  ApiFunction:
+    Type: AWS::Lambda::Function
+    DependsOn: ApiLogGroup
+    Properties:
+      FunctionName: polymind-api
+      Description: Polymind user-data API (Firebase ID token auth, DynamoDB storage)
+      Runtime: nodejs22.x
+      Architectures: [arm64]
+      Handler: index.handler
+      Code: src/
+      MemorySize: 512
+      Timeout: 10
+      Role: !GetAtt ApiRole.Arn
+      LoggingConfig:
+        LogGroup: !Ref ApiLogGroup
+      Environment:
+        Variables:
+          FIREBASE_PROJECT_ID: !Ref FirebaseProjectId
+          USERS_TABLE: !Ref UsersTable
+          BETA_USERS_TABLE: !Ref BetaUsersTable
+      Tags:
+        - Key: product
+          Value: polymind
+
+  ApiUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      TargetFunctionArn: !GetAtt ApiFunction.Arn
+      AuthType: NONE   # auth is the Firebase ID token, verified in the function
+      Cors:
+        AllowOrigins: !Ref AllowedOrigins
+        AllowMethods: [GET, POST, PATCH, PUT]
+        AllowHeaders: [authorization, content-type]
+        MaxAge: 600
+
+  ApiUrlPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref ApiFunction
+      Action: lambda:InvokeFunctionUrl
+      Principal: "*"
+      FunctionUrlAuthType: NONE
+
+  # Since Oct 2025 a public Function URL also needs lambda:InvokeFunction.
+  ApiInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref ApiFunction
+      Action: lambda:InvokeFunction
+      Principal: "*"
+      InvokedViaFunctionUrl: true
+
+  ErrorsAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: polymind-api-errors
+      AlarmDescription: polymind-api Lambda is throwing errors
+      Namespace: AWS/Lambda
+      MetricName: Errors
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref ApiFunction
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 5
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+
+Outputs:
+  ApiUrl:
+    Value: !GetAtt ApiUrl.FunctionUrl
+  UsersTableName:
+    Value: !Ref UsersTable
+  BetaUsersTableName:
+    Value: !Ref BetaUsersTable

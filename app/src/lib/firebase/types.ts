@@ -1,5 +1,4 @@
 // Firebase/Firestore types for Polymind
-import type { Timestamp } from 'firebase/firestore';
 import type {
   UserProfile,
   UserSettings,
@@ -35,8 +34,8 @@ export interface AuthState {
 }
 
 /**
- * Complete Firestore document structure for a user
- * Path: /users/{uid}
+ * Complete user document (stored by the Polymind API in DynamoDB;
+ * originally a Firestore document at /users/{uid})
  */
 export interface FirestoreUserDocument {
   // Metadata
@@ -44,8 +43,8 @@ export interface FirestoreUserDocument {
   email: string;
   displayName: string;
   photoURL: string | null;
-  createdAt: Timestamp;
-  lastSyncAt: Timestamp;
+  createdAt: string; // ISO-8601
+  lastSyncAt: string; // ISO-8601
 
   // From userStore
   user: {

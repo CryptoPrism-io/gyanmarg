@@ -1,57 +1,90 @@
-// Firestore CRUD operations
-import {
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  serverTimestamp,
-  Timestamp,
-} from 'firebase/firestore';
-import { getFirestoreDb } from './config';
+// User-data persistence.
+//
+// Data now lives in DynamoDB behind the Polymind API (infra/polymind-api), not in
+// Firestore. Sign-in is still Firebase Auth: every request carries the signed-in
+// user's Firebase ID token, and the API only ever reads/writes that user's record.
+// Function names are unchanged so sync.ts and the UI don't need to know.
+import { getFirebaseAuth } from './config';
 import type { FirestoreUserDocument, LocalStorageData } from './types';
 
-const USERS_COLLECTION = 'users';
+const API_URL = (import.meta.env.VITE_POLYMIND_API_URL || '').replace(/\/$/, '');
+
+// Limit review history to 1000 entries (the API enforces the same cap)
+const MAX_REVIEW_HISTORY = 1000;
+
+class ApiError extends Error {
+  status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+  }
+}
+
+async function apiFetch(path: string, init: RequestInit = {}): Promise<Response> {
+  if (!API_URL) {
+    throw new Error('Sync API not configured. Set VITE_POLYMIND_API_URL.');
+  }
+  const user = getFirebaseAuth()?.currentUser;
+  if (!user) {
+    throw new Error('Not signed in');
+  }
+  const token = await user.getIdToken();
+  const res = await fetch(`${API_URL}${path}`, {
+    ...init,
+    headers: {
+      ...(init.body ? { 'content-type': 'application/json' } : {}),
+      authorization: `Bearer ${token}`,
+    },
+  });
+  if (!res.ok && res.status !== 404) {
+    throw new ApiError(res.status, `Sync API ${init.method || 'GET'} ${path} failed (${res.status})`);
+  }
+  return res;
+}
+
+function syncedFields(data: Partial<LocalStorageData>) {
+  const fields: Record<string, unknown> = {};
+  if (data.user !== undefined) fields.user = data.user;
+  if (data.progress !== undefined) fields.progress = data.progress;
+  if (data.habits !== undefined) fields.habits = data.habits;
+  if (data.spacedRepetition !== undefined) {
+    fields.spacedRepetition = {
+      ...data.spacedRepetition,
+      reviewHistory: data.spacedRepetition.reviewHistory.slice(-MAX_REVIEW_HISTORY),
+    };
+  }
+  return fields;
+}
 
 /**
- * Get a user's document from Firestore
- * @param uid User's Firebase UID
+ * Get the signed-in user's document
+ * @param uid User's Firebase UID (must be the signed-in user)
  * @returns The user document or null if not found
  */
 export async function getUserDocument(uid: string): Promise<FirestoreUserDocument | null> {
-  const db = getFirestoreDb();
-  if (!db) {
-    console.error('[Firestore] Database not initialized');
-    return null;
-  }
-
   try {
-    const docRef = doc(db, USERS_COLLECTION, uid);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      return docSnap.data() as FirestoreUserDocument;
+    const res = await apiFetch('/users/me');
+    if (res.status === 404) return null;
+    const doc = (await res.json()) as FirestoreUserDocument;
+    if (doc.uid !== uid) {
+      throw new Error('Signed-in user does not match requested uid');
     }
-    return null;
+    return doc;
   } catch (error) {
-    console.error('[Firestore] Error getting user document:', error);
+    console.error('[Sync] Error getting user document:', error);
     throw error;
   }
 }
 
 /**
- * Check if a user document exists
+ * Check if the signed-in user's document exists
  * @param uid User's Firebase UID
  */
 export async function userDocumentExists(uid: string): Promise<boolean> {
-  const db = getFirestoreDb();
-  if (!db) return false;
-
   try {
-    const docRef = doc(db, USERS_COLLECTION, uid);
-    const docSnap = await getDoc(docRef);
-    return docSnap.exists();
+    return (await getUserDocument(uid)) !== null;
   } catch (error) {
-    console.error('[Firestore] Error checking user document:', error);
+    console.error('[Sync] Error checking user document:', error);
     return false;
   }
 }
@@ -65,46 +98,21 @@ export async function userDocumentExists(uid: string): Promise<boolean> {
  * @param data Initial data from localStorage
  */
 export async function createUserDocument(
-  uid: string,
+  _uid: string,
   email: string,
   displayName: string,
   photoURL: string | null,
   data: LocalStorageData
 ): Promise<void> {
-  const db = getFirestoreDb();
-  if (!db) {
-    console.error('[Firestore] Database not initialized');
-    throw new Error('Firestore not initialized');
-  }
-
-  const now = serverTimestamp();
-
-  const userDoc: Omit<FirestoreUserDocument, 'createdAt' | 'lastSyncAt'> & {
-    createdAt: ReturnType<typeof serverTimestamp>;
-    lastSyncAt: ReturnType<typeof serverTimestamp>;
-  } = {
-    uid,
-    email,
-    displayName,
-    photoURL,
-    createdAt: now,
-    lastSyncAt: now,
-    user: data.user,
-    progress: data.progress,
-    habits: data.habits,
-    spacedRepetition: {
-      ...data.spacedRepetition,
-      // Limit review history to 1000 entries
-      reviewHistory: data.spacedRepetition.reviewHistory.slice(-1000),
-    },
-  };
-
   try {
-    const docRef = doc(db, USERS_COLLECTION, uid);
-    await setDoc(docRef, userDoc);
-    console.log('[Firestore] User document created');
+    const res = await apiFetch('/users/me', {
+      method: 'POST',
+      body: JSON.stringify({ email, displayName, photoURL, ...syncedFields(data) }),
+    });
+    if (res.status === 404) throw new ApiError(404, 'Sync API route not found');
+    console.log('[Sync] User document created');
   } catch (error) {
-    console.error('[Firestore] Error creating user document:', error);
+    console.error('[Sync] Error creating user document:', error);
     throw error;
   }
 }
@@ -115,50 +123,24 @@ export async function createUserDocument(
  * @param data Data to update
  */
 export async function updateUserDocument(
-  uid: string,
+  _uid: string,
   data: Partial<LocalStorageData>
 ): Promise<void> {
-  const db = getFirestoreDb();
-  if (!db) {
-    console.error('[Firestore] Database not initialized');
-    throw new Error('Firestore not initialized');
-  }
-
   try {
-    const docRef = doc(db, USERS_COLLECTION, uid);
-
-    // Build update object - only include provided fields
-    const updateData: Record<string, unknown> = {
-      lastSyncAt: serverTimestamp(),
-    };
-
-    if (data.user !== undefined) {
-      updateData.user = data.user;
-    }
-    if (data.progress !== undefined) {
-      updateData.progress = data.progress;
-    }
-    if (data.habits !== undefined) {
-      updateData.habits = data.habits;
-    }
-    if (data.spacedRepetition !== undefined) {
-      updateData.spacedRepetition = {
-        ...data.spacedRepetition,
-        // Limit review history to 1000 entries
-        reviewHistory: data.spacedRepetition.reviewHistory.slice(-1000),
-      };
-    }
-
-    await updateDoc(docRef, updateData);
-    console.log('[Firestore] User document updated');
+    const res = await apiFetch('/users/me', {
+      method: 'PATCH',
+      body: JSON.stringify(syncedFields(data)),
+    });
+    if (res.status === 404) throw new ApiError(404, 'User document does not exist');
+    console.log('[Sync] User document updated');
   } catch (error) {
-    console.error('[Firestore] Error updating user document:', error);
+    console.error('[Sync] Error updating user document:', error);
     throw error;
   }
 }
 
 /**
- * Sync all stores to Firestore
+ * Sync all stores to the API
  * @param uid User's Firebase UID
  * @param data Complete data from all stores
  * @param userInfo Optional user info for creating new documents
@@ -168,68 +150,50 @@ export async function syncAllToFirestore(
   data: LocalStorageData,
   userInfo?: { email: string; displayName: string; photoURL: string | null }
 ): Promise<void> {
-  const db = getFirestoreDb();
-  if (!db) {
-    console.error('[Firestore] Database not initialized');
-    throw new Error('Firestore database not initialized. Check Firebase configuration.');
-  }
-
-  console.log('[Firestore] Starting sync for user:', uid);
+  console.log('[Sync] Starting sync for user:', uid);
 
   try {
-    const docRef = doc(db, USERS_COLLECTION, uid);
-    const docSnap = await getDoc(docRef);
+    // Update existing document; create it if it doesn't exist yet
+    const res = await apiFetch('/users/me', {
+      method: 'PATCH',
+      body: JSON.stringify(syncedFields(data)),
+    });
+    if (res.status !== 404) {
+      console.log('[Sync] User document updated');
+      return;
+    }
 
-    if (docSnap.exists()) {
-      // Update existing document
-      await updateDoc(docRef, {
-        lastSyncAt: serverTimestamp(),
-        user: data.user,
-        progress: data.progress,
-        habits: data.habits,
-        spacedRepetition: {
-          ...data.spacedRepetition,
-          reviewHistory: data.spacedRepetition.reviewHistory.slice(-1000),
-        },
-      });
-      console.log('[Firestore] User document updated');
-    } else {
-      // Document doesn't exist - create it
-      console.log('[Firestore] Document does not exist, creating...');
-      const now = serverTimestamp();
-      await setDoc(docRef, {
-        uid,
+    console.log('[Sync] Document does not exist, creating...');
+    const created = await apiFetch('/users/me', {
+      method: 'POST',
+      body: JSON.stringify({
         email: userInfo?.email || '',
         displayName: userInfo?.displayName || data.user.profile?.name || 'User',
         photoURL: userInfo?.photoURL || null,
-        createdAt: now,
-        lastSyncAt: now,
-        user: data.user,
-        progress: data.progress,
-        habits: data.habits,
-        spacedRepetition: {
-          ...data.spacedRepetition,
-          reviewHistory: data.spacedRepetition.reviewHistory.slice(-1000),
-        },
-      });
-      console.log('[Firestore] User document created');
-    }
+        ...syncedFields(data),
+      }),
+    });
+    if (created.status === 404) throw new ApiError(404, 'Sync API route not found');
+    console.log('[Sync] User document created');
   } catch (error) {
-    console.error('[Firestore] Error syncing to Firestore:', error);
+    // A 409 means another tab created the document first; the next sync updates it.
+    if (error instanceof ApiError && error.status === 409) {
+      console.warn('[Sync] Document was created concurrently; will update on next sync');
+      return;
+    }
+    console.error('[Sync] Error syncing:', error);
     // Throw so the UI can show the error
     throw error;
   }
 }
 
 /**
- * Convert Firestore Timestamp to ISO string
+ * Convert a stored timestamp (ISO string) to an ISO string
  */
-export function timestampToISO(timestamp: Timestamp | null | undefined): string | null {
+export function timestampToISO(timestamp: string | null | undefined): string | null {
   if (!timestamp) return null;
-  return timestamp.toDate().toISOString();
+  return new Date(timestamp).toISOString();
 }
-
-const BETA_USERS_COLLECTION = 'betaUsers';
 
 export interface BetaUserData {
   uid: string;
@@ -240,21 +204,19 @@ export interface BetaUserData {
 }
 
 /**
- * Save a beta user signup to Firestore
+ * Save a beta user signup
  */
 export async function saveBetaUser(data: BetaUserData): Promise<void> {
-  const db = getFirestoreDb();
-  if (!db) return; // Silently skip if Firebase not configured
+  if (!API_URL) return; // Silently skip if the API isn't configured
 
   try {
-    const docRef = doc(db, BETA_USERS_COLLECTION, data.uid);
-    await setDoc(docRef, {
-      ...data,
-      signedUpAt: serverTimestamp(),
+    await apiFetch('/beta-users/me', {
+      method: 'PUT',
+      body: JSON.stringify({ name: data.name, email: data.email, age: data.age, gender: data.gender }),
     });
-    console.log('[Firestore] Beta user saved:', data.uid);
+    console.log('[Sync] Beta user saved:', data.uid);
   } catch (error) {
-    console.error('[Firestore] Error saving beta user:', error);
+    console.error('[Sync] Error saving beta user:', error);
     // Don't throw — beta save failure shouldn't block access grant
   }
 }
